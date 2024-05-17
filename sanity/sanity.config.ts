@@ -16,7 +16,7 @@ const singletonTypes = ['site']
 
 export default defineConfig({
 	name: 'default',
-	title: 'Next.js + Sanity.io Starter Template',
+	title: 'Wazen',
 
 	projectId: 'm7bjawr3',
 	dataset: 'production',
@@ -37,10 +37,7 @@ export default defineConfig({
 		}),
 		dashboardTool({
 			title: 'Deployment',
-			widgets: [
-				projectInfoWidget(),
-				projectUsersWidget(),
-			],
+			widgets: [projectInfoWidget(), projectUsersWidget()],
 		}),
 		visionTool({
 			title: 'GROQ',
