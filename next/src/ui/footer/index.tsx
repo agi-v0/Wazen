@@ -8,7 +8,7 @@ export default async function Footer() {
 	return (
 		<section className="bg-ink text-center text-canvas">
 			<div className="section py-8">
-				<div className="mx-auto max-w-screen-xl space-y-8">
+				<div className="mx-auto max-w-screen-xl">
 					<Navigation />
 					<Social className="justify-center" />
 					<p className="text-sm">

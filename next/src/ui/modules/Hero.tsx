@@ -42,7 +42,7 @@ export default function Hero({
 			)}
 
 			{content && (
-				<div className="section flex w-full flex-col">
+				<div className="flex h-screen w-full flex-col bg-gradient-to-b from-teal-300 to-white">
 					<div
 						className={cn(
 							'richtext relative max-w-xl [&_:is(h1,h2)]:text-balance',
@@ -64,7 +64,9 @@ export default function Hero({
 						>
 							{pretitle}
 						</Pretitle>
-						<PortableText value={content} />
+						<div className=''>
+							<PortableText value={content} />
+						</div>
 						<CTAList
 							ctas={ctas}
 							className={cn({

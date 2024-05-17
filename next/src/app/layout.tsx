@@ -11,7 +11,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
+		<html lang="ar" dir='rtl'>
 			{/* <GoogleTagManager gtmId='' /> */}
 
 			<body className="bg-canvas text-ink">

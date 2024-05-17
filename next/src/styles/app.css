@@ -75,11 +75,11 @@
 	.action {
 		text-align: center;
 		color: #fff;
-		@apply _btn rounded bg-gradient-to-br from-ink/70 to-ink shadow;
+		@apply _btn rounded bg-teal-600;
 	}
 
 	.link {
-		text-decoration: underline;
+		text-decoration: no-underline;
 
 		&:hover {
 			text-decoration-thickness: 2px;

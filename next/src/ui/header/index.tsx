@@ -7,32 +7,41 @@ import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
+import Image from 'next/image'
+import LangSelect from '@/components/lang-select'
 
 export default async function Header() {
-	const { title, ctas } = await getSite()
+	const { ctas } = await getSite()
 
 	return (
-		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur">
-			<SkipToContent />
+		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
+			{/* <SkipToContent /> */}
 
 			<div
 				className={cn(
 					css.header,
-					'mx-auto grid max-w-screen-xl items-center gap-x-4 p-4',
+					'mx-auto grid max-w-screen-xl items-center p-4',
 				)}
 			>
-				<div className="[grid-area:logo]">
+				<div className="flex items-center gap-x-10 [grid-area:logo-nav]">
 					<Link className="font-bold" href="/">
-						{title}
+						<Image
+							src="wazen-logo.svg"
+							alt="wazen logo"
+							width={80}
+							height={80}
+						/>
 					</Link>
+					<Navigation />
 				</div>
 
-				<Navigation />
-
-				<CTAList
-					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
-					ctas={ctas}
-				/>
+				<div className="flex items-center gap-x-10 [grid-area:ctas]">
+					<LangSelect />
+					<CTAList
+						className="max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
+						ctas={ctas}
+					/>
+				</div>
 
 				<Toggle />
 			</div>
