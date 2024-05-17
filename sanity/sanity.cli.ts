@@ -3,7 +3,7 @@ import { projectId } from './src/env'
 
 export default defineCliConfig({
 	api: {
-		projectId,
+		projectId: 'm7bjawr3',
 		dataset: 'production',
 	},
 })
