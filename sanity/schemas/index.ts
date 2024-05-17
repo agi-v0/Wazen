@@ -12,6 +12,8 @@ import testimonial from './documents/testimonial'
 import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
+import linkSublist from './objects/link.sublist'
+
 import metadata from './objects/metadata'
 
 // modules
@@ -41,6 +43,7 @@ export const schemaTypes = [
 	cta,
 	link,
 	linkList,
+	linkSublist,
 	metadata,
 
 	// modules

@@ -3,8 +3,8 @@ import { VscFolderOpened } from 'react-icons/vsc'
 import { count } from '../../src/utils'
 
 export default defineType({
-	name: 'link.list',
-	title: 'Link list',
+	name: 'link.sublist',
+	title: 'Link Sublist',
 	icon: VscFolderOpened,
 	type: 'object',
 	fields: [
@@ -15,7 +15,7 @@ export default defineType({
 		defineField({
 			name: 'links',
 			type: 'array',
-			of: [{ type: 'link' }, { type: 'link.sublist' }],
+			of: [{ type: 'link' }],
 		}),
 	],
 	preview: {
