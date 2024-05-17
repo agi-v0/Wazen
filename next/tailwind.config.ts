@@ -9,7 +9,9 @@ const config: Config = {
 				ink: '#000',
 				canvas: '#fff',
 			},
-			fontFamily: {},
+			fontFamily: {
+				sans: ['Rubik', 'sans-serif'],
+			},
 			maxHeight: {
 				fold: 'calc(100svh - var(--header-height))',
 			},

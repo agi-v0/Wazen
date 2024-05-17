@@ -1,13 +1,12 @@
-import { CiGlobe } from 'react-icons/ci'
+import { PiGlobe } from 'react-icons/pi'
 
 function LangSelect() {
 	return (
 		<div className="flex items-center">
-			<CiGlobe />
-
+			<PiGlobe />
 			<select>
-				<option value='ar'>Arabic</option>
-				<option value='en'>English</option>
+				<option value="ar">Arabic</option>
+				<option value="en">English</option>
 			</select>
 		</div>
 	)

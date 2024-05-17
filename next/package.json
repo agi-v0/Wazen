@@ -1,5 +1,5 @@
 {
-	"name": "next-sanity-template",
+	"name": "Wazen",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -33,6 +33,7 @@
 		"@types/react-dom": "^18.3.0",
 		"@types/rss": "^0.0.32",
 		"autoprefixer": "^10.4.19",
+		"framer-motion": "^11.2.4",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"tailwindcss": "^3.4.3",

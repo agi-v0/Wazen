@@ -10,7 +10,13 @@ export default async function Menu() {
 			{headerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':
-						return <CTA className="link no-underline hover:bg-[#F9FAFB] hover:text-teal-600" link={item} key={key} />
+						return (
+							<CTA
+								className="link no-underline hover:bg-gray-50 hover:text-teal-600"
+								link={item}
+								key={key}
+							/>
+						)
 
 					case 'link.list':
 						return <LinkList {...item} key={key} />
