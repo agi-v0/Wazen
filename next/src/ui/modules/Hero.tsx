@@ -8,6 +8,8 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import Image from 'next/image'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 
 export default function Hero({
 	pretitle,
@@ -35,7 +37,7 @@ export default function Hero({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto my-6 max-w-3xl leading-8 text-5xl text-white drop-shadow-md md:text-8xl">
+						<h1 className="mx-auto my-6 max-w-3xl text-5xl leading-8 text-white drop-shadow-md md:text-8xl">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
@@ -90,6 +92,21 @@ export default function Hero({
 							'justify-end': stegaClean(textAlign) === 'right',
 						})}
 					/>
+				</div>
+			</div>
+
+			<div className="flex flex-col items-center overflow-hidden">
+				<div className="w-[80%]">
+					<ContainerScroll>
+						<Image
+							src={`/dashboard-image.png`}
+							alt="hero"
+							height={720}
+							width={1400}
+							className="mx-auto h-full rounded-2xl object-cover object-left-top"
+							draggable={false}
+						/>
+					</ContainerScroll>
 				</div>
 			</div>
 		</section>
