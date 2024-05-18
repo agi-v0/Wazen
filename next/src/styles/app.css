@@ -35,22 +35,22 @@
 	/* typography */
 
 	h1 {
-		font-size: clamp(1.8rem, 1.18rem + 3.1vw, 3.97rem);
+		font-size: clamp(2.49rem, 1.476rem + 5.07vw, 5.53rem);
 	}
 	h2 {
-		font-size: clamp(1.6rem, 1.158rem + 2.21vw, 3.15rem);
+		font-size: clamp(2.07rem, 1.374rem + 3.48vw, 4.16rem);
 	}
 	h3 {
-		font-size: clamp(1.42rem, 1.112rem + 1.54vw, 2.5rem);
+		font-size: clamp(1.73rem, 1.264rem + 2.33vw, 3.13rem);
 	}
 	h4 {
-		font-size: clamp(1.27rem, 1.068rem + 1.01vw, 1.98rem);
+		font-size: clamp(1.44rem, 1.136rem + 1.52vw, 2.35rem);
 	}
 	h5 {
-		font-size: clamp(1.13rem, 1.004rem + 0.63vw, 1.57rem);
+		font-size: clamp(1.2rem, 1.01rem + 0.95vw, 1.77rem);
 	}
 	h6 {
-		font-size: clamp(1rem, 0.928rem + 0.36vw, 1.25rem);
+		font-size: clamp(1rem, 0.89rem + 0.55vw, 1.33rem);
 	}
 
 	.technical {

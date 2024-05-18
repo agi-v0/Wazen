@@ -37,13 +37,13 @@ export default function Hero({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto my-6 max-w-3xl text-center text-8xl leading-tight drop-shadow-md">
+						<h1 className="mx-auto max-w-3xl text-center leading-tight drop-shadow-md">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
 				}
 				return (
-					<p className="text-md mx-auto my-10 max-w-xl md:max-w-2xl md:text-xl">
+					<p className="mx-auto max-w-xl text-base md:max-w-3xl md:text-xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
