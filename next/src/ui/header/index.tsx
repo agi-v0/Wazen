@@ -14,16 +14,11 @@ export default async function Header() {
 	const { ctas } = await getSite()
 
 	return (
-		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
+		<Wrapper className="fixed top-0 z-10 w-full bg-white px-4 backdrop-blur">
 			{/* <SkipToContent /> */}
 
-			<div
-				className={cn(
-					css.header,
-					'mx-auto grid max-w-screen-xl items-center p-4',
-				)}
-			>
-				<div className="flex items-center gap-x-10 [grid-area:logo-nav]">
+			<div className={cn(css.header, 'grid p-3')}>
+				<div className="flex flex-col items-start gap-x-10 [grid-area:logo] md:flex-row md:items-center">
 					<Link className="font-bold" href="/">
 						<Image
 							src="wazen-logo.svg"
@@ -35,12 +30,9 @@ export default async function Header() {
 					<Navigation />
 				</div>
 
-				<div className="flex items-center gap-x-10 [grid-area:ctas]">
+				<div className="flex text-center flex-col-reverse items-center gap-y-3 gap-x-10 [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
 					<LangSelect />
-					<CTAList
-						className="max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
-						ctas={ctas}
-					/>
+					<CTAList className="max-md:*:w-full " ctas={ctas} />
 				</div>
 
 				<Toggle />

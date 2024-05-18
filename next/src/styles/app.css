@@ -159,26 +159,6 @@
 	}
 
 	.richtext {
-		@apply space-y-2 leading-relaxed;
-
-		& h1 {
-			@apply h1;
-		}
-		& h2 {
-			@apply h2;
-		}
-		& h3 {
-			@apply h3;
-		}
-		& h4 {
-			@apply h4;
-		}
-		& h5 {
-			@apply h5;
-		}
-		& h6 {
-			@apply h6;
-		}
 
 		& :is(ul, ol) {
 			list-style: revert;
@@ -187,6 +167,9 @@
 
 		& a:not([class*='action']) {
 			@apply link;
+
+			background-color: rgba(255, 255, 255, 50%);
+			padding: 0.5em 1em;
 		}
 
 		& code {

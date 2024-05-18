@@ -6,13 +6,13 @@ export default async function Menu() {
 	const { headerMenu } = await getSite()
 
 	return (
-		<nav className="max-md:anim-fade-to-r flex gap-x-4 max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
+		<nav className="max-md:anim-fade-to-r flex items-center gap-x-4 max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
 			{headerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':
 						return (
 							<CTA
-								className="link no-underline hover:bg-gray-50 hover:text-teal-600"
+								className="link no-underline p-2 hover:bg-gray-50 hover:text-teal-600"
 								link={item}
 								key={key}
 							/>
