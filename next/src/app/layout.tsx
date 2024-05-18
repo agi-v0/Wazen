@@ -11,10 +11,10 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="ar" dir='rtl'>
+		<html lang="ar" dir="rtl">
 			{/* <GoogleTagManager gtmId='' /> */}
 
-			<body className="bg-canvas text-ink">
+			<body className="bg-white text-gray-950">
 				<Header />
 				<main id="main-content" tabIndex={-1}>
 					{children}

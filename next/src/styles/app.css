@@ -34,29 +34,28 @@
 @layer components {
 	/* typography */
 
-	.h1 {
+	h1 {
 		font-size: clamp(1.8rem, 1.18rem + 3.1vw, 3.97rem);
 	}
-	.h2 {
+	h2 {
 		font-size: clamp(1.6rem, 1.158rem + 2.21vw, 3.15rem);
 	}
-	.h3 {
+	h3 {
 		font-size: clamp(1.42rem, 1.112rem + 1.54vw, 2.5rem);
 	}
-	.h4 {
+	h4 {
 		font-size: clamp(1.27rem, 1.068rem + 1.01vw, 1.98rem);
 	}
-	.h5 {
+	h5 {
 		font-size: clamp(1.13rem, 1.004rem + 0.63vw, 1.57rem);
 	}
-	.h6 {
+	h6 {
 		font-size: clamp(1rem, 0.928rem + 0.36vw, 1.25rem);
 	}
 
 	.technical {
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-weight: bold;
+		font-weight: normal;
 	}
 
 	/* ctas, links */
@@ -155,7 +154,6 @@
 	}
 
 	.richtext {
-
 		& :is(ul, ol) {
 			list-style: revert;
 			padding-left: 1.5em;

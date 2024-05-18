@@ -37,13 +37,13 @@ export default function Hero({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto my-6 max-w-3xl text-5xl leading-8 text-white drop-shadow-md md:text-8xl">
+						<h1 className="mx-auto my-6 max-w-5xl text-center  drop-shadow-md">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
 				}
 				return (
-					<p className="text-md my-10 max-w-xl md:max-w-2xl md:text-xl">
+					<p className="text-md mx-auto my-10 max-w-xl md:max-w-2xl md:text-xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -68,16 +68,18 @@ export default function Hero({
 					/>
 				</picture>
 			)}
-			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-5 bg-gradient-to-b from-teal-400 to-white">
+			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-6 bg-gradient-to-b from-teal-400 to-teal-950">
 				<div
-					className={cn('richtext relative [&_:is(h1,h2)]:text-balance')}
+					className={cn(
+						'richtext relative text-white [&_:is(h1,h2)]:text-balance',
+					)}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle
 						className={cn(
 							hasImage
-								? 'text-canvas/70'
-								: 'mx-auto my-4 w-fit rounded-full border-2 border-white bg-white/35 p-2 text-black',
+								? 'text-white/40'
+								: 'mx-auto w-fit rounded-full border border-white bg-white/20 px-6 py-2 font-normal text-white',
 						)}
 					>
 						{pretitle}
