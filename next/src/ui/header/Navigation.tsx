@@ -12,7 +12,7 @@ export default async function Menu() {
 					case 'link':
 						return (
 							<CTA
-								className="link no-underline p-2 hover:bg-gray-50 hover:text-teal-600"
+								className="link p-2 no-underline hover:bg-gray-50 hover:text-teal-600"
 								link={item}
 								key={key}
 							/>
@@ -21,6 +21,10 @@ export default async function Menu() {
 					case 'link.list':
 						return <LinkList {...item} key={key} />
 
+					case 'link.group':
+						return item.links?.map((subItem, subKey) => (
+							<LinkList {...subItem} key={subKey} />
+						))
 					default:
 						return null
 				}
