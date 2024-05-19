@@ -13,7 +13,6 @@ import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import linkGroup from './objects/link.group'
-
 import metadata from './objects/metadata'
 
 // modules

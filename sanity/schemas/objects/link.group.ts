@@ -15,7 +15,7 @@ export default defineType({
 		defineField({
 			name: 'links',
 			type: 'array',
-			of: [{ type: 'link' }, { type: 'link.list' }],
+			of: [{ type: 'link.list' }],
 		}),
 	],
 	preview: {
