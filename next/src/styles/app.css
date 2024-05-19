@@ -206,3 +206,7 @@
 		--y: -1rem;
 	}
 }
+
+.hero-background {
+	background-image: radial-gradient(circle at top center,#0D9488 ,#2dd4bf 40%, #164E63 100%, #083344 5%);
+}
