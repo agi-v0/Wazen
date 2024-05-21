@@ -64,7 +64,7 @@ export default function Hero({
 					/>
 				</picture>
 			)}
-			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-6 bg-gradient-to-b from-teal-400 to-teal-950">
+			<div className="hero-background flex h-screen w-full flex-col items-center justify-center gap-y-6">
 				<div
 					className={cn('richtext relative space-y-6 text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}

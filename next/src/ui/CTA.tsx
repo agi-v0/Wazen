@@ -14,7 +14,7 @@ export default function CTA({
 		className: cn(style, className),
 		children: children || link.label || link.internal?.title,
 	}
-
+	
 	switch (link.type) {
 		case 'internal':
 			if (!link.internal) return null
