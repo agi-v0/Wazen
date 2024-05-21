@@ -21,6 +21,7 @@
 		accent-color: theme('colors.ink');
 		caret-color: theme('colors.ink');
 		scroll-behavior: smooth;
+		@apply text-gray-950 transition-all duration-300;
 	}
 
 	summary {
@@ -209,5 +210,11 @@
 }
 
 .hero-background {
-	background-image: radial-gradient(circle at top center,#0D9488 ,#2dd4bf 40%, #164E63 100%, #083344 5%);
+	background-image: radial-gradient(
+		circle at top center,
+		#0d9488,
+		#2dd4bf 40%,
+		#164e63 100%,
+		#083344 5%
+	);
 }

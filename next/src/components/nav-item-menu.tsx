@@ -4,7 +4,7 @@ import { Key } from 'react'
 
 export function NavItemMenu({ links }: any) {
 	return (
-		<ul className="anim-fade-to-b -start-32 top-full flex w-full flex-col justify-between gap-2 border bg-white p-2 md:absolute md:min-w-[570px] md:flex-row">
+		<ul className="anim-fade-to-b -start-32 top-full flex w-full flex-col justify-between gap-3 border bg-white p-3 md:absolute md:min-w-[570px] md:flex-row">
 			{links?.[0] && (
 				<li
 					className={
