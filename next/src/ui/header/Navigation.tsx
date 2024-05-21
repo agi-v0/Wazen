@@ -1,6 +1,7 @@
 import { getSite } from '@/lib/sanity/queries'
 import CTA from '@/ui/CTA'
 import LinkList from './LinkList'
+import LinkGroup from './LinkGroup'
 
 export default async function Menu() {
 	const { headerMenu } = await getSite()
@@ -20,11 +21,10 @@ export default async function Menu() {
 
 					case 'link.list':
 						return <LinkList {...item} key={key} />
+						
+						case 'link.group':
+						return <LinkGroup  {...item} key={key} />
 
-					case 'link.group':
-						return item.links?.map((subItem, subKey) => (
-							<LinkList {...subItem} key={subKey} />
-						))
 					default:
 						return null
 				}

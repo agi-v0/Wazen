@@ -17,7 +17,7 @@ declare global {
 
 		type Navigation = SanityDocument<{
 			title: string
-			items?: (Link | LinkList)[]
+			items?: (Link | LinkList | LinkGroup)[]
 		}>
 
 		type PageBase = SanityDocument<{
@@ -75,16 +75,29 @@ declare global {
 			}>
 
 		type Link = {
-			readonly _type: 'link'
+			readonly _type: 'link';
 			label: string
+			description: string
 			type: 'internal' | 'external'
 			internal?: Page | BlogPost
 			external?: string
 			params?: string
 		}
 
+		type Group = {
+			readonly _type: 'groud'
+			label: string
+			params?: string
+		}
+
 		type LinkList = {
 			readonly _type: 'link.list'
+			label: string
+			links?: Link[]
+		}
+
+		type LinkGroup = {
+			readonly _type: 'link.group'
 			label: string
 			links?: Link[]
 		}
@@ -105,4 +118,4 @@ declare global {
 	}
 }
 
-export {}
+export { }

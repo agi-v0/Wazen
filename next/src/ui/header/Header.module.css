@@ -1,10 +1,11 @@
 .header {
 	grid-template:
 		'logo toggle' auto
-		'menu menu' auto
-		'ctas ctas' auto / 1fr 1fr;
+		'ctas ctas' auto / 1fr auto;
 
 	@screen md {
-		grid-template: 'logo menu ctas' auto / 2fr 1fr ;
+		grid-template: 'logo ctas' auto / 1fr  auto;
 	}
 }
+
+
