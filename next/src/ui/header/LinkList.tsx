@@ -15,7 +15,7 @@ export default function LinkList({ label, links }: Sanity.LinkList) {
 			{/* //@ Style Doesn't work in This Component */}
 			{/* {links && <NavItemMenu links={links} />} */}
 			{links && (
-				<ul className="anim-fade-to-b -start-32 top-full flex w-[570px] flex-col justify-between gap-3 rounded-lg border bg-white p-3 shadow-md md:absolute md:flex-row">
+				<ul className="anim-fade-to-b -start-32 top-full flex w-[570px] flex-col justify-between gap-3 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:flex-row">
 					{links?.[0] && (
 						<li
 							className={
@@ -42,9 +42,11 @@ export default function LinkList({ label, links }: Sanity.LinkList) {
 								?.slice(1)
 								.map(
 									(link: { label: string; description: string }, key: any) => (
-										<ul className=" px-3 py-2 hover:bg-gray-500/5" key={key}>
-											<li className="font-semibold ">{link.label}</li>
-											<li>{link.description}</li>
+										<ul className="px-3 py-2 hover:bg-gray-500/5" key={key}>
+											<li className="font-semibold text-gray-950">
+												{link.label}
+											</li>
+											<li className="text-gray-600">{link.description}</li>
 										</ul>
 									),
 								)}
