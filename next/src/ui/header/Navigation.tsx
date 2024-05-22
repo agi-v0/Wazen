@@ -7,7 +7,7 @@ export default async function Menu() {
 	const { headerMenu } = await getSite()
 
 	return (
-		<nav className="max-md:anim-fade-to-r flex items-center gap-x-0 max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
+		<nav className="max-md:anim-fade-to-r flex  gap-x-0 max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
 			{headerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':

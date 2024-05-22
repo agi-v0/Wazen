@@ -15,7 +15,7 @@ export default function LinkList({ label, links }: Sanity.LinkList) {
 			{/* //@ Style Doesn't work in This Component */}
 			{/* {links && <NavItemMenu links={links} />} */}
 			{links && (
-				<ul className="anim-fade-to-b -start-32 top-full flex w-[570px] flex-col justify-between gap-3 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:flex-row">
+				<ul className="anim-fade-to-b -start-32 top-full flex md:min-w-[570px] flex-col justify-between gap-3 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:flex-row">
 					{links?.[0] && (
 						<li
 							className={

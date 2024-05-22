@@ -2,7 +2,7 @@ import CTA from '@/ui/CTA'
 
 function NavItemList({ label, links }: Sanity.LinkGroup) {
 	return (
-		<div className="min-w-40">
+		<div>
 			<summary className="flex h-8 items-center font-semibold no-underline">
 				{label}
 			</summary>
