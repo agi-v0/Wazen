@@ -12,12 +12,13 @@ declare global {
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
+			Static?: Navigation
 			ogimage?: string
 		}>
 
 		type Navigation = SanityDocument<{
 			title: string
-			items?: (Link | LinkList | LinkGroup)[]
+			items?: (Link | Links | LinkList | LinkGroup)[]
 		}>
 
 		type PageBase = SanityDocument<{
