@@ -21,24 +21,28 @@ export default async function Social({
 	if (!social?.items?.length) return null
 
 	return (
-		<nav className={cn('group flex flex-wrap items-center', className)}>
-			{social.items.map((item, key) => {
-				switch (item._type) {
-					case 'link':
-						return (
-							<CTA
-								className="px-2 hover:!opacity-100 group-has-[a:hover]:opacity-50"
-								link={item}
-								key={key}
-							>
-								<Icon url={item.external} aria-label={item.label} />
-							</CTA>
-						)
+		<nav className={cn('flex flex-col-reverse md:flex-row flex-wrap gap-4', className)}>
+			<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
 
-					default:
-						return null
-				}
-			})}
+			<div className="group flex flex-wrap items-center">
+				{social.items.map((item, key) => {
+					switch (item._type) {
+						case 'link':
+							return (
+								<CTA
+									className="px-2 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+									link={item}
+									key={key}
+								>
+									<Icon url={item.external} aria-label={item.label} />
+								</CTA>
+							)
+
+						default:
+							return null
+					}
+				})}
+			</div>
 		</nav>
 	)
 }
