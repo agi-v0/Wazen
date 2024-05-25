@@ -12,7 +12,7 @@ declare global {
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
-			Static?: Navigation
+			staticLinks?: Navigation
 			ogimage?: string
 		}>
 

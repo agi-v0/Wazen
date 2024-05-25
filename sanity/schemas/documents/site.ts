@@ -49,7 +49,7 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
-			name: 'static',
+			name: 'staticLinks',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
 			group: 'navigation',
