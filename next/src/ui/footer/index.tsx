@@ -8,7 +8,7 @@ export default async function Footer() {
 		<section className="bg-[#083344] text-center text-canvas">
 			<div className="p-8">
 				<div className="flex w-full flex-col justify-between gap-20">
-					<div className="flex w-full flex-col justify-between gap-10 md:flex-row">
+					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
 						<Link className="font-bold" href="/">
 							<Image
 								src="wazen-logo-white.svg"
