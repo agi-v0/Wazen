@@ -5,7 +5,7 @@ export default async function Menu() {
 	const { footerMenu } = await getSite()
 
 	return (
-		<nav className="flex flex-col md:flex-row w-full flex-wrap items-start justify-start gap-8 md:justify-around">
+		<nav className="flex w-full flex-col flex-wrap items-start justify-start gap-8 md:flex-row md:justify-around">
 			{footerMenu?.items?.map((item, key) => {
 				const { label, links } = item
 
