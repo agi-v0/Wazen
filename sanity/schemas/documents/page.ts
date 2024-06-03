@@ -18,6 +18,7 @@ export default defineType({
 				{ type: 'custom-html' },
 				{ type: 'faq-list' },
 				{ type: 'hero' },
+				{ type: 'hero.two' },
 				{ type: 'hero.postcard' },
 				{ type: 'logo-list' },
 				{ type: 'richtext-module' },

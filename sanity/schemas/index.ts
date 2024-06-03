@@ -21,6 +21,7 @@ import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
 import hero from './modules/hero'
+import heroTwo from './modules/hero.two'
 import heroPostcard from './modules/hero.postcard'
 import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
@@ -51,6 +52,7 @@ export const schemaTypes = [
 	customHtml,
 	faqList,
 	hero,
+	heroTwo,
 	heroPostcard,
 	logoList,
 	richtextModule,
