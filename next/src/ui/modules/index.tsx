@@ -1,4 +1,5 @@
 import BlogRollup from './blog/Rollup'
+import Brief from './Brief'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 import FAQList from './FAQList'
@@ -17,6 +18,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 				switch (module._type) {
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} />
+					case 'brief':
+						return <Brief {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':

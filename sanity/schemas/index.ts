@@ -17,6 +17,7 @@ import metadata from './objects/metadata'
 
 // modules
 import blogRollup from './modules/blog-rollup'
+import brief from './modules/brief'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
@@ -48,6 +49,7 @@ export const schemaTypes = [
 
 	// modules
 	blogRollup,
+	brief,
 	creativeModule,
 	customHtml,
 	faqList,

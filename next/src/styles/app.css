@@ -218,3 +218,12 @@
 		#083344 5%
 	);
 }
+
+.brief-background {
+	background: radial-gradient(
+		100% 100% at 0% 0%,
+		#2dd4bf 0%,
+		#164e63 67.15%,
+		#083344 100%
+	);
+}
