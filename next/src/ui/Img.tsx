@@ -11,6 +11,7 @@ const SIZES = [60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440]
 export default function Img({
 	image,
 	imageWidth,
+	className,
 	imageSizes = SIZES,
 	alt = '',
 	options,
@@ -18,6 +19,7 @@ export default function Img({
 }: {
 	image: Sanity.Image | undefined
 	imageWidth?: number
+	className?: string
 	imageSizes?: number[]
 	options?: UseNextSanityImageOptions
 } & React.ImgHTMLAttributes<HTMLImageElement>) {
@@ -34,6 +36,7 @@ export default function Img({
 			src={src}
 			srcSet={generateSrcSet(image, { width: imageWidth, sizes: imageSizes })}
 			width={width}
+			className={className}
 			height={height}
 			alt={image.alt || alt}
 			loading={stegaClean(image.loading) || 'lazy'}
