@@ -86,7 +86,7 @@ declare global {
 		}
 
 		type Group = {
-			readonly _type: 'groud'
+			readonly _type: 'group'
 			label: string
 			params?: string
 		}
