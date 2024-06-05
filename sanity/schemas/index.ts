@@ -16,6 +16,7 @@ import linkGroup from './objects/link.group'
 import metadata from './objects/metadata'
 
 // modules
+import applications from './modules/applications'
 import blogRollup from './modules/blog-rollup'
 import brief from './modules/brief'
 import creativeModule from './modules/creative'
@@ -48,6 +49,7 @@ export const schemaTypes = [
 	metadata,
 
 	// modules
+	applications,
 	blogRollup,
 	brief,
 	creativeModule,

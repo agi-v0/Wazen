@@ -13,6 +13,7 @@ export default defineType({
 			name: 'modules',
 			type: 'array',
 			of: [
+				{ type: 'applications' },
 				{ type: 'blog-rollup' },
 				{ type: 'brief' },
 				{ type: 'creative-module' },
