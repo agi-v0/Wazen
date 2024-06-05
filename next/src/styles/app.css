@@ -86,7 +86,7 @@
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
+		@apply mx-auto max-w-screen-xl p-5 md:p-8 xl:p-12;
 	}
 }
 
@@ -226,4 +226,54 @@
 		#164e63 67.15%,
 		#083344 100%
 	);
+}
+
+/* fallback for older browsers */
+:root {
+	--space--main: 3rem;
+	--variable-name: 8rem;
+	--display--font-size: 5rem;
+	--h1--font-size: 3.97rem;
+	--h2--font-size: 3.15rem;
+	--h3--font-size: 2.5rem;
+	--h4--font-size: 1.98rem;
+	--h5--font-size: 1.57rem;
+	--h6--font-size: 1.25rem;
+	--text-large--font-size: 1.51rem;
+	--text-main--font-size: 1.05rem;
+	--text-small--font-size: 0.875rem;
+}
+@media screen and (max-width: 767px) {
+	:root {
+		--space--main: 1rem;
+		--variable-name: 4rem;
+		--display--font-size: 2.03rem;
+		--h1--font-size: 1.8rem;
+		--h2--font-size: 1.6rem;
+		--h3--font-size: 1.42rem;
+		--h4--font-size: 1.27rem;
+		--h5--font-size: 1.13rem;
+		--h6--font-size: 1rem;
+		--text-large--font-size: 1.3rem;
+		--text-main--font-size: 1rem;
+		--text-small--font-size: 0.875rem;
+	}
+}
+
+/* fluid sizes */
+@supports (font-size: clamp(1rem, 0.5rem + 3vw, 3rem)) {
+	:root {
+		--space--main: clamp(1rem, 0.334rem + 3.33vw, 3rem);
+		--variable-name: clamp(4rem, 2.666rem + 6.67vw, 8rem);
+		--display--font-size: clamp(2.03rem, 1.04rem + 4.95vw, 5rem);
+		--h1--font-size: clamp(1.8rem, 1.076rem + 3.62vw, 3.97rem);
+		--h2--font-size: clamp(1.6rem, 1.084rem + 2.58vw, 3.15rem);
+		--h3--font-size: clamp(1.42rem, 1.06rem + 1.8vw, 2.5rem);
+		--h4--font-size: clamp(1.27rem, 1.034rem + 1.18vw, 1.98rem);
+		--h5--font-size: clamp(1.13rem, 0.984rem + 0.73vw, 1.57rem);
+		--h6--font-size: clamp(1rem, 0.916rem + 0.42vw, 1.25rem);
+		--text-large--font-size: clamp(1.3rem, 1.23rem + 0.35vw, 1.51rem);
+		--text-main--font-size: clamp(1rem, 0.984rem + 0.08vw, 1.05rem);
+		--text-small--font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+	}
 }
