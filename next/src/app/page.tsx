@@ -27,6 +27,7 @@ async function getPage() {
 					}
 				},
 				logos[]->,
+				partnerslogos[]->,
 				testimonials[]->,
 				${creativeModuleQuery}
 			},

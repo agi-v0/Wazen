@@ -23,6 +23,7 @@ export default defineType({
 				{ type: 'hero.two' },
 				{ type: 'hero.postcard' },
 				{ type: 'logo-list' },
+				{ type: 'partners' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
 				{ type: 'testimonial-list' },
