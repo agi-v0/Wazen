@@ -12,6 +12,7 @@ import testimonial from './documents/testimonial'
 import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
+import appLinkList from './objects/app.link.list'
 import linkGroup from './objects/link.group'
 import metadata from './objects/metadata'
 
@@ -29,6 +30,8 @@ import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
 import testimonialList from './modules/testimonial-list'
+import partners from './modules/partners'
+import partnerslogos from './documents/partnerslogos'
 
 export const schemaTypes = [
 	// documents
@@ -39,12 +42,14 @@ export const schemaTypes = [
 	blogPost,
 	blogCategory,
 	logo,
+	partnerslogos,
 	testimonial,
 
 	// objects
 	cta,
 	link,
 	linkList,
+	appLinkList,
 	linkGroup,
 	metadata,
 
@@ -59,6 +64,7 @@ export const schemaTypes = [
 	heroTwo,
 	heroPostcard,
 	logoList,
+	partners,
 	richtextModule,
 	statList,
 	testimonialList,

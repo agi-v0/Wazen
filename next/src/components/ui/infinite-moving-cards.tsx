@@ -1,47 +1,23 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
 import { PiCaretRightBold, PiNotebookDuotone } from 'react-icons/pi'
-
-const items = [
-	{
-		title: 'عزز من تفاعل العملاء',
-		link: 'تطبيق الإدارة المالية',
-	},
-	{
-		title: 'حسن عمليات سلسلة الإمداد',
-		link: 'تطبيق الإدارة المالية',
-	},
-	{
-		title: 'راقب جميع عملياتك المالية',
-		link: 'تطبيق الإدارة المالية',
-	},
-	{
-		title: 'راقب مستويات المخزون وتتبع سلسلة الإمداد',
-		link: 'تطبيق الإدارة المالية',
-	},
-	{
-		title: 'اربط العمليات التشغيلية للمختلف الأقسام',
-		link: 'تطبيق الإدارة المالية',
-	},
-	{
-		title: 'بسط عمليات الموارد البشرية',
-		link: 'تطبيق الإدارة المالية',
-	},
-]
 
 export const InfiniteMovingCards = ({
 	direction = 'left',
 	speed = 'fast',
 	pauseOnHover = true,
-	className,
+	links,
 }: {
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	className?: string
+	links: any
 }) => {
+	console.log(links)
+
 	const containerRef = React.useRef<HTMLDivElement>(null)
 	const scrollerRef = React.useRef<HTMLUListElement>(null)
 
@@ -96,27 +72,27 @@ export const InfiniteMovingCards = ({
 			<ul
 				ref={scrollerRef}
 				className={cn(
-					' flex w-max min-w-full shrink-0 flex-nowrap gap-4',
+					' my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
 					start && 'animate-scroll ',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map((item, idx) => (
+				{links.map((link: any, idx: any) => (
 					<li
 						key={idx}
-						className={`flex max-w-[350px] flex-shrink-0 flex-row items-center justify-between rounded-md p-2 shadow-md`}
+						className={`flex w-[450px] flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md`}
 					>
 						<div className="flex flex-col justify-start">
-							<div className="text-start">{item.title}</div>
+							<h3 className="text-start text-2xl">{link.mainLabel}</h3>
 							<div className="mt-6">
 								<span className="link flex items-center gap-1 text-teal-600 no-underline">
-									{item.link}
+									{link.LinkLabel}
 									<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
 								</span>
 							</div>
 						</div>
-						<div className='text-8xl'>
-							<PiNotebookDuotone />
+						<div className="rounded-md bg-teal-50 p-4 text-8xl">
+							<Img image={link.image} imageWidth={800} />
 						</div>
 					</li>
 				))}

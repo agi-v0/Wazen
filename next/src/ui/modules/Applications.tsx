@@ -17,6 +17,7 @@ export default function Applications({
 	mainTitle,
 	Subtitle,
 	link,
+	links,
 	textAlign = 'center',
 	alignItems,
 }: Partial<{
@@ -24,6 +25,7 @@ export default function Applications({
 	mainTitle: any
 	Subtitle: any
 	link: any
+	links: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -71,22 +73,23 @@ export default function Applications({
 					>
 						<summary className="link flex items-center gap-1 px-3 text-teal-600 no-underline">
 							{link.label}
-							<PiCaretRightBold className="size-3 text-teal-600 rotate-180" />
+							<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
 						</summary>
 					</Link>
-
-					<InfiniteMovingCards
-						direction={'left'}
-						speed={'normal'}
-						pauseOnHover={true}
-						className={''}
-					/>
-					<InfiniteMovingCards
-						direction={'right'}
-						speed={'normal'}
-						pauseOnHover={true}
-						className={''}
-					/>
+					<div className="bg-teal-50/40 py-10">
+						<InfiniteMovingCards
+							direction={'left'}
+							speed={'normal'}
+							pauseOnHover={true}
+							links= {links}
+						/>
+						<InfiniteMovingCards
+							direction={'right'}
+							speed={'normal'}
+							pauseOnHover={true}
+							links= {links}
+						/>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -85,6 +85,17 @@ declare global {
 			params?: string
 		}
 
+		type AppLink = {
+			readonly _type: 'link';
+			label: string
+			description: string
+			type: 'internal' | 'external'
+			internal?: Page | BlogPost
+			external?: string
+			params?: string
+			image?: Image
+		}
+
 		type Group = {
 			readonly _type: 'group'
 			label: string
@@ -95,6 +106,12 @@ declare global {
 			readonly _type: 'link.list'
 			label: string
 			links?: Link[]
+		}
+
+		type AppsLinkList = {
+			readonly _type: 'App.link.list'
+			label: string
+			links?: AppLink[]
 		}
 
 		type LinkGroup = {

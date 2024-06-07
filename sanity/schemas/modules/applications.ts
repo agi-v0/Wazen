@@ -37,20 +37,23 @@ export default defineType({
 		defineField({
 			name: 'link',
 			type: 'link',
+			group: 'content',
 		}),
 		defineField({
 			name: 'links',
 			type: 'array',
-			of: [{ type: 'link' }],
+			of: [{ type: 'app.link.list' },],
+			group: 'content',
 		}),
 	],
 	preview: {
 		select: {
+			pretitle:'pretitle',
 			content: 'content',
 			media: 'image',
 		},
-		prepare: ({ content, media }) => ({
-			title: getBlockText(content),
+		prepare: ({ pretitle, content, media }) => ({
+			title: pretitle || getBlockText(content),
 			subtitle: 'Applications',
 			media,
 		}),
