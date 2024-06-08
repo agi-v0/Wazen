@@ -10,14 +10,14 @@ export const InfiniteMovingCards = ({
 	speed = 'fast',
 	pauseOnHover = true,
 	links,
+	logoType = 'default',
 }: {
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
 	links: any
+	logoType: 'default' | 'light' | 'dark'
 }) => {
-	console.log(links)
-
 	const containerRef = React.useRef<HTMLDivElement>(null)
 	const scrollerRef = React.useRef<HTMLUListElement>(null)
 
@@ -67,6 +67,7 @@ export const InfiniteMovingCards = ({
 			}
 		}
 	}
+
 	return (
 		<div ref={containerRef}>
 			<ul
@@ -92,7 +93,12 @@ export const InfiniteMovingCards = ({
 							</div>
 						</div>
 						<div className="rounded-md bg-teal-50 p-4 text-8xl">
-							<Img image={link.image} imageWidth={800} />
+							<Img
+								className="max-h-[2em] max-w-[100px] object-contain"
+								image={link.image[logoType]}
+								imageWidth={400}
+								key={idx}
+							/>
 						</div>
 					</li>
 				))}

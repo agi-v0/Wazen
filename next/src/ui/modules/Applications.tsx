@@ -79,15 +79,17 @@ export default function Applications({
 					<div className="bg-teal-50/40 py-10">
 						<InfiniteMovingCards
 							direction={'left'}
-							speed={'normal'}
+							speed={'slow'}
 							pauseOnHover={true}
 							links= {links}
+							logoType = 'default'
 						/>
 						<InfiniteMovingCards
 							direction={'right'}
-							speed={'normal'}
+							speed={'slow'}
 							pauseOnHover={true}
 							links= {links}
+							logoType = 'default'
 						/>
 					</div>
 				</div>
