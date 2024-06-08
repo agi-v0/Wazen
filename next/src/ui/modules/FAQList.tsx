@@ -16,11 +16,11 @@ export default function FAQList({
 			itemScope
 			itemType="https://schema.org/FAQPage"
 		>
-			<header className="richtext text-center">
+			<header className="richtext text-start">
 				<PortableText value={content} />
 			</header>
 
-			<div className="mx-auto max-w-screen-md">
+			<div className="max-w-screen-md">
 				{items?.map(({ question, answer }, key) => (
 					<details
 						className="accordion border-ink/10 border-b"
