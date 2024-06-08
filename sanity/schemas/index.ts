@@ -32,6 +32,7 @@ import statList from './modules/stat-list'
 import testimonialList from './modules/testimonial-list'
 import partners from './modules/partners'
 import partnerslogos from './documents/partnerslogos'
+import startFreeTrial from './modules/start.free.trial'
 
 export const schemaTypes = [
 	// documents
@@ -67,5 +68,6 @@ export const schemaTypes = [
 	partners,
 	richtextModule,
 	statList,
+	startFreeTrial,
 	testimonialList,
 ]

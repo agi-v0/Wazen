@@ -8,7 +8,9 @@ import Hero from './Hero'
 import HeroPostcard from './HeroPostcard'
 import HeroTwo from './HeroTwo'
 import LogoList from './LogoList'
+import Partners from './Partners'
 import RichtextModule from './RichtextModule'
+import StartFreeTrial from './StartFreeTrial'
 import StatList from './StatList'
 import TestimonialList from './TestimonialList'
 
@@ -38,10 +40,14 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <HeroPostcard {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
+					case 'partners':
+						return <Partners {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
+					case 'start.free.trial':
+						return <StartFreeTrial {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
 

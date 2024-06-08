@@ -26,6 +26,7 @@ export default defineType({
 				{ type: 'partners' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
+				{ type: 'start.free.trial' },
 				{ type: 'testimonial-list' },
 			],
 		}),
