@@ -44,6 +44,26 @@ export default defineType({
 				}),
 			],
 		}),
+		defineField({
+			name: 'sideNote',
+			type: 'object',
+			fields: [
+				defineField({
+					name: 'mainTitle',
+					type: 'array',
+					of: [{ type: 'block' }],
+				}),
+				defineField({
+					name: 'Subtitle',
+					type: 'array',
+					of: [{ type: 'block' }],
+				}),
+				defineField({
+					name: 'link',
+					type: 'link',
+				}),
+			]
+		})
 	],
 	preview: {
 		select: {
