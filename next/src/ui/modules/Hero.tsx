@@ -91,8 +91,8 @@ export default function Hero({
 				</div>
 			</div>
 
-			<div className="flex flex-col items-center overflow-hidden">
-				<div className="w-[80%]">
+			<div className="overflow-hidden">
+				<div className="w-[80%] mx-auto ">
 					<ContainerScroll>
 						<Image
 							src={`/dashboard-image.png`}
