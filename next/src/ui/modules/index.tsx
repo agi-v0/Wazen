@@ -10,6 +10,7 @@ import HeroTwo from './HeroTwo'
 import LogoList from './LogoList'
 import Partners from './Partners'
 import RichtextModule from './RichtextModule'
+import SingleTestimony from './SingleTestimony'
 import StartFreeTrial from './StartFreeTrial'
 import StatList from './StatList'
 import TestimonialList from './TestimonialList'
@@ -44,6 +45,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <Partners {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
+					case 'single-testimony':
+						return <SingleTestimony {...module} key={module._key} />
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
 					case 'start.free.trial':

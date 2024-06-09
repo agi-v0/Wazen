@@ -25,6 +25,7 @@ export default defineType({
 				{ type: 'logo-list' },
 				{ type: 'partners' },
 				{ type: 'richtext-module' },
+				{ type: 'single-testimony' },
 				{ type: 'stat-list' },
 				{ type: 'start.free.trial' },
 				{ type: 'testimonial-list' },
