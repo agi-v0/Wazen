@@ -1,12 +1,9 @@
-import { getSite } from '@/lib/sanity/queries'
 import Link from 'next/link'
 
-export default async function Menu() {
-	const { footerMenu } = await getSite()
-
+export default async function Menu({ footerMenu }: any) {
 	return (
 		<nav className="flex w-full flex-col flex-wrap items-start justify-start gap-8 md:flex-row md:justify-around">
-			{footerMenu?.items?.map((item, key) => {
+			{footerMenu?.items?.map((item: any, key: any) => {
 				const { label, links } = item
 
 				return (

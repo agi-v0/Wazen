@@ -12,17 +12,49 @@ import {
 	FaYoutube,
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
+import Link from 'next/link'
 
 export default async function Social({
+	staticLinks,
 	className,
-}: React.HTMLProps<HTMLDivElement>) {
+}: {
+	staticLinks: any
+	className: string
+}) {
 	const { social } = await getSite()
 
 	if (!social?.items?.length) return null
 
 	return (
-		<nav className={cn('flex flex-col-reverse md:flex-row flex-wrap gap-4', className)}>
-			<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
+		<nav
+			className={cn(
+				'flex flex-col-reverse flex-wrap gap-4 md:flex-row',
+				className,
+			)}
+		>
+			<div className="flex flex-col lg:flex-row  gap-6 items-center">
+				<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
+
+				{staticLinks?.items?.map((item: any, key: any) => {
+					const { label, links } = item
+
+					return (
+						<div key={key} className="cursor-default md:w-1/3 lg:w-fit ">
+							<div className="text-start ">{label}</div>
+
+							<ul className="text-start">
+								{links?.map((link: any, key: any) => (
+									<li key={key} className="h-8  text-white">
+										<Link href="" className="no-underline hover:text-teal-600">
+											{link.label}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</div>
+					)
+				})}
+			</div>
 
 			<div className="group flex flex-wrap items-center">
 				{social.items.map((item, key) => {

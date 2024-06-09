@@ -2,8 +2,12 @@ import Navigation from './Navigation'
 import Social from '@/ui/Social'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getSite } from '@/lib/sanity/queries'
 
 export default async function Footer() {
+
+	const { footerMenu , staticLinks} = await getSite()
+
 	return (
 		<section className="bg-[#083344] text-center text-canvas">
 			<div className="p-8">
@@ -17,9 +21,9 @@ export default async function Footer() {
 								height={80}
 							/>
 						</Link>
-						<Navigation />
+						<Navigation footerMenu={footerMenu} />
 					</div>
-					<Social className="justify-between" />
+					<Social className="justify-between" staticLinks={staticLinks} />
 				</div>
 			</div>
 		</section>
