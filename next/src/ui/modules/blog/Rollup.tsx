@@ -15,7 +15,7 @@ export default async function Rollup({
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post'][0...$limit]|order(publishDate desc){
-			...,
+			title, publishDate, metadata,
 			categories[]->
 		}`,
 		{

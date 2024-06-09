@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import Date from '@/ui/Date'
 import Img from '@/ui/Img'
-import processUrl from '@/lib/processUrl'
 
 export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
+
+	console.log(post)
+
 	return (
-		<Link className="group block" href={processUrl(post, { base: false })}>
+		<Link className="group block" href={`/blog/${post.metadata?.slug?.current}`}>
 			<div className="rounded-md p-2 shadow-md">
 				<figure className="aspect-video bg-ink/5">
 					<Img
