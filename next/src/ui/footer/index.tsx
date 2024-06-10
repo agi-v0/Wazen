@@ -5,11 +5,10 @@ import Image from 'next/image'
 import { getSite } from '@/lib/sanity/queries'
 
 export default async function Footer() {
-
-	const { footerMenu , staticLinks} = await getSite()
+	const { footerMenu, staticLinks } = await getSite()
 
 	return (
-		<section className="bg-[#083344] text-center text-canvas">
+		<section className="bg-cyan-950 text-center text-white">
 			<div className="p-8">
 				<div className="flex w-full flex-col justify-between gap-20">
 					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
