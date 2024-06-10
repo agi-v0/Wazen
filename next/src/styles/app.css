@@ -10,7 +10,7 @@
 	}
 
 	::selection {
-		@apply bg-ink text-canvas;
+		@apply bg-cyan-950 text-teal-200;
 	}
 
 	:target {
