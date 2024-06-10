@@ -1,6 +1,6 @@
 import CTA from '@/ui/CTA'
 
-function NavItemList({ label, links }: Sanity.LinkGroup) {
+function NavItemList({ label, links }: Sanity.LinkList) {
 	return (
 		<div>
 			<summary className="flex h-8 items-center font-semibold no-underline">

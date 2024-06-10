@@ -117,8 +117,8 @@ declare global {
 		type LinkGroup = {
 			readonly _type: 'link.list'
 			label: string
-			groups: LinkList[]
-			links?: Link[]
+			links?: LinkList[]
+			groups?: Link[]
 		}
 
 		type Metadata = {
