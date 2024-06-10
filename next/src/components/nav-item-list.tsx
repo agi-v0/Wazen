@@ -9,7 +9,7 @@ function NavItemList({ label, links }: Sanity.LinkGroup) {
 
 			<ul className="left-0 top-full">
 				{links?.map((link, key) => (
-					<li key={key} className="h-8  text-gray-600">
+					<li key={key} className="h-8 text-gray-600">
 						<CTA className="link" link={link} />
 					</li>
 				))}
