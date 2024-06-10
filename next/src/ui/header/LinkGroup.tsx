@@ -11,7 +11,7 @@ export default function LinkGroup({ label, groups }: Sanity.LinkGroup) {
 			</summary>
 
 			<ul className="anim-fade-to-b start-0 top-full flex gap-3 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:min-w-max md:backdrop-blur">
-				{groups?.map((list, key) => <NavItemList {...list} key={key} />)}
+				{groups?.map((label, key) => <NavItemList {...label} key={key} />)}
 			</ul>
 		</InteractiveDetails>
 	)
