@@ -1,0 +1,44 @@
+@font-face {
+	font-family: 'ٌRubik';
+	font-style: normal;
+	font-weight: 600;
+	src:
+		local('/static/Rubik-SemiBold.ttf'),
+		url('/static/Rubik-SemiBold.ttf') format ('ttf');
+}
+
+.root {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 100px 100px;
+}
+.bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.root h1,
+.root p {
+	z-index: 1;
+	position: relative;
+	text-align: right;
+}
+
+.root h1 {
+	font-family: 'Rubik';
+	font-weight: 600;
+	font-size: 64px;
+	max-width: 860px;
+	margin: 0;
+	font-weight: 500;
+	line-height: 1.05;
+	color: white;
+}
