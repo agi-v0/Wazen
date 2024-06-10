@@ -76,7 +76,7 @@ declare global {
 			}>
 
 		type Link = {
-			readonly _type: 'link'
+			readonly _type: 'link';
 			label: string
 			description: string
 			type: 'internal' | 'external'
@@ -86,7 +86,7 @@ declare global {
 		}
 
 		type AppLink = {
-			readonly _type: 'link'
+			readonly _type: 'link';
 			label: string
 			description: string
 			type: 'internal' | 'external'
@@ -106,6 +106,7 @@ declare global {
 			readonly _type: 'link.list'
 			label: string
 			links?: Link[]
+			link?: Link
 		}
 
 		type AppsLinkList = {
@@ -115,10 +116,10 @@ declare global {
 		}
 
 		type LinkGroup = {
-			readonly _type: 'link.list'
+			readonly _type: 'link.group'
 			label: string
-			groups: LinkList[]
 			links?: Link[]
+			link?: Link
 		}
 
 		type Metadata = {
@@ -137,4 +138,4 @@ declare global {
 	}
 }
 
-export {}
+export { }
