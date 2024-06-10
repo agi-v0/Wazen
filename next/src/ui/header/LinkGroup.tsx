@@ -1,6 +1,7 @@
 import InteractiveDetails from './InteractiveDetails'
 import { PiCaretRightBold } from 'react-icons/pi'
 import NavItemList from '@/components/nav-item-list'
+import LinkList from './LinkList'
 
 export default function LinkGroup({ label, links }: Sanity.LinkGroup) {
 	return (
