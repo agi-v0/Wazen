@@ -17,7 +17,7 @@ export const OGImageEditor = {
 	title: 'testLayout',
 	component: Component,
 	prepare: (document) => ({
-		title: document.title,
+		title: document.title || 'Fallback title',
 	}),
 	fields: [
 		{
