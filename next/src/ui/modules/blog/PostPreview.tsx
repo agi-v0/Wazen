@@ -1,29 +1,36 @@
 import Link from 'next/link'
 import Date from '@/ui/Date'
-import Img from '@/ui/Img'
+import Image from 'next/image'
 
 export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
-
-	console.log(post)
-
 	return (
-		<Link className="group block" href={`/blog/${post.metadata?.slug?.current}`}>
+		<Link
+			className="group block"
+			href={`/blog/${post.metadata?.slug?.current}`}
+		>
 			<div className="rounded-md p-2 shadow-md">
-				<figure className="aspect-video bg-ink/5">
-					<Img
-						className="aspect-[inherit] w-full object-cover"
-						image={post.metadata.image}
-						imageWidth={600}
-					/>
-				</figure>
-				<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
-					<Date value={post.publishDate} />
+				<Image
+					src={post?.metadata?.image || '/image-placeholder.jpg'}
+					alt=""
+					width={300}
+					height={300}
+					className="w-full"
+				/>
+				<div className="flex gap-4">
+					<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
+						{post?.categories[0].title}
+					</div>
+					<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
+						<Date value={post.publishDate} />
+					</div>
 				</div>
-				<div className='w-[90%]'>
-					<div className="h3 group-hover:underline">{post.title}</div>
-					<div className="h3 group-hover:underline">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-						varius enim in eros.
+				<div className="w-[90%]">
+					<div className="my-4 text-2xl group-hover:underline">
+						{post.title}
+					</div>
+					<div className="text-md my-4">
+						{post?.body[0]?.children[0] &&
+							post.body[0].children[0].text.slice(0, 150) + '...'}
 					</div>
 				</div>
 				<div className="text-[#0D9488]">إقرأ المزيد</div>

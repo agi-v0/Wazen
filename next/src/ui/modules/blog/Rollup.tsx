@@ -3,33 +3,36 @@ import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import FirstPost from './FirstPost'
 
 export default async function Rollup({
-	content,
-	limit = 100,
+	limit,
+	category,
 	layout,
 }: Partial<{
-	content: any
 	limit?: number
+	category: any
 	layout: 'grid' | 'carousel'
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post'][0...$limit]|order(publishDate desc){
-			title, publishDate, metadata,
-			categories[]->
+		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id][0...$limit]|order(publishDate desc){
+		 title,
+			publishDate,
+			metadata,
+			body,
+		 categories[]->{
+			title
+		 }
 		}`,
 		{
-			params: { limit },
+			params: { limit, categoryRef: category[0]._ref },
 			tags: ['posts'],
 		},
 	)
 
 	return (
 		<section className="section space-y-4">
-			<header className="richtext">
-				<PortableText value={content} />
-			</header>
-
+			<div className="text-4xl font-bold">{posts[0]?.categories[0].title}</div>
 			<ul
 				className={cn(
 					'gap-6',
@@ -39,7 +42,7 @@ export default async function Rollup({
 				)}
 			>
 				{posts?.map((post, key) => (
-					<li key={key}>
+					<li key={key} className="">
 						<PostPreview post={post} />
 					</li>
 				))}

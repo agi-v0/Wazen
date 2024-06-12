@@ -45,7 +45,7 @@ declare global {
 		}>
 
 		type Logo = SanityDocument<{
-			name: string
+			name: string | StaticImport
 			image: {
 				default?: Image
 				light?: Image
