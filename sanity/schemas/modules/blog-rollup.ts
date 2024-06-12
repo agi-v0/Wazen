@@ -27,6 +27,16 @@ export default defineType({
 			type: 'number',
 			validation: (Rule) => Rule.min(1).integer(),
 		}),
+		defineField({
+			name: 'category',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'blog.category' }],
+				},
+			],
+		}),
 	],
 	preview: {
 		select: {

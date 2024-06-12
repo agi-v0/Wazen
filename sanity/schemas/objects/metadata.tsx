@@ -44,6 +44,11 @@ export default defineType({
 			},
 		}),
 		defineField({
+			name: 'categories',
+			type: 'array',
+			of: [{ type: 'string' }],
+		}),
+		defineField({
 			name: 'noIndex',
 			description: 'Prevent search engines from indexing this page.',
 			type: 'boolean',
