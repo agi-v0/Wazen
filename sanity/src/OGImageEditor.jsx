@@ -4,14 +4,13 @@ import css from './OGImageLayout.module.css'
 const Component = ({ title }) => {
 	return (
 		<div dir="rtl" className={css.root}>
-			<div>
+			<div className={css.card}>
 				<h1>{title}</h1>
 			</div>
-			<img src="/static/OGImageBg.png" className={css.bg} alt="" />
 		</div>
 	)
 }
-
+console.log(document)
 export const OGImageEditor = {
 	name: 'OGImage',
 	title: 'testLayout',
