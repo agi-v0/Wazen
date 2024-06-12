@@ -34,6 +34,7 @@ import partners from './modules/partners'
 import partnerslogos from './documents/partnerslogos'
 import startFreeTrial from './modules/start.free.trial'
 import singleTestimony from './modules/single-testimony'
+import categories from './modules/categories'
 
 export const schemaTypes = [
 	// documents
@@ -59,6 +60,7 @@ export const schemaTypes = [
 	applications,
 	blogRollup,
 	brief,
+	categories,
 	creativeModule,
 	customHtml,
 	faqList,

@@ -1,14 +1,21 @@
+import Link from 'next/link'
+
 export default function Categories({
-	categories,
+	links,
 }: {
-	categories?: Sanity.BlogCategory[]
+	links?: Sanity.LinkList[]
 }) {
-	if (!categories?.length) return null
+	if (!links?.length) return null
 
 	return (
-		<ul>
-			{categories.map((category, key) => (
-				<li key={key}>{category.title}</li>
+		<ul className='flex justify-center my-4'>
+			{links?.map((category, key) => (
+				<li
+					className="cursor-pointer px-4 py-2 hover:bg-gray-500/5 hover:text-teal-600"
+					key={key}
+				>
+					<Link href={`/blog/${category.label}`}>{category.label}</Link>
+				</li>
 			))}
 		</ul>
 	)
