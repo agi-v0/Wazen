@@ -10,7 +10,7 @@
 	}
 
 	::selection {
-		@apply bg-ink text-canvas;
+		@apply bg-cyan-950 text-teal-200;
 	}
 
 	:target {
@@ -36,23 +36,23 @@
 	/* typography */
 
 	h1 {
-		font-size: clamp(2.49rem, 1.476rem + 5.07vw, 5.53rem);
+		font-size: var(--h1--font-size);
 		@apply font-semibold leading-snug;
 	}
 	h2 {
-		font-size: clamp(2.07rem, 1.374rem + 3.48vw, 4.16rem);
+		font-size: var(--h2--font-size);
 	}
 	h3 {
-		font-size: clamp(1.73rem, 1.264rem + 2.33vw, 3.13rem);
+		font-size: var(--h3--font-size);
 	}
 	h4 {
-		font-size: clamp(1.44rem, 1.136rem + 1.52vw, 2.35rem);
+		font-size: var(--h4--font-size);
 	}
 	h5 {
-		font-size: clamp(1.2rem, 1.01rem + 0.95vw, 1.77rem);
+		font-size: var(--h5--font-size);
 	}
 	h6 {
-		font-size: clamp(1rem, 0.89rem + 0.55vw, 1.33rem);
+		font-size: var(--h6--font-size);
 	}
 
 	.technical {
@@ -86,7 +86,8 @@
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl p-5 md:p-8 xl:p-12;
+		@apply mx-auto max-w-screen-xl;
+		padding: 0 var(--space--main);
 	}
 }
 
