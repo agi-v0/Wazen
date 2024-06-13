@@ -55,6 +55,16 @@
 		font-size: var(--h6--font-size);
 	}
 
+	.text-large {
+		font-size: var(--text-large--font-size);
+	}
+	.text-main {
+		font-size: var(--text-main--font-size);
+	}
+	.text-small {
+		font-size: var(--text-small--font-size);
+	}
+
 	.technical {
 		text-transform: uppercase;
 		font-weight: 300;
@@ -88,6 +98,10 @@
 	.section {
 		@apply mx-auto max-w-screen-xl;
 		padding: 0 var(--padding-horizontal--main);
+	}
+
+	.fluid-gap {
+		gap: var(--padding-horizontal--main);
 	}
 }
 
@@ -227,6 +241,12 @@
 	);
 }
 
+/* https://fluidbuilder.webflow.io/?design=90&max=90&min=20&g=--padding-horizontal--main,3,1_--size--2rem,2,1.75_--size--2-5rem,2.5,2_--size--3rem,3,2.2,t_--size--3-5rem,3.5,2.375_--size--4rem,4,2.5_--size--4-5rem,4.5,2.75_--size--5rem,5,3_--size--5-5rem,5.5,3.25_--size--6rem,6,3.5_--size--6-5rem,6.5,3.75_--size--7rem,7,4_--size--7-5rem,7.5,4.25_--size--8rem,8,4.5_--size--8-5rem,8.5,4.75_--size--9rem,9,5_--size--9-5rem,9.5,5.25_--size--10rem,10,5.5_--size--11rem,11,5.75_--size--12rem,12,6_--size--13rem,13,6.5_--size--14rem,14,7_--size--15rem,15,7.5_--size--16rem,16,8&g=:1.26,1.125:--display--font-size,6.3,2.02_--h1--font-size,5,1.8,t_--h2--font-size,3.97,1.6_--h3--font-size,3.15,1.42_--h4--font-size,2.5,1.26_--h5--font-size,1.98,1.12_--h6--font-size,1.57,1&g=:1.2,1.14:,1.8,1.3_--text-large--font-size,1.5,1.14_--text-main--font-size,1.25,1,t_--text-small--font-size,1.04,0.88 */
+
+/* fallback for older browsers */
+/* https://fluidbuilder.webflow.io/?design=90&max=90&min=20&g=--padding-horizontal--main,3,1_--size--2rem,2,1.75_--size--2-5rem,2.5,2_--size--3rem,3,2.2,t_--size--3-5rem,3.5,2.375_--size--4rem,4,2.5_--size--4-5rem,4.5,2.75_--size--5rem,5,3_--size--5-5rem,5.5,3.25_--size--6rem,6,3.5_--size--6-5rem,6.5,3.75_--size--7rem,7,4_--size--7-5rem,7.5,4.25_--size--8rem,8,4.5_--size--8-5rem,8.5,4.75_--size--9rem,9,5_--size--9-5rem,9.5,5.25_--size--10rem,10,5.5_--size--11rem,11,5.75_--size--12rem,12,6_--size--13rem,13,6.5_--size--14rem,14,7_--size--15rem,15,7.5_--size--16rem,16,8&g=:1.26,1.125:--display--font-size,6.3,2.02_--h1--font-size,5,1.8,t_--h2--font-size,3.97,1.6_--h3--font-size,3.15,1.42_--h4--font-size,2.5,1.26_--h5--font-size,1.98,1.12_--h6--font-size,1.57,1&g=:1.2,1.14:,1.8,1.48_--text-large--font-size,1.5,1.3_--text-main--font-size,1.25,1.14_--text-small--font-size,1.04,1,t */
+
+/* fallback for older browsers */
 :root {
 	--padding-horizontal--main: 3rem;
 	--size--2rem: 2rem;
@@ -259,16 +279,16 @@
 	--h4--font-size: 2.5rem;
 	--h5--font-size: 1.98rem;
 	--h6--font-size: 1.57rem;
-	--text-large--font-size: 1.51rem;
-	--text-main--font-size: 1.05rem;
-	--text-small--font-size: 0.875rem;
+	--text-large--font-size: 1.5rem;
+	--text-main--font-size: 1.25rem;
+	--text-small--font-size: 1.04rem;
 }
 @media screen and (max-width: 767px) {
 	:root {
 		--padding-horizontal--main: 1rem;
 		--size--2rem: 1.75rem;
 		--size--2-5rem: 2rem;
-		--size--3rem: 2.25rem;
+		--size--3rem: 2.2rem;
 		--size--3-5rem: 2.375rem;
 		--size--4rem: 2.5rem;
 		--size--4-5rem: 2.75rem;
@@ -297,8 +317,8 @@
 		--h5--font-size: 1.12rem;
 		--h6--font-size: 1rem;
 		--text-large--font-size: 1.3rem;
-		--text-main--font-size: 1rem;
-		--text-small--font-size: 0.875rem;
+		--text-main--font-size: 1.14rem;
+		--text-small--font-size: 1rem;
 	}
 }
 
@@ -308,7 +328,7 @@
 		--padding-horizontal--main: clamp(1rem, 0.428rem + 2.86vw, 3rem);
 		--size--2rem: clamp(1.75rem, 1.678rem + 0.36vw, 2rem);
 		--size--2-5rem: clamp(2rem, 1.858rem + 0.71vw, 2.5rem);
-		--size--3rem: clamp(2.25rem, 2.036rem + 1.07vw, 3rem);
+		--size--3rem: clamp(2.2rem, 1.972rem + 1.14vw, 3rem);
 		--size--3-5rem: clamp(2.375rem, 2.053rem + 1.61vw, 3.5rem);
 		--size--4rem: clamp(2.5rem, 2.072rem + 2.14vw, 4rem);
 		--size--4-5rem: clamp(2.75rem, 2.25rem + 2.5vw, 4.5rem);
@@ -336,8 +356,8 @@
 		--h4--font-size: clamp(1.26rem, 0.906rem + 1.77vw, 2.5rem);
 		--h5--font-size: clamp(1.12rem, 0.874rem + 1.23vw, 1.98rem);
 		--h6--font-size: clamp(1rem, 0.838rem + 0.81vw, 1.57rem);
-		--text-large--font-size: clamp(1.3rem, 1.24rem + 0.3vw, 1.51rem);
-		--text-main--font-size: clamp(1rem, 0.986rem + 0.07vw, 1.05rem);
-		--text-small--font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+		--text-large--font-size: clamp(1.3rem, 1.242rem + 0.29vw, 1.5rem);
+		--text-main--font-size: clamp(1.14rem, 1.108rem + 0.16vw, 1.25rem);
+		--text-small--font-size: clamp(1rem, 0.988rem + 0.06vw, 1.04rem);
 	}
 }

@@ -34,13 +34,13 @@ export default function Applications({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="font-semibold leading-tight">
+						<h2 className="font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)

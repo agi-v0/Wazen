@@ -44,7 +44,7 @@ export default function Hero({
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light text-white/80 md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl text-cyan-950/70 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -62,7 +62,7 @@ export default function Hero({
 				draggable={false}
 			/>
 
-			<div className="section flex min-h-screen w-full flex-col items-center justify-center gap-y-12">
+			<div className="section flex min-h-screen w-full flex-col justify-center gap-y-12">
 				<div
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
