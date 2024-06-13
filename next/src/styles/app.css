@@ -87,7 +87,7 @@
 
 	.section {
 		@apply mx-auto max-w-screen-xl;
-		padding: 0 var(--space--main);
+		padding: 0 var(--padding-horizontal--main);
 	}
 }
 
@@ -165,7 +165,6 @@
 		& a:not([class*='action']) {
 			@apply link;
 
-			background-color: rgba(255, 255, 255, 50%);
 			padding: 0.5em 1em;
 		}
 
@@ -211,15 +210,14 @@
 }
 
 .hero-background {
-	background-image: radial-gradient(
-		circle at top center,
-		#0d9488,
-		#2dd4bf 40%,
-		#164e63 100%,
-		#083344 5%
-	);
+	background-image: linear-gradient(to bottom, transparent, white),
+		radial-gradient(
+			ellipse at top center,
+			#0d9489 0%,
+			#2dd4bf 60%,
+			#f0fdfa 100%
+		);
 }
-
 .brief-background {
 	background: radial-gradient(
 		100% 100% at 0% 0%,
@@ -229,31 +227,74 @@
 	);
 }
 
-/* fallback for older browsers */
 :root {
-	--space--main: 3rem;
-	--variable-name: 8rem;
-	--display--font-size: 5rem;
-	--h1--font-size: 3.97rem;
-	--h2--font-size: 3.15rem;
-	--h3--font-size: 2.5rem;
-	--h4--font-size: 1.98rem;
-	--h5--font-size: 1.57rem;
-	--h6--font-size: 1.25rem;
+	--padding-horizontal--main: 3rem;
+	--size--2rem: 2rem;
+	--size--2-5rem: 2.5rem;
+	--size--3rem: 3rem;
+	--size--3-5rem: 3.5rem;
+	--size--4rem: 4rem;
+	--size--4-5rem: 4.5rem;
+	--size--5rem: 5rem;
+	--size--5-5rem: 5.5rem;
+	--size--6rem: 6rem;
+	--size--6-5rem: 6.5rem;
+	--size--7rem: 7rem;
+	--size--7-5rem: 7.5rem;
+	--size--8rem: 8rem;
+	--size--8-5rem: 8.5rem;
+	--size--9rem: 9rem;
+	--size--9-5rem: 9.5rem;
+	--size--10rem: 10rem;
+	--size--11rem: 11rem;
+	--size--12rem: 12rem;
+	--size--13rem: 13rem;
+	--size--14rem: 14rem;
+	--size--15rem: 15rem;
+	--size--16rem: 16rem;
+	--display--font-size: 6.3rem;
+	--h1--font-size: 5rem;
+	--h2--font-size: 3.97rem;
+	--h3--font-size: 3.15rem;
+	--h4--font-size: 2.5rem;
+	--h5--font-size: 1.98rem;
+	--h6--font-size: 1.57rem;
 	--text-large--font-size: 1.51rem;
 	--text-main--font-size: 1.05rem;
 	--text-small--font-size: 0.875rem;
 }
 @media screen and (max-width: 767px) {
 	:root {
-		--space--main: 1rem;
-		--variable-name: 4rem;
-		--display--font-size: 2.03rem;
+		--padding-horizontal--main: 1rem;
+		--size--2rem: 1.75rem;
+		--size--2-5rem: 2rem;
+		--size--3rem: 2.25rem;
+		--size--3-5rem: 2.375rem;
+		--size--4rem: 2.5rem;
+		--size--4-5rem: 2.75rem;
+		--size--5rem: 3rem;
+		--size--5-5rem: 3.25rem;
+		--size--6rem: 3.5rem;
+		--size--6-5rem: 3.75rem;
+		--size--7rem: 4rem;
+		--size--7-5rem: 4.25rem;
+		--size--8rem: 4.5rem;
+		--size--8-5rem: 4.75rem;
+		--size--9rem: 5rem;
+		--size--9-5rem: 5.25rem;
+		--size--10rem: 5.5rem;
+		--size--11rem: 5.75rem;
+		--size--12rem: 6rem;
+		--size--13rem: 6.5rem;
+		--size--14rem: 7rem;
+		--size--15rem: 7.5rem;
+		--size--16rem: 8rem;
+		--display--font-size: 2.02rem;
 		--h1--font-size: 1.8rem;
 		--h2--font-size: 1.6rem;
 		--h3--font-size: 1.42rem;
-		--h4--font-size: 1.27rem;
-		--h5--font-size: 1.13rem;
+		--h4--font-size: 1.26rem;
+		--h5--font-size: 1.12rem;
 		--h6--font-size: 1rem;
 		--text-large--font-size: 1.3rem;
 		--text-main--font-size: 1rem;
@@ -264,17 +305,39 @@
 /* fluid sizes */
 @supports (font-size: clamp(1rem, 0.5rem + 3vw, 3rem)) {
 	:root {
-		--space--main: clamp(1rem, 0.334rem + 3.33vw, 3rem);
-		--variable-name: clamp(4rem, 2.666rem + 6.67vw, 8rem);
-		--display--font-size: clamp(2.03rem, 1.04rem + 4.95vw, 5rem);
-		--h1--font-size: clamp(1.8rem, 1.076rem + 3.62vw, 3.97rem);
-		--h2--font-size: clamp(1.6rem, 1.084rem + 2.58vw, 3.15rem);
-		--h3--font-size: clamp(1.42rem, 1.06rem + 1.8vw, 2.5rem);
-		--h4--font-size: clamp(1.27rem, 1.034rem + 1.18vw, 1.98rem);
-		--h5--font-size: clamp(1.13rem, 0.984rem + 0.73vw, 1.57rem);
-		--h6--font-size: clamp(1rem, 0.916rem + 0.42vw, 1.25rem);
-		--text-large--font-size: clamp(1.3rem, 1.23rem + 0.35vw, 1.51rem);
-		--text-main--font-size: clamp(1rem, 0.984rem + 0.08vw, 1.05rem);
+		--padding-horizontal--main: clamp(1rem, 0.428rem + 2.86vw, 3rem);
+		--size--2rem: clamp(1.75rem, 1.678rem + 0.36vw, 2rem);
+		--size--2-5rem: clamp(2rem, 1.858rem + 0.71vw, 2.5rem);
+		--size--3rem: clamp(2.25rem, 2.036rem + 1.07vw, 3rem);
+		--size--3-5rem: clamp(2.375rem, 2.053rem + 1.61vw, 3.5rem);
+		--size--4rem: clamp(2.5rem, 2.072rem + 2.14vw, 4rem);
+		--size--4-5rem: clamp(2.75rem, 2.25rem + 2.5vw, 4.5rem);
+		--size--5rem: clamp(3rem, 2.428rem + 2.86vw, 5rem);
+		--size--5-5rem: clamp(3.25rem, 2.608rem + 3.21vw, 5.5rem);
+		--size--6rem: clamp(3.5rem, 2.786rem + 3.57vw, 6rem);
+		--size--6-5rem: clamp(3.75rem, 2.964rem + 3.93vw, 6.5rem);
+		--size--7rem: clamp(4rem, 3.142rem + 4.29vw, 7rem);
+		--size--7-5rem: clamp(4.25rem, 3.322rem + 4.64vw, 7.5rem);
+		--size--8rem: clamp(4.5rem, 3.5rem + 5vw, 8rem);
+		--size--8-5rem: clamp(4.75rem, 3.678rem + 5.36vw, 8.5rem);
+		--size--9rem: clamp(5rem, 3.858rem + 5.71vw, 9rem);
+		--size--9-5rem: clamp(5.25rem, 4.036rem + 6.07vw, 9.5rem);
+		--size--10rem: clamp(5.5rem, 4.214rem + 6.43vw, 10rem);
+		--size--11rem: clamp(5.75rem, 4.25rem + 7.5vw, 11rem);
+		--size--12rem: clamp(6rem, 4.286rem + 8.57vw, 12rem);
+		--size--13rem: clamp(6.5rem, 4.642rem + 9.29vw, 13rem);
+		--size--14rem: clamp(7rem, 5rem + 10vw, 14rem);
+		--size--15rem: clamp(7.5rem, 5.358rem + 10.71vw, 15rem);
+		--size--16rem: clamp(8rem, 5.714rem + 11.43vw, 16rem);
+		--display--font-size: clamp(2.02rem, 0.798rem + 6.11vw, 6.3rem);
+		--h1--font-size: clamp(1.8rem, 0.886rem + 4.57vw, 5rem);
+		--h2--font-size: clamp(1.6rem, 0.922rem + 3.39vw, 3.97rem);
+		--h3--font-size: clamp(1.42rem, 0.926rem + 2.47vw, 3.15rem);
+		--h4--font-size: clamp(1.26rem, 0.906rem + 1.77vw, 2.5rem);
+		--h5--font-size: clamp(1.12rem, 0.874rem + 1.23vw, 1.98rem);
+		--h6--font-size: clamp(1rem, 0.838rem + 0.81vw, 1.57rem);
+		--text-large--font-size: clamp(1.3rem, 1.24rem + 0.3vw, 1.51rem);
+		--text-main--font-size: clamp(1rem, 0.986rem + 0.07vw, 1.05rem);
 		--text-small--font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
 	}
 }

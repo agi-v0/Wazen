@@ -28,7 +28,7 @@ export default function Brief({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="text-4xl font-semibold leading-tight lg:text-5xl">
+						<h2 className="font-semibold leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)

@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import lightray from '../../../public/lightrays2.svg'
 
 export default function Hero({
 	pretitle,
@@ -37,7 +38,7 @@ export default function Hero({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto max-w-3xl text-center font-semibold leading-tight drop-shadow-md">
+						<h1 className="mx-auto max-w-3xl text-balance text-center leading-tight drop-shadow-md">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
@@ -52,21 +53,18 @@ export default function Hero({
 	}
 
 	return (
-		<section className={cn(hasImage && 'grid *:col-span-full *:row-span-full')}>
-			{bgImage && (
-				<picture>
-					<Source image={bgImageMobile} />
-					<Img
-						className="size-full max-h-fold object-cover"
-						image={bgImage}
-						draggable={false}
-						imageWidth={1800}
-					/>
-				</picture>
-			)}
-			<div className="hero-background flex h-screen w-full flex-col items-center justify-center gap-y-6">
+		<section className="hero-background relative">
+			<div className="absolute top-0 h-[125vh] w-full"></div>
+			<Image
+				src={lightray}
+				alt="hero"
+				className="absolute mx-auto w-full mix-blend-overlay"
+				draggable={false}
+			/>
+
+			<div className="section flex min-h-screen w-full flex-col items-center justify-center gap-y-12">
 				<div
-					className={cn('richtext relative space-y-6 text-white')}
+					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle
@@ -89,20 +87,19 @@ export default function Hero({
 						})}
 					/>
 				</div>
-			</div>
-
-			<div className="overflow-hidden">
-				<div className="w-[80%] mx-auto ">
-					<ContainerScroll>
-						<Image
-							src={`/dashboard-image.png`}
-							alt="hero"
-							height={720}
-							width={1400}
-							className="mx-auto h-full rounded-2xl object-cover object-left-top"
-							draggable={false}
-						/>
-					</ContainerScroll>
+				<div className="">
+					<div className="section mx-auto">
+						<ContainerScroll>
+							<Image
+								src={`/dashboard-image.png`}
+								alt="hero"
+								height={720}
+								width={1400}
+								className="mx-auto h-full rounded-2xl object-cover object-left-top"
+								draggable={false}
+							/>
+						</ContainerScroll>
+					</div>
 				</div>
 			</div>
 		</section>
