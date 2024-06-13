@@ -1,4 +1,5 @@
 import Applications from './Applications'
+import Categories from './blog/Categories'
 import BlogRollup from './blog/Rollup'
 import Brief from './Brief'
 import CreativeModule from './CreativeModule'
@@ -16,7 +17,6 @@ import StatList from './StatList'
 import TestimonialList from './TestimonialList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
-
 	return (
 		<>
 			{modules?.map((module) => {
@@ -27,6 +27,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <BlogRollup {...module} key={module._key} />
 					case 'brief':
 						return <Brief {...module} key={module._key} />
+					case 'categories':
+						return <Categories {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':

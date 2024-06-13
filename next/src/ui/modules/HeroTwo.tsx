@@ -62,7 +62,7 @@ export default function HeroTwo({
 					/>
 				</picture>
 			)}
-			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-6">
+			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-6 bg-gradient-to-br from-white from-65% to-teal-100/50">
 				<div
 					className={cn('richtext relative space-y-6')}
 					style={{ textAlign: stegaClean(textAlign) }}
