@@ -11,6 +11,7 @@ import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import lightray from '../../../public/lightrays2.svg'
+import { PiSealCheck } from 'react-icons/pi'
 
 export default function Hero({
 	pretitle,
@@ -67,15 +68,10 @@ export default function Hero({
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle
-						className={cn(
-							hasImage
-								? 'text-white/40'
-								: 'mx-auto w-fit rounded-full border border-white bg-white/20 px-6 py-1 text-white',
-						)}
-					>
+					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full border border-white bg-white/20 px-6 py-1 font-normal text-white">
+						<PiSealCheck className="size-7" />
 						{pretitle}
-					</Pretitle>
+					</span>
 					<PortableText value={mainTitle} components={components} />
 					<PortableText value={Subtitle} components={components} />
 					<CTAList

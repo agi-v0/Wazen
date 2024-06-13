@@ -7,6 +7,7 @@ import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
+import FAQ from './documents/FAQ'
 
 // objects
 import cta from './objects/cta'
@@ -47,6 +48,7 @@ export const schemaTypes = [
 	logo,
 	partnerslogos,
 	testimonial,
+	FAQ,
 
 	// objects
 	cta,
