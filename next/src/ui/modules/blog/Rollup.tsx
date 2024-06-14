@@ -1,17 +1,17 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
-import FirstPost from './FirstPost'
 
 export default async function Rollup({
 	limit,
 	category,
 	layout,
+	categoryRef = category?.length > 0 ? category[0]?._ref : null,
 }: Partial<{
 	limit?: number
 	category: any
+	categoryRef: any
 	layout: 'grid' | 'carousel'
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
@@ -25,14 +25,21 @@ export default async function Rollup({
 		 }
 		}`,
 		{
-			params: { limit, categoryRef: category[0]._ref },
+			params: {
+				limit,
+				categoryRef,
+			},
 			tags: ['posts'],
 		},
 	)
 
 	return (
 		<section className="section space-y-4">
-			<div className="text-4xl font-bold">{posts[0]?.categories[0].title}</div>
+			{posts[0]?.categories && (
+				<div className="text-4xl font-bold">
+					{posts[0]?.categories[0]?.title}
+				</div>
+			)}
 			<ul
 				className={cn(
 					'gap-6',
