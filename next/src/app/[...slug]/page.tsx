@@ -5,6 +5,7 @@ import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
 export default async function Page({ params }: Props) {
+	console.log(params)
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page?.modules} />
@@ -24,11 +25,12 @@ export async function generateStaticParams() {
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
 	)
-
-	return slugs.map((slug) => ({ slug }))
+	console.log(slugs)
+	return slugs.map((slug) => decodeURIComponent(slug))
 }
 
 async function getPage(params: Props['params']) {
+	console.log(params.slug)
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
@@ -61,12 +63,14 @@ async function getPage(params: Props['params']) {
 			}
 		}`,
 		{
-			params: { slug: params.slug },
+			params: {
+				slug: params.slug.join('/'),
+			},
 			tags: ['pages'],
 		},
 	)
 }
 
 type Props = {
-	params: { slug?: string }
+	params: { slug?: any }
 }
