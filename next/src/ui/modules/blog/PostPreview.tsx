@@ -17,9 +17,11 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 					className="w-full"
 				/>
 				<div className="flex gap-4">
-					<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
-						{post?.categories[0].title}
-					</div>
+					{post?.categories && (
+						<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
+							{post?.categories[0]?.title}
+						</div>
+					)}
 					<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
 						<Date value={post.publishDate} />
 					</div>

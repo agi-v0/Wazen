@@ -36,6 +36,7 @@ import partnerslogos from './documents/partnerslogos'
 import startFreeTrial from './modules/start.free.trial'
 import singleTestimony from './modules/single-testimony'
 import categories from './modules/categories'
+import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
 
 export const schemaTypes = [
@@ -67,6 +68,7 @@ export const schemaTypes = [
 	creativeModule,
 	customHtml,
 	faqList,
+	firstPost,
 	hero,
 	heroTwo,
 	heroPostcard,

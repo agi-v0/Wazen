@@ -1,5 +1,6 @@
 import Applications from './Applications'
 import Categories from './blog/Categories'
+import FirstPost from './blog/FirstPost'
 import BlogRollup from './blog/Rollup'
 import Brief from './Brief'
 import CreativeModule from './CreativeModule'
@@ -35,6 +36,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <CustomHTML {...module} key={module._key} />
 					case 'faq-list':
 						return <FAQList {...module} key={module._key} />
+					case 'first-post':
+						return <FirstPost {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':

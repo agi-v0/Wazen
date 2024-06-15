@@ -20,6 +20,7 @@ export default defineType({
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
 				{ type: 'faq-list' },
+				{ type: 'first-post' },
 				{ type: 'hero' },
 				{ type: 'hero.two' },
 				{ type: 'hero.postcard' },
