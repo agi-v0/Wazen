@@ -37,6 +37,7 @@ import startFreeTrial from './modules/start.free.trial'
 import singleTestimony from './modules/single-testimony'
 import categories from './modules/categories'
 import firstPost from './modules/first-post'
+import howItWorks from './modules/how-it-works'
 
 export const schemaTypes = [
 	// documents
@@ -78,4 +79,5 @@ export const schemaTypes = [
 	statList,
 	startFreeTrial,
 	testimonialList,
+	howItWorks,
 ]

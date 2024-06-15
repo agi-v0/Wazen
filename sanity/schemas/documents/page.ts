@@ -31,6 +31,7 @@ export default defineType({
 				{ type: 'stat-list' },
 				{ type: 'start.free.trial' },
 				{ type: 'testimonial-list' },
+				{ type: 'how-it-works' },
 			],
 		}),
 		defineField({
