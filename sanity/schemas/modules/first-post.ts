@@ -12,6 +12,16 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
+		defineField({
+			name: 'category',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'blog.category' }],
+				},
+			],
+		}),
 	],
 	preview: {
 		select: {

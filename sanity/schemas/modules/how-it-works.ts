@@ -9,7 +9,7 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
-			name: 'content',
+			name: 'Title',
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
@@ -21,8 +21,8 @@ export default defineType({
 					type: 'object',
 					fields: [
 						defineField({
-							name: 'value',
-							type: 'string',
+							name: 'image',
+							type: 'image',
 						}),
 						defineField({
 							name: 'text',
@@ -31,8 +31,7 @@ export default defineType({
 					],
 					preview: {
 						select: {
-							title: 'value',
-							subtitle: 'text',
+							title: 'text',
 						},
 					},
 				}),

@@ -4,19 +4,25 @@ import Img from '@/ui/Img'
 import Image from 'next/image'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 
-export default async function FirstPost() {
+export default async function FirstPost({
+	category,
+	categoryRef = category?.length > 0 ? category[0]?._ref : null,
+}: {
+	category: any
+	categoryRef: any
+}) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post'][0...1]|order(publishDate desc){
-		 title,
-			publishDate,
-			metadata,
-			body,
-		 categories[]->{
-			title
-		 }
-		}`,
+		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id][0...1] | order(publishDate desc){
+			title,
+			 publishDate,
+			 metadata,
+			 body,
+			categories[]->{
+			 title
+			}
+		 }`,
 		{
-			params: { limit: 1 },
+			params: { limit: 1, categoryRef },
 			tags: ['posts'],
 		},
 	)
