@@ -33,13 +33,15 @@ import statList from './modules/stat-list'
 import testimonialList from './modules/testimonial-list'
 import partners from './modules/partners'
 import partnerslogos from './documents/partnerslogos'
-import startFreeTrial from './modules/start.free.trial'
+import callToAction from './modules/call-to-action'
 import singleTestimony from './modules/single-testimony'
 import categories from './modules/categories'
 import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
 import heroThree from './modules/hero.three'
 import steps from './modules/steps'
+import featuresGrid from './modules/features-grid'
+import solutionsBenefits from './modules/solutions-benefits'
 
 export const schemaTypes = [
 	// documents
@@ -80,8 +82,10 @@ export const schemaTypes = [
 	richtextModule,
 	singleTestimony,
 	statList,
-	startFreeTrial,
+	callToAction,
 	steps,
 	testimonialList,
 	howItWorks,
+	featuresGrid,
+	solutionsBenefits,
 ]

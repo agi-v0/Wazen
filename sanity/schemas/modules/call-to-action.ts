@@ -3,8 +3,8 @@ import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'start.free.trial',
-	title: 'Start Free Trial',
+	name: 'call.to.action',
+	title: 'Call To Action',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	groups: [
@@ -18,13 +18,7 @@ export default defineType({
 	],
 	fields: [
 		defineField({
-			name: 'mainTitle',
-			type: 'array',
-			of: [{ type: 'block' }],
-			group: 'content',
-		}),
-		defineField({
-			name: 'Subtitle',
+			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
@@ -132,11 +126,10 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'mainTitle',
-			subtitle: 'subtitle',
 		},
-		prepare: ({ content, subtitle }) => ({
-			title: subtitle || getBlockText(content),
-			subtitle: 'Start Free Trial',
+		prepare: ({ content }) => ({
+			title: getBlockText(content),
+			subtitle: 'Call to action',
 		}),
 	},
 })

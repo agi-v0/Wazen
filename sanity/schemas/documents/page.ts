@@ -30,10 +30,12 @@ export default defineType({
 				{ type: 'richtext-module' },
 				{ type: 'single-testimony' },
 				{ type: 'stat-list' },
-				{ type: 'start.free.trial' },
+				{ type: 'call.to.action' },
 				{ type: 'steps' },
 				{ type: 'testimonial-list' },
 				{ type: 'how-it-works' },
+				{ type: 'features-grid' },
+				{ type: 'solutions-benefits' },
 			],
 		}),
 		defineField({
