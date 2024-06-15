@@ -25,15 +25,10 @@ export async function generateStaticParams() {
 		].metadata.slug.current`,
 	)
 
-	return slugs.map((slug) => ({
-    params: { slug: slug.split('/') },
-  }));
+	return slugs.map((slug) => decodeURIComponent(slug))
 }
 
 async function getPage(params: Props['params']) {
-
-	console.log(params)
-
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
@@ -66,12 +61,14 @@ async function getPage(params: Props['params']) {
 			}
 		}`,
 		{
-			params: { slug: params.slug },
+			params: {
+				slug: params.slug.join('/'),
+			},
 			tags: ['pages'],
 		},
 	)
 }
 
 type Props = {
-	params: { slug?: string }
+	params: { slug?: any }
 }
