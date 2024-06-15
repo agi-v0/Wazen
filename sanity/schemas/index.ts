@@ -38,6 +38,8 @@ import singleTestimony from './modules/single-testimony'
 import categories from './modules/categories'
 import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
+import heroThree from './modules/hero.three'
+import steps from './modules/steps'
 
 export const schemaTypes = [
 	// documents
@@ -69,6 +71,7 @@ export const schemaTypes = [
 	customHtml,
 	faqList,
 	firstPost,
+	heroThree,
 	hero,
 	heroTwo,
 	heroPostcard,
@@ -78,6 +81,7 @@ export const schemaTypes = [
 	singleTestimony,
 	statList,
 	startFreeTrial,
+	steps,
 	testimonialList,
 	howItWorks,
 ]
