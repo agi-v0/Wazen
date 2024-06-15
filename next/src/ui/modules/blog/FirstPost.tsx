@@ -21,8 +21,6 @@ export default async function FirstPost() {
 		},
 	)
 
-	console.log(posts)
-
 	return (
 		<Link
 			className="group m-8 block"
