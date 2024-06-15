@@ -45,6 +45,7 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
+				items[]->,
 				testimonials[]->,
 				'headings': select(
 					tableOfContents => content[style in ['h2', 'h3']]{

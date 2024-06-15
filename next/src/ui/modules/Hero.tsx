@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import lightray from '../../../public/lightrays2.svg'
+import { PiSealCheck } from 'react-icons/pi'
 
 export default function Hero({
 	pretitle,
@@ -37,13 +39,13 @@ export default function Hero({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto max-w-3xl text-center font-semibold leading-tight drop-shadow-md">
+						<h1 className="mx-auto max-w-3xl text-balance text-center leading-tight drop-shadow-md">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light text-white/80 md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl text-cyan-950/70 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -52,32 +54,24 @@ export default function Hero({
 	}
 
 	return (
-		<section className={cn(hasImage && 'grid *:col-span-full *:row-span-full')}>
-			{bgImage && (
-				<picture>
-					<Source image={bgImageMobile} />
-					<Img
-						className="size-full max-h-fold object-cover"
-						image={bgImage}
-						draggable={false}
-						imageWidth={1800}
-					/>
-				</picture>
-			)}
-			<div className="hero-background flex h-screen w-full flex-col items-center justify-center gap-y-6">
+		<section className="hero-background relative">
+			<div className="absolute top-0 h-[125vh] w-full"></div>
+			<Image
+				src={lightray}
+				alt="hero"
+				className="absolute mx-auto w-full mix-blend-overlay"
+				draggable={false}
+			/>
+
+			<div className="section flex min-h-screen w-full flex-col justify-center gap-y-12">
 				<div
-					className={cn('richtext relative space-y-6 text-white')}
+					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle
-						className={cn(
-							hasImage
-								? 'text-white/40'
-								: 'mx-auto w-fit rounded-full border border-white bg-white/20 px-6 py-1 text-white',
-						)}
-					>
+					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full border border-white bg-white/20 px-6 py-1 font-normal text-white">
+						<PiSealCheck className="size-7" />
 						{pretitle}
-					</Pretitle>
+					</span>
 					<PortableText value={mainTitle} components={components} />
 					<PortableText value={Subtitle} components={components} />
 					<CTAList
@@ -89,20 +83,19 @@ export default function Hero({
 						})}
 					/>
 				</div>
-			</div>
-
-			<div className="overflow-hidden">
-				<div className="w-[80%] mx-auto ">
-					<ContainerScroll>
-						<Image
-							src={`/dashboard-image.png`}
-							alt="hero"
-							height={720}
-							width={1400}
-							className="mx-auto h-full rounded-2xl object-cover object-left-top"
-							draggable={false}
-						/>
-					</ContainerScroll>
+				<div className="">
+					<div className="section mx-auto">
+						<ContainerScroll>
+							<Image
+								src={`/dashboard-image.png`}
+								alt="hero"
+								height={720}
+								width={1400}
+								className="mx-auto h-full rounded-2xl object-cover object-left-top"
+								draggable={false}
+							/>
+						</ContainerScroll>
+					</div>
 				</div>
 			</div>
 		</section>

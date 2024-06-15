@@ -41,7 +41,7 @@ export default function HeroTwo({
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)

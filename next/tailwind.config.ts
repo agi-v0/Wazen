@@ -2,10 +2,7 @@ import plugin from 'tailwindcss/plugin'
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-	content: [
-		'./src/{app,ui}/**/*.{ts,tsx}',
-		"./src/**/*.{ts,tsx}"
-	],
+	content: ['./src/{app,ui}/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
 	theme: {
 		extend: {
 			colors: {
@@ -20,12 +17,12 @@ const config: Config = {
 			},
 			animation: {
 				scroll:
-					"scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+					'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
 			},
 			keyframes: {
 				scroll: {
 					to: {
-						transform: "translate(calc(-50% - 0.5rem))",
+						transform: 'translate(calc(-50% - 0.5rem))',
 					},
 				},
 			},

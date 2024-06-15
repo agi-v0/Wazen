@@ -34,7 +34,7 @@ export default function StartFreeTrial({
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -55,8 +55,8 @@ export default function StartFreeTrial({
 				>
 					<PortableText value={mainTitle} components={components} />
 					<PortableText value={Subtitle} components={components} />
-					
-					<CTAList ctas={ctas}/>
+
+					<CTAList ctas={ctas} />
 				</div>
 				<div className="h-[400px] w-full lg:max-w-[400px]">
 					<div className="brief-background relative h-full overflow-hidden rounded-sm border-8 border-white shadow-md">

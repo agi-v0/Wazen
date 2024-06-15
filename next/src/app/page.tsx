@@ -29,6 +29,7 @@ async function getPage() {
 				logos[]->,
 				partnerslogos[]->,
 				testimonials[]->,
+				items[]->,
 				${creativeModuleQuery}
 			},
 			metadata {

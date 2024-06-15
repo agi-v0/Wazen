@@ -32,15 +32,15 @@ export default function Applications({
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h3') {
+				if (value.style === 'h2') {
 					return (
-						<h3 className="text-4xl font-semibold leading-tight lg:text-5xl">
+						<h2 className="font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
-						</h3>
+						</h2>
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -52,7 +52,7 @@ export default function Applications({
 		<section className={'grid *:col-span-full *:row-span-full'}>
 			<div
 				className={
-					'flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden p-10 '
+					'flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden p-10'
 				}
 			>
 				<div
@@ -81,15 +81,15 @@ export default function Applications({
 							direction={'left'}
 							speed={'slow'}
 							pauseOnHover={true}
-							links= {links}
-							logoType = 'default'
+							links={links}
+							logoType="default"
 						/>
 						<InfiniteMovingCards
 							direction={'right'}
 							speed={'slow'}
 							pauseOnHover={true}
-							links= {links}
-							logoType = 'default'
+							links={links}
+							logoType="default"
 						/>
 					</div>
 				</div>

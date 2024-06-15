@@ -28,13 +28,13 @@ export default function Brief({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="text-4xl font-semibold leading-tight lg:text-5xl">
+						<h2 className="font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="mx-auto max-w-xl text-base font-light md:max-w-3xl md:text-lg">
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -43,11 +43,11 @@ export default function Brief({
 	}
 
 	return (
-		<section className={'grid *:col-span-full *:row-span-full'}>
+		<section className={'section py-12'}>
 			<div
 				className={cn(
 					image?.onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
-					'flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 p-10',
+					'fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6',
 				)}
 			>
 				<div className="h-[550px] w-full lg:max-w-[550px]">
@@ -63,12 +63,10 @@ export default function Brief({
 					</div>
 				</div>
 				<div
-					className={'flex max-w-2xl flex-col gap-8'}
+					className={'flex max-w-2xl flex-col gap-4'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'py-1 text-4xl text-gray-400'}>
-						{pretitle}
-					</Pretitle>
+					<Pretitle className={'text-gray-400'}>{pretitle}</Pretitle>
 					<PortableText value={mainTitle} components={components} />
 					<PortableText value={Subtitle} components={components} />
 				</div>

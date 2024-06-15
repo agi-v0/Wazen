@@ -9,7 +9,7 @@ export default async function Footer() {
 
 	return (
 		<section className="bg-cyan-950 text-center text-white">
-			<div className="p-8">
+			<div className="section py-12">
 				<div className="flex w-full flex-col justify-between gap-20">
 					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
 						<Link className="font-bold" href="/">
