@@ -5,6 +5,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
+import CTA from '../CTA'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
@@ -54,16 +55,16 @@ export default function Hero({
 	}
 
 	return (
-		<section className="hero-background relative">
-			<div className="absolute top-0 h-[125vh] w-full"></div>
+		<section className="relative bg-white">
+			<div className="hero-background absolute top-0 min-h-[150vh] w-full"></div>
 			<Image
 				src={lightray}
 				alt="hero"
-				className="absolute mx-auto w-full mix-blend-overlay"
+				className="absolute left-0 right-0 top-0 mx-auto w-full mix-blend-overlay"
 				draggable={false}
 			/>
 
-			<div className="section flex min-h-screen w-full flex-col justify-center gap-y-12">
+			<div className="section flex w-full flex-col justify-center">
 				<div
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}

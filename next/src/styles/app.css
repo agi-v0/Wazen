@@ -76,21 +76,21 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5em 1em;
+		padding: 0 1rem;
 	}
 
 	.action {
 		text-align: center;
 		color: #fff;
-		@apply _btn rounded bg-teal-600;
+		@apply _btn h-10 rounded-lg bg-teal-600 px-4 font-medium outline outline-2 outline-offset-0 outline-teal-500/20;
 	}
 
 	.link {
 		text-decoration: no-underline;
-
 		&:hover {
 			text-decoration-thickness: 2px;
 		}
+		@apply _btn h-10 rounded-lg bg-teal-600 px-4 font-medium outline outline-2 outline-offset-0 outline-teal-500/20;
 	}
 
 	/* layout */
