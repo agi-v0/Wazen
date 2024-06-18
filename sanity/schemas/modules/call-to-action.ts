@@ -125,7 +125,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'mainTitle',
+			content: 'content',
 		},
 		prepare: ({ content }) => ({
 			title: getBlockText(content),

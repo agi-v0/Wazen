@@ -76,7 +76,7 @@ declare global {
 			}>
 
 		type Link = {
-			readonly _type: 'link';
+			readonly _type: 'link'
 			label: string
 			description: string
 			type: 'internal' | 'external'
@@ -86,7 +86,7 @@ declare global {
 		}
 
 		type AppLink = {
-			readonly _type: 'link';
+			readonly _type: 'link'
 			label: string
 			description: string
 			type: 'internal' | 'external'
@@ -138,4 +138,4 @@ declare global {
 	}
 }
 
-export { }
+export {}

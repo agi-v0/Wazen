@@ -4,8 +4,6 @@
 		'ctas ctas' auto / 1fr auto;
 
 	@screen md {
-		grid-template: 'logo ctas' auto / 1fr  auto;
+		grid-template: 'logo ctas' auto / 1fr auto;
 	}
 }
-
-

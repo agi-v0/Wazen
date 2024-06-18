@@ -8,16 +8,14 @@ import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
-export default function StartFreeTrial({
-	mainTitle,
-	Subtitle,
+export default function CallToAction({
+	content,
 	ctas,
 	image,
 	textAlign = 'start',
 	alignItems,
 }: Partial<{
-	mainTitle: any
-	Subtitle: any
+	content: any
 	ctas: Sanity.CTA[]
 	image: Sanity.Image & { onRight?: boolean }
 	textAlign: React.CSSProperties['textAlign']
@@ -26,15 +24,21 @@ export default function StartFreeTrial({
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h4') {
+				if (value.style === 'h2') {
 					return (
-						<h4 className="text-4xl font-semibold leading-tight lg:text-5xl">
+						<h2 className="font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
-						</h4>
+						</h2>
+					)
+				} else if (value.style === 'h3') {
+					return (
+						<p className="text-large font-semibold leading-tight text-cyan-950">
+							{value.children.map((child: any) => child.text).join('')}
+						</p>
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl md:max-w-3xl">
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -53,8 +57,7 @@ export default function StartFreeTrial({
 					className={'flex max-w-2xl flex-col items-start gap-8'}
 					// style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<PortableText value={mainTitle} components={components} />
-					<PortableText value={Subtitle} components={components} />
+					<PortableText value={content} components={components} />
 
 					<CTAList ctas={ctas} />
 				</div>

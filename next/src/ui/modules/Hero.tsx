@@ -77,12 +77,18 @@ export default function Hero({
 					<PortableText value={Subtitle} components={components} />
 					<CTAList
 						ctas={ctas}
-						className={cn({
-							'justify-start': stegaClean(textAlign) === 'left',
-							'justify-center': stegaClean(textAlign) === 'center',
-							'justify-end': stegaClean(textAlign) === 'right',
-						})}
+						className={cn(
+							{
+								'justify-start': stegaClean(textAlign) === 'left',
+								'justify-center': stegaClean(textAlign) === 'center',
+								'justify-end': stegaClean(textAlign) === 'right',
+							},
+							'text-white *:h-12 *:px-6',
+						)}
 					/>
+					<div className="primary">text</div>
+					<div className="secondary">text</div>
+					<div className="tertiary">text</div>
 				</div>
 				<div className="">
 					<div className="section mx-auto">

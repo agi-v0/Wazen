@@ -1,14 +1,14 @@
-import { AiOutlineMenu } from 'react-icons/ai'
+import { PiList } from 'react-icons/pi'
 
 export default function Toggle() {
 	return (
-		<label className="[grid-area:toggle] md:hidden mt-1">
+		<label className="mt-1 [grid-area:toggle] md:hidden">
 			<input id="header-open" type="checkbox" hidden />
 			<span className="header-closed:hidden">
-				<AiOutlineMenu />
+				<PiList />
 			</span>
 			<span className="hidden header-closed:block">
-				<AiOutlineMenu />
+				<PiList />
 			</span>
 		</label>
 	)
