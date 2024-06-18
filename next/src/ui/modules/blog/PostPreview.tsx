@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Date from '@/ui/Date'
 import Image from 'next/image'
+// import Image from '../RichtextModule/Image'
+import Img from '@/ui/Img'
 
 export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -8,14 +10,8 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 			className="group block"
 			href={`/blog/${post.metadata?.slug?.current}`}
 		>
-			<div className="rounded-md p-2 shadow-md">
-				<Image
-					src={post?.metadata?.image || '/image-placeholder.jpg'}
-					alt=""
-					width={300}
-					height={300}
-					className="w-full"
-				/>
+			<div className="aspect-[inherit] w-full rounded-md object-cover p-2 shadow-md">
+				<Img image={post.metadata.image} imageWidth={600} className="w-full" />
 				<div className="flex gap-4">
 					{post?.categories && (
 						<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
