@@ -86,9 +86,6 @@ export default function Hero({
 							'text-white *:h-12 *:px-6',
 						)}
 					/>
-					<div className="primary">text</div>
-					<div className="secondary">text</div>
-					<div className="tertiary">text</div>
 				</div>
 				<div className="">
 					<div className="section mx-auto">
