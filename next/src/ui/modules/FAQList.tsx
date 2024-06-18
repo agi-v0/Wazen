@@ -12,7 +12,10 @@ export default function FAQList({
 	sideNote,
 }: Partial<{
 	content: any
-	items: Sanity.FAQ[]
+	items: {
+		question: string
+		answer: any
+	}[]
 	sideNote: any
 }>) {
 	const components: PortableTextComponents = {
@@ -59,7 +62,7 @@ export default function FAQList({
 							itemType="https://schema.org/Question"
 							key={key}
 						>
-							<summary className="py-4 font-semibold" itemProp="name">
+							<summary className="py-4 font-bold" itemProp="name">
 								{question}
 							</summary>
 							<div
