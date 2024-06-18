@@ -88,7 +88,7 @@
 	}
 
 	.tertiary {
-		@apply _btn h-10 rounded-lg bg-white px-4 font-medium text-teal-600 outline outline-2 outline-offset-0 outline-teal-500/20;
+		@apply _btn h-10 rounded-lg bg-white px-4 font-medium text-cyan-950 outline outline-2 outline-offset-0 outline-teal-500/20;
 	}
 
 	/* .link {

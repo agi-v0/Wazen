@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
-import lightray from '../../../public/lightrays2.svg'
+import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
 
 export default function Hero({
@@ -55,16 +55,16 @@ export default function Hero({
 	}
 
 	return (
-		<section className="relative bg-white">
-			<div className="hero-background absolute top-0 min-h-[150vh] w-full"></div>
-			<Image
-				src={lightray}
-				alt="hero"
-				className="absolute left-0 right-0 top-0 mx-auto w-full mix-blend-overlay"
-				draggable={false}
-			/>
-
-			<div className="section flex w-full flex-col justify-center">
+		<section className="hero-background relative">
+			<div className="absolute top-0 h-full w-full">
+				<Image
+					src={lightray}
+					alt="hero"
+					className="pointer-events-none fixed left-0 right-0 top-0 mx-auto h-screen w-full object-cover mix-blend-overlay"
+					draggable={false}
+				/>
+			</div>
+			<div className="section relative flex w-full flex-col justify-center">
 				<div
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
@@ -83,9 +83,12 @@ export default function Hero({
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',
 							},
-							'text-white *:h-12 *:px-6',
+							'text-white *:h-12 *:px-6 *:text-lg',
 						)}
 					/>
+					{/* <div className="primary">text</div>
+					<div className="secondary">text</div>
+					<div className="tertiary">text</div> */}
 				</div>
 				<div className="">
 					<div className="section mx-auto">

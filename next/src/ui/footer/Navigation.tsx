@@ -8,14 +8,16 @@ export default async function Menu({ footerMenu }: any) {
 				const { label, links } = item
 
 				return (
-					<div key={key} className="cursor-default md:w-1/3 lg:w-fit ">
-						<div className="mb-4 h-8 rounded text-start ">{label}</div>
+					<div key={key} className="cursor-default md:w-1/3 lg:w-fit">
+						<div className="mb-4 h-8 rounded text-start text-white/50">
+							{label}
+						</div>
 
 						<ul className="text-start">
 							{links?.map((link: any, key: any) => (
 								<li
 									key={key}
-									className="group flex h-8 items-center text-gray-50/50"
+									className="group flex h-8 items-center text-white/80"
 								>
 									<Link href="" className="no-underline group-hover:text-white">
 										{link.label}
