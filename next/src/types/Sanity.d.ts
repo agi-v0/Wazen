@@ -62,6 +62,11 @@ declare global {
 			}
 		}>
 
+		type FAQ = SanityDocument<{
+			question: string
+			answer: any
+		}>
+
 		// objects
 
 		type CTA = {
