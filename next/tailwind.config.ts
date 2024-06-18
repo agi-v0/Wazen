@@ -32,6 +32,7 @@ const config: Config = {
 		plugin(function ({ addVariant }) {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
 		}),
+		require('@tailwindcss/typography'),
 	],
 	safelist: ['action'],
 }
