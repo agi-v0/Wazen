@@ -1,4 +1,8 @@
-import { PortableText } from 'next-sanity'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from 'next-sanity'
 import Img from '../Img'
 import { cn } from '@/lib/utils'
 
@@ -9,11 +13,29 @@ export default function TestimonialList({
 	content: any
 	testimonials: Sanity.Testimonial[]
 }>) {
+	const components: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				if (value.style === 'h2') {
+					return (
+						<h2 className="font-semibold leading-tight text-cyan-950">
+							{value.children.map((child: any) => child.text).join('')}
+						</h2>
+					)
+				}
+				return (
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+						{value.children.map((child: any) => child.text).join('')}
+					</p>
+				)
+			},
+		},
+	}
 	return (
-		<section className="section space-y-8 text-center">
+		<section className="section space-y-8 py-12 text-center">
 			{content && (
 				<header className="richtext">
-					<PortableText value={content} />
+					<PortableText value={content} components={components} />
 				</header>
 			)}
 
