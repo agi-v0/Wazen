@@ -4,6 +4,7 @@ import css from './OGImageLayout.module.css'
 const Component = ({ title }) => {
 	return (
 		<div dir="rtl" className={css.root}>
+			<img src="/static/logo.svg" className={css.logo} />
 			<div className={css.card}>
 				<h1>{title}</h1>
 			</div>
