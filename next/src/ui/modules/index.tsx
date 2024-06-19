@@ -16,7 +16,7 @@ import RichtextModule from './RichtextModule'
 import SingleTestimony from './SingleTestimony'
 import CallToAction from './CallToAction'
 import StatList from './StatList'
-import Steps from './Steps'
+import HowItWorks from './HowItWorks'
 import TestimonialList from './TestimonialList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
@@ -61,7 +61,7 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 					case 'call.to.action':
 						return <CallToAction {...module} key={module._key} />
 					case 'steps':
-						return <Steps {...module} key={module._key} />
+						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
 

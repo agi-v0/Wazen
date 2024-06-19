@@ -8,22 +8,15 @@ import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
-export default function Steps({
-	mainTitle,
-	content1,
-	content2,
-	content3,
-	image,
-	textAlign = 'center',
-	alignItems,
+export default function HowItWorks({
+	content,
+	steps,
 }: Partial<{
-	mainTitle: any
-	content1: any
-	content2: any
-	content3: any
-	image: Sanity.Image & { onRight?: boolean }
-	textAlign: React.CSSProperties['textAlign']
-	alignItems: React.CSSProperties['alignItems']
+	content: any
+	steps: {
+		text: string
+		image: Sanity.Image
+	}[]
 }>) {
 	const components: PortableTextComponents = {
 		types: {
@@ -46,23 +39,12 @@ export default function Steps({
 
 	return (
 		<section className={'section py-12'}>
-			<div
-				className={cn(
-					image?.onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
-					'fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6',
-				)}
-			>
+			<div className="fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6">
 				<div className="h-[550px] w-full lg:max-w-[550px]">
 					<Img image={image} imageWidth={3000} className="rounded-xl" />
 				</div>
-				<div
-					className={'flex max-w-2xl flex-col gap-4'}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<PortableText value={mainTitle} components={components} />
-					<PortableText value={content1} components={components} />
-					<PortableText value={content2} components={components} />
-					<PortableText value={content3} components={components} />
+				<div className="flex max-w-2xl flex-col gap-4">
+					<PortableText value={content} components={components} />
 				</div>
 			</div>
 		</section>
