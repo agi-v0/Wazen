@@ -46,7 +46,7 @@ export default function Hero({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-cyan-950/70 md:max-w-3xl">
+					<p className="text-main mx-auto max-w-xl text-teal-50 drop-shadow-md md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -69,7 +69,7 @@ export default function Hero({
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full border border-white bg-white/20 px-6 py-1 font-normal text-white">
+					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/20 px-6 py-1 font-normal text-white">
 						<PiSealCheck className="size-7" />
 						{pretitle}
 					</span>
