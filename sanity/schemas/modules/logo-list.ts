@@ -17,15 +17,15 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
-		defineField({
-			name: 'logoType',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: ['default', 'light', 'dark'],
-			},
-			initialValue: 'default',
-		}),
+		// defineField({
+		// 	name: 'logoType',
+		// 	type: 'string',
+		// 	options: {
+		// 		layout: 'radio',
+		// 		list: ['default', 'light', 'dark'],
+		// 	},
+		// 	initialValue: 'default',
+		// }),
 		defineField({
 			name: 'logos',
 			type: 'array',
