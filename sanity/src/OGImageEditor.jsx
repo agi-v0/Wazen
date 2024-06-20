@@ -1,10 +1,11 @@
 import React from 'react'
 import css from './OGImageLayout.module.css'
+import logo from '../static/Logo.svg'
 
 const Component = ({ title }) => {
 	return (
 		<div dir="rtl" className={css.root}>
-			<img src="/static/logo.svg" className={css.logo} />
+			<img src={logo} className={css.logo} />
 			<div className={css.card}>
 				<h1>{title}</h1>
 			</div>
