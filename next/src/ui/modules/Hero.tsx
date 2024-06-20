@@ -91,7 +91,7 @@ export default function Hero({
 					<div className="tertiary">text</div> */}
 				</div>
 				<div className="">
-					<div className="section mx-auto w-full">
+					<div className="mx-auto w-[95%]">
 						<ContainerScroll>
 							<Image
 								src={`/dashboard-image.svg`}

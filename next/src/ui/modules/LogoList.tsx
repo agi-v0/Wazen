@@ -17,7 +17,7 @@ export default async function LogoList({
 }>) {
 	const allLogos =
 		logos || (await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']`))
-	console.log(logos)
+	// console.log(logos)
 	return (
 		<section className="section space-y-8 py-12">
 			<header className="richtext text-main text-center text-gray-400">

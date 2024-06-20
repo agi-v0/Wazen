@@ -69,7 +69,7 @@ export const Card = ({
 				scale,
 			}}
 		>
-			<div className="h-full w-full overflow-hidden rounded-xl border-2 border-teal-500/20">
+			<div className="h-full w-full overflow-hidden rounded-xl border-4 border-teal-500/20 shadow-lg">
 				{children}
 			</div>
 		</motion.div>
