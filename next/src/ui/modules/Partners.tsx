@@ -7,13 +7,13 @@ import {
 import Img from '../Img'
 
 export default async function Partners({
+	pretitle,
 	content,
-	Subtitle,
 	logoType = 'default',
 	logos,
 }: Partial<{
+	pretitle: string
 	content: any
-	Subtitle: any
 	logoType: 'default' | 'light' | 'dark'
 	logos: Sanity.Logo[]
 }>) {
@@ -31,7 +31,7 @@ export default async function Partners({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-main font-semibold text-gray-400">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -40,22 +40,20 @@ export default async function Partners({
 	}
 
 	return (
-		<section className="section space-y-8 py-12">
-			<header className="richtext flex flex-col gap-6 text-center">
+		<section className="section py-12">
+			<div className="fluid-gap flex w-full flex-col items-start">
 				<PortableText value={content} components={components} />
-				<PortableText value={Subtitle} />
-			</header>
 
-			<figure className="item-center mx-auto flex flex-wrap justify-center gap-x-4 gap-y-14 p-4">
-				{allLogos.map((logo, key) => (
-					<Img
-						className="max-h-[2em] max-w-[200px] object-contain"
-						image={logo.image[logoType]}
-						imageWidth={400}
-						key={key}
-					/>
-				))}
-			</figure>
+				<figure className="flex w-full flex-wrap items-center justify-center gap-12 overflow-visible">
+					{allLogos.map((logo, key) => (
+						<div
+							key={key}
+							className="svg-container h-11 w-auto"
+							dangerouslySetInnerHTML={{ __html: logo.icon }}
+						/>
+					))}
+				</figure>
+			</div>
 		</section>
 	)
 }

@@ -1,5 +1,9 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from '@portabletext/react'
 import Pretitle from '../Pretitle'
 import Img from '../Img'
 import Image from 'next/image'
@@ -17,29 +21,40 @@ export default async function LogoList({
 }>) {
 	const allLogos =
 		logos || (await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']`))
-	// console.log(logos)
-	return (
-		<section className="section space-y-8 py-12">
-			<header className="richtext text-main text-center text-gray-400">
-				<Pretitle>{pretitle}</Pretitle>
-				<PortableText value={content} />
-			</header>
 
-			<figure className="mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-6">
-				{allLogos.map((logo, key) => (
-					// <Img
-					// 	className="h-8 w-auto"
-					// 	image={logo.icon}
-					// 	imageWidth={400}
-					// 	key={key}
-					// />
-					<div
-						key={key}
-						className="svg-container h-6 w-auto grayscale"
-						dangerouslySetInnerHTML={{ __html: logo.icon }}
-					/>
-				))}
-			</figure>
+	const components: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				if (value.style === 'h2') {
+					return (
+						<h2 className="font-semibold leading-tight text-cyan-950">
+							{value.children.map((child: any) => child.text).join('')}
+						</h2>
+					)
+				}
+				return (
+					<p className="text-main font-semibold text-gray-400">
+						{value.children.map((child: any) => child.text).join('')}
+					</p>
+				)
+			},
+		},
+	}
+	return (
+		<section className="section py-12">
+			<div className="fluid-gap flex w-full flex-col items-start">
+				<PortableText value={content} components={components} />
+
+				<figure className="flex w-full flex-wrap items-center justify-center gap-x-6 gap-y-6">
+					{allLogos.map((logo, key) => (
+						<div
+							key={key}
+							className="svg-container h-11 w-auto"
+							dangerouslySetInnerHTML={{ __html: logo.icon }}
+						/>
+					))}
+				</figure>
+			</div>
 		</section>
 	)
 }
