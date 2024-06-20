@@ -7,17 +7,22 @@ import {
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import Image from 'next/image'
+import blob from '../../../public/gradient-blob.svg'
+import { PiCheckCircle } from 'react-icons/pi'
 
 export default function CallToAction({
 	content,
 	ctas,
 	image,
+	checkedList,
 	textAlign = 'start',
 	alignItems,
 }: Partial<{
 	content: any
 	ctas: Sanity.CTA[]
 	image: Sanity.Image & { onRight?: boolean }
+	checkedList: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -45,12 +50,29 @@ export default function CallToAction({
 			},
 		},
 	}
+	const checkedListComponents: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				const textContent = value.children
+					.map((child: any) => child.text)
+					.join('')
+				if (!textContent.trim()) return null // Do not render if text content is empty or just whitespace
 
+				return (
+					<div className="flex items-center gap-2">
+						<PiCheckCircle className="h-4 w-4 text-gray-400" />
+						<p className="text-small text-gray-400">{textContent}</p>
+					</div>
+				)
+			},
+		},
+	}
+	// console.log(checkedList)
 	return (
-		<section className={'grid *:col-span-full *:row-span-full'}>
+		<section className={'section py-24'}>
 			<div
 				className={
-					'section flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 p-10 lg:flex-row'
+					'fluid-gap fluid-padding relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'
 				}
 			>
 				<div
@@ -60,6 +82,12 @@ export default function CallToAction({
 					<PortableText value={content} components={components} />
 
 					<CTAList ctas={ctas} />
+					<div className="flex flex-col gap-2">
+						<PortableText
+							value={checkedList}
+							components={checkedListComponents}
+						/>
+					</div>
 				</div>
 				<div className="h-[400px] w-full lg:max-w-[400px]">
 					<div className="brief-background relative h-full overflow-hidden rounded-sm border-8 border-white shadow-md">
@@ -73,6 +101,12 @@ export default function CallToAction({
 						</div>
 					</div>
 				</div>
+				<Image
+					src={blob}
+					alt="hero"
+					className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
+					draggable={false}
+				/>
 			</div>
 		</section>
 	)

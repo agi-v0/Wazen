@@ -66,7 +66,9 @@ export default function Brief({
 					className={'flex max-w-2xl flex-col gap-4'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'text-gray-400'}>{pretitle}</Pretitle>
+					<Pretitle className={'text-4xl font-semibold text-gray-400'}>
+						{pretitle}
+					</Pretitle>
 					<PortableText value={mainTitle} components={components} />
 					<PortableText value={Subtitle} components={components} />
 				</div>

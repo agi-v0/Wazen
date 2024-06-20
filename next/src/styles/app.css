@@ -109,6 +109,10 @@
 	.fluid-gap {
 		gap: var(--padding-horizontal--main);
 	}
+
+	.fluid-padding {
+		padding: var(--padding-horizontal--main);
+	}
 }
 
 @layer utilities {
