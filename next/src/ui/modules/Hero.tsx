@@ -91,14 +91,14 @@ export default function Hero({
 					<div className="tertiary">text</div> */}
 				</div>
 				<div className="">
-					<div className="section mx-auto">
+					<div className="section mx-auto w-full">
 						<ContainerScroll>
 							<Image
-								src={`/dashboard-image.png`}
+								src={`/dashboard-image.svg`}
 								alt="hero"
-								height={720}
-								width={1400}
-								className="mx-auto h-full rounded-2xl object-cover object-left-top"
+								height={1024}
+								width={1440}
+								className="mx-auto h-auto w-full object-cover object-left-top"
 								draggable={false}
 							/>
 						</ContainerScroll>

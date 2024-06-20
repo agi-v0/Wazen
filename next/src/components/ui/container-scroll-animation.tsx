@@ -8,9 +8,10 @@ export const ContainerScroll = ({
 	children: React.ReactNode
 }) => {
 	const containerRef = useRef<any>(null)
-	const { scrollYProgress } = useScroll({
-		target: containerRef,
-	})
+	const { scrollYProgress } = useScroll()
+	// 	{
+	// 	target: containerRef,
+	// }
 	const [isMobile, setIsMobile] = React.useState(false)
 
 	React.useEffect(() => {
@@ -28,19 +29,19 @@ export const ContainerScroll = ({
 		return isMobile ? [0.7, 0.9] : [1.05, 1]
 	}
 
-	const rotate = useTransform(scrollYProgress, [0, 0.25], [20, 0])
-	const scale = useTransform(scrollYProgress, [0, 0.25], scaleDimensions())
-	const translate = useTransform(scrollYProgress, [0, 0.25], [0, -100])
+	const rotate = useTransform(scrollYProgress, [0, 0.1], [20, 0])
+	const scale = useTransform(scrollYProgress, [0, 0.1], scaleDimensions())
+	const translate = useTransform(scrollYProgress, [0, 0.1], [0, -100])
 
 	return (
 		<div
-			className="relative flex items-center justify-center p-2"
+			className="relative flex items-center justify-center"
 			ref={containerRef}
 		>
 			<div
-				className="relative py-10 md:py-40"
+				className="relative py-10 md:py-20"
 				style={{
-					perspective: '1000px',
+					perspective: '800px',
 				}}
 			>
 				<Card rotate={rotate} translate={translate} scale={scale}>
@@ -68,7 +69,7 @@ export const Card = ({
 				scale,
 			}}
 		>
-			<div className="h-full w-full overflow-hidden rounded-2xl bg-gray-100 md:rounded-2xl md:p-4">
+			<div className="h-full w-full overflow-hidden rounded-xl border-2 border-teal-500/20">
 				{children}
 			</div>
 		</motion.div>
