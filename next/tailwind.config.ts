@@ -1,6 +1,21 @@
 import plugin from 'tailwindcss/plugin'
 import type { Config } from 'tailwindcss'
 
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
+
 const config: Config = {
 	content: ['./src/{app,ui}/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
 	theme: {
@@ -32,7 +47,8 @@ const config: Config = {
 		plugin(function ({ addVariant }) {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
 		}),
-		require('@tailwindcss/typography'),
+		// require('@tailwindcss/typography'),
+		addVariablesForColors
 	],
 	safelist: ['action'],
 }
