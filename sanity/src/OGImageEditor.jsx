@@ -12,7 +12,7 @@ const Component = ({ title }) => {
 		</div>
 	)
 }
-console.log(document)
+
 export const OGImageEditor = {
 	name: 'OGImage',
 	title: 'testLayout',

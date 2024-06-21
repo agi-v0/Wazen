@@ -7,58 +7,6 @@ export default defineType({
 	title: 'Benefits',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
-	// 	defineField({
-	// 		name: 'content',
-	// 		type: 'array',
-	// 		of: [{ type: 'block' }],
-	// 	}),
-	// 	defineField({
-	// 		name: 'benefits',
-	// 		type: 'array',
-	// 		of: [
-	// 			defineArrayMember({
-	// 				type: 'object',
-	// 				fields: [
-	// 					defineField({
-	// 						name: 'pretitle',
-	// 						type: 'string',
-	// 						group: 'content',
-	// 					}),
-	// 					defineField({
-	// 						name: 'content',
-	// 						type: 'array',
-	// 						of: [{ type: 'block' }],
-	// 						group: 'content',
-	// 					}),
-	// 					defineField({
-	// 						name: 'image',
-	// 						type: 'image',
-	// 						fields: [
-	// 							defineField({
-	// 								name: 'alt',
-	// 								type: 'string',
-	// 							}),
-	// 							defineField({
-	// 								name: 'onRight',
-	// 								type: 'boolean',
-	// 								initialValue: false,
-	// 							}),
-	// 							defineField({
-	// 								name: 'loading',
-	// 								type: 'string',
-	// 								options: {
-	// 									layout: 'radio',
-	// 									list: ['lazy', 'eager'],
-	// 								},
-	// 								initialValue: 'lazy',
-	// 							}),
-	// 						],
-	// 					}),
-	// 				],
-	// 			}),
-	// 		],
-	// 	}),
-	// ],
 	fields: [
 		defineField({
 			name: 'benefits',
@@ -80,24 +28,17 @@ export default defineType({
 						}),
 						defineField({
 							name: 'image',
-							title: 'Image',
 							type: 'image',
+							fields: [
+								defineField({
+									name: 'alt',
+									type: 'string',
+								}),
+							],
 						}),
 					],
-					preview: {
-						select: {
-							content: 'content',
-							media: 'image',
-						},
-						prepare: ({ content, media }) => ({
-							title: getBlockText(content),
-							subtitle: 'Benefit',
-							media: media,
-						}),
-					},
 				}),
 			],
-			// validation: (rule) => rule.required().min(6).max(6),
 		}),
 	],
 

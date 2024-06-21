@@ -10,8 +10,22 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 			className="group block"
 			href={`/blog/${post.metadata?.slug?.current}`}
 		>
-			<div className="aspect-[inherit] w-full rounded-md object-cover p-2 shadow-md">
-				<Img image={post.metadata.image} imageWidth={600} className="w-full" />
+			<div className="w-full rounded-md object-cover p-2 shadow-md">
+				{post.metadata.image ? (
+					<Img
+						image={post.metadata.image}
+						imageWidth={600}
+						className="w-full"
+					/>
+				) : (
+						<Image
+							src="/image-placeholder.jpg"
+							alt=""
+							width={600}
+							height={190}
+							className='h-[190px] object-cover'
+						/>
+				)}
 				<div className="flex gap-4">
 					{post?.categories && (
 						<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">

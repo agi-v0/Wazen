@@ -34,7 +34,7 @@ export default async function Rollup({
 	)
 
 	return (
-		<section className="section space-y-4">
+		<section className="section space-y-4 my-20">
 			{posts[0]?.categories && (
 				<div className="text-4xl font-bold">
 					{posts[0]?.categories[0]?.title}
@@ -49,7 +49,7 @@ export default async function Rollup({
 				)}
 			>
 				{posts?.map((post, key) => (
-					<li key={key} className="">
+					<li key={key}>
 						<PostPreview post={post} />
 					</li>
 				))}

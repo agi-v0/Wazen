@@ -67,7 +67,7 @@ export default function CallToAction({
 			},
 		},
 	}
-	// console.log(checkedList)
+	
 	return (
 		<section className={'section py-24'}>
 			<div
