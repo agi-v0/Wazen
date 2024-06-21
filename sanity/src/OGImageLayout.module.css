@@ -3,8 +3,8 @@
 	font-style: normal;
 	font-weight: 600;
 	src:
-		local('/static/Rubik-SemiBold.ttf'),
-		url('/static/Rubik-SemiBold.ttf') format ('ttf');
+		local('../static/Rubik-SemiBold.ttf'),
+		url('../static/Rubik-SemiBold.ttf') format ('ttf');
 }
 
 .root {
