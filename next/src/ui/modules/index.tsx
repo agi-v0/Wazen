@@ -1,4 +1,5 @@
 import Applications from './Applications'
+import Benefits from './Benefits'
 import Categories from './blog/Categories'
 import FirstPost from './blog/FirstPost'
 import BlogRollup from './blog/Rollup'
@@ -18,6 +19,7 @@ import CallToAction from './CallToAction'
 import StatList from './StatList'
 import HowItWorks from './HowItWorks'
 import TestimonialList from './TestimonialList'
+import Features from './Features'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
@@ -38,6 +40,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <CustomHTML {...module} key={module._key} />
 					case 'faq-list':
 						return <FAQList {...module} key={module._key} />
+					case 'features-grid':
+						return <Features {...module} key={module._key} />
 					case 'first-post':
 						return <FirstPost {...module} key={module._key} />
 					case 'hero':
@@ -56,11 +60,13 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <RichtextModule {...module} key={module._key} />
 					case 'single-testimony':
 						return <SingleTestimony {...module} key={module._key} />
+					case 'solutions-benefits':
+						return <Benefits {...module} key={module._key} />
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
 					case 'call.to.action':
 						return <CallToAction {...module} key={module._key} />
-					case 'steps':
+					case 'how-it-works':
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
