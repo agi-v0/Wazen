@@ -9,17 +9,12 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
-			name: 'mainLabel',
+			name: 'title',
 			type: 'string',
 		}),
 		defineField({
-			name: 'LinkLabel',
-			type: 'string',
-		}),
-		defineField({
-			name: 'links',
-			type: 'array',
-			of: [{ type: 'link' }],
+			name: 'link',
+			type: 'link',
 		}),
 		defineField({
 			name: 'image',
@@ -45,12 +40,12 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: 'label',
-			links: 'links',
+			title: 'title',
+			link: 'link.label',
 		},
-		prepare: ({ title, links }) => ({
-			title,
-			subtitle: count(links, 'link'),
+		prepare: ({ title, link }) => ({
+			title: title,
+			subtitle: link,
 		}),
 	},
 })

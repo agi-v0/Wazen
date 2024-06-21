@@ -15,7 +15,13 @@ export const InfiniteMovingCards = ({
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	links: any
+	links: [
+		{
+			title: string
+			link: Sanity.Link
+			image: Sanity.Image
+		},
+	]
 	logoType: 'default' | 'light' | 'dark'
 }) => {
 	const containerRef = React.useRef<HTMLDivElement>(null)
@@ -73,21 +79,21 @@ export const InfiniteMovingCards = ({
 			<ul
 				ref={scrollerRef}
 				className={cn(
-					' my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
-					start && 'animate-scroll ',
+					'my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
+					start && 'animate-scroll',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{links.map((link: any, idx: any) => (
+				{links.map(({ title, link, image }, idx: any) => (
 					<li
 						key={idx}
 						className={`flex w-[450px] flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md`}
 					>
 						<div className="flex flex-col justify-start">
-							<h3 className="text-start text-2xl">{link.mainLabel}</h3>
+							<h3 className="text-main text-start font-semibold">{title}</h3>
 							<div className="mt-6">
 								<span className="link flex items-center gap-1 text-teal-600 no-underline">
-									{link.LinkLabel}
+									{link.label}
 									<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
 								</span>
 							</div>
@@ -95,7 +101,7 @@ export const InfiniteMovingCards = ({
 						<div className="rounded-md bg-teal-50 p-4 text-8xl">
 							<Img
 								className="max-h-[2em] max-w-[100px] object-contain"
-								image={link.image[logoType]}
+								image={image}
 								imageWidth={400}
 								key={idx}
 							/>

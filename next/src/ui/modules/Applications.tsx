@@ -11,21 +11,21 @@ import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretRightBold } from 'react-icons/pi'
+import CTAList from '@/ui/CTAList'
+import { cn } from '@/lib/utils'
 
 export default function Applications({
 	pretitle,
-	mainTitle,
-	Subtitle,
-	link,
+	content,
 	links,
+	ctas,
 	textAlign = 'center',
 	alignItems,
 }: Partial<{
 	pretitle: string
-	mainTitle: any
-	Subtitle: any
-	link: any
+	content: any
 	links: any
+	ctas: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -62,9 +62,8 @@ export default function Applications({
 					<Pretitle className={'py-1 text-4xl text-gray-400'}>
 						{pretitle}
 					</Pretitle>
-					<PortableText value={mainTitle} components={components} />
-					<PortableText value={Subtitle} components={components} />
-					<Link
+					<PortableText value={content} components={components} />
+					{/* <Link
 						href={processUrl(link.internal, {
 							base: false,
 							params: link.params,
@@ -75,7 +74,18 @@ export default function Applications({
 							{link.label}
 							<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
 						</summary>
-					</Link>
+					</Link> */}
+					<CTAList
+						ctas={ctas}
+						className={cn(
+							{
+								'justify-start': stegaClean(textAlign) === 'left',
+								'justify-center': stegaClean(textAlign) === 'center',
+								'justify-end': stegaClean(textAlign) === 'right',
+							},
+							'text-white *:h-12 *:px-6 *:text-lg',
+						)}
+					/>
 					<div className="bg-teal-50/40 py-10">
 						<InfiniteMovingCards
 							direction={'left'}
