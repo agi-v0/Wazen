@@ -1,4 +1,6 @@
-export const BASE_URL = 'https://next-sanity-template-demo.vercel.app'
+import { stegaClean } from '@sanity/client/stega'
+
+export const BASE_URL = 'https://sanitypress.vercel.app'
 
 export default function (
 	page: Sanity.PageBase,
@@ -10,16 +12,13 @@ export default function (
 		params?: string
 	} = {},
 ) {
-	// prettier-ignore
-	const directory =
-		page._type === 'blog.post' ? 'blog' :
-		null
+	const directory = page._type === 'blog.post' ? 'blog' : null
 
 	const slug = page.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug
 
 	return (
-		(base ? BASE_URL : '/') +
-		[directory, path, params].filter(Boolean).join('/')
+		(base ? BASE_URL + '/' : '/') +
+		[directory, path, stegaClean(params)].filter(Boolean).join('/')
 	)
 }

@@ -26,6 +26,13 @@ async function getPage() {
 						internal->{ title, metadata }
 					}
 				},
+				products[]{
+					...,
+						link{
+							...,
+							internal->{ title, metadata },
+					}
+				},
 				logos[]->,
 				partnerslogos[]->,
 				testimonials[]->,

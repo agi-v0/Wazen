@@ -42,6 +42,7 @@ import heroThree from './modules/hero.three'
 import steps from './modules/steps'
 import featuresGrid from './modules/features-grid'
 import solutionsBenefits from './modules/solutions-benefits'
+import productList from './modules/product-list'
 
 export const schemaTypes = [
 	// documents
@@ -88,4 +89,5 @@ export const schemaTypes = [
 	howItWorks,
 	featuresGrid,
 	solutionsBenefits,
+	productList,
 ]

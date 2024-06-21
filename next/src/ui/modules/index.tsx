@@ -18,6 +18,7 @@ import CallToAction from './CallToAction'
 import StatList from './StatList'
 import HowItWorks from './HowItWorks'
 import TestimonialList from './TestimonialList'
+import ProductList from './ProductList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
@@ -64,7 +65,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
-
+					case 'product-list':
+						return <ProductList {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}

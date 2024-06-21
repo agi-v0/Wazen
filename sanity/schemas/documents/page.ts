@@ -36,6 +36,7 @@ export default defineType({
 				{ type: 'how-it-works' },
 				{ type: 'features-grid' },
 				{ type: 'solutions-benefits' },
+				{ type: 'product-list' },
 			],
 		}),
 		defineField({
