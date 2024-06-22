@@ -17,6 +17,7 @@ export default defineType({
 				{ type: 'blog-rollup' },
 				{ type: 'brief' },
 				{ type: 'categories-list' },
+				{ type: 'contact-us' },
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
 				{ type: 'faq-list' },

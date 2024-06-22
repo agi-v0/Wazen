@@ -43,6 +43,7 @@ import steps from './modules/steps'
 import featuresGrid from './modules/features-grid'
 import solutionsBenefits from './modules/solutions-benefits'
 import productList from './modules/product-list'
+import contactUs from './modules/contact-us'
 
 export const schemaTypes = [
 	// documents
@@ -70,6 +71,7 @@ export const schemaTypes = [
 	blogRollup,
 	brief,
 	categoriesList,
+	contactUs,
 	creativeModule,
 	customHtml,
 	faqList,
