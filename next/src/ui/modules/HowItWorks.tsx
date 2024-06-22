@@ -51,10 +51,10 @@ export default function HowItWorks({
 						>
 							<Img
 								image={step.image}
-								imageWidth={224}
-								className="rounded-2xl border-8 border-teal-100"
+								imageWidth={200}
+								className="rounded-xl border-8 border-teal-100"
 							/>
-							<div className='text-2xl my-4 font-bold'>{step.text}</div>
+							<div className='text-2xl my-4'>{step.text}</div>
 						</li>
 					))}
 				</ul>

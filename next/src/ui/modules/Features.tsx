@@ -28,18 +28,11 @@ export default function Features({
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h4') {
+				if (value.style === 'h2') {
 					return (
-						<h4 className="font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
-						</h4>
-					)
-				}
-				if (value.style === 'h3') {
-					return (
-						<h3 className="font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h3>
+						</h2>
 					)
 				}
 				return (
@@ -53,22 +46,15 @@ export default function Features({
 	const featureStyle: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h4') {
-					return (
-						<h4 className="text-start text-2xl font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h4>
-					)
-				}
 				if (value.style === 'h3') {
 					return (
-						<h3 className="text-start text-2xl font-semibold leading-tight text-cyan-950 ">
+						<h3 className="text-main font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h3>
 					)
 				}
 				return (
-					<p className="max-w-xl text-start text-gray-600 md:max-w-3xl">
+					<p className="text-small max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -95,13 +81,13 @@ export default function Features({
 					<div className="text-center">
 						<CTAList ctas={ctas} />
 					</div>
-					<div className="grid w-full grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-2 [&>*:nth-child(even)]:bg-teal-100">
+					<div className="grid w-full grid-cols-1 gap-3 md:grid-rows-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
 						{features.map((feature: any, index: any) => (
 							<div
-								className="flex h-[250px] w-[350px]  rounded-md bg-cyan-50 p-6"
+								className="flex w-[350px] rounded-md bg-cyan-50 p-6"
 								key={index}
 							>
-								<div className="flex flex-col justify-start gap-4">
+								<div className="flex flex-col justify-start gap-4 text-start">
 									<FaCube className="text-2xl" />
 									<PortableText
 										value={feature.feature}

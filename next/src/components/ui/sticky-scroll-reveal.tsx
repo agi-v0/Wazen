@@ -28,7 +28,7 @@ export const StickyScroll = ({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="my-4 text-balance text-start text-5xl leading-tight">
+						<h2 className="h2 my-4 text-balance text-start text-5xl leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)

@@ -21,7 +21,7 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 						<Date value={post.publishDate} />
 					</div>
 				</div>
-				<h1 className="h1 text-6xl">{post.title}</h1>
+				<h1 className="h1">{post.title}</h1>
 				<div className="my-4">
 					<Img
 						image={post.metadata.image}
