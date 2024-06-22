@@ -33,7 +33,7 @@ async function getPage() {
 							internal->{ title, metadata },
 					}
 				},
-				categories[]->,
+				categories[]->{title},
 				logos[]->,
 				partnerslogos[]->,
 				testimonials[]->,

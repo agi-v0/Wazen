@@ -6,7 +6,6 @@ export default function Categories({
 	categories?: Sanity.BlogCategory[]
 }) {
 	if (!categories?.length) return null
-	console.log(categories)
 	return (
 		<ul className="my-4 flex justify-center">
 			{categories?.map((category, key) => (
