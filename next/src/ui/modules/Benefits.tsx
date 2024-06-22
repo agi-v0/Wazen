@@ -4,23 +4,10 @@ import {
 } from '@portabletext/react'
 import { StickyScroll } from '@/components/ui/sticky-scroll-reveal'
 
-
 export default function Benefits({
 	benefits,
-	pretitle,
-	mainTitle,
-	Subtitle,
-	image,
-	textAlign = 'center',
-	alignItems,
 }: Partial<{
 	benefits: any
-	pretitle: string
-	mainTitle: any
-	Subtitle: any
-	image: Sanity.Image
-	textAlign: React.CSSProperties['textAlign']
-	alignItems: React.CSSProperties['alignItems']
 }>) {
 	const components: PortableTextComponents = {
 		types: {

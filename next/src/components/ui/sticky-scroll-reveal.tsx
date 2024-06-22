@@ -15,6 +15,7 @@ export const StickyScroll = ({
 	contentClassName,
 }: {
 	content: {
+		pretitle: any
 		title: string
 		description: string
 		content?: React.ReactNode | any
@@ -66,6 +67,8 @@ export const StickyScroll = ({
 		setActiveCard(closestBreakpointIndex)
 	})
 
+	const numbers = [1, 2, 3]
+
 	const linearGradients = [
 		'linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))',
 		'linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))',
@@ -85,27 +88,50 @@ export const StickyScroll = ({
 		setImageList(images[activeCard % images.length])
 	}, [activeCard])
 
-	// console.log(content)
-
 	return (
 		<motion.div className="flex justify-between space-x-10" ref={ref}>
-			<div className="flex flex-col items-start gap-32 px-4">
-				{content.map((item, index) => (
-					<div key={item.content + index} className="my-10">
-						<motion.div
-							initial={{
-								opacity: 0,
-							}}
-							animate={{
-								opacity: activeCard === index ? 1 : 0.3,
-							}}
-							className="font-bold md:text-5xl"
-						>
-							<PortableText value={item.content} components={components} />
-						</motion.div>
+			<div className='flex gap-8'>
+				<div className="sticky h-full">
+					<div className="flex flex-col items-start">
+						{numbers.map((number, index) => (
+							<div key={number + index} className="my-4">
+								<motion.div
+									initial={{
+										opacity: 0,
+									}}
+									animate={{
+										opacity: activeCard === index ? 1 : 0.3,
+									}}
+									className="text-xl font-bold"
+								>
+									{number}
+								</motion.div>
+							</div>
+						))}
 					</div>
-				))}
+				</div>
+				<div className="flex flex-col items-start gap-32 px-4">
+					{content.map((item, index) => {
+						return (
+							<div key={item.content + index} className="my-10">
+								<motion.div
+									initial={{
+										opacity: 0,
+									}}
+									animate={{
+										opacity: activeCard === index ? 1 : 0.3,
+									}}
+									className="font-bold md:text-5xl"
+								>
+									<PortableText value={item.pretitle} components={components} />
+									<PortableText value={item.content} components={components} />
+								</motion.div>
+							</div>
+						)
+					})}
+				</div>
 			</div>
+
 			<div className="sticky left-0 top-32 hidden h-full md:block">
 				<div className="flex items-center justify-center">
 					<div
