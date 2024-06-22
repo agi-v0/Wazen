@@ -85,7 +85,7 @@ export const StickyScroll = ({
 		setImageList(images[activeCard % images.length])
 	}, [activeCard])
 
-	console.log(content)
+	// console.log(content)
 
 	return (
 		<motion.div className="flex justify-between space-x-10" ref={ref}>

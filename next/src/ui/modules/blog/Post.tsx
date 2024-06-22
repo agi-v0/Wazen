@@ -1,5 +1,5 @@
 import Date from '@/ui/Date'
-import Categories from './Categories'
+import Categories from './CategoriesList'
 import ReadTime from './ReadTime'
 import { PortableText } from '@portabletext/react'
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
