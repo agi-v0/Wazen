@@ -3,24 +3,25 @@ import { VscFolderOpened } from 'react-icons/vsc'
 import { count } from '../../src/utils'
 
 export default defineType({
-	name: 'categories',
-	title: 'Categories',
+	name: 'categories-list',
+	title: 'Categories Selector',
 	icon: VscFolderOpened,
 	type: 'object',
 	fields: [
 		defineField({
-			name: 'links',
+			name: 'categories',
 			type: 'array',
-			of: [{ type: 'link' }],
+			of: [{ type: 'reference', to: [{ type: 'blog.category' }] }],
+			description: 'Add all blog categories here',
 		}),
 	],
 	preview: {
 		select: {
-			links: 'links',
+			categories: 'categories',
 		},
-		prepare: ({ links }) => ({
+		prepare: ({ categories }) => ({
 			title: 'Categories',
-			subtitle: count(links, 'link'),
+			subtitle: count(categories, 'category'),
 		}),
 	},
 })

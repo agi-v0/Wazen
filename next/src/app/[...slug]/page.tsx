@@ -46,6 +46,7 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
+				categories[]->,
 				items[]->,
 				testimonials[]->,
 				'headings': select(

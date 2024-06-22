@@ -35,7 +35,7 @@ import partners from './modules/partners'
 import partnerslogos from './documents/partnerslogos'
 import callToAction from './modules/call-to-action'
 import singleTestimony from './modules/single-testimony'
-import categories from './modules/categories'
+import categoriesList from './modules/categories-list'
 import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
 import heroThree from './modules/hero.three'
@@ -69,7 +69,7 @@ export const schemaTypes = [
 	applications,
 	blogRollup,
 	brief,
-	categories,
+	categoriesList,
 	creativeModule,
 	customHtml,
 	faqList,

@@ -1,6 +1,6 @@
 import Applications from './Applications'
 import Benefits from './Benefits'
-import Categories from './blog/Categories'
+import Categories from './blog/CategoriesList'
 import FirstPost from './blog/FirstPost'
 import BlogRollup from './blog/Rollup'
 import Brief from './Brief'
@@ -33,7 +33,7 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <BlogRollup {...module} key={module._key} />
 					case 'brief':
 						return <Brief {...module} key={module._key} />
-					case 'categories':
+					case 'categories-list':
 						return <Categories {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
