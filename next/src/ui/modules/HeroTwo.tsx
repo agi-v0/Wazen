@@ -35,7 +35,7 @@ export default function HeroTwo({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="mx-auto max-w-3xl text-center font-semibold leading-tight drop-shadow-md">
+						<h1 className="h1 mx-auto max-w-3xl text-center font-semibold leading-tight drop-shadow-md">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)

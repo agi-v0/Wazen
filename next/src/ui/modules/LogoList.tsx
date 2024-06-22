@@ -27,7 +27,7 @@ export default async function LogoList({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
@@ -42,10 +42,13 @@ export default async function LogoList({
 	}
 	return (
 		<section className="section py-12">
-			<div className="fluid-gap flex w-full flex-col items-start">
+			<div className="fluid-gap flex w-full flex-col items-center">
+				<Pretitle className="text-main text-center font-normal text-gray-400">
+					{pretitle}
+				</Pretitle>
 				<PortableText value={content} components={components} />
 
-				<figure className="flex w-full flex-wrap items-center justify-center gap-x-6 gap-y-6">
+				<figure className="flex w-full flex-wrap items-center justify-center gap-x-8 gap-y-6">
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}

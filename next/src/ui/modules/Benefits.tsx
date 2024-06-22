@@ -4,7 +4,6 @@ import {
 } from '@portabletext/react'
 import { StickyScroll } from '@/components/ui/sticky-scroll-reveal'
 
-
 export default function Benefits({
 	benefits,
 	pretitle,
@@ -27,7 +26,7 @@ export default function Benefits({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)

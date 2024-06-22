@@ -75,7 +75,7 @@ export default function TestimonialList({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
@@ -96,7 +96,10 @@ export default function TestimonialList({
 		},
 	}
 	return (
-		<section className="section space-y-8 py-12 text-center overflow-hidden" ref={containerRef}>
+		<section
+			className="section space-y-8 overflow-hidden py-12 text-center"
+			ref={containerRef}
+		>
 			{content && (
 				<header className="richtext">
 					<PortableText value={content} components={components} />
@@ -107,7 +110,7 @@ export default function TestimonialList({
 				ref={scrollerRef}
 				className={cn(
 					'flex items-center gap-x-8 before:m-auto after:m-auto',
-					start && 'animate-scroll ',
+					start && 'animate-scroll',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
@@ -117,7 +120,7 @@ export default function TestimonialList({
 						className="flex w-[450px] flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md"
 					>
 						<article>
-							<blockquote className="space-y-6 ">
+							<blockquote className="space-y-6">
 								<div className="richtext text-balance">
 									<PortableText value={testimonial.content} />
 								</div>
