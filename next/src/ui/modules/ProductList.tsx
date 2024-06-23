@@ -52,11 +52,7 @@ export default function ProductList({
 	}
 
 	return (
-		<section
-			className={
-				'section fluid-vertical-space grid *:col-span-full *:row-span-full'
-			}
-		>
+		<section className={'section'}>
 			<div className={'fluid-gap flex w-full flex-col items-center'}>
 				<div
 					className={'flex flex-col items-center gap-8'}
@@ -72,7 +68,7 @@ export default function ProductList({
 						{products.map((product) => (
 							<li
 								key={product.productTitle}
-								className="group flex flex-col  rounded-2xl bg-white p-2 shadow-md transition-all hover:bg-teal-50"
+								className="group flex flex-col  rounded-xl bg-white p-2 transition-all hover:bg-teal-50 hover:shadow-md"
 							>
 								<Link
 									href={processUrl(product.link.internal as Sanity.PageBase, {
