@@ -11,6 +11,8 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from 'react-icons/pi'
 import Img from '../Img'
+import { motion, useInView, stagger } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProductList({
 	pretitle,
@@ -51,6 +53,9 @@ export default function ProductList({
 		},
 	}
 
+	const ref = useRef(null)
+	const isInView = useInView(ref)
+
 	return (
 		<section className={'section'}>
 			<div className={'fluid-gap flex w-full flex-col items-center'}>
@@ -65,9 +70,16 @@ export default function ProductList({
 				</div>
 				{products && (
 					<ul className="fluid-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-						{products.map((product) => (
-							<li
+						{products.map((product, index) => (
+							<motion.li
 								key={product.productTitle}
+								initial="hidden"
+								animate={isInView ? 'visible' : 'hidden'}
+								variants={{
+									hidden: { y: 10, opacity: 0 },
+									visible: { y: 0, opacity: 1 },
+								}}
+								transition={{ delay: index * 0.1 }}
 								className="group flex flex-col rounded-xl bg-white p-2 transition-all hover:bg-teal-50 hover:shadow-md"
 							>
 								<Link
@@ -76,7 +88,10 @@ export default function ProductList({
 										params: product.link.params,
 									})}
 								>
-									<div className="grid aspect-square w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 p-2">
+									<div
+										ref={ref}
+										className="grid aspect-square w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 p-2"
+									>
 										<Img
 											image={product.productImage}
 											alt={product.productTitle}
@@ -95,7 +110,7 @@ export default function ProductList({
 										</p>
 									</div>
 								</Link>
-							</li>
+							</motion.li>
 						))}
 					</ul>
 				)}

@@ -68,6 +68,7 @@ export const Card = ({
 				rotateX: rotate,
 				scale,
 			}}
+			key={`container-scroll-${1}`}
 		>
 			<div className="h-full w-full overflow-hidden rounded-xl border-4 border-teal-500/20 shadow-lg">
 				{children}

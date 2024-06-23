@@ -17,7 +17,7 @@ export default async function Footer() {
 		<section className="bg-cyan-950 text-center text-white">
 			<div className="section relative overflow-hidden py-12">
 				<div
-					className="!svg-container absolute top-[50%] h-auto w-full max-w-screen-xl fill-white opacity-15"
+					className="svg-container pointer-events-none absolute top-[50%] h-auto w-full max-w-screen-xl fill-white opacity-15"
 					dangerouslySetInnerHTML={{ __html: logo.icon }}
 				/>
 				<div className="flex w-full flex-col justify-between gap-20">
