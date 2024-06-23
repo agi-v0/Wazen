@@ -21,6 +21,7 @@ import HowItWorks from './HowItWorks'
 import TestimonialList from './TestimonialList'
 import ProductList from './ProductList'
 import Features from './Features'
+import ContactUs from './ContactUs'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
@@ -35,6 +36,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <Brief {...module} key={module._key} />
 					case 'categories-list':
 						return <Categories {...module} key={module._key} />
+					case 'contact-us':
+						return <ContactUs {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':

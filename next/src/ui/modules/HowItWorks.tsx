@@ -23,7 +23,7 @@ export default function HowItWorks({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 text-xl font-semibold leading-tight text-teal-600 lg:text-2xl">
+						<h2 className="text-xl font-semibold leading-tight text-teal-600 lg:text-2xl">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
@@ -39,18 +39,22 @@ export default function HowItWorks({
 
 	return (
 		<section className={'section py-12'}>
-			<div className="fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6 rounded-sm border-8 border-white bg-teal-50 p-6 text-teal-600 shadow-md">
-				<div className="flex max-w-2xl flex-col gap-4">
+			<div className="fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6 rounded-xl border-8 border-white bg-teal-50 p-6 text-teal-600 shadow-md">
+				<div className="my-6">
 					<PortableText value={content} components={components} />
 				</div>
-				<ul className="flex w-full flex-col justify-evenly md:flex-row">
+				<ul className="flex flex-col justify-evenly w-full md:flex-row">
 					{steps?.map((step, index) => (
 						<li
-							className="mb-3 flex flex-col items-center justify-center gap-4"
+							className="flex flex-col items-center justify-center gap-4"
 							key={index}
 						>
-							<Img image={step.image} imageWidth={200} className="rounded-xl" />
-							<div>{step.text}</div>
+							<Img
+								image={step.image}
+								imageWidth={200}
+								className="rounded-xl border-8 border-teal-100"
+							/>
+							<div className='text-2xl my-4'>{step.text}</div>
 						</li>
 					))}
 				</ul>
