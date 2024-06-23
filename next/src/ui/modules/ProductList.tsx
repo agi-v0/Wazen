@@ -9,7 +9,7 @@ import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
-import { PiCaretRightBold } from 'react-icons/pi'
+import { PiCaretLeftBold } from 'react-icons/pi'
 import Img from '../Img'
 
 export default function ProductList({
@@ -52,7 +52,11 @@ export default function ProductList({
 	}
 
 	return (
-		<section className={'section grid *:col-span-full *:row-span-full'}>
+		<section
+			className={
+				'section fluid-vertical-space grid *:col-span-full *:row-span-full'
+			}
+		>
 			<div className={'fluid-gap flex w-full flex-col items-center'}>
 				<div
 					className={'flex flex-col items-center gap-8'}
@@ -68,7 +72,7 @@ export default function ProductList({
 						{products.map((product) => (
 							<li
 								key={product.productTitle}
-								className="flex flex-col rounded-2xl bg-teal-50 p-2 shadow-md"
+								className="group flex flex-col  rounded-2xl bg-white p-2 shadow-md transition-all hover:bg-teal-50"
 							>
 								<Link
 									href={processUrl(product.link.internal as Sanity.PageBase, {
@@ -86,8 +90,9 @@ export default function ProductList({
 										/>
 									</div>
 									<div className="space-y-1 p-4 text-start">
-										<h3 className="text-main font-semibold">
+										<h3 className="text-main font-semibold group-hover:text-cyan-950">
 											{product.productTitle}
+											<PiCaretLeftBold className="inline-block size-4 translate-x-0 text-cyan-950/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-[4px] group-hover:opacity-100" />
 										</h3>
 										<p className="text-small text-gray-600">
 											{product.productDescription}

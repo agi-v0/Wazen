@@ -49,17 +49,21 @@ export default function Applications({
 	}
 
 	return (
-		<section className={'grid *:col-span-full *:row-span-full'}>
+		<section
+			className={
+				'fluid-vertical-space grid min-h-screen *:col-span-full *:row-span-full'
+			}
+		>
 			<div
 				className={
-					'flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden p-10'
+					'fluid-gap flex w-full flex-col items-center justify-evenly overflow-hidden'
 				}
 			>
 				<div
-					className={'flex flex-col items-center gap-8'}
+					className={'flex flex-col items-center gap-6'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'py-1 text-4xl text-gray-400'}>
+					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
@@ -86,22 +90,22 @@ export default function Applications({
 							'text-white *:h-12 *:px-6 *:text-lg',
 						)}
 					/>
-					<div className="bg-teal-50/40 py-10">
-						<InfiniteMovingCards
-							direction={'left'}
-							speed={'slow'}
-							pauseOnHover={true}
-							links={links}
-							logoType="default"
-						/>
-						<InfiniteMovingCards
-							direction={'right'}
-							speed={'slow'}
-							pauseOnHover={true}
-							links={links}
-							logoType="default"
-						/>
-					</div>
+				</div>
+				<div className="bg-teal-50/40">
+					<InfiniteMovingCards
+						direction={'left'}
+						speed={'slow'}
+						pauseOnHover={true}
+						links={links}
+						logoType="default"
+					/>
+					<InfiniteMovingCards
+						direction={'right'}
+						speed={'slow'}
+						pauseOnHover={true}
+						links={links}
+						logoType="default"
+					/>
 				</div>
 			</div>
 		</section>
