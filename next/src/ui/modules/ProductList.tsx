@@ -68,7 +68,7 @@ export default function ProductList({
 						{products.map((product) => (
 							<li
 								key={product.productTitle}
-								className="group flex flex-col  rounded-xl bg-white p-2 transition-all hover:bg-teal-50 hover:shadow-md"
+								className="group flex flex-col rounded-xl bg-white p-2 transition-all hover:bg-teal-50 hover:shadow-md"
 							>
 								<Link
 									href={processUrl(product.link.internal as Sanity.PageBase, {
