@@ -13,7 +13,6 @@ import { FaCube } from 'react-icons/fa6'
 export default function Features({
 	pretitle,
 	content,
-	Subtitle,
 	ctas,
 	features,
 	textAlign = 'center',
@@ -77,7 +76,6 @@ export default function Features({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					<PortableText value={Subtitle} components={components} />
 					<div className="text-center">
 						<CTAList ctas={ctas} />
 					</div>
