@@ -12,7 +12,7 @@ export default async function FirstPost({
 	categoryRef: any
 }) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id][0...1] | order(publishDate desc){
+		groq`*[_type == 'blog.post' && (!defined($categoryRef) || $categoryRef in categories[]->_id)] | order(publishDate desc)[0...1] {
 			title,
 			 publishDate,
 			 metadata,

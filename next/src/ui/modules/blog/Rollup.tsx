@@ -15,7 +15,7 @@ export default async function Rollup({
 	layout: 'grid' | 'carousel'
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id][0...$limit]|order(publishDate desc){
+		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
 		 title,
 			publishDate,
 			metadata,
@@ -34,7 +34,7 @@ export default async function Rollup({
 	)
 
 	return (
-		<section className="section space-y-4 my-20">
+		<section className="section my-20 space-y-4">
 			{posts[0]?.categories && (
 				<div className="text-4xl font-bold">
 					{posts[0]?.categories[0]?.title}
