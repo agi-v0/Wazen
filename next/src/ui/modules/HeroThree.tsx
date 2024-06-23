@@ -8,6 +8,8 @@ import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Pretitle from '../Pretitle'
+import Image from 'next/image'
+import blob from '../../../public/gradient-blob2.svg'
 
 export default function HeroThree({
 	pretitle,
@@ -75,6 +77,13 @@ export default function HeroThree({
 					<div className="secondary">text</div>
 					<div className="tertiary">text</div> */}
 				</div>
+
+				<Image
+					src={blob}
+					alt="hero"
+					className="pointer-events-none absolute z-[-1] aspect-square h-[100%] w-auto object-cover"
+					draggable={false}
+				/>
 			</div>
 		</section>
 	)
