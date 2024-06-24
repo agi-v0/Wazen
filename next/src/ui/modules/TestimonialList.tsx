@@ -8,6 +8,7 @@ import {
 import Img from '../Img'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
+import ReactStars from 'react-stars'
 
 export default function TestimonialList({
 	content,
@@ -117,31 +118,42 @@ export default function TestimonialList({
 				{testimonials?.map(({ author, ...testimonial }, key) => (
 					<div
 						key={key}
-						className="flex w-[450px] flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md"
+						className="flex h-[280px] w-[420px] flex-shrink-0 flex-row rounded-md bg-white p-6 shadow-md"
 					>
-						<article>
+						<article className="flex flex-col justify-between">
+							<div className="flex justify-start">
+								<ReactStars
+									count={5}
+									size={32}
+									edit={false}
+									value={5}
+									half={false}
+									color2={'#14B8A6'}
+								/>
+							</div>
+
 							<blockquote className="space-y-6">
-								<div className="richtext text-balance">
+								<div className="richtext text-start text-lg">
 									<PortableText value={testimonial.content} />
 								</div>
 
 								{author && (
 									<footer>
-										<cite>
-											<div className="flex items-center justify-start gap-2">
-												<Img
-													className="size-[40px] rounded-full object-cover"
-													image={author?.image}
-													imageWidth={80}
-												/>
-												<div className={cn('text-start')}>
-													<div>{author?.name}</div>
-													{author?.title && (
-														<div className="text-sm">{author?.title}</div>
-													)}
-												</div>
+										<div className="flex items-center justify-start gap-2">
+											<Img
+												className="size-[40px] rounded-full object-cover"
+												image={author?.image}
+												imageWidth={80}
+											/>
+											<div className={cn('text-start')}>
+												<div>{author?.name}</div>
+												{author?.title && (
+													<div className="text-sm text-gray-400">
+														{author?.title}
+													</div>
+												)}
 											</div>
-										</cite>
+										</div>
 									</footer>
 								)}
 							</blockquote>
