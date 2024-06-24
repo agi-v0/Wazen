@@ -258,6 +258,15 @@
 	);
 }
 
+.brief-background-2 {
+	background: radial-gradient(
+		100% 100% at 0% 0%,
+		#155e75 0%,
+		#2dd4bf 50%,
+		#ffffff 100%
+	);
+}
+
 .svg-container svg {
 	height: 100% !important; /* Override any existing height */
 	width: auto !important; /* Maintain aspect ratio */

@@ -7,6 +7,8 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import Image from 'next/image'
+import dropdown from '../../../public/accounting-full-option.svg'
 
 export default function Brief({
 	pretitle,
@@ -43,23 +45,28 @@ export default function Brief({
 	}
 
 	return (
-		<section className={'section py-12'}>
+		<section className={'min-h-screen py-12'}>
 			<div
 				className={cn(
 					image?.onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
-					'fluid-gap flex w-full flex-col items-center justify-evenly gap-y-6',
+					'fluid-gap section flex w-full flex-col items-center justify-evenly',
 				)}
 			>
-				<div className="h-[550px] w-full lg:max-w-[550px]">
-					<div className="brief-background relative h-full overflow-hidden rounded-sm border-8 border-white shadow-md">
+				<div className="aspect-square h-[550px] w-full rounded-lg bg-white p-2 hover:shadow-lg lg:max-w-[550px]">
+					<div className="brief-background relative h-full overflow-hidden rounded-lg">
 						<div
 							className={cn(
 								image?.onRight ? 'left-8' : 'right-8',
 								'absolute top-8 h-full w-full min-w-[800px]',
 							)}
 						>
-							<Img image={image} imageWidth={3000} className="rounded-xl" />
+							{/* <Img image={image} imageWidth={3000} className="rounded-xl" /> */}
 						</div>
+						<Image
+							src={dropdown}
+							alt="dropdown"
+							className="bottom-0 top-0 mx-auto h-full w-auto"
+						/>
 					</div>
 				</div>
 				<div

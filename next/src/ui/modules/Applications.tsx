@@ -56,7 +56,7 @@ export default function Applications({
 		>
 			<div
 				className={
-					'fluid-gap flex w-full flex-col items-center justify-evenly overflow-hidden'
+					'flex w-full flex-col items-center justify-evenly overflow-hidden'
 				}
 			>
 				<div
@@ -91,7 +91,7 @@ export default function Applications({
 						)}
 					/>
 				</div>
-				<div className="bg-teal-50/40">
+				<div className="bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
 					<InfiniteMovingCards
 						direction={'left'}
 						speed={'slow'}

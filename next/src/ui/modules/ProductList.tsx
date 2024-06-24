@@ -54,33 +54,35 @@ export default function ProductList({
 	}
 
 	const ref = useRef(null)
-	const isInView = useInView(ref, { once: true })
+	const isInView = useInView(ref)
 
 	return (
-		<section className={'section'}>
-			<div className={'fluid-gap flex w-full flex-col items-center'}>
+		<section className={'bg-gradient-to-t from-teal-50 to-white'}>
+			<div
+				className={'section fluid-gap flex w-full flex-col items-center py-12'}
+			>
 				<div
 					className={'flex flex-col items-center gap-8'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'py-1 text-4xl text-gray-400'}>
+					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
 				</div>
 				{products && (
-					<ul className="fluid-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+					<ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 						{products.map((product, index) => (
 							<motion.li
 								key={product.productTitle}
 								initial="hidden"
 								animate={isInView ? 'visible' : 'hidden'}
 								variants={{
-									hidden: { y: 10, opacity: 0 },
+									hidden: { y: 20, opacity: 0 },
 									visible: { y: 0, opacity: 1 },
 								}}
-								transition={{ delay: index * 0.1 }}
-								className="group flex flex-col rounded-xl bg-white p-2 transition-all hover:bg-teal-50 hover:shadow-md"
+								transition={{ delay: index * 0.2 }}
+								className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 							>
 								<Link
 									href={processUrl(product.link.internal as Sanity.PageBase, {
@@ -90,7 +92,7 @@ export default function ProductList({
 								>
 									<div
 										ref={ref}
-										className="grid aspect-square w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 p-2"
+										className="grid w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 px-2 py-8"
 									>
 										<Img
 											image={product.productImage}

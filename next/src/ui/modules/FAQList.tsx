@@ -29,9 +29,9 @@ export default function FAQList({
 					)
 				} else if (value.style === 'h3') {
 					return (
-						<p className="text-large font-semibold leading-tight text-cyan-950">
+						<h3 className="text-large font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
-						</p>
+						</h3>
 					)
 				}
 				return (
@@ -56,13 +56,13 @@ export default function FAQList({
 				<div className="w-full lg:w-[70%]">
 					{items?.map(({ question, answer }, key) => (
 						<details
-							className="accordion border-b border-ink/10"
+							className="accordion border-b border-gray-400"
 							itemScope
 							itemProp="mainEntity"
 							itemType="https://schema.org/Question"
 							key={key}
 						>
-							<summary className="py-4 font-bold" itemProp="name">
+							<summary className="text-main py-4 font-semibold" itemProp="name">
 								{question}
 							</summary>
 							<div
@@ -71,7 +71,10 @@ export default function FAQList({
 								itemProp="acceptedAnswer"
 								itemType="https://schema.org/Answer"
 							>
-								<div className="richtext" itemProp="text">
+								<div
+									className="richtext text-small text-gray-600"
+									itemProp="text"
+								>
 									<PortableText value={answer} />
 								</div>
 							</div>
@@ -79,14 +82,14 @@ export default function FAQList({
 					))}
 				</div>
 
-				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-[#F0FDFA] p-4">
+				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-teal-50 p-4">
 					<div className="space-y-4">
 						<PortableText value={sideNote.mainTitle} components={components} />
 						<PortableText value={sideNote.Subtitle} components={components} />
 					</div>
 
 					<CTA
-						className="flex h-10 w-fit flex-row items-center rounded-md border-2 border-teal-500/20 bg-cyan-950 px-4 text-base font-medium text-teal-50"
+						className="primary text-base font-medium text-teal-50"
 						link={sideNote.link}
 					/>
 				</div>
