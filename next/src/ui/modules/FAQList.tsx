@@ -72,7 +72,7 @@ export default function FAQList({
 								itemType="https://schema.org/Answer"
 							>
 								<div
-									className="richtext text-small text-gray-600"
+									className="richtext text-main text-gray-600"
 									itemProp="text"
 								>
 									<PortableText value={answer} />
@@ -84,13 +84,13 @@ export default function FAQList({
 
 				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-teal-50 p-4 lg:min-w-[400px]">
 					<div className="space-y-4">
-						<h3 className="text-main font-semibold leading-tight text-cyan-950">
+						<h3 className="text-large font-semibold leading-tight text-cyan-950">
 							{sideNote.title}
 						</h3>
-						<p className="text-small text-cyan-950/80">{sideNote.subtitle}</p>
+						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
 					</div>
 					<CTA
-						className="primary text-base font-medium text-teal-50"
+						className="primary text-small font-medium text-teal-50"
 						link={sideNote.link}
 					/>
 				</div>

@@ -12,15 +12,13 @@ import dropdown from '../../../public/accounting-full-option.svg'
 
 export default function Brief({
 	pretitle,
-	mainTitle,
-	Subtitle,
+	content,
 	image,
 	textAlign = 'center',
 	alignItems,
 }: Partial<{
 	pretitle: string
-	mainTitle: any
-	Subtitle: any
+	content: any
 	image: Sanity.Image & { onRight?: boolean }
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
@@ -52,16 +50,16 @@ export default function Brief({
 					'fluid-gap section flex w-full flex-col items-center justify-evenly',
 				)}
 			>
-				<div className="aspect-square h-[550px] w-full rounded-lg bg-white p-2 hover:shadow-lg lg:max-w-[550px]">
+				<div className="aspect-square h-[500px] w-full rounded-lg bg-white p-2 hover:shadow-lg lg:max-w-[550px]">
 					<div className="brief-background relative h-full overflow-hidden rounded-lg">
-						<div
+						{/* <div
 							className={cn(
 								image?.onRight ? 'left-8' : 'right-8',
 								'absolute top-8 h-full w-full min-w-[800px]',
 							)}
 						>
-							{/* <Img image={image} imageWidth={3000} className="rounded-xl" /> */}
-						</div>
+							<Img image={image} imageWidth={3000} className="rounded-xl" />
+						</div> */}
 						<Image
 							src={dropdown}
 							alt="dropdown"
@@ -71,13 +69,12 @@ export default function Brief({
 				</div>
 				<div
 					className={'flex max-w-2xl flex-col gap-4'}
-					style={{ textAlign: stegaClean(textAlign) }}
+					// style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
-					<PortableText value={mainTitle} components={components} />
-					<PortableText value={Subtitle} components={components} />
+					<PortableText value={content} components={components} />
 				</div>
 			</div>
 		</section>

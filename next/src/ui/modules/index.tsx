@@ -22,6 +22,7 @@ import TestimonialList from './TestimonialList'
 import ProductList from './ProductList'
 import Features from './Features'
 import ContactUs from './ContactUs'
+import BriefGroup from './BriefGroup'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
@@ -32,6 +33,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <Applications {...module} key={module._key} />
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} />
+					case 'brief-group':
+						return <BriefGroup {...module} key={module._key} />
 					case 'brief':
 						return <Brief {...module} key={module._key} />
 					case 'categories-list':
