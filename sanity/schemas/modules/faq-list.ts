@@ -23,14 +23,12 @@ export default defineType({
 			type: 'object',
 			fields: [
 				defineField({
-					name: 'mainTitle',
-					type: 'array',
-					of: [{ type: 'block' }],
+					name: 'title',
+					type: 'string',
 				}),
 				defineField({
-					name: 'Subtitle',
-					type: 'array',
-					of: [{ type: 'block' }],
+					name: 'subtitle',
+					type: 'text',
 				}),
 				defineField({
 					name: 'link',

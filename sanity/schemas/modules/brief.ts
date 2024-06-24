@@ -23,13 +23,7 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'mainTitle',
-			type: 'array',
-			of: [{ type: 'block' }],
-			group: 'content',
-		}),
-		defineField({
-			name: 'Subtitle',
+			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
@@ -57,6 +51,7 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
+			group: 'content',
 		}),
 		defineField({
 			name: 'textAlign',
@@ -88,7 +83,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'mainTitle',
+			content: 'content',
 			media: 'image',
 		},
 		prepare: ({ content, media }) => ({

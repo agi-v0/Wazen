@@ -1,6 +1,5 @@
 import { defineField, defineType } from 'sanity'
 import { VscSymbolMisc } from 'react-icons/vsc'
-import { InlineSvgPreviewItem } from '@focus-reactive/sanity-plugin-inline-svg-input'
 
 export default defineType({
 	name: 'logo',

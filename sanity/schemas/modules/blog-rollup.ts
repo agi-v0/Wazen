@@ -14,6 +14,16 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
+			name: 'category',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'blog.category' }],
+				},
+			],
+		}),
+		defineField({
 			name: 'layout',
 			type: 'string',
 			options: {
@@ -27,23 +37,13 @@ export default defineType({
 			type: 'number',
 			validation: (Rule) => Rule.min(1).integer(),
 		}),
-		defineField({
-			name: 'category',
-			type: 'array',
-			of: [
-				{
-					type: 'reference',
-					to: [{ type: 'blog.category' }],
-				},
-			],
-		}),
 	],
 	preview: {
 		select: {
-			content: 'content',
+			content: 'category[0].title',
 		},
 		prepare: ({ content }) => ({
-			title: getBlockText(content),
+			title: content,
 			subtitle: 'Blog rollup',
 		}),
 	},

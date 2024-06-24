@@ -16,6 +16,7 @@ export default defineType({
 				{ type: 'applications' },
 				{ type: 'blog-rollup' },
 				{ type: 'brief' },
+				{ type: 'brief-group' },
 				{ type: 'categories-list' },
 				{ type: 'contact-us' },
 				{ type: 'creative-module' },
@@ -44,6 +45,18 @@ export default defineType({
 			name: 'metadata',
 			type: 'metadata',
 		}),
+	],
+	orderings: [
+		{
+			name: 'title',
+			title: 'Title',
+			by: [{ field: 'title', direction: 'asc' }],
+		},
+		{
+			name: 'slug',
+			title: 'Link',
+			by: [{ field: 'metadata.slug.current', direction: 'asc' }],
+		},
 	],
 	preview: {
 		select: {

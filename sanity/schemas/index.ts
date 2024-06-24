@@ -21,6 +21,7 @@ import metadata from './objects/metadata'
 import applications from './modules/applications'
 import blogRollup from './modules/blog-rollup'
 import brief from './modules/brief'
+import briefGroup from './modules/brief-group'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
@@ -70,6 +71,7 @@ export const schemaTypes = [
 	applications,
 	blogRollup,
 	brief,
+	briefGroup,
 	categoriesList,
 	contactUs,
 	creativeModule,

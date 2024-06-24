@@ -82,12 +82,13 @@ export default function FAQList({
 					))}
 				</div>
 
-				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-teal-50 p-4">
+				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-teal-50 p-4 lg:min-w-[400px]">
 					<div className="space-y-4">
-						<PortableText value={sideNote.mainTitle} components={components} />
-						<PortableText value={sideNote.Subtitle} components={components} />
+						<h3 className="text-main font-semibold leading-tight text-cyan-950">
+							{sideNote.title}
+						</h3>
+						<p className="text-small text-cyan-950/80">{sideNote.subtitle}</p>
 					</div>
-
 					<CTA
 						className="primary text-base font-medium text-teal-50"
 						link={sideNote.link}
