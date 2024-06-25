@@ -16,7 +16,7 @@ export default defineType({
 		defineField({
 			name: 'title',
 			title: 'Title',
-			type: 'string'
+			type: 'string',
 		}),
 		defineField({
 			name: 'contactInfo',
@@ -31,7 +31,7 @@ export default defineType({
 						}),
 						defineField({
 							name: 'subtitle',
-							type: 'string',
+							type: 'text',
 						}),
 						defineField({
 							name: 'link',
@@ -46,7 +46,6 @@ export default defineType({
 				}),
 			],
 		}),
-
 	],
 	preview: {
 		select: {
