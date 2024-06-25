@@ -35,7 +35,8 @@ export default function HeroThree({
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
-				} else if (value.style === 'h2') {
+				}
+				if (value.style === 'h2') {
 					return (
 						<h2 className="text-large font-semibold leading-tight text-teal-600">
 							{value.children.map((child: any) => child.text).join('')}
