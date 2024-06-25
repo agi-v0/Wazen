@@ -25,17 +25,27 @@ export default defineType({
 							type: 'image',
 						}),
 						defineField({
-							name: 'text',
+							name: 'title',
 							type: 'string',
+						}),
+						defineField({
+							name: 'description',
+							type: 'text',
 						}),
 					],
 					preview: {
 						select: {
 							title: 'text',
+							subtitle: 'description',
 						},
+						prepare: ({ title, subtitle }) => ({
+							title: title,
+							subtitle: subtitle,
+						}),
 					},
 				}),
 			],
+			validation: (rule) => rule.required().min(3).max(3),
 		}),
 	],
 	preview: {

@@ -21,13 +21,13 @@ export default function Benefits({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 my-4 text-balance text-start text-5xl leading-tight">
+						<h2 className="h2 text-balance text-start text-5xl font-semibold leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="my-4 max-w-md text-lg text-gray-600">
+					<p className="text-main max-w-md text-gray-600">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -65,9 +65,9 @@ export default function Benefits({
 	const numbers = [1, 2, 3]
 
 	const linearGradients = [
-		'linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))',
-		'linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))',
-		'linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))',
+		'linear-gradient(to bottom right, var(--indigo-300), var(--lime-300))',
+		'linear-gradient(to bottom right, var(--lime-300), var(--cyan-300))',
+		'linear-gradient(to bottom right, var(--cyan-300), var(--indigo-300))',
 	]
 
 	const images = content.map((item: any) => item.image)
@@ -89,50 +89,39 @@ export default function Benefits({
 				<div className="sticky top-32 hidden h-full md:block">
 					<div className="mb-32 flex flex-col items-center justify-center">
 						{numbers.map((number, index) => (
-							<div key={number + index} className="my-4">
-								<motion.div
-									initial={{
-										opacity: 0,
-									}}
-									animate={{
-										opacity: activeCard === index ? 1 : 0.3,
-									}}
-									className="text-xl font-bold"
-								>
-									{number}
-								</motion.div>
-							</div>
+							<motion.div
+								initial={{
+									opacity: 0,
+								}}
+								animate={{
+									opacity: activeCard === index ? 1 : 0.3,
+								}}
+								className="text-large my-2 font-semibold"
+								key={number + index}
+							>
+								{number}
+							</motion.div>
 						))}
 					</div>
 				</div>
 
-				<div>
-					<div className="flex flex-col items-start gap-32 px-4">
-						{content.map((item: any, index: any) => {
-							return (
-								<div key={item.content + index} className="my-10">
-									<motion.div
-										initial={{
-											opacity: 0,
-										}}
-										animate={{
-											opacity: activeCard === index ? 1 : 0.3,
-										}}
-										className="font-bold md:text-5xl"
-									>
-										<PortableText
-											value={item.pretitle}
-											components={components}
-										/>
-										<PortableText
-											value={item.content}
-											components={components}
-										/>
-									</motion.div>
-								</div>
-							)
-						})}
-					</div>
+				<div className="flex flex-col items-start gap-32 px-4">
+					{content.map((item: any, index: any) => {
+						return (
+							<motion.div
+								initial={{
+									opacity: 0,
+								}}
+								animate={{
+									opacity: activeCard === index ? 1 : 0.3,
+								}}
+								className="my-10 space-y-4"
+								key={item.content + index}
+							>
+								<PortableText value={item.content} components={components} />
+							</motion.div>
+						)
+					})}
 				</div>
 
 				<div className="sticky left-0 top-32 hidden h-full md:block">

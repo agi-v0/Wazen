@@ -71,7 +71,10 @@ export default function ProductList({
 					<PortableText value={content} components={components} />
 				</div>
 				{products && (
-					<ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+					<ul
+						ref={ref}
+						className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
+					>
 						{products.map((product, index) => (
 							<motion.li
 								key={product.productTitle}
@@ -81,7 +84,7 @@ export default function ProductList({
 									hidden: { y: 20, opacity: 0 },
 									visible: { y: 0, opacity: 1 },
 								}}
-								transition={{ delay: index * 0.2 }}
+								transition={{ type: 'easeOut', delay: index * 0.2 }}
 								className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 							>
 								<Link
@@ -90,10 +93,7 @@ export default function ProductList({
 										params: product.link.params,
 									})}
 								>
-									<div
-										ref={ref}
-										className="grid w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 px-2 py-8"
-									>
+									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 px-2 py-8">
 										<Img
 											image={product.productImage}
 											alt={product.productTitle}
