@@ -12,6 +12,7 @@ import {
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
+import { iconify } from 'sanity-plugin-iconify'
 
 const singletonTypes = ['site']
 
@@ -44,6 +45,9 @@ export default defineConfig({
 			title: 'GROQ',
 		}),
 		inlineSvgInput(),
+		iconify({
+			collections: ['ph'],
+		}),
 	],
 
 	scheduledPublishing: {

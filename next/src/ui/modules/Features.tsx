@@ -8,7 +8,7 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
-import { FaCube } from 'react-icons/fa6'
+import { Icon } from '@iconify/react'
 
 export default function Features({
 	pretitle,
@@ -21,7 +21,7 @@ export default function Features({
 	content: any
 	Subtitle: any
 	ctas: any
-	features: any
+	features: { title: string; description: string; icon: { name: string } }[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
 	const components: PortableTextComponents = {
@@ -60,7 +60,6 @@ export default function Features({
 			},
 		},
 	}
-
 	return (
 		<section className={'section p-12'}>
 			<div
@@ -80,20 +79,38 @@ export default function Features({
 						<CTAList ctas={ctas} />
 					</div>
 					<div className="grid w-full grid-cols-1 gap-3 md:grid-rows-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
-						{features.map((feature: any, index: any) => (
-							<div
-								className="flex w-[350px] rounded-md bg-cyan-50 p-6"
-								key={index}
-							>
-								<div className="flex flex-col justify-start gap-4 text-start">
-									<FaCube className="text-2xl" />
-									<PortableText
-										value={feature.feature}
-										components={featureStyle}
-									/>
-								</div>
-							</div>
-						))}
+						{features &&
+							features.map(
+								(
+									feature: {
+										title: string
+										description: string
+										icon: { name: string }
+									},
+									index: any,
+								) => (
+									<div
+										className="flex w-[350px] rounded-md bg-cyan-50 p-6"
+										key={index}
+									>
+										<div className="flex flex-col justify-start gap-4 text-start">
+											<Icon
+												icon={
+													feature.icon ? feature.icon.name : 'ph:cube-duotone'
+												}
+												style={{ color: '#083344', fontSize: '48px' }}
+											/>
+											<h3 className="text-main font-semibold leading-tight text-cyan-950">
+												{feature.title}
+											</h3>
+
+											<p className="text-small max-w-xl text-gray-600 md:max-w-3xl">
+												{feature.description}
+											</p>
+										</div>
+									</div>
+								),
+							)}
 					</div>
 				</div>
 			</div>

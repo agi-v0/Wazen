@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@catherineriver/sanity-plugin-generate-ogimage": "^1.0.6",
 		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.0.1",
+		"@iconify/react": "^5.0.1",
 		"@sanity/dashboard": "^3.1.6",
 		"@sanity/vision": "^3.42.1",
 		"dotenv": "^16.4.5",
@@ -27,6 +28,7 @@
 		"react-icons": "^5.2.1",
 		"react-is": "^18.3.1",
 		"sanity": "^3.46.1",
+		"sanity-plugin-iconify": "^2.0.0",
 		"sanity-plugin-iframe-pane": "^3.1.6",
 		"styled-components": "^6.1.11"
 	},

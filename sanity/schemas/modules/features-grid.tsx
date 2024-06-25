@@ -34,28 +34,31 @@ export default defineType({
 						defineField({
 							name: 'icon',
 							title: 'Icon name',
+							type: 'icon',
+						}),
+						defineField({
+							name: 'title',
 							type: 'string',
 						}),
 						defineField({
-							name: 'feature',
-							title: 'Feature text',
-							type: 'array',
-							of: [{ type: 'block' }],
+							name: 'description',
+							type: 'text',
 						}),
 					],
 					preview: {
 						select: {
-							feature: 'feature',
+							feature: 'title',
+							description: 'description',
 							icon: 'icon',
 						},
-						prepare: ({ feature, icon }) => ({
-							title: getBlockText(feature),
-							subtitle: icon,
+						prepare: ({ feature, description, icon }) => ({
+							title: feature,
+							subtitle: description,
 						}),
 					},
 				}),
 			],
-			// validation: (rule) => rule.required().min(6).max(6),
+			validation: (rule) => rule.required().min(3).max(6),
 		}),
 	],
 	preview: {
