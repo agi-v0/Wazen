@@ -21,11 +21,11 @@ export default function ContactUs({
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h3') {
+				if (value.style === 'h1') {
 					return (
-						<h3 className="leading-tight text-cyan-950 text-xl font-bold">
+						<h1 className="leading-tight text-cyan-950 md:text-5xl font-bold">
 							{value.children.map((child: any) => child.text).join('')}
-						</h3>
+						</h1>
 					)
 				}
 				return (
