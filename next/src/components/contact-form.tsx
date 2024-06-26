@@ -75,10 +75,12 @@ const ContactForm = () => {
 				<textarea
 					id="message"
 					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm"
+					rows={4}
 					placeholder="اكتب رسالتك هنا..."
 				></textarea>
 			</div>
-			<input id="terms-and-conditions" type="checkbox" />
+			<input id="terms-and-conditions" type="checkbox" className='me-2'/>
+			<label htmlFor="terms-and-conditions">أوافق على الشروط والأحكام</label>
 			<button
 				type="submit"
 				className="hover:bg-primary-800 focus:ring-primary-300 w-full rounded-sm bg-gray-100 px-5 py-3 text-center text-sm font-medium text-gray-300 focus:outline-none focus:ring-4"
