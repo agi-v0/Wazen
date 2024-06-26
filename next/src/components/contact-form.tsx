@@ -1,9 +1,29 @@
 import React from 'react'
+import { sendEmail } from '@/action/sendEmail'
 
 const ContactForm = () => {
+	const handleSendEmail = async (formData: any) => {
+		try {
+			const response = await sendEmail(formData)
+
+			if (response) {
+				console.log('Your message was sent successfully!')
+			}
+		} catch (error) {
+			console.log(error)
+			console.log('Something went wrong!')
+		}
+
+		// document.getElementById('contact-form').reset() 
+	}
+
 	return (
-		<form action="#" className="space-y-8">
-			<div className="flex  gap-4">
+		<form
+			id="contact-form"
+			action={handleSendEmail}
+			className="w-full flex-1 space-y-8"
+		>
+			<div className="flex gap-4">
 				<input
 					type="text"
 					id="first-name"
@@ -19,7 +39,7 @@ const ContactForm = () => {
 					required
 				/>
 			</div>
-			<div className="flex  gap-4">
+			<div className="flex gap-4">
 				<input
 					type="text"
 					id="company-name"
@@ -35,7 +55,7 @@ const ContactForm = () => {
 					required
 				/>
 			</div>
-			<div className="flex  gap-4">
+			<div className="flex gap-4">
 				<input
 					type="text"
 					id="contact-number"
@@ -61,7 +81,7 @@ const ContactForm = () => {
 			<input id="terms-and-conditions" type="checkbox" />
 			<button
 				type="submit"
-				className="hover:bg-primary-800 focus:ring-primary-300 bg-gray-100 rounded-sm px-5 py-3 text-gray-300 text-center text-sm font-medium focus:outline-none focus:ring-4 w-full"
+				className="hover:bg-primary-800 focus:ring-primary-300 w-full rounded-sm bg-gray-100 px-5 py-3 text-center text-sm font-medium text-gray-300 focus:outline-none focus:ring-4"
 			>
 				أرسل لنا رسالة
 			</button>
