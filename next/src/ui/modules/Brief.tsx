@@ -19,7 +19,7 @@ export default function Brief({
 }: Partial<{
 	pretitle: string
 	content: any
-	image: Sanity.Image & { onRight?: boolean }
+	image: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -41,7 +41,6 @@ export default function Brief({
 			},
 		},
 	}
-
 	return (
 		<section className={'min-h-screen py-12'}>
 			<div
@@ -52,19 +51,18 @@ export default function Brief({
 			>
 				<div className="aspect-square h-[500px] w-full rounded-lg bg-white p-2 hover:shadow-lg lg:max-w-[550px]">
 					<div className="brief-background relative h-full overflow-hidden rounded-lg">
-						{/* <div
+						<div
 							className={cn(
 								image?.onRight ? 'left-8' : 'right-8',
 								'absolute top-8 h-full w-full min-w-[800px]',
 							)}
 						>
-							<Img image={image} imageWidth={3000} className="rounded-xl" />
-						</div> */}
-						<Image
-							src={dropdown}
-							alt="dropdown"
-							className="bottom-0 top-0 mx-auto h-full w-auto"
-						/>
+							{image && 'asset' in image ? (
+								<Img image={image} imageWidth={3000} className="rounded-xl" />
+							) : (
+								image
+							)}
+						</div>
 					</div>
 				</div>
 				<div

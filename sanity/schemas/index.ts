@@ -45,6 +45,7 @@ import featuresGrid from './modules/features-grid'
 import solutionsBenefits from './modules/solutions-benefits'
 import productList from './modules/product-list'
 import contactUs from './modules/contact-us'
+import homeBriefGroup from './modules/home-brief-group'
 
 export const schemaTypes = [
 	// documents
@@ -72,6 +73,7 @@ export const schemaTypes = [
 	blogRollup,
 	brief,
 	briefGroup,
+	homeBriefGroup,
 	categoriesList,
 	contactUs,
 	creativeModule,
