@@ -4,7 +4,7 @@ import { getBlockText, count } from '../../src/utils'
 
 export default defineType({
 	name: 'home-brief-group',
-	title: 'Home Brief Group',
+	title: 'Homepage Brief Group',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	fields: [
@@ -20,7 +20,7 @@ export default defineType({
 		},
 		prepare: ({ title }) => ({
 			title: count(title, 'brief'),
-			subtitle: 'Brief group',
+			subtitle: 'Homepage brief group',
 		}),
 	},
 })
