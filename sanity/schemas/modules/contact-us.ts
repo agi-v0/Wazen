@@ -27,11 +27,13 @@ export default defineType({
 					fields: [
 						defineField({
 							name: 'title',
-							type: 'string',
+							type: 'array',
+							of: [{ type: 'block' }],
 						}),
 						defineField({
 							name: 'subtitle',
-							type: 'text',
+							type: 'array',
+							of: [{ type: 'block' }],
 						}),
 						defineField({
 							name: 'link',

@@ -34,31 +34,31 @@ export default async function FirstPost({
 		>
 			<div className="rounded-md p-3 shadow-md">
 				<div className="flex flex-col items-center gap-8 lg:flex-row">
-					<figure>
+					<div className='flex-1'>
 						<Image
 							src={'/image-placeholder.jpg'}
 							alt=""
 							width={500}
 							height={500}
-							className="rounded-md"
+							className="rounded-md w-full"
 						/>
-					</figure>
-					<div className="content">
-						<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
-							<Date value={posts[0]?.publishDate} />
+					</div>
+					<div className="content flex-1">
+						<div className="flex gap-2">
+							{posts[0]?.categories && (
+								<div className="my-2 w-fit rounded-full border-2 border-[#0D9488]/20 p-2 text-sm text-[#0D9488]">
+									{posts[0]?.categories[0]?.title}
+								</div>
+							)}
+							<div className="my-2 w-fit rounded-full bg-[#0D9488]/20 p-2 text-[#0D9488]">
+								<Date value={posts[0].publishDate} />
+							</div>
 						</div>
-						{posts[0]?.categories && (
-							<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
-								{posts[0]?.categories[0]?.title}
-							</div>
-						)}
 						<div className="w-[90%]">
-							<div className="my-4 text-2xl group-hover:underline">
-								{posts[0]?.title}
-							</div>
+							<div className="my-4 text-2xl">{posts[0]?.title}</div>
 							<div className="text-md my-4">
 								{posts[0]?.body[0]?.children[0] &&
-									posts[0].body[0].children[0].text.slice(0, 200) + '...'}
+									posts[0].body[0].children[0].text.slice(0, 400) + '...'}
 							</div>
 						</div>
 						<div className="text-[#0D9488]">إقرأ المزيد</div>

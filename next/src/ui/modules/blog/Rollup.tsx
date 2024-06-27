@@ -2,6 +2,8 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import Link from 'next/link'
+import { PiCaretLeft } from 'react-icons/pi'
 
 export default async function Rollup({
 	limit,
@@ -36,8 +38,14 @@ export default async function Rollup({
 	return (
 		<section className="section my-20 space-y-4">
 			{posts[0]?.categories && (
-				<div className="text-4xl font-bold">
-					{posts[0]?.categories[0]?.title}
+				<div className="flex w-full justify-between">
+					<div className="text-4xl font-bold">
+						{posts[0]?.categories[0]?.title}
+					</div>
+					<Link href="" className='no-underline text-teal-600'>
+						<div className='inline-block'>تصفح المزيد</div>
+						<PiCaretLeft className='inline-block' />
+					</Link>
 				</div>
 			)}
 			<ul
