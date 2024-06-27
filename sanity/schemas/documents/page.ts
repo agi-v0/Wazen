@@ -41,6 +41,12 @@ export default defineType({
 				{ type: 'solutions-benefits' },
 				{ type: 'product-list' },
 			],
+			options: {
+				advanced: {
+					select: true,
+					inline: 'expanded',
+				},
+			},
 		}),
 		defineField({
 			name: 'metadata',

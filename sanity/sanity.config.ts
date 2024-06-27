@@ -13,6 +13,7 @@ import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
+import { advancedArray } from './plugins/sanity-plugin-advanced-array'
 
 const singletonTypes = ['site']
 
@@ -48,6 +49,7 @@ export default defineConfig({
 		iconify({
 			collections: ['ph'],
 		}),
+		advancedArray(),
 	],
 
 	scheduledPublishing: {
