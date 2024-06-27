@@ -10,7 +10,7 @@ export default function CTAList({
 	return (
 		<nav
 			className={cn(
-				'flex w-full flex-col-reverse flex-wrap items-center gap-x-4 gap-y-2 md:flex-row',
+				'flex w-full flex-col flex-wrap items-center gap-x-4 gap-y-2 md:flex-row',
 				className,
 			)}
 		>

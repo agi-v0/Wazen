@@ -61,24 +61,24 @@ export default function Features({
 		},
 	}
 	return (
-		<section className={'section p-12'}>
+		<section className={'section py-12'}>
 			<div
 				className={
-					'flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden p-10'
+					'fluid-padding flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden'
 				}
 			>
 				<div
 					className={'flex flex-col items-center gap-8'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'py-1 text-4xl text-gray-400'}>
+					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
 					<div className="text-center">
 						<CTAList ctas={ctas} />
 					</div>
-					<div className="grid w-full grid-cols-1 gap-3 md:grid-rows-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
+					<div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
 						{features &&
 							features.map(
 								(
@@ -90,7 +90,7 @@ export default function Features({
 									index: any,
 								) => (
 									<div
-										className="flex w-[350px] rounded-md bg-cyan-50 p-6"
+										className="flex w-full rounded-md bg-cyan-50 p-6"
 										key={index}
 									>
 										<div className="flex flex-col justify-start gap-4 text-start">

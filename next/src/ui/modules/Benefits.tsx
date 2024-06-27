@@ -21,13 +21,13 @@ export default function Benefits({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 text-balance text-start text-5xl font-semibold leading-tight">
+						<h2 className="h3 text-balance text-start font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="text-main max-w-md text-gray-600">
+					<p className="text-main max-w-xl text-gray-600">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -65,7 +65,7 @@ export default function Benefits({
 	const numbers = [1, 2, 3]
 
 	const linearGradients = [
-		'linear-gradient(to bottom right, var(--indigo-300), var(--lime-300))',
+		'linear-gradient(to bottom right, var(--teal-300), var(--lime-300))',
 		'linear-gradient(to bottom right, var(--lime-300), var(--cyan-300))',
 		'linear-gradient(to bottom right, var(--cyan-300), var(--indigo-300))',
 	]
@@ -85,7 +85,7 @@ export default function Benefits({
 
 	return (
 		<section className={'section py-12'}>
-			<motion.div className="flex justify-between space-x-10" ref={ref}>
+			<motion.div className="fluid-gap flex min-h-screen" ref={ref}>
 				<div className="sticky top-32 hidden h-full md:block">
 					<div className="mb-32 flex flex-col items-center justify-center">
 						{numbers.map((number, index) => (
@@ -96,7 +96,7 @@ export default function Benefits({
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
-								className="text-large my-2 font-semibold"
+								className="text-large my-2 font-semibold text-cyan-950"
 								key={number + index}
 							>
 								{number}
@@ -105,7 +105,7 @@ export default function Benefits({
 					</div>
 				</div>
 
-				<div className="flex flex-col items-start gap-32 px-4">
+				<div className="flex w-full flex-col items-start">
 					{content.map((item: any, index: any) => {
 						return (
 							<motion.div
@@ -115,7 +115,7 @@ export default function Benefits({
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
-								className="my-10 space-y-4"
+								className="space-y-6 py-12"
 								key={item.content + index}
 							>
 								<PortableText value={item.content} components={components} />
@@ -124,18 +124,18 @@ export default function Benefits({
 					})}
 				</div>
 
-				<div className="sticky left-0 top-32 hidden h-full md:block">
-					<div className="flex items-center justify-center">
+				<div className="sticky left-0 top-32 hidden h-full w-full md:block">
+					<div className="relative flex items-center justify-center">
 						<div
 							style={{ background: backgroundGradient }}
 							className={
-								'absolute z-0 h-[300px] w-[300px] rounded-full blur-2xl'
+								'absolute aspect-square w-[400px] rounded-full blur-2xl'
 							}
 						/>
 						<Img
 							image={imageList}
-							imageWidth={450}
-							className="top-20 z-10 rounded-xl object-cover"
+							imageWidth={540}
+							className="relative z-10 rounded-lg object-cover shadow-md"
 						/>
 					</div>
 				</div>

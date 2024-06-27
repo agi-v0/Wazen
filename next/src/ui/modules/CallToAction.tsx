@@ -11,6 +11,8 @@ import Image from 'next/image'
 import blob from '../../../public/gradient-blob.svg'
 import { PiCheckCircle } from 'react-icons/pi'
 
+// https://magicui.design/docs/components/neon-gradient-card
+
 export default function CallToAction({
 	content,
 	ctas,
@@ -72,7 +74,7 @@ export default function CallToAction({
 		<section className={'section py-24'}>
 			<div
 				className={
-					'fluid-gap fluid-padding relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'
+					'fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'
 				}
 			>
 				<div
@@ -81,7 +83,7 @@ export default function CallToAction({
 				>
 					<PortableText value={content} components={components} />
 
-					<CTAList ctas={ctas} />
+					<CTAList ctas={ctas} className="w-full" />
 					<div className="flex flex-col gap-2">
 						<PortableText
 							value={checkedList}

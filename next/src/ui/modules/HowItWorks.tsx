@@ -13,7 +13,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import user from '../../../public/How-it-works/User.svg'
 import chart from '../../../public/How-it-works/Chart.svg'
-import sidebar from '../../../public/How-it-works/sidebar.svg'
+import sidebar from '../../../public/How-it-works/Sidebar.svg'
 import Image from 'next/image'
 
 export default function HowItWorks({
@@ -60,9 +60,7 @@ export default function HowItWorks({
 	return (
 		<section className={'section py-12'}>
 			<div className="-border-8 fluid-padding fluid-gap flex w-full flex-col items-center justify-evenly rounded-xl border-white bg-gradient-to-tl from-teal-100 to-cyan-50 shadow-md">
-				<div className="my-6">
-					<PortableText value={content} components={components} />
-				</div>
+				<PortableText value={content} components={components} />
 				<ul ref={ref} className="grid w-full grid-cols-1 lg:grid-cols-3">
 					{steps?.map((step, index) => (
 						<motion.li
