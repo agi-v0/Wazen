@@ -78,7 +78,7 @@ export default function Features({
 					<div className="text-center">
 						<CTAList ctas={ctas} />
 					</div>
-					<div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
+					<ul className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
 						{features &&
 							features.map(
 								(
@@ -89,17 +89,22 @@ export default function Features({
 									},
 									index: any,
 								) => (
-									<div
+									<li
 										className="flex w-full rounded-md bg-cyan-50 p-6"
 										key={index}
 									>
 										<div className="flex flex-col justify-start gap-4 text-start">
-											<Icon
-												icon={
-													feature.icon ? feature.icon.name : 'ph:cube-duotone'
-												}
-												style={{ color: '#083344', fontSize: '48px' }}
-											/>
+											<div className="self-start rounded-full bg-white p-2 shadow-md">
+												<Icon
+													icon={
+														feature.icon ? feature.icon.name : 'ph:cube-duotone'
+													}
+													style={{
+														color: '#083344',
+														fontSize: 'var(--h6--font-size)',
+													}}
+												/>
+											</div>
 											<h3 className="text-main font-semibold leading-tight text-cyan-950">
 												{feature.title}
 											</h3>
@@ -108,10 +113,10 @@ export default function Features({
 												{feature.description}
 											</p>
 										</div>
-									</div>
+									</li>
 								),
 							)}
-					</div>
+					</ul>
 				</div>
 			</div>
 		</section>
