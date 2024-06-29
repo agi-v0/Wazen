@@ -13,11 +13,11 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 			<header className="section space-y-4">
 				<div className="flex gap-4">
 					{post?.categories && (
-						<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
+						<div className="my-2 w-fit rounded-full border border-teal-600 bg-teal-600/20 px-6 py-1 text-teal-600">
 							{post?.categories[0]?.title}
 						</div>
 					)}
-					<div className="my-2 w-fit rounded-full border border-[#0D9488] bg-[#0D9488]/20 px-6 py-1 text-[#0D9488]">
+					<div className="my-2 w-fit rounded-full border border-teal-600 bg-teal-600/20 px-6 py-1 text-teal-600">
 						<Date value={post.publishDate} />
 					</div>
 				</div>

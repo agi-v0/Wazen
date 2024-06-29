@@ -41,7 +41,7 @@ export default function HeroTwo({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl md:max-w-3xl">
+					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -50,8 +50,8 @@ export default function HeroTwo({
 	}
 
 	return (
-		<section className={cn(hasImage && 'grid *:col-span-full *:row-span-full')}>
-			{bgImage && (
+		<section className={'section py-12'}>
+			{/* {bgImage && (
 				<picture>
 					<Source image={bgImageMobile} />
 					<Img
@@ -61,8 +61,8 @@ export default function HeroTwo({
 						imageWidth={1800}
 					/>
 				</picture>
-			)}
-			<div className="flex h-screen w-full flex-col items-center justify-center gap-y-6 bg-gradient-to-br from-white from-65% to-teal-100/50">
+			)} */}
+			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl bg-gradient-to-br from-white from-65% to-cyan-100/50 p-12 py-24">
 				<div
 					className={cn('richtext relative space-y-6')}
 					style={{ textAlign: stegaClean(textAlign) }}
