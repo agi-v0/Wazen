@@ -84,7 +84,7 @@ export default function Benefits({
 	}, [activeCard])
 
 	return (
-		<section className={'section py-12'}>
+		<section className={'section fluid-vertical-space'}>
 			<motion.div className="fluid-gap flex min-h-screen" ref={ref}>
 				<div className="sticky top-32 hidden h-full md:block">
 					<div className="mb-32 flex flex-col items-center justify-center">
@@ -129,7 +129,7 @@ export default function Benefits({
 						<div
 							style={{ background: backgroundGradient }}
 							className={
-								'absolute aspect-square w-[400px] rounded-full blur-2xl'
+								'absolute aspect-square w-[350px] rounded-full blur-2xl'
 							}
 						/>
 						<Img

@@ -97,14 +97,10 @@ export default function TestimonialList({
 	}
 	return (
 		<section
-			className="section space-y-8 overflow-hidden py-12 text-center"
+			className="section fluid-vertical-space space-y-8 overflow-hidden text-center"
 			ref={containerRef}
 		>
-			{content && (
-				<header className="richtext">
-					<PortableText value={content} components={components} />
-				</header>
-			)}
+			{content && <PortableText value={content} components={components} />}
 
 			<div
 				ref={scrollerRef}

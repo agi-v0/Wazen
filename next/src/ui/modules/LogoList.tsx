@@ -41,7 +41,7 @@ export default async function LogoList({
 		},
 	}
 	return (
-		<section className="section py-12">
+		<section className="section fluid-vertical-space">
 			<div className="fluid-gap flex w-full flex-col items-center">
 				<Pretitle className="text-main text-center font-normal text-gray-400">
 					{pretitle}
@@ -52,7 +52,7 @@ export default async function LogoList({
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}
-							className="svg-container h-11 w-auto "
+							className="svg-container h-11 w-auto"
 							dangerouslySetInnerHTML={{ __html: logo.icon }}
 						/>
 					))}
