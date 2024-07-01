@@ -250,11 +250,11 @@
 		);
 }
 .brief-background {
-	background: radial-gradient(
-		100% 100% at 0% 0%,
-		#2dd4bf 0%,
-		#164e63 67.15%,
-		#083344 100%
+	background: linear-gradient(
+		to bottom right,
+		#164e63 0%,
+		#2dd4bf 50%,
+		#ffffff 100%
 	);
 }
 
