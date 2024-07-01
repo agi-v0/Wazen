@@ -35,7 +35,7 @@ export function AnimatedBeamDemo() {
 	return (
 		<div
 			id="childDiv"
-			className="bg-background relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg p-12 md:shadow-xl"
+			className="bg-background fluid-padding relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
 			ref={containerRef}
 		>
 			<div className="group flex h-full w-full flex-col items-stretch justify-between gap-10">

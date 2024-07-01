@@ -42,7 +42,7 @@ export default function Brief({
 		},
 	}
 	return (
-		<section className={'min-h-screen py-12'}>
+		<section className={'fluid-vertical-space'}>
 			<div
 				className={cn(
 					image?.onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
