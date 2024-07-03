@@ -1,6 +1,7 @@
 import React from 'react'
 import css from './OGImageLayout.module.css'
 import logo from '../static/Logo.svg'
+import { useFormValue } from 'sanity'
 
 const Component = ({ title }) => {
 	return (
@@ -17,9 +18,12 @@ export const OGImageEditor = {
 	name: 'OGImage',
 	title: 'testLayout',
 	component: Component,
-	prepare: (document) => ({
-		title: document.title,
-	}),
+	prepare: () => {
+		const title = useFormValue(['title'])
+		return {
+			title,
+		}
+	},
 	fields: [
 		{
 			name: 'title',

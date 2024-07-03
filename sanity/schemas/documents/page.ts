@@ -44,7 +44,6 @@ export default defineType({
 			options: {
 				advanced: {
 					select: true,
-					inline: 'expanded',
 				},
 			},
 		}),
