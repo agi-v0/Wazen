@@ -1,13 +1,13 @@
 <svg width="1280" height="1281" viewBox="0 0 1280 1281" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g style="mix-blend-mode:overlay" clip-path="url(#clip0_3868_12347)">
+<g style="mix-blend-mode:overlay" clipPath="url(#clip0_3868_12347)">
 <g filter="url(#filter0_f_3868_12347)">
-<ellipse cx="976.971" cy="762.595" rx="1241.25" ry="89.4884" transform="rotate(33.6402 976.971 762.595)" fill="#F0FDFA" fill-opacity="0.5"/>
+<ellipse cx="976.971" cy="762.595" rx="1241.25" ry="89.4884" transform="rotate(33.6402 976.971 762.595)" fill="#F0FDFA" fillOpacity="0.5"/>
 </g>
 <g filter="url(#filter1_f_3868_12347)">
-<ellipse cx="677.766" cy="859.005" rx="1241.25" ry="89.4884" transform="rotate(33.6402 677.766 859.005)" fill="#F0FDFA" fill-opacity="0.3"/>
+<ellipse cx="677.766" cy="859.005" rx="1241.25" ry="89.4884" transform="rotate(33.6402 677.766 859.005)" fill="#F0FDFA" fillOpacity="0.3"/>
 </g>
 <g filter="url(#filter2_f_3868_12347)">
-<ellipse cx="432.959" cy="1060.83" rx="1241.25" ry="89.4884" transform="rotate(33.6402 432.959 1060.83)" fill="#F0FDFA" fill-opacity="0.1"/>
+<ellipse cx="432.959" cy="1060.83" rx="1241.25" ry="89.4884" transform="rotate(33.6402 432.959 1060.83)" fill="#F0FDFA" fillOpacity="0.1"/>
 </g>
 </g>
 <defs>

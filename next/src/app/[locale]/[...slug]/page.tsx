@@ -24,12 +24,10 @@ export async function generateStaticParams() {
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
 	)
-	// console.log('All slugs:', slugs)
 	return slugs.map((slug) => decodeURIComponent(slug))
 }
 
 async function getPage(params: Props['params']) {
-	// console.log('Params.slug', params.slug)
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
