@@ -10,6 +10,13 @@ export default defineType({
 	],
 	fields: [
 		defineField({
+			// should match 'languageField' plugin configuration setting, if customized
+			name: 'language',
+			type: 'string',
+			readOnly: true,
+			hidden: true,
+		}),
+		defineField({
 			name: 'title',
 			type: 'string',
 			group: 'general',
@@ -62,4 +69,9 @@ export default defineType({
 			group: 'general',
 		}),
 	],
+	preview: {
+		prepare: () => ({
+			title: 'Site',
+		}),
+	},
 })

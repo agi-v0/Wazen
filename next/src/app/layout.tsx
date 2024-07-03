@@ -3,7 +3,18 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
+<<<<<<< Updated upstream
 import '@/styles/app.css'
+=======
+<<<<<<< Updated upstream
+// import '@/styles/app.css'
+import '../styles/app.css'
+import { getMessages } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
+=======
+import '../styles/app.css'
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 export default function RootLayout({
 	children,
