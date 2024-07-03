@@ -19,6 +19,7 @@
 		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.0.1",
 		"@iconify/react": "^5.0.1",
 		"@sanity/dashboard": "^3.1.6",
+		"@sanity/document-internationalization": "^3.0.0",
 		"@sanity/vision": "^3.42.1",
 		"dotenv": "^16.4.5",
 		"install": "^0.13.0",
