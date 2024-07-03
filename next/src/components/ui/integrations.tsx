@@ -75,7 +75,7 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div1Ref}
 				toRef={div4Ref}
-				curvature={-75}
+				curvature={-200}
 				endYOffset={-10}
 			/>
 			<AnimatedBeam
@@ -87,14 +87,14 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div3Ref}
 				toRef={div4Ref}
-				curvature={75}
+				curvature={200}
 				endYOffset={10}
 			/>
 			<AnimatedBeam
 				containerRef={containerRef}
 				fromRef={div5Ref}
 				toRef={div4Ref}
-				curvature={-75}
+				curvature={-200}
 				endYOffset={-10}
 				reverse
 			/>
@@ -108,7 +108,7 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div7Ref}
 				toRef={div4Ref}
-				curvature={75}
+				curvature={200}
 				endYOffset={10}
 				reverse
 			/>
