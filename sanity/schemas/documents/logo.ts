@@ -11,37 +11,18 @@ export default defineType({
 			name: 'name',
 			type: 'string',
 		}),
-		defineField({
-			name: 'image',
-			type: 'object',
-			options: {
-				columns: 3,
-			},
-			fields: [
-				defineField({
-					name: 'default',
-					type: 'image',
-				}),
-				defineField({
-					name: 'light',
-					type: 'image',
-				}),
-				defineField({
-					name: 'dark',
-					type: 'image',
-				}),
-			],
-		}),
+		{
+			name: 'icon',
+			type: 'inlineSvg',
+		},
 	],
 	preview: {
 		select: {
 			title: 'name',
-			media: 'image.default',
 		},
-		prepare: ({ title, media }) => ({
+		prepare: ({ title }) => ({
 			title,
 			subtitle: 'Logo',
-			media,
 		}),
 	},
 })

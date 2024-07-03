@@ -12,12 +12,13 @@ declare global {
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
+			staticLinks?: Navigation
 			ogimage?: string
 		}>
 
 		type Navigation = SanityDocument<{
 			title: string
-			items?: (Link | LinkList)[]
+			items?: (Link | Links | LinkList | LinkGroup)[]
 		}>
 
 		type PageBase = SanityDocument<{
@@ -44,12 +45,13 @@ declare global {
 		}>
 
 		type Logo = SanityDocument<{
-			name: string
+			name: string | StaticImport
 			image: {
 				default?: Image
 				light?: Image
 				dark?: Image
 			}
+			icon: SVGElement
 		}>
 
 		type Testimonial = SanityDocument<{
@@ -77,9 +79,27 @@ declare global {
 		type Link = {
 			readonly _type: 'link'
 			label: string
+			description: string
 			type: 'internal' | 'external'
 			internal?: Page | BlogPost
 			external?: string
+			params?: string
+		}
+
+		type AppLink = {
+			readonly _type: 'link'
+			label: string
+			description: string
+			type: 'internal' | 'external'
+			internal?: Page | BlogPost
+			external?: string
+			params?: string
+			image?: Image
+		}
+
+		type Group = {
+			readonly _type: 'group'
+			label: string
 			params?: string
 		}
 
@@ -87,6 +107,20 @@ declare global {
 			readonly _type: 'link.list'
 			label: string
 			links?: Link[]
+			link?: Link
+		}
+
+		type AppsLinkList = {
+			readonly _type: 'App.link.list'
+			label: string
+			links?: AppLink[]
+		}
+
+		type LinkGroup = {
+			readonly _type: 'link.group'
+			label: string
+			links?: Link[]
+			link?: Link
 		}
 
 		type Metadata = {

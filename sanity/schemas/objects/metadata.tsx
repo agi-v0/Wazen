@@ -1,4 +1,7 @@
 import { defineField, defineType } from 'sanity'
+import { MediaEditor } from '@catherineriver/sanity-plugin-generate-ogimage'
+import { OGImageEditor } from '../../src/OGImageEditor'
+import React from 'react'
 
 export default defineType({
 	name: 'metadata',
@@ -28,6 +31,17 @@ export default defineType({
 			name: 'image',
 			description: 'Used for social sharing previews',
 			type: 'image',
+			options: {
+				sources: [
+					{
+						name: 'generate-ogimage',
+						title: 'Generate Image',
+						component: (props) => (
+							<MediaEditor {...props} layouts={[OGImageEditor]} />
+						),
+					},
+				],
+			},
 		}),
 		defineField({
 			name: 'noIndex',
@@ -36,4 +50,10 @@ export default defineType({
 			initialValue: false,
 		}),
 	],
+	preview: {
+		select: {
+			title: 'title',
+			subtitle: 'description',
+		},
+	},
 })

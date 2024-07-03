@@ -1,35 +1,52 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import Link from 'next/link'
+import { PiCaretRightBold } from 'react-icons/pi'
 
 export default async function Rollup({
-	content,
-	limit = 100,
+	limit,
+	category,
 	layout,
+	categoryRef = category?.length > 0 ? category[0]?._ref : null,
 }: Partial<{
-	content: any
 	limit?: number
+	category: any
+	categoryRef: any
 	layout: 'grid' | 'carousel'
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post'][0...$limit]|order(publishDate desc){
-			...,
-			categories[]->
+		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
+		 title,
+			publishDate,
+			metadata,
+			body,
+		 categories[]->{
+			title
+		 }
 		}`,
 		{
-			params: { limit },
+			params: {
+				limit,
+				categoryRef,
+			},
 			tags: ['posts'],
 		},
 	)
-
 	return (
-		<section className="section space-y-4">
-			<header className="richtext">
-				<PortableText value={content} />
-			</header>
-
+		<section className="section my-12 flex flex-col gap-6">
+			{posts[0]?.categories && (
+				<div className="flex w-full items-center justify-between">
+					<div className="h5 font-semibold">
+						{posts[0]?.categories[0]?.title}
+					</div>
+					<Link href="" className="group px-3 py-1 text-teal-600 no-underline">
+						<div className="inline-block">تصفح المزيد</div>
+						<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
+					</Link>
+				</div>
+			)}
 			<ul
 				className={cn(
 					'gap-6',

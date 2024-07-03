@@ -1,6 +1,9 @@
 const { createClient } = require('next-sanity')
 const groq = require('groq')
 
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin();
+
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: 'production',
@@ -35,4 +38,4 @@ const nextConfig = {
 	// },
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig)

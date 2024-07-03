@@ -4,7 +4,7 @@ import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'hero',
-	title: 'Hero',
+	title: 'Main Hero',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	groups: [
@@ -23,7 +23,13 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'content',
+			name: 'mainTitle',
+			type: 'array',
+			of: [{ type: 'block' }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'Subtitle',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
@@ -100,7 +106,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'content',
+			content: 'mainTitle',
 			media: 'bgImage',
 		},
 		prepare: ({ content, media }) => ({

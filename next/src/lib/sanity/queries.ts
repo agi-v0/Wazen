@@ -43,6 +43,7 @@ export async function getSite() {
 				headerMenu->{ ${navigationQuery} },
 				footerMenu->{ ${navigationQuery} },
 				social->{ ${navigationQuery} },
+				staticLinks->{ ${navigationQuery} },
 				'ogimage': ogimage.asset->url
 			}
 		`,

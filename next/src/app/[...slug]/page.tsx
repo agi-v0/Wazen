@@ -24,11 +24,12 @@ export async function generateStaticParams() {
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
 	)
-
-	return slugs.map((slug) => ({ slug }))
+	// console.log('All slugs:', slugs)
+	return slugs.map((slug) => decodeURIComponent(slug))
 }
 
 async function getPage(params: Props['params']) {
+	// console.log('Params.slug', params.slug)
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
@@ -45,6 +46,17 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
+				products[]{
+					...,
+						link{
+							...,
+							internal->{ title, metadata },
+					}
+				},
+				categories[]->{title},
+				items[]->,
+				logos[]->,
+				partnerslogos[]->,
 				testimonials[]->,
 				'headings': select(
 					tableOfContents => content[style in ['h2', 'h3']]{
@@ -60,12 +72,14 @@ async function getPage(params: Props['params']) {
 			}
 		}`,
 		{
-			params: { slug: params.slug },
+			params: {
+				slug: params.slug.join('/'),
+			},
 			tags: ['pages'],
 		},
 	)
 }
 
 type Props = {
-	params: { slug?: string }
+	params: { slug?: any }
 }

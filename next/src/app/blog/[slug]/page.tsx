@@ -3,14 +3,14 @@ import { notFound } from 'next/navigation'
 import Post from '@/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
 
-export default async function Page({ params }: Props) {
-	const post = await getPost(params)
+export default async function getStaticPaths({ params }: Props) {
+	const post = await getStaticProps(params)
 	if (!post) notFound()
 	return <Post post={post} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	const post = await getPost(params)
+	const post = await getStaticProps(params)
 	if (!post) notFound()
 	return processMetadata(post)
 }
@@ -23,24 +23,26 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getPost(params: Props['params']) {
+async function getStaticProps(params: Props['params']) {
+	const decodedSlug = decodeURIComponent(params.slug || '')
+
 	return await fetchSanity<Sanity.BlogPost>(
 		groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
-			...,
-			'body': select(_type == 'image' => asset->, body),
-			'readTime': length(pt::text(body)) / 200,
-			'headings': body[style in ['h2', 'h3']]{
-				style,
-				'text': pt::text(@)
-			},
-			categories[]->,
-			metadata {
-				...,
-				'ogimage': image.asset->url
-			}
-		}`,
+            ...,
+            'body': select(_type == 'image' => asset->, body),
+            'readTime': length(pt::text(body)) / 200,
+            'headings': body[style in ['h2', 'h3']]{
+                style,
+                'text': pt::text(@)
+            },
+            categories[]->,
+            metadata {
+                ...,
+                'ogimage': image.asset->url
+            }
+        }`,
 		{
-			params,
+			params: { slug: decodedSlug },
 			tags: ['blog.post'],
 		},
 	)

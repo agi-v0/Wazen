@@ -16,31 +16,23 @@ export default defineType({
 		defineField({
 			name: 'items',
 			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'object',
-					icon: VscQuestion,
-					fields: [
-						defineField({
-							name: 'question',
-							type: 'string',
-						}),
-						defineField({
-							name: 'answer',
-							type: 'array',
-							of: [{ type: 'block' }],
-						}),
-					],
-					preview: {
-						select: {
-							title: 'question',
-							answer: 'answer',
-						},
-						prepare: ({ title, answer }) => ({
-							title,
-							subtitle: getBlockText(answer),
-						}),
-					},
+			of: [{ type: 'reference', to: [{ type: 'faq' }] }],
+		}),
+		defineField({
+			name: 'sideNote',
+			type: 'object',
+			fields: [
+				defineField({
+					name: 'title',
+					type: 'string',
+				}),
+				defineField({
+					name: 'subtitle',
+					type: 'text',
+				}),
+				defineField({
+					name: 'link',
+					type: 'link',
 				}),
 			],
 		}),

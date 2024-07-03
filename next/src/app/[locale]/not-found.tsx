@@ -3,7 +3,7 @@ import Modules from '@/ui/modules'
 
 export default async function NotFound() {
 	const page = await get404()
-	if (!page) return <h1 className="text-center text-5xl">404</h1>
+	if (!page) return <h1 className="h1 text-center text-5xl">404</h1>
 	return <Modules modules={page?.modules} />
 }
 

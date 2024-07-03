@@ -56,6 +56,12 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
+			name: 'staticLinks',
+			type: 'reference',
+			to: [{ type: 'navigation' }],
+			group: 'navigation',
+		}),
+		defineField({
 			name: 'ogimage',
 			title: 'Open Graph Image (global)',
 			description: 'Used for social sharing previews',

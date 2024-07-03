@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
+import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'cta',
@@ -16,8 +17,9 @@ export default defineType({
 			type: 'string',
 			options: {
 				list: [
-					{ title: 'action', value: 'action' },
-					{ title: 'link', value: 'link' },
+					{ title: 'Primary', value: 'primary' },
+					{ title: 'Secondary', value: 'secondary' },
+					{ title: 'Tertiary', value: 'tertiary' },
 				],
 			},
 		}),
@@ -29,7 +31,7 @@ export default defineType({
 			external: 'link.external',
 		},
 		prepare: ({ title, internal, external }) => ({
-			title,
+			title: title,
 			subtitle:
 				external || (internal && (internal === 'index' ? '/' : `/${internal}`)),
 		}),

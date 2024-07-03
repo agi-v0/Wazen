@@ -7,7 +7,5 @@ export default function Pretitle({
 }: React.HTMLProps<HTMLParagraphElement>) {
 	if (!children) return null
 
-	return (
-		<p className={cn('technical text-sm', className)}>{stegaClean(children)}</p>
-	)
+	return <p className={className}>{stegaClean(children)}</p>
 }

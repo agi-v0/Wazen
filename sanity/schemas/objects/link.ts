@@ -6,13 +6,14 @@ export default defineType({
 	title: 'Link',
 	icon: VscLink,
 	type: 'object',
-	options: {
-		columns: 2,
-	},
 	fields: [
 		defineField({
 			name: 'label',
 			type: 'string',
+		}),
+		defineField({
+			name: 'description',
+			type: 'text',
 		}),
 		defineField({
 			name: 'type',

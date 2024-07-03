@@ -1,7 +1,12 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from '@portabletext/react'
 import Pretitle from '../Pretitle'
 import Img from '../Img'
+import Image from 'next/image'
 
 export default async function LogoList({
 	pretitle,
@@ -17,18 +22,32 @@ export default async function LogoList({
 	const allLogos =
 		logos || (await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']`))
 
+	const components: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				if (value.style === 'h2') {
+					return (
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
+							{value.children.map((child: any) => child.text).join('')}
+						</h2>
+					)
+				}
+				return (
+					<p className="text-main font-semibold text-gray-400">
+						{value.children.map((child: any) => child.text).join('')}
+					</p>
+				)
+			},
+		},
+	}
 	return (
-		<section className="section space-y-8">
-			<header className="richtext text-center">
-				<Pretitle>{pretitle}</Pretitle>
-				<PortableText value={content} />
-			</header>
+		<section className="section py-12">
+			<div className="fluid-gap flex w-full flex-col items-center">
+				<Pretitle className="text-main text-center font-normal text-gray-400">
+					{pretitle}
+				</Pretitle>
+				<PortableText value={content} components={components} />
 
-<<<<<<< Updated upstream
-			<figure className="item-center mx-auto flex flex-wrap justify-center gap-x-4 gap-y-8">
-				{allLogos.map((logo, key) => (
-=======
-<<<<<<< Updated upstream
 				<figure className="flex w-full flex-wrap items-center justify-center gap-x-8 gap-y-6 grayscale">
 					{allLogos.map((logo, key) => (
 						<div
@@ -39,24 +58,6 @@ export default async function LogoList({
 					))}
 				</figure>
 			</div>
-=======
-			<figure className="item-center mx-auto flex flex-wrap justify-center gap-x-4 gap-y-8">
-				{/* {allLogos.map((logo, key) => (
->>>>>>> Stashed changes
-					<Img
-						className="max-h-[2em] max-w-[200px] object-contain"
-						image={logo.image[logoType]}
-						imageWidth={400}
-						key={key}
-					/>
-<<<<<<< Updated upstream
-				))}
-			</figure>
-=======
-				))} */}
-			</figure>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 		</section>
 	)
 }

@@ -11,6 +11,7 @@ import {
 } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import { documentInternationalization } from '@sanity/document-internationalization'
@@ -21,6 +22,11 @@ import { advancedArray } from './plugins/sanity-plugin-advanced-array'
 =======
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+=======
+import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
+import { iconify } from 'sanity-plugin-iconify'
+import { advancedArray } from './plugins/sanity-plugin-advanced-array'
+>>>>>>> dev
 
 const singletonTypes = ['site']
 
@@ -52,6 +58,7 @@ export default defineConfig({
 		visionTool({
 			title: 'GROQ',
 		}),
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 		documentInternationalization({
@@ -63,11 +70,14 @@ export default defineConfig({
 			],
 			schemaTypes: ['page', 'site', 'navigation'],
 		}),
+=======
+>>>>>>> dev
 		inlineSvgInput(),
 		iconify({
 			collections: ['ph'],
 		}),
 		advancedArray(),
+<<<<<<< HEAD
 =======
       // Required configuration
 			supportedLanguages: [
@@ -78,6 +88,8 @@ export default defineConfig({
     })
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+=======
+>>>>>>> dev
 	],
 
 	scheduledPublishing: {

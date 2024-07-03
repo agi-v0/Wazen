@@ -11,9 +11,6 @@ import RichtextSubModule, {
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import React from 'react'
-// import { ContainerScroll } from "../ui/container-scroll-animation";
-import Image from 'next/image'
-import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 
 export default function CreativeModule({
 	content,
@@ -56,21 +53,6 @@ export default function CreativeModule({
 						} as React.CSSProperties
 					}
 				>
-					<div className="flex flex-col items-center overflow-hidden">
-						<div className='w-[80%]'>
-							<ContainerScroll>
-								<Image
-									src={`/dashboard-image.png`}
-									alt="hero"
-									height={720}
-									width={1400}
-									className="mx-auto h-full rounded-2xl object-cover object-left-top"
-									draggable={false}
-								/>
-							</ContainerScroll>
-						</div>
-					</div>
-
 					{modules?.map(({ subModules, colSpan = 1 }, i) => (
 						<article
 							className={cn(
