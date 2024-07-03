@@ -22,6 +22,9 @@ export async function generateMetadata({
 }
 
 async function getPage(locale: string) {
+
+	
+
 	return await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
 			...,

@@ -11,22 +11,9 @@ import {
 } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-import { documentInternationalization } from '@sanity/document-internationalization'
-<<<<<<< Updated upstream
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
 import { advancedArray } from './plugins/sanity-plugin-advanced-array'
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
-import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
-import { iconify } from 'sanity-plugin-iconify'
-import { advancedArray } from './plugins/sanity-plugin-advanced-array'
->>>>>>> dev
 
 const singletonTypes = ['site']
 
@@ -58,38 +45,11 @@ export default defineConfig({
 		visionTool({
 			title: 'GROQ',
 		}),
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-		documentInternationalization({
-<<<<<<< Updated upstream
-			// Required configuration
-			supportedLanguages: [
-				{ id: 'ar', title: 'Arabic' },
-				{ id: 'en', title: 'English' },
-			],
-			schemaTypes: ['page', 'site', 'navigation'],
-		}),
-=======
->>>>>>> dev
 		inlineSvgInput(),
 		iconify({
 			collections: ['ph'],
 		}),
 		advancedArray(),
-<<<<<<< HEAD
-=======
-      // Required configuration
-			supportedLanguages: [
-				{ id: 'ar', title: 'Arabic' },
-				{ id: 'en', title: 'English' }
-			],
-			schemaTypes: ['site', 'page'],
-    })
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
->>>>>>> dev
 	],
 
 	scheduledPublishing: {
