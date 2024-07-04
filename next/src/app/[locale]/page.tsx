@@ -18,7 +18,7 @@ export async function generateMetadata({
 	params: { locale: string }
 }) {
 	const page = await getPage(locale)
-	return processMetadata(page)
+	return processMetadata(page, locale)
 }
 
 async function getPage(locale: string) {

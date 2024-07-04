@@ -15,14 +15,14 @@ export default async function RootLayout({
 }) {
 	const messages = await getMessages()
 	return (
-		<html lang={locale} dir={locale == 'en' ? "ltr" : "rtl"}>
+		<html lang={locale} dir={locale == 'en' ? 'ltr' : 'rtl'}>
 			<body className="bg-white text-gray-950">
 				<NextIntlClientProvider messages={messages}>
 					<Header locale={locale} />
 					<main id="main-content" tabIndex={-1}>
 						{children}
 					</main>
-					<Footer />
+					<Footer locale={locale} />
 					{draftMode().isEnabled && <VisualEditing />}
 				</NextIntlClientProvider>
 			</body>

@@ -5,12 +5,11 @@ import LinkGroup from './LinkGroup'
 import Link from 'next/link'
 
 export default async function Menu({ locale }: any) {
-	const { headerMenu } = await getSite()
+	const { headerMenu } = await getSite(locale)
 
 	return (
 		<nav className="max-md:anim-fade-to-r flex gap-x-0 max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
 			{headerMenu?.items?.map((item, key) => {
-
 				switch (item._type) {
 					case 'link':
 						return (

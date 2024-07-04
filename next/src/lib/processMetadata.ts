@@ -4,8 +4,9 @@ import type { Metadata } from 'next'
 
 export default async function processMetadata(
 	page: Sanity.Page | Sanity.BlogPost,
+	locale: any,
 ): Promise<Metadata> {
-	const site = await getSite()
+	const site = await getSite(locale)
 
 	const url = processUrl(page)
 	const { title, description, ogimage, noIndex } = page.metadata

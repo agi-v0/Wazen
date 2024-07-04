@@ -28,10 +28,10 @@ export const creativeModuleQuery = groq`
 	}
 `
 
-export async function getSite() {
+export async function getSite(locale: any) {
 	return await fetchSanity<Sanity.Site>(
 		groq`
-			*[_type == 'site'][0]{
+			*[_type == 'site' && language == '${locale}'  ][0]{
 				...,
 				ctas[]{
 					...,

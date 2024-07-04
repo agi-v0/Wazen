@@ -17,11 +17,13 @@ import Link from 'next/link'
 export default async function Social({
 	staticLinks,
 	className,
+	locale,
 }: {
 	staticLinks: any
 	className: string
+	locale: any
 }) {
-	const { social } = await getSite()
+	const { social } = await getSite(locale)
 
 	if (!social?.items?.length) return null
 
@@ -32,19 +34,19 @@ export default async function Social({
 				className,
 			)}
 		>
-			<div className="flex flex-col lg:flex-row  gap-6 items-center">
+			<div className="flex flex-col items-center gap-6 lg:flex-row">
 				<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
 
 				{staticLinks?.items?.map((item: any, key: any) => {
 					const { label, links } = item
 
 					return (
-						<div key={key} className="cursor-default md:w-1/3 lg:w-fit ">
-							<div className="text-start ">{label}</div>
+						<div key={key} className="cursor-default md:w-1/3 lg:w-fit">
+							<div className="text-start">{label}</div>
 
 							<ul className="text-start">
 								{links?.map((link: any, key: any) => (
-									<li key={key} className="h-8  text-white">
+									<li key={key} className="h-8 text-white">
 										<Link href="" className="no-underline hover:text-teal-600">
 											{link.label}
 										</Link>
