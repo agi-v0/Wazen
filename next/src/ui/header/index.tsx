@@ -6,10 +6,9 @@ import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
-import Image from 'next/image'
 import LangSelect from '@/components/lang-select'
 
-export default async function Header() {
+export default async function Header({ locale }: any) {
 	const {
 		ctas,
 		logo = {
@@ -27,7 +26,7 @@ export default async function Header() {
 							dangerouslySetInnerHTML={{ __html: logo.icon }}
 						/>
 					</Link>
-					<Navigation />
+					<Navigation locale={locale} />
 				</div>
 
 				<div className="flex flex-col-reverse items-center justify-center gap-x-10 gap-y-3 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">

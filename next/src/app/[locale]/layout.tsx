@@ -18,7 +18,7 @@ export default async function RootLayout({
 		<html lang={locale} dir={locale == 'en' ? "ltr" : "rtl"}>
 			<body className="bg-white text-gray-950">
 				<NextIntlClientProvider messages={messages}>
-					<Header />
+					<Header locale={locale} />
 					<main id="main-content" tabIndex={-1}>
 						{children}
 					</main>
