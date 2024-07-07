@@ -2,8 +2,6 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
-import { getMessages } from 'next-intl/server'
-import { NextIntlClientProvider } from 'next-intl'
 import '../../styles/app.css'
 
 export default async function RootLayout({
@@ -13,18 +11,15 @@ export default async function RootLayout({
 	children: React.ReactNode
 	params: { locale: any }
 }) {
-	const messages = await getMessages()
 	return (
 		<html lang={locale} dir={locale == 'en' ? 'ltr' : 'rtl'}>
 			<body className="bg-white text-gray-950">
-				<NextIntlClientProvider messages={messages}>
-					<Header locale={locale} />
-					<main id="main-content" tabIndex={-1}>
-						{children}
-					</main>
-					<Footer locale={locale} />
-					{draftMode().isEnabled && <VisualEditing />}
-				</NextIntlClientProvider>
+				<Header locale={locale} />
+				<main id="main-content" tabIndex={-1}>
+					{children}
+				</main>
+				<Footer locale={locale} />
+				{draftMode().isEnabled && <VisualEditing />}
 			</body>
 		</html>
 	)

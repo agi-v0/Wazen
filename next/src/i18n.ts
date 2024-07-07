@@ -1,14 +1,12 @@
-import {notFound} from 'next/navigation';
-import {getRequestConfig} from 'next-intl/server';
- 
-// Can be imported from a shared config
-const locales = ['ar', 'en'];
- 
-export default getRequestConfig(async ({locale}) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) notFound();
- 
-  return {
-    messages: (await import(`../messages/${locale}.json`)).default
-  };
-});
+import { createSharedPathnamesNavigation } from "next-intl/navigation";
+
+export const locales = ["ar", "en"] as const;
+export type Locale = (typeof locales)[number];
+
+export const localeNames: Record<Locale, string> = {
+  "ar": "Arabic",
+  "en": "English",
+};
+
+export const { Link, usePathname, useRouter } =
+  createSharedPathnamesNavigation({ locales });
