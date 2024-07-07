@@ -2,7 +2,8 @@ import Brief from './Brief'
 import Sidebar from '../../../public/How-it-works/Sidebar.svg'
 import Image from 'next/image'
 import { AnimatedBeamDemo } from '../../components/ui/integrations'
-import Iphone from '../../components/ui/iphone-chart'
+// import Iphone from '../../components/ui/iphone-chart'
+import { MobileApp } from '../../components/ui/iphone-chart'
 
 export default function BriefGroup({
 	briefs,
@@ -17,7 +18,7 @@ export default function BriefGroup({
 			className="bottom-0 top-0 mx-auto h-full w-auto"
 		/>,
 		<AnimatedBeamDemo />,
-		<Iphone />,
+		<MobileApp />,
 		<AnimatedBeamDemo />,
 	]
 	return (

@@ -96,15 +96,13 @@ export default function Applications({
 						direction={'left'}
 						speed={'slow'}
 						pauseOnHover={true}
-						links={links}
-						logoType="default"
+						items={links}
 					/>
 					<InfiniteMovingCards
 						direction={'right'}
 						speed={'slow'}
 						pauseOnHover={true}
-						links={links}
-						logoType="default"
+						items={links}
 					/>
 				</div>
 			</div>
