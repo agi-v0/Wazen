@@ -16,16 +16,23 @@ export default async function Footer({ locale }: any) {
 	return (
 		<section className="bg-cyan-950 text-center text-white">
 			<div className="section relative overflow-hidden py-12">
-				<div
-					className="svg-container pointer-events-none absolute top-[50%] h-auto w-full max-w-screen-xl fill-white opacity-15"
-					dangerouslySetInnerHTML={{ __html: logo.icon }}
-				/>
+				<div className="svg-container pointer-events-none absolute top-[50%] hidden h-auto w-full max-w-screen-xl fill-white opacity-15">
+					<Image
+						src="/wazen-logo-white.svg"
+						alt="Logo"
+						height={24}
+						width={85.37}
+					/>
+				</div>
+
 				<div className="flex w-full flex-col justify-between gap-20">
 					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
 						<Link className="font-bold" href="/">
-							<div
-								className="svg-container h-6 w-auto fill-white"
-								dangerouslySetInnerHTML={{ __html: logo.icon }}
+							<Image
+								src="/wazen-logo-white.svg"
+								alt="Logo"
+								height={24}
+								width={85.37}
 							/>
 						</Link>
 						<Navigation footerMenu={footerMenu} />

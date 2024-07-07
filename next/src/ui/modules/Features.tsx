@@ -61,62 +61,62 @@ export default function Features({
 		},
 	}
 	return (
-		<section className={'section py-12'}>
+		<section
+			className={
+				'section fluid-vertical-space bg--gradient-to-b from-white from-10% via-cyan-50 via-50% to-white to-100%'
+			}
+		>
 			<div
-				className={
-					'fluid-padding flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 overflow-hidden'
-				}
+				className={'fluid-gap flex w-full flex-col items-center justify-evenly'}
+				style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<div
-					className={'flex flex-col items-center gap-8'}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
+				<div className="flex flex-col items-center gap-6">
 					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					<div className="text-center">
-						<CTAList ctas={ctas} />
-					</div>
-					<ul className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-teal-100">
-						{features &&
-							features.map(
-								(
-									feature: {
-										title: string
-										description: string
-										icon: { name: string }
-									},
-									index: any,
-								) => (
-									<li
-										className="flex w-full rounded-md bg-cyan-50 p-6"
-										key={index}
-									>
-										<div className="flex flex-col justify-start gap-4 text-start">
-											<div className="self-start rounded-full bg-white p-2 shadow-md">
-												<Icon
-													icon={
-														feature.icon ? feature.icon.name : 'ph:cube-duotone'
-													}
-													style={{
-														color: '#083344',
-														fontSize: 'var(--h6--font-size)',
-													}}
-												/>
-											</div>
-											<h3 className="text-main font-semibold leading-tight text-cyan-950">
-												{feature.title}
-											</h3>
+				</div>
 
-											<p className="text-small max-w-xl text-gray-600 md:max-w-3xl">
-												{feature.description}
-											</p>
-										</div>
-									</li>
-								),
-							)}
-					</ul>
+				<ul className="grid w-full grid-cols-1 gap-6 from-cyan-100 to-teal-100 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
+					{features &&
+						features.map(
+							(
+								feature: {
+									title: string
+									description: string
+									icon: { name: string }
+								},
+								index: any,
+							) => (
+								<li
+									className="flex w-full flex-col justify-start gap-8 rounded-xl bg-cyan-50 p-6 text-start shadow-lg"
+									key={index}
+								>
+									<div className="self-start rounded-full bg-white p-3">
+										<Icon
+											icon={
+												feature.icon ? feature.icon.name : 'ph:cube-duotone'
+											}
+											style={{
+												color: '#083344',
+												fontSize: '2rem',
+											}}
+										/>
+									</div>
+									<div className="space-y-4">
+										<h3 className="text-main font-semibold leading-tight text-cyan-950">
+											{feature.title}
+										</h3>
+										<p className="text-small max-w-xl text-cyan-950/60 md:max-w-3xl">
+											{feature.description}
+										</p>
+									</div>
+								</li>
+							),
+						)}
+				</ul>
+				<div className="text-center">
+					<CTAList ctas={ctas} />
 				</div>
 			</div>
 		</section>
