@@ -12,6 +12,7 @@ import { stegaClean } from '@sanity/client/stega'
 export default function HeroTwo({
 	pretitle,
 	mainTitle,
+	content,
 	Subtitle,
 	ctas,
 	bgImage,
@@ -21,6 +22,7 @@ export default function HeroTwo({
 }: Partial<{
 	pretitle: string
 	mainTitle: any
+	content: any
 	Subtitle: any
 	ctas: Sanity.CTA[]
 	bgImage: Sanity.Image
@@ -71,12 +73,12 @@ export default function HeroTwo({
 						className={cn(
 							hasImage
 								? 'text-white/40'
-								: 'mx-auto w-fit rounded-full border border-white bg-white/20 px-6 py-1',
+								: 'mx-auto w-fit text-gray-400 px-6 py-1',
 						)}
 					>
 						{pretitle}
 					</Pretitle>
-					<PortableText value={mainTitle} components={components} />
+					<PortableText value={content} components={components} />
 					<PortableText value={Subtitle} components={components} />
 					<CTAList
 						ctas={ctas}
