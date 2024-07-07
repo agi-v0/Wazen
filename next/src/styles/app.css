@@ -18,10 +18,12 @@
 	}
 
 	html {
-		accent-color: theme('colors.ink');
-		caret-color: theme('colors.ink');
-		scroll-behavior: smooth;
+		accent-color: theme('colors.teal.600');
+		caret-color: theme('colors.teal.600');
 		@apply text-gray-950 transition-all duration-300;
+		scroll-padding-top: var(--header-height);
+		overscroll-behavior: none;
+		scroll-behavior: smooth;
 	}
 
 	summary {
@@ -118,7 +120,7 @@
 	}
 
 	.fluid-vertical-space {
-		padding: var(--size--4rem) 0;
+		padding: var(--size--5rem) 0;
 	}
 }
 

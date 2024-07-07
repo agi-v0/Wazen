@@ -85,7 +85,7 @@ export default function Benefits({
 
 	return (
 		<section className={'section fluid-vertical-space'}>
-			<motion.div className="fluid-gap flex min-h-screen" ref={ref}>
+			<motion.div className="fluid-gap flex" ref={ref}>
 				<div className="sticky top-32 hidden h-full md:block">
 					<div className="mb-32 flex flex-col items-center justify-center">
 						{numbers.map((number, index) => (
@@ -115,7 +115,7 @@ export default function Benefits({
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
-								className="space-y-6 py-12"
+								className="h-96 space-y-6 py-12"
 								key={item.content + index}
 							>
 								<PortableText value={item.content} components={components} />

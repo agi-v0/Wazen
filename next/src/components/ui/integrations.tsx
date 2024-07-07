@@ -13,7 +13,7 @@ const Circle = forwardRef<
 			id="parentDiv"
 			ref={ref}
 			className={cn(
-				'z-[1] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 backdrop-blur hover:bg-cyan-950/60',
+				'z-[1] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 shadow-lg backdrop-blur hover:bg-cyan-950/60',
 				className,
 			)}
 		>
@@ -53,7 +53,7 @@ export function AnimatedBeamDemo() {
 					</Circle>
 					<Circle
 						ref={div4Ref}
-						className="h-20 w-20 bg-teal-500 transition-all group-hover:bg-teal-400"
+						className="h-20 w-20 bg-cyan-800 transition-all group-hover:bg-teal-400"
 					>
 						<Icons.wazen />
 					</Circle>
