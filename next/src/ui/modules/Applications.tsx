@@ -91,7 +91,7 @@ export default function Applications({
 						)}
 					/>
 				</div>
-				<div className="bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
+				<div className="-bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
 					<InfiniteMovingCards
 						direction={'left'}
 						speed={'slow'}

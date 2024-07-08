@@ -31,7 +31,7 @@ export default function HeroThree({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="h2 text-balance font-semibold leading-tight">
+						<h1 className="h1 text-pretty font-semibold leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
@@ -59,11 +59,9 @@ export default function HeroThree({
 					'fluid-gap my-auto flex w-full flex-col items-center justify-evenly lg:flex-row'
 				}
 			>
-				<div className="h-[400px] w-full lg:max-w-[400px]">
-					<div className="brief-background relative h-full overflow-hidden rounded-sm border-8 border-white shadow-md">
-						<div className={'h-full w-full'}>
-							<Img image={image} imageWidth={3000} />
-						</div>
+				<div className="aspect-square w-full lg:max-w-[450px]">
+					<div className="relative h-full overflow-hidden rounded-lg border-8 border-white shadow-md">
+						<Img image={image} imageWidth={500} />
 					</div>
 				</div>
 				<div className="flex flex-col items-start gap-8">
