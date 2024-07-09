@@ -14,7 +14,7 @@ export default function AnchoredHeading({
 		<Tag id={id} className="group">
 			{children}
 
-			<a className="ml-2 md:hidden md:group-hover:inline-block" href={`#${id}`}>
+			<a className="ms-2 md:hidden md:group-hover:inline-block" href={`#${id}`}>
 				🔗
 			</a>
 		</Tag>
