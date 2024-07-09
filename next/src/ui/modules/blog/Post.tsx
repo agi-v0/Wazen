@@ -13,7 +13,7 @@ import { PiCircleFill } from 'react-icons/pi'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
-		<article className="section fluid-gap flex flex-col">
+		<article className="section">
 			<header className="mt-[25vh] md:space-y-12">
 				<div className="space-y-6 md:space-y-8">
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
@@ -36,7 +36,7 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 				/>
 			</header>
 
-			<div className="fluid-gap grid md:grid-cols-[1fr,auto]">
+			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-[1fr,auto]">
 				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-50 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
