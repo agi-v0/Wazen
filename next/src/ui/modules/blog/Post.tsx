@@ -9,37 +9,35 @@ import Img from '@/ui/Img'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
-		<article className="mt-14">
-			<header className="section space-y-4">
-				<div className="flex gap-4">
+		<article className="section">
+			<header className="my-[var(--header-height)] space-y-6 md:space-y-8">
+				<Img
+					image={post.metadata.image}
+					imageWidth={1200}
+					className="aspect-[inherit] w-full rounded-md object-cover"
+				/>
+				<div className="flex justify-center gap-2 text-sm font-medium">
 					{post?.categories && (
-						<div className="my-2 w-fit rounded-full border border-teal-600 bg-teal-600/20 px-6 py-1 text-teal-600">
+						<div className="w-fit rounded-full border-2 border-teal-500/20 px-3 py-1 text-teal-600">
 							{post?.categories[0]?.title}
 						</div>
 					)}
-					<div className="my-2 w-fit rounded-full border border-teal-600 bg-teal-600/20 px-6 py-1 text-teal-600">
+					<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
 						<Date value={post.publishDate} />
 					</div>
+					<div className="flex flex-wrap items-center justify-between gap-x-4">
+						<ReadTime value={post.readTime} />
+					</div>
 				</div>
-				<h1 className="h1">{post.title}</h1>
-				<div className="my-4">
-					<Img
-						image={post.metadata.image}
-						imageWidth={1200}
-						className="aspect-[inherit] w-full rounded-md object-cover"
-					/>
-				</div>
-				<div className="flex flex-wrap items-center justify-between gap-x-4">
-					<ReadTime value={post.readTime} />
-				</div>
+				<h1 className="h1 text-balance text-center">{post.title}</h1>
 			</header>
 
-			<div className="section grid gap-8 md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header mx-auto w-full max-w-xl self-start bg-teal-50 p-4 [--offset:1rem] md:order-1 md:w-[250px]">
+			<div className="grid gap-8 md:grid-cols-[1fr,auto]">
+				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-lg bg-teal-50 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
 
-				<div className="richtext mx-auto max-w-screen-sm [&>:not(:first-of-type)]:!mt-[1em]">
+				<div className="richtext mx-auto [&>:not(:first-of-type)]:!mt-[1em]">
 					<PortableText
 						value={post.body}
 						components={{
