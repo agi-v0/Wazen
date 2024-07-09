@@ -8,6 +8,7 @@ import {
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Img from '@/ui/Img'
+import { PiCircleFill } from 'react-icons/pi'
 // import Image from 'next/image'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
@@ -35,12 +36,12 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 				/>
 			</header>
 
-			<div className="grid gap-8 md:grid-cols-[1fr,auto]">
+			<div className="fluid-gap grid md:grid-cols-[1fr,auto]">
 				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-50 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
 
-				<div className="richtext -[&>:not(:first-of-type)]:!mt-[1em] mx-auto space-y-[1.5rem]">
+				<div className="mx-auto space-y-[1.5rem]">
 					<PortableText
 						value={post.body}
 						components={{
@@ -51,12 +52,12 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 							list: {
 								// Ex. 1: customizing common list types
 								bullet: ({ children }) => (
-									<ul className="ms-[1.5rem] space-y-4 text-gray-800">
+									<ul className="ms-[1.5rem] list-disc space-y-4 text-gray-800">
 										{children}
 									</ul>
 								),
 								number: ({ children }) => (
-									<ol className="ms-[1.5rem] space-y-4 text-gray-800">
+									<ol className="ms-[1.5rem] list-decimal space-y-4 text-gray-800">
 										{children}
 									</ol>
 								),
@@ -65,6 +66,15 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 								checkmarks: ({ children }) => (
 									<ol className="m-auto text-lg">{children}</ol>
 								),
+							},
+							listItem: {
+								// Ex. 1: customizing common list types
+								bullet: ({ children }) => (
+									<li style={{ listStyleType: 'revert' }}>{children}</li>
+								),
+
+								// Ex. 2: rendering custom list items
+								checkmarks: ({ children }) => <li>✅ {children}</li>,
 							},
 							types: {
 								// image: Image,
