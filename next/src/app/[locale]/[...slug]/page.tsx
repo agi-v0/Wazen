@@ -4,18 +4,18 @@ import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
-export default async function Page({ params }: { params: { locale: string } }) {
-	const page = await getPage({ params })
+type Props = {
+	params: { slug: string[]; locale: string }
+}
+
+export default async function Page({ params }: Props) {
+	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page?.modules} />
 }
 
-export async function generateMetadata({
-	params,
-}: {
-	params: { locale: string }
-}) {
-	const page = await getPage({ params })
+export async function generateMetadata({ params }: Props) {
+	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page, params.locale)
 }
@@ -31,7 +31,8 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => decodeURIComponent(slug))
 }
 
-async function getPage({ params }: any) {
+async function getPage(params: Props['params']) {
+	console.log(params)
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
@@ -75,14 +76,10 @@ async function getPage({ params }: any) {
 		}`,
 		{
 			params: {
-				params: { slug: params.slug?.join('/'), locale: params.locale },
+				locale: params.locale,
 				slug: params.slug.join('/'),
 			},
 			tags: ['pages'],
 		},
 	)
-}
-
-type Props = {
-	params: { slug?: any }
 }

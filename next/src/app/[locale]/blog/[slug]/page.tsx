@@ -3,6 +3,10 @@ import { notFound } from 'next/navigation'
 import Post from '@/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
 
+type Props = {
+	params: { slug?: string; locale: string }
+}
+
 export default async function getStaticPaths({ params }: Props) {
 	const post = await getStaticProps(params)
 	if (!post) notFound()
@@ -12,7 +16,7 @@ export default async function getStaticPaths({ params }: Props) {
 export async function generateMetadata({ params }: Props) {
 	const post = await getStaticProps(params)
 	if (!post) notFound()
-	return processMetadata(post)
+	return processMetadata(post, params.locale)
 }
 
 export async function generateStaticParams() {
@@ -46,8 +50,4 @@ async function getStaticProps(params: Props['params']) {
 			tags: ['blog.post'],
 		},
 	)
-}
-
-type Props = {
-	params: { slug?: string }
 }
