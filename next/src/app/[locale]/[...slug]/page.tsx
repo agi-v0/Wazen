@@ -11,7 +11,7 @@ type Props = {
 export default async function Page({ params }: Props) {
 	const page = await getPage(params)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} />
+	return <Modules modules={page?.modules} locale={params.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -32,7 +32,6 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: Props['params']) {
-	console.log(params)
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&

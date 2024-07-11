@@ -25,7 +25,13 @@ import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
 import HomeBriefGroup from './HomeBriefGroup'
 
-export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
+export default function Modules({
+	modules,
+	locale,
+}: {
+	modules?: Sanity.Module[]
+	locale?: any
+}) {
 	return (
 		<>
 			{modules?.map((module) => {
@@ -33,7 +39,7 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 					case 'applications':
 						return <Applications {...module} key={module._key} />
 					case 'blog-rollup':
-						return <BlogRollup {...module} key={module._key} />
+						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
 						return <BriefGroup {...module} key={module._key} />
 					case 'home-brief-group':

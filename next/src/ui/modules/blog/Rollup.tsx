@@ -10,11 +10,13 @@ export default async function Rollup({
 	category,
 	layout,
 	categoryRef = category?.length > 0 ? category[0]?._ref : null,
+	locale,
 }: Partial<{
 	limit?: number
 	category: any
 	categoryRef: any
 	layout: 'grid' | 'carousel'
+	locale: string
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
@@ -34,6 +36,7 @@ export default async function Rollup({
 			tags: ['posts'],
 		},
 	)
+
 	return (
 		<section className="section my-12 flex flex-col gap-6">
 			{posts[0]?.categories && (
@@ -57,7 +60,7 @@ export default async function Rollup({
 			>
 				{posts?.map((post, key) => (
 					<li key={key}>
-						<PostPreview post={post} />
+						<PostPreview post={post} locale={locale} />
 					</li>
 				))}
 			</ul>

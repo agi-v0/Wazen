@@ -1,14 +1,18 @@
 import Link from 'next/link'
 import Date from '@/ui/Date'
 import Image from 'next/image'
-// import Image from '../RichtextModule/Image'
-import Img from '@/ui/Img'
 import { PiCaretRightBold } from 'react-icons/pi'
 
-export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
+export default function PostPreview({
+	post,
+	locale,
+}: {
+	post: Sanity.BlogPost
+	locale: any
+}) {
 	return (
 		<Link
-			href={`/blog/${post.metadata?.slug?.current}`}
+			href={`/${locale}/blog/${post.metadata?.slug?.current}`}
 			className="group w-full md:h-full"
 		>
 			<div className="flex flex-col gap-3 rounded-lg bg-white">
