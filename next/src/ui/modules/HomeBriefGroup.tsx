@@ -1,9 +1,8 @@
 import Brief from './Brief'
-import Sidebar from '../../../public/How-it-works/Sidebar.svg'
-import Image from 'next/image'
 import { AnimatedBeamDemo } from '../../components/ui/integrations'
 // import Iphone from '../../components/ui/iphone-chart'
 import { MobileApp } from '../../components/ui/iphone-chart'
+import SideBar from '@/components/ui/side-bar'
 
 export default function BriefGroup({
 	briefs,
@@ -12,11 +11,7 @@ export default function BriefGroup({
 }>) {
 	//replace images and image components with an array of interactive components
 	const images: any = [
-		<Image
-			src={Sidebar}
-			alt="image"
-			className="bottom-0 top-0 mx-auto h-full w-auto"
-		/>,
+		<SideBar />,
 		<AnimatedBeamDemo />,
 		<MobileApp />,
 		<AnimatedBeamDemo />,
