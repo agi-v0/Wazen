@@ -269,6 +269,25 @@
 	);
 }
 
+.applist-background:nth-child(1) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FDF2F8 100%);
+}
+.applist-background:nth-child(2) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #ECFEFF 100%);
+}
+.applist-background:nth-child(3) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FEFCE8 100%);
+}
+.applist-background:nth-child(4) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FDF2F8 100%);
+}
+.applist-background:nth-child(5) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #F7FEE7 100%);
+}
+.applist-background:nth-child(6) {
+	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FEFCE8 100%);
+}
+
 .svg-container svg {
 	height: 100% !important; /* Override any existing height */
 	width: auto !important; /* Maintain aspect ratio */

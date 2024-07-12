@@ -83,15 +83,21 @@ export const InfiniteMovingCards = ({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map(({ title, description, link, image }, idx: any) => {
+				{items.map(({ title, link, image }, idx: any) => {
 					return (
 						<li
 							key={idx}
-							className={`flex flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md lg:w-[600px]`}
+							className={`applist-background flex flex-shrink-0 flex-row items-center justify-between rounded-md p-3 shadow-md lg:w-[600px]`}
 						>
-							<div className="flex flex-col justify-start">
-								<h3 className="text-main text-start font-semibold">{title}</h3>
-								<p className="text-start font-semibold">{description}</p>
+							<div className="flex flex-col justify-between h-full p-4">
+								<div>
+									<h3 className="text-main text-start text-2xl font-semibold">
+										{title}
+									</h3>
+									<p className="text-start text-sm font-semibold">
+										{link.description}
+									</p>
+								</div>
 								<div className="mt-6">
 									<span className="link flex items-center gap-1 text-teal-600 no-underline">
 										{link.label}
@@ -100,7 +106,11 @@ export const InfiniteMovingCards = ({
 								</div>
 							</div>
 							<div className="h-full w-full rounded-lg lg:max-w-[300px]">
-								{/* <Img image={image} imageWidth={300} className="bg-red-200 w-[300px]" /> */}
+								<Img
+									image={image}
+									imageWidth={300}
+									className="w-[300px] rounded-md"
+								/>
 							</div>
 						</li>
 					)

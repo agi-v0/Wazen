@@ -18,26 +18,14 @@ export default defineType({
 		}),
 		defineField({
 			name: 'image',
-			type: 'object',
-			options: {
-				columns: 3,
-			},
+			type: 'image',
 			fields: [
 				defineField({
-					name: 'default',
-					type: 'image',
+					name: 'alt',
+					type: 'string',
 				}),
-				defineField({
-					name: 'light',
-					type: 'image',
-				}),
-				defineField({
-					name: 'dark',
-					type: 'image',
-				}),
-			],
-		}),
-	],
+			]
+		})],
 	preview: {
 		select: {
 			title: 'title',
