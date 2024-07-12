@@ -1,25 +1,27 @@
 'use client'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
+import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from 'next-sanity'
+import { PiCaretRightBold } from 'react-icons/pi'
 
 export const InfiniteMovingCards = ({
-	items,
-	direction = 'left',
-	speed = 'fast',
+	direction,
+	speed,
 	pauseOnHover = true,
-	className,
+	items,
 }: {
-	items: Sanity.Testimonial[]
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	className?: string
+	items: [
+		{
+			title: string
+			description: string
+			link: Sanity.Link
+			image: Sanity.Image
+		},
+	]
 }) => {
 	const containerRef = React.useRef<HTMLDivElement>(null)
 	const scrollerRef = React.useRef<HTMLUListElement>(null)
@@ -31,18 +33,19 @@ export const InfiniteMovingCards = ({
 	function addAnimation() {
 		if (containerRef.current && scrollerRef.current) {
 			const scrollerContent = Array.from(scrollerRef.current.children)
+
 			scrollerContent.forEach((item) => {
 				const duplicatedItem = item.cloneNode(true)
 				if (scrollerRef.current) {
 					scrollerRef.current.appendChild(duplicatedItem)
 				}
 			})
+
 			getDirection()
 			getSpeed()
 			setStart(true)
 		}
 	}
-
 	const getDirection = () => {
 		if (containerRef.current) {
 			if (direction === 'left') {
@@ -69,80 +72,39 @@ export const InfiniteMovingCards = ({
 			}
 		}
 	}
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h2') {
-					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h2>
-					)
-				}
-				if (value.style === 'h3') {
-					return (
-						<h3 className="font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h3>
-					)
-				}
-				return (
-					<p className="text-main mx-auto max-w-xl text-start text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
+
 	return (
-		<div
-			ref={containerRef}
-			className={cn(
-				'scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
-				className,
-			)}
-		>
+		<div ref={containerRef}>
 			<ul
 				ref={scrollerRef}
 				className={cn(
-					'flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4',
+					'my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
 					start && 'animate-scroll',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items &&
-					items.map(({ content, author }, idx: any) => (
+				{items.map(({ title, description, link, image }, idx: any) => {
+					return (
 						<li
 							key={idx}
-							className={`flex w-[420px] flex-shrink-0 flex-row items-center justify-between rounded-2xl bg-white p-6 shadow-md`}
+							className={`flex flex-shrink-0 flex-row items-center justify-between rounded-md bg-white p-3 shadow-md lg:w-[600px]`}
 						>
-							<div className="flex flex-col justify-between gap-6">
-								<div className="richtext text-start">
-									<PortableText value={content} components={components} />
+							<div className="flex flex-col justify-start">
+								<h3 className="text-main text-start font-semibold">{title}</h3>
+								<p className="text-start font-semibold">{description}</p>
+								<div className="mt-6">
+									<span className="link flex items-center gap-1 text-teal-600 no-underline">
+										{link.label}
+										<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
+									</span>
 								</div>
-
-								{author && (
-									<footer>
-										<div className="flex items-center justify-start gap-2">
-											{/* <Img
-												className="size-[40px] rounded-full object-cover"
-												image={author?.image}
-												imageWidth={80}
-											/> */}
-											<div className={cn('text-start text-base')}>
-												<div className="font-semibold text-gray-600">
-													{author?.name}
-												</div>
-												{author?.title && (
-													<div className="text-gray-400">{author?.title}</div>
-												)}
-											</div>
-										</div>
-									</footer>
-								)}
+							</div>
+							<div className="h-full w-full rounded-lg lg:max-w-[300px]">
+								{/* <Img image={image} imageWidth={300} className="bg-red-200 w-[300px]" /> */}
 							</div>
 						</li>
-					))}
+					)
+				})}
 			</ul>
 		</div>
 	)

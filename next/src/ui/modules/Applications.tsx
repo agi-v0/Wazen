@@ -47,7 +47,7 @@ export default function Applications({
 			},
 		},
 	}
-
+	
 	return (
 		<section
 			className={
@@ -67,19 +67,7 @@ export default function Applications({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					{/* <Link
-						href={processUrl(link.internal, {
-							base: false,
-							params: link.params,
-						})}
-						className="w-fit"
-					>
-						<summary className="link flex items-center gap-1 px-3 text-teal-600 no-underline">
-							{link.label}
-							<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
-						</summary>
-					</Link> */}
-					<CTAList
+					{/* <CTAList
 						ctas={ctas}
 						className={cn(
 							{
@@ -89,9 +77,9 @@ export default function Applications({
 							},
 							'text-white *:h-12 *:px-6 *:text-lg',
 						)}
-					/>
+					/> */}
 				</div>
-				<div className="-bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
+				<div className="bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
 					<InfiniteMovingCards
 						direction={'left'}
 						speed={'slow'}
