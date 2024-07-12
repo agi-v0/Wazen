@@ -7,7 +7,7 @@ function NavItemList({ label, links }: Sanity.LinkList) {
 				{label}
 			</summary>
 
-			<ul className="left-0 top-full">
+			<ul className="grid grid-flow-col grid-rows-9 gap-x-4">
 				{links?.map((link, key) => (
 					<li key={key} className="h-8 text-gray-600">
 						<CTA className="" link={link} />

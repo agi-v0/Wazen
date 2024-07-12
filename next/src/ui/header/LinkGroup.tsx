@@ -11,8 +11,10 @@ export default function LinkGroup({ label, links }: Sanity.LinkGroup) {
 				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform group-open:rotate-90 group-hover:translate-y-[2px] md:rotate-90" />
 			</summary>
 
-			<ul className="anim-fade-to-b start-0 top-full flex gap-3 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:min-w-max md:backdrop-blur">
-				{links?.map((label: any, key: any) => <NavItemList {...label} key={key} />)}
+			<ul className="anim-fade-to-b start-0 top-full flex max-h-[340px] gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:min-w-max md:backdrop-blur">
+				{links?.map((label: any, key: any) => (
+					<NavItemList {...label} key={key} />
+				))}
 			</ul>
 		</InteractiveDetails>
 	)
