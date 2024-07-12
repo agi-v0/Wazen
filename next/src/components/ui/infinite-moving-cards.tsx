@@ -89,7 +89,7 @@ export const InfiniteMovingCards = ({
 							key={idx}
 							className={`applist-background flex flex-shrink-0 flex-row items-center justify-between rounded-md p-3 shadow-md lg:w-[600px]`}
 						>
-							<div className="flex flex-col justify-between h-full p-4">
+							<div className="flex h-full flex-col justify-between p-4">
 								<div>
 									<h3 className="text-main text-start text-2xl font-semibold">
 										{title}

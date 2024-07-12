@@ -9,7 +9,13 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'title',
+			title: 'Title (عربي)',
 			type: 'string',
-		})
-	]
+		}),
+		defineField({
+			name: 'title_en',
+			title: 'Title (English)',
+			type: 'string',
+		}),
+	],
 })

@@ -4,6 +4,7 @@ import navigation from './documents/navigation'
 import page from './documents/page'
 import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
+import blogPostEn from './documents/blog.post.en'
 import blogCategory from './documents/blog.category'
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
@@ -54,6 +55,7 @@ export const schemaTypes = [
 	page,
 	redirect,
 	blogPost,
+	blogPostEn,
 	blogCategory,
 	logo,
 	partnerslogos,
