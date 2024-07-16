@@ -18,14 +18,18 @@ export default async function Rollup({
 	layout: 'grid' | 'carousel'
 	locale: string
 }>) {
+
+	const postlang = locale === 'ar' ? 'blog.post' : 'blog.post.en'
+
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
+		groq`*[_type == '${postlang}' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
 		 title,
 			publishDate,
 			metadata,
 			body,
 		 categories[]->{
-			title
+			title,
+			title_en
 		 }
 		}`,
 		{
