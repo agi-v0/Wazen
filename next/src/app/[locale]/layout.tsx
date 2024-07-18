@@ -6,7 +6,7 @@ import '../../styles/app.css'
 
 export default async function RootLayout({
 	children,
-	params: { locale },
+	params: { locale = 'ar' },
 }: {
 	children: React.ReactNode
 	params: { locale: any }

@@ -47,7 +47,7 @@ export default function Applications({
 			},
 		},
 	}
-	
+
 	return (
 		<section
 			className={
@@ -79,13 +79,7 @@ export default function Applications({
 						)}
 					/> */}
 				</div>
-				<div className="bg-gradient-to-b from-white via-cyan-500/10 to-white py-12">
-					<InfiniteMovingCards
-						direction={'left'}
-						speed={'slow'}
-						pauseOnHover={true}
-						items={links}
-					/>
+				<div className="py-12">
 					<InfiniteMovingCards
 						direction={'right'}
 						speed={'slow'}

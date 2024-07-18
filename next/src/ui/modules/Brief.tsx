@@ -14,12 +14,14 @@ export default function Brief({
 	pretitle,
 	content,
 	image,
+	onRight,
 	textAlign = 'center',
 	alignItems,
 }: Partial<{
 	pretitle: string
 	content: any
 	image: any
+	onRight: boolean
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -45,7 +47,7 @@ export default function Brief({
 		<section className={'fluid-vertical-space'}>
 			<div
 				className={cn(
-					image?.onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
+					onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
 					'fluid-gap section flex w-full flex-col items-center justify-evenly',
 				)}
 			>

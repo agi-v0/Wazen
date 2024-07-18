@@ -1,5 +1,6 @@
 import React from 'react'
 import { PiTable } from 'react-icons/pi'
+import { Icon } from '@iconify/react'
 
 function SideBar() {
 	const list = [
@@ -34,18 +35,20 @@ function SideBar() {
 	]
 
 	return (
-		<div className="flex justify-center text-white">
-			<div className="h-[480px] w-[330px] overflow-hidden rounded-md bg-black/20 pb-14">
-				<div className="flex items-center gap-2 px-4 py-2 text-2xl">
-					<PiTable />
-					<p> النظام الحسابي</p>
+		<div className="mx-auto flex w-[350px] items-center justify-center rounded-lg bg-cyan-950/40 text-white shadow-lg">
+			<div className="relative h-[450px] w-full overflow-hidden pb-14">
+				<div className="text-main flex items-center gap-2 px-6 py-3 font-semibold">
+					<Icon icon="ph:table" className="size-6" />
+					<p>النظام الحسابي</p>
 				</div>
-				<div className="customScrollbar mx-3 h-full">
-					<ul className="px-4 text-2xl">
+				<div className="mask absolute h-full w-full"></div>
+				<div className="customScrollbar -border relative mx-3 h-full border-red-300">
+					<ul className="text-main -border me-3 border-sky-300">
 						{list.map((item) => (
 							<li
+								key={item}
 								className={
-									'cursor-default rounded-md px-2 py-1 text-lg text-end hover:bg-white/20'
+									'cursor-default rounded-md px-3 py-2 text-end text-base font-medium text-white/80 hover:bg-white/20 hover:text-white'
 								}
 							>
 								{item}

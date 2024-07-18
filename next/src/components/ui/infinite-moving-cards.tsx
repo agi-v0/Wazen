@@ -68,13 +68,25 @@ export const InfiniteMovingCards = ({
 			} else if (speed === 'normal') {
 				containerRef.current.style.setProperty('--animation-duration', '40s')
 			} else {
-				containerRef.current.style.setProperty('--animation-duration', '80s')
+				containerRef.current.style.setProperty('--animation-duration', '100s')
 			}
 		}
 	}
 
+	const colors = [
+		'to-yellow-50',
+		'to-lime-50',
+		'to-teal-50',
+		'to-cyan-50',
+		'to-violet-50',
+		'to-fuchsia-50',
+	]
+
 	return (
-		<div ref={containerRef}>
+		<div
+			ref={containerRef}
+			className="flex w-full flex-col items-center justify-evenly overflow-hidden"
+		>
 			<ul
 				ref={scrollerRef}
 				className={cn(
@@ -87,7 +99,7 @@ export const InfiniteMovingCards = ({
 					return (
 						<li
 							key={idx}
-							className={`applist-background flex flex-shrink-0 flex-row items-center justify-between rounded-md p-3 shadow-md lg:w-[600px]`}
+							className={`bg-gradient-to-br from-white from-50% ${colors[idx]} flex flex-shrink-0 flex-row items-center justify-between rounded-md p-3 shadow-md transition-all hover:shadow-lg lg:w-[600px]`}
 						>
 							<div className="flex h-full flex-col justify-between p-4">
 								<div>
