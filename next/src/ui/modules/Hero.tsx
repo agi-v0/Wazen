@@ -33,8 +33,6 @@ export default function Hero({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const hasImage = !!bgImage?.asset
-
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -90,19 +88,17 @@ export default function Hero({
 					<div className="secondary">text</div>
 					<div className="tertiary">text</div> */}
 				</div>
-				<div className="">
-					<div className="mx-auto w-[95%]">
-						<ContainerScroll>
-							<Image
-								src={`/dashboard-image.svg`}
-								alt="hero"
-								height={1024}
-								width={1440}
-								className="mx-auto h-auto w-full object-cover object-left-top"
-								draggable={false}
-							/>
-						</ContainerScroll>
-					</div>
+				<div className="mx-auto w-[85%]">
+					<ContainerScroll>
+						<Image
+							src={`/dashboard-image.svg`}
+							alt="hero"
+							height={1024}
+							width={1440}
+							className="mx-auto h-auto w-full object-cover object-left-top"
+							draggable={false}
+						/>
+					</ContainerScroll>
 				</div>
 			</div>
 		</section>
