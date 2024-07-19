@@ -42,11 +42,12 @@ function SideBar() {
 				</div>
 				<div className="customScrollbar mx-3 h-full">
 					<ul className="px-4 text-2xl">
-						{list.map((item) => (
+						{list.map((item, index) => (
 							<li
 								className={
-									'cursor-default rounded-md px-2 py-1 text-lg text-end hover:bg-white/20'
+									'cursor-default rounded-md px-2 py-1 text-end text-lg hover:bg-white/20'
 								}
+								key={index}
 							>
 								{item}
 							</li>
