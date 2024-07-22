@@ -59,7 +59,7 @@ export default function Modules({
 					case 'features-grid':
 						return <Features {...module} key={module._key} />
 					case 'first-post':
-						return <FirstPost {...module} key={module._key} />
+						return <FirstPost {...module} key={module._key} locale={locale}/>
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':
