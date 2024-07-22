@@ -50,7 +50,6 @@ function SideBar() {
 								className={
 									'cursor-default rounded-md px-3 py-2 text-end text-base font-medium text-white/80 hover:bg-white/20 hover:text-white'
 								}
-								key={index}
 							>
 								{item}
 							</li>
