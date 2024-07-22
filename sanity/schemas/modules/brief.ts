@@ -9,12 +9,7 @@ export default defineType({
 	type: 'object',
 	groups: [
 		{ name: 'content', title: 'Content', default: true },
-		{ name: 'options', title: 'Options' },
 		{ name: 'image', title: 'Image' },
-	],
-	fieldsets: [
-		{ name: 'image', title: 'Image', options: { columns: 2 } },
-		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],
 	fields: [
 		defineField({
@@ -29,17 +24,18 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'onRight',
+			type: 'boolean',
+			initialValue: false,
+			group: 'content',
+		}),
+		defineField({
 			name: 'image',
 			type: 'image',
 			fields: [
 				defineField({
 					name: 'alt',
 					type: 'string',
-				}),
-				defineField({
-					name: 'onRight',
-					type: 'boolean',
-					initialValue: false,
 				}),
 				defineField({
 					name: 'loading',
@@ -51,34 +47,7 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
-			group: 'content',
-		}),
-		defineField({
-			name: 'textAlign',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: ['left', 'center', 'right'],
-			},
-			initialValue: 'center',
-			group: 'options',
-			fieldset: 'alignment',
-		}),
-		defineField({
-			name: 'alignItems',
-			title: 'Vertical alignment',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: [
-					{ title: 'Top', value: 'start' },
-					'center',
-					{ title: 'Bottom', value: 'end' },
-				],
-			},
-			initialValue: 'center',
-			group: 'options',
-			fieldset: 'alignment',
+			group: 'image',
 		}),
 	],
 	preview: {

@@ -10,7 +10,7 @@ export default function BriefGroup({
 	briefs: Sanity.Module[]
 }>) {
 	//replace images and image components with an array of interactive components
-	const images: any = [
+	const animatedComponents: any = [
 		<SideBar />,
 		<AnimatedBeamDemo />,
 		<MobileApp />,
@@ -22,7 +22,9 @@ export default function BriefGroup({
 				<Brief
 					{...brief}
 					image={
-						brief.image && 'asset' in brief.image ? brief.image : images[index]
+						brief.image && 'asset' in brief.image
+							? brief.image
+							: animatedComponents[index]
 					}
 					key={brief._key}
 				/>

@@ -270,22 +270,22 @@
 }
 
 .applist-background:nth-child(1) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FDF2F8 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #fdf2f8 100%);
 }
 .applist-background:nth-child(2) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #ECFEFF 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #ecfeff 100%);
 }
 .applist-background:nth-child(3) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FEFCE8 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #fefce8 100%);
 }
 .applist-background:nth-child(4) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FDF2F8 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #fdf2f8 100%);
 }
 .applist-background:nth-child(5) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #F7FEE7 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #f7fee7 100%);
 }
 .applist-background:nth-child(6) {
-	background-image: linear-gradient(to right bottom, #FFFFFF 50%, #FEFCE8 100%);
+	background-image: linear-gradient(to right bottom, #ffffff 50%, #fefce8 100%);
 }
 
 .svg-container svg {
@@ -297,18 +297,49 @@
 	overflow-y: scroll;
 	direction: ltr;
 }
+.mask {
+	mask-image: linear-gradient(
+		to bottom,
+		transparent 0%,
+		black 20%,
+		black 80%,
+		transparent 100%
+	);
+}
 
 .customScrollbar::-webkit-scrollbar {
 	width: 8px;
 }
 
 .customScrollbar::-webkit-scrollbar-thumb {
-	background: #08334433;
+	background: #08334420;
 	border-radius: 10px;
 }
 
 .customScrollbar::-webkit-scrollbar-thumb:hover {
-	background: #08334486;
+	background: #ffffff20;
+}
+
+.scroll-items-fade {
+	-webkit-mask-image: linear-gradient(
+		180deg,
+		transparent 5%,
+		rgba(0, 0, 0, 1) 52%,
+		transparent 95% rgba(0, 0, 0, 1) 44%
+	);
+	-webkit-mask-size: calc(100% - 10px) 100%;
+	-webkit-mask-position: left top;
+	-webkit-mask-clip: content-box;
+	mask-image: linear-gradient(
+		180deg,
+		transparent 5%,
+		rgba(0, 0, 0, 1) 52%,
+		rgba(0, 0, 0, 1) 44%,
+		transparent 95%
+	);
+	mask-size: calc(100% - 10px) 100%;
+	mask-position: left top;
+	mask-clip: content-box;
 }
 
 /* https://fluidbuilder.webflow.io/?design=80&max=80&min=23&g=--padding-horizontal--main,3,1_--size--2rem,2,1.75_--size--2-5rem,2.5,2_--size--3rem,3,2.25_--size--3-5rem,3.5,2.375_--size--4rem,4,2.5_--size--4-5rem,4.5,2.75_--size--5rem,5,3_--size--5-5rem,5.5,3.25_--size--6rem,6,3.5_--size--6-5rem,6.5,3.75_--size--7rem,7,4_--size--7-5rem,7.5,4.25_--size--8rem,8,4.5_--size--8-5rem,8.5,4.75_--size--9rem,9,5_--size--9-5rem,9.5,5.25_--size--10rem,10,5.5_--size--11rem,11,5.75_--size--12rem,12,6_--size--13rem,13,6.5_--size--14rem,14,7_--size--15rem,15,7.5_--size--16rem,16,8&g=:1.25,1.2:--display--font-size,4.77,2.99_--h1--font-size,3.81,2.49_--h2--font-size,3.05,2.07_--h3--font-size,2.44,1.73_--h4--font-size,1.95,1.44_--h5--font-size,1.56,1.2_--h6--font-size,1.25,1,t&g=:1.2,1.14:--text-larger--font-size,1.51,1.3_--text-large--font-size,1.26,1.14_--text-main--font-size,1.05,1_--text-small--font-size,0.875,0.875,t */
