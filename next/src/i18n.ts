@@ -1,12 +1,17 @@
-import { createSharedPathnamesNavigation } from "next-intl/navigation";
+import { notFound } from 'next/navigation';
+import { getRequestConfig } from 'next-intl/server';
+import { locales } from './i18n/config';
 
-export const locales = ["ar", "en"] as const;
-export type Locale = (typeof locales)[number];
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
 
-export const localeNames: Record<Locale, string> = {
-  "ar": "Arabic",
-  "en": "English",
-};
-
-export const { Link, usePathname, useRouter } =
-  createSharedPathnamesNavigation({ locales });
+  return {
+    messages: (
+      await (locale === 'ar'
+        ? // When using Turbopack, this will enable HMR for `ar`
+        import('../messages/ar.json')
+        : import(`../messages/${locale}.json`))
+    ).default
+  };
+});

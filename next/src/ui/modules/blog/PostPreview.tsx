@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Date from '@/ui/Date'
 import Image from 'next/image'
 import { PiCaretRightBold } from 'react-icons/pi'
+import { useTranslations } from 'next-intl'
 
 export default function PostPreview({
 	post,
@@ -10,6 +11,9 @@ export default function PostPreview({
 	post: Sanity.BlogPost
 	locale: any
 }) {
+
+	const t = useTranslations("Blog")
+
 	return (
 		<Link
 			href={`/${locale}/blog/${post.metadata?.slug?.current}`}
@@ -39,7 +43,7 @@ export default function PostPreview({
 							</div>
 						)}
 						<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
-							<Date value={post.publishDate} />
+							<Date value={post.publishDate} locale={locale} />
 						</div>
 					</div>
 					<div className="text-large font-semibold text-gray-600 group-hover:text-cyan-950">
@@ -50,7 +54,7 @@ export default function PostPreview({
 							post.body[0].children[0].text.slice(0, 160) + ' ...'}
 					</div>
 					<div className="group text-teal-600">
-						إقرأ المزيد
+						{t("إقرأ المزيد")}
 						<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
 					</div>
 				</div>

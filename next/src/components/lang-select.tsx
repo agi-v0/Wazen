@@ -1,18 +1,32 @@
 'use client'
 
-import { usePathname, useRouter, type Locale } from '@/i18n'
+import { useLocale } from 'next-intl'
+import { localeNames, locales } from '@/i18n/config'
+import { useParams } from 'next/navigation'
+import { ChangeEvent, ReactNode, useTransition } from 'react'
+import { useRouter, usePathname } from '../i18n/navigations'
 
 import { PiCaretRightBold, PiGlobe } from 'react-icons/pi'
 import InteractiveDetails from '@/ui/header/InteractiveDetails'
 
-const LocaleSwitcher = ({ locale }: { locale: Locale }) => {
-	const pathname = usePathname()
+const LangSelect = () => {
+	const locale = useLocale()
+
 	const router = useRouter()
+	const [isPending, startTransition] = useTransition()
+	const pathname = usePathname()
+	const params = useParams()
 
-	const changeLocale = (lang: any) => {
-		const newLocale = lang
-
-		router.replace(pathname, { locale: newLocale })
+	function onSelectChange(lang: string) {
+		startTransition(() => {
+			router.replace(
+				// @ts-expect-error -- TypeScript will validate that only known `params`
+				// are used in combination with a given `pathname`. Since the two will
+				// always match for the current route, we can skip runtime checks.
+				{ pathname, params },
+				{ locale: lang },
+			)
+		})
 	}
 
 	return (
@@ -28,13 +42,13 @@ const LocaleSwitcher = ({ locale }: { locale: Locale }) => {
 					<ul className="anim-fade-to-b top-full flex flex-col justify-between gap-1 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute">
 						<li
 							className="cursor-pointer px-4 py-2 hover:bg-gray-500/5"
-							onClick={() => changeLocale('ar')}
+							onClick={() => onSelectChange('ar')}
 						>
 							Arabic
 						</li>
 						<li
 							className="cursor-pointer px-4 py-2 hover:bg-gray-500/5"
-							onClick={() => changeLocale('en')}
+							onClick={() => onSelectChange('en')}
 						>
 							English
 						</li>
@@ -45,4 +59,4 @@ const LocaleSwitcher = ({ locale }: { locale: Locale }) => {
 	)
 }
 
-export default LocaleSwitcher
+export default LangSelect
