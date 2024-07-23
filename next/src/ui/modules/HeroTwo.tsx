@@ -11,7 +11,6 @@ import { stegaClean } from '@sanity/client/stega'
 
 export default function HeroTwo({
 	pretitle,
-	mainTitle,
 	content,
 	Subtitle,
 	ctas,
@@ -21,7 +20,6 @@ export default function HeroTwo({
 	alignItems,
 }: Partial<{
 	pretitle: string
-	mainTitle: any
 	content: any
 	Subtitle: any
 	ctas: Sanity.CTA[]

@@ -67,17 +67,6 @@ export default function Applications({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					{/* <CTAList
-						ctas={ctas}
-						className={cn(
-							{
-								'justify-start': stegaClean(textAlign) === 'left',
-								'justify-center': stegaClean(textAlign) === 'center',
-								'justify-end': stegaClean(textAlign) === 'right',
-							},
-							'text-white *:h-12 *:px-6 *:text-lg',
-						)}
-					/> */}
 				</div>
 				<div className="py-12">
 					<InfiniteMovingCards

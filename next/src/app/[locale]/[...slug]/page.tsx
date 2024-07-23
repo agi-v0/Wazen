@@ -35,7 +35,7 @@ async function getPage(params: Props['params']) {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&
-			metadata.slug.current == $slug &&
+			metadata.slug.current == $slug && language == '${params.locale}' &&
 			!(metadata.slug.current in ['index', '404'])
 		][0]{
 			...,
@@ -55,7 +55,7 @@ async function getPage(params: Props['params']) {
 							internal->{ title, metadata },
 					}
 				},
-				categories[]->{title},
+				categories[]->{title , title_en},
 				items[]->,
 				logos[]->,
 				partnerslogos[]->,

@@ -42,6 +42,7 @@ declare global {
 
 		type BlogCategory = SanityDocument<{
 			title: string
+			title_en: string
 		}>
 
 		type Logo = SanityDocument<{
