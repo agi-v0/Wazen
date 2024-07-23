@@ -51,14 +51,12 @@ export default function Brief({
 					'fluid-gap section flex w-full flex-col items-center justify-evenly',
 				)}
 			>
-				<div className="-bg-white aspect-square w-full rounded-lg p-2 lg:max-w-[500px]">
-					<div className="-brief-background relative h-full overflow-hidden rounded-lg">
-						{image && 'asset' in image ? (
-							<Img image={image} imageWidth={3000} className="rounded-xl" />
-						) : (
-							image
-						)}
-					</div>
+				<div className="-bg-white relative w-full overflow-hidden rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
+					{image && 'asset' in image ? (
+						<Img image={image} imageWidth={3000} className="rounded-xl" />
+					) : (
+						image
+					)}
 				</div>
 				<div
 					className={'flex max-w-2xl flex-col gap-4'}

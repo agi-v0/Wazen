@@ -13,7 +13,7 @@ const Circle = forwardRef<
 			id="parentDiv"
 			ref={ref}
 			className={cn(
-				'z-[1] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 shadow-lg backdrop-blur hover:bg-cyan-950/60',
+				'z-[5] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 shadow-lg backdrop-blur hover:bg-cyan-950/60',
 				className,
 			)}
 		>
@@ -35,7 +35,7 @@ export function AnimatedBeamDemo() {
 	return (
 		<div
 			id="childDiv"
-			className="bg-background fluid-padding relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
+			className="fluid-padding relative mx-auto flex h-auto w-full max-w-md items-center justify-center rounded-lg bg-transparent lg:aspect-square"
 			ref={containerRef}
 		>
 			<div className="group flex h-full w-full flex-col items-stretch justify-between gap-10">
@@ -75,7 +75,7 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div1Ref}
 				toRef={div4Ref}
-				curvature={-200}
+				curvature={-100}
 				endYOffset={-10}
 			/>
 			<AnimatedBeam
@@ -87,14 +87,14 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div3Ref}
 				toRef={div4Ref}
-				curvature={200}
+				curvature={100}
 				endYOffset={10}
 			/>
 			<AnimatedBeam
 				containerRef={containerRef}
 				fromRef={div5Ref}
 				toRef={div4Ref}
-				curvature={-200}
+				curvature={-100}
 				endYOffset={-10}
 				reverse
 			/>
@@ -108,7 +108,7 @@ export function AnimatedBeamDemo() {
 				containerRef={containerRef}
 				fromRef={div7Ref}
 				toRef={div4Ref}
-				curvature={200}
+				curvature={100}
 				endYOffset={10}
 				reverse
 			/>

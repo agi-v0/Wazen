@@ -12,16 +12,21 @@ import Image from 'next/image'
 export default async function Header({ locale }: any) {
 	const { ctas } = await getSite(locale)
 	return (
-		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
-			<div className={cn(css.header, 'section mx-auto grid h-14')}>
-				<div className="flex flex-col items-start gap-x-10 [grid-area:logo] md:flex-row md:items-center">
+		<Wrapper className="fixed top-0 z-50 w-full bg-white backdrop-blur">
+			<div
+				className={cn(
+					css.header,
+					'section horizontal-padding mx-auto flex h-[var(--header-height)] flex-row items-center justify-between',
+				)}
+			>
+				<div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
 					<Link className="font-bold" href="/">
 						<Image src="/wazen-logo.svg" alt="Logo" height={24} width={85.37} />
 					</Link>
 					<Navigation locale={locale} />
 				</div>
 
-				<div className="flex flex-col-reverse items-center justify-center gap-x-10 gap-y-3 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
+				<div className="flex flex-col-reverse items-center justify-center gap-x-4 gap-y-2 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
 					<LangSelect locale={locale} />
 					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
