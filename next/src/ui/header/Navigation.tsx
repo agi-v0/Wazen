@@ -20,7 +20,7 @@ export default async function Menu({ locale }: any) {
 							// />
 
 							<Link
-								className="flex h-8 items-center rounded px-3 no-underline hover:bg-gray-500/5 hover:text-teal-600"
+								className="flex h-8 items-center rounded px-3 no-underline transition-all hover:text-cyan-700"
 								href={`/${locale}/${item.internal?.metadata?.slug.current}`}
 								key={key}
 							>

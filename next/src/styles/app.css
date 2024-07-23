@@ -5,6 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+	html[dir='rtl'] {
+		font-family: 'Rubik', sans-serif;
+	}
+
+	html[dir='ltr'] {
+		font-family: 'Inter', sans-serif;
+	}
+
 	[hidden] {
 		display: none !important;
 	}
@@ -38,17 +46,19 @@
 	/* typography */
 	.display {
 		font-size: var(--display--font-size);
-		@apply font-semibold leading-snug;
+		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 	.h1 {
 		font-size: var(--h1--font-size);
-		@apply font-semibold leading-snug;
+		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 	.h2 {
 		font-size: var(--h2--font-size);
+		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 	.h3 {
 		font-size: var(--h3--font-size);
+		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 	.h4 {
 		font-size: var(--h4--font-size);
@@ -85,15 +95,15 @@
 	}
 
 	.primary {
-		@apply _btn h-10 rounded-lg bg-cyan-950 px-4 font-medium text-white outline outline-2 outline-offset-0 outline-cyan-500/20 max-md:w-full;
+		@apply _btn h-10 rounded-lg bg-cyan-950 px-4 font-medium text-white outline outline-2 outline-offset-0 outline-cyan-500/20 transition-all hover:opacity-95 max-md:w-full;
 	}
 
 	.secondary {
-		@apply _btn h-10 rounded-lg bg-teal-600 px-4 font-medium text-white outline outline-2 outline-offset-0 outline-teal-500/20 max-md:w-full;
+		@apply _btn h-10 rounded-lg bg-teal-600 px-4 font-medium text-white outline outline-2 outline-offset-0 outline-teal-500/20 transition-all hover:opacity-95 max-md:w-full;
 	}
 
 	.tertiary {
-		@apply _btn h-10 rounded-lg bg-white px-4 font-medium text-cyan-950 outline outline-2 outline-offset-0 outline-teal-500/20 max-md:w-full;
+		@apply _btn h-10 rounded-lg bg-white px-4 font-medium text-gray-800 outline outline-2 outline-offset-0 outline-teal-500/20 transition-all hover:opacity-95 max-md:w-full;
 	}
 
 	/* .link {

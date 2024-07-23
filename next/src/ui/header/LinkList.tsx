@@ -7,7 +7,7 @@ import Image from 'next/image'
 export default function LinkList({ label, links }: Sanity.LinkList) {
 	return (
 		<InteractiveDetails className="group relative">
-			<summary className="flex h-8 items-center gap-1 rounded px-3 no-underline hover:bg-gray-500/5 hover:text-teal-600">
+			<summary className="flex h-8 items-center gap-1 rounded px-3 no-underline transition-all hover:text-cyan-700">
 				{label}
 				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform duration-300 group-open:rotate-90 group-hover:translate-y-[2px] md:rotate-90" />
 			</summary>

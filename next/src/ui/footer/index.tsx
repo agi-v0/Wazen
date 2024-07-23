@@ -5,7 +5,11 @@ import Image from 'next/image'
 import { getSite } from '@/lib/sanity/queries'
 
 export default async function Footer({ locale }: any) {
-	const { footerMenu, staticLinks } = await getSite(locale)
+	const site = await getSite(locale)
+	if (!site) {
+		return
+	}
+	const { footerMenu, staticLinks } = site
 
 	return (
 		<section className="bg-cyan-950 text-center text-white">

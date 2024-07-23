@@ -16,8 +16,7 @@ import { PiSealCheck } from 'react-icons/pi'
 
 export default function Hero({
 	pretitle,
-	mainTitle,
-	Subtitle,
+	content,
 	ctas,
 	bgImage,
 	bgImageMobile,
@@ -25,8 +24,7 @@ export default function Hero({
 	alignItems,
 }: Partial<{
 	pretitle: string
-	mainTitle: any
-	Subtitle: any
+	content: any
 	ctas: Sanity.CTA[]
 	bgImage: Sanity.Image
 	bgImageMobile: Sanity.Image
@@ -44,7 +42,7 @@ export default function Hero({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-teal-50 drop-shadow-md md:max-w-3xl">
+					<p className="text-large mx-auto max-w-xl text-cyan-950 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -71,8 +69,7 @@ export default function Hero({
 						<PiSealCheck className="size-7" />
 						{pretitle}
 					</span>
-					<PortableText value={mainTitle} components={components} />
-					<PortableText value={Subtitle} components={components} />
+					<PortableText value={content} components={components} />
 					<CTAList
 						ctas={ctas}
 						className={cn(

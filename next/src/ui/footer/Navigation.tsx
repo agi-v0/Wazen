@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PiCaretDownBold } from 'react-icons/pi'
+import { PiCaretLeftBold } from 'react-icons/pi'
 
 export default async function Menu({ footerMenu }: any) {
 	return (
@@ -22,7 +22,7 @@ export default async function Menu({ footerMenu }: any) {
 									<Link href="" className="no-underline group-hover:text-white">
 										{link.label}
 									</Link>
-									<PiCaretDownBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[4px] group-hover:opacity-100 md:rotate-90" />
+									<PiCaretLeftBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
 								</li>
 							))}
 						</ul>
