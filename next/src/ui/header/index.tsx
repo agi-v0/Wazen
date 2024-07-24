@@ -6,7 +6,7 @@ import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
-import LangSelect from '@/components/lang-select'
+import LangSelect from '@/components/ui/lang-select'
 import Image from 'next/image'
 
 export default async function Header({ locale }: any) {

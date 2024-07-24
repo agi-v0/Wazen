@@ -10,7 +10,7 @@ import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
-import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
 

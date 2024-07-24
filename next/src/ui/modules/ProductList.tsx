@@ -103,9 +103,9 @@ export default function ProductList({
 										/>
 									</div>
 									<div className="space-y-1 p-4 text-start">
-										<h3 className="text-main font-semibold group-hover:text-cyan-700">
+										<h3 className="text-main font-semibold group-hover:text-teal-600">
 											{product.productTitle}
-											<PiCaretLeftBold className="inline-block size-4 translate-x-0 text-cyan-950/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+											<PiCaretLeftBold className="inline-block size-4 translate-x-0 text-teal-600/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
 										</h3>
 										<p className="text-small text-gray-600">
 											{product.productDescription}

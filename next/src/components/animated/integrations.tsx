@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { AnimatedBeam } from '@/components/ui/animated-beam'
+import { AnimatedBeam } from '@/components/animated/animated-beam'
 import React, { forwardRef, useRef } from 'react'
 
 const Circle = forwardRef<

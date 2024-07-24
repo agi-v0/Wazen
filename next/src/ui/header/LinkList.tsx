@@ -3,21 +3,21 @@ import CTA from '@/ui/CTA'
 
 import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
 
-import { NavItemMenu } from '@/components/nav-item-menu'
+import { NavItemMenu } from '@/components/ui/nav-item-menu'
 import Image from 'next/image'
 
 export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 	return (
 		<InteractiveDetails className="relative">
-			<summary className="group flex h-8 items-center gap-1 rounded-md px-3 font-medium text-gray-500 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700">
+			<summary className="group flex h-8 items-center gap-1 rounded-md px-3 font-medium text-cyan-950/80 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700">
 				{label}
-				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform duration-300 group-open:rotate-90 group-hover:translate-y-[2px] group-hover:text-cyan-700/50 md:rotate-90" />
+				<PiCaretRightBold className="size-3 translate-y-0 text-cyan-950/50 transition-transform duration-300 group-open:rotate-90 group-hover:translate-y-[2px] group-hover:text-cyan-700/50 md:rotate-90" />
 			</summary>
 
 			{/* //@ Style Doesn't work in This Component */}
 			{/* {links && <NavItemMenu links={links} />} */}
 			{links && (
-				<ul className="anim-fade-to-b -start-32 top-full grid grid-flow-row grid-cols-1 justify-between gap-2 rounded-lg border border-gray-100 bg-white p-2 shadow-md md:absolute md:min-w-[570px] lg:grid-flow-col lg:grid-cols-2">
+				<ul className="anim-fade-to-b -start-32 top-full grid grid-flow-row grid-cols-1 justify-between gap-2 rounded-lg border border-gray-100 bg-white p-2 shadow-md md:absolute md:max-h-fit md:min-w-[640px] lg:grid-flow-col lg:grid-cols-2">
 					{links?.[0] && (
 						<li className={'w-full lg:row-span-3'}>
 							<CTA
