@@ -7,7 +7,7 @@ export default createClient({
 	apiVersion: '2024-05-01',
 	useCdn: !dev,
 	stega: {
-		enabled: false,
+		enabled: true,
 		studioUrl: dev
 			? 'http://localhost:3333'
 			: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,

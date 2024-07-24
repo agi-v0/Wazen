@@ -13,7 +13,7 @@ export default async function Menu({ locale }: any) {
 					case 'link':
 						return (
 							<CTA
-								className="flex h-8 items-center rounded px-3 no-underline transition-all hover:text-cyan-700"
+								className="flex h-8 items-center rounded-md px-3 font-medium text-gray-500 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700"
 								link={item}
 								locale={locale}
 								key={key}

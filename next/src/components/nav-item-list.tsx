@@ -5,7 +5,7 @@ export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 	// console.log('nav links', links)
 	return (
 		<div>
-			<summary className="flex h-8 items-center font-semibold no-underline">
+			<summary className="text-small flex h-8 items-center px-3 uppercase text-gray-500 no-underline">
 				{label}
 			</summary>
 
@@ -13,7 +13,7 @@ export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 				{links?.map((link, key) => (
 					<li
 						key={key}
-						className="group relative flex h-9 items-center rounded px-3 text-gray-600 hover:bg-gray-50"
+						className="group relative flex h-9 w-full items-center rounded-md px-3 font-medium text-gray-600 hover:bg-teal-50"
 					>
 						<CTA
 							link={link}

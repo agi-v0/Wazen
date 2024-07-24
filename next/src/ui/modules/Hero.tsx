@@ -65,8 +65,8 @@ export default function Hero({
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/20 px-6 py-1 font-normal text-white">
-						<PiSealCheck className="size-7" />
+					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
+						<PiSealCheck className="size-5" />
 						{pretitle}
 					</span>
 					<PortableText value={content} components={components} />

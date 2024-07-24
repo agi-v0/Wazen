@@ -30,13 +30,13 @@ export default function Brief({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
+						<h2 className="h1 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-large mx-auto max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -44,7 +44,7 @@ export default function Brief({
 		},
 	}
 	return (
-		<section className={'fluid-vertical-space'}>
+		<section className={'py-[var(--size--2rem)]'}>
 			<div
 				className={cn(
 					onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
@@ -59,7 +59,7 @@ export default function Brief({
 					)}
 				</div>
 				<div
-					className={'flex max-w-2xl flex-col gap-4'}
+					className={'flex max-w-2xl flex-col gap-6'}
 					// style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle className={'text-large font-semibold text-gray-400'}>

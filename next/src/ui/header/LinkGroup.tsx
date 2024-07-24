@@ -6,15 +6,17 @@ import LinkList from './LinkList'
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 	return (
 		<InteractiveDetails className="relative" closeAfterNavigate>
-			<summary className="group relative flex h-8 items-center gap-1 rounded px-3 no-underline transition-all hover:text-cyan-700">
+			<summary className="group relative flex h-8 items-center gap-1 rounded-md px-3 font-medium text-gray-500 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700">
 				{label}
-				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform group-open:rotate-90 group-hover:translate-y-[2px] md:rotate-90" />
+				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform group-open:rotate-90 group-hover:translate-y-[2px] group-hover:text-cyan-700/50 md:rotate-90" />
 			</summary>
 
-			<ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[340px] md:min-w-max md:flex-row md:backdrop-blur">
-				{links?.map((label: any, key: any) => (
-					<NavItemList {...label} key={key} locale={locale} />
-				))}
+			<ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[400px] md:min-w-max md:flex-row md:backdrop-blur">
+				{links
+					?.slice(0, 2)
+					.map((label: any, key: any) => (
+						<NavItemList {...label} key={key} locale={locale} />
+					))}
 			</ul>
 		</InteractiveDetails>
 	)

@@ -52,7 +52,7 @@ export default async function LogoList({
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}
-							className="svg-container h-11 w-auto "
+							className="svg-container h-6 w-auto"
 							dangerouslySetInnerHTML={{ __html: logo.icon }}
 						/>
 					))}
