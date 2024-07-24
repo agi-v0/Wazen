@@ -24,6 +24,7 @@ const structure: StructureResolver = (S, context) =>
 			group(S, 'Miscellaneous', [
 				S.documentTypeListItem('logo').title('Logos'),
 				S.documentTypeListItem('partnerslogos').title('Partners Logos'),
+				S.documentTypeListItem('pricing').title('Pricing Tier'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 				S.documentTypeListItem('faq').title('FAQ'),
 			]).icon(BsDatabaseAdd),

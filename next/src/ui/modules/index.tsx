@@ -24,6 +24,7 @@ import Features from './Features'
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
 import HomeBriefGroup from './HomeBriefGroup'
+import Plans from './Plans'
 
 export default function Modules({
 	modules,
@@ -49,7 +50,7 @@ export default function Modules({
 					case 'categories-list':
 						return <Categories {...module} key={module._key} locale={locale} />
 					case 'contact-us':
-						return <ContactUs {...module} key={module._key} />
+						return <ContactUs {...module} key={module._key} locale={locale} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':
@@ -72,6 +73,8 @@ export default function Modules({
 						return <LogoList {...module} key={module._key} />
 					case 'partners':
 						return <Partners {...module} key={module._key} />
+					case 'pricing-list':
+						return <Plans {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
 					case 'single-testimony':

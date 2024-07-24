@@ -37,6 +37,7 @@ export default defineType({
 				{ type: 'hero.postcard' },
 				{ type: 'logo-list' },
 				{ type: 'partners' },
+				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
 				{ type: 'single-testimony' },
 				{ type: 'stat-list' },

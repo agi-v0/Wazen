@@ -47,6 +47,8 @@ import solutionsBenefits from './modules/solutions-benefits'
 import productList from './modules/product-list'
 import contactUs from './modules/contact-us'
 import homeBriefGroup from './modules/home-brief-group'
+import pricingList from './modules/pricing-list'
+import pricing from './documents/pricing'
 
 export const schemaTypes = [
 	// documents
@@ -59,6 +61,7 @@ export const schemaTypes = [
 	blogCategory,
 	logo,
 	partnerslogos,
+	pricing,
 	testimonial,
 	FAQ,
 
@@ -88,6 +91,7 @@ export const schemaTypes = [
 	heroPostcard,
 	logoList,
 	partners,
+	pricingList,
 	richtextModule,
 	singleTestimony,
 	statList,
