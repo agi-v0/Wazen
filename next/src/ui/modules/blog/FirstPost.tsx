@@ -8,9 +8,11 @@ import { PiCaretRightBold } from 'react-icons/pi'
 export default async function FirstPost({
 	category,
 	categoryRef = category?.length > 0 ? category[0]?._ref : null,
+	locale
 }: {
 	category: any
 	categoryRef: any
+	locale: any
 }) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post' && (!defined($categoryRef) || $categoryRef in categories[]->_id)] | order(publishDate desc)[0...1] {
@@ -51,7 +53,7 @@ export default async function FirstPost({
 							</div>
 						)}
 						<div className="w-fit rounded-full bg-teal-500/20 px-3 py-1 text-teal-600">
-							<Date value={posts[0].publishDate} />
+							<Date value={posts[0].publishDate} locale={locale} />
 						</div>
 					</div>
 					<div className="w-[90%] space-y-4">

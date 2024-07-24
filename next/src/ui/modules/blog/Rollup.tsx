@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import { PiCaretRightBold } from 'react-icons/pi'
+// import { useTranslations } from 'next-intl'
 
 export default async function Rollup({
 	limit,
@@ -18,7 +19,6 @@ export default async function Rollup({
 	layout: 'grid' | 'carousel'
 	locale: string
 }>) {
-
 	const postlang = locale === 'ar' ? 'blog.post' : 'blog.post.en'
 
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
@@ -41,13 +41,16 @@ export default async function Rollup({
 		},
 	)
 
+	const categoryTitle: any =
+		locale == 'ar'
+			? posts[0]?.categories[0]?.title
+			: posts[0]?.categories[0]?.title_en
+
 	return (
 		<section className="section my-12 flex flex-col gap-6">
 			{posts[0]?.categories && (
 				<div className="flex w-full items-center justify-between">
-					<div className="h5 font-semibold">
-						{posts[0]?.categories[0]?.title}
-					</div>
+					<div className="h5 font-semibold">{categoryTitle}</div>
 					<Link href="" className="group px-3 py-1 text-teal-600 no-underline">
 						<div className="inline-block">تصفح المزيد</div>
 						<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
