@@ -1,7 +1,5 @@
 import InteractiveDetails from './InteractiveDetails'
-import { PiCaretRight, PiCaretRightBold } from 'react-icons/pi'
-
-import { NavItemMenu } from '@/components/nav-item-menu'
+import { PiCaretRightBold } from 'react-icons/pi'
 import Image from 'next/image'
 
 export default function LinkList({ label, links }: Sanity.LinkList) {

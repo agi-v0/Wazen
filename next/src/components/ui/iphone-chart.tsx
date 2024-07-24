@@ -5,15 +5,21 @@ import { motion } from 'framer-motion'
 
 export function MobileApp() {
 	return (
-		<div className="relative">
-			<Image src="/iphone.png" alt="تطبيق " width={500} height={500} />
+		<div className="relative mx-auto w-full max-w-md">
+			<Image
+				src="/iphone.png"
+				alt="تطبيق "
+				width={500}
+				height={500}
+				className="h-auto w-full"
+			/>
 			<svg
 				width="370"
 				height="277"
 				viewBox="0 0 370 277"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
-				className="absolute left-20 top-48 rounded-lg drop-shadow-lg backdrop-blur-lg"
+				className="absolute bottom-[8.2%] left-[16.4%] h-auto w-[73.96%] rounded-lg drop-shadow-lg backdrop-blur-lg"
 			>
 				<rect
 					x="0.170898"
