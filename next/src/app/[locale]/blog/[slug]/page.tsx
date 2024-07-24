@@ -10,7 +10,7 @@ type Props = {
 export default async function getStaticPaths({ params }: Props) {
 	const post = await getStaticProps(params)
 	if (!post) notFound()
-	return <Post post={post} />
+	return <Post post={post} locale={params.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {

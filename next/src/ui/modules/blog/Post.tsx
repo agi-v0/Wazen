@@ -11,7 +11,7 @@ import Img from '@/ui/Img'
 import { PiCircleFill } from 'react-icons/pi'
 // import Image from 'next/image'
 
-export default function Post({ post }: { post: Sanity.BlogPost }) {
+export default function Post({ post , locale}: { post: Sanity.BlogPost , locale: any}) {
 	return (
 		<article className="section">
 			<header className="mt-[25vh] md:space-y-12">
@@ -23,7 +23,7 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 							</div>
 						)}
 						<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
-							<Date value={post.publishDate} />
+							<Date value={post.publishDate} locale={locale} />
 						</div>
 						<ReadTime value={post.readTime} />
 					</div>

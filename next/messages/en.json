@@ -3,6 +3,10 @@
     "Translated Text": "Translated Text"
   },
   "Blog": {
-    "إقرأ المزيد": "Read More"
+    "إقرأ المزيد": "Read More",
+    "تصفح المزيد": "Read More"
+  },
+  "Contact": {
+    "الإسم الاول": "First Name"
   }
 }
