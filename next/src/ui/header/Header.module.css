@@ -3,7 +3,7 @@
 		'logo toggle' auto
 		'ctas ctas' auto / 1fr auto;
 
-	@screen md {
+	@screen lg {
 		grid-template: 'logo ctas' auto / 1fr auto;
 	}
 }

@@ -13,8 +13,8 @@ export default async function Header({ locale }: any) {
 	const { ctas } = await getSite(locale)
 	return (
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
-			<div className={cn(css.header, 'section mx-auto grid h-full p-4 md:p-2 bg-red-200')}>
-				<div className="flex flex-col items-start gap-x-10 [grid-area:logo] md:flex-row md:items-center">
+			<div className={cn(css.header, 'section mx-auto grid h-full p-4 md:p-2')}>
+				<div className="flex flex-col items-start  lg:gap-x-5  [grid-area:logo] lg:flex-row lg:items-center">
 					<Link className="font-bold" href="/">
 						<Image
 							src="/wazen-logo.svg"
@@ -27,8 +27,8 @@ export default async function Header({ locale }: any) {
 					<Navigation locale={locale} />
 				</div>
 
-				<div className="flex flex-col-reverse items-center justify-center gap-x-4 gap-y-2 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
-					<LangSelect />
+				<div className="flex flex-col-reverse items-start lg:items-center justify-center gap-x-10 gap-y-3 text-center [grid-area:ctas] max-lg:header-closed:hidden lg:flex-row">
+					<LangSelect/>
 					{ctas && <CTAList className="max-md:*:w-full" ctas={ctas} />}
 				</div>
 
