@@ -30,10 +30,9 @@ export default async function Header({ locale }: any) {
 					</Link>
 					<Navigation locale={locale} />
 				</div>
-
-				<div className="flex flex-col-reverse items-center justify-center gap-x-10 gap-y-3 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
+				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
 					<LangSelect />
-					{ctas && <CTAList className="max-md:*:w-full" ctas={ctas} />}
+					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
 
 				<Toggle />
