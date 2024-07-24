@@ -1,7 +1,8 @@
 import CTA from '@/ui/CTA'
 import { PiCaretLeftBold } from 'react-icons/pi'
 
-function NavItemList({ label, links }: Sanity.LinkList) {
+export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
+	// console.log('nav links', links)
 	return (
 		<div>
 			<summary className="flex h-8 items-center font-semibold no-underline">
@@ -16,6 +17,7 @@ function NavItemList({ label, links }: Sanity.LinkList) {
 					>
 						<CTA
 							link={link}
+							locale={locale}
 							className="no-underline group-hover:text-teal-600"
 						/>
 						<PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
@@ -25,5 +27,3 @@ function NavItemList({ label, links }: Sanity.LinkList) {
 		</div>
 	)
 }
-
-export default NavItemList

@@ -44,6 +44,7 @@ export default function FAQList({
 	}
 	return (
 		<section
+			id="FAQ"
 			className="section space-y-4 py-12"
 			itemScope
 			itemType="https://schema.org/FAQPage"
@@ -90,7 +91,7 @@ export default function FAQList({
 						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
 					</div>
 					<CTA
-						className="primary text-small font-medium text-teal-50"
+						className="secondary text-small font-medium"
 						link={sideNote.link}
 					/>
 				</div>

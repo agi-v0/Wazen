@@ -27,7 +27,7 @@ export default async function Header({ locale }: any) {
 
 				<div className="flex flex-col-reverse items-center justify-center gap-x-4 gap-y-2 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
 					<LangSelect locale={locale} />
-					{ctas && <CTAList className="max-md:*:w-full" ctas={ctas} />}
+					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
 
 				<Toggle />

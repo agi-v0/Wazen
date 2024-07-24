@@ -53,12 +53,12 @@ export default function Hero({
 	return (
 		<section className="hero-background relative">
 			<div className="absolute top-0 h-full w-full">
-				<Image
+				{/* <Image
 					src={lightray}
 					alt="hero"
 					className="pointer-events-none fixed left-0 right-0 top-0 mx-auto h-screen w-full object-cover mix-blend-overlay"
 					draggable={false}
-				/>
+				/> */}
 			</div>
 			<div className="section relative flex w-full flex-col justify-center">
 				<div

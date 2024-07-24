@@ -30,32 +30,25 @@ export default async function Social({
 	return (
 		<nav
 			className={cn(
-				'flex flex-col-reverse flex-wrap gap-4 md:flex-row',
+				'flex flex-col-reverse flex-wrap items-start gap-4 md:flex-row',
 				className,
 			)}
 		>
-			<div className="flex flex-col items-center gap-6 lg:flex-row">
+			<div className="flex flex-col items-start gap-8 lg:flex-row">
 				<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
 
-				{staticLinks?.items?.map((item: any, key: any) => {
-					const { label, links } = item
-
-					return (
-						<div key={key} className="cursor-default md:w-1/3 lg:w-fit">
-							<div className="text-start">{label}</div>
-
-							<ul className="text-start">
-								{links?.map((link: any, key: any) => (
-									<li key={key} className="h-8 text-white">
-										<Link href="" className="no-underline hover:text-teal-600">
-											{link.label}
-										</Link>
-									</li>
-								))}
-							</ul>
-						</div>
-					)
-				})}
+				<div className="inline-flex gap-4 text-start">
+					{staticLinks?.items?.map((item: any, key: any) => {
+						return (
+							<CTA
+								key={key}
+								link={item}
+								locale={locale}
+								className="no-underline transition-all hover:text-white/50"
+							/>
+						)
+					})}
+				</div>
 			</div>
 
 			<div className="group flex flex-wrap items-center">
