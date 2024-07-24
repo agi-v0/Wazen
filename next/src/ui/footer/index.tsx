@@ -5,31 +5,26 @@ import Image from 'next/image'
 import { getSite } from '@/lib/sanity/queries'
 
 export default async function Footer({ locale }: any) {
-	const { footerMenu, staticLinks } = await getSite(locale)
+	const site = await getSite(locale)
+	if (!site) {
+		return
+	}
+	const { footerMenu, staticLinks } = site
 
 	return (
 		<section className="bg-cyan-950 text-center text-white">
 			<div className="section relative overflow-hidden py-12">
-				<div className="svg-container pointer-events-none absolute top-[50%] hidden h-auto w-full max-w-screen-xl fill-white opacity-15">
-					<Image
-						src="/wazen-logo-white.svg"
-						alt="Logo"
-						height={24}
-						width={85.37}
-					/>
-				</div>
-
 				<div className="flex w-full flex-col justify-between gap-20">
 					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
-						<Link className="font-bold" href="/">
+						{/* <Link className="font-bold" href="/">
 							<Image
 								src="/wazen-logo-white.svg"
 								alt="Logo"
 								height={24}
 								width={85.37}
 							/>
-						</Link>
-						<Navigation footerMenu={footerMenu} />
+						</Link> */}
+						<Navigation locale={locale} footerMenu={footerMenu} />
 					</div>
 					<Social
 						locale={locale}

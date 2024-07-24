@@ -10,7 +10,11 @@ import LangSelect from '@/components/lang-select'
 import Image from 'next/image'
 
 export default async function Header({ locale }: any) {
-	const { ctas } = await getSite(locale)
+	const site = await getSite(locale)
+	if (!site) {
+		return
+	}
+	const { ctas } = site
 	return (
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
 			<div className={cn(css.header, 'section mx-auto grid h-full p-4 md:p-2')}>
@@ -27,9 +31,9 @@ export default async function Header({ locale }: any) {
 					<Navigation locale={locale} />
 				</div>
 
-				<div className="flex flex-col-reverse items-start lg:items-center justify-center gap-x-10 gap-y-3 text-center [grid-area:ctas] max-lg:header-closed:hidden lg:flex-row">
-					<LangSelect/>
-					{ctas && <CTAList className="max-md:*:w-full" ctas={ctas} />}
+				<div className="flex flex-col-reverse items-center justify-center gap-x-4 gap-y-2 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
+					<LangSelect />
+					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
 
 				<Toggle />

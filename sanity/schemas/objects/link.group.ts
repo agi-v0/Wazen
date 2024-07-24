@@ -16,6 +16,11 @@ export default defineType({
 			name: 'links',
 			type: 'array',
 			of: [{ type: 'link.list' }],
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
 		}),
 	],
 	preview: {

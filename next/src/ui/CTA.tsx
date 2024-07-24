@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import processUrl from '@/lib/processUrl'
 
 export default function CTA({
+	locale,
 	link,
 	style,
 	className,
@@ -19,7 +20,10 @@ export default function CTA({
 
 			return (
 				<Link
-					href={processUrl(link.internal, { base: false, params: link.params })}
+					href={
+						locale +
+						processUrl(link.internal, { base: false, params: link.params })
+					}
 					{...props}
 				/>
 			)

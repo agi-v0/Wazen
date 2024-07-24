@@ -30,7 +30,7 @@ const LangSelect = () => {
 
 	return (
 		<InteractiveDetails className="group relative">
-			<summary className="flex h-8 items-center gap-1 rounded px-2 no-underline hover:bg-gray-500/5 hover:text-teal-600">
+			<summary className="flex h-8 items-center gap-1 rounded px-2 no-underline transition-all hover:text-cyan-700">
 				<PiGlobe />
 				{locale == 'en' ? 'EN' : 'AR'}
 				<PiCaretRightBold className="size-3 translate-y-0 text-gray-500/50 transition-transform duration-300 group-open:rotate-90 group-hover:translate-y-[2px] md:rotate-90" />
@@ -38,13 +38,13 @@ const LangSelect = () => {
 
 			<ul className="anim-fade-to-b top-full flex flex-col justify-between rounded-lg border border-gray-100 bg-white p-2 shadow-md md:absolute">
 				<li
-					className="cursor-pointer rounded px-4 py-2 hover:bg-gray-500/5"
+					className="cursor-pointer rounded px-4 py-2 transition-all hover:bg-gray-50 hover:text-cyan-700"
 					onClick={() => onSelectChange('ar')}
 				>
 					Arabic
 				</li>
 				<li
-					className="cursor-pointer rounded px-4 py-2 hover:bg-gray-500/5"
+					className="cursor-pointer rounded px-4 py-2 transition-all hover:bg-gray-50 hover:text-cyan-700"
 					onClick={() => onSelectChange('en')}
 				>
 					English

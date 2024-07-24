@@ -69,6 +69,7 @@ declare global {
 		type CTA = {
 			link?: Link
 			style?: string
+			locale?: string
 		}
 
 		type Image = SanityImageObject &
@@ -109,6 +110,7 @@ declare global {
 			label: string
 			links?: Link[]
 			link?: Link
+			locale?: string
 		}
 
 		type AppsLinkList = {
@@ -120,8 +122,9 @@ declare global {
 		type LinkGroup = {
 			readonly _type: 'link.group'
 			label: string
-			links?: Link[]
+			links?: LinkList[]
 			link?: Link
+			locale?: string
 		}
 
 		type Metadata = {

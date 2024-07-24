@@ -7,7 +7,11 @@ const navigationQuery = groq`
 		internal->{ _type, title, metadata },
 		links[]{
 			...,
+			internal->{ _type, title, metadata },
+			links[]{
+			..., 
 			internal->{ _type, title, metadata }
+			}
 		}
 	}
 `

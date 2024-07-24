@@ -23,13 +23,7 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'mainTitle',
-			type: 'array',
-			of: [{ type: 'block' }],
-			group: 'content',
-		}),
-		defineField({
-			name: 'Subtitle',
+			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
