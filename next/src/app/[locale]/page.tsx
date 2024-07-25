@@ -3,22 +3,18 @@ import { creativeModuleQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
-export default async function Page({
-	params: { locale },
-}: {
+type Props = {
 	params: { locale: string }
-}) {
-	const page = await getPage(locale)
-	return <Modules modules={page?.modules} />
 }
 
-export async function generateMetadata({
-	params: { locale },
-}: {
-	params: { locale: string }
-}) {
-	const page = await getPage(locale)
-	return processMetadata(page, locale)
+export default async function Page({ params }: Props) {
+	const page = await getPage(params.locale)
+	return <Modules modules={page?.modules} locale={params.locale} />
+}
+
+export async function generateMetadata({ params }: Props) {
+	const page = await getPage(params.locale)
+	return processMetadata(page, params.locale)
 }
 
 async function getPage(locale: string) {

@@ -13,11 +13,14 @@ import processUrl from '@/lib/processUrl'
 import { PiCaretRightBold } from 'react-icons/pi'
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
+import EmblaCarousel from '@/components/ui/EmblaCarousel'
+import { EmblaOptionsType } from 'embla-carousel'
 
 export default function Applications({
 	pretitle,
 	content,
 	links,
+	locale,
 	ctas,
 	textAlign = 'center',
 	alignItems,
@@ -25,6 +28,7 @@ export default function Applications({
 	pretitle: string
 	content: any
 	links: any
+	locale: string
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
@@ -48,6 +52,9 @@ export default function Applications({
 		},
 	}
 
+	const direction = locale === 'en' ? 'ltr' : 'rtl'
+	const OPTIONS: EmblaOptionsType = { direction: direction, loop: true }
+	const SLIDES = Array.from(Array(5).keys())
 	return (
 		<section
 			className={
@@ -68,13 +75,14 @@ export default function Applications({
 					</Pretitle>
 					<PortableText value={content} components={components} />
 				</div>
-				<div className="py-12">
-					<InfiniteMovingCards
+				<div className="py-12" dir={direction}>
+					{/* <InfiniteMovingCards
 						direction={'right'}
 						speed={'slow'}
 						pauseOnHover={true}
 						items={links}
-					/>
+					/> */}
+					<EmblaCarousel slides={links} options={OPTIONS} locale={locale} />
 				</div>
 			</div>
 		</section>

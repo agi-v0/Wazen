@@ -18,14 +18,6 @@ export default async function Menu({ locale }: any) {
 								locale={locale}
 								key={key}
 							/>
-
-							// <Link
-							// 	className="flex h-8 items-center rounded px-3 no-underline transition-all hover:text-cyan-700"
-							// 	href={`/${locale}/${item.internal?.metadata?.slug.current}`}
-							// 	key={key}
-							// >
-							// 	{item.label}
-							// </Link>
 						)
 
 					case 'link.list':

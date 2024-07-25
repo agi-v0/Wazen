@@ -31,14 +31,16 @@ export default function Modules({
 	locale,
 }: {
 	modules?: Sanity.Module[]
-	locale?: any
+	locale?: string
 }) {
 	return (
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
 					case 'applications':
-						return <Applications {...module} key={module._key} />
+						return (
+							<Applications {...module} key={module._key} locale={locale} />
+						)
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
@@ -60,7 +62,7 @@ export default function Modules({
 					case 'features-grid':
 						return <Features {...module} key={module._key} />
 					case 'first-post':
-						return <FirstPost {...module} key={module._key} locale={locale}/>
+						return <FirstPost {...module} key={module._key} locale={locale} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':
