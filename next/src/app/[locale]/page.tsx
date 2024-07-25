@@ -43,6 +43,7 @@ async function getPage(locale: string) {
 				},
 				categories[]->{title},
 				logos[]->,
+				tiers[]->,
 				partnerslogos[]->,
 				testimonials[]->,
 				items[]->,
