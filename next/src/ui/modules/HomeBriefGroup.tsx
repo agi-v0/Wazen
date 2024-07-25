@@ -1,8 +1,8 @@
 import Brief from './Brief'
-import { AnimatedBeamDemo } from '../../components/ui/integrations'
+import { AnimatedBeamDemo } from '../../components/animated/integrations'
 // import Iphone from '../../components/ui/iphone-chart'
-import { MobileApp } from '../../components/ui/iphone-chart'
-import SideBar from '@/components/ui/side-bar'
+import { MobileApp } from '../../components/animated/iphone-chart'
+import SideBar from '@/components/animated/side-bar'
 
 export default function BriefGroup({
 	briefs,

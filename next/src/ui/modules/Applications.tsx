@@ -7,7 +7,7 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
-import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
+import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretRightBold } from 'react-icons/pi'

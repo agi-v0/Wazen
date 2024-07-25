@@ -3,7 +3,12 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import Link from 'next/link'
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from '@/components/ui/accordion'
 import CTA from '../CTA'
 
 export default function FAQList({
@@ -43,12 +48,7 @@ export default function FAQList({
 		},
 	}
 	return (
-		<section
-			id="FAQ"
-			className="section space-y-4 py-12"
-			itemScope
-			itemType="https://schema.org/FAQPage"
-		>
+		<section id="FAQ" className="section space-y-4 py-12">
 			<header className="richtext text-start">
 				<PortableText value={content} components={components} />
 			</header>
@@ -56,34 +56,20 @@ export default function FAQList({
 			<div className="fluid-gap flex flex-col items-start justify-between md:flex-row">
 				<div className="w-full lg:w-[70%]">
 					{items?.map(({ question, answer }, key) => (
-						<details
-							className="accordion border-b border-gray-400"
-							itemScope
-							itemProp="mainEntity"
-							itemType="https://schema.org/Question"
-							key={key}
-						>
-							<summary className="text-main py-4 font-semibold" itemProp="name">
-								{question}
-							</summary>
-							<div
-								className="anim-fade-to-b pb-4"
-								itemScope
-								itemProp="acceptedAnswer"
-								itemType="https://schema.org/Answer"
-							>
-								<div
-									className="richtext text-main text-gray-600"
-									itemProp="text"
-								>
+						<Accordion type="single" collapsible>
+							<AccordionItem value={`item-${key}`}>
+								<AccordionTrigger className="text-gray-950 no-underline">
+									{question}
+								</AccordionTrigger>
+								<AccordionContent>
 									<PortableText value={answer} />
-								</div>
-							</div>
-						</details>
+								</AccordionContent>
+							</AccordionItem>
+						</Accordion>
 					))}
 				</div>
 
-				<div className="flex max-w-sm flex-col items-start gap-6 rounded-lg bg-teal-50 p-4 lg:min-w-[400px]">
+				<div className="flex max-w-sm flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:min-w-[400px]">
 					<div className="space-y-4">
 						<h3 className="text-large font-semibold leading-tight text-cyan-950">
 							{sideNote.title}

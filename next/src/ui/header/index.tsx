@@ -6,7 +6,7 @@ import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
-import LangSelect from '@/components/lang-select'
+import LangSelect from '@/components/ui/lang-select'
 import Image from 'next/image'
 
 export default async function Header({ locale }: any) {
@@ -30,8 +30,7 @@ export default async function Header({ locale }: any) {
 					</Link>
 					<Navigation locale={locale} />
 				</div>
-
-				<div className="flex flex-col-reverse items-center justify-center gap-x-4 gap-y-2 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
+				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
 					<LangSelect />
 					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
