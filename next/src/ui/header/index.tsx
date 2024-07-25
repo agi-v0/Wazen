@@ -17,8 +17,12 @@ export default async function Header({ locale }: any) {
 	const { ctas } = site
 	return (
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
-			<div className={cn(css.header, 'section mx-auto grid h-full p-4 md:p-2')}>
-				<div className="flex flex-col items-start  lg:gap-x-5  [grid-area:logo] lg:flex-row lg:items-center">
+			<div
+				className={
+					'section mx-auto flex h-full flex-row justify-between py-4 max-md:flex-col'
+				}
+			>
+				<div className="flex flex-col items-start [grid-area:logo] lg:flex-row lg:items-center lg:gap-x-5">
 					<Link className="font-bold" href="/">
 						<Image
 							src="/wazen-logo.svg"
@@ -30,7 +34,7 @@ export default async function Header({ locale }: any) {
 					</Link>
 					<Navigation locale={locale} />
 				</div>
-				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center [grid-area:ctas] max-md:header-closed:hidden md:flex-row">
+				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden md:flex-col lg:flex-row">
 					<LangSelect />
 					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
