@@ -54,10 +54,12 @@ export default function ProductList({
 	}
 
 	const ref = useRef(null)
-	const isInView = useInView(ref)
+	const isInView = useInView(ref, { once: true })
 
 	return (
-		<section className={'bg-gradient-to-t from-teal-50 to-white'}>
+		<section
+			className={'fluid-vertical-space bg-gradient-to-t from-teal-50 to-white'}
+		>
 			<div
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>
@@ -79,7 +81,8 @@ export default function ProductList({
 							<motion.li
 								key={product.productTitle}
 								initial="hidden"
-								animate={isInView ? 'visible' : 'hidden'}
+								// animate={isInView ? 'visible' : 'hidden'}
+								animate="visible"
 								variants={{
 									hidden: { y: 20, opacity: 0 },
 									visible: { y: 0, opacity: 1 },
@@ -93,7 +96,7 @@ export default function ProductList({
 										params: product.link.params,
 									})}
 								>
-									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 px-2 py-8">
+									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/20 px-2 py-8">
 										<Img
 											image={product.productImage}
 											alt={product.productTitle}

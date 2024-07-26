@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import css from './Header.module.css'
 import LangSelect from '@/components/ui/lang-select'
 import Image from 'next/image'
+import Logo from '@/components/ui/logo'
 
 export default async function Header({ locale }: any) {
 	const site = await getSite(locale)
@@ -24,13 +25,7 @@ export default async function Header({ locale }: any) {
 			>
 				<div className="flex flex-col items-start [grid-area:logo] lg:flex-row lg:items-center lg:gap-x-5">
 					<Link className="font-bold" href="/">
-						<Image
-							src="/wazen-logo.svg"
-							alt="Logo"
-							height={24}
-							width={85.37}
-							priority
-						/>
+						<Logo />
 					</Link>
 					<Navigation locale={locale} />
 				</div>

@@ -14,8 +14,9 @@ import {
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import Img from '@/ui/Img'
 import { PiCaretRightBold } from 'react-icons/pi'
+import { cn } from '@/lib/utils'
 
-const TWEEN_FACTOR_BASE = 0.52
+const TWEEN_FACTOR_BASE = 0.12
 
 const numberWithinRange = (number: number, min: number, max: number): number =>
 	Math.min(Math.max(number, min), max)
@@ -115,17 +116,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
 	return (
 		<div
-			className="embla fluid-gap flex flex-col"
+			className={cn('embla fluid-gap flex flex-col')}
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
 		>
-			<div className="embla__viewport" ref={emblaRef}>
-				<div className="embla__container">
+			<div className={cn('embla__viewport')} ref={emblaRef}>
+				<div className={cn('embla__container')}>
 					{slides.map(({ title, link, image }, index) => (
-						<div className="embla__slide" key={index}>
+						<div className={cn('embla__slide')} key={index}>
 							<div
-								className={`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`}
+								className={cn(
+									`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`,
+								)}
 							>
-								<div className="flex h-full w-full flex-col justify-between p-6 max-md:gap-4">
+								<div className="flex h-full w-full flex-col justify-between gap-4 p-6">
 									<h3 className="h4 font-semibold">{title}</h3>
 									<p className="text-base text-gray-950/60">
 										{link.description}
