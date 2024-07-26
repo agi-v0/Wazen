@@ -44,7 +44,7 @@ export default async function Partners({
 			<div className="fluid-gap flex w-full flex-col items-center">
 				<PortableText value={content} components={components} />
 
-				<figure className="flex w-full flex-wrap items-center justify-center gap-12 overflow-visible">
+				<figure className="flex w-full flex-wrap items-center justify-evenly gap-12 overflow-visible">
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}

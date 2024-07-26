@@ -1,5 +1,5 @@
 'use client'
-
+import dynamic from 'next/dynamic'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -7,14 +7,10 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
-import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
-import Link from 'next/link'
-import processUrl from '@/lib/processUrl'
-import { PiCaretRightBold } from 'react-icons/pi'
-import CTAList from '@/ui/CTAList'
-import { cn } from '@/lib/utils'
-import EmblaCarousel from '@/components/ui/EmblaCarousel'
+// import EmblaCarousel from '@/components/ui/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
+
+const EmblaCarousel = dynamic(() => import('@/components/ui/EmblaCarousel'))
 
 export default function Applications({
 	pretitle,
@@ -54,36 +50,23 @@ export default function Applications({
 
 	const direction = locale === 'en' ? 'ltr' : 'rtl'
 	const OPTIONS: EmblaOptionsType = { direction: direction, loop: true }
-	const SLIDES = Array.from(Array(5).keys())
 	return (
 		<section
 			className={
-				'fluid-vertical-space grid min-h-screen *:col-span-full *:row-span-full'
+				'fluid-vertical-space fluid-gap flex min-h-screen w-full flex-col items-center justify-evenly overflow-hidden'
 			}
 		>
 			<div
-				className={
-					'flex w-full flex-col items-center justify-evenly overflow-hidden'
-				}
+				className={'flex flex-col items-center gap-6'}
+				style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<div
-					className={'flex flex-col items-center gap-6'}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
-						{pretitle}
-					</Pretitle>
-					<PortableText value={content} components={components} />
-				</div>
-				<div className="py-12" dir={direction}>
-					{/* <InfiniteMovingCards
-						direction={'right'}
-						speed={'slow'}
-						pauseOnHover={true}
-						items={links}
-					/> */}
-					<EmblaCarousel slides={links} options={OPTIONS} locale={locale} />
-				</div>
+				<Pretitle className={'text-large font-semibold text-gray-400'}>
+					{pretitle}
+				</Pretitle>
+				<PortableText value={content} components={components} />
+			</div>
+			<div className="" dir={direction}>
+				<EmblaCarousel slides={links} options={OPTIONS} locale={locale} />
 			</div>
 		</section>
 	)

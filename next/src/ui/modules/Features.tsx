@@ -1,5 +1,3 @@
-'use client'
-
 import {
 	PortableText,
 	PortableTextComponents,
@@ -61,13 +59,11 @@ export default function Features({
 		},
 	}
 	return (
-		<section
-			className={
-				'section fluid-vertical-space bg--gradient-to-b from-white from-10% via-cyan-50 via-50% to-white to-100%'
-			}
-		>
+		<section className={'fluid-vertical-space bg-cyan-50'}>
 			<div
-				className={'fluid-gap flex w-full flex-col items-center justify-evenly'}
+				className={
+					'fluid-gap section flex w-full flex-col items-center justify-evenly'
+				}
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<div className="flex flex-col items-center gap-6">
@@ -77,7 +73,7 @@ export default function Features({
 					<PortableText value={content} components={components} />
 				</div>
 
-				<ul className="grid w-full grid-cols-1 gap-6 from-cyan-100 to-teal-100 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
+				<ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
 					{features &&
 						features.map(
 							(
@@ -89,18 +85,15 @@ export default function Features({
 								index: any,
 							) => (
 								<li
-									className="flex w-full flex-col justify-start gap-8 rounded-xl bg-cyan-50 p-6 text-start shadow-lg"
+									className="flex w-full flex-col justify-start gap-8 rounded-xl p-6 text-start"
 									key={index}
 								>
-									<div className="self-start rounded-full bg-white p-3">
+									<div className="self-start rounded-md bg-white p-3">
 										<Icon
 											icon={
 												feature.icon ? feature.icon.name : 'ph:cube-duotone'
 											}
-											style={{
-												color: '#083344',
-												fontSize: '2rem',
-											}}
+											className="text-2xl text-cyan-700"
 										/>
 									</div>
 									<div className="space-y-4">

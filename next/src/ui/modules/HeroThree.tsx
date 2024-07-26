@@ -59,8 +59,8 @@ export default function HeroThree({
 					'fluid-gap my-auto flex w-full flex-col items-center justify-evenly lg:flex-row'
 				}
 			>
-				<div className="aspect-square w-full lg:max-w-[450px]">
-					<div className="relative h-full overflow-hidden rounded-lg border-8 border-white shadow-md">
+				<div className="aspect-square w-full lg:max-w-[500px]">
+					<div className="relative h-full overflow-hidden rounded-2xl border-8 border-white shadow-md">
 						<Img image={image} imageWidth={500} />
 					</div>
 				</div>
@@ -72,9 +72,6 @@ export default function HeroThree({
 						<PortableText value={content} components={components} />
 					</div>
 					<CTAList ctas={ctas} />
-					{/* <div className="primary">text</div>
-					<div className="secondary">text</div>
-					<div className="tertiary">text</div> */}
 				</div>
 
 				<Image
