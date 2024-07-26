@@ -1,29 +1,20 @@
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
-import Link from 'next/link'
-import Image from 'next/image'
-import { getSite } from '@/lib/sanity/queries'
 
-export default async function Footer({ locale }: any) {
-	const site = await getSite(locale)
-	if (!site) {
-		return
-	}
-	const { footerMenu, staticLinks } = site
-
+export default async function Footer({
+	locale,
+	footerMenu,
+	staticLinks,
+}: {
+	locale: string
+	footerMenu?: Sanity.Navigation
+	staticLinks?: Sanity.Navigation
+}) {
 	return (
 		<section className="bg-cyan-950 text-center text-white">
 			<div className="section relative overflow-hidden py-12">
 				<div className="flex w-full flex-col justify-between gap-20">
 					<div className="flex w-full flex-col justify-between gap-10 lg:flex-row">
-						{/* <Link className="font-bold" href="/">
-							<Image
-								src="/wazen-logo-white.svg"
-								alt="Logo"
-								height={24}
-								width={85.37}
-							/>
-						</Link> */}
 						<Navigation locale={locale} footerMenu={footerMenu} />
 					</div>
 					<Social

@@ -10,12 +10,15 @@ import LangSelect from '@/components/ui/lang-select'
 import Image from 'next/image'
 import Logo from '@/components/ui/logo'
 
-export default async function Header({ locale }: any) {
-	const site = await getSite(locale)
-	if (!site) {
-		return
-	}
-	const { ctas } = site
+export default async function Header({
+	locale,
+	headerMenu,
+	ctas,
+}: {
+	locale: string
+	headerMenu?: Sanity.Navigation
+	ctas?: Sanity.CTA[]
+}) {
 	return (
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
 			<div
@@ -27,7 +30,7 @@ export default async function Header({ locale }: any) {
 					<Link className="font-bold" href="/">
 						<Logo />
 					</Link>
-					<Navigation locale={locale} />
+					{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 				</div>
 				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden md:flex-col lg:flex-row">
 					<LangSelect />

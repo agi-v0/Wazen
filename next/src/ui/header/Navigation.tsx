@@ -4,8 +4,13 @@ import LinkList from './LinkList'
 import LinkGroup from './LinkGroup'
 import Link from 'next/link'
 
-export default async function Menu({ locale }: any) {
-	const { headerMenu } = await getSite(locale)
+export default async function Menu({
+	locale,
+	headerMenu,
+}: {
+	locale: string
+	headerMenu: Sanity.Navigation
+}) {
 	return (
 		<nav className="max-md:anim-fade-to-r flex gap-x-0 max-lg:my-4 max-lg:flex-col max-lg:header-closed:hidden">
 			{headerMenu?.items?.map((item, key) => {
