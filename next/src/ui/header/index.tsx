@@ -10,13 +10,15 @@ import Logo from '@/components/ui/logo'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('@/components/ui/lang-select'))
 
-export default async function Header({ locale }: any) {
-	const site = await getSite(locale)
-	if (!site) {
-		return
-	}
-	const { ctas, headerMenu } = site
-
+export default async function Header({
+	locale,
+	headerMenu,
+	ctas,
+}: {
+	locale: string
+	headerMenu?: Sanity.Navigation
+	ctas?: Sanity.CTA[]
+}) {
 	return (
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
 			<div
