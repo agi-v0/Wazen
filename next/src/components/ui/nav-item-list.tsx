@@ -2,7 +2,6 @@ import CTA from '@/ui/CTA'
 import { PiCaretLeftBold } from 'react-icons/pi'
 
 export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
-	// console.log('nav links', links)
 	return (
 		<div>
 			<summary className="text-small flex h-8 items-center px-3 uppercase text-gray-500 no-underline">

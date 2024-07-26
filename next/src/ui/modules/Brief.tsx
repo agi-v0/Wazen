@@ -53,7 +53,11 @@ export default function Brief({
 			>
 				<div className="-bg-white relative w-full overflow-hidden rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
 					{image && 'asset' in image ? (
-						<Img image={image} imageWidth={3000} className="rounded-xl" />
+						<Img
+							image={image}
+							imageWidth={2000}
+							className="relative h-auto w-full overflow-hidden rounded-lg object-cover p-2 lg:aspect-square lg:max-w-[500px]"
+						/>
 					) : (
 						image
 					)}

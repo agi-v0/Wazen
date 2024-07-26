@@ -123,28 +123,26 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					{slides.map(({ title, link, image }, index) => (
 						<div className="embla__slide" key={index}>
 							<div
-								className={`slide-item rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all`}
+								className={`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`}
 							>
-								<div className="flex flex-col items-center justify-start md:flex-row md:justify-between">
-									<div className="flex h-full w-full flex-col justify-between gap-4 p-6">
-										<h3 className="h4 font-semibold">{title}</h3>
-										<p className="text-base text-gray-950/60">
-											{link.description}
-										</p>
-										<div className="mt-6">
-											<span className="link flex items-center gap-1 text-teal-600 no-underline">
-												{link.label}
-												<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
-											</span>
-										</div>
+								<div className="flex h-full w-full flex-col justify-between p-6 max-md:gap-4">
+									<h3 className="h4 font-semibold">{title}</h3>
+									<p className="text-base text-gray-950/60">
+										{link.description}
+									</p>
+									<div className="mt-6">
+										<span className="link flex items-center gap-1 text-teal-600 no-underline">
+											{link.label}
+											<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
+										</span>
 									</div>
-									<div className="h-auto w-full rounded-lg md:max-w-[50%]">
-										<Img
-											image={image}
-											imageWidth={300}
-											className="aspect-square h-auto w-full rounded-md object-cover object-left-top"
-										/>
-									</div>
+								</div>
+								<div className="h-auto w-full rounded-lg md:max-w-[50%]">
+									<Img
+										image={image}
+										imageWidth={300}
+										className="aspect-[3/4] h-auto w-full rounded-md object-cover object-left-top"
+									/>
 								</div>
 							</div>
 						</div>

@@ -55,9 +55,9 @@ export default function FAQList({
 
 			<div className="fluid-gap flex flex-col items-start justify-between lg:flex-row">
 				<div className="w-full lg:w-[70%]">
-					{items?.map(({ question, answer }, key) => (
-						<Accordion type="single" collapsible>
-							<AccordionItem value={`item-${key}`}>
+					<Accordion type="single" collapsible>
+						{items?.map(({ question, answer }, idx) => (
+							<AccordionItem value={`item-${idx}`} key={question}>
 								<AccordionTrigger className="text-main text-start text-gray-950 no-underline">
 									{question}
 								</AccordionTrigger>
@@ -65,8 +65,8 @@ export default function FAQList({
 									<PortableText value={answer} components={components} />
 								</AccordionContent>
 							</AccordionItem>
-						</Accordion>
-					))}
+						))}
+					</Accordion>
 				</div>
 
 				<div className="flex w-full flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:max-w-[30%]">
