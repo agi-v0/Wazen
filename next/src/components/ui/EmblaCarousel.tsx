@@ -139,6 +139,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 								</div>
 								<div className="h-auto w-full rounded-lg md:max-w-[50%]">
 									<Img
+										loading="lazy"
 										image={image}
 										imageWidth={300}
 										className="aspect-[3/4] h-auto w-full rounded-md object-cover object-left-top"
@@ -165,16 +166,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					))}
 				</div>
 				<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-
-				{/* <div className="embla__dots">
-					{scrollSnaps.map((_, index) => (
-						<DotButton
-							key={index}
-							onClick={() => onDotButtonClick(index)}
-							className={`embla__dot ${index === selectedIndex ? 'embla__dot--selected' : ''}`}
-						/>
-					))}
-				</div> */}
 			</div>
 		</div>
 	)

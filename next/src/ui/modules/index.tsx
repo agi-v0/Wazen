@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic'
+
 import Applications from './Applications'
 import Benefits from './Benefits'
 import Categories from './blog/CategoriesList'
@@ -23,8 +25,10 @@ import ProductList from './ProductList'
 import Features from './Features'
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
-import HomeBriefGroup from './HomeBriefGroup'
+// import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
+
+const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
 
 export default function Modules({
 	modules,

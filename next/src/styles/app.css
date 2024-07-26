@@ -1,17 +1,15 @@
-@import './fonts.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-	html[dir='rtl'] {
+	/* html[dir='rtl'] {
 		font-family: 'Rubik', sans-serif;
 	}
 
 	html[dir='ltr'] {
 		font-family: 'Inter', sans-serif;
-	}
+	} */
 
 	[hidden] {
 		display: none !important;
