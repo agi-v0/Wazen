@@ -59,7 +59,7 @@ export default function Features({
 		},
 	}
 	return (
-		<section className={'fluid-vertical-space bg-cyan-50'}>
+		<section className={'bg-cyan-50 py-[var(--size--4rem)]'}>
 			<div
 				className={
 					'fluid-gap section flex w-full flex-col items-center justify-evenly'
@@ -85,25 +85,23 @@ export default function Features({
 								index: any,
 							) => (
 								<li
-									className="flex w-full flex-col justify-start gap-8 rounded-xl p-6 text-start"
+									className="flex w-full flex-col justify-start gap-4 rounded-xl p-4 text-start"
 									key={index}
 								>
-									<div className="self-start rounded-md bg-white p-3">
+									<div className="self-start rounded-md bg-cyan-800 p-2">
 										<Icon
 											icon={
 												feature.icon ? feature.icon.name : 'ph:cube-duotone'
 											}
-											className="text-2xl text-cyan-700"
+											className="text-xl text-cyan-50"
 										/>
 									</div>
-									<div className="space-y-4">
-										<h3 className="text-main font-semibold leading-tight text-cyan-950">
-											{feature.title}
-										</h3>
-										<p className="text-small max-w-xl text-cyan-950/60 md:max-w-3xl">
-											{feature.description}
-										</p>
-									</div>
+									<h3 className="text-main font-semibold leading-tight text-cyan-950">
+										{feature.title}
+									</h3>
+									<p className="text-main max-w-xl text-cyan-950/80 md:max-w-3xl">
+										{feature.description}
+									</p>
 								</li>
 							),
 						)}

@@ -74,7 +74,7 @@ export default function HowItWorks({
 							transition={{ type: 'easeOut', delay: index * 0.2 }}
 							className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 						>
-							<div className="grid h-64 w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-2 py-8 shadow-inner">
+							<div className="grid h-64 w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-2 py-8">
 								<Image
 									src={images[index]}
 									alt={step.title}

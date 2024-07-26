@@ -1,13 +1,9 @@
-import { getSite } from '@/lib/sanity/queries'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
 import Navigation from './Navigation'
 import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
-import { cn } from '@/lib/utils'
-import css from './Header.module.css'
 import LangSelect from '@/components/ui/lang-select'
-import Image from 'next/image'
 import Logo from '@/components/ui/logo'
 
 export default async function Header({

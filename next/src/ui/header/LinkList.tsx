@@ -23,10 +23,12 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 								className="group relative flex h-full w-full flex-col gap-3 rounded-md bg-gradient-to-b from-teal-400 to-cyan-900 p-3 text-white hover:shadow-md"
 							>
 								<Image
-									src={'/dashboard-image.png'}
+									src={
+										'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?w=400?fm=webp'
+									}
 									alt=""
-									width={250}
-									height={250}
+									width={400}
+									height={400}
 									className="h-auto w-full rounded-md"
 								/>
 								<div className="flex flex-col justify-start transition-all">

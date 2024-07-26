@@ -20,6 +20,7 @@ export default async function RootLayout({
 		return
 	}
 	const { headerMenu, ctas, footerMenu, staticLinks } = site
+
 	return (
 		<html
 			lang={locale}
