@@ -14,6 +14,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 	return (
@@ -27,34 +28,35 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 			{/* //@ Style Doesn't work in This Component */}
 			{/* {links && <NavItemMenu links={links} />} */}
 			<NavigationMenuContent>
-				{links && (
-					<ul className="grid w-full gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-						{links?.[0] && (
-							<li key={links?.[0].label} className="group row-span-3">
-								<NavigationMenuLink asChild>
-									<CTA
-										link={links[0]}
-										className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-cyan-800 to-cyan-950 p-6 no-underline outline-none transition-all focus:shadow-md"
-									>
-										<Image
-											src={
-												'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?w=540&fm=webp'
-											}
-											alt={links?.[0].label}
-											width={250}
-											height={250}
-											className="h-auto w-full rounded-md"
-											priority={true}
-										/>
-										<div className="mb-2 mt-4 flex flex-row items-center text-lg font-medium text-white group-hover:text-teal-500">
-											{links?.[0].label}
-											<PiCaretLeftBold className="size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
-										</div>
-										<p className="text-sm leading-tight text-white/80 group-hover:text-white">
-											{links?.[0].description}
-										</p>
-									</CTA>
-									{/* <a
+				<ScrollArea className="max-md:h-[500px] max-md:w-full">
+					{links && (
+						<ul className="grid w-full gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+							{links?.[0] && (
+								<li key={links?.[0].label} className="group row-span-3">
+									<NavigationMenuLink asChild>
+										<CTA
+											link={links[0]}
+											className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-cyan-800 to-cyan-950 p-6 text-start no-underline outline-none transition-all focus:shadow-md"
+										>
+											<Image
+												src={
+													'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?w=540&fm=webp'
+												}
+												alt={links?.[0].label}
+												width={250}
+												height={250}
+												className="h-auto w-full rounded-md"
+												priority={true}
+											/>
+											<div className="mb-2 mt-4 flex flex-row items-center text-lg font-medium text-white group-hover:text-teal-500">
+												{links?.[0].label}
+												<PiCaretLeftBold className="size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+											</div>
+											<p className="text-sm leading-tight text-white/80 group-hover:text-white">
+												{links?.[0].description}
+											</p>
+										</CTA>
+										{/* <a
 								className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none focus:shadow-md"
 								href="/"
 							>
@@ -65,32 +67,33 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 									Tailwind CSS.
 								</p>
 							</a> */}
-								</NavigationMenuLink>
-							</li>
-						)}
-						{links?.slice(1).map((link: any, key) => (
-							<ListItem
-								href={
-									locale +
-									processUrl(link.internal, {
-										base: false,
-										params: link.params,
-									})
-								}
-								key={link.label}
-								className="group relative flex w-full flex-col p-3 transition-all hover:bg-teal-50"
-							>
-								<div className="flex flex-row items-center font-medium text-gray-950 group-hover:text-teal-600">
-									{link.label}
-									<PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
-								</div>
-								<p className="text-gray-600 group-hover:text-cyan-950">
-									{link.description}
-								</p>
-							</ListItem>
-						))}
-					</ul>
-				)}
+									</NavigationMenuLink>
+								</li>
+							)}
+							{links?.slice(1).map((link: any, key) => (
+								<ListItem
+									href={
+										locale +
+										processUrl(link.internal, {
+											base: false,
+											params: link.params,
+										})
+									}
+									key={link.label}
+									className="group relative flex w-full flex-col p-3 text-start transition-all hover:bg-teal-50"
+								>
+									<div className="flex flex-row items-center font-medium text-gray-950 group-hover:text-teal-600">
+										{link.label}
+										<PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+									</div>
+									<p className="text-gray-600 group-hover:text-cyan-950">
+										{link.description}
+									</p>
+								</ListItem>
+							))}
+						</ul>
+					)}
+				</ScrollArea>
 			</NavigationMenuContent>
 		</NavigationMenuItem>
 	)

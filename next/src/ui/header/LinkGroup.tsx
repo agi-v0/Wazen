@@ -14,7 +14,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { NavigationMenuSub } from '@radix-ui/react-navigation-menu'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
@@ -22,25 +22,27 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 		<NavigationMenuItem key={label}>
 			<NavigationMenuTrigger>{label}</NavigationMenuTrigger>
 			<NavigationMenuContent>
-				<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-					{links?.[0].links?.map((link: any) => (
-						<Link
-							href={
-								locale +
-								processUrl(link.internal, {
-									base: false,
-									params: link.params,
-								})
-							}
-							key={link.label}
-						>
-							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								{link.label || link.internal.title}
-							</NavigationMenuLink>
-							{/* <PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
-						</Link>
-					))}
-				</ul>
+				<ScrollArea className="max-md:h-[400px] max-md:w-full">
+					<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+						{links?.[0].links?.map((link: any) => (
+							<Link
+								href={
+									locale +
+									processUrl(link.internal, {
+										base: false,
+										params: link.params,
+									})
+								}
+								key={link.label}
+							>
+								<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+									{link.label || link.internal.title}
+								</NavigationMenuLink>
+								{/* <PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
+							</Link>
+						))}
+					</ul>
+				</ScrollArea>
 			</NavigationMenuContent>
 
 			{/* <ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[400px] md:min-w-max md:flex-row md:backdrop-blur">
