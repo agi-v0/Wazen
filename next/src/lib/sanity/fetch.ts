@@ -14,7 +14,8 @@ export function fetchSanity<T = any>(
 		params?: QueryParams
 	} & ResponseQueryOptions['next'] = {},
 ) {
-	const preview = dev || draftMode().isEnabled
+	const preview = dev
+	// || draftMode().isEnabled
 
 	return client.fetch<T>(
 		query,
