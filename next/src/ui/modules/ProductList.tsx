@@ -1,4 +1,3 @@
-'use client'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -10,8 +9,6 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from 'react-icons/pi'
 import Img from '../Img'
-import { motion, useInView, stagger } from 'framer-motion'
-import { useRef } from 'react'
 
 export default function ProductList({
 	pretitle,
@@ -52,9 +49,6 @@ export default function ProductList({
 		},
 	}
 
-	const ref = useRef(null)
-	const isInView = useInView(ref, { once: true })
-
 	return (
 		<section
 			className={'fluid-vertical-space bg-gradient-to-t from-teal-50 to-white'}
@@ -72,21 +66,10 @@ export default function ProductList({
 					<PortableText value={content} components={components} />
 				</div>
 				{products && (
-					<ul
-						ref={ref}
-						className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
-					>
+					<ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 						{products.map((product, index) => (
-							<motion.li
+							<li
 								key={product.productTitle}
-								initial="hidden"
-								// animate={isInView ? 'visible' : 'hidden'}
-								animate="visible"
-								variants={{
-									hidden: { y: 20, opacity: 0 },
-									visible: { y: 0, opacity: 1 },
-								}}
-								transition={{ type: 'easeOut', delay: index * 0.2 }}
 								className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 							>
 								<Link
@@ -115,7 +98,7 @@ export default function ProductList({
 										</p>
 									</div>
 								</Link>
-							</motion.li>
+							</li>
 						))}
 					</ul>
 				)}
