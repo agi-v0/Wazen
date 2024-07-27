@@ -100,19 +100,16 @@ const TestimonialList = ({
 		},
 	}
 	return (
-		<section
-			className={
-				'fluid-vertical-space grid min-h-screen *:col-span-full *:row-span-full'
-			}
-		>
+		<section className={'fluid-gap flex flex-col py-[var(--size--4rem)]'}>
+			<div className="section mx-auto text-center">
+				{content && <PortableText value={content} components={components} />}
+			</div>
 			<div
 				className={
-					'flex w-full flex-col items-center justify-evenly overflow-hidden'
+					'fluid-gap flex w-full flex-col items-center justify-center overflow-hidden'
 				}
 				ref={containerRef}
 			>
-				{content && <PortableText value={content} components={components} />}
-
 				<ul
 					ref={scrollerRef}
 					className={cn(

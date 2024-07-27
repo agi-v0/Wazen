@@ -8,7 +8,7 @@ import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
-import dropdown from '../../../public/accounting-full-option.svg'
+import { set2 } from '@/components/ui/portable-text'
 
 export default function Brief({
 	pretitle,
@@ -25,24 +25,6 @@ export default function Brief({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h2') {
-					return (
-						<h2 className="h1 font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h2>
-					)
-				}
-				return (
-					<p className="text-large mx-auto max-w-xl text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
 	return (
 		<section className={'py-[var(--size--2rem)]'}>
 			<div
@@ -69,7 +51,7 @@ export default function Brief({
 					<Pretitle className={'text-large font-semibold text-gray-400'}>
 						{pretitle}
 					</Pretitle>
-					<PortableText value={content} components={components} />
+					<PortableText value={content} components={set2} />
 				</div>
 			</div>
 		</section>

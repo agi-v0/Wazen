@@ -93,7 +93,8 @@ function generateSrcSet(
 		sizes
 			.filter((size) => !width || size <= width)
 			.map(
-				(size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`,
+				(size) =>
+					`${urlFor(image).width(size).auto('format').format('webp').url()} ${size}w`,
 			)
 			.join(', ') || undefined
 	)

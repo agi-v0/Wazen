@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
@@ -38,7 +38,38 @@ export default defineType({
 		defineField({
 			name: 'links',
 			type: 'array',
-			of: [{ type: 'app.link.list' }],
+			of: [
+				defineArrayMember({
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'image',
+							title: 'Image',
+							type: 'image',
+						}),
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'description',
+							type: 'text',
+						}),
+					],
+					preview: {
+						select: {
+							card: 'title',
+							description: 'description',
+							image: 'image',
+						},
+						prepare: ({ card, description, image }) => ({
+							title: card,
+							subtitle: description,
+							media: image,
+						}),
+					},
+				}),
+			],
 			group: 'content',
 		}),
 	],

@@ -53,25 +53,24 @@ export default function HeroThree({
 	}
 
 	return (
-		<section className="section flex min-h-screen">
+		<section className="section mt-[var(--header-height)] flex h-screen lg:max-h-fold">
 			<div
 				className={
-					'fluid-gap my-auto flex w-full flex-col items-center justify-evenly lg:flex-row'
+					'md:fluid-gap my-auto flex w-full flex-col items-center justify-evenly gap-8 lg:flex-row'
 				}
 			>
-				<div className="aspect-square w-full lg:max-w-[500px]">
-					<div className="relative h-full overflow-hidden rounded-2xl border-8 border-white shadow-md">
-						<Img image={image} imageWidth={500} />
-					</div>
-				</div>
-				<div className="flex flex-col items-start gap-8">
-					<div className="space-y-6">
-						<Pretitle className="text-large font-semibold text-gray-400">
-							{pretitle}
-						</Pretitle>
-						<PortableText value={content} components={components} />
-					</div>
-					<CTAList ctas={ctas} />
+				<Img
+					image={image}
+					imageWidth={1024}
+					alt={pretitle}
+					className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-[3/4] lg:max-w-[450px]"
+				/>
+				<div className="flex flex-col items-start gap-6">
+					<Pretitle className="text-large font-semibold text-gray-400">
+						{pretitle}
+					</Pretitle>
+					<PortableText value={content} components={components} />
+					<CTAList ctas={ctas} className="mt-2" />
 				</div>
 
 				<Image

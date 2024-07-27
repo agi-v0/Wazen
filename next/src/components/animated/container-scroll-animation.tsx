@@ -35,13 +35,13 @@ export const ContainerScroll = ({
 
 	return (
 		<div
-			className="relative flex items-center justify-center"
+			className="relative flex w-full items-center justify-center"
 			ref={containerRef}
 		>
 			<div
 				className="relative py-10 md:py-20"
 				style={{
-					perspective: '800px',
+					perspective: '1000px',
 				}}
 			>
 				<Card rotate={rotate} translate={translate} scale={scale}>
@@ -70,7 +70,7 @@ export const Card = ({
 			}}
 			key={`container-scroll-${1}`}
 		>
-			<div className="h-full w-full overflow-hidden rounded-xl border-4 border-teal-500/20 shadow-lg">
+			<div className="h-full w-full overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg">
 				{children}
 			</div>
 		</motion.div>

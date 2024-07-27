@@ -59,6 +59,6 @@ const config: Config = {
 		}),
 		addVariablesForColors,
 	],
-	safelist: ['action'],
+	safelist: ['primary', 'secondary', 'tertiary'],
 }
 export default config
