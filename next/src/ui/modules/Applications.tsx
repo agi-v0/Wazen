@@ -1,4 +1,3 @@
-'use client'
 import dynamic from 'next/dynamic'
 import {
 	PortableText,
@@ -7,10 +6,11 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
-// import EmblaCarousel from '@/components/ui/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
 
-const EmblaCarousel = dynamic(() => import('@/components/ui/EmblaCarousel'))
+const EmblaCarousel = dynamic(
+	() => import('@/components/EmblaCarousel/EmblaCarousel'),
+)
 
 export default function Applications({
 	pretitle,
