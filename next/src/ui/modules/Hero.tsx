@@ -1,4 +1,6 @@
-import Img, { Source } from '@/ui/Img'
+import Image from 'next/image'
+import { stegaClean } from '@sanity/client/stega'
+import { cn } from '@/lib/utils'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -7,13 +9,10 @@ import {
 import CTAList from '@/ui/CTAList'
 import CTA from '../CTA'
 import Pretitle from '@/ui/Pretitle'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import Image from 'next/image'
-import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
 import { set1 } from '@/components/ui/portable-text'
+import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 
 export default function Hero({
 	pretitle,
@@ -73,7 +72,7 @@ export default function Hero({
 				<div className="mx-auto w-[85%]">
 					<ContainerScroll>
 						<Image
-							src={`https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg`}
+							src={`https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?fm=webp`}
 							alt="hero"
 							height={1024}
 							width={1440}

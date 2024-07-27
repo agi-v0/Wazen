@@ -48,16 +48,16 @@ export default function Modules({
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
-					// case 'applications':
-					// 	return (
-					// 		<Applications {...module} key={module._key} locale={locale} />
-					// 	)
+					case 'applications':
+						return (
+							<Applications {...module} key={module._key} locale={locale} />
+						)
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
 						return <BriefGroup {...module} key={module._key} />
-					case 'home-brief-group':
-						return <HomeBriefGroup {...module} key={module._key} />
+					// case 'home-brief-group':
+					// 	return <HomeBriefGroup {...module} key={module._key} />
 					case 'brief':
 						return <Brief {...module} key={module._key} />
 					case 'categories-list':
