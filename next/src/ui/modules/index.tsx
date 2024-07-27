@@ -56,8 +56,8 @@ export default function Modules({
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
 						return <BriefGroup {...module} key={module._key} />
-					// case 'home-brief-group':
-					// 	return <HomeBriefGroup {...module} key={module._key} />
+					case 'home-brief-group':
+						return <HomeBriefGroup {...module} key={module._key} />
 					case 'brief':
 						return <Brief {...module} key={module._key} />
 					case 'categories-list':

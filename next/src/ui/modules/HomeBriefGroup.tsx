@@ -1,6 +1,5 @@
 import Brief from './Brief'
 import { AnimatedBeamDemo } from '../../components/animated/integrations'
-// import Iphone from '../../components/ui/iphone-chart'
 import { MobileApp } from '../../components/animated/iphone-chart'
 import SideBar from '@/components/animated/side-bar'
 
@@ -12,9 +11,10 @@ export default function BriefGroup({
 	//replace images and image components with an array of interactive components
 	const animatedComponents: any = [
 		<SideBar />,
-		<AnimatedBeamDemo />,
 		<MobileApp />,
-		<AnimatedBeamDemo />,
+		<SideBar />,
+		<MobileApp />,
+		// <AnimatedBeamDemo />,
 	]
 	return (
 		<div className="bg-gradient-to-b from-teal-50 from-90% to-white">
