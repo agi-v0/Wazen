@@ -78,7 +78,7 @@ export default function Hero({
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',
 							},
-							'text-white *:h-12 *:px-6 *:text-lg',
+							'text-white *:h-12 *:px-6 *:text-lg *:outline',
 						)}
 					/>
 				</div>
