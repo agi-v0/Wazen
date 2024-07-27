@@ -1,5 +1,4 @@
 'use client'
-
 import {
 	PortableText,
 	PortableTextComponents,
@@ -103,6 +102,7 @@ export default function ProductList({
 											width={100}
 											height={100}
 											className="my-auto h-auto w-full object-scale-down object-center"
+											loading="lazy"
 										/>
 									</div>
 									<div className="space-y-1 p-4 text-start">
