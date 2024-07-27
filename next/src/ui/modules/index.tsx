@@ -84,8 +84,8 @@ export default function Modules({
 						return <HeroPostcard {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
-					case 'partners':
-						return <Partners {...module} key={module._key} />
+					// case 'partners':
+					// 	return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
 					case 'richtext-module':
