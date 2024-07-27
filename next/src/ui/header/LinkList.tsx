@@ -14,7 +14,7 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 			{/* //@ Style Doesn't work in This Component */}
 			{/* {links && <NavItemMenu links={links} />} */}
 			{links && (
-				<ul className="anim-fade-to-b -start-32 top-full grid grid-flow-row grid-cols-1 justify-between gap-2 rounded-lg border border-gray-100 bg-white p-2 shadow-md md:absolute md:max-h-fit md:min-w-[640px] lg:grid-flow-col lg:grid-cols-2">
+				<ul className="anim-fade-to-b -start-32 top-full grid grid-flow-row grid-cols-1 justify-between gap-1 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:w-[600px] lg:grid-flow-col lg:grid-cols-2">
 					{links?.[0] && (
 						<li className={'w-full lg:row-span-3'}>
 							<CTA
@@ -24,7 +24,7 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 							>
 								<Image
 									src={
-										'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?w=400?fm=webp'
+										'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg'
 									}
 									alt=""
 									width={400}
