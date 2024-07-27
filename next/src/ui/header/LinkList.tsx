@@ -21,14 +21,12 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 		<NavigationMenuItem key={label}>
 			<NavigationMenuTrigger className="group relative">
 				{label}
-				{/* <PiCaretRightBold className="size-3 translate-y-0 text-cyan-950/50 transition-transform duration-300 group-open:rotate-90 group-hover:translate-y-[2px] group-hover:text-cyan-700/50 md:rotate-90" /> */}
 			</NavigationMenuTrigger>
-			{/* <summary className="group flex h-8 items-center gap-1 rounded-md px-3 font-medium text-cyan-950/80 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700"></summary> */}
-
-			{/* //@ Style Doesn't work in This Component */}
-			{/* {links && <NavItemMenu links={links} />} */}
 			<NavigationMenuContent>
-				<ScrollArea className="max-md:h-[500px] max-md:w-full">
+				<ScrollArea
+					className="max-md:h-[500px] max-md:w-full"
+					dir={locale == 'en' ? 'ltr' : 'rtl'}
+				>
 					{links && (
 						<ul className="grid w-full gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
 							{links?.[0] && (
@@ -56,17 +54,6 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 												{links?.[0].description}
 											</p>
 										</CTA>
-										{/* <a
-								className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none focus:shadow-md"
-								href="/"
-							>
-								{/* <Icons.logo className="h-6 w-6" /> 
-								<div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-								<p className="text-muted-foreground text-sm leading-tight">
-									Beautifully designed components built with Radix UI and
-									Tailwind CSS.
-								</p>
-							</a> */}
 									</NavigationMenuLink>
 								</li>
 							)}

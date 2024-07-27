@@ -22,7 +22,10 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 		<NavigationMenuItem key={label}>
 			<NavigationMenuTrigger>{label}</NavigationMenuTrigger>
 			<NavigationMenuContent>
-				<ScrollArea className="max-md:h-[400px] max-md:w-full">
+				<ScrollArea
+					className="max-md:h-[400px] max-md:w-full"
+					dir={locale == 'en' ? 'ltr' : 'rtl'}
+				>
 					<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
 						{links?.[0].links?.map((link: any) => (
 							<Link
