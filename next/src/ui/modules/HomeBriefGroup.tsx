@@ -12,9 +12,8 @@ export default function BriefGroup({
 	const animatedComponents: any = [
 		<SideBar />,
 		<MobileApp />,
-		<SideBar />,
 		<MobileApp />,
-		// <AnimatedBeamDemo />,
+		<AnimatedBeamDemo />,
 	]
 	return (
 		<div className="bg-gradient-to-b from-teal-50 from-90% to-white">
