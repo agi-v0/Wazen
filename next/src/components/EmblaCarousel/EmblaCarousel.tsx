@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback, useEffect, useRef } from 'react'
 import {
 	EmblaCarouselType,
@@ -15,6 +16,7 @@ import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import Img from '@/ui/Img'
 import { PiCaretRightBold } from 'react-icons/pi'
 import { cn } from '@/lib/utils'
+import style from './embla.module.css'
 
 const TWEEN_FACTOR_BASE = 0.12
 
@@ -116,15 +118,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
 	return (
 		<div
-			className={cn('embla fluid-gap flex flex-col')}
+			className={cn(style.embla, 'embla fluid-gap flex flex-col')}
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
 		>
-			<div className={cn('embla__viewport')} ref={emblaRef}>
-				<div className={cn('embla__container')}>
+			<div
+				className={cn(style.embla__viewport, 'embla__viewport')}
+				ref={emblaRef}
+			>
+				<div className={cn(style.embla__container, 'embla__container')}>
 					{slides.map(({ title, link, image }, index) => (
-						<div className={cn('embla__slide')} key={index}>
+						<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
 							<div
 								className={cn(
+									style.slide_item,
 									`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`,
 								)}
 							>
@@ -159,12 +165,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 				dir={locale == 'en' ? 'ltr' : 'rtl'}
 			>
 				<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-				<div className="embla__dots">
+				<div className={style.embla__dots}>
 					{scrollSnaps.map((_, index) => (
 						<DotButton
 							key={index}
 							onClick={() => onDotButtonClick(index)}
-							className={`embla__dot ${index === selectedIndex ? 'embla__dot--selected' : ''}`}
+							className={`${style.embla__dot} ${index === selectedIndex ? style['embla__dot--selected'] : ''}`}
 						/>
 					))}
 				</div>
@@ -173,5 +179,4 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		</div>
 	)
 }
-
 export default EmblaCarousel

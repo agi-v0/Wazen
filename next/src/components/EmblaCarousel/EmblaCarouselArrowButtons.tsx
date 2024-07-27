@@ -6,6 +6,8 @@ import React, {
 } from 'react'
 import { EmblaCarouselType } from 'embla-carousel'
 import { PiCaretCircleRight, PiCaretCircleLeft } from 'react-icons/pi'
+import style from './embla.module.css'
+import { cn } from '@/lib/utils'
 
 type UsePrevNextButtonsType = {
 	prevBtnDisabled: boolean
@@ -60,7 +62,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
 
 	return (
 		<button
-			className="embla__button embla__button--prev"
+			className={cn(style.embla__button, 'embla__button embla__button--prev')}
 			type="button"
 			{...restProps}
 		>
@@ -81,7 +83,7 @@ export const NextButton: React.FC<PropType> = (props) => {
 
 	return (
 		<button
-			className="embla__button embla__button--next"
+			className={cn(style.embla__button, 'embla__button embla__button--next')}
 			type="button"
 			{...restProps}
 		>
