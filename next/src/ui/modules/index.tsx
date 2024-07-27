@@ -48,10 +48,10 @@ export default function Modules({
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
-					case 'applications':
-						return (
-							<Applications {...module} key={module._key} locale={locale} />
-						)
+					// case 'applications':
+					// 	return (
+					// 		<Applications {...module} key={module._key} locale={locale} />
+					// 	)
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
@@ -84,8 +84,8 @@ export default function Modules({
 						return <HeroPostcard {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
-					// case 'partners':
-					// 	return <Partners {...module} key={module._key} />
+					case 'partners':
+						return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
 					case 'richtext-module':
