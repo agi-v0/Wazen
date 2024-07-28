@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { LuDollarSign } from 'react-icons/lu'
 
 export default defineType({
@@ -14,7 +14,32 @@ export default defineType({
 		defineField({
 			name: 'highlight',
 			type: 'string',
-			description: 'e.g. Recommended, Most popular, etc.',
+			description: 'مثل الأكثر طلبا، الأعلى قيمة، ...',
+		}),
+		defineField({
+			name: 'apps',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					name: 'app',
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'active',
+							type: 'boolean',
+						}),
+					],
+				}),
+			],
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
 		}),
 		defineField({
 			name: 'price',
@@ -40,9 +65,75 @@ export default defineType({
 			of: [{ type: 'cta' }],
 		}),
 		defineField({
-			name: 'content',
+			name: 'features',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [
+				defineArrayMember({
+					name: 'feature',
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'active',
+							type: 'boolean',
+						}),
+					],
+				}),
+			],
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
+		}),
+		defineField({
+			name: 'details',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					name: 'apps',
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'specs',
+							type: 'array',
+							of: [
+								defineArrayMember({
+									name: 'spec',
+									type: 'object',
+									fields: [
+										defineField({
+											name: 'title',
+											title: 'Specification title',
+											type: 'string',
+										}),
+										defineField({
+											name: 'active',
+											type: 'boolean',
+										}),
+										defineField({
+											name: 'count',
+											type: 'number',
+										}),
+										defineField({
+											name: 'unlimited',
+											title: 'Unlimited?',
+											type: 'boolean',
+										}),
+									],
+								}),
+							],
+						}),
+					],
+				}),
+			],
 		}),
 	],
 	preview: {
@@ -55,12 +146,7 @@ export default defineType({
 
 			return {
 				title,
-				subtitle: [
-					price.month,
-					price.yearly,
-				]
-					.filter(Boolean)
-					.join(' '),
+				subtitle: [price.month, price.yearly].filter(Boolean).join(' '),
 			}
 		},
 	},

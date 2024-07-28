@@ -13,6 +13,16 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
+		defineField({
+			name: 'plans',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'pricing' }],
+				},
+			],
+		}),
 	],
 	preview: {
 		select: {

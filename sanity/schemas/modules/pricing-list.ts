@@ -14,7 +14,7 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
-			name: 'tiers',
+			name: 'plans',
 			type: 'array',
 			of: [
 				{
