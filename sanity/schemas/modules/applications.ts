@@ -36,7 +36,7 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'links',
+			name: 'cards',
 			type: 'array',
 			of: [
 				defineArrayMember({
