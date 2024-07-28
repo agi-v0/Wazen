@@ -8,6 +8,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
+import { cn } from '@/lib/utils'
 
 export default function Benefits({
 	benefits,
@@ -84,10 +85,17 @@ export default function Benefits({
 	}, [activeCard])
 
 	return (
-		<section className={'section fluid-vertical-space'}>
-			<motion.div className="fluid-gap flex" ref={ref}>
-				<div className="sticky top-32 hidden h-full md:block">
-					<div className="mb-32 flex flex-col items-center justify-center">
+		<section
+			className={
+				'section fluid-vertical-space px-[var(--padding-horizontal--main)]'
+			}
+		>
+			<motion.div
+				className="fluid-gap hidden pb-12 xl:visible xl:flex"
+				ref={ref}
+			>
+				{/* <div className="sticky top-32 hidden h-full md:block">
+					<div className="flex h-80 flex-col items-center justify-between py-6">
 						{numbers.map((number, index) => (
 							<motion.div
 								initial={{
@@ -96,14 +104,14 @@ export default function Benefits({
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
-								className="text-large my-2 font-semibold text-cyan-950"
+								className="text-large font-semibold text-cyan-950"
 								key={number + index}
 							>
 								{number}
 							</motion.div>
 						))}
 					</div>
-				</div>
+				</div> */}
 
 				<div className="flex w-full flex-col items-start">
 					{content.map((item: any, index: any) => {
@@ -115,7 +123,10 @@ export default function Benefits({
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
-								className="h-96 space-y-6 py-12"
+								className={cn(
+									'flex h-96 w-full flex-col justify-center space-y-6 py-6',
+									(index = 2 ? 'h-[446px]' : ''),
+								)}
 								key={item.content + index}
 							>
 								<PortableText value={item.content} components={components} />
@@ -124,21 +135,50 @@ export default function Benefits({
 					})}
 				</div>
 
-				<div className="sticky left-0 top-32 hidden h-full w-full md:block">
-					<div className="relative flex items-center justify-center">
-						<div
-							style={{ background: backgroundGradient }}
-							className={
-								'absolute aspect-square w-[350px] rounded-full blur-2xl'
-							}
-						/>
-						<Img
-							image={imageList}
-							imageWidth={540}
-							className="relative z-10 rounded-lg object-cover shadow-md"
-						/>
-					</div>
+				<div className="sticky left-0 top-32 h-full w-full">
+					<Img
+						image={imageList}
+						imageWidth={640}
+						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-lg border-8 border-white object-cover shadow-md"
+					/>
 				</div>
+			</motion.div>
+			<motion.div className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden">
+				{content.map((item: any, index: any) => {
+					return (
+						<motion.div
+							initial={{
+								opacity: 0,
+							}}
+							animate={{
+								opacity: activeCard === index ? 1 : 0.3,
+							}}
+							className="fluid-vertical-space flex w-full flex-col items-center justify-center gap-6 text-center"
+							key={item.content + index}
+						>
+							<PortableText value={item.content} components={components} />
+							<div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md">
+								<Img
+									image={content?.[index].image}
+									imageWidth={640}
+									className="relative z-[1] h-auto w-full max-w-screen-sm object-cover"
+								/>
+							</div>
+						</motion.div>
+					)
+				})}
+
+				{/* <div className="relative flex items-center justify-center">
+					<div
+						style={{ background: backgroundGradient }}
+						className={'absolute w-full max-w-[350px] rounded-full blur-2xl'}
+					/>
+					<Img
+						image={imageList}
+						imageWidth={540}
+						className="relative z-[1] h-auto w-full rounded-lg object-cover shadow-md"
+					/>
+				</div> */}
 			</motion.div>
 		</section>
 	)

@@ -1,5 +1,4 @@
-'use client'
-
+import dynamic from 'next/dynamic'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -7,17 +6,18 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
+import { EmblaOptionsType } from 'embla-carousel'
 import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
-import Link from 'next/link'
-import processUrl from '@/lib/processUrl'
-import { PiCaretRightBold } from 'react-icons/pi'
-import CTAList from '@/ui/CTAList'
-import { cn } from '@/lib/utils'
+
+const EmblaCarousel = dynamic(
+	() => import('@/components/EmblaCarousel/EmblaCarousel'),
+)
 
 export default function Applications({
 	pretitle,
 	content,
 	links,
+	locale,
 	ctas,
 	textAlign = 'center',
 	alignItems,
@@ -25,6 +25,7 @@ export default function Applications({
 	pretitle: string
 	content: any
 	links: any
+	locale: string
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
@@ -48,34 +49,31 @@ export default function Applications({
 		},
 	}
 
+	const direction = locale === 'en' ? 'ltr' : 'rtl'
+	const OPTIONS: EmblaOptionsType = { direction: direction, loop: true }
 	return (
 		<section
 			className={
-				'fluid-vertical-space grid min-h-screen *:col-span-full *:row-span-full'
+				'fluid-vertical-space fluid-gap flex min-h-screen w-full flex-col items-center justify-evenly overflow-hidden'
 			}
 		>
 			<div
-				className={
-					'flex w-full flex-col items-center justify-evenly overflow-hidden'
-				}
+				className={'flex flex-col items-center gap-6'}
+				style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<div
-					className={'flex flex-col items-center gap-6'}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
-						{pretitle}
-					</Pretitle>
-					<PortableText value={content} components={components} />
-				</div>
-				<div className="py-12">
-					<InfiniteMovingCards
-						direction={'right'}
-						speed={'slow'}
-						pauseOnHover={true}
-						items={links}
-					/>
-				</div>
+				<Pretitle className={'text-large font-semibold text-gray-400'}>
+					{pretitle}
+				</Pretitle>
+				<PortableText value={content} components={components} />
+			</div>
+			<div className="" dir={direction}>
+				{/* <EmblaCarousel slides={links} options={OPTIONS} locale={locale} /> */}
+				<InfiniteMovingCards
+					direction={'right'}
+					speed={'slow'}
+					pauseOnHover={true}
+					items={links}
+				/>
 			</div>
 		</section>
 	)

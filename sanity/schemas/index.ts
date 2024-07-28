@@ -14,7 +14,6 @@ import FAQ from './documents/FAQ'
 import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
-import appLinkList from './objects/app.link.list'
 import linkGroup from './objects/link.group'
 import metadata from './objects/metadata'
 
@@ -70,7 +69,6 @@ export const schemaTypes = [
 	cta,
 	link,
 	linkList,
-	appLinkList,
 	linkGroup,
 	metadata,
 

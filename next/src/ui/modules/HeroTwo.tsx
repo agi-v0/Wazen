@@ -51,17 +51,6 @@ export default function HeroTwo({
 
 	return (
 		<section className={'section py-12'}>
-			{/* {bgImage && (
-				<picture>
-					<Source image={bgImageMobile} />
-					<Img
-						className="size-full max-h-fold object-cover"
-						image={bgImage}
-						draggable={false}
-						imageWidth={1800}
-					/>
-				</picture>
-			)} */}
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl bg-gradient-to-br from-white from-65% to-cyan-100/50 p-12 py-24">
 				<div
 					className={cn('richtext relative space-y-6')}
@@ -71,7 +60,7 @@ export default function HeroTwo({
 						className={cn(
 							hasImage
 								? 'text-white/40'
-								: 'mx-auto w-fit text-gray-400 px-6 py-1',
+								: 'mx-auto w-fit px-6 py-1 text-gray-400',
 						)}
 					>
 						{pretitle}

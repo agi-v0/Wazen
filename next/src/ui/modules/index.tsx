@@ -1,45 +1,58 @@
-import Applications from './Applications'
-import Benefits from './Benefits'
+import dynamic from 'next/dynamic'
+
+// import Applications from './Applications'
+// import Benefits from './Benefits'
 import Categories from './blog/CategoriesList'
 import FirstPost from './blog/FirstPost'
 import BlogRollup from './blog/Rollup'
-import Brief from './Brief'
+// import Brief from './Brief'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
-import FAQList from './FAQList'
+// import FAQList from './FAQList'
 import Hero from './Hero'
 import HeroPostcard from './HeroPostcard'
 import HeroThree from './HeroThree'
 import HeroTwo from './HeroTwo'
 import LogoList from './LogoList'
-import Partners from './Partners'
+import Partners from './PartnersList'
 import RichtextModule from './RichtextModule'
 import SingleTestimony from './SingleTestimony'
 import CallToAction from './CallToAction'
 import StatList from './StatList'
-import HowItWorks from './HowItWorks'
-import TestimonialList from './TestimonialList'
-import ProductList from './ProductList'
+// import HowItWorks from './HowItWorks'
+// import TestimonialList from './TestimonialList'
+// import ProductList from './ProductList'
 import Features from './Features'
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
-import HomeBriefGroup from './HomeBriefGroup'
+// import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
+
+const Applications = dynamic(() => import('./Applications'))
+const Benefits = dynamic(() => import('./Benefits'))
+const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
+const Brief = dynamic(() => import('./Brief'))
+const TestimonialList = dynamic(() => import('./TestimonialList'))
+const ProductList = dynamic(() => import('./ProductList'))
+const FAQList = dynamic(() => import('./FAQList'))
+const HowItWorks = dynamic(() => import('./HowItWorks'))
 
 export default function Modules({
 	modules,
 	locale,
 }: {
 	modules?: Sanity.Module[]
-	locale?: any
+	locale?: string
 }) {
 	return (
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
 					case 'applications':
-						return <Applications {...module} key={module._key} />
+						return (
+							<Applications {...module} key={module._key} locale={locale} />
+						)
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
@@ -61,7 +74,7 @@ export default function Modules({
 					case 'features-grid':
 						return <Features {...module} key={module._key} />
 					case 'first-post':
-						return <FirstPost {...module} key={module._key} locale={locale}/>
+						return <FirstPost {...module} key={module._key} locale={locale} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':

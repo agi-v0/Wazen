@@ -1,5 +1,3 @@
-'use client'
-
 import {
 	PortableText,
 	PortableTextComponents,
@@ -11,8 +9,6 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from 'react-icons/pi'
 import Img from '../Img'
-import { motion, useInView, stagger } from 'framer-motion'
-import { useRef } from 'react'
 
 export default function ProductList({
 	pretitle,
@@ -53,11 +49,10 @@ export default function ProductList({
 		},
 	}
 
-	const ref = useRef(null)
-	const isInView = useInView(ref)
-
 	return (
-		<section className={'bg-gradient-to-t from-teal-50 to-white'}>
+		<section
+			className={'fluid-vertical-space bg-gradient-to-t from-teal-50 to-white'}
+		>
 			<div
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>
@@ -71,20 +66,10 @@ export default function ProductList({
 					<PortableText value={content} components={components} />
 				</div>
 				{products && (
-					<ul
-						ref={ref}
-						className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
-					>
+					<ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 						{products.map((product, index) => (
-							<motion.li
+							<li
 								key={product.productTitle}
-								initial="hidden"
-								animate={isInView ? 'visible' : 'hidden'}
-								variants={{
-									hidden: { y: 20, opacity: 0 },
-									visible: { y: 0, opacity: 1 },
-								}}
-								transition={{ type: 'easeOut', delay: index * 0.2 }}
 								className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 							>
 								<Link
@@ -93,13 +78,14 @@ export default function ProductList({
 										params: product.link.params,
 									})}
 								>
-									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-tr from-teal-900 to-teal-300 px-2 py-8">
+									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/20 px-2 py-8">
 										<Img
 											image={product.productImage}
 											alt={product.productTitle}
 											width={100}
 											height={100}
 											className="my-auto h-auto w-full object-scale-down object-center"
+											loading="lazy"
 										/>
 									</div>
 									<div className="space-y-1 p-4 text-start">
@@ -112,7 +98,7 @@ export default function ProductList({
 										</p>
 									</div>
 								</Link>
-							</motion.li>
+							</li>
 						))}
 					</ul>
 				)}

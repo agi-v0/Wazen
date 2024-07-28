@@ -1,0 +1,62 @@
+.embla {
+	/* max-width: 48rem; */
+	margin: auto;
+	/* --slide-height: 19rem; */
+	--slide-spacing: var(--padding-horizontal--main);
+	--slide-size: 55%;
+}
+.embla__viewport {
+	overflow: hidden;
+}
+.embla__container {
+	/* backface-visibility: hidden; */
+	display: flex;
+	touch-action: pan-y pinch-zoom;
+	margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+	flex: 0 0 40%;
+	min-width: 0;
+	aspect-ratio: 2/1;
+	padding-left: var(--slide-spacing);
+}
+@media (min-width: 768px) {
+	.embla__slide {
+		flex: 0 0 var(--slide-size); /* Breakpoint SM slide covers 50% of the viewport */
+	}
+}
+.slide-item {
+	height: fit-content;
+	user-select: none;
+	/* backface-visibility: hidden; */
+}
+.embla__button {
+	text-decoration: none;
+	z-index: 1;
+	@apply flex size-8 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-transparent text-cyan-950/40 transition-all hover:text-cyan-950;
+}
+.embla__button:disabled {
+	color: theme(colors.gray.500);
+}
+.embla__dots {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	margin-inline-end: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+.embla__dot {
+	-webkit-tap-highlight-color: theme(colors.cyan.950);
+	text-decoration: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	@apply flex size-5 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-transparent;
+}
+.embla__dot:after {
+	content: '';
+	@apply flex size-1 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-cyan-950/40 transition-all hover:bg-cyan-950;
+}
+.embla__dot--selected:after {
+	@apply size-2 bg-cyan-950;
+}

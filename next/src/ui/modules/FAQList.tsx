@@ -53,23 +53,23 @@ export default function FAQList({
 				<PortableText value={content} components={components} />
 			</header>
 
-			<div className="fluid-gap flex flex-col items-start justify-between md:flex-row">
+			<div className="fluid-gap flex flex-col items-start justify-between lg:flex-row">
 				<div className="w-full lg:w-[70%]">
-					{items?.map(({ question, answer }, key) => (
-						<Accordion type="single" collapsible>
-							<AccordionItem value={`item-${key}`}>
-								<AccordionTrigger className="text-gray-950 no-underline">
+					<Accordion type="single" collapsible>
+						{items?.map(({ question, answer }, idx) => (
+							<AccordionItem value={`item-${idx}`} key={question}>
+								<AccordionTrigger className="text-main text-start text-gray-950 no-underline">
 									{question}
 								</AccordionTrigger>
 								<AccordionContent>
-									<PortableText value={answer} />
+									<PortableText value={answer} components={components} />
 								</AccordionContent>
 							</AccordionItem>
-						</Accordion>
-					))}
+						))}
+					</Accordion>
 				</div>
 
-				<div className="flex max-w-sm flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:min-w-[400px]">
+				<div className="flex w-full flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:max-w-[30%]">
 					<div className="space-y-4">
 						<h3 className="text-large font-semibold leading-tight text-cyan-950">
 							{sideNote.title}

@@ -85,7 +85,7 @@ export const InfiniteMovingCards = ({
 	return (
 		<div
 			ref={containerRef}
-			className="flex w-full flex-col items-center justify-evenly overflow-hidden"
+			className="flex w-full flex-col items-center justify-evenly overflow-x-hidden"
 		>
 			<ul
 				ref={scrollerRef}
@@ -99,7 +99,7 @@ export const InfiniteMovingCards = ({
 					return (
 						<li
 							key={idx}
-							className={`bg-gradient-to-br from-white from-50% ${colors[idx]} flex flex-shrink-0 flex-row items-center justify-between rounded-md p-3 shadow-md transition-all hover:shadow-lg lg:w-[600px]`}
+							className={`-from-40% scale-100 bg-gradient-to-br from-white hover:scale-105 ${colors[idx]} flex flex-shrink-0 flex-row items-center justify-between rounded-lg border border-gray-100 p-3 transition-all hover:shadow-lg lg:w-[600px]`}
 						>
 							<div className="flex h-full flex-col justify-between p-4">
 								<div>

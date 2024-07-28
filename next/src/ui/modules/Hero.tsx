@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
+import { set1 } from '@/components/ui/portable-text'
 
 export default function Hero({
 	pretitle,
@@ -31,27 +32,14 @@ export default function Hero({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h1') {
-					return (
-						<h1 className="display mx-auto max-w-3xl text-balance text-center leading-tight drop-shadow-md">
-							{value.children.map((child: any) => child.text).join('')}
-						</h1>
-					)
-				}
-				return (
-					<p className="text-large mx-auto max-w-xl text-cyan-950 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
-
 	return (
-		<section className="hero-background relative">
+		<section
+			className="relative min-h-screen"
+			style={{
+				backgroundImage: `linear-gradient(to bottom, transparent, white),
+												radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #f0fdfa 100%)`,
+			}}
+		>
 			<div className="absolute top-0 h-full w-full">
 				{/* <Image
 					src={lightray}
@@ -69,7 +57,7 @@ export default function Hero({
 						<PiSealCheck className="size-5" />
 						{pretitle}
 					</span>
-					<PortableText value={content} components={components} />
+					<PortableText value={content} components={set1} />
 					<CTAList
 						ctas={ctas}
 						className={cn(
@@ -78,22 +66,21 @@ export default function Hero({
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',
 							},
-							'text-white *:h-12 *:px-6 *:text-lg',
+							'text-white *:h-12 *:px-6 *:text-lg *:outline',
 						)}
 					/>
-					{/* <div className="primary">text</div>
-					<div className="secondary">text</div>
-					<div className="tertiary">text</div> */}
 				</div>
 				<div className="mx-auto w-[85%]">
 					<ContainerScroll>
 						<Image
-							src={`/dashboard-image.svg`}
+							src={`https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg`}
 							alt="hero"
 							height={1024}
 							width={1440}
 							className="mx-auto h-auto w-full object-cover object-left-top"
 							draggable={false}
+							loading="eager"
+							priority
 						/>
 					</ContainerScroll>
 				</div>
