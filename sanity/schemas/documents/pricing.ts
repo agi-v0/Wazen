@@ -24,18 +24,12 @@ export default defineType({
 			},
 			fields: [
 				defineField({
-					name: 'base',
-					type: 'number',
-					description: '0 for free, empty to hide',
-				}),
-				defineField({
-					name: 'strikethrough',
+					name: 'monthly',
 					type: 'number',
 				}),
 				defineField({
-					name: 'suffix',	
-					type: 'string',
-					placeholder: 'e.g. /mo, per seat, forever, etc.',
+					name: 'yearly',
+					type: 'number',
 				}),
 			],
 		}),
@@ -62,9 +56,8 @@ export default defineType({
 			return {
 				title,
 				subtitle: [
-					price.base || 'Free',
-					price.strikethrough && `(${price.strikethrough})`,
-					price.suffix,
+					price.month,
+					price.yearly,
 				]
 					.filter(Boolean)
 					.join(' '),

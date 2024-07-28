@@ -1,10 +1,39 @@
 'use client'
 import { useState } from 'react'
-import OfferList from './OfferList'
 import PricingBox from './PricingBox'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from 'next-sanity'
+import { FiCheck } from 'react-icons/fi'
+// import { RxCross2 } from 'react-icons/rx'
 
-const Pricing = () => {
+const Pricing = ({ tiers }: any) => {
 	const [isMonthly, setIsMonthly] = useState(true)
+
+	const TeirContent: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				const textContent = value.children
+					.map((child: any) => child.text)
+					.join('')
+				if (!textContent.trim()) return null // Do not render if text content is empty or just whitespace
+
+				return (
+					<div className="flex items-center gap-2">
+						{/* {status === 'active' ? (
+							<FiCheck className="text-green-600" />
+						) : (
+							<RxCross2 className="text-red-600" />
+						)} */}
+						<FiCheck className="text-green-600" />
+						<p className="text-base font-medium">{textContent}</p>
+					</div>
+				)
+			},
+		},
+	}
 
 	return (
 		<section id="pricing" className="relative py-16 md:py-20 lg:py-28">
@@ -35,39 +64,20 @@ const Pricing = () => {
 				</div>
 
 				<div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-					<PricingBox
-						packageName="المجانية"
-						price={'0'}
-						duration={isMonthly ? 'شهرياً' : 'سنوياً'}
-						subtitle="مناسبة للشركات التي تريد البدء بالتحول الرقمي"
-					>
-						<OfferList text="التقارير" status="active" />
-						<OfferList text="تحديثات مجانية" status="active" />
-						<OfferList text="دعم مجاني" status="active" />
-						<OfferList text="استيراد وتصدير البيانات" status="active" />
-					</PricingBox>
-					<PricingBox
-						packageName="الأساسية"
-						price={isMonthly ? '399' : '1000'}
-						duration={isMonthly ? 'شهرياً' : 'سنوياً'}
-						subtitle="مناسبة للشركات والصغيرة والمتوسطة"
-					>
-						<OfferList text="التقارير" status="active" />
-						<OfferList text="تحديثات مجانية" status="active" />
-						<OfferList text="دعم مجاني" status="active" />
-						<OfferList text="استيراد وتصدير البيانات" status="active" />
-					</PricingBox>
-					<PricingBox
-						packageName="المتقدمة"
-						price={isMonthly ? '589' : '2100'}
-						duration={isMonthly ? 'شهرياً' : 'سنوياً'}
-						subtitle="مناسبة للشركات والصغيرة والمتوسطة"
-					>
-						<OfferList text="التقارير" status="active" />
-						<OfferList text="تحديثات مجانية" status="active" />
-						<OfferList text="دعم مجاني" status="active" />
-						<OfferList text="استيراد وتصدير البيانات" status="active" />
-					</PricingBox>
+					{tiers.map((tier: any, index: string) => (
+						<PricingBox
+							key={index}
+							packageName={tier.title}
+							price={isMonthly ? tier.price.monthly : tier.price.yearly}
+							duration={isMonthly ? 'شهرياً' : 'سنوياً'}
+							subtitle={tier.highlight}
+							ctas={tier.ctas}
+						>
+							<div className="flex flex-col gap-2">
+								<PortableText value={tier.content} components={TeirContent} />
+							</div>
+						</PricingBox>
+					))}
 				</div>
 			</div>
 		</section>

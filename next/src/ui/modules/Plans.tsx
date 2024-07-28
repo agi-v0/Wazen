@@ -37,7 +37,7 @@ export default async function Plans({
 			<div className="fluid-gap flex w-full flex-col items-center">
 				<PortableText value={content} components={components} />
 			</div>
-			<Pricing />
+			<Pricing tiers={tiers} />
 		</section>
 	)
 }
