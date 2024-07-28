@@ -25,6 +25,7 @@ import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
 import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
+import PlansComparison from './PlansComparison'
 
 export default function Modules({
 	modules,
@@ -75,6 +76,8 @@ export default function Modules({
 						return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
+					case 'pricing-comparison':
+						return <PlansComparison {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
 					case 'single-testimony':

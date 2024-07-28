@@ -48,6 +48,7 @@ import productList from './modules/product-list'
 import contactUs from './modules/contact-us'
 import homeBriefGroup from './modules/home-brief-group'
 import pricingList from './modules/pricing-list'
+import pricingComparison from './modules/pricing-comparison'
 import pricing from './documents/pricing'
 
 export const schemaTypes = [
@@ -92,6 +93,7 @@ export const schemaTypes = [
 	logoList,
 	partners,
 	pricingList,
+	pricingComparison,
 	richtextModule,
 	singleTestimony,
 	statList,
