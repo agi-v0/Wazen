@@ -19,20 +19,19 @@ export default async function Header({
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
 			<div
 				className={
-					'section mx-auto flex h-full flex-row justify-between py-4 max-md:flex-col'
+					'section mx-auto flex h-full flex-row items-start justify-between py-4 max-md:flex-row lg:items-center'
 				}
 			>
-				<div className="flex flex-col items-start [grid-area:logo] lg:flex-row lg:items-center lg:gap-x-5">
+				<div className="flex w-full flex-col items-start lg:flex-row lg:items-center lg:justify-start lg:gap-x-2">
 					<Link className="font-bold" href="/">
 						<Logo />
 					</Link>
 					{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 				</div>
-				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden md:flex-col lg:flex-row">
+				<div className="flex w-full flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row lg:justify-end">
 					<LangSelect />
 					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
-
 				<Toggle />
 			</div>
 		</Wrapper>

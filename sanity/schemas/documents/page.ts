@@ -38,6 +38,7 @@ export default defineType({
 				{ type: 'logo-list' },
 				{ type: 'partners' },
 				{ type: 'pricing-list' },
+				{ type: 'pricing-comparison' },
 				{ type: 'richtext-module' },
 				{ type: 'single-testimony' },
 				{ type: 'stat-list' },
