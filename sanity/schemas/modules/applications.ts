@@ -55,6 +55,10 @@ export default defineType({
 							name: 'description',
 							type: 'text',
 						}),
+						defineField({
+							name: 'link',
+							type: 'link',
+						}),
 					],
 					preview: {
 						select: {
