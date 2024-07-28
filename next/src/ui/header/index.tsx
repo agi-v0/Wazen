@@ -19,10 +19,10 @@ export default async function Header({ locale }: any) {
 		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
 			<div
 				className={
-					'section mx-auto flex h-full flex-row justify-between py-4 max-md:flex-col'
+					'section mx-auto flex h-full flex-row items-start justify-between py-4 max-md:flex-row lg:items-center'
 				}
 			>
-				<div className="flex flex-col items-start [grid-area:logo] lg:flex-row lg:items-center lg:gap-x-5">
+				<div className="flex w-full flex-col items-start lg:flex-row lg:items-center lg:justify-between lg:gap-x-2">
 					<Link className="font-bold" href="/">
 						<Image
 							src="/wazen-logo.svg"
@@ -33,12 +33,11 @@ export default async function Header({ locale }: any) {
 						/>
 					</Link>
 					<Navigation locale={locale} />
+					<div className="flex flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row">
+						<LangSelect />
+						<CTAList className="max-md:*:w-full" ctas={ctas} />
+					</div>
 				</div>
-				<div className="flex flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden md:flex-col lg:flex-row">
-					<LangSelect />
-					<CTAList className="max-md:*:w-full" ctas={ctas} />
-				</div>
-
 				<Toggle />
 			</div>
 		</Wrapper>
