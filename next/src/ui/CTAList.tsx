@@ -11,7 +11,7 @@ export default function CTAList({
 	return (
 		<div
 			className={cn(
-				'flex w-full flex-col flex-wrap items-center gap-x-4 gap-y-2 md:flex-row',
+				'flex flex-col flex-wrap items-center gap-x-4 gap-y-2 md:flex-row',
 				className,
 			)}
 		>

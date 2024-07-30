@@ -7,12 +7,11 @@ import {
 
 export default async function Plans({
 	content,
-	tiers
+	plans,
 }: Partial<{
 	content: any
-	tiers: any
+	plans: any
 }>) {
-
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -33,11 +32,11 @@ export default async function Plans({
 	}
 
 	return (
-		<section className="section py-12 bg-teal-50">
+		<section className="section bg-teal-50 py-12">
 			<div className="fluid-gap flex w-full flex-col items-center">
 				<PortableText value={content} components={components} />
 			</div>
-			<Pricing />
+			<Pricing plans={plans} />
 		</section>
 	)
 }

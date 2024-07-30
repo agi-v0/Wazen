@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity'
 import { LuDollarSign } from 'react-icons/lu'
-import { count, getBlockText } from '../../src/utils'
+import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'pricing-list',
-	title: 'Pricing list',
+	name: 'pricing-comparison',
+	title: 'Pricing comparison',
 	icon: LuDollarSign,
 	type: 'object',
 	fields: [
@@ -27,11 +27,10 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'content',
-			tiers: 'tiers',
 		},
-		prepare: ({ content, tiers }) => ({
-			title: getBlockText(content) || count(tiers, 'tier'),
-			subtitle: 'Pricing list',
+		prepare: ({ content }) => ({
+			title: getBlockText(content),
+			subtitle: 'Pricing comparison',
 		}),
 	},
 })

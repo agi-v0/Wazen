@@ -100,7 +100,9 @@ const TestimonialList = ({
 		},
 	}
 	return (
-		<section className={'fluid-gap flex flex-col py-[var(--size--4rem)]'}>
+		<section
+			className={'fluid-gap flex flex-col bg-cyan-950/5 py-[var(--size--4rem)]'}
+		>
 			<div className="section mx-auto text-center">
 				{content && <PortableText value={content} components={components} />}
 			</div>

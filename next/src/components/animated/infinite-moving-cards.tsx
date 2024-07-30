@@ -64,7 +64,7 @@ export const InfiniteMovingCards = ({
 	const getSpeed = () => {
 		if (containerRef.current) {
 			if (speed === 'fast') {
-				containerRef.current.style.setProperty('--animation-duration', '20s')
+				containerRef.current.style.setProperty('--animation-duration', '10s')
 			} else if (speed === 'normal') {
 				containerRef.current.style.setProperty('--animation-duration', '40s')
 			} else {
@@ -81,6 +81,7 @@ export const InfiniteMovingCards = ({
 		'to-violet-50',
 		'to-fuchsia-50',
 	]
+	console.log(items)
 
 	return (
 		<div
@@ -95,35 +96,29 @@ export const InfiniteMovingCards = ({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map(({ title, link, image }, idx: any) => {
+				{items.map(({ title, description, link, image }, idx: any) => {
 					return (
 						<li
 							key={idx}
-							className={`-from-40% scale-100 bg-gradient-to-br from-white hover:scale-105 ${colors[idx]} flex flex-shrink-0 flex-row items-center justify-between rounded-lg border border-gray-100 p-3 transition-all hover:shadow-lg lg:w-[600px]`}
+							className={`-from-40% scale-100 bg-gradient-to-br from-white hover:scale-105 ${colors[idx]} grid grid-cols-2 items-center justify-between rounded-lg border border-gray-100 p-3 transition-all hover:shadow-lg lg:w-[600px]`}
 						>
-							<div className="flex h-full flex-col justify-between p-4">
-								<div>
-									<h3 className="text-main text-start text-2xl font-semibold">
-										{title}
-									</h3>
-									<p className="text-start text-sm font-semibold">
-										{link.description}
-									</p>
-								</div>
-								<div className="mt-6">
-									<span className="link flex items-center gap-1 text-teal-600 no-underline">
-										{link.label}
-										<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
-									</span>
+							<div className="flex h-full flex-col gap-4 p-4">
+								<h3 className="text-main text-start text-2xl font-semibold">
+									{title}
+								</h3>
+								<p className="text-start text-sm text-gray-500">
+									{description}
+								</p>
+								<div className="flex items-center gap-1 text-teal-600 no-underline">
+									{link.label}
+									<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
 								</div>
 							</div>
-							<div className="h-full w-full rounded-lg lg:max-w-[300px]">
-								<Img
-									image={image}
-									imageWidth={300}
-									className="w-[300px] rounded-md"
-								/>
-							</div>
+							<Img
+								image={image}
+								imageWidth={300}
+								className="aspect-square h-full w-auto rounded-md object-cover object-center"
+							/>
 						</li>
 					)
 				})}
