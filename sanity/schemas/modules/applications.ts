@@ -75,6 +75,11 @@ export default defineType({
 				}),
 			],
 			group: 'content',
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
 		}),
 	],
 	preview: {
