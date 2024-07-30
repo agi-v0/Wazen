@@ -36,7 +36,7 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'links',
+			name: 'cards',
 			type: 'array',
 			of: [
 				defineArrayMember({
@@ -55,6 +55,10 @@ export default defineType({
 							name: 'description',
 							type: 'text',
 						}),
+						defineField({
+							name: 'link',
+							type: 'link',
+						}),
 					],
 					preview: {
 						select: {
@@ -71,6 +75,11 @@ export default defineType({
 				}),
 			],
 			group: 'content',
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
 		}),
 	],
 	preview: {

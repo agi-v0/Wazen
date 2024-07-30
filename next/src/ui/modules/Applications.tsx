@@ -16,7 +16,7 @@ const EmblaCarousel = dynamic(
 export default function Applications({
 	pretitle,
 	content,
-	links,
+	cards,
 	locale,
 	ctas,
 	textAlign = 'center',
@@ -24,7 +24,7 @@ export default function Applications({
 }: Partial<{
 	pretitle: string
 	content: any
-	links: any
+	cards: any
 	locale: string
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']
@@ -72,7 +72,7 @@ export default function Applications({
 					direction={'right'}
 					speed={'slow'}
 					pauseOnHover={true}
-					items={links}
+					items={cards}
 				/>
 			</div>
 		</section>
