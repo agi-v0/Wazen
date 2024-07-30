@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map(({ title, link, image }, idx: any) => {
+				{items?.map(({ title, link, image }, idx: any) => {
 					return (
 						<li
 							key={idx}
