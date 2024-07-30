@@ -86,7 +86,7 @@ export const InfiniteMovingCards = ({
 	return (
 		<div
 			ref={containerRef}
-			className="flex w-full flex-col items-center justify-evenly overflow-x-hidden bg-cyan-950/5"
+			className="flex w-full flex-col items-center justify-evenly overflow-x-hidden"
 		>
 			<ul
 				ref={scrollerRef}
