@@ -16,6 +16,7 @@ import { documentInternationalization } from '@sanity/document-internationalizat
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
 import { advancedArray } from './plugins/sanity-plugin-advanced-array'
+import { table } from '@sanity/table';
 
 const singletonTypes = ['site']
 
@@ -60,6 +61,7 @@ export default defineConfig({
 			collections: ['ph'],
 		}),
 		advancedArray(),
+		table()
 	],
 
 	scheduledPublishing: {

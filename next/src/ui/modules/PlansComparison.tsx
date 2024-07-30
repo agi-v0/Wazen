@@ -1,16 +1,51 @@
 'use client'
 
 import React, { useState } from 'react'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from '@portabletext/react'
 
-const PlansComparison = () => {
+const PlansComparison = ({
+	content,
+	details,
+}: Partial<{
+	content: any
+	details: any
+}>) => {
 	const [isMonthly, setIsMonthly] = useState(true)
+
+	const components: PortableTextComponents = {
+		types: {
+			block: ({ value }: PortableTextTypeComponentProps<any>) => {
+				if (value.style === 'h2') {
+					return (
+						<h2 className="h2 font-semibold leading-tight text-cyan-950">
+							{value.children.map((child: any) => child.text).join('')}
+						</h2>
+					)
+				}
+				return (
+					<p className="text-main font-semibold text-gray-400">
+						{value.children.map((child: any) => child.text).join('')}
+					</p>
+				)
+			},
+		},
+	}
 
 	return (
 		<div className="section py-24">
-			<div className="grid max-w-sm text-sm md:mx-6 md:max-w-none md:grid-cols-4">
+			<div className="fluid-gap flex w-full flex-col items-center">
+				<PortableText value={content} components={components} />
+			</div>
+
+			<div className="py-20 overflow-x-auto">
 				{/* <!-- Column with labels --> */}
-				<section className="md:contents">
-					<div className="container w-full">
+
+				<section className="flex flex-row justify-between w-full">
+					<div className="px-2 w-full">
 						<div className="flex h-full items-end justify-center py-6">
 							<div className="flex justify-between rounded-md bg-gray-50">
 								<span
@@ -36,124 +71,7 @@ const PlansComparison = () => {
 							</div>
 						</div>
 					</div>
-					{/* <!-- # النظام المحاسبي --> */}
-					<div
-						className="flex flex-col justify-end bg-teal-100 px-6 py-2 max-md:hidden md:order-1"
-						aria-hidden="true"
-					>
-						النظام المحاسبي
-					</div>
-					{/* <!-- Account Access --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-2"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Account Access
-						</div>
-					</div>
-					{/* <!-- Custom Domains --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-3"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Custom Domains
-						</div>
-					</div>
-					{/* <!-- Receipts Forward --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-4"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Receipts Forward
-						</div>
-					</div>
-					{/* <!-- Supplier Management --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-5"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Supplier Management
-						</div>
-					</div>
-
-					{/* <!-- Generate Public URLs --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-7"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Generate Public URLs
-						</div>
-					</div>
-					{/* <!-- API Integrations --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-8"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							API Integrations
-						</div>
-					</div>
-					{/* <!-- Extra Add-ons --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-9"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Extra Add-ons
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-10"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Admin Roles
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-11"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Admin Roles
-						</div>
-					</div>
-					{/* <!-- Enterprise Add-ons --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-12"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Enterprise Add-ons
-						</div>
-					</div>
-					{/* <!-- # إدارة الموارد البشرية --> */}
-					<div
-						className="flex flex-col justify-end bg-teal-100 px-6 py-2 max-md:hidden md:order-[13]"
-						aria-hidden="true"
-					>
-						إدارة الموارد البشرية
-					</div>
-					{/* <!-- Custom Connection --> */}
-					<div
-						className="flex flex-col justify-end bg-white px-6 max-md:hidden md:order-[14]"
-						aria-hidden="true"
-					>
-						<div className="py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							Custom Connection
-						</div>
-					</div>
-				</section>
-
-				<section className="md:contents [&>div:first-child]:pt-10 [&>div:last-child]:pb-10">
-					<div className="relative flex flex-col justify-end bg-white px-6">
+					<div className="relative flex flex-col justify-end w-full px-2">
 						<div className="grow">
 							<div className="pb-4 font-semibold">المجانية</div>
 							<div className="mb-1">
@@ -171,147 +89,12 @@ const PlansComparison = () => {
 							</button>
 						</div>
 					</div>
-					{/* <!-- # النظام المحاسبي --> */}
-					<div className="flex flex-col justify-end bg-teal-100 px-6 md:order-1">
-						<div className="mt-4 py-2 font-medium text-slate-900 md:sr-only dark:text-slate-200">
-							النظام المحاسبي
-						</div>
-					</div>
-					{/* <!-- Account Access --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-2">
-						<div className="mr-3 flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								1 <span className="md:sr-only">Account Access</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Custom Domains --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-3">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Custom Domains</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Receipts Forward --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-4">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								Unlimited <span className="md:sr-only">Receipts Forward</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Supplier Management --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-5">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Supplier Management</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Generate Public URLs --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-7">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Generate Public URLs</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- API Integrations --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-8">
-						<div className="flex h-full items-center py-2 mr-3 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-							-	<span className="md:sr-only">API Integrations</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Extra Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-9">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Extra Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-10">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-11">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Enterprise Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-12">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Enterprise Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- # إدارة الموارد البشرية --> */}
-					<div className="justify-endbg-teal-100 flex flex-col bg-teal-100 px-6 md:order-[13]">
-						<div className="sr-only mt-4 py-2 font-medium text-slate-900">
-							إدارة الموارد البشرية
-						</div>
-					</div>
-					{/* <!-- Custom Connection --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-[14]">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Custom Connection</span>
-							</span>
-						</div>
-					</div>
-				</section>
-
-				<section className="md:contents [&>div:first-child]:pt-10 [&>div:last-child]:pb-10">
-					<div className="relative flex flex-col justify-end bg-white px-6">
+					<div className="relative flex flex-col justify-end w-full px-2">
 						<div className="grow">
 							<div className="pb-4 font-semibold">الأساسية</div>
 							<div className="mb-1">
 								<h3 className="mb-2 text-[32px] font-bold text-black">
-									<span className="amount">{isMonthly ? 400 : 1000}</span>ريال
+									<span className="amount">{isMonthly ? 350 : 1000}</span>ريال
 									<span className="text-lg font-light">
 										/{isMonthly ? 'شهرياً' : 'سنوياً'}
 									</span>
@@ -324,157 +107,12 @@ const PlansComparison = () => {
 							</button>
 						</div>
 					</div>
-					{/* <!-- # النظام المحاسبي --> */}
-					<div className="flex flex-col justify-end bg-teal-100 px-6 md:order-1">
-						<div className="mt-4 py-2 font-medium text-slate-900 md:sr-only dark:text-slate-200">
-							النظام المحاسبي
-						</div>
-					</div>
-					{/* <!-- Account Access --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-2">
-						<div className="mr-3 flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								2 <span className="md:sr-only">Account Access</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Custom Domains --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-3">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Custom Domains</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Receipts Forward --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-4">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								Unlimited <span className="md:sr-only">Receipts Forward</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Supplier Management --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-5">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Supplier Management</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Generate Public URLs --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-7">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Generate Public URLs</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- API Integrations --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-8">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">API Integrations</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Extra Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-9">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Extra Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-10">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-11">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Enterprise Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-12">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Enterprise Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- # إدارة الموارد البشرية --> */}
-					<div className="flex flex-col justify-end bg-teal-100 px-6 md:order-[13]">
-						<div className="sr-only mt-4 py-2 font-medium text-slate-900">
-							إدارة الموارد البشرية
-						</div>
-					</div>
-					{/* <!-- Custom Connection --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-[14]">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Custom Connection</span>
-							</span>
-						</div>
-					</div>
-				</section>
-
-				{/* <!-- Perform table --> */}
-				<section className="dark md:contents [&>div:first-child]:pt-10 [&>div:last-child]:pb-10">
-					<div className="relative flex flex-col justify-end bg-white px-6">
-						<div className="absolute right-0 top-0 -mt-4 mr-6"></div>
+					<div className="relative flex flex-col justify-end w-full px-2">
 						<div className="grow">
 							<div className="pb-4 font-semibold">المتقدمة</div>
 							<div className="mb-1">
 								<h3 className="mb-2 text-[32px] font-bold text-black">
-									<span className="amount">{isMonthly ? 600 : 2100}</span>ريال
+									<span className="amount">{isMonthly ? 450 : 2100}</span>ريال
 									<span className="text-lg font-light">
 										/{isMonthly ? 'شهرياً' : 'سنوياً'}
 									</span>
@@ -487,148 +125,42 @@ const PlansComparison = () => {
 							</button>
 						</div>
 					</div>
-					{/* <!-- # النظام المحاسبي --> */}
-					<div className="flex flex-col justify-end bg-teal-100 px-6 md:order-1">
-						<div className="mt-4 py-2 font-medium text-slate-900 md:sr-only dark:text-slate-200">
-							النظام المحاسبي
-						</div>
-					</div>
-					{/* <!-- Account Access --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-2">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								Unlimited <span className="md:sr-only">Account Access</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Custom Domains --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-3">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Custom Domains</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Receipts Forward --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-4">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<span>
-								Unlimited <span className="md:sr-only">Receipts Forward</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Supplier Management --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-5">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Supplier Management</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Generate Public URLs --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-7">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Generate Public URLs</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- API Integrations --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-8">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">API Integrations</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Extra Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-9">
-						<div className="flex h-full items-center py-2 text-slate-600 dark:border-slate-700 dark:text-slate-400">
-							<svg
-								className="mr-3 shrink-0 fill-emerald-500"
-								xmlns="http://www.w3.org/2000/svg"
-								width="12"
-								height="9"
-							>
-								<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-							</svg>
-							<span>
-								<span className="md:sr-only">Extra Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-10">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Admin Roles --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-11">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Admin Roles</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- Enterprise Add-ons --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-12">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Enterprise Add-ons</span>
-							</span>
-						</div>
-					</div>
-					{/* <!-- # إدارة الموارد البشرية --> */}
-					<div className="flex flex-col justify-end bg-teal-100 px-6 md:order-[13]">
-						<div className="sr-only mt-4 py-2 font-medium">
-							إدارة الموارد البشرية
-						</div>
-					</div>
-					{/* <!-- Custom Connection --> */}
-					<div className="flex flex-col justify-end bg-white px-6 md:order-[14]">
-						<div className="flex items-center py-2 text-slate-600 max-md:sr-only dark:border-slate-700">
-							<span>
-								<span className="md:sr-only">Custom Connection</span>
-							</span>
-						</div>
+				</section>
+
+				<section>
+					<div>
+						{details?.map((detail: any, index: any) => (
+							<div key={'details_' + index}>
+								<div
+									className="flex flex-col justify-end bg-gray-50 rounded-md px-6 py-2 max-md:hidden md:order-1"
+									aria-hidden="true"
+								>
+									{detail.title}
+								</div>
+								<div
+									className="py-2 text-gray-600"
+									dir="ltr"
+								>
+									{detail.specs?.rows?.map((row: any, index: any) => (
+										<div
+											key={'rows_' + index}
+											className="flex flex-row justify-between"
+										>
+											{row.cells.map((cell: any, index: any) => (
+												<div
+													key={'cell_' + index}
+													className="flex w-full flex-wrap justify-end px-6 py-2"
+												>
+													{cell}
+												</div>
+											))}
+										</div>
+									))}
+								</div>
+							</div>
+						))}
 					</div>
 				</section>
-				{/* <!-- End: Perform table --> */}
 			</div>
 		</div>
 	)

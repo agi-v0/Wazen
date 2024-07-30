@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { LuDollarSign } from 'react-icons/lu'
 import { getBlockText } from '../../src/utils'
 
@@ -14,13 +14,23 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
-			name: 'plans',
+			name: 'details',
 			type: 'array',
 			of: [
-				{
-					type: 'reference',
-					to: [{ type: 'pricing' }],
-				},
+				defineArrayMember({
+					name: 'apps',
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'specs',
+							type: 'table',
+						}),
+					],
+				}),
 			],
 		}),
 	],
