@@ -8,7 +8,7 @@ import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
 import { Icon } from '@iconify/react'
 
-export default function Features({
+export default function FeaturesGridOne({
 	pretitle,
 	content,
 	ctas,

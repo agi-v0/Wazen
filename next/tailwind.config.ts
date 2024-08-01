@@ -53,6 +53,7 @@ const config: Config = {
 			},
 		},
 	},
+
 	plugins: [
 		plugin(function ({ addVariant }: any) {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')

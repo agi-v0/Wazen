@@ -143,7 +143,10 @@ export default function Benefits({
 					/>
 				</div>
 			</motion.div>
-			<motion.div className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden">
+			<motion.div
+				className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden"
+				ref={ref}
+			>
 				{content.map((item: any, index: any) => {
 					return (
 						<motion.div
@@ -157,13 +160,12 @@ export default function Benefits({
 							key={item.content + index}
 						>
 							<PortableText value={item.content} components={components} />
-							<div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md">
-								<Img
-									image={content?.[index].image}
-									imageWidth={640}
-									className="relative z-[1] h-auto w-full max-w-screen-sm object-cover"
-								/>
-							</div>
+							{/* <div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md"></div> */}
+							<Img
+								image={content?.[index].image}
+								imageWidth={640}
+								className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
+							/>
 						</motion.div>
 					)
 				})}

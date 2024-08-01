@@ -7,22 +7,27 @@ export default defineType({
 	title: 'Features Grid',
 	icon: GoNumber,
 	type: 'object',
+	groups: [{ name: 'content', title: 'Content' }, { name: 'features' }],
+
 	fields: [
 		defineField({
 			name: 'pretitle',
 			title: 'Pretitle',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'features',
@@ -59,6 +64,7 @@ export default defineType({
 				}),
 			],
 			validation: (rule) => rule.required().min(3).max(6),
+			group: 'features',
 		}),
 	],
 	preview: {

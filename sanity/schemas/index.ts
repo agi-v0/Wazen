@@ -49,6 +49,7 @@ import homeBriefGroup from './modules/home-brief-group'
 import pricingList from './modules/pricing-list'
 import pricingComparison from './modules/pricing-comparison'
 import pricing from './documents/pricing'
+import featuresGrid2 from './modules/features-grid-2'
 
 export const schemaTypes = [
 	// documents
@@ -100,6 +101,7 @@ export const schemaTypes = [
 	testimonialList,
 	howItWorks,
 	featuresGrid,
+	featuresGrid2,
 	solutionsBenefits,
 	productList,
 ]

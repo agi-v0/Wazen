@@ -53,7 +53,7 @@ export default function HeroThree({
 	}
 
 	return (
-		<section className="section mt-[var(--header-height)] flex h-screen lg:max-h-fold">
+		<section className="section mt-[var(--header-height)] flex min-h-screen lg:max-h-fold">
 			<div
 				className={
 					'md:fluid-gap my-auto flex w-full flex-col items-center justify-evenly gap-8 lg:flex-row'
@@ -70,7 +70,7 @@ export default function HeroThree({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					<CTAList ctas={ctas} className="mt-2" />
+					<CTAList ctas={ctas} className="mt-2 w-full *:h-12 *:w-full" />
 				</div>
 
 				<Image

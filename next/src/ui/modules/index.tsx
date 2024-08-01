@@ -22,7 +22,9 @@ import StatList from './StatList'
 // import HowItWorks from './HowItWorks'
 // import TestimonialList from './TestimonialList'
 // import ProductList from './ProductList'
-import Features from './Features'
+import FeaturesGridOne from './FeaturesGridOne'
+import FeaturesGridTwo from './FeaturesGridTwo'
+
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
 // import HomeBriefGroup from './HomeBriefGroup'
@@ -72,7 +74,9 @@ export default function Modules({
 					case 'faq-list':
 						return <FAQList {...module} key={module._key} />
 					case 'features-grid':
-						return <Features {...module} key={module._key} />
+						return <FeaturesGridOne {...module} key={module._key} />
+					case 'features-grid-2':
+						return <FeaturesGridTwo {...module} key={module._key} />
 					case 'first-post':
 						return <FirstPost {...module} key={module._key} locale={locale} />
 					case 'hero':

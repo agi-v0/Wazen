@@ -71,7 +71,7 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className={'section py-24'}>
+		<section className={'section fluid-vertical-space bg-cyan-950'}>
 			<div
 				className={
 					'fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'
@@ -99,7 +99,11 @@ export default function CallToAction({
 								'absolute top-8 h-full w-full min-w-[800px]',
 							)}
 						>
-							<Img image={image} imageWidth={3000} className="rounded-xl" />
+							<Img
+								image={image}
+								imageWidth={640}
+								className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
+							/>
 						</div>
 					</div>
 				</div>

@@ -47,6 +47,7 @@ export default defineType({
 				{ type: 'testimonial-list' },
 				{ type: 'how-it-works' },
 				{ type: 'features-grid' },
+				{ type: 'features-grid-2' },
 				{ type: 'solutions-benefits' },
 				{ type: 'product-list' },
 			],

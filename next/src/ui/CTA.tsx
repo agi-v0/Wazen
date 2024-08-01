@@ -1,37 +1,37 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import dev from '@/lib/env'
 import processUrl from '@/lib/processUrl'
+import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function CTA({
-	locale,
 	link,
 	style,
 	className,
 	children,
+	locale = 'ar',
+	...rest
 }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
-	if (!link?.type) return null
 	const props = {
-		className: cn(style, className),
-		children: children || link.label || link.internal?.title,
+		className: cn(style, className) || undefined,
+		children:
+			children || link?.label || link?.internal?.title || link?.external,
+		...rest,
 	}
-	switch (link.type) {
-		case 'internal':
-			if (!link.internal) return null
 
-			return (
-				<Link
-					href={
-						locale +
-						processUrl(link.internal, { base: false, params: link.params })
-					}
-					{...props}
-				/>
-			)
+	if (link?.type === 'internal' && link.internal)
+		return (
+			<Link
+				href={processUrl(link.internal, {
+					base: false,
+					params: link.params,
+				})}
+				{...props}
+			/>
+		)
 
-		case 'external':
-			return <a href={link.external} {...props} />
+	if (link?.type === 'external' && link.external)
+		return <a href={stegaClean(link.external)} {...props} />
 
-		default:
-			return null
-	}
+	return props.children
 }
