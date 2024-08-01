@@ -63,26 +63,9 @@ export default function Benefits({
 		setActiveCard(closestBreakpointIndex)
 	})
 
-	const numbers = [1, 2, 3]
-
-	const linearGradients = [
-		'linear-gradient(to bottom right, var(--teal-300), var(--lime-300))',
-		'linear-gradient(to bottom right, var(--lime-300), var(--cyan-300))',
-		'linear-gradient(to bottom right, var(--cyan-300), var(--indigo-300))',
-	]
-
 	const images = content.map((item: any) => item.image)
 
-	const [backgroundGradient, setBackgroundGradient] = useState(
-		linearGradients[0],
-	)
-
 	const [imageList, setImageList] = useState(images[0])
-
-	useEffect(() => {
-		setBackgroundGradient(linearGradients[activeCard % linearGradients.length])
-		setImageList(images[activeCard % images.length])
-	}, [activeCard])
 
 	return (
 		<section
@@ -169,18 +152,6 @@ export default function Benefits({
 						</motion.div>
 					)
 				})}
-
-				{/* <div className="relative flex items-center justify-center">
-					<div
-						style={{ background: backgroundGradient }}
-						className={'absolute w-full max-w-[350px] rounded-full blur-2xl'}
-					/>
-					<Img
-						image={imageList}
-						imageWidth={540}
-						className="relative z-[1] h-auto w-full rounded-lg object-cover shadow-md"
-					/>
-				</div> */}
 			</motion.div>
 		</section>
 	)
