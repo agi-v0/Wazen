@@ -8,7 +8,7 @@ export default async function processMetadata(
 ): Promise<Metadata> {
 	const site = await getSite(locale)
 
-	const url = processUrl(page, locale)
+	const url = processUrl(page)
 	const { title, description, ogimage, noIndex } = page.metadata
 
 	return {
