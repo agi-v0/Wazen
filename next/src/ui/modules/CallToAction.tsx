@@ -92,7 +92,7 @@ export default function CallToAction({
 					</div>
 				</div>
 				<div className="h-[400px] w-full lg:max-w-[400px]">
-					<div className="brief-background relative h-full overflow-hidden rounded-sm border-8 border-white shadow-md">
+					<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
 						<div
 							className={cn(
 								image?.onRight ? 'left-8' : 'right-8',
@@ -102,7 +102,7 @@ export default function CallToAction({
 							<Img
 								image={image}
 								imageWidth={640}
-								className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
+								className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
 							/>
 						</div>
 					</div>

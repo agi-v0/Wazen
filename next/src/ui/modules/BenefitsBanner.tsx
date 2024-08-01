@@ -57,7 +57,7 @@ export default function BenefitsBanner({
 		},
 	}
 	return (
-		<section className={'bg-teal-400 py-[var(--size--4rem)]'}>
+		<section className={'bg-white py-[var(--size--4rem)]'}>
 			<div
 				className={
 					'fluid-gap section flex w-full flex-col items-center justify-center'
@@ -85,7 +85,7 @@ export default function BenefitsBanner({
 									className="flex w-full flex-col justify-start gap-4 rounded-xl p-4 text-start"
 									key={index}
 								>
-									<div className="self-start rounded-full bg-white p-4">
+									<div className="self-start rounded-full bg-cyan-50 p-4">
 										<Icon
 											icon={
 												feature.icon ? feature.icon.name : 'ph:cube-duotone'
