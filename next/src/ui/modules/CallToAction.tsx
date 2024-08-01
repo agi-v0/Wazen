@@ -71,7 +71,7 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className={'section fluid-vertical-space bg-cyan-950'}>
+		<section className={'section fluid-vertical-space'}>
 			<div
 				className={
 					'fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'

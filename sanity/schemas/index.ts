@@ -50,6 +50,7 @@ import pricingList from './modules/pricing-list'
 import pricingComparison from './modules/pricing-comparison'
 import pricing from './documents/pricing'
 import featuresGrid2 from './modules/features-grid-2'
+import benefitsBanner from './modules/benefits-banner'
 
 export const schemaTypes = [
 	// documents
@@ -75,6 +76,7 @@ export const schemaTypes = [
 
 	// modules
 	applications,
+	benefitsBanner,
 	blogRollup,
 	brief,
 	briefGroup,

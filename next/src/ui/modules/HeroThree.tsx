@@ -70,7 +70,7 @@ export default function HeroThree({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
-					<CTAList ctas={ctas} className="mt-2 w-full *:h-12 *:w-full" />
+					<CTAList ctas={ctas} className="mt-2 w-full *:h-12 *:max-md:w-full" />
 				</div>
 
 				<Image

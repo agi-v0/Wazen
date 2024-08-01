@@ -21,6 +21,7 @@ export default defineType({
 			type: 'array',
 			of: [
 				{ type: 'applications' },
+				{ type: 'benefits-banner' },
 				{ type: 'blog-rollup' },
 				{ type: 'brief' },
 				{ type: 'brief-group' },

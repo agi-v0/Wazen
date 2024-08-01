@@ -30,6 +30,7 @@ import BriefGroup from './BriefGroup'
 // import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
+import BenefitsBanner from './BenefitsBanner'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -55,6 +56,8 @@ export default function Modules({
 						return (
 							<Applications {...module} key={module._key} locale={locale} />
 						)
+					case 'benefits-banner':
+						return <BenefitsBanner {...module} key={module._key} />
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
