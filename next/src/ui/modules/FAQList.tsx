@@ -71,7 +71,7 @@ export default function FAQList({
 
 				<div className="flex w-full flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:max-w-[30%]">
 					<div className="space-y-4">
-						<h3 className="text-large font-semibold leading-tight text-cyan-950">
+						<h3 className="text-large font-semibold leading-tight text-teal-700">
 							{sideNote.title}
 						</h3>
 						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
