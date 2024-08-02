@@ -1,7 +1,7 @@
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
-import { VisualEditing } from 'next-sanity'
+// import { VisualEditing } from 'next-sanity'
 import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -38,6 +38,7 @@ export default async function RootLayout({
 					locale={locale}
 				/>
 				{/* {draftMode().isEnabled && <VisualEditing />} */}
+				<SpeedInsights />
 			</body>
 		</html>
 	)
