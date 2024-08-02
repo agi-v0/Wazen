@@ -69,7 +69,7 @@ export default function FeaturesGridTwo({
 		},
 	}
 	return (
-		<section className={'bg-cyan-950/10 py-[var(--size--4rem)]'}>
+		<section className={'bg-teal-500/10 py-[var(--size--4rem)]'}>
 			<div className="section fluid-padding">
 				<div
 					className={
@@ -78,18 +78,21 @@ export default function FeaturesGridTwo({
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<div className="flex flex-col items-center gap-6">
-						<Pretitle className={'text-large font-semibold text-gray-400'}>
+						<Pretitle className={'text-large font-semibold text-teal-500'}>
 							{pretitle}
 						</Pretitle>
 						<PortableText value={content} components={components} />
 					</div>
 					<div className="flex flex-col gap-6">
-						{features?.map((block) => (
-							<ul className="grid w-full grid-flow-row gap-6 *:bg-cyan-50 md:grid-flow-col">
+						{features?.map((block, index) => (
+							<ul
+								key={index}
+								className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
+							>
 								{block &&
 									block.features.map((feature) => (
 										<li
-											className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start lg:max-h-[500px]"
+											className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-cyan-50 lg:max-h-[500px]"
 											key={feature.title}
 										>
 											<div className="space-y-4 p-6">
@@ -112,7 +115,7 @@ export default function FeaturesGridTwo({
 											</div>
 											<Img
 												image={feature.image}
-												className="h-auto w-full translate-y-0 scale-[99%] px-6 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-100 group-hover:drop-shadow-lg"
+												className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
 											/>
 										</li>
 									))}

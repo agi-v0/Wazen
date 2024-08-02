@@ -70,7 +70,7 @@ export default function BenefitsBanner({
 					<PortableText value={content} components={components} />
 				</div> */}
 
-				<ul className="grid w-full grid-flow-col">
+				<ul className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 					{features &&
 						features.map(
 							(

@@ -35,7 +35,7 @@ export default defineType({
 				{ type: 'hero' },
 				{ type: 'hero.two' },
 				{ type: 'hero.three' },
-				{ type: 'hero.postcard' },
+				{ type: 'hero.four' },
 				{ type: 'logo-list' },
 				{ type: 'partners' },
 				{ type: 'pricing-list' },

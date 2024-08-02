@@ -5,10 +5,12 @@ import {
 import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from '@sanity/client/stega'
+import { ImageFormat } from '@sanity/image-url/lib/types/types'
 
 const SIZES = [60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440]
 
 export default function Img({
+	format = 'webp',
 	image,
 	imageWidth,
 	className,
@@ -17,6 +19,7 @@ export default function Img({
 	options,
 	...props
 }: {
+	format?: ImageFormat
 	image: Sanity.Image | undefined
 	imageWidth?: number
 	className?: string
@@ -34,7 +37,10 @@ export default function Img({
 	return (
 		<img
 			src={src}
-			srcSet={generateSrcSet(image, { width: imageWidth, sizes: imageSizes })}
+			srcSet={generateSrcSet(image, format, {
+				width: imageWidth,
+				sizes: imageSizes,
+			})}
 			width={width}
 			className={className}
 			height={height}
@@ -47,12 +53,14 @@ export default function Img({
 }
 
 export function Source({
+	format = 'webp',
 	image,
 	imageWidth,
 	imageSizes = SIZES,
 	options,
 	media = '(max-width: 768px)',
 }: {
+	format?: ImageFormat
 	image: Sanity.Image | undefined
 	imageWidth?: number
 	imageSizes?: number[]
@@ -70,7 +78,10 @@ export function Source({
 	return (
 		<source
 			srcSet={
-				generateSrcSet(image, { width: imageWidth, sizes: imageSizes }) || src
+				generateSrcSet(image, format, {
+					width: imageWidth,
+					sizes: imageSizes,
+				}) || src
 			}
 			width={width}
 			height={height}
@@ -81,6 +92,7 @@ export function Source({
 
 function generateSrcSet(
 	image: Sanity.Image,
+	format: ImageFormat,
 	{
 		width,
 		sizes = SIZES,
@@ -94,7 +106,7 @@ function generateSrcSet(
 			.filter((size) => !width || size <= width)
 			.map(
 				(size) =>
-					`${urlFor(image).width(size).auto('format').format('webp').url()} ${size}w`,
+					`${urlFor(image).width(size).auto('format').format(format).url()} ${size}w`,
 			)
 			.join(', ') || undefined
 	)

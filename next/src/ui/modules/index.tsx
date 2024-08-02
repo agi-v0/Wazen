@@ -10,7 +10,7 @@ import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 // import FAQList from './FAQList'
 import Hero from './Hero'
-import HeroPostcard from './HeroPostcard'
+import HeroFour from './HeroFour'
 import HeroThree from './HeroThree'
 import HeroTwo from './HeroTwo'
 import LogoList from './LogoList'
@@ -88,8 +88,8 @@ export default function Modules({
 						return <HeroTwo {...module} key={module._key} />
 					case 'hero.three':
 						return <HeroThree {...module} key={module._key} />
-					case 'hero.postcard':
-						return <HeroPostcard {...module} key={module._key} />
+					case 'hero.four':
+						return <HeroFour {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
 					case 'partners':

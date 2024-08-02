@@ -27,7 +27,7 @@ import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
 import hero from './modules/hero'
 import heroTwo from './modules/hero.two'
-import heroPostcard from './modules/hero.postcard'
+import heroFour from './modules/hero.four'
 import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
@@ -90,7 +90,7 @@ export const schemaTypes = [
 	heroThree,
 	hero,
 	heroTwo,
-	heroPostcard,
+	heroFour,
 	logoList,
 	partners,
 	pricingList,
