@@ -1,11 +1,3 @@
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
-import Pretitle from '@/ui/Pretitle'
-import { stegaClean } from '@sanity/client/stega'
-import CTAList from '../CTAList'
 import { Icon } from '@iconify/react'
 
 export default function BenefitsBanner({
@@ -20,42 +12,6 @@ export default function BenefitsBanner({
 	features: { title: string; description: string; icon: { name: string } }[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h2') {
-					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h2>
-					)
-				}
-				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
-	const featureStyle: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h3') {
-					return (
-						<h3 className="text-main font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h3>
-					)
-				}
-				return (
-					<p className="text-small max-w-xl text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
 	return (
 		<section className={'bg-white py-[var(--size--4rem)]'}>
 			<div

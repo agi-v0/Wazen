@@ -1,5 +1,6 @@
 const { createClient } = require('next-sanity')
 const groq = require('groq')
+const withPlugins = require('next-compose-plugins')
 
 const createNextIntlPlugin = require('next-intl/plugin')
 const withNextIntl = createNextIntlPlugin()
@@ -40,6 +41,9 @@ const nextConfig = {
 	// 		fullUrl: true,
 	// 	},
 	// },
+	experimental: {
+		optimizePackageImports: ['react-icons'],
+	},
 }
 
-module.exports = withBundleAnalyzer(withNextIntl(nextConfig))
+module.exports = withPlugins([withNextIntl, [withBundleAnalyzer]], {})
