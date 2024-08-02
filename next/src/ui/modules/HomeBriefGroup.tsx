@@ -1,8 +1,10 @@
+'use client'
 import Brief from './Brief'
-import { AnimatedBeamDemo } from '../../components/animated/integrations'
-// import Iphone from '../../components/ui/iphone-chart'
-import { MobileApp } from '../../components/animated/iphone-chart'
-import SideBar from '@/components/animated/side-bar'
+import dynamic from 'next/dynamic'
+
+const Sidebar = dynamic(() => import('@/components/animated/side-bar'))
+const MobileApp = dynamic(() => import('@/components/animated/iphone-chart'))
+const Integrations = dynamic(() => import('@/components/animated/integrations'))
 
 export default function BriefGroup({
 	briefs,
@@ -11,10 +13,10 @@ export default function BriefGroup({
 }>) {
 	//replace images and image components with an array of interactive components
 	const animatedComponents: any = [
-		<SideBar />,
-		<AnimatedBeamDemo />,
+		<Sidebar />,
+		<Integrations />,
 		<MobileApp />,
-		<AnimatedBeamDemo />,
+		<Integrations />,
 	]
 	return (
 		<div className="bg-gradient-to-b from-teal-50 from-90% to-white">
