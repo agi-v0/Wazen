@@ -3,8 +3,12 @@ import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
 const Sidebar = dynamic(() => import('@/components/animated/side-bar'))
-const MobileApp = dynamic(() => import('@/components/animated/iphone-chart'))
-const Integrations = dynamic(() => import('@/components/animated/integrations'))
+const MobileApp = dynamic(() =>
+	import('@/components/animated/iphone-chart').then((mod) => mod.default),
+)
+const Integrations = dynamic(() =>
+	import('@/components/animated/integrations').then((mod) => mod.default),
+)
 
 export default function BriefGroup({
 	briefs,
