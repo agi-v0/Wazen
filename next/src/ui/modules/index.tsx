@@ -1,3 +1,4 @@
+'use client'
 import dynamic from 'next/dynamic'
 
 // import Applications from './Applications'
@@ -9,7 +10,7 @@ import BlogRollup from './blog/Rollup'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 // import FAQList from './FAQList'
-import Hero from './Hero'
+// import Hero from './Hero'
 import HeroFour from './HeroFour'
 import HeroThree from './HeroThree'
 import HeroTwo from './HeroTwo'
@@ -40,6 +41,7 @@ const TestimonialList = dynamic(() => import('./TestimonialList'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
+const Hero = dynamic(() => import('./Hero'))
 
 export default function Modules({
 	modules,
