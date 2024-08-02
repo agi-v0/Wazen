@@ -37,7 +37,7 @@ export default async function RootLayout({
 					staticLinks={staticLinks}
 					locale={locale}
 				/>
-				{draftMode().isEnabled && <VisualEditing />}
+				{/* {draftMode().isEnabled && <VisualEditing />} */}
 			</body>
 		</html>
 	)
