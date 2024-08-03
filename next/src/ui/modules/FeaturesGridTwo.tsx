@@ -69,7 +69,7 @@ export default function FeaturesGridTwo({
 		},
 	}
 	return (
-		<section className={'bg-teal-500/10 py-[var(--size--4rem)]'}>
+		<section className={'bg-teal-400/10 py-[var(--size--4rem)]'}>
 			<div className="section fluid-padding">
 				<div
 					className={
@@ -92,10 +92,10 @@ export default function FeaturesGridTwo({
 								{block &&
 									block.features.map((feature) => (
 										<li
-											className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-cyan-50 lg:max-h-[500px]"
+											className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
 											key={feature.title}
 										>
-											<div className="space-y-4 p-6">
+											<div className="space-y-2 p-6">
 												<div className="flex flex-row items-center gap-4">
 													{feature.icon && (
 														<div className="self-start rounded-md bg-cyan-800 p-2">
@@ -105,11 +105,11 @@ export default function FeaturesGridTwo({
 															/>
 														</div>
 													)}
-													<h3 className="text-large font-semibold text-gray-950 ltr:leading-tight">
+													<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
 														{feature.title}
 													</h3>
 												</div>
-												<p className="text-base text-gray-950/60">
+												<p className="text-pretty text-base text-cyan-950/80">
 													{feature.description}
 												</p>
 											</div>

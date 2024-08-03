@@ -19,16 +19,15 @@ export default function HeroPostcard({
 	image: Sanity.Image & { onRight?: boolean }
 }>) {
 	return (
-		<section className="relative flex min-h-screen flex-col gap-6 overflow-hidden pt-[25vh] lg:gap-12">
+		<section className="relative flex min-h-screen flex-col gap-6 py-[20vh] lg:gap-12">
 			<div className="section relative flex w-full flex-col items-center justify-center gap-6 text-center">
-				<Pretitle className="rounded-full border-2 border-teal-500/40 px-6 py-2 text-base font-medium text-teal-500">
+				<Pretitle className="rounded-full border-2 border-green-500/40 px-6 py-2 text-base font-medium text-teal-500">
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 				<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
 			</div>
 			<figure className="section relative">
-				{/* <Img image={image} imageWidth={1280} className="h-auto w-full" /> */}
 				<Image
 					src={urlFor(image as Sanity.Image).url()}
 					alt="hero"
