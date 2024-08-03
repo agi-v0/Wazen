@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { motion } from 'framer-motion'
 import Img from '@/ui/Img'
@@ -63,26 +63,9 @@ export default function Benefits({
 		setActiveCard(closestBreakpointIndex)
 	})
 
-	const numbers = [1, 2, 3]
-
-	const linearGradients = [
-		'linear-gradient(to bottom right, var(--teal-300), var(--lime-300))',
-		'linear-gradient(to bottom right, var(--lime-300), var(--cyan-300))',
-		'linear-gradient(to bottom right, var(--cyan-300), var(--indigo-300))',
-	]
-
 	const images = content.map((item: any) => item.image)
 
-	const [backgroundGradient, setBackgroundGradient] = useState(
-		linearGradients[0],
-	)
-
 	const [imageList, setImageList] = useState(images[0])
-
-	useEffect(() => {
-		setBackgroundGradient(linearGradients[activeCard % linearGradients.length])
-		setImageList(images[activeCard % images.length])
-	}, [activeCard])
 
 	return (
 		<section
@@ -143,7 +126,10 @@ export default function Benefits({
 					/>
 				</div>
 			</motion.div>
-			<motion.div className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden">
+			<motion.div
+				className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden"
+				ref={ref}
+			>
 				{content.map((item: any, index: any) => {
 					return (
 						<motion.div
@@ -157,28 +143,15 @@ export default function Benefits({
 							key={item.content + index}
 						>
 							<PortableText value={item.content} components={components} />
-							<div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md">
-								<Img
-									image={content?.[index].image}
-									imageWidth={640}
-									className="relative z-[1] h-auto w-full max-w-screen-sm object-cover"
-								/>
-							</div>
+							{/* <div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md"></div> */}
+							<Img
+								image={content?.[index].image}
+								imageWidth={640}
+								className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
+							/>
 						</motion.div>
 					)
 				})}
-
-				{/* <div className="relative flex items-center justify-center">
-					<div
-						style={{ background: backgroundGradient }}
-						className={'absolute w-full max-w-[350px] rounded-full blur-2xl'}
-					/>
-					<Img
-						image={imageList}
-						imageWidth={540}
-						className="relative z-[1] h-auto w-full rounded-lg object-cover shadow-md"
-					/>
-				</div> */}
 			</motion.div>
 		</section>
 	)

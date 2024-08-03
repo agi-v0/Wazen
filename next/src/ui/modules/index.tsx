@@ -9,8 +9,8 @@ import BlogRollup from './blog/Rollup'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 // import FAQList from './FAQList'
-import Hero from './Hero'
-import HeroPostcard from './HeroPostcard'
+// import Hero from './Hero'
+import HeroFour from './HeroFour'
 import HeroThree from './HeroThree'
 import HeroTwo from './HeroTwo'
 import LogoList from './LogoList'
@@ -22,12 +22,15 @@ import StatList from './StatList'
 // import HowItWorks from './HowItWorks'
 // import TestimonialList from './TestimonialList'
 // import ProductList from './ProductList'
-import Features from './Features'
+import FeaturesGridOne from './FeaturesGridOne'
+import FeaturesGridTwo from './FeaturesGridTwo'
+
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
 // import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
+import BenefitsBanner from './BenefitsBanner'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -37,6 +40,7 @@ const TestimonialList = dynamic(() => import('./TestimonialList'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
+const Hero = dynamic(() => import('./Hero'))
 
 export default function Modules({
 	modules,
@@ -53,6 +57,8 @@ export default function Modules({
 						return (
 							<Applications {...module} key={module._key} locale={locale} />
 						)
+					case 'benefits-banner':
+						return <BenefitsBanner {...module} key={module._key} />
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} locale={locale} />
 					case 'brief-group':
@@ -72,7 +78,9 @@ export default function Modules({
 					case 'faq-list':
 						return <FAQList {...module} key={module._key} />
 					case 'features-grid':
-						return <Features {...module} key={module._key} />
+						return <FeaturesGridOne {...module} key={module._key} />
+					case 'features-grid-2':
+						return <FeaturesGridTwo {...module} key={module._key} />
 					case 'first-post':
 						return <FirstPost {...module} key={module._key} locale={locale} />
 					case 'hero':
@@ -81,8 +89,8 @@ export default function Modules({
 						return <HeroTwo {...module} key={module._key} />
 					case 'hero.three':
 						return <HeroThree {...module} key={module._key} />
-					case 'hero.postcard':
-						return <HeroPostcard {...module} key={module._key} />
+					case 'hero.four':
+						return <HeroFour {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
 					case 'partners':

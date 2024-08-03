@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { TfiLayoutMediaLeft } from 'react-icons/tfi'
+import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'hero.postcard',
-	title: 'Hero (postcard)',
-	icon: TfiLayoutMediaLeft,
+	name: 'hero.four',
+	title: 'Hero 4',
+	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	fields: [
 		defineField({
@@ -55,7 +55,7 @@ export default defineType({
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero (postcard)',
+			subtitle: 'Hero 4',
 			media,
 		}),
 	},

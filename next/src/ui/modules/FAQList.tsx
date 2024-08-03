@@ -10,12 +10,15 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion'
 import CTA from '../CTA'
+import { PiCaretLeftBold } from 'react-icons/pi'
 
 export default function FAQList({
+	locale = 'ar',
 	content,
 	items,
 	sideNote,
 }: Partial<{
+	locale: string
 	content: any
 	items: {
 		question: string
@@ -76,10 +79,16 @@ export default function FAQList({
 						</h3>
 						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
 					</div>
-					<CTA
-						className="secondary text-small font-medium"
-						link={sideNote.link}
-					/>
+					<span className="text-main group flex items-center font-medium text-cyan-950">
+						<CTA
+							locale={locale}
+							link={sideNote.link}
+							className="no-underline group-hover:text-teal-600"
+						>
+							{sideNote.link.label}
+						</CTA>
+						<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+					</span>
 				</div>
 			</div>
 		</section>

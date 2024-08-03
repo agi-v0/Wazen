@@ -16,7 +16,11 @@ import {
 } from '@/components/ui/navigation-menu'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
-export default function LinkList({ label, links, locale }: Sanity.LinkList) {
+export default function LinkList({
+	label,
+	links,
+	locale = 'ar',
+}: Sanity.LinkList) {
 	return (
 		<NavigationMenuItem key={label}>
 			<NavigationMenuTrigger className="group relative">

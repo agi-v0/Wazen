@@ -92,7 +92,7 @@ const TestimonialList = ({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-main mx-auto max-w-xl text-cyan-950 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -101,7 +101,9 @@ const TestimonialList = ({
 	}
 	return (
 		<section
-			className={'fluid-gap flex flex-col bg-cyan-950/5 py-[var(--size--4rem)]'}
+			className={
+				'fluid-gap flex h-full max-h-fold flex-col items-center justify-center bg-white py-[var(--size--8rem)]'
+			}
 		>
 			<div className="section mx-auto text-center">
 				{content && <PortableText value={content} components={components} />}
@@ -115,7 +117,7 @@ const TestimonialList = ({
 				<ul
 					ref={scrollerRef}
 					className={cn(
-						'my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
+						'flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-4',
 						start && 'animate-scroll',
 						pauseOnHover && 'hover:[animation-play-state:paused]',
 					)}
@@ -124,19 +126,19 @@ const TestimonialList = ({
 						return (
 							<li
 								key={key}
-								className="flex w-[420px] flex-shrink-0 flex-row rounded-md bg-white p-6 shadow-md"
+								className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl bg-white/80 p-6 transition-all hover:scale-100 hover:bg-teal-50 hover:shadow-lg"
 							>
 								<article className="flex flex-col justify-between">
 									<blockquote className="space-y-6">
-										<div className="richtext text-start">
+										<div className="richtext text-start group-hover:text-cyan-800">
 											<PortableText value={content} components={components} />
 										</div>
 
 										{author && (
 											<footer>
-												<div className="flex items-center justify-start gap-2">
+												<div className="flex items-center justify-start gap-4">
 													<Img
-														className="size-[40px] rounded-full object-cover"
+														className="size-12 rounded-full object-cover"
 														image={author?.image}
 														imageWidth={80}
 													/>

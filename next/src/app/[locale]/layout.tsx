@@ -1,7 +1,7 @@
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
-import { VisualEditing } from 'next-sanity'
+// import { VisualEditing } from 'next-sanity'
 import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -27,7 +27,7 @@ export default async function RootLayout({
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
 			className={locale == 'en' ? inter.className : rubik.className}
 		>
-			<body className="">
+			<body className="w-full">
 				<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
 				<main id="main-content" tabIndex={-1}>
 					{children}
@@ -37,7 +37,8 @@ export default async function RootLayout({
 					staticLinks={staticLinks}
 					locale={locale}
 				/>
-				{draftMode().isEnabled && <VisualEditing />}
+				{/* {draftMode().isEnabled && <VisualEditing />} */}
+				<SpeedInsights />
 			</body>
 		</html>
 	)

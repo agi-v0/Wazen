@@ -26,6 +26,13 @@ export const set1: PortableTextComponents = {
 export const set2: PortableTextComponents = {
 	types: {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
+			if (value.style === 'h1') {
+				return (
+					<h1 className="h1 mx-auto max-w-3xl text-balance text-center text-cyan-950 ltr:leading-tight rtl:leading-snug">
+						{value.children.map((child: any) => child.text).join('')}
+					</h1>
+				)
+			}
 			if (value.style === 'h2') {
 				return (
 					<h2 className="h1 font-semibold leading-tight text-cyan-950">
@@ -34,7 +41,7 @@ export const set2: PortableTextComponents = {
 				)
 			}
 			return (
-				<p className="text-large mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+				<p className="text-large mx-auto max-w-xl text-balance text-cyan-950/60 md:max-w-3xl rtl:leading-snug">
 					{value.children.map((child: any) => child.text).join('')}
 				</p>
 			)

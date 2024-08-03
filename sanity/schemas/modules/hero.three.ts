@@ -124,11 +124,11 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'mainTitle',
+			content: 'content',
 			subtitle: 'subtitle',
 		},
 		prepare: ({ content, subtitle }) => ({
-			title: subtitle || getBlockText(content),
+			title: getBlockText(content) || subtitle,
 			subtitle: 'Hero Three',
 		}),
 	},
