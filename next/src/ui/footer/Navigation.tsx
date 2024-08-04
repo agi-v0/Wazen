@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import CTA from '../CTA'
-import { PiCaretLeftBold } from 'react-icons/pi'
+// import { PiCaretLeftBold } from 'react-icons/pi'
 import Image from 'next/image'
 
 export default async function Menu({ footerMenu, locale }: any) {
@@ -34,7 +34,7 @@ export default async function Menu({ footerMenu, locale }: any) {
 									>
 										{link.label}
 									</CTA>
-									<PiCaretLeftBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+									{/* <PiCaretLeftBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
 								</li>
 							))}
 						</ul>
