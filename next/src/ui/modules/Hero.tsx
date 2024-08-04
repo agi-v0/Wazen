@@ -36,7 +36,7 @@ export default function Hero({
 			className="hero-background relative min-h-screen"
 			style={{
 				backgroundImage: `linear-gradient(to bottom, transparent, white),
-												radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #f0fdfa 100%)`,
+												radial-gradient(ellipse at top center, #155e75 0%, #38bdf8 60%, #ffffff 100%)`,
 			}}
 		>
 			{/* <div className="absolute top-0 h-full w-full">
