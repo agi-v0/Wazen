@@ -27,22 +27,24 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 					dir={locale == 'en' ? 'ltr' : 'rtl'}
 				>
 					<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-						{links?.[0].links?.map((link: any) => (
-							<Link
-								href={
-									locale +
-									processUrl(link.internal, {
-										base: false,
-										params: link.params,
-									})
-								}
-								key={link.label}
-							>
-								<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-									{link.label || link.internal.title}
-								</NavigationMenuLink>
-								{/* <PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
-							</Link>
+						{links?.[0].links?.map((item: any) => (
+							<NavigationMenuItem key={item.label}>
+								<Link
+									href={
+										locale +
+										processUrl(item.internal, {
+											base: false,
+											params: item.params,
+										})
+									}
+									legacyBehavior
+									passHref
+								>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										{item.label || item.internal.title}
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
 						))}
 					</ul>
 				</ScrollArea>

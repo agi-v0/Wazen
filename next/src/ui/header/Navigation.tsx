@@ -30,7 +30,10 @@ export async function Navigation({
 }) {
 	// const { headerMenu } = await getSite(locale)
 	return (
-		<NavigationMenu dir={locale == 'en' ? 'ltr' : 'rtl'}>
+		<NavigationMenu
+			dir={locale == 'en' ? 'ltr' : 'rtl'}
+			className="max-lg:header-closed:hidden"
+		>
 			<NavigationMenuList>
 				{headerMenu?.items?.map((item, key) => {
 					switch (item._type) {
@@ -49,7 +52,10 @@ export async function Navigation({
 										passHref
 									>
 										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
+											className={cn(
+												navigationMenuTriggerStyle(),
+												'min-w-fit text-nowrap',
+											)}
 										>
 											{item.label || item.internal.title}
 										</NavigationMenuLink>
