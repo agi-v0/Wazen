@@ -126,7 +126,7 @@ const TestimonialList = ({
 						return (
 							<li
 								key={key}
-								className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl bg-white/80 p-6 transition-all hover:scale-100 hover:bg-teal-50 hover:shadow-lg"
+								className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
 							>
 								<article className="flex flex-col justify-between">
 									<blockquote className="space-y-6">
@@ -143,11 +143,11 @@ const TestimonialList = ({
 														imageWidth={80}
 													/>
 													<div className={cn('text-main text-start')}>
-														<div className="font-semibold text-gray-950">
+														<div className="font-semibold text-cyan-950">
 															{author?.name}
 														</div>
 														{author?.title && (
-															<div className="text-gray-400">
+															<div className="text-cyan-950/60">
 																{author?.title}
 															</div>
 														)}

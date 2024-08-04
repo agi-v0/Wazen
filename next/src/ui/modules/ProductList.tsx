@@ -50,9 +50,7 @@ export default function ProductList({
 	}
 
 	return (
-		<section
-			className={'fluid-vertical-space bg-gradient-to-t from-teal-50 to-white'}
-		>
+		<section className={'fluid-vertical-space bg-white'}>
 			<div
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>

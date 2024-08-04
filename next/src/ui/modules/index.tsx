@@ -31,6 +31,7 @@ import BriefGroup from './BriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
 import BenefitsBanner from './BenefitsBanner'
+import CallToActionTwo from './CallToActionTwo'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -108,7 +109,7 @@ export default function Modules({
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
 					case 'call.to.action':
-						return <CallToAction {...module} key={module._key} />
+						return <CallToActionTwo {...module} key={module._key} />
 					case 'how-it-works':
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
