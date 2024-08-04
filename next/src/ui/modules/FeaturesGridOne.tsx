@@ -59,15 +59,13 @@ export default function FeaturesGridOne({
 		},
 	}
 	return (
-		<section className={'bg-cyan-950/5 py-[var(--size--4rem)]'}>
+		<section className="bg-cyan-950/5 py-[var(--size--4rem)]">
 			<div
-				className={
-					'fluid-gap section flex w-full flex-col items-center justify-evenly'
-				}
+				className="fluid-gap section flex w-full flex-col items-center"
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<div className="flex flex-col items-center gap-6">
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
+					<Pretitle className="text-large font-semibold text-gray-400">
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />

@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
 	)
-	return slugs.map((slug) => decodeURIComponent(slug))
+	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: Props['params']) {

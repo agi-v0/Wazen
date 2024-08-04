@@ -1,6 +1,6 @@
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { draftMode } from 'next/headers'
+// import { draftMode } from 'next/headers'
 // import { VisualEditing } from 'next-sanity'
 import { inter, rubik } from './fonts'
 import '../../styles/app.css'

@@ -71,12 +71,8 @@ export default function CallToActionTwo({
 	}
 
 	return (
-		<section
-			className={
-				'fluid-vertical-space fluid-gap flex flex-col items-center justify-center bg-teal-100'
-			}
-		>
-			<div className={'section flex flex-col items-center gap-6 text-center'}>
+		<section className="fluid-vertical-space fluid-gap flex flex-col items-center justify-center bg-teal-100">
+			<div className="section flex flex-col items-center gap-6 text-center">
 				<PortableText value={content} components={components} />
 			</div>
 

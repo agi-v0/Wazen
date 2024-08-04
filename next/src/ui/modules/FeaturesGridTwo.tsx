@@ -69,59 +69,55 @@ export default function FeaturesGridTwo({
 		},
 	}
 	return (
-		<section className={'bg-teal-400/10 py-[var(--size--4rem)]'}>
-			<div className="section fluid-padding">
-				<div
-					className={
-						'fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white'
-					}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<div className="flex flex-col items-center gap-6">
-						<Pretitle className={'text-large font-semibold text-teal-500'}>
-							{pretitle}
-						</Pretitle>
-						<PortableText value={content} components={components} />
-					</div>
-					<div className="flex flex-col gap-6">
-						{features?.map((block, index) => (
-							<ul
-								key={index}
-								className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
-							>
-								{block &&
-									block.features.map((feature) => (
-										<li
-											className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
-											key={feature.title}
-										>
-											<div className="space-y-2 p-6">
-												<div className="flex flex-row items-center gap-4">
-													{feature.icon && (
-														<div className="self-start rounded-md bg-cyan-800 p-2">
-															<Icon
-																icon={feature.icon.name}
-																className="text-xl text-cyan-50"
-															/>
-														</div>
-													)}
-													<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
-														{feature.title}
-													</h3>
-												</div>
-												<p className="text-pretty text-base text-cyan-950/80">
-													{feature.description}
-												</p>
+		<section className="bg-teal-400/10 py-[var(--size--4rem)]">
+			<div
+				className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white"
+				style={{ textAlign: stegaClean(textAlign) }}
+			>
+				<div className="flex flex-col items-center gap-6">
+					<Pretitle className="text-large font-semibold text-teal-500">
+						{pretitle}
+					</Pretitle>
+					<PortableText value={content} components={components} />
+				</div>
+				<div className="flex flex-col gap-6">
+					{features?.map((block, index) => (
+						<ul
+							key={index}
+							className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
+						>
+							{block &&
+								block.features.map((feature) => (
+									<li
+										className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
+										key={feature.title}
+									>
+										<div className="space-y-2 p-6">
+											<div className="flex flex-row items-center gap-4">
+												{feature.icon && (
+													<div className="self-start rounded-md bg-cyan-800 p-2">
+														<Icon
+															icon={feature.icon.name}
+															className="text-xl text-cyan-50"
+														/>
+													</div>
+												)}
+												<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
+													{feature.title}
+												</h3>
 											</div>
-											<Img
-												image={feature.image}
-												className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
-											/>
-										</li>
-									))}
-							</ul>
-						))}
-					</div>
+											<p className="text-pretty text-base text-cyan-950/80">
+												{feature.description}
+											</p>
+										</div>
+										<Img
+											image={feature.image}
+											className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
+										/>
+									</li>
+								))}
+						</ul>
+					))}
 				</div>
 			</div>
 		</section>

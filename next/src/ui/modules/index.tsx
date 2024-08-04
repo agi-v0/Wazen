@@ -109,7 +109,7 @@ export default function Modules({
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
 					case 'call.to.action':
-						return <CallToActionTwo {...module} key={module._key} />
+						return <CallToAction {...module} key={module._key} />
 					case 'how-it-works':
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':

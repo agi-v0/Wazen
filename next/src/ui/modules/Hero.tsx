@@ -69,20 +69,18 @@ export default function Hero({
 						)}
 					/>
 				</div>
-				<div className="mx-auto w-[85%]">
-					<ContainerScroll>
-						<Image
-							src={`https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?fm=webp`}
-							alt="hero"
-							height={1024}
-							width={1440}
-							className="mx-auto h-auto w-full object-cover object-left-top"
-							draggable={false}
-							loading="eager"
-							priority
-						/>
-					</ContainerScroll>
-				</div>
+				<ContainerScroll>
+					<Image
+						src="https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?fm=png"
+						alt="hero"
+						height={1024}
+						width={1440}
+						className="mx-auto h-auto w-full object-cover object-left-top"
+						draggable={false}
+						loading="eager"
+						priority
+					/>
+				</ContainerScroll>
 			</div>
 		</section>
 	)

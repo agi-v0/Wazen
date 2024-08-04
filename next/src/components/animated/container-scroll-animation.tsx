@@ -9,9 +9,9 @@ export const ContainerScroll = ({
 }) => {
 	const containerRef = useRef<any>(null)
 	const { scrollYProgress } = useScroll()
-	// 	{
-	// 	target: containerRef,
-	// }
+	{
+		target: containerRef
+	}
 	const [isMobile, setIsMobile] = React.useState(false)
 
 	React.useEffect(() => {
@@ -35,7 +35,7 @@ export const ContainerScroll = ({
 
 	return (
 		<div
-			className="relative flex w-full items-center justify-center"
+			className="relative mx-auto flex w-[90%] items-center justify-center"
 			ref={containerRef}
 		>
 			<div
@@ -70,7 +70,7 @@ export const Card = ({
 			}}
 			key={`container-scroll-${1}`}
 		>
-			<div className="h-full w-full overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg">
+			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg">
 				{children}
 			</div>
 		</motion.div>

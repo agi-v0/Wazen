@@ -58,12 +58,8 @@ export default function HowItWorks({
 	const isInView = useInView(ref, { once: true })
 
 	return (
-		<section
-			className={
-				'-bg-gradient-to-tl bg-teal-100 from-teal-100 to-cyan-50 py-12'
-			}
-		>
-			<div className="-fluid-padding section fluid-gap flex w-full flex-col items-center justify-evenly rounded-xl">
+		<section className={'bg-teal-100 from-teal-100 to-cyan-50 py-12'}>
+			<div className="section fluid-gap flex w-full flex-col items-center justify-center rounded-xl">
 				<PortableText value={content} components={components} />
 				<ul ref={ref} className="grid w-full grid-cols-1 lg:grid-cols-3">
 					{steps?.map((step, index) => (
@@ -86,10 +82,9 @@ export default function HowItWorks({
 								/>
 							</div>
 							<div className="space-y-1 p-4 text-start">
-								<h3 className="text-large font-semibold text-gray-950 group-hover:text-teal-600">
+								<h3 className="text-main font-semibold text-gray-950 group-hover:text-teal-600">
 									<span className="text-gray-950/40">{index + 1}. </span>
-									{step.title}
-									{/* <PiCaretLeftBold className="inline-block size-4 translate-x-0 text-cyan-950/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-[4px] group-hover:opacity-100" /> */}
+									{step.title}{' '}
 								</h3>
 								<p className="text-small text-gray-950/60">
 									{step.description}
@@ -98,21 +93,6 @@ export default function HowItWorks({
 						</motion.li>
 					))}
 				</ul>
-				{/* <ul className="flex w-full flex-col justify-evenly md:flex-row">
-					{steps?.map((step, index) => (
-						<li
-							className="flex flex-col items-center justify-center gap-4"
-							key={index}
-						>
-							<Img
-								image={step.image}
-								imageWidth={200}
-								className="rounded-xl border-8 border-teal-100"
-							/>
-							<div className="my-4 text-2xl">{step.text}</div>
-						</li>
-					))}
-				</ul> */}
 			</div>
 		</section>
 	)
