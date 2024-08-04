@@ -101,67 +101,59 @@ const TestimonialList = ({
 	}
 	return (
 		<section
-			className={
-				'fluid-gap flex h-full max-h-fold flex-col items-center justify-center bg-white py-[var(--size--8rem)]'
-			}
+			className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]"
+			ref={containerRef}
 		>
 			<div className="section mx-auto text-center">
 				{content && <PortableText value={content} components={components} />}
 			</div>
-			<div
-				className={
-					'fluid-gap flex w-full flex-col items-center justify-center overflow-hidden'
-				}
-				ref={containerRef}
+			<ul
+				ref={scrollerRef}
+				className={cn(
+					'flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-4',
+					start && 'animate-scroll',
+					pauseOnHover && 'hover:[animation-play-state:paused]',
+				)}
 			>
-				<ul
-					ref={scrollerRef}
-					className={cn(
-						'flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-4',
-						start && 'animate-scroll',
-						pauseOnHover && 'hover:[animation-play-state:paused]',
-					)}
-				>
-					{testimonials?.map(({ content, author }, key) => {
-						return (
-							<li
-								key={key}
-								className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
-							>
-								<article className="flex flex-col justify-between">
-									<blockquote className="space-y-6">
-										<div className="richtext text-start group-hover:text-cyan-800">
-											<PortableText value={content} components={components} />
-										</div>
+				{testimonials?.map(({ content, author }, key) => {
+					return (
+						<li
+							key={key}
+							className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
+						>
+							<article className="flex flex-col justify-between">
+								<blockquote className="space-y-6">
+									<div className="text-start group-hover:text-cyan-800">
+										<PortableText value={content} components={components} />
+									</div>
 
-										{author && (
-											<footer>
-												<div className="flex items-center justify-start gap-4">
-													<Img
-														className="size-12 rounded-full object-cover"
-														image={author?.image}
-														imageWidth={80}
-													/>
-													<div className={cn('text-main text-start')}>
-														<div className="font-semibold text-cyan-950">
-															{author?.name}
-														</div>
-														{author?.title && (
-															<div className="text-cyan-950/60">
-																{author?.title}
-															</div>
-														)}
+									{author && (
+										<footer>
+											<div className="flex items-center justify-start gap-4">
+												<Img
+													className="size-12 rounded-full object-cover"
+													image={author?.image}
+													imageWidth={80}
+												/>
+												<div className={cn('text-main text-start')}>
+													<div className="font-semibold text-cyan-950">
+														{author?.name}
 													</div>
+													{author?.title && (
+														<div className="text-cyan-950/60">
+															{author?.title}
+														</div>
+													)}
 												</div>
-											</footer>
-										)}
-									</blockquote>
-								</article>
-							</li>
-						)
-					})}
-				</ul>
-			</div>
+											</div>
+										</footer>
+									)}
+								</blockquote>
+							</article>
+						</li>
+					)
+				})}
+			</ul>
 		</section>
 	)
 }

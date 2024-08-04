@@ -31,7 +31,7 @@ export default async function Partners({
 					)
 				}
 				return (
-					<p className="text-main font-semibold text-gray-400">
+					<p className="text-main font-medium text-gray-400">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)

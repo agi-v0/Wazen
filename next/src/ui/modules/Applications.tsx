@@ -61,7 +61,7 @@ export default function Applications({
 				className={'flex flex-col items-center gap-6'}
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<Pretitle className={'text-large font-semibold text-gray-400'}>
+				<Pretitle className="text-large font-semibold text-gray-400">
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={components} />

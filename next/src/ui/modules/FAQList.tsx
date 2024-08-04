@@ -52,9 +52,7 @@ export default function FAQList({
 	}
 	return (
 		<section id="FAQ" className="section space-y-4 py-12">
-			<header className="richtext text-start">
-				<PortableText value={content} components={components} />
-			</header>
+			<PortableText value={content} components={components} />
 
 			<div className="fluid-gap flex flex-col items-start justify-between lg:flex-row">
 				<div className="w-full lg:w-[70%]">
@@ -73,12 +71,10 @@ export default function FAQList({
 				</div>
 
 				<div className="flex w-full flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:max-w-[30%]">
-					<div className="space-y-4">
-						<h3 className="text-large font-semibold leading-tight text-cyan-950">
-							{sideNote.title}
-						</h3>
-						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
-					</div>
+					<h3 className="text-large font-semibold leading-tight text-cyan-950">
+						{sideNote.title}
+					</h3>
+					<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
 					<span className="text-main group flex items-center font-medium text-cyan-950">
 						<CTA
 							locale={locale}

@@ -26,33 +26,31 @@ export default function Brief({
 	alignItems: React.CSSProperties['alignItems']
 }>) {
 	return (
-		<section className={'py-[var(--size--2rem)]'}>
-			<div
-				className={cn(
-					onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
-					'fluid-gap section flex w-full flex-col items-center justify-evenly',
+		<section
+			className={cn(
+				'fluid-gap section flex w-full flex-col items-center justify-evenly py-[var(--size--2rem)]',
+				onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
+			)}
+		>
+			<div className="relative w-full overflow-hidden rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
+				{image && 'asset' in image ? (
+					<Img
+						image={image}
+						imageWidth={2000}
+						className="relative h-auto w-full overflow-hidden rounded-lg object-cover p-2 lg:aspect-square lg:max-w-[500px]"
+					/>
+				) : (
+					image
 				)}
+			</div>
+			<div
+				className="flex max-w-2xl flex-col gap-6"
+				// style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<div className="-bg-white relative w-full overflow-hidden rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
-					{image && 'asset' in image ? (
-						<Img
-							image={image}
-							imageWidth={2000}
-							className="relative h-auto w-full overflow-hidden rounded-lg object-cover p-2 lg:aspect-square lg:max-w-[500px]"
-						/>
-					) : (
-						image
-					)}
-				</div>
-				<div
-					className={'flex max-w-2xl flex-col gap-6'}
-					// style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
-						{pretitle}
-					</Pretitle>
-					<PortableText value={content} components={set2} />
-				</div>
+				<Pretitle className="text-large font-semibold text-gray-400">
+					{pretitle}
+				</Pretitle>
+				<PortableText value={content} components={set2} />
 			</div>
 		</section>
 	)

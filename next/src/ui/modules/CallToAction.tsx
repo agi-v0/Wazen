@@ -71,49 +71,43 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className={'section fluid-vertical-space'}>
+		<section className="section fluid-vertical-space fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row">
 			<div
-				className={
-					'fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row'
-				}
+				className="flex max-w-2xl flex-col items-start gap-8"
+				// style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<div
-					className={'flex max-w-2xl flex-col items-start gap-8'}
-					// style={{ textAlign: stegaClean(textAlign) }}
-				>
-					<PortableText value={content} components={components} />
+				<PortableText value={content} components={components} />
 
-					<CTAList ctas={ctas} className="w-full" />
-					<div className="flex flex-col gap-2">
-						<PortableText
-							value={checkedList}
-							components={checkedListComponents}
+				<CTAList ctas={ctas} className="w-full" />
+				<div className="flex flex-col gap-2">
+					<PortableText
+						value={checkedList}
+						components={checkedListComponents}
+					/>
+				</div>
+			</div>
+			<div className="h-[400px] w-full lg:max-w-[400px]">
+				<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
+					<div
+						className={cn(
+							image?.onRight ? 'left-8' : 'right-8',
+							'absolute top-8 h-full w-full min-w-[800px]',
+						)}
+					>
+						<Img
+							image={image}
+							imageWidth={640}
+							className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
 						/>
 					</div>
 				</div>
-				<div className="h-[400px] w-full lg:max-w-[400px]">
-					<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
-						<div
-							className={cn(
-								image?.onRight ? 'left-8' : 'right-8',
-								'absolute top-8 h-full w-full min-w-[800px]',
-							)}
-						>
-							<Img
-								image={image}
-								imageWidth={640}
-								className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
-							/>
-						</div>
-					</div>
-				</div>
-				<Image
-					src={blob}
-					alt="hero"
-					className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
-					draggable={false}
-				/>
 			</div>
+			<Image
+				src={blob}
+				alt="hero"
+				className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
+				draggable={false}
+			/>
 		</section>
 	)
 }
