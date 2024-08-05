@@ -42,7 +42,8 @@
 		"rss": "^1.2.2",
 		"sharp": "^0.33.4",
 		"tailwind-merge": "^2.3.0",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"unlighthouse": "^0.13.2"
 	},
 	"devDependencies": {
 		"@iconify/react": "^5.0.1",
