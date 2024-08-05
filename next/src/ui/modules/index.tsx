@@ -28,6 +28,7 @@ import BriefGroup from './BriefGroup'
 // import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
+import PlansCalculator from './PlansCalculator'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -89,6 +90,8 @@ export default function Modules({
 						return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
+					case 'pricing-calculator':
+						return <PlansCalculator {...module} key={module._key} />
 					case 'pricing-comparison':
 						return <PlansComparison {...module} key={module._key} />
 					case 'richtext-module':

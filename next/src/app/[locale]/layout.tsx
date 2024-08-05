@@ -6,6 +6,7 @@ import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
+import StoreProvider from './storeProvider'
 
 export default async function RootLayout({
 	children,
@@ -28,6 +29,7 @@ export default async function RootLayout({
 			className={locale == 'en' ? inter.className : rubik.className}
 		>
 			<body className="">
+			<StoreProvider>
 				<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
 				<main id="main-content" tabIndex={-1}>
 					{children}
@@ -38,6 +40,7 @@ export default async function RootLayout({
 					locale={locale}
 				/>
 				{draftMode().isEnabled && <VisualEditing />}
+				</StoreProvider>
 			</body>
 		</html>
 	)

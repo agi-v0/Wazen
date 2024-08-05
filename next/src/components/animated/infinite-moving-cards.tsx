@@ -81,7 +81,6 @@ export const InfiniteMovingCards = ({
 		'to-violet-50',
 		'to-fuchsia-50',
 	]
-	console.log(items)
 
 	return (
 		<div

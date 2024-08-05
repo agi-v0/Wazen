@@ -13,29 +13,6 @@ import { PiCheckBold, PiX } from 'react-icons/pi'
 const Pricing = ({ plans }: any) => {
 	const [isMonthly, setIsMonthly] = useState(true)
 
-	const PlanContent: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				const textContent = value.children
-					.map((child: any) => child.text)
-					.join('')
-				if (!textContent.trim()) return null // Do not render if text content is empty or just whitespace
-
-				return (
-					<div className="flex items-center gap-2">
-						{/* {status === 'active' ? (
-							<FiCheck className="text-green-600" />
-						) : (
-							<RxCross2 className="text-red-600" />
-						)} */}
-						<FiCheck className="text-green-600" />
-						<p className="text-base font-medium">{textContent}</p>
-					</div>
-				)
-			},
-		},
-	}
-
 	return (
 		<section id="pricing" className="relative py-16 md:py-20 lg:py-28">
 			<div className="container">

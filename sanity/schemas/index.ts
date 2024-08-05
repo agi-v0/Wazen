@@ -49,6 +49,7 @@ import homeBriefGroup from './modules/home-brief-group'
 import pricingList from './modules/pricing-list'
 import pricingComparison from './modules/pricing-comparison'
 import pricing from './documents/pricing'
+import pricingCalculator from './modules/pricing-calculator'
 
 export const schemaTypes = [
 	// documents
@@ -91,6 +92,7 @@ export const schemaTypes = [
 	logoList,
 	partners,
 	pricingList,
+	pricingCalculator,
 	pricingComparison,
 	richtextModule,
 	singleTestimony,
