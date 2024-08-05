@@ -8,7 +8,7 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import { EmblaOptionsType } from 'embla-carousel'
-import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
+// import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 
 const EmblaCarousel = dynamic(
 	() => import('@/components/EmblaCarousel/EmblaCarousel'),
@@ -68,13 +68,13 @@ export default function Applications({
 				<PortableText value={content} components={components} />
 			</div>
 			<div className="" dir={direction}>
-				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
-				<InfiniteMovingCards
+				<EmblaCarousel slides={cards} options={OPTIONS} locale={locale} />
+				{/* <InfiniteMovingCards
 					direction={'right'}
 					speed={'slow'}
 					pauseOnHover={true}
 					items={cards}
-				/>
+				/> */}
 			</div>
 		</section>
 	)

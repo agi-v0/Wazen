@@ -18,7 +18,9 @@ export default async function Menu({ footerMenu, locale }: any) {
 				const { label, links } = item
 				return (
 					<div key={key}>
-						<p className="mb-4 h-9 rounded text-start text-white/50">{label}</p>
+						<div className="mb-4 h-9 rounded text-start text-white/50">
+							{label}
+						</div>
 						<ul className="text-start">
 							{links?.map((link: any, key: any) => (
 								<li
