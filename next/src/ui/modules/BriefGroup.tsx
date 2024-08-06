@@ -1,14 +1,3 @@
-import Img from '@/ui/Img'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
-import Pretitle from '@/ui/Pretitle'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import Image from 'next/image'
-import dropdown from '../../../public/accounting-full-option.svg'
 import Brief from './Brief'
 
 export default function BriefGroup({

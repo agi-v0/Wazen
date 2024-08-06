@@ -8,7 +8,7 @@ import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
 import { Icon } from '@iconify/react'
 
-export default function Features({
+export default function FeaturesGridOne({
 	pretitle,
 	content,
 	ctas,
@@ -59,19 +59,23 @@ export default function Features({
 		},
 	}
 	return (
-		<section className={'bg-cyan-50 py-[var(--size--4rem)]'}>
+		<section className="bg-cyan-950/5 py-[var(--size--4rem)]">
 			<div
-				className={
-					'fluid-gap section flex w-full flex-col items-center justify-evenly'
-				}
+				className="fluid-gap section flex w-full flex-col items-center"
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<div className="flex flex-col items-center gap-6">
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
+					<Pretitle className="text-large font-semibold text-gray-400">
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />
 				</div>
+
+				{ctas && (
+					<div className="text-center">
+						<CTAList ctas={ctas} />
+					</div>
+				)}
 
 				<ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
 					{features &&
@@ -85,15 +89,15 @@ export default function Features({
 								index: any,
 							) => (
 								<li
-									className="flex w-full flex-col justify-start gap-4 rounded-xl p-4 text-start"
+									className="flex w-full flex-col justify-start gap-2 rounded-xl p-4 text-start"
 									key={index}
 								>
-									<div className="self-start rounded-md bg-cyan-800 p-2">
+									<div className="mb-2 self-start rounded-md bg-teal-500 p-2">
 										<Icon
 											icon={
 												feature.icon ? feature.icon.name : 'ph:cube-duotone'
 											}
-											className="text-xl text-cyan-50"
+											className="text-xl text-white"
 										/>
 									</div>
 									<h3 className="text-main font-semibold leading-tight text-cyan-950">
@@ -106,9 +110,6 @@ export default function Features({
 							),
 						)}
 				</ul>
-				<div className="text-center">
-					<CTAList ctas={ctas} />
-				</div>
 			</div>
 		</section>
 	)

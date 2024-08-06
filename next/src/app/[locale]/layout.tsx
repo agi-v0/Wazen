@@ -1,20 +1,27 @@
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { draftMode } from 'next/headers'
-import { VisualEditing } from 'next-sanity'
+// import { draftMode } from 'next/headers'
+// import { VisualEditing } from 'next-sanity'
 import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
 import StoreProvider from './storeProvider'
+import { locales } from '@/i18n/config'
+import { unstable_setRequestLocale } from 'next-intl/server'
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }))
+}
 
 export default async function RootLayout({
 	children,
-	params: { locale = 'ar' },
+	params: { locale },
 }: {
 	children: React.ReactNode
 	params: { locale: any }
 }) {
+	unstable_setRequestLocale(locale)
 	//loading header and footer in one query
 	const site = await getSite(locale)
 	if (!site) {
@@ -28,18 +35,19 @@ export default async function RootLayout({
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
 			className={locale == 'en' ? inter.className : rubik.className}
 		>
-			<body className="">
-			<StoreProvider>
-				<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
-				<main id="main-content" tabIndex={-1}>
-					{children}
-				</main>
-				<Footer
-					footerMenu={footerMenu}
-					staticLinks={staticLinks}
-					locale={locale}
-				/>
-				{draftMode().isEnabled && <VisualEditing />}
+			<body className="w-full">
+				<StoreProvider>
+					<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
+					<main id="main-content" tabIndex={-1}>
+						{children}
+					</main>
+					<Footer
+						footerMenu={footerMenu}
+						staticLinks={staticLinks}
+						locale={locale}
+					/>
+					{/* {draftMode().isEnabled && <VisualEditing />} */}
+					<SpeedInsights />
 				</StoreProvider>
 			</body>
 		</html>

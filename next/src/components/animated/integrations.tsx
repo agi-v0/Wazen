@@ -22,7 +22,7 @@ const Circle = forwardRef<
 	)
 })
 
-export function AnimatedBeamDemo() {
+export default function Integrations() {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const div1Ref = useRef<HTMLDivElement>(null)
 	const div2Ref = useRef<HTMLDivElement>(null)

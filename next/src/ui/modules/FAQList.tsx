@@ -10,12 +10,15 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion'
 import CTA from '../CTA'
+import { PiCaretLeftBold } from 'react-icons/pi'
 
 export default function FAQList({
+	locale = 'ar',
 	content,
 	items,
 	sideNote,
 }: Partial<{
+	locale: string
 	content: any
 	items: {
 		question: string
@@ -49,9 +52,7 @@ export default function FAQList({
 	}
 	return (
 		<section id="FAQ" className="section space-y-4 py-12">
-			<header className="richtext text-start">
-				<PortableText value={content} components={components} />
-			</header>
+			<PortableText value={content} components={components} />
 
 			<div className="fluid-gap flex flex-col items-start justify-between lg:flex-row">
 				<div className="w-full lg:w-[70%]">
@@ -70,16 +71,20 @@ export default function FAQList({
 				</div>
 
 				<div className="flex w-full flex-col items-start gap-4 rounded-lg bg-teal-50 p-[var(--text-large--font-size)] lg:max-w-[30%]">
-					<div className="space-y-4">
-						<h3 className="text-large font-semibold leading-tight text-cyan-950">
-							{sideNote.title}
-						</h3>
-						<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
-					</div>
-					<CTA
-						className="secondary text-small font-medium"
-						link={sideNote.link}
-					/>
+					<h3 className="text-large font-semibold leading-tight text-cyan-950">
+						{sideNote.title}
+					</h3>
+					<p className="text-main text-cyan-950/80">{sideNote.subtitle}</p>
+					<span className="text-main group flex items-center font-medium text-cyan-950">
+						<CTA
+							locale={locale}
+							link={sideNote.link}
+							className="no-underline group-hover:text-teal-600"
+						>
+							{sideNote.link.label}
+						</CTA>
+						<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+					</span>
 				</div>
 			</div>
 		</section>

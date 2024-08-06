@@ -3,12 +3,12 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-export function MobileApp() {
+export default function MobileApp() {
 	return (
 		<div className="relative mx-auto w-full max-w-md">
 			<Image
 				src="/iphone.png"
-				alt="تطبيق "
+				alt="تطبيق"
 				width={500}
 				height={500}
 				className="h-auto w-full"

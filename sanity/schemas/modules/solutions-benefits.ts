@@ -37,6 +37,16 @@ export default defineType({
 							],
 						}),
 					],
+					preview: {
+						select: {
+							content: 'content',
+							subtitle: 'pretitle',
+						},
+						prepare: ({ content, subtitle }) => ({
+							title: getBlockText(content),
+							subtitle: subtitle,
+						}),
+					},
 				}),
 			],
 		}),

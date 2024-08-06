@@ -6,14 +6,14 @@ import {
 } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import blob from '../../../public/gradient-blob.svg'
-import { PiCheckCircle } from 'react-icons/pi'
+import { PiCaretRightBold, PiCheckCircle } from 'react-icons/pi'
+import Button from '../Button'
 
 // https://magicui.design/docs/components/neon-gradient-card
 
-export default function CallToAction({
+export default function CallToActionTwo({
 	content,
 	ctas,
 	image,
@@ -61,9 +61,9 @@ export default function CallToAction({
 				if (!textContent.trim()) return null // Do not render if text content is empty or just whitespace
 
 				return (
-					<div className="flex items-center gap-2">
-						<PiCheckCircle className="h-4 w-4 text-gray-400" />
-						<p className="text-small text-gray-400">{textContent}</p>
+					<div className="flex items-center gap-2 text-cyan-950/60">
+						<PiCheckCircle className="h-4 w-4" />
+						<p className="text-small">{textContent}</p>
 					</div>
 				)
 			},
@@ -71,43 +71,23 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className="section fluid-vertical-space fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row">
-			<div
-				className="flex max-w-2xl flex-col items-start gap-8"
-				// style={{ textAlign: stegaClean(textAlign) }}
-			>
+		<section className="fluid-vertical-space fluid-gap flex flex-col items-center justify-center bg-teal-100">
+			<div className="section flex flex-col items-center gap-6 text-center">
 				<PortableText value={content} components={components} />
+			</div>
 
-				<CTAList ctas={ctas} className="w-full" />
-				<div className="flex flex-col gap-2">
-					<PortableText
-						value={checkedList}
-						components={checkedListComponents}
-					/>
-				</div>
+			{ctas && (
+				<Button
+					link={ctas[0].link}
+					className="h2 mx-4 flex h-[var(--size--8rem)] items-center justify-center gap-[var(--size--2rem)] rounded-3xl bg-cyan-950 px-[var(--size--4rem)] font-semibold leading-tight text-white hover:bg-cyan-950/90 max-md:gap-2 max-md:rounded-2xl max-md:px-4"
+				>
+					{ctas[0].link?.label}
+					<PiCaretRightBold className="h2 text-white rtl:rotate-180" />
+				</Button>
+			)}
+			<div className="section flex flex-row items-center justify-center gap-2">
+				<PortableText value={checkedList} components={checkedListComponents} />
 			</div>
-			<div className="h-[400px] w-full lg:max-w-[400px]">
-				<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
-					<div
-						className={cn(
-							image?.onRight ? 'left-8' : 'right-8',
-							'absolute top-8 h-full w-full min-w-[800px]',
-						)}
-					>
-						<Img
-							image={image}
-							imageWidth={640}
-							className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
-						/>
-					</div>
-				</div>
-			</div>
-			<Image
-				src={blob}
-				alt="hero"
-				className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
-				draggable={false}
-			/>
 		</section>
 	)
 }

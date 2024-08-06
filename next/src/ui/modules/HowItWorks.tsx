@@ -33,7 +33,7 @@ export default function HowItWorks({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h3 text-center font-semibold leading-tight text-cyan-950">
+						<h2 className="h4 text-center font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
@@ -55,11 +55,11 @@ export default function HowItWorks({
 	}
 	const images = [user, sidebar, chart]
 	const ref = useRef(null)
-	const isInView = useInView(ref)
+	const isInView = useInView(ref, { once: true })
 
 	return (
-		<section className={'section py-12'}>
-			<div className="-border-8 fluid-padding fluid-gap flex w-full flex-col items-center justify-evenly rounded-xl border-white bg-gradient-to-tl from-teal-100 to-cyan-50">
+		<section className={'bg-teal-100 from-teal-100 to-cyan-50 py-12'}>
+			<div className="section fluid-gap flex w-full flex-col items-center justify-center rounded-xl">
 				<PortableText value={content} components={components} />
 				<ul ref={ref} className="grid w-full grid-cols-1 lg:grid-cols-3">
 					{steps?.map((step, index) => (
@@ -74,7 +74,7 @@ export default function HowItWorks({
 							transition={{ type: 'easeOut', delay: index * 0.2 }}
 							className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 						>
-							<div className="grid h-64 w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-2 py-8">
+							<div className="grid h-64 w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-2 py-8 transition-all group-hover:bg-teal-500">
 								<Image
 									src={images[index]}
 									alt={step.title}
@@ -82,31 +82,17 @@ export default function HowItWorks({
 								/>
 							</div>
 							<div className="space-y-1 p-4 text-start">
-								<h3 className="text-main font-semibold text-gray-950 group-hover:text-cyan-950">
-									<span className="text-gray-400">{index + 1}. </span>
-									{step.title}
-									{/* <PiCaretLeftBold className="inline-block size-4 translate-x-0 text-cyan-950/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-[4px] group-hover:opacity-100" /> */}
+								<h3 className="text-main font-semibold text-gray-950 group-hover:text-teal-600">
+									<span className="text-gray-950/40">{index + 1}. </span>
+									{step.title}{' '}
 								</h3>
-								<p className="text-small text-gray-600">{step.description}</p>
+								<p className="text-small text-gray-950/60">
+									{step.description}
+								</p>
 							</div>
 						</motion.li>
 					))}
 				</ul>
-				{/* <ul className="flex w-full flex-col justify-evenly md:flex-row">
-					{steps?.map((step, index) => (
-						<li
-							className="flex flex-col items-center justify-center gap-4"
-							key={index}
-						>
-							<Img
-								image={step.image}
-								imageWidth={200}
-								className="rounded-xl border-8 border-teal-100"
-							/>
-							<div className="my-4 text-2xl">{step.text}</div>
-						</li>
-					))}
-				</ul> */}
 			</div>
 		</section>
 	)

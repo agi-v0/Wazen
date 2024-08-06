@@ -31,7 +31,7 @@ export default async function Partners({
 					)
 				}
 				return (
-					<p className="text-main font-semibold text-gray-400">
+					<p className="text-main font-medium text-gray-400">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -40,8 +40,8 @@ export default async function Partners({
 	}
 
 	return (
-		<section className="section py-12">
-			<div className="fluid-gap flex w-full flex-col items-center">
+		<section className="bg-cyan-950 py-12">
+			<div className="fluid-gap section flex w-full flex-col items-center">
 				<PortableText value={content} components={components} />
 
 				<figure className="flex w-full flex-wrap items-center justify-evenly gap-12 overflow-visible">

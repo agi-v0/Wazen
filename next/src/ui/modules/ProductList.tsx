@@ -50,9 +50,7 @@ export default function ProductList({
 	}
 
 	return (
-		<section
-			className={'fluid-vertical-space bg-gradient-to-t from-teal-50 to-white'}
-		>
+		<section className={'fluid-vertical-space bg-white'}>
 			<div
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>
@@ -60,7 +58,7 @@ export default function ProductList({
 					className={'flex flex-col items-center gap-8'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
-					<Pretitle className={'text-large font-semibold text-gray-400'}>
+					<Pretitle className="text-large font-semibold text-gray-400">
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={components} />

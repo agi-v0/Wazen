@@ -4,7 +4,7 @@ import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'hero',
-	title: 'Main Hero',
+	title: 'Hero 1',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	groups: [

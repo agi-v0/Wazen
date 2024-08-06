@@ -3,7 +3,11 @@ import CTA from '@/ui/CTA'
 import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
 import Image from 'next/image'
 
-export default function LinkList({ label, links, locale }: Sanity.LinkList) {
+export default function LinkList({
+	label,
+	links,
+	locale = 'ar',
+}: Sanity.LinkList) {
 	return (
 		<InteractiveDetails className="relative">
 			<summary className="group flex h-8 items-center gap-1 rounded-md px-3 font-medium text-cyan-950/80 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700">
