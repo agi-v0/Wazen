@@ -3,12 +3,14 @@ import { creativeModuleQuery } from '@/lib/sanity/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import { unstable_setRequestLocale } from 'next-intl/server'
 
 type Props = {
 	params: { slug: string[]; locale: string }
 }
 
 export default async function Page({ params }: Props) {
+	unstable_setRequestLocale(params.locale)
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page?.modules} locale={params.locale} />

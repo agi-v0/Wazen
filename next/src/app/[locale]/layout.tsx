@@ -6,14 +6,21 @@ import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
+import { locales } from '@/i18n/config'
+import { unstable_setRequestLocale } from 'next-intl/server'
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }))
+}
 
 export default async function RootLayout({
 	children,
-	params: { locale = 'ar' },
+	params: { locale },
 }: {
 	children: React.ReactNode
 	params: { locale: any }
 }) {
+	unstable_setRequestLocale(locale)
 	//loading header and footer in one query
 	const site = await getSite(locale)
 	if (!site) {
