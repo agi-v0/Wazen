@@ -17,6 +17,7 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props) {
+	unstable_setRequestLocale(params.locale)
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page, params.locale)
