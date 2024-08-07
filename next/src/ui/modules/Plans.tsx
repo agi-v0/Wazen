@@ -1,4 +1,5 @@
 import Pricing from '@/components/Pricing'
+import { set2 } from '@/components/ui/portable-text'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -32,11 +33,13 @@ export default async function Plans({
 	}
 
 	return (
-		<section className="section bg-teal-50 py-12">
+		<section className="section py-[20vh]">
 			<div className="fluid-gap flex w-full flex-col items-center">
-				<PortableText value={content} components={components} />
+				<div className="flex flex-col justify-center gap-6">
+					<PortableText value={content} components={set2} />
+				</div>
+				<Pricing plans={plans} />
 			</div>
-			<Pricing plans={plans} />
 		</section>
 	)
 }

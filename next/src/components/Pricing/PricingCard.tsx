@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import CTAList from '@/ui/CTAList'
 import {
 	PiFlowArrowDuotone,
@@ -9,6 +10,7 @@ import {
 } from 'react-icons/pi'
 
 const PricingBox = (props: {
+	order: string
 	price: string
 	apps: any
 	duration: string
@@ -17,7 +19,16 @@ const PricingBox = (props: {
 	children: React.ReactNode
 	ctas: Sanity.CTA[]
 }) => {
-	const { price, apps, duration, packageName, subtitle, children, ctas } = props
+	const {
+		price,
+		apps,
+		duration,
+		packageName,
+		subtitle,
+		children,
+		ctas,
+		order,
+	} = props
 
 	const AppIcons = [
 		<PiTableDuotone className="text-2xl text-cyan-500" />,
@@ -27,14 +38,20 @@ const PricingBox = (props: {
 	]
 
 	return (
-		<div className="relative flex w-full flex-col justify-start gap-6 rounded-2xl bg-white p-6">
+		<div
+			className={cn(
+				'relative flex w-full flex-col justify-start gap-6 rounded-2xl bg-teal-50 p-8',
+				order == '1' ? 'bg-teal-100' : '',
+			)}
+		>
 			<div className="flex flex-col items-start justify-between">
-				<h4 className="text-dark text-xl font-bold">{packageName}</h4>
-				<p className="text-base">{subtitle}</p>
+				<h2 className="text-xl font-semibold text-cyan-950">{packageName}</h2>
+				<p className="text-base text-cyan-950/80">{subtitle}</p>
 			</div>
-			<h3 className="pt-4 text-[32px] font-bold text-black">
-				<span className="amount">{price}</span>ريال
-				<span className="text-lg font-light">/{duration}</span>
+			<h3 className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
+				<span className="amount">{price}</span>
+				ريال
+				<span className="text-lg text-gray-950/40">/{duration}</span>
 			</h3>
 			<ul className="flex flex-col gap-4">
 				{apps.map((app: { title: string; active: boolean }, index: any) => (

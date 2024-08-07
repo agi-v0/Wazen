@@ -39,7 +39,6 @@ const BodySection = ({ details }: any) => {
 	return (
 		<>
 			{details?.map((detail: { title: string; specs: any }, index: any) => {
-				console.log('rows', detail.specs.rows)
 				return (
 					<div key={'details_' + index}>
 						<div
