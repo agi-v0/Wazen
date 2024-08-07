@@ -52,14 +52,17 @@ const PlansComparison = ({
 								dir="ltr"
 								className="flex h-12 w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 							>
-								<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />{' '}
+								<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
 								Annual (2 months free)
 							</div>
 						</div>
 						{details[0].specs.rows.map(
 							(row: { cells: string[] }, index: string) => {
 								return (
-									<div className="relative flex w-full flex-col gap-4 px-2 py-4">
+									<div
+										className="relative flex w-full flex-col gap-4 px-2 py-4"
+										key={row.cells[2]}
+									>
 										<div className="flex flex-col items-start justify-between">
 											<h3 className="text-xl font-semibold text-gray-900">
 												{row.cells[2]}
@@ -94,25 +97,32 @@ const PlansComparison = ({
 						{details?.slice(1).map((detail: any, index: any) => (
 							<div key={'details_' + index} className="">
 								<h3
-									className="text-large sticky top-[calc(var(--header-height)+192px)] z-[1] flex flex-col justify-end rounded-2xl bg-gray-50 p-[var(--text-large--font-size)] font-semibold max-md:hidden md:order-1"
+									className="text-main sticky top-[calc(var(--header-height)+192px)] z-[1] flex flex-col justify-end rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold max-md:hidden md:order-1"
 									aria-hidden="true"
 								>
 									{detail.title}
 								</h3>
-								<div className="py-2 text-gray-600" dir="ltr">
+								<div className="text-gray-800" dir="ltr">
 									{detail.specs?.rows?.map((row: any, index: any) => (
 										<div
 											key={'rows_' + index}
-											className="flex flex-row justify-between border-b border-gray-200 py-1"
+											className="flex flex-row justify-between border-b border-gray-200"
 										>
 											{row.cells.map((cell: string, index: any) => {
 												const cleanedCell = stegaClean(cell)
+												console.log(index)
 												switch (cleanedCell) {
 													case '-':
 														return (
 															<div
 																key={'cell_' + index}
-																className="flex w-full flex-wrap justify-end px-6 py-2 text-end"
+																id={'cell_' + index}
+																className={cn(
+																	'flex w-full flex-wrap items-center justify-end px-6 py-3 text-end',
+																	index == 1
+																		? 'bg-teal-100 text-cyan-950/80'
+																		: '',
+																)}
 															>
 																<PiXBold className="text-sm text-gray-400" />
 															</div>
@@ -127,11 +137,16 @@ const PlansComparison = ({
 															</div>
 														)
 													default:
-														console.log(cell)
 														return (
 															<div
 																key={'cell_' + index}
-																className="flex w-full flex-wrap justify-end px-6 py-2 text-end"
+																className={cn(
+																	'flex w-full flex-wrap items-center justify-end px-6 py-3 text-end',
+
+																	index == 1
+																		? 'bg-teal-100 text-cyan-950/80'
+																		: '',
+																)}
 															>
 																{cell}
 															</div>

@@ -7,7 +7,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 
-import BodySection from '@/components/calculator/BodySection'
+import CalculatorTable from '@/components/Pricing/CalculatorTable'
 
 const PlansCalculator = ({
 	content,
@@ -91,7 +91,7 @@ const PlansCalculator = ({
 				</section>
 
 				<section>
-					<BodySection details={details} />
+					<CalculatorTable details={details} />
 				</section>
 			</div>
 		</div>

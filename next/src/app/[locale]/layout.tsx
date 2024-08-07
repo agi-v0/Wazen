@@ -6,7 +6,6 @@ import { inter, rubik } from './fonts'
 import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
-import StoreProvider from './storeProvider'
 import { locales } from '@/i18n/config'
 import { unstable_setRequestLocale } from 'next-intl/server'
 
@@ -36,19 +35,17 @@ export default async function RootLayout({
 			className={locale == 'en' ? inter.className : rubik.className}
 		>
 			<body className="w-full">
-				<StoreProvider>
-					<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
-					<main id="main-content" tabIndex={-1}>
-						{children}
-					</main>
-					<Footer
-						footerMenu={footerMenu}
-						staticLinks={staticLinks}
-						locale={locale}
-					/>
-					{/* {draftMode().isEnabled && <VisualEditing />} */}
-					<SpeedInsights />
-				</StoreProvider>
+				<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
+				<main id="main-content" tabIndex={-1}>
+					{children}
+				</main>
+				<Footer
+					footerMenu={footerMenu}
+					staticLinks={staticLinks}
+					locale={locale}
+				/>
+				{/* {draftMode().isEnabled && <VisualEditing />} */}
+				<SpeedInsights />
 			</body>
 		</html>
 	)

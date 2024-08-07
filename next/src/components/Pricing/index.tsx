@@ -10,7 +10,7 @@ import {
 import { PiCheckBold, PiCheckCircle, PiCircleBold, PiX } from 'react-icons/pi'
 
 const Pricing = ({ plans }: any) => {
-	const [isMonthly, setIsMonthly] = useState(true)
+	const [isMonthly, setIsMonthly] = useState(false)
 
 	return (
 		<div id="pricing" className="container space-y-6">

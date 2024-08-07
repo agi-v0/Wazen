@@ -8,6 +8,7 @@ import {
 	PiCheckBold,
 	PiXBold,
 } from 'react-icons/pi'
+import NumberTicker from '../animated/number-ticker'
 
 const PricingBox = (props: {
 	order: string
@@ -49,7 +50,8 @@ const PricingBox = (props: {
 				<p className="text-base text-cyan-950/80">{subtitle}</p>
 			</div>
 			<h3 className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
-				<span className="amount">{price}</span>
+				<NumberTicker value={parseInt(price)} direction="up" />
+				{/* <span className="amount">{price}</span> */}
 				ريال
 				<span className="text-lg text-gray-950/40">/{duration}</span>
 			</h3>
