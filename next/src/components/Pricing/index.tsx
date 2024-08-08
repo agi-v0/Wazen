@@ -6,9 +6,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
-import { FiCheck } from 'react-icons/fi'
 import { PiCheckBold, PiX } from 'react-icons/pi'
-// import { RxCross2 } from 'react-icons/rx'
 
 const Pricing = ({ plans }: any) => {
 	const [isMonthly, setIsMonthly] = useState(true)
@@ -28,7 +26,7 @@ const Pricing = ({ plans }: any) => {
 						) : (
 							<RxCross2 className="text-red-600" />
 						)} */}
-						<FiCheck className="text-green-600" />
+						<PiCheckBold className="text-green-600" />
 						<p className="text-base font-medium">{textContent}</p>
 					</div>
 				)
