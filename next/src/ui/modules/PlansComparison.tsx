@@ -110,7 +110,6 @@ const PlansComparison = ({
 										>
 											{row.cells.map((cell: string, index: any) => {
 												const cleanedCell = stegaClean(cell)
-												console.log(index)
 												switch (cleanedCell) {
 													case '-':
 														return (

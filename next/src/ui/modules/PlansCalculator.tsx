@@ -18,7 +18,7 @@ const PlansCalculator = ({
 }>) => {
 	const [isMonthly, setIsMonthly] = useState(true)
 
-	const [quantity, setQuantity] = useState(0)
+	const [total, setTotal] = useState(0)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -80,7 +80,7 @@ const PlansCalculator = ({
 							<div className="pb-4 font-semibold">التكلفة التقديرية</div>
 							<div className="mb-1">
 								<h3 className="mb-2 text-[32px] font-bold text-black">
-									<span className="amount">{0}</span>ريال
+									<span className="amount">{total}</span>ريال
 									<span className="text-lg font-light">
 										/{isMonthly ? 'شهرياً' : 'سنوياً'}
 									</span>
@@ -91,7 +91,11 @@ const PlansCalculator = ({
 				</section>
 
 				<section>
-					<CalculatorTable details={details} />
+					<CalculatorTable
+						details={details}
+						total={total}
+						setTotal={setTotal}
+					/>
 				</section>
 			</div>
 		</div>

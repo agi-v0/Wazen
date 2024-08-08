@@ -18,7 +18,8 @@ const Pricing = ({ plans }: any) => {
 				dir="ltr"
 				className="flex w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 			>
-				<Switch checked={isMonthly} onCheckedChange={setIsMonthly} /> Annual (2
+				<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
+				 Annual (2
 				months free)
 			</div>
 
