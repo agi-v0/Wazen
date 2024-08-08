@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import processUrl from '@/lib/processUrl'
+import { Link } from '@/i18n/navigations'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -15,7 +16,7 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 	return (
@@ -30,13 +31,11 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 						{links?.[0].links?.map((item: any) => (
 							<NavigationMenuItem key={item.label}>
 								<Link
-									href={
-										locale +
-										processUrl(item.internal, {
-											base: false,
-											params: item.params,
-										})
-									}
+									locale={locale as 'en' | 'ar'}
+									href={processUrl(item.internal, {
+										base: false,
+										params: item.params,
+									})}
 									legacyBehavior
 									passHref
 								>

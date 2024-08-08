@@ -1,15 +1,15 @@
-import Link from 'next/link'
-import dev from '@/lib/env'
+// import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
 export default function CTA({
 	link,
+	locale,
 	style,
 	className,
 	children,
-	locale = 'ar',
 	...rest
 }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
 	const props = {
@@ -22,6 +22,7 @@ export default function CTA({
 	if (link?.type === 'internal' && link.internal)
 		return (
 			<Link
+				locale={locale as 'ar' | 'en'}
 				href={processUrl(link.internal, {
 					base: false,
 					params: link.params,
