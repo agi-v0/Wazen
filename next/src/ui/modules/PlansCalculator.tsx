@@ -45,51 +45,52 @@ const PlansCalculator = ({
 				<PortableText value={content} components={components} />
 			</div>
 
-			<div className="overflow-x-auto py-20">
+			<div className="container">
 				{/* <!-- Column with labels --> */}
 
-				<section className="flex w-full flex-row justify-between">
-					<div className="w-full px-2">
-						<div className="flex h-full items-end justify-start py-6">
-							<div className="flex justify-between rounded-md bg-gray-50">
-								<span
-									onClick={() => setIsMonthly(true)}
-									className={`${
-										isMonthly
-											? 'pointer-events-none border-2 border-teal-500/20 bg-teal-50 text-teal-600'
-											: 'text-gray-600'
-									} cursor-pointer rounded-md px-8 py-3 text-base font-semibold`}
-								>
-									شهري
-								</span>
-								<span
-									onClick={() => setIsMonthly(false)}
-									className={`${
-										isMonthly
-											? 'text-gray-600'
-											: 'pointer-events-none border-2 border-teal-500/20 bg-teal-50 text-teal-600'
-									} cursor-pointer rounded-md px-8 py-3 text-base font-semibold`}
-								>
-									سنوي
-								</span>
+				<section className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white">
+					<div className="flex w-full flex-row justify-between">
+						<div className="w-full px-2">
+							<div className="flex h-full items-end justify-start py-6">
+								<div className="flex justify-between rounded-md bg-gray-50">
+									<span
+										onClick={() => setIsMonthly(true)}
+										className={`${
+											isMonthly
+												? 'pointer-events-none border-2 border-teal-500/20 bg-teal-50 text-teal-600'
+												: 'text-gray-600'
+										} cursor-pointer rounded-md px-8 py-3 text-base font-semibold`}
+									>
+										شهري
+									</span>
+									<span
+										onClick={() => setIsMonthly(false)}
+										className={`${
+											isMonthly
+												? 'text-gray-600'
+												: 'pointer-events-none border-2 border-teal-500/20 bg-teal-50 text-teal-600'
+										} cursor-pointer rounded-md px-8 py-3 text-base font-semibold`}
+									>
+										سنوي
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div className="relative flex w-full flex-col items-end justify-center px-2">
-						<div className="w-fit grow">
-							<div className="pb-4 font-semibold">التكلفة التقديرية</div>
-							<div className="mb-1">
-								<h3 className="mb-2 text-[32px] font-bold text-black">
-									<span className="amount">{total}</span>ريال
-									<span className="text-lg font-light">
-										/{isMonthly ? 'شهرياً' : 'سنوياً'}
-									</span>
-								</h3>
+						<div className="relative flex w-full flex-col items-end justify-center px-2">
+							<div className="w-fit grow">
+								<div className="pb-4 font-semibold">التكلفة التقديرية</div>
+								<div className="mb-1">
+									<h3 className="mb-2 text-[32px] font-bold text-black">
+										<span className="amount">{total}</span>ريال
+										<span className="text-lg font-light">
+											/{isMonthly ? 'شهرياً' : 'سنوياً'}
+										</span>
+									</h3>
+								</div>
 							</div>
 						</div>
 					</div>
 				</section>
-
 				<section>
 					<CalculatorTable
 						details={details}

@@ -32,7 +32,7 @@ const CalculatorTable = ({
 			[id]: Math.max(0, (prevQuantities[id] || 0) - 1),
 		}))
 
-		if (quantities[id] !== 0) {
+		if (quantities[id] > 0) {
 			setTotal(total - value)
 		}
 	}
@@ -43,7 +43,14 @@ const CalculatorTable = ({
 			[id]: (prevQuantities[id] || 0) + 1,
 		}))
 
+		setActivate(true)
+
 		setTotal(total + value)
+	}
+	const [activate, setActivate] = useState<Boolean>(false)
+
+	const activateCategory = () => {
+		setActivate(!activate)
 	}
 
 	return (
@@ -51,13 +58,15 @@ const CalculatorTable = ({
 			{details?.map((detail: { title: string; specs: any }, index: any) => {
 				return (
 					<div key={'details_' + index}>
-						<div
-							className="text-main top-[calc(var(--header-height)+192px)] z-[1] flex flex-row justify-start gap-4 rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold max-md:hidden md:order-1"
+						<h3
+							className={`${!activate ? 'grayscale' : ''} text-main sticky top-[calc(var(--header-height)+98px)] z-[1] flex cursor-pointer flex-row justify-start gap-4 rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold max-md:hidden md:order-1`}
 							aria-hidden="true"
+							onClick={activateCategory}
 						>
 							{AppIcons[index]}
 							{detail.title}
-						</div>
+						</h3>
+
 						<div className="py-2 text-gray-600">
 							{detail.specs?.rows?.map(
 								(row: { cells: string[] }, _key: string) => {
