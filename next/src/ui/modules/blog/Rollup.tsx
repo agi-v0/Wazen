@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import { PiCaretRightBold } from 'react-icons/pi'
-import {getTranslations} from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
 export default async function Rollup({
 	limit,
@@ -19,8 +19,7 @@ export default async function Rollup({
 	layout: 'grid' | 'carousel'
 	locale: string
 }>) {
-
-	const t = await getTranslations("Blog")
+	const t = await getTranslations('Blog')
 
 	const postlang = locale === 'ar' ? 'blog.post' : 'blog.post.en'
 
@@ -50,30 +49,35 @@ export default async function Rollup({
 			: posts[0]?.categories[0]?.title_en
 
 	return (
-		<section className="section my-12 flex flex-col gap-6">
-			{posts[0]?.categories && (
-				<div className="flex w-full items-center justify-between">
-					<div className="h5 font-semibold">{categoryTitle}</div>
-					<Link href="" className="group px-3 py-1 text-teal-600 no-underline">
-						<div className="inline-block">{t("تصفح المزيد")}</div>
-						<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
-					</Link>
-				</div>
-			)}
-			<ul
-				className={cn(
-					'gap-6',
-					stegaClean(layout) === 'grid'
-						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-xl:full-bleed [--size:320px] max-xl:px-4',
+		<section className="bg-teal-50" id={stegaClean(categoryTitle)}>
+			<div className="section fluid-gap flex flex-col items-center bg-teal-50 py-[var(--size--4rem)]">
+				{posts[0]?.categories && (
+					<h2 className="h3 text-center font-semibold text-cyan-950">
+						{categoryTitle}
+					</h2>
 				)}
-			>
-				{posts?.map((post, key) => (
-					<li key={key}>
-						<PostPreview post={post} locale={locale} />
-					</li>
-				))}
-			</ul>
+				<ul
+					className={cn(
+						'w-full gap-6',
+						stegaClean(layout) === 'grid'
+							? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
+							: 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
+					)}
+				>
+					{posts?.map((post, key) => (
+						<li key={key}>
+							<PostPreview post={post} locale={locale} />
+						</li>
+					))}
+				</ul>
+				<Link
+					href=""
+					className="group flex flex-row items-center justify-center px-6 py-3 font-medium text-cyan-950/80 no-underline"
+				>
+					{t('تصفح المزيد')}
+					<PiCaretRightBold className="size-4 translate-x-0 rotate-180 text-cyan-950/60 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-1 group-hover:opacity-100" />
+				</Link>
+			</div>
 		</section>
 	)
 }

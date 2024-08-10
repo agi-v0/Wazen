@@ -11,7 +11,13 @@ import Img from '@/ui/Img'
 import { PiCircleFill } from 'react-icons/pi'
 // import Image from 'next/image'
 
-export default function Post({ post , locale}: { post: Sanity.BlogPost , locale: any}) {
+export default function Post({
+	post,
+	locale,
+}: {
+	post: Sanity.BlogPost
+	locale: any
+}) {
 	return (
 		<article className="section">
 			<header className="mt-[25vh] md:space-y-12">
@@ -37,7 +43,7 @@ export default function Post({ post , locale}: { post: Sanity.BlogPost , locale:
 			</header>
 
 			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-50 p-6 [--offset:1rem] md:order-1">
+				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
 

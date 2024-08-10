@@ -41,14 +41,14 @@ export default async function LogoList({
 		},
 	}
 	return (
-		<section className="section py-12">
+		<section className="section p-[var(--size--6rem)]">
 			<div className="fluid-gap flex w-full flex-col items-center">
 				<Pretitle className="text-main text-center font-normal text-gray-400">
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={components} />
 
-				<figure className="flex w-full flex-wrap items-center justify-center gap-x-8 gap-y-6 grayscale">
+				<figure className="fluid-gap flex w-full flex-wrap items-center justify-center grayscale">
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}

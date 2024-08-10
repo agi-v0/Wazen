@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function Categories({
 	categories,
@@ -9,13 +10,15 @@ export default function Categories({
 }) {
 	if (!categories?.length) return null
 	return (
-		<ul className="my-4 flex justify-center">
+		<ul className="section my-[var(--size--2rem)] flex justify-center">
 			{categories?.map((category, key) => (
 				<li
-					className="cursor-pointer px-4 py-2 hover:bg-gray-500/5 hover:text-teal-600"
+					className="inline-flex h-10 cursor-pointer items-center justify-center rounded-md px-6 py-3 font-medium text-cyan-950/80 hover:bg-teal-50 hover:text-cyan-700"
 					key={key}
 				>
-					<Link href={`/blog/${category.title}`}>
+					<Link
+						href={decodeURIComponent(`/blog#${stegaClean(category.title)}`)}
+					>
 						{locale == 'ar' ? category.title : category.title_en}
 					</Link>
 				</li>

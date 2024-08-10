@@ -8,6 +8,7 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import { set2 } from '@/components/ui/portable-text'
 
 export default function HeroTwo({
 	pretitle,
@@ -35,7 +36,7 @@ export default function HeroTwo({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="h1 mx-auto max-w-3xl text-center font-semibold leading-tight drop-shadow-md">
+						<h1 className="h1 mx-auto max-w-3xl text-center font-semibold leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
@@ -50,7 +51,7 @@ export default function HeroTwo({
 	}
 
 	return (
-		<section className={'section py-12'}>
+		<section className="section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl bg-gradient-to-br from-white from-65% to-cyan-100/50 p-12 py-24">
 				<div
 					className={cn('richtext relative space-y-6')}
@@ -65,15 +66,17 @@ export default function HeroTwo({
 					>
 						{pretitle}
 					</Pretitle>
-					<PortableText value={content} components={components} />
-					<PortableText value={Subtitle} components={components} />
+					<PortableText value={content} components={set2} />
 					<CTAList
 						ctas={ctas}
-						className={cn({
-							'justify-start': stegaClean(textAlign) === 'left',
-							'justify-center': stegaClean(textAlign) === 'center',
-							'justify-end': stegaClean(textAlign) === 'right',
-						})}
+						className={cn(
+							{
+								'justify-start': stegaClean(textAlign) === 'left',
+								'justify-center': stegaClean(textAlign) === 'center',
+								'justify-end': stegaClean(textAlign) === 'right',
+							},
+							'*:h-12 *:px-6 *:text-lg',
+						)}
 					/>
 				</div>
 			</div>
