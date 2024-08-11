@@ -96,6 +96,7 @@ const PlansCalculator = ({
 						details={details}
 						total={total}
 						setTotal={setTotal}
+						isMonthly={isMonthly}
 					/>
 				</section>
 			</div>
