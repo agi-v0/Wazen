@@ -26,7 +26,9 @@ const CalculatorTable = ({
 		<PiFlowArrowDuotone className="text-2xl text-teal-500" />,
 	]
 
-	const [quantities, setQuantities] = useState<{ [key: string]: number }>({})
+	const [quantities, setQuantities] = useState<{ [key: string]: any}>({})
+
+	const [activateArray, setActivateArray] = useState<string[]>([])
 
 	const handleMinus = (id: any, value: any) => {
 		setQuantities((prevQuantities: { [id: string]: number }) => ({
@@ -45,15 +47,14 @@ const CalculatorTable = ({
 			[id]: (prevQuantities[id] || 0) + 1,
 		}))
 
-		activateCategory(index)
+		if (quantities[id] == 0 || quantities[id] == undefined) {
+			setActivateArray([...activateArray, index])
+		}
 
 		setTotal(total + value)
 	}
 
-	const [activateArray, setActivateArray] = useState<string[]>([])
-
 	const activateCategory = (index: any) => {
-
 		if (activateArray.includes(index)) {
 			setActivateArray(
 				activateArray.filter((item) => {
@@ -111,7 +112,7 @@ const CalculatorTable = ({
 														handlePlus(
 															row._key,
 															parseInt(row.cells[isMonthly ? 1 : 0]),
-															index
+															index,
 														)
 													}
 												>
