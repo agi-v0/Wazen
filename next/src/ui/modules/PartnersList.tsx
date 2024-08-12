@@ -41,7 +41,7 @@ export default async function Partners({
 
 	return (
 		<section className="bg-cyan-950 py-12">
-			<div className="fluid-gap section flex w-full flex-col items-center">
+			<div className="fluid-gap section flex w-full flex-col items-center text-center">
 				<PortableText value={content} components={components} />
 
 				<figure className="flex w-full flex-wrap items-center justify-evenly gap-12 overflow-visible">

@@ -58,10 +58,10 @@ export default function HowItWorks({
 	const isInView = useInView(ref, { once: true })
 
 	return (
-		<section className={'bg-teal-100 from-teal-100 to-cyan-50 py-12'}>
-			<div className="section fluid-gap flex w-full flex-col items-center justify-center rounded-xl">
+		<section className="section rounded-2xl bg-teal-100 from-teal-100 to-cyan-50 p-[var(--size--6rem)]">
+			<div className="fluid-gap flex w-full flex-col items-center justify-center rounded-xl">
 				<PortableText value={content} components={components} />
-				<ul ref={ref} className="grid w-full grid-cols-1 lg:grid-cols-3">
+				<ul ref={ref} className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
 					{steps?.map((step, index) => (
 						<motion.li
 							key={step.title}
@@ -74,19 +74,17 @@ export default function HowItWorks({
 							transition={{ type: 'easeOut', delay: index * 0.2 }}
 							className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 						>
-							<div className="grid h-64 w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-2 py-8 transition-all group-hover:bg-teal-500">
-								<Image
-									src={images[index]}
-									alt={step.title}
-									className="shadow-lg"
-								/>
-							</div>
+							<Image
+								src={images[index]}
+								alt={step.title}
+								className="grid h-auto w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/10 px-3 py-9 transition-all group-hover:bg-cyan-800"
+							/>
 							<div className="space-y-1 p-4 text-start">
-								<h3 className="text-main font-semibold text-gray-950 group-hover:text-teal-600">
-									<span className="text-gray-950/40">{index + 1}. </span>
-									{step.title}{' '}
+								<h3 className="text-main font-semibold text-cyan-950 group-hover:text-teal-600">
+									<span className="text-cyan-950/40">{index + 1}. </span>
+									{step.title}
 								</h3>
-								<p className="text-small text-gray-950/60">
+								<p className="text-small text-cyan-950/80">
 									{step.description}
 								</p>
 							</div>
