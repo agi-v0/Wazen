@@ -1,5 +1,5 @@
 'use client'
-import Statistic from '@/components/animated/statistic'
+
 import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
@@ -10,6 +10,7 @@ const MobileApp = dynamic(() =>
 const Integrations = dynamic(() =>
 	import('@/components/animated/integrations').then((mod) => mod.default),
 )
+const Reports = dynamic(() => import('@/components/animated/reports'))
 
 export default function BriefGroup({
 	briefs,
@@ -19,9 +20,9 @@ export default function BriefGroup({
 	//replace images and image components with an array of interactive components
 	const animatedComponents: any = [
 		<Sidebar />,
-		<Integrations />,
+		<Reports />,
 		<MobileApp />,
-		<Statistic />,
+		<Integrations />,
 	]
 	return (
 		<div className="bg-cyan-50 from-teal-50 from-90% to-white py-[var(--size--4rem)]">
