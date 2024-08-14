@@ -17,7 +17,7 @@ const PlansCalculator = ({
 	content: any
 	details: any
 }>) => {
-	const [isMonthly, setIsMonthly] = useState(true)
+	const [isMonthly, setIsMonthly] = useState(false)
 
 	const [total, setTotal] = useState(0)
 

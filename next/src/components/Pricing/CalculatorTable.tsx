@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
 import {
 	PiFlowArrowDuotone,
@@ -26,7 +27,7 @@ const CalculatorTable = ({
 		<PiFlowArrowDuotone className="text-2xl text-teal-500" />,
 	]
 
-	const [quantities, setQuantities] = useState<{ [key: string]: any}>({})
+	const [quantities, setQuantities] = useState<{ [key: string]: any }>({})
 
 	const [activateArray, setActivateArray] = useState<string[]>([])
 
@@ -72,7 +73,10 @@ const CalculatorTable = ({
 				return (
 					<div key={'details_' + index}>
 						<h3
-							className={`${activateArray.includes(index) ? '' : 'grayscale'} text-main sticky top-[calc(var(--header-height)+98px)] z-[1] flex cursor-pointer flex-row justify-start gap-4 rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold max-md:hidden md:order-1`}
+							className={cn(
+								'text-main sticky top-[calc(var(--header-height)+98px)] z-[1] flex cursor-pointer flex-row justify-start gap-4 rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-md:hidden md:order-1',
+								activateArray.includes(index) ? '' : 'grayscale',
+							)}
 							aria-hidden="true"
 							onClick={() => activateCategory(index)}
 						>
@@ -102,8 +106,8 @@ const CalculatorTable = ({
 												key={'cell-value' + row._key}
 												className="flex w-full flex-wrap justify-start px-6 py-2"
 											>
-												{row.cells[isMonthly ? 1 : 0]} ريال / مندوب /{' '}
-												{isMonthly ? 'شهرياً' : 'سنوياً'}
+												{row.cells[!isMonthly ? 1 : 0]} ريال / مندوب /{' '}
+												{!isMonthly ? 'شهرياً' : 'سنوياً'}
 											</div>
 											<div className="flex h-full w-full flex-row items-center justify-center gap-x-2">
 												<button
@@ -111,7 +115,7 @@ const CalculatorTable = ({
 													onClick={() =>
 														handlePlus(
 															row._key,
-															parseInt(row.cells[isMonthly ? 1 : 0]),
+															parseInt(row.cells[!isMonthly ? 1 : 0]),
 															index,
 														)
 													}
@@ -124,7 +128,7 @@ const CalculatorTable = ({
 													onClick={() =>
 														handleMinus(
 															row._key,
-															parseInt(row.cells[isMonthly ? 1 : 0]),
+															parseInt(row.cells[!isMonthly ? 1 : 0]),
 														)
 													}
 												>
@@ -133,8 +137,8 @@ const CalculatorTable = ({
 											</div>
 											<div className="flex h-full w-full flex-row items-center justify-end gap-x-2">
 												<div className="px-2">
-													{quantity * parseInt(row.cells[isMonthly ? 1 : 0])}{' '}
-													ريال / مندوب /{isMonthly ? 'شهرياً' : 'سنوياً'}
+													{quantity * parseInt(row.cells[!isMonthly ? 1 : 0])}{' '}
+													ريال / مندوب /{!isMonthly ? 'شهرياً' : 'سنوياً'}
 												</div>
 											</div>
 										</div>

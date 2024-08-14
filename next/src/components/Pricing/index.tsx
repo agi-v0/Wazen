@@ -10,7 +10,7 @@ import {
 import { PiCheckBold, PiX } from 'react-icons/pi'
 
 const Pricing = ({ plans }: any) => {
-	const [isMonthly, setIsMonthly] = useState(true)
+	const [isMonthly, setIsMonthly] = useState(false)
 
 	const PlanContent: PortableTextComponents = {
 		types: {
@@ -52,8 +52,8 @@ const Pricing = ({ plans }: any) => {
 						order={index}
 						apps={plan.apps}
 						packageName={plan.title}
-						price={isMonthly ? plan.price.monthly : plan.price.yearly}
-						duration={isMonthly ? 'شهرياً' : 'سنوياً'}
+						price={isMonthly ? plan.price.yearly : plan.price.monthly}
+						duration={isMonthly ? 'سنوياً' : 'شهرياً'}
 						subtitle={plan.highlight}
 						ctas={plan.ctas}
 					>

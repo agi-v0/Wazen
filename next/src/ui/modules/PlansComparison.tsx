@@ -77,7 +77,7 @@ const PlansComparison = ({
 											ريال
 											<span className="text-lg font-semibold text-gray-400">
 												{' '}
-												/{isMonthly ? 'شهرياً' : 'سنوياً'}
+												/{isMonthly ? 'سنوياً' : 'شهرياً'}
 											</span>
 										</p>
 										<button
@@ -119,7 +119,7 @@ const PlansComparison = ({
 																className={cn(
 																	'flex w-full flex-wrap items-center justify-end px-6 py-3 text-end',
 																	index == 1
-																		? 'bg-teal-100 text-cyan-950/80'
+																		? 'bg-teal-50 text-cyan-950/80'
 																		: '',
 																)}
 															>
@@ -143,7 +143,7 @@ const PlansComparison = ({
 																	'flex w-full flex-wrap items-center justify-end px-6 py-3 text-end',
 
 																	index == 1
-																		? 'bg-teal-100 text-cyan-950/80'
+																		? 'bg-teal-50 text-cyan-950/80'
 																		: '',
 																)}
 															>
