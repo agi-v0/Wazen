@@ -66,7 +66,7 @@ const Pricing = ({ plans }: any) => {
 											className="flex flex-row items-center gap-2 text-sm text-gray-600"
 										>
 											{feature.active ? (
-												<PiCheckCircle className="text-gray-600" />
+												<PiCheckBold className="text-gray-600" />
 											) : (
 												<PiX className="text-gray-500" />
 											)}
