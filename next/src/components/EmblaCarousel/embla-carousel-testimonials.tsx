@@ -168,8 +168,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 											author?.image ? 'items-start' : 'items-center',
 										)}
 									>
-										<p className="font-medium">{clean(author.name)}</p>
-										<p className="text-cyan-950/60">{clean(author.title)}</p>
+										{author && (
+											<>
+												<p className="font-medium">{clean(author.name)}</p>
+												<p className="text-cyan-950/60">
+													{author?.title && clean(author.title)}
+												</p>
+											</>
+										)}
 									</div>
 									<Img
 										loading="lazy"
