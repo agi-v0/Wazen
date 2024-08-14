@@ -38,6 +38,7 @@ const Benefits = dynamic(() => import('./Benefits'))
 const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
 const Brief = dynamic(() => import('./Brief'))
 const TestimonialList = dynamic(() => import('./TestimonialList'))
+const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
@@ -114,6 +115,14 @@ export default function Modules({
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
+					case 'testimonial-list-two':
+						return (
+							<TestimonialListTwo
+								{...module}
+								key={module._key}
+								locale={locale}
+							/>
+						)
 					case 'product-list':
 						return <ProductList {...module} key={module._key} />
 					default:

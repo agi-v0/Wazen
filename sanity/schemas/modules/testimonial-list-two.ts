@@ -3,8 +3,8 @@ import { GrBlockQuote } from 'react-icons/gr'
 import { count, getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'testimonial-list',
-	title: 'Testimonial list',
+	name: 'testimonial-list-two',
+	title: 'Testimonial list two',
 	icon: GrBlockQuote,
 	type: 'object',
 	fields: [

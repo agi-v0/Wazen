@@ -63,6 +63,9 @@
 		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 
+	.text-larger {
+		font-size: var(--text-larger--font-size);
+	}
 	.text-large {
 		font-size: var(--text-large--font-size);
 	}

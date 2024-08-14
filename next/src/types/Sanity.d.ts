@@ -57,10 +57,10 @@ declare global {
 
 		type Testimonial = SanityDocument<{
 			content: any
-			author?: {
+			author: {
 				name: string
-				title?: string
-				image?: Image
+				title: string
+				image: Image
 			}
 		}>
 

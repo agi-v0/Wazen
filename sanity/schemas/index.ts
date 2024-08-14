@@ -51,6 +51,7 @@ import pricingComparison from './modules/pricing-comparison'
 import pricing from './documents/pricing'
 import featuresGrid2 from './modules/features-grid-2'
 import benefitsBanner from './modules/benefits-banner'
+import testimonialListTwo from './modules/testimonial-list-two'
 
 export const schemaTypes = [
 	// documents
@@ -101,6 +102,7 @@ export const schemaTypes = [
 	callToAction,
 	steps,
 	testimonialList,
+	testimonialListTwo,
 	howItWorks,
 	featuresGrid,
 	featuresGrid2,
