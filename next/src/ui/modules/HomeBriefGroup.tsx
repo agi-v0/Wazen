@@ -1,4 +1,5 @@
 'use client'
+import Statistic from '@/components/animated/statistic'
 import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
@@ -20,7 +21,7 @@ export default function BriefGroup({
 		<Sidebar />,
 		<Integrations />,
 		<MobileApp />,
-		<Integrations />,
+		<Statistic />,
 	]
 	return (
 		<div className="bg-cyan-50 from-teal-50 from-90% to-white py-[var(--size--4rem)]">
