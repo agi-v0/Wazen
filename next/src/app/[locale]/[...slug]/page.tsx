@@ -74,13 +74,13 @@ async function getPage(params: Props['params']) {
 			},
 			metadata {
 				...,
-				'ogimage': image.asset->url
+				'ogimage': image.asset->url + '?w=1200'
 			}
 		}`,
 		{
 			params: {
 				locale: params.locale,
-				slug: params.slug.join('/'),
+				slug: params.slug?.join('/'),
 			},
 			tags: ['pages'],
 		},

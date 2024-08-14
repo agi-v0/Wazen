@@ -11,20 +11,17 @@ export default function PostPreview({
 	post: Sanity.BlogPost
 	locale: any
 }) {
-
 	const categoryTitle: any =
-	locale == 'ar'
-		? post?.categories[0]?.title
-		: post?.categories[0]?.title_en
+		locale == 'ar' ? post?.categories[0]?.title : post?.categories[0]?.title_en
 
-	const t = useTranslations("Blog")
+	const t = useTranslations('Blog')
 
 	return (
 		<Link
 			href={`/${locale}/blog/${post.metadata?.slug?.current}`}
 			className="group w-full md:h-full"
 		>
-			<div className="flex flex-col gap-3 rounded-lg bg-white">
+			<div className="flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 group-hover:shadow-lg">
 				{/* {post.metadata.image ? (
 					<Img
 						image={post.metadata.image}
@@ -40,28 +37,26 @@ export default function PostPreview({
 						className="h-[190px] rounded-md object-cover"
 					/>
 				)} */}
-				<div className="flex flex-col gap-3 p-3">
-					<div className="flex gap-2 text-sm font-medium">
-						{post?.categories && (
-							<div className="w-fit rounded-full border-2 border-teal-500/20 px-3 py-1 text-teal-600">
-								{categoryTitle}
-							</div>
-						)}
-						<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
-							<Date value={post.publishDate} locale={locale} />
+				{/* <div className="flex items-center gap-2 text-sm font-medium">
+					{post?.categories && (
+						<div className="w-fit rounded-full border-2 border-teal-500/20 px-3 py-1 text-teal-600">
+							{categoryTitle}
 						</div>
-					</div>
-					<div className="text-large font-semibold text-gray-600 group-hover:text-cyan-950">
-						{post.title.slice(0, 64) + (post.title.length > 100 ? ' ...' : '')}
-					</div>
-					<div className="text-base text-gray-600">
-						{post.body[0]?.children[0] &&
-							post.body[0].children[0].text.slice(0, 160) + ' ...'}
-					</div>
-					<div className="group text-teal-600">
-						{t("إقرأ المزيد")}
-						<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
-					</div>
+					)}
+				</div> */}
+				<div className="w-fit rounded-full text-gray-400">
+					<Date value={post.publishDate} locale={locale} />
+				</div>
+				<p className="text-large font-semibold text-cyan-950 group-hover:text-teal-600">
+					{post.title.slice(0, 64) + (post.title.length > 100 ? ' ...' : '')}
+				</p>
+				<p className="text-base text-cyan-950/60">
+					{post.body[0]?.children[0] &&
+						post.body[0].children[0].text.slice(0, 160) + ' ...'}
+				</p>
+				<div className="group font-medium text-cyan-950/80 transition-all group-hover:text-teal-600">
+					{t('إقرأ المزيد')}
+					<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
 				</div>
 			</div>
 		</Link>

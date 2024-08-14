@@ -9,9 +9,9 @@ export const ContainerScroll = ({
 }) => {
 	const containerRef = useRef<any>(null)
 	const { scrollYProgress } = useScroll()
-	{
-		target: containerRef
-	}
+	// {
+	// 	target: containerRef
+	// }
 	const [isMobile, setIsMobile] = React.useState(false)
 
 	React.useEffect(() => {
@@ -35,7 +35,7 @@ export const ContainerScroll = ({
 
 	return (
 		<div
-			className="relative mx-auto flex w-[90%] items-center justify-center"
+			className="relative mx-auto flex w-[85%] items-center justify-center"
 			ref={containerRef}
 		>
 			<div

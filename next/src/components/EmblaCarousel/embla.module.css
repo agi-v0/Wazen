@@ -1,9 +1,11 @@
 .embla {
 	/* max-width: 48rem; */
+	max-width: 100%;
 	margin: auto;
 	/* --slide-height: 19rem; */
 	--slide-spacing: var(--padding-horizontal--main);
-	--slide-size: 55%;
+	--slide-size: 100%;
+	padding: 0 var(--padding-horizontal--main);
 }
 .embla__viewport {
 	overflow: hidden;
@@ -15,9 +17,10 @@
 	margin-left: calc(var(--slide-spacing) * -1);
 }
 .embla__slide {
-	flex: 0 0 40%;
+	transform: translate3d(0, 0, 0);
+	flex: 0 0 var(--slide-size);
 	min-width: 0;
-	aspect-ratio: 2/1;
+	max-width: 1280px;
 	padding-left: var(--slide-spacing);
 }
 @media (min-width: 768px) {
@@ -33,10 +36,10 @@
 .embla__button {
 	text-decoration: none;
 	z-index: 1;
-	@apply flex size-8 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-transparent text-cyan-950/40 transition-all hover:text-cyan-950;
+	@apply flex size-8 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-transparent p-2 text-cyan-950 transition-all hover:bg-gray-200 hover:text-cyan-950;
 }
 .embla__button:disabled {
-	color: theme(colors.gray.500);
+	color: theme(colors.gray.400);
 }
 .embla__dots {
 	display: flex;
@@ -55,8 +58,8 @@
 }
 .embla__dot:after {
 	content: '';
-	@apply flex size-1 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-cyan-950/40 transition-all hover:bg-cyan-950;
+	@apply flex size-2 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-gray-200 transition-all hover:bg-cyan-950;
 }
 .embla__dot--selected:after {
-	@apply size-2 bg-cyan-950;
+	@apply w-4 bg-cyan-950;
 }

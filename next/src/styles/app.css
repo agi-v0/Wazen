@@ -63,6 +63,9 @@
 		@apply font-semibold leading-snug ltr:tracking-tighter;
 	}
 
+	.text-larger {
+		font-size: var(--text-larger--font-size);
+	}
 	.text-large {
 		font-size: var(--text-large--font-size);
 	}
@@ -186,7 +189,7 @@
 	}
 }
 
-/* .hero-background {
+.hero-background {
 	background-image: linear-gradient(to bottom, transparent, white),
 		radial-gradient(
 			ellipse at top center,
@@ -194,7 +197,7 @@
 			#2dd4bf 60%,
 			#f0fdfa 100%
 		);
-} */
+}
 .brief-background {
 	background: linear-gradient(
 		to bottom right,

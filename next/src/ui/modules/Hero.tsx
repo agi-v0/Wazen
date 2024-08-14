@@ -1,4 +1,6 @@
-import Img, { Source } from '@/ui/Img'
+import Image from 'next/image'
+import { stegaClean } from '@sanity/client/stega'
+import { cn } from '@/lib/utils'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -7,13 +9,10 @@ import {
 import CTAList from '@/ui/CTAList'
 import CTA from '../CTA'
 import Pretitle from '@/ui/Pretitle'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import Image from 'next/image'
-import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
 import { set1 } from '@/components/ui/portable-text'
+import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 
 export default function Hero({
 	pretitle,
@@ -34,20 +33,20 @@ export default function Hero({
 }>) {
 	return (
 		<section
-			className="relative min-h-screen"
+			className="hero-background relative min-h-screen"
 			style={{
 				backgroundImage: `linear-gradient(to bottom, transparent, white),
-												radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #f0fdfa 100%)`,
+												radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #ffffff 100%)`,
 			}}
 		>
-			{/* <div className="absolute top-0 h-full w-full">
+			<div className="absolute top-0 h-full w-full">
 				<Image
 					src={lightray}
 					alt="hero"
-					className="pointer-events-none fixed left-0 right-0 top-0 mx-auto h-screen w-full object-cover mix-blend-overlay"
+					className="pointer-events-none sticky left-0 right-0 top-0 mx-auto h-screen w-full object-cover mix-blend-overlay"
 					draggable={false}
 				/>
-			</div> */}
+			</div>
 			<div className="section relative flex w-full flex-col justify-center">
 				<div
 					className={cn('richtext relative space-y-6 pt-[25vh] text-white')}

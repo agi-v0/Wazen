@@ -9,6 +9,7 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from 'react-icons/pi'
 import Img from '../Img'
+import { cn } from '@/lib/utils'
 
 export default function ProductList({
 	pretitle,
@@ -48,6 +49,12 @@ export default function ProductList({
 			},
 		},
 	}
+	const hoverColors = [
+		'group-hover:bg-cyan-200',
+		'group-hover:bg-yellow-200',
+		'group-hover:bg-indigo-200',
+		'group-hover:bg-teal-200',
+	]
 
 	return (
 		<section className={'fluid-vertical-space bg-white'}>
@@ -76,16 +83,17 @@ export default function ProductList({
 										params: product.link.params,
 									})}
 								>
-									<div className="grid w-full place-items-center overflow-hidden rounded-lg bg-cyan-950/20 px-2 py-8">
-										<Img
-											image={product.productImage}
-											alt={product.productTitle}
-											width={100}
-											height={100}
-											className="my-auto h-auto w-full object-scale-down object-center"
-											loading="lazy"
-										/>
-									</div>
+									<Img
+										image={product.productImage}
+										alt={product.productTitle}
+										width={100}
+										height={100}
+										className={cn(
+											'my-auto grid h-auto w-full place-items-center overflow-hidden rounded-xl bg-cyan-950/20 object-scale-down object-center px-4 py-6',
+											'group-hover:bg-cyan-800',
+										)}
+										loading="lazy"
+									/>
 									<div className="space-y-1 p-4 text-start">
 										<h3 className="text-main font-semibold group-hover:text-teal-600">
 											{product.productTitle}

@@ -122,7 +122,7 @@ export default function Benefits({
 					<Img
 						image={imageList}
 						imageWidth={640}
-						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-lg border-8 border-white object-cover shadow-md"
+						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md"
 					/>
 				</div>
 			</motion.div>

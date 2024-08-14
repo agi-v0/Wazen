@@ -47,6 +47,7 @@ export default defineType({
 				{ type: 'call.to.action' },
 				{ type: 'steps' },
 				{ type: 'testimonial-list' },
+				{ type: 'testimonial-list-two' },
 				{ type: 'how-it-works' },
 				{ type: 'features-grid' },
 				{ type: 'features-grid-2' },

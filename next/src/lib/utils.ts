@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { stegaClean } from '@sanity/client/stega'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -12,4 +13,8 @@ export function slug(str: string) {
 			// .replace(/[\s\W]+/g, '-')
 			.replace(/-$/, '')
 	)
+}
+
+export function clean(inputs: string) {
+	return stegaClean(inputs)
 }

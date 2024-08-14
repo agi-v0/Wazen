@@ -1,3 +1,4 @@
+'use client'
 import dynamic from 'next/dynamic'
 import {
 	PortableText,
@@ -67,7 +68,7 @@ export default function Applications({
 				<PortableText value={content} components={components} />
 			</div>
 			<div className="" dir={direction}>
-				{/* <EmblaCarousel slides={links} options={OPTIONS} locale={locale} /> */}
+				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
 					direction={'right'}
 					speed={'slow'}

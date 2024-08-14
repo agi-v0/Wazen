@@ -11,15 +11,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			]|order(metadata.slug.current){
 				'url': $baseUrl + select(metadata.slug.current == 'index' => '', metadata.slug.current),
 				'lastModified': _updatedAt,
+				'alternates': {
+						'languages': {
+							'en': $baseUrl + 'en/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+							'ar': $baseUrl + 'ar/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						}
+				},
 				'priority': select(
 					metadata.slug.current == 'index' => 1,
 					0.5
 				),
+				
 			},
 			'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(name){
 				'url': $baseUrl + 'blog/' + metadata.slug.current,
 				'lastModified': _updatedAt,
-				'priority': 0.4
+				
+				'alternates': {
+						'languages': {
+							'en': $baseUrl + 'en/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+							'ar': $baseUrl + 'ar/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						}
+				},
+				'priority': 0.4,
 			}
 		}`,
 		{
