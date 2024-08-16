@@ -21,6 +21,9 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('blog.category').title('Blog categories'),
 			S.divider(),
 
+			S.documentTypeListItem('app.store.app').title('App store apps'),
+			S.divider(),
+
 			group(S, 'Miscellaneous', [
 				S.documentTypeListItem('logo').title('Logos'),
 				S.documentTypeListItem('partnerslogos').title('Partners Logos'),
