@@ -1,12 +1,12 @@
 {
-  "Index": {
-    "Translated Text": "Translated Text"
-  },
-  "Blog": {
-    "إقرأ المزيد": "Read More",
-    "تصفح المزيد": "Read More"
-  },
-  "Contact": {
-    "الإسم الاول": "First Name"
-  }
+	"Index": {
+		"Translated Text": "Translated Text"
+	},
+	"Blog": {
+		"Read more": "Read More",
+		"View more": "View More"
+	},
+	"Contact": {
+		"First name": "First Name"
+	}
 }

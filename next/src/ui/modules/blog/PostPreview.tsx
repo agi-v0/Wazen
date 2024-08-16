@@ -44,19 +44,19 @@ export default function PostPreview({
 						</div>
 					)}
 				</div> */}
-				<div className="w-fit rounded-full text-gray-400">
+				<div className="w-fit rounded-full text-sm text-gray-400">
 					<Date value={post.publishDate} locale={locale} />
 				</div>
 				<p className="text-large font-semibold text-cyan-950 group-hover:text-teal-600">
 					{post.title.slice(0, 64) + (post.title.length > 100 ? ' ...' : '')}
 				</p>
-				<p className="text-base text-cyan-950/60">
+				<p className="text-base text-cyan-950/60 group-hover:text-cyan-950/80">
 					{post.body[0]?.children[0] &&
 						post.body[0].children[0].text.slice(0, 160) + ' ...'}
 				</p>
 				<div className="group font-medium text-cyan-950/80 transition-all group-hover:text-teal-600">
-					{t('إقرأ المزيد')}
-					<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-open:rotate-90 group-hover:-translate-x-[2px] group-hover:opacity-100" />
+					{t('Read more')}
+					<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]" />
 				</div>
 			</div>
 		</Link>

@@ -100,7 +100,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'mainTitle',
+			content: 'content',
 			media: 'bgImage',
 		},
 		prepare: ({ content, media }) => ({

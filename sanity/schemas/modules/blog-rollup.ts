@@ -40,7 +40,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'category[0].title',
+			content: 'category.0.title',
 		},
 		prepare: ({ content }) => ({
 			title: content,
