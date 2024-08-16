@@ -34,7 +34,7 @@ export default async function AppStoreRollup({
 
 	if (apps)
 		return (
-			<section className="bg-white">
+			<section className="">
 				<div className="section fluid-gap flex flex-col items-center py-[var(--size--4rem)]">
 					<ul
 						className={cn(
