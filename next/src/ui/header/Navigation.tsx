@@ -5,7 +5,7 @@ import LinkGroup from './LinkGroup'
 import processUrl from '@/lib/processUrl'
 
 import * as React from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 
 import { cn } from '@/lib/utils'
 // import { Icons } from '@/components/icons'
@@ -41,13 +41,11 @@ export async function Navigation({
 							return (
 								<NavigationMenuItem key={key}>
 									<Link
-										href={
-											locale +
-											processUrl(item.internal, {
-												base: false,
-												params: item.params,
-											})
-										}
+										locale={locale as 'en' | 'ar'}
+										href={processUrl(item.internal, {
+											base: false,
+											params: item.params,
+										})}
 										legacyBehavior
 										passHref
 									>
