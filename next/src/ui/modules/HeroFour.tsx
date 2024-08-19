@@ -4,7 +4,7 @@ import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { set1, set2 } from '@/components/ui/portable-text'
+import { hero, set2 } from '@/components/ui/portable-text'
 import { urlFor } from '@/lib/sanity/urlFor'
 
 export default function HeroPostcard({

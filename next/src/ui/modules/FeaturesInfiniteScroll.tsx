@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 import dynamic from 'next/dynamic'
 import {
 	PortableText,
@@ -8,14 +8,83 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import { EmblaOptionsType } from 'embla-carousel'
-import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
+// import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import { set2 } from '@/components/ui/portable-text'
+import { useTranslations } from 'next-intl'
 
-const EmblaCarousel = dynamic(
-	() => import('@/components/EmblaCarousel/EmblaCarousel'),
+const InfiniteMovingCards = dynamic(
+	() => import('@/components/animated/infinite-moving-cards-apps'),
 )
 
-export default function Applications({
+const Features = (): { title: string; icon: string }[] => {
+	const t = useTranslations('FeaturesInfiniteScroll')
+	return [
+		{
+			title: t('Check in and check out'),
+			icon: 'PiUserCheck',
+		},
+		{
+			title: t('Employee info'),
+			icon: 'PiIdentificationCard',
+		},
+		{
+			title: t('Housing and accomodation'),
+			icon: 'PiBuildingOffice',
+		},
+		{
+			title: t('Insurance'),
+			icon: 'PiShieldCheck',
+		},
+		{
+			title: t('Salaries'),
+			icon: 'PiMoney',
+		},
+
+		{
+			title: t('Leads'),
+			icon: 'PiFlagPennant',
+		},
+		{
+			title: t('Contracts'),
+			icon: 'PiScroll',
+		},
+		{
+			title: t('Subscriptions'),
+			icon: 'PiCalendarDots',
+		},
+		{
+			title: t('Clients'),
+			icon: 'PiUserRectangle',
+		},
+		{
+			title: t('SMS and Whatsapp'),
+			icon: 'PiChatCircleText',
+		},
+
+		{
+			title: t('Sales'),
+			icon: 'PiMoney',
+		},
+		{
+			title: t('Purchases'),
+			icon: 'PiMinusSquare',
+		},
+		{
+			title: t('Inventory'),
+			icon: 'PiWarehouse',
+		},
+		{
+			title: t('Financial lists'),
+			icon: 'PiInvoice',
+		},
+		{
+			title: t('Cost centers'),
+			icon: 'PiChartPie',
+		},
+	]
+}
+
+export default function FeaturesInfiniteScroll({
 	pretitle,
 	content,
 	cards,
@@ -32,6 +101,8 @@ export default function Applications({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
+	const t = useTranslations('Blog')
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -70,13 +141,25 @@ export default function Applications({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div className="" dir={direction}>
+			<div className="space-y-6" dir={direction}>
 				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
-					direction={'right'}
-					speed={'slow'}
+					direction="right"
+					speed="slow"
 					pauseOnHover={true}
-					items={cards}
+					items={Features().slice(0, 5)}
+				/>
+				<InfiniteMovingCards
+					direction="left"
+					speed="slow"
+					pauseOnHover={true}
+					items={Features().slice(5, 10)}
+				/>
+				<InfiniteMovingCards
+					direction="right"
+					speed="slow"
+					pauseOnHover={true}
+					items={Features().slice(10, 15)}
 				/>
 			</div>
 		</section>

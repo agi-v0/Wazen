@@ -36,16 +36,70 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'cards',
+			name: 'chips',
 			type: 'array',
 			of: [
 				defineArrayMember({
 					type: 'object',
 					fields: [
 						defineField({
+							name: 'icon',
+							title: 'Icon (Phosphor icons)',
+							description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
+							type: 'icon',
+						}),
+						defineField({
 							name: 'image',
 							title: 'Image',
 							type: 'image',
+						}),
+						defineField({
+							name: 'title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'description',
+							type: 'text',
+						}),
+						defineField({
+							name: 'link',
+							type: 'link',
+						}),
+					],
+					preview: {
+						select: {
+							card: 'title',
+							description: 'description',
+							image: 'image',
+						},
+						prepare: ({ card, description, image }) => ({
+							title: card,
+							subtitle: description,
+							media: image,
+						}),
+					},
+				}),
+			],
+			group: 'content',
+			options: {
+				advanced: {
+					select: true,
+				},
+			},
+		}),
+		defineField({
+			name: 'alternativeApps',
+			title: 'Apps replaced by Wazen',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'icon',
+							title: 'Icon (Phosphor icons)',
+							description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
+							type: 'icon',
 						}),
 						defineField({
 							name: 'title',

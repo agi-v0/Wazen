@@ -23,7 +23,7 @@ export default function BriefGroup({
 		<Integrations />,
 	]
 	return (
-		<div className="bg-cyan-50 from-teal-50 from-90% to-white py-[var(--size--4rem)]">
+		<div className="bg-white py-[var(--size--4-5rem)]">
 			{briefs?.map((brief, index) => (
 				<Brief
 					{...brief}

@@ -33,6 +33,7 @@ import PlansComparison from './PlansComparison'
 import BenefitsBanner from './BenefitsBanner'
 import CallToActionTwo from './CallToActionTwo'
 import AppStoreRollup from './app-store/Rollup'
+import FeaturesInfiniteScroll from './FeaturesInfiniteScroll'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -58,7 +59,11 @@ export default function Modules({
 				switch (module._type) {
 					case 'applications':
 						return (
-							<Applications {...module} key={module._key} locale={locale} />
+							<FeaturesInfiniteScroll
+								{...module}
+								key={module._key}
+								locale={locale}
+							/>
 						)
 					case 'app-store-rollup':
 						return <AppStoreRollup {...module} key={module._key} />

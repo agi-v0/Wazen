@@ -4,7 +4,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 
-export const set1: PortableTextComponents = {
+export const hero: PortableTextComponents = {
 	types: {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
 			if (value.style === 'h1') {
@@ -35,13 +35,13 @@ export const set2: PortableTextComponents = {
 			}
 			if (value.style === 'h2') {
 				return (
-					<h2 className="h1 font-semibold leading-tight text-cyan-950">
+					<h2 className="h2 font-semibold leading-tight text-cyan-950">
 						{value.children.map((child: any) => child.text).join('')}
 					</h2>
 				)
 			}
 			return (
-				<p className="text-large mx-auto max-w-xl text-balance text-cyan-950/60 md:max-w-3xl rtl:leading-snug">
+				<p className="text-large text-cyan-950/80 rtl:leading-snug">
 					{value.children.map((child: any) => child.text).join('')}
 				</p>
 			)
