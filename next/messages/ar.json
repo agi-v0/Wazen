@@ -29,6 +29,13 @@
 		"Purchases": "المشتريات",
 		"Inventory": "المخزون",
 		"Financial lists": "القوائم المالية",
-		"Cost centers": "مراكز التكلفة"
+		"Cost centers": "مراكز التكلفة",
+
+		"Replaces": "يغنيك عن",
+		"Wafeq": "وافق",
+		"Edara": "إدارة",
+		"Odoo": "أودو",
+		"Qoyod": "قيود",
+		"Daftra": "دفترة"
 	}
 }

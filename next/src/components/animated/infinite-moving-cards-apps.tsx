@@ -85,12 +85,12 @@ export default function InfiniteMovingCards({
 	return (
 		<div
 			ref={containerRef}
-			className="flex w-full flex-col items-center justify-evenly overflow-x-hidden"
+			className="flex w-full flex-col items-center justify-center overflow-x-hidden"
 		>
 			<ul
 				ref={scrollerRef}
 				className={cn(
-					'flex w-max min-w-full shrink-0 flex-nowrap gap-4',
+					'mx-auto flex w-max min-w-full shrink-0 flex-nowrap gap-4',
 					start && 'animate-scroll',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
