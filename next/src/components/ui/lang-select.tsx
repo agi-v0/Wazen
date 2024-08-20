@@ -4,8 +4,18 @@ import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { useTransition } from 'react'
 import { useRouter, usePathname } from '../../i18n/navigations'
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+	navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 import { PiCaretRightBold, PiGlobe } from 'react-icons/pi'
 import InteractiveDetails from '@/ui/header/InteractiveDetails'
+import { cn } from '@/lib/utils'
 
 const LangSelect = () => {
 	const locale = useLocale()
@@ -28,8 +38,8 @@ const LangSelect = () => {
 	}
 
 	return (
-		<div>
-			<div className="flex items-center">
+		<>
+			{/* <div className="flex items-center">
 				<InteractiveDetails className="group relative">
 					<summary className="group flex h-8 items-center gap-1 rounded-md px-3 text-cyan-950/80 no-underline transition-all hover:bg-teal-50 hover:text-cyan-700">
 						<PiGlobe />
@@ -52,8 +62,46 @@ const LangSelect = () => {
 						</li>
 					</ul>
 				</InteractiveDetails>
-			</div>
-		</div>
+			</div> */}
+			<NavigationMenu dir={locale == 'en' ? 'ltr' : 'rtl'}>
+				<NavigationMenuList>
+					<NavigationMenuItem>
+						<NavigationMenuTrigger className="group flex flex-row items-center justify-center gap-1">
+							<PiGlobe />
+							{locale == 'ar' ? 'AR' : 'EN'}
+						</NavigationMenuTrigger>
+						<NavigationMenuContent>
+							<ul className={cn('grid gap-1 p-4')}>
+								<NavigationMenuItem>
+									<NavigationMenuLink
+										onClick={() => onSelectChange('ar')}
+										className={navigationMenuTriggerStyle()}
+									>
+										عربي
+									</NavigationMenuLink>
+								</NavigationMenuItem>
+								<NavigationMenuItem>
+									<NavigationMenuLink
+										onClick={() => onSelectChange('en')}
+										className={navigationMenuTriggerStyle()}
+									>
+										English
+									</NavigationMenuLink>
+								</NavigationMenuItem>
+							</ul>
+						</NavigationMenuContent>
+
+						{/* <ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[400px] md:min-w-max md:flex-row md:backdrop-blur">
+				{links
+					?.slice(0, 2)
+					.map((label: any, key: any) => (
+						<NavItemList {...label} key={key} locale={locale} />
+					))}
+			</ul> */}
+					</NavigationMenuItem>
+				</NavigationMenuList>
+			</NavigationMenu>
+		</>
 	)
 }
 

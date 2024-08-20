@@ -27,14 +27,18 @@ export default async function Header({
 				}
 			>
 				<div className="flex flex-row items-center justify-start gap-4 max-lg:w-full max-lg:justify-between">
-					<Link className="font-bold" href="/">
+					<Link
+						className=""
+						href="/"
+						aria-label={locale == 'en' ? 'Homepage' : 'الصفحة الرئيسية'}
+					>
 						<Logo />
 					</Link>
 					<Toggle />
 				</div>
 				{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 				<div className="flex w-full flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row lg:justify-end">
-					{/* <LangSelect /> */}
+					<LangSelect />
 					<CTAList className="max-md:*:w-full" ctas={ctas} />
 				</div>
 			</div>

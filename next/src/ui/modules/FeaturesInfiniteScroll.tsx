@@ -267,7 +267,7 @@ export default function FeaturesInfiniteScroll({
 				/>
 			</div>
 			<div className="section space-y-6">
-				<p className="text-large mx-auto text-center font-semibold uppercase text-cyan-950">
+				<p className="mx-auto text-center font-semibold uppercase text-gray-500">
 					{t('Replaces')}
 				</p>
 				<ul className="flex flex-row flex-wrap -items-center justify-center gap-4">
