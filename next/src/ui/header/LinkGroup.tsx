@@ -20,7 +20,8 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 // import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
-	console.log(links?.[0].links?.length)
+	const linkCount = links?.[0]?.links && links?.[0].links.length
+	console.log('linkCount', linkCount)
 	return (
 		<NavigationMenuItem key={label} className="w-full">
 			<NavigationMenuTrigger className="group relative">
@@ -30,14 +31,14 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 				<ScrollArea
 					className={cn(
 						'max-lg:h-[500px]',
-						links?.[0]?.links?.length < 6 ? 'max-lg:h-fit' : '',
+						linkCount && linkCount < 6 ? 'max-lg:h-fit' : '',
 					)}
 					dir={locale == 'en' ? 'ltr' : 'rtl'}
 				>
 					<ul
 						className={cn(
 							'grid gap-1 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px]',
-							links?.[0]?.links?.length < 6
+							linkCount && linkCount < 6
 								? 'md:grid-cols-1 lg:w-48'
 								: 'md:grid-cols-2',
 						)}
