@@ -8,23 +8,25 @@ import { cn } from '@/lib/utils'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
+	NavigationMenuIndicator,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
+	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 	return (
-		<NavigationMenuItem key={label}>
+		<NavigationMenuItem key={label} className="w-full">
 			<NavigationMenuTrigger className="group relative">
 				{label}
 			</NavigationMenuTrigger>
-			<NavigationMenuContent>
+			<NavigationMenuContent className="max-lg:w-full">
 				<ScrollArea
-					className="max-md:h-[500px] max-md:w-full"
+					className="max-lg:h-[500px]"
 					dir={locale == 'en' ? 'ltr' : 'rtl'}
 				>
 					{links && (

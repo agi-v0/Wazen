@@ -14,20 +14,34 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
+	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 import { ScrollArea } from '@/components/ui/scroll-area'
 // import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
+	console.log(links?.[0].links?.length)
 	return (
-		<NavigationMenuItem key={label}>
-			<NavigationMenuTrigger>{label}</NavigationMenuTrigger>
-			<NavigationMenuContent>
+		<NavigationMenuItem key={label} className="w-full">
+			<NavigationMenuTrigger className="group relative">
+				{label}
+			</NavigationMenuTrigger>
+			<NavigationMenuContent className="max-lg:w-full">
 				<ScrollArea
-					className="max-md:h-[400px] max-md:w-full"
+					className={cn(
+						'max-lg:h-[500px]',
+						links?.[0]?.links?.length < 6 ? 'max-lg:h-fit' : '',
+					)}
 					dir={locale == 'en' ? 'ltr' : 'rtl'}
 				>
-					<ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+					<ul
+						className={cn(
+							'grid gap-1 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px]',
+							links?.[0]?.links?.length < 6
+								? 'md:grid-cols-1 lg:w-48'
+								: 'md:grid-cols-2',
+						)}
+					>
 						{links?.[0].links?.map((item: any) => (
 							<NavigationMenuItem key={item.label}>
 								<Link

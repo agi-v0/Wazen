@@ -40,7 +40,7 @@ function SideBar() {
 				<Icon icon="PiTable" className="size-6" />
 				<p>النظام الحسابي</p>
 			</div>
-			<div className="customScrollbar relative mx-3 h-full overflow-hidden border-red-300 pt-12">
+			<div className="customScrollbar relative mx-3 h-full overflow-hidden pt-12">
 				<ul className="text-main -border mb-3 me-3 border-sky-300">
 					{list.map((item) => (
 						<li

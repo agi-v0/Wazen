@@ -41,7 +41,7 @@ const LangSelect = () => {
 		<>
 			<NavigationMenu
 				dir={locale == 'en' ? 'ltr' : 'rtl'}
-				className="flex-none"
+				className="z-0 flex-none"
 			>
 				<NavigationMenuList>
 					<NavigationMenuItem>
