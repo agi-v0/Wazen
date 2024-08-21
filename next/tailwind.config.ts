@@ -58,6 +58,7 @@ const config: Config = {
 		plugin(function ({ addVariant }: any) {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
 		}),
+		require('tailwindcss-animate'),
 		addVariablesForColors,
 	],
 	safelist: ['primary', 'secondary', 'tertiary'],
