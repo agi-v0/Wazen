@@ -19,7 +19,7 @@ const PlansCalculator = ({
 }>) => {
 	const [isMonthly, setIsMonthly] = useState(false)
 
-	const [total, setTotal] = useState(0)
+	const [total, setTotal] = useState<number>(0)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -76,7 +76,6 @@ const PlansCalculator = ({
 				<section>
 					<CalculatorTable
 						details={details}
-						total={total}
 						setTotal={setTotal}
 						isMonthly={isMonthly}
 					/>

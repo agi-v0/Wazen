@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	PiFlowArrowDuotone,
 	PiIdentificationCardDuotone,
@@ -11,12 +11,10 @@ import {
 
 const CalculatorTable = ({
 	details,
-	total,
 	setTotal,
 	isMonthly,
 }: {
 	details: any
-	total: any
 	setTotal: any
 	isMonthly: any
 }) => {
@@ -29,17 +27,35 @@ const CalculatorTable = ({
 
 	const [quantities, setQuantities] = useState<{ [key: string]: any }>({})
 
-	const [activateArray, setActivateArray] = useState<string[]>([])
+	const [categoryTotalObj, setCategoryTotalObj] = useState<{
+		[key: string]: any[]
+	}>({})
 
-	const handleMinus = (id: any, value: any) => {
+	const [categoryTotal, setCategoryTotal] = useState<{ [key: string]: number }>(
+		{},
+	)
+
+	const [activateArray, setActivateArray] = useState<number[]>([])
+
+	const handleMinus = (id: any, value: any, index: any) => {
 		setQuantities((prevQuantities: { [id: string]: number }) => ({
 			...prevQuantities,
 			[id]: Math.max(0, (prevQuantities[id] || 0) - 1),
 		}))
 
-		if (quantities[id] > 0) {
-			setTotal(total - value)
-		}
+		setCategoryTotalObj((prev) => {
+			const updatedArray = [...prev[index]]
+			const valueIndex = updatedArray.findIndex((item) => item === value)
+
+			if (valueIndex !== -1) {
+				updatedArray.splice(valueIndex, 1)
+			}
+
+			return {
+				...prev,
+				[index]: updatedArray,
+			}
+		})
 	}
 
 	const handlePlus = (id: any, value: any, index: any) => {
@@ -52,7 +68,38 @@ const CalculatorTable = ({
 			setActivateArray([...activateArray, index])
 		}
 
-		setTotal(total + value)
+		setCategoryTotalObj((prev) => ({
+			...prev,
+			[index]: [...(prev[index] || []), value],
+		}))
+	}
+
+	const CategoryTotals = (obj: {
+		[key: string]: number[]
+	}): { [key: string]: number } => {
+		const result: { [key: string]: number } = {}
+		let totalSum = 0
+
+		for (const key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				const sum = obj[key].reduce((acc, num) => {
+					if (activateArray.includes(0)) {
+						return acc + num
+					} else {
+						return 0
+					}
+				}, 0)
+
+				result[key] = sum
+				totalSum += sum
+			}
+		}
+
+		setTotal(totalSum)
+
+		setCategoryTotal(result)
+
+		return result
 	}
 
 	const activateCategory = (index: any) => {
@@ -67,6 +114,10 @@ const CalculatorTable = ({
 		}
 	}
 
+	useEffect(() => {
+		CategoryTotals(categoryTotalObj)
+	}, [quantities, activateArray])
+
 	return (
 		<>
 			{details?.map((detail: { title: string; specs: any }, index: any) => {
@@ -74,14 +125,19 @@ const CalculatorTable = ({
 					<div key={'details_' + index}>
 						<h3
 							className={cn(
-								'text-main sticky top-[calc(var(--header-height)+98px)] z-[1] flex cursor-pointer flex-row justify-start gap-4 rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-md:hidden md:order-1',
+								'text-main sticky top-[calc(var(--header-height)+96px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-md:hidden md:order-1',
 								activateArray.includes(index) ? '' : 'grayscale',
 							)}
 							aria-hidden="true"
-							onClick={() => activateCategory(index)}
+							onClick={() => {
+								activateCategory(index)
+							}}
 						>
-							{AppIcons[index]}
-							{detail.title}
+							<div className="flex flex-row gap-4">
+								{AppIcons[index]}
+								{detail.title}
+							</div>
+							{categoryTotal[index]}
 						</h3>
 
 						<div className="py-2 text-gray-600">
@@ -112,25 +168,26 @@ const CalculatorTable = ({
 											<div className="flex h-full w-full flex-row items-center justify-center gap-x-2">
 												<button
 													className="rounded-full px-2 hover:bg-gray-50"
-													onClick={() =>
+													onClick={() => {
 														handlePlus(
 															row._key,
 															parseInt(row.cells[!isMonthly ? 1 : 0]),
 															index,
 														)
-													}
+													}}
 												>
 													+
 												</button>
 												<div className="px-2">{quantity}</div>
 												<button
 													className="rounded-full px-2 hover:bg-gray-50"
-													onClick={() =>
+													onClick={() => {
 														handleMinus(
 															row._key,
 															parseInt(row.cells[!isMonthly ? 1 : 0]),
+															index,
 														)
-													}
+													}}
 												>
 													-
 												</button>
