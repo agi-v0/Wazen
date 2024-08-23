@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useMemo } from 'react'
 import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { motion } from 'framer-motion'
 import Img from '@/ui/Img'
@@ -47,10 +47,11 @@ export default function Benefits({
 	})
 	const cardLength = content.length
 
+	const cardsBreakpoints = useMemo(
+		() => content.map((_: any, index: any) => index / cardLength),
+		[content, cardLength],
+	)
 	useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-		const cardsBreakpoints = content.map(
-			(_: any, index: any) => index / cardLength,
-		)
 		const closestBreakpointIndex = cardsBreakpoints.reduce(
 			(acc: any, breakpoint: any, index: any) => {
 				const distance = Math.abs(latest - breakpoint)
@@ -64,16 +65,18 @@ export default function Benefits({
 		setActiveCard(closestBreakpointIndex)
 	})
 
-	const images = content.map((item: any) => item.image)
+	const images = useMemo(
+		() => content.map((item: any) => item.image),
+		[content],
+	)
 
 	const [imageList, setImageList] = useState(images[0])
 
 	useEffect(() => {
 		setImageList(images[activeCard % images.length])
-	}, [activeCard])
+	}, [activeCard, images])
 
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
-	console.log('is desktop', isDesktop)
 
 	return (
 		<section
@@ -114,9 +117,9 @@ export default function Benefits({
 									}}
 									className={cn(
 										'flex h-96 w-full flex-col justify-center space-y-6 py-6',
-										(index = 2 ? 'h-[446px]' : ''),
+										index === 2 ? 'h-[446px]' : '',
 									)}
-									key={item.content + index}
+									key={'desktop_' + item.content + index}
 								>
 									<PortableText value={item.content} components={components} />
 								</motion.div>
@@ -127,8 +130,8 @@ export default function Benefits({
 					<div className="sticky left-0 top-32 h-full w-full">
 						<Img
 							image={imageList}
-							imageWidth={640}
-							className="fade-out fade-in relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md"
+							imageWidth={2400}
+							className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md fade-in fade-out"
 						/>
 					</div>
 				</motion.div>
@@ -147,13 +150,13 @@ export default function Benefits({
 									opacity: activeCard === index ? 1 : 0.3,
 								}}
 								className="fluid-vertical-space flex w-full flex-col items-center justify-center gap-6 text-center"
-								key={item.content + index}
+								key={'mobile_' + item.content + index}
 							>
 								<PortableText value={item.content} components={components} />
 								{/* <div className="relative flex items-center justify-center overflow-hidden rounded-lg border-8 border-white shadow-md"></div> */}
 								<Img
 									image={content?.[index].image}
-									imageWidth={640}
+									imageWidth={2400}
 									className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
 								/>
 							</motion.div>

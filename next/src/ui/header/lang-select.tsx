@@ -13,6 +13,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { Link } from '@/i18n/navigations'
 import { PiCaretRightBold, PiGlobe } from 'react-icons/pi'
 import InteractiveDetails from '@/ui/header/InteractiveDetails'
 import { cn } from '@/lib/utils'
@@ -24,6 +25,7 @@ const LangSelect = () => {
 	const [isPending, startTransition] = useTransition()
 	const pathname = usePathname()
 	const params = useParams()
+	console.log(pathname)
 
 	function onSelectChange(lang: string) {
 		startTransition(() => {
@@ -52,20 +54,34 @@ const LangSelect = () => {
 						<NavigationMenuContent>
 							<ul className={cn('grid gap-1 p-4')}>
 								<NavigationMenuItem>
-									<button
+									{/* <button
 										onClick={() => onSelectChange('ar')}
 										className={navigationMenuTriggerStyle()}
 									>
 										عربي
-									</button>
+									</button> */}
+									<Link locale={'ar'} href={pathname} legacyBehavior passHref>
+										<NavigationMenuLink
+											className={cn(
+												navigationMenuTriggerStyle(),
+												'min-w-fit text-nowrap',
+											)}
+										>
+											عربي
+										</NavigationMenuLink>
+									</Link>
 								</NavigationMenuItem>
 								<NavigationMenuItem>
-									<button
-										onClick={() => onSelectChange('en')}
-										className={navigationMenuTriggerStyle()}
-									>
-										English
-									</button>
+									<Link locale={'en'} href={pathname} legacyBehavior passHref>
+										<NavigationMenuLink
+											className={cn(
+												navigationMenuTriggerStyle(),
+												'min-w-fit text-nowrap',
+											)}
+										>
+											English
+										</NavigationMenuLink>
+									</Link>
 								</NavigationMenuItem>
 							</ul>
 						</NavigationMenuContent>

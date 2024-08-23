@@ -19,7 +19,7 @@ import Logo from '@/components/ui/logo'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 const Wrapper = dynamic(() => import('./Wrapper'))
-const LangSelect = dynamic(() => import('@/components/ui/lang-select'))
+const LangSelect = dynamic(() => import('./lang-select'))
 
 export default async function Header({
 	locale,
