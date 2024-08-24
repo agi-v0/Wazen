@@ -10,7 +10,7 @@ import {
 import { PiCheckBold, PiX } from 'react-icons/pi'
 
 const Pricing = ({ plans }: any) => {
-	const [isMonthly, setIsMonthly] = useState(false)
+	const [isYearly, setIsYearly] = useState(false)
 
 	const PlanContent: PortableTextComponents = {
 		types: {
@@ -41,7 +41,7 @@ const Pricing = ({ plans }: any) => {
 				className="flex w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 			>
 				سنوي (شهرين مجاناً)
-				<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
+				<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 			</div>
 
 			<div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
@@ -51,8 +51,8 @@ const Pricing = ({ plans }: any) => {
 						order={index}
 						apps={plan.apps}
 						packageName={plan.title}
-						price={isMonthly ? plan.price.yearly : plan.price.monthly}
-						duration={isMonthly ? 'سنوياً' : 'شهرياً'}
+						price={isYearly ? plan.price.yearly : plan.price.monthly}
+						duration={isYearly ? 'سنوياً' : 'شهرياً'}
 						subtitle={plan.highlight}
 						ctas={plan.ctas}
 					>

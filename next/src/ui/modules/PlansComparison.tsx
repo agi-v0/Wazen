@@ -18,7 +18,7 @@ const PlansComparison = ({
 	content: any
 	details: any
 }>) => {
-	const [isMonthly, setIsMonthly] = useState(true)
+	const [isYearly, setIsYearly] = useState(true)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -52,7 +52,7 @@ const PlansComparison = ({
 								className="flex h-12 w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 							>
 								سنوي (شهرين مجاناً)
-								<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
+								<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 							</div>
 						</div>
 						{details[0].specs.rows.map(
@@ -71,12 +71,12 @@ const PlansComparison = ({
 										<p className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
 											<span className="amount">
 												{' '}
-												{isMonthly ? row.cells[0] : row.cells[1]}
+												{isYearly ? row.cells[0] : row.cells[1]}
 											</span>
 											ريال
 											<span className="text-lg font-semibold text-gray-400">
 												{' '}
-												/{isMonthly ? 'سنوياً' : 'شهرياً'}
+												/{isYearly ? 'سنوياً' : 'شهرياً'}
 											</span>
 										</p>
 										<button

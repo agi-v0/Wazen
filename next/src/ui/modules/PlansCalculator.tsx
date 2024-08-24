@@ -17,7 +17,7 @@ const PlansCalculator = ({
 	content: any
 	details: any
 }>) => {
-	const [isMonthly, setIsMonthly] = useState(false)
+	const [isYearly, setIsYearly] = useState(false)
 
 	const [total, setTotal] = useState<number>(0)
 
@@ -55,7 +55,7 @@ const PlansCalculator = ({
 							className="flex h-24 w-full flex-row items-center justify-end gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 						>
 							سنوي (شهرين مجاناً)
-							<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
+							<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 						</div>
 						<div className="relative flex w-full flex-col items-end justify-center px-2">
 							<div className="w-fit grow">
@@ -64,7 +64,7 @@ const PlansCalculator = ({
 									<h3 className="mb-2 text-[32px] font-bold text-black">
 										<span className="amount">{total}</span>ريال
 										<span className="text-lg font-light">
-											/{isMonthly ? 'شهرياً' : 'سنوياً'}
+											/{isYearly ? 'سنوياً' : 'شهرياً'}
 										</span>
 									</h3>
 								</div>
@@ -76,7 +76,7 @@ const PlansCalculator = ({
 					<CalculatorTable
 						details={details}
 						setTotal={setTotal}
-						isMonthly={isMonthly}
+						isYearly={isYearly}
 					/>
 				</section>
 			</div>

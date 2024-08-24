@@ -12,11 +12,11 @@ import {
 const CalculatorTable = ({
 	details,
 	setTotal,
-	isMonthly,
+	isYearly,
 }: {
 	details: any
 	setTotal: any
-	isMonthly: any
+	isYearly: any
 }) => {
 	const AppIcons = [
 		<PiTableDuotone className="text-2xl text-cyan-500" />,
@@ -154,8 +154,8 @@ const CalculatorTable = ({
 												key={'cell-value' + row._key}
 												className="flex w-full flex-wrap justify-start px-6 py-2"
 											>
-												{row.cells[!isMonthly ? 1 : 0]} ريال / مندوب /{' '}
-												{!isMonthly ? 'شهرياً' : 'سنوياً'}
+												{row.cells[!isYearly ? 1 : 0]} ريال / مندوب /{' '}
+												{!isYearly ? 'شهرياً' : 'سنوياً'}
 											</div>
 											<div className="flex h-full w-full flex-row items-center justify-center gap-x-2">
 												<button
@@ -163,7 +163,7 @@ const CalculatorTable = ({
 													onClick={() => {
 														handlePlus(
 															row._key,
-															parseInt(row.cells[!isMonthly ? 1 : 0]),
+															parseInt(row.cells[!isYearly ? 1 : 0]),
 															index,
 														)
 													}}
@@ -176,7 +176,7 @@ const CalculatorTable = ({
 													onClick={() => {
 														handleMinus(
 															row._key,
-															parseInt(row.cells[!isMonthly ? 1 : 0]),
+															parseInt(row.cells[!isYearly ? 1 : 0]),
 															index,
 														)
 													}}
@@ -186,8 +186,8 @@ const CalculatorTable = ({
 											</div>
 											<div className="flex h-full w-full flex-row items-center justify-end gap-x-2">
 												<div className="px-2">
-													{quantity * parseInt(row.cells[!isMonthly ? 1 : 0])}{' '}
-													ريال / مندوب /{!isMonthly ? 'شهرياً' : 'سنوياً'}
+													{quantity * parseInt(row.cells[!isYearly ? 1 : 0])}{' '}
+													ريال / مندوب /{!isYearly ? 'شهرياً' : 'سنوياً'}
 												</div>
 											</div>
 										</div>
