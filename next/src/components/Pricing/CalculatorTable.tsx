@@ -80,20 +80,11 @@ const CalculatorTable = ({
 		const result: { [key: string]: number } = {}
 		let totalSum = 0
 
-		for (const key in obj) {
-			if (obj.hasOwnProperty(key)) {
-				const sum = obj[key].reduce((acc, num) => {
-					if (activateArray.includes(0)) {
-						return acc + num
-					} else {
-						return 0
-					}
-				}, 0)
-
-				result[key] = sum
-				totalSum += sum
-			}
-		}
+		activateArray.forEach((key: any, index: any) => {
+			const sum = obj[key].reduce((acc, num) => acc + num, 0)
+			result[key] = sum
+			totalSum += sum
+		})
 
 		setTotal(totalSum)
 
