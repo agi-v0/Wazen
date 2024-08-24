@@ -79,13 +79,14 @@ const CalculatorTable = ({
 	}): { [key: string]: number } => {
 		const result: { [key: string]: number } = {}
 		let totalSum = 0
-
-		activateArray.forEach((key: any, index: any) => {
-			const sum = obj[key].reduce((acc, num) => acc + num, 0)
-			result[key] = sum
-			totalSum += sum
-		})
-
+		
+		if (Object.entries(obj).length > 0) {
+			activateArray.forEach((key: any, index: any) => {
+				const sum = obj[key]?.reduce((acc, num) => acc + num, 0)
+				result[key] = sum
+				totalSum += sum
+			})
+		}
 		setTotal(totalSum)
 
 		setCategoryTotal(result)
