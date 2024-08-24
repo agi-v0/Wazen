@@ -38,11 +38,10 @@ const Pricing = ({ plans }: any) => {
 	return (
 		<div id="pricing" className="container space-y-6">
 			<div
-				dir="ltr"
 				className="flex w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 			>
+				سنوي (شهرين مجاناً)
 				<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
-				Annual (2 months free)
 			</div>
 
 			<div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">

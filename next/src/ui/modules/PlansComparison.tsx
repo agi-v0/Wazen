@@ -49,11 +49,10 @@ const PlansComparison = ({
 					<div className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white">
 						<div className="flex w-full flex-col items-start justify-end px-2 py-4">
 							<div
-								dir="ltr"
 								className="flex h-12 w-full flex-row items-center justify-center gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 							>
+								سنوي (شهرين مجاناً)
 								<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
-								Annual (2 months free)
 							</div>
 						</div>
 						{details[0].specs.rows.map(

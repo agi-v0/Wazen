@@ -52,11 +52,10 @@ const PlansCalculator = ({
 				<section className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white">
 					<div className="flex w-full flex-row justify-between">
 						<div
-							dir="ltr"
-							className="flex h-24 w-full flex-row items-center justify-start gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
+							className="flex h-24 w-full flex-row items-center justify-end gap-4 text-sm text-cyan-950/60 rtl:flex-row-reverse"
 						>
+							سنوي (شهرين مجاناً)
 							<Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
-							Annual (2 months free)
 						</div>
 						<div className="relative flex w-full flex-col items-end justify-center px-2">
 							<div className="w-fit grow">
