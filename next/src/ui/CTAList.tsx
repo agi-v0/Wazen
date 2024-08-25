@@ -10,10 +10,7 @@ export default function CTAList({
 }) {
 	return (
 		<div
-			className={cn(
-				'flex flex-col flex-wrap items-center gap-x-4 gap-y-2 md:flex-row',
-				className,
-			)}
+			className={cn('flex flex-col items-center gap-4 md:flex-row', className)}
 		>
 			{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
 		</div>

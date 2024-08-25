@@ -4,7 +4,7 @@ import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { set1, set2 } from '@/components/ui/portable-text'
+import { hero, set2 } from '@/components/ui/portable-text'
 import { urlFor } from '@/lib/sanity/urlFor'
 
 export default function HeroPostcard({
@@ -20,31 +20,29 @@ export default function HeroPostcard({
 }>) {
 	return (
 		<section className="relative flex min-h-screen flex-col gap-6 py-[20vh] lg:gap-12">
-			<div className="section relative flex w-full flex-col items-center justify-center gap-6 text-center">
-				<Pretitle className="rounded-full border-2 border-green-500/40 px-6 py-2 text-base font-medium text-teal-500">
+			<div className="relative mx-auto flex w-full max-w-screen-md flex-col items-center justify-center gap-6 px-[var(--padding-horizontal--main)] text-center">
+				<Pretitle className="mb-2 text-base font-medium text-teal-500">
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 				<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
 			</div>
-			<figure className="section relative">
-				<Image
-					src={urlFor(image as Sanity.Image).url()}
-					alt="hero"
-					height={1194}
-					width={1440}
-					className="mx-auto h-auto w-full object-cover object-left-top"
-					draggable={false}
-					loading="eager"
-					priority
-				/>
-			</figure>
+			<Image
+				src={urlFor(image as Sanity.Image).url()}
+				alt="hero"
+				height={1194}
+				width={1440}
+				className="section relative mx-auto h-auto w-full object-cover object-left-top"
+				draggable={false}
+				loading="eager"
+				priority
+			/>
 			<svg
 				width="1280"
 				height="1147"
 				viewBox="0 0 1280 1147"
 				fill="none"
-				className="pointer-events-none absolute bottom-0 left-0 right-0 z-[-1] h-auto w-full"
+				className="pointer-events-none absolute bottom-0 left-0 right-0 z-[-1] h-auto w-full max-md:bottom-12"
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<g className="mix-blend-darken">

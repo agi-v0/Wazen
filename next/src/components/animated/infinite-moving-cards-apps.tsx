@@ -4,8 +4,9 @@ import { cn } from '@/lib/utils'
 import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
 import { PiCaretRightBold } from 'react-icons/pi'
+import Icon from '@/ui/DynamicIcon'
 
-export const InfiniteMovingCards = ({
+export default function InfiniteMovingCards({
 	direction,
 	speed,
 	pauseOnHover = true,
@@ -14,15 +15,14 @@ export const InfiniteMovingCards = ({
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	items: [
-		{
-			title: string
-			description: string
-			link: Sanity.Link
-			image: Sanity.Image
-		},
-	]
-}) => {
+	items: {
+		title: string
+		icon: string
+		// description?: string
+		// link?: Sanity.Link
+		// image?: Sanity.Image
+	}[]
+}) {
 	const containerRef = React.useRef<HTMLDivElement>(null)
 	const scrollerRef = React.useRef<HTMLUListElement>(null)
 
@@ -68,7 +68,7 @@ export const InfiniteMovingCards = ({
 			} else if (speed === 'normal') {
 				containerRef.current.style.setProperty('--animation-duration', '40s')
 			} else {
-				containerRef.current.style.setProperty('--animation-duration', '100s')
+				containerRef.current.style.setProperty('--animation-duration', '60s')
 			}
 		}
 	}
@@ -85,39 +85,27 @@ export const InfiniteMovingCards = ({
 	return (
 		<div
 			ref={containerRef}
-			className="flex w-full flex-col items-center justify-evenly overflow-x-hidden"
+			className="flex w-full flex-col items-center justify-center overflow-x-hidden"
 		>
 			<ul
 				ref={scrollerRef}
 				className={cn(
-					'my-4 flex w-max min-w-full shrink-0 flex-nowrap gap-4',
+					'mx-auto flex w-max min-w-full shrink-0 flex-nowrap gap-4',
 					start && 'animate-scroll',
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map(({ title, description, link, image }, idx: any) => {
+				{items.map(({ title, icon }) => {
 					return (
 						<li
-							key={idx}
-							className={`-from-40% scale-100 bg-gradient-to-br from-white hover:scale-105 ${colors[idx]} grid grid-cols-2 items-center justify-between rounded-lg border border-gray-100 p-3 transition-all hover:shadow-lg lg:w-[600px]`}
+							key={title}
+							className="flex h-full flex-row items-center justify-center gap-2 rounded-2xl border border-gray-200 p-4"
 						>
-							<div className="flex h-full flex-col gap-4 p-4">
-								<h3 className="text-main text-start text-2xl font-semibold">
-									{title}
-								</h3>
-								<p className="text-start text-sm text-gray-500">
-									{description}
-								</p>
-								<div className="flex items-center gap-1 text-teal-600 no-underline">
-									{link.label}
-									<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
-								</div>
-							</div>
-							<Img
-								image={image}
-								imageWidth={300}
-								className="aspect-square h-full w-auto rounded-md object-cover object-center"
+							<Icon
+								icon={icon ? icon : 'ph:cube-duotone'}
+								className="text-xl text-gray-500"
 							/>
+							<p className="text-start text-base font-medium">{title}</p>
 						</li>
 					)
 				})}

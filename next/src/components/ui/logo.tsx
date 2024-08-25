@@ -1,6 +1,13 @@
-export default function Logo() {
+import { cn } from '@/lib/utils'
+
+export default function Logo({ className }: { className: string }) {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width="87" height="24" fill="none">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 87 24"
+			fill="none"
+			className={cn('h-6 w-auto', className)}
+		>
 			<g clipPath="url(#a)">
 				<path
 					fill="#0D9488"

@@ -50,10 +50,10 @@ export default function ProductList({
 		},
 	}
 	const hoverColors = [
-		'group-hover:bg-cyan-200',
-		'group-hover:bg-yellow-200',
-		'group-hover:bg-indigo-200',
-		'group-hover:bg-teal-200',
+		'group-hover:bg-teal-100',
+		'group-hover:bg-yellow-100',
+		'group-hover:bg-indigo-100',
+		'group-hover:bg-cyan-100',
 	]
 
 	return (
@@ -62,7 +62,7 @@ export default function ProductList({
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>
 				<div
-					className={'flex flex-col items-center gap-8'}
+					className={'mb-12 flex max-w-4xl flex-col items-center gap-8'}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle className="text-large font-semibold text-gray-400">
@@ -90,14 +90,14 @@ export default function ProductList({
 										height={100}
 										className={cn(
 											'my-auto grid h-auto w-full place-items-center overflow-hidden rounded-xl bg-cyan-950/20 object-scale-down object-center px-4 py-6',
-											'group-hover:bg-cyan-800',
+											hoverColors[index],
 										)}
 										loading="lazy"
 									/>
 									<div className="space-y-1 p-4 text-start">
 										<h3 className="text-main font-semibold group-hover:text-teal-600">
 											{product.productTitle}
-											<PiCaretLeftBold className="inline-block size-4 translate-x-0 text-teal-600/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+											<PiCaretLeftBold className="inline-block size-3 translate-x-0 text-teal-600/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
 										</h3>
 										<p className="text-small text-gray-600">
 											{product.productDescription}

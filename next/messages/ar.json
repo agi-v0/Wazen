@@ -1,11 +1,41 @@
 {
-  "Index": {
-    "Translated Text": "Translated Text"
-  },
-  "Blog": {
-    "إقرأ المزيد":"إقرأ المزيد"
-  },
-  "Contact": {
-    "الإسم الاول":"إقرأ المزيد"
-  }
+	"Index": {
+		"Translated Text": "Translated Text"
+	},
+	"Blog": {
+		"Read more": "إقرأ المزيد",
+		"View more": "تصفح المزيد"
+	},
+	"App store": {
+		"Download": "تحميل"
+	},
+	"Contact": {
+		"First name": "الإسم الأول"
+	},
+	"FeaturesInfiniteScroll": {
+		"Check in and check out": "الحضور والإنصراف",
+		"Employee info": "بيانات الموظفين",
+		"Housing and accomodation": "التسكين والعقارات",
+		"Insurance": "التأمين",
+		"Salaries": "رواتب الموظفين",
+
+		"Leads": "العملاء المحتملين",
+		"Contracts": "العقود",
+		"Subscriptions": "الإشتراكات",
+		"Clients": "العملاء",
+		"SMS and Whatsapp": "الرسائل القصيرة والواتساب",
+
+		"Sales": "المبيعات",
+		"Purchases": "المشتريات",
+		"Inventory": "المخزون",
+		"Financial lists": "القوائم المالية",
+		"Cost centers": "مراكز التكلفة",
+
+		"Replaces": "يستبدل",
+		"Wafeq": "وافق",
+		"Edara": "إدارة",
+		"Odoo": "أودو",
+		"Qoyod": "قيود",
+		"Daftra": "دفترة"
+	}
 }

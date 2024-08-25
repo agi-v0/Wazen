@@ -112,7 +112,7 @@ export default function FeaturesGridTwo({
 										</div>
 										<Img
 											image={feature.image}
-											className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
+											className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
 										/>
 									</li>
 								))}

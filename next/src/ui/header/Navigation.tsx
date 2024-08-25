@@ -5,21 +5,24 @@ import LinkGroup from './LinkGroup'
 import processUrl from '@/lib/processUrl'
 
 import * as React from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 
 import { cn } from '@/lib/utils'
 // import { Icons } from '@/components/icons'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
+	NavigationMenuIndicator,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
+	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
 import Image from 'next/image'
+import Logo from '@/components/ui/logo'
 
 export async function Navigation({
 	headerMenu,
@@ -30,50 +33,44 @@ export async function Navigation({
 }) {
 	// const { headerMenu } = await getSite(locale)
 	return (
-		<NavigationMenu
-			dir={locale == 'en' ? 'ltr' : 'rtl'}
-			className="max-lg:header-closed:hidden"
-		>
-			<NavigationMenuList>
-				{headerMenu?.items?.map((item, key) => {
-					switch (item._type) {
-						case 'link':
-							return (
-								<NavigationMenuItem key={key}>
-									<Link
-										href={
-											locale +
-											processUrl(item.internal, {
-												base: false,
-												params: item.params,
-											})
-										}
-										legacyBehavior
-										passHref
+		<NavigationMenuList className="max-lg:w-full max-lg:flex-auto">
+			{headerMenu?.items?.map((item, key) => {
+				switch (item._type) {
+					case 'link':
+						return (
+							<NavigationMenuItem key={key} className="w-full">
+								<Link
+									locale={locale as 'en' | 'ar'}
+									href={processUrl(item.internal, {
+										base: false,
+										params: item.params,
+									})}
+									legacyBehavior
+									passHref
+								>
+									<NavigationMenuLink
+										className={cn(
+											navigationMenuTriggerStyle(),
+											'min-w-fit text-nowrap',
+										)}
 									>
-										<NavigationMenuLink
-											className={cn(
-												navigationMenuTriggerStyle(),
-												'min-w-fit text-nowrap',
-											)}
-										>
-											{item.label || item.internal.title}
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuItem>
-							)
+										{item.label || item.internal.title}
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+						)
 
-						case 'link.list':
-							return <LinkList {...item} key={key} locale={locale} />
+					case 'link.list':
+						return <LinkList {...item} key={key} locale={locale} />
 
-						case 'link.group':
-							return <LinkGroup {...item} key={key} locale={locale} />
+					case 'link.group':
+						return <LinkGroup {...item} key={key} locale={locale} />
 
-						default:
-							return null
-					}
-				})}
-				{/* <NavigationMenuItem>
+					default:
+						return null
+				}
+			})}
+			{/* <NavigationMenuItem>
 					<NavigationMenuTrigger>Components</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -89,8 +86,7 @@ export async function Navigation({
 						</ul>
 					</NavigationMenuContent>
 				</NavigationMenuItem> */}
-			</NavigationMenuList>
-		</NavigationMenu>
+		</NavigationMenuList>
 	)
 }
 

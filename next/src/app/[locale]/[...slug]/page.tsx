@@ -58,7 +58,7 @@ async function getPage(params: Props['params']) {
 							internal->{ title, metadata },
 					}
 				},
-				categories[]->{title , title_en},
+				categories[]->{title , title_en, _id},
 				items[]->,
 				logos[]->,
 				partnerslogos[]->,

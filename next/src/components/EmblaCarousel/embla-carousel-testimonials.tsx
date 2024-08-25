@@ -165,7 +165,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 									<div
 										className={cn(
 											'flex flex-col text-sm text-cyan-950',
-											author?.image ? 'items-start' : 'items-center',
+											author?.image && 'asset' in author?.image
+												? 'items-start'
+												: 'items-center',
 										)}
 									>
 										{author && (

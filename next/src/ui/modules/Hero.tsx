@@ -11,7 +11,7 @@ import CTA from '../CTA'
 import Pretitle from '@/ui/Pretitle'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from 'react-icons/pi'
-import { set1 } from '@/components/ui/portable-text'
+import { hero } from '@/components/ui/portable-text'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 
 export default function Hero({
@@ -56,7 +56,7 @@ export default function Hero({
 						<PiSealCheck className="size-5" />
 						{pretitle}
 					</span>
-					<PortableText value={content} components={set1} />
+					<PortableText value={content} components={hero} />
 					<CTAList
 						ctas={ctas}
 						className={cn(

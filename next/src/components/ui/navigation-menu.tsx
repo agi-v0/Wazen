@@ -1,10 +1,11 @@
 import * as React from 'react'
+// import { ChevronDownIcon } from "@radix-ui/react-icons"
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
-import { ChevronDown } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { PiCaretDownBold } from 'react-icons/pi'
+import { ScrollArea } from '@radix-ui/react-scroll-area'
 
 const NavigationMenu = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -13,12 +14,13 @@ const NavigationMenu = React.forwardRef<
 	<NavigationMenuPrimitive.Root
 		ref={ref}
 		className={cn(
-			'relative z-10 flex max-w-max flex-1 items-center justify-center max-lg:max-w-full max-lg:flex-col',
+			'relative z-10 flex max-w-max flex-1 items-center justify-center max-lg:flex-col',
 			className,
 		)}
 		{...props}
 	>
 		{children}
+		{/* bring back viewport */}
 		<NavigationMenuViewport />
 	</NavigationMenuPrimitive.Root>
 ))
@@ -31,7 +33,7 @@ const NavigationMenuList = React.forwardRef<
 	<NavigationMenuPrimitive.List
 		ref={ref}
 		className={cn(
-			'group flex flex-1 list-none items-center justify-center gap-1 max-lg:flex-col',
+			'-relative flex flex-1 list-none items-center justify-center gap-1 space-x-1 max-lg:flex-col',
 			className,
 		)}
 		{...props}
@@ -39,10 +41,22 @@ const NavigationMenuList = React.forwardRef<
 ))
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
+// const NavigationMenuItem = React.forwardRef<
+// 	React.ElementRef<typeof NavigationMenuPrimitive.Item>,
+// 	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item>
+// >(({ className, ...props }, ref) => (
+// 	<NavigationMenuPrimitive.Item
+// 		ref={ref}
+// 		className={cn('relative', className)}
+// 		{...props}
+// 	/>
+// ))
+// NavigationMenuItem.displayName = 'NavigationMenuItem'
+// comment top component when using viewport
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-	'group inline-flex h-10 w-full items-center justify-start rounded-md bg-white px-4 py-4 text-sm font-medium transition-colors hover:bg-teal-50 text-cyan-950/80 hover:text-cyan-700 focus:bg-teal-50 focus:text-cyan-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-teal-50/50 data-[state=open]:bg-teal-50/50',
+	'group inline-flex h-10 w-full items-center justify-start rounded-md bg-white px-4 py-4 text-sm font-medium transition-colors hover:bg-teal-50 text-cyan-950/80 hover:text-cyan-700 focus:bg-teal-50 focus:text-cyan-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-teal-50/50 data-[state=open]:bg-bg-teal-50/50',
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -72,7 +86,11 @@ const NavigationMenuContent = React.forwardRef<
 	<NavigationMenuPrimitive.Content
 		ref={ref}
 		className={cn(
+			// 'data-[state=closed]=fade-out-0 data-[state=open]=fade-in-0 absolute -start-6 end-auto duration-200 max-lg:start-0',
+			// 'absolute top-full z-10 mt-1.5 w-fit rounded-md border border-gray-200 bg-white shadow-lg',
+			// 'data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52',
 			'data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 start-0 top-0 w-96 md:absolute md:w-auto',
+
 			className,
 		)}
 		{...props}
@@ -87,11 +105,11 @@ const NavigationMenuViewport = React.forwardRef<
 	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
 	<div
-		className={cn('start-0 top-full flex flex-col justify-center md:absolute')}
+		className={cn('-start-3 end-auto top-full flex justify-center lg:absolute')}
 	>
 		<NavigationMenuPrimitive.Viewport
 			className={cn(
-				'origin-top-center data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 -dark:border-gray-800 -dark:bg-gray-950 -dark:text-gray-50 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border border-gray-200 bg-white text-gray-950 shadow-lg md:w-[var(--radix-navigation-menu-viewport-width)]',
+				'origin-top-center data-[state=closed]=fade-out-0 data-[state=open]=fade-in-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 -dark:border-gray-800 -dark:bg-gray-950 -dark:text-gray-50 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border border-gray-200 bg-white text-gray-950 shadow-lg md:w-[var(--radix-navigation-menu-viewport-width)]',
 				className,
 			)}
 			ref={ref}

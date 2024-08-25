@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { VscEdit } from 'react-icons/vsc'
+import { PiSquaresFour } from 'react-icons/pi'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'blog-rollup',
-	title: 'Blog rollup',
-	icon: VscEdit,
+	name: 'app-store-rollup',
+	title: 'App store collection',
+	icon: PiSquaresFour,
 	type: 'object',
 	fields: [
 		defineField({
@@ -14,23 +14,14 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
-			name: 'category',
+			name: 'apps',
 			type: 'array',
 			of: [
 				{
 					type: 'reference',
-					to: [{ type: 'blog.category' }],
+					to: [{ type: 'app.store.app' }],
 				},
 			],
-		}),
-		defineField({
-			name: 'layout',
-			type: 'string',
-			options: {
-				list: ['grid', 'carousel'],
-				layout: 'radio',
-			},
-			initialValue: 'carousel',
 		}),
 		defineField({
 			name: 'limit',
@@ -40,11 +31,11 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'category.0.title',
+			content: 'category[0].title',
 		},
 		prepare: ({ content }) => ({
 			title: content,
-			subtitle: 'Blog rollup',
+			subtitle: 'App store collection',
 		}),
 	},
 })

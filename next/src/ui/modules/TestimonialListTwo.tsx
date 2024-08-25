@@ -44,7 +44,11 @@ const TestimonialListTwo = ({
 		},
 	}
 	const direction = locale === 'en' ? 'ltr' : 'rtl'
-	const OPTIONS: EmblaOptionsType = { direction: direction, loop: true }
+	const OPTIONS: EmblaOptionsType = {
+		direction: direction,
+		loop: true,
+		duration: testimonials.length * 10,
+	}
 	return (
 		<section className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]">
 			<div className="section mx-auto text-center">

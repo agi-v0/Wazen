@@ -1,6 +1,5 @@
 import InteractiveDetails from './InteractiveDetails'
 import { PiCaretRightBold } from 'react-icons/pi'
-import NavItemList from '@/components/ui/nav-item-list'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
@@ -14,48 +13,45 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
+	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 import { ScrollArea } from '@/components/ui/scroll-area'
 // import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
-	return (
-		<NavigationMenuItem key={label}>
-			<NavigationMenuTrigger>{label}</NavigationMenuTrigger>
-			<NavigationMenuContent>
-				<ScrollArea
-					className="max-md:h-[400px] max-md:w-full"
-					dir={locale == 'en' ? 'ltr' : 'rtl'}
-				>
-					<ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-						{links?.[0].links?.map((item: any) => (
-							<NavigationMenuItem key={item.label}>
-								<Link
-									locale={locale as 'en' | 'ar'}
-									href={processUrl(item.internal, {
-										base: false,
-										params: item.params,
-									})}
-									legacyBehavior
-									passHref
-								>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										{item.label || item.internal.title}
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-						))}
-					</ul>
-				</ScrollArea>
-			</NavigationMenuContent>
+	const linkCount = links?.[0]?.links && links?.[0].links.length
 
-			{/* <ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[400px] md:min-w-max md:flex-row md:backdrop-blur">
-				{links
-					?.slice(0, 2)
-					.map((label: any, key: any) => (
-						<NavItemList {...label} key={key} locale={locale} />
+	return (
+		<NavigationMenuItem key={label} className="w-full">
+			<NavigationMenuTrigger className="group relative">
+				{label}
+			</NavigationMenuTrigger>
+			<NavigationMenuContent className="max-lg:w-full">
+				<ul
+					className={cn(
+						'grid gap-1 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px]',
+						linkCount && linkCount < 6 ? 'md:grid-cols-1' : '',
+					)}
+				>
+					{links?.[0].links?.map((item: any) => (
+						<NavigationMenuItem key={item.label}>
+							<Link
+								locale={locale as 'en' | 'ar'}
+								href={processUrl(item.internal, {
+									base: false,
+									params: item.params,
+								})}
+								legacyBehavior
+								passHref
+							>
+								<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+									{item.label || item.internal.title}
+								</NavigationMenuLink>
+							</Link>
+						</NavigationMenuItem>
 					))}
-			</ul> */}
+				</ul>
+			</NavigationMenuContent>
 		</NavigationMenuItem>
 	)
 }

@@ -1,14 +1,17 @@
-import { PiList } from 'react-icons/pi'
+import { cn } from '@/lib/utils'
+import { PiList, PiX } from 'react-icons/pi'
 
-export default function Toggle() {
+export default function Toggle(
+	className: React.HTMLAttributes<HTMLLabelElement>,
+) {
 	return (
-		<label className="mt-1 [grid-area:toggle] lg:hidden">
+		<label className={cn('p-2 text-cyan-950 lg:hidden', className)}>
 			<input id="header-open" type="checkbox" hidden />
 			<span className="header-closed:hidden">
-				<PiList />
+				<PiX className="h-5 w-5" />
 			</span>
 			<span className="hidden header-closed:block">
-				<PiList />
+				<PiList className="h-5 w-5" />
 			</span>
 		</label>
 	)

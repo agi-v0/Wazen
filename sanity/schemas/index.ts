@@ -53,6 +53,8 @@ import pricingCalculator from './modules/pricing-calculator'
 import featuresGrid2 from './modules/features-grid-2'
 import benefitsBanner from './modules/benefits-banner'
 import testimonialListTwo from './modules/testimonial-list-two'
+import appStoreApp from './documents/app.store.app'
+import appStoreRollup from './modules/app-store-rollup'
 
 export const schemaTypes = [
 	// documents
@@ -63,6 +65,7 @@ export const schemaTypes = [
 	blogPost,
 	blogPostEn,
 	blogCategory,
+	appStoreApp,
 	logo,
 	partnerslogos,
 	pricing,
@@ -78,6 +81,7 @@ export const schemaTypes = [
 
 	// modules
 	applications,
+	appStoreRollup,
 	benefitsBanner,
 	blogRollup,
 	brief,

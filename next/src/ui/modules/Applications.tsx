@@ -9,6 +9,7 @@ import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import { EmblaOptionsType } from 'embla-carousel'
 import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
+import { set2 } from '@/components/ui/portable-text'
 
 const EmblaCarousel = dynamic(
 	() => import('@/components/EmblaCarousel/EmblaCarousel'),
@@ -59,13 +60,15 @@ export default function Applications({
 			}
 		>
 			<div
-				className={'flex flex-col items-center gap-6'}
+				className={
+					'mx-auto flex max-w-xl flex-col items-center gap-6 md:max-w-3xl'
+				}
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<Pretitle className="text-large font-semibold text-gray-400">
 					{pretitle}
 				</Pretitle>
-				<PortableText value={content} components={components} />
+				<PortableText value={content} components={set2} />
 			</div>
 			<div className="" dir={direction}>
 				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}

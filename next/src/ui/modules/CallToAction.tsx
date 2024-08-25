@@ -78,7 +78,7 @@ export default function CallToAction({
 			>
 				<PortableText value={content} components={components} />
 
-				<CTAList ctas={ctas} className="w-full" />
+				<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
 				<div className="flex flex-col gap-2">
 					<PortableText
 						value={checkedList}
