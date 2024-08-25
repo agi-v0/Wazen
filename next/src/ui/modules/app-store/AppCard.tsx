@@ -40,7 +40,7 @@ export default function AppCard({
 
 	return (
 		<Link href="/" className="group w-full md:h-full">
-			<div className="-hover:bg-teal-50 flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 group-hover:bg-teal-50">
+			<div className="-hover:bg-teal-50 flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 transition-all group-hover:bg-teal-50">
 				{/* <div className="w-fit rounded-full text-sm text-gray-400">
 					<Date value={app.publishDate} locale={locale} />
 				</div> */}
@@ -56,7 +56,7 @@ export default function AppCard({
 				</p> */}
 				<PortableText value={app.description} components={components} />
 
-				<div className="-group-hover:border-2 group flex h-10 items-center justify-center gap-2 self-start rounded-full bg-white px-4 font-medium text-teal-600 transition-all hover:bg-teal-100">
+				<div className="-group-hover:border-2 group flex h-10 items-center justify-center gap-2 self-start rounded-full px-4 font-medium text-teal-600 transition-all hover:bg-white">
 					<PiArrowLineDownBold className="inline-block size-4" />
 					{t('Download')}
 				</div>
