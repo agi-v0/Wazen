@@ -8,7 +8,7 @@ import {
 	PiCheckBold,
 	PiXBold,
 } from 'react-icons/pi'
-import NumberTicker from '../animated/number-ticker'
+// import NumberTicker from '../animated/number-ticker'
 
 const PricingBox = (props: {
 	order: string
