@@ -80,6 +80,8 @@ export default function Modules({
 						return <Brief {...module} key={module._key} />
 					case 'categories-list':
 						return <Categories {...module} key={module._key} locale={locale} />
+					case 'help-center-categories-list':
+						return <Categories {...module} key={module._key} locale={locale} />
 					case 'contact-us':
 						return <ContactUs {...module} key={module._key} locale={locale} />
 					case 'creative-module':

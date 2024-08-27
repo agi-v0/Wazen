@@ -30,6 +30,7 @@ const structure: StructureResolver = (S, context) =>
 				S.documentTypeListItem('pricing').title('Pricing Tier'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 				S.documentTypeListItem('faq').title('FAQ'),
+				S.documentTypeListItem('help.center.category').title('Help Center Categories'),
 			]).icon(BsDatabaseAdd),
 		])
 

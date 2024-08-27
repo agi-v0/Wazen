@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { stegaClean } from '@sanity/client/stega'
 import Rollup from './Rollup'
+// import { usePathname } from 'next/navigation'
 
 export default function Categories({
 	categories,
@@ -9,6 +10,11 @@ export default function Categories({
 	categories?: Sanity.BlogCategory[]
 	locale: any
 }) {
+
+	// const pathname = usePathname()
+
+	// console.log(pathname)
+
 	if (!categories?.length) return null
 	return (
 		<>

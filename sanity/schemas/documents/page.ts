@@ -28,6 +28,7 @@ export default defineType({
 				{ type: 'brief-group' },
 				{ type: 'home-brief-group' },
 				{ type: 'categories-list' },
+				{ type: 'help-center-categories-list' },
 				{ type: 'contact-us' },
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },

@@ -6,6 +6,7 @@ import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
 import blogPostEn from './documents/blog.post.en'
 import blogCategory from './documents/blog.category'
+import helpCenterCategory from './documents/help.ceter.category'
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 import FAQ from './documents/FAQ'
@@ -37,6 +38,7 @@ import partnerslogos from './documents/partnerslogos'
 import callToAction from './modules/call-to-action'
 import singleTestimony from './modules/single-testimony'
 import categoriesList from './modules/categories-list'
+import helpCenterCategoriesList from './modules/help-center-categories-list'
 import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
 import heroThree from './modules/hero.three'
@@ -65,6 +67,7 @@ export const schemaTypes = [
 	blogPost,
 	blogPostEn,
 	blogCategory,
+	helpCenterCategory,
 	appStoreApp,
 	logo,
 	partnerslogos,
@@ -88,6 +91,7 @@ export const schemaTypes = [
 	briefGroup,
 	homeBriefGroup,
 	categoriesList,
+	helpCenterCategoriesList,
 	contactUs,
 	creativeModule,
 	customHtml,
