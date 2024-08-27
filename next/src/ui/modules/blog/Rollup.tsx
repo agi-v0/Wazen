@@ -2,13 +2,13 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
-// import Link from 'next/link'
 import { Link } from '@/i18n/navigations'
 import { PiCaretRightBold } from 'react-icons/pi'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Rollup({
 	_type,
+	title,
 	limit = 3,
 	category,
 	layout,
@@ -16,6 +16,7 @@ export default async function Rollup({
 	locale,
 }: Partial<{
 	_type: string
+	title: string
 	limit?: number
 	category: any
 	categoryRef: any
@@ -23,7 +24,6 @@ export default async function Rollup({
 	locale: string
 }>) {
 	const t = await getTranslations('Blog')
-	console.log('categoryRef', categoryRef)
 
 	const type =
 		// 'help-center-categories-list'
@@ -34,8 +34,6 @@ export default async function Rollup({
 			: locale === 'ar'
 				? 'help.center.post'
 				: 'help.center.post.en'
-
-	console.log(_type)
 
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
@@ -58,17 +56,13 @@ export default async function Rollup({
 		},
 	)
 
-	const categoryTitle: any =
-		locale == 'ar'
-			? posts[0]?.categories[0]?.title
-			: posts[0]?.categories[0]?.title_en
-	if (posts[0])
+	if (posts.length > 0)
 		return (
-			<section className="bg-teal-50" id={stegaClean(categoryTitle)}>
+			<section className="bg-teal-50" id={title}>
 				<div className="section fluid-gap flex flex-col items-center bg-teal-50 py-[var(--size--4rem)]">
-					{posts[0]?.categories && (
+					{title && (
 						<h2 className="h3 text-center font-semibold text-cyan-950">
-							{categoryTitle}
+							{title}
 						</h2>
 					)}
 					<ul
@@ -79,11 +73,13 @@ export default async function Rollup({
 								: 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 						)}
 					>
-						{posts?.map((post, key) => (
-							<li key={key}>
-								<PostPreview post={post} locale={locale} />
-							</li>
-						))}
+						{posts?.map((post, key) => {
+							return (
+								<li key={key}>
+									{<PostPreview type={_type} post={post} locale={locale} />}
+								</li>
+							)
+						})}
 					</ul>
 					<Link
 						href="/"

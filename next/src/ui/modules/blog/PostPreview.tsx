@@ -1,24 +1,28 @@
-import Link from 'next/link'
+// import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 import Date from '@/ui/Date'
 import Image from 'next/image'
 import { PiCaretRightBold } from 'react-icons/pi'
 import { useTranslations } from 'next-intl'
 
 export default function PostPreview({
+	type,
 	post,
 	locale,
 }: {
+	type?: string
 	post: Sanity.BlogPost
 	locale: any
 }) {
-	const categoryTitle: any =
-		locale == 'ar' ? post?.categories[0]?.title : post?.categories[0]?.title_en
+	// const categoryTitle: any =
+	// 	locale == 'ar' ? post?.categories[0]?.title : post?.categories[0]?.title_en
 
 	const t = useTranslations('Blog')
+	const pageType = type == 'categories-list' ? 'blog' : 'help-center'
 
 	return (
 		<Link
-			href={`/${locale}/blog/${post.metadata?.slug?.current}`}
+			href={`/${pageType}/${post.metadata?.slug?.current}`}
 			className="group w-full md:h-full"
 		>
 			<div className="flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 group-hover:shadow-lg">
@@ -51,8 +55,7 @@ export default function PostPreview({
 					{post.title.slice(0, 64) + (post.title.length > 100 ? ' ...' : '')}
 				</p>
 				<p className="text-base text-cyan-950/60 group-hover:text-cyan-950/80">
-					{post.body[0]?.children[0] &&
-						post.body[0].children[0].text.slice(0, 160) + ' ...'}
+					{post.body && post.body[0].children[0].text.slice(0, 160) + ' ...'}
 				</p>
 				<div className="group font-medium text-cyan-950/80 transition-all group-hover:text-teal-600">
 					{t('Read more')}

@@ -34,10 +34,10 @@ export default function Categories({
 				))}
 			</ul>
 			{categories.map((category, _key) => {
-				console.log(category)
 				return (
 					<Rollup
 						_type={_type}
+						title={locale == 'ar' ? category.title : category.title_en}
 						categoryRef={category._id}
 						key={'rollup' + _key}
 						layout="grid"
