@@ -9,6 +9,10 @@
 	"App store": {
 		"Download": "Download"
 	},
+	"Pricing": {
+		"Monthly": "Monthly",
+		"Yearly": "Yearly"
+	},
 	"Contact": {
 		"First name": "First Name"
 	},

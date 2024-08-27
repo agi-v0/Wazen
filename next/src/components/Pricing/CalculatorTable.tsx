@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import {
 	PiFlowArrowDuotone,
 	PiIdentificationCardDuotone,
+	PiMinusBold,
+	PiPlusBold,
 	PiTableDuotone,
 	PiUserListDuotone,
 } from 'react-icons/pi'
@@ -79,7 +81,7 @@ const CalculatorTable = ({
 	}): { [key: string]: number } => {
 		const result: { [key: string]: number } = {}
 		let totalSum = 0
-		
+
 		if (Object.entries(obj).length > 0) {
 			activateArray.forEach((key: any, index: any) => {
 				const sum = obj[key]?.reduce((acc, num) => acc + num, 0)
@@ -111,13 +113,13 @@ const CalculatorTable = ({
 	}, [quantities, activateArray])
 
 	return (
-		<>
+		<div className="relative mt-6 flex w-full flex-col gap-9">
 			{details?.map((detail: { title: string; specs: any }, index: any) => {
 				return (
 					<div key={'details_' + index}>
 						<h3
 							className={cn(
-								'text-main sticky top-[calc(var(--header-height)+96px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-md:hidden md:order-1',
+								'text-main sticky top-[calc(var(--header-height)+72px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-lg:top-[calc(var(--header-height)+95.51px)] md:order-1',
 								activateArray.includes(index) ? '' : 'grayscale',
 							)}
 							aria-hidden="true"
@@ -125,72 +127,75 @@ const CalculatorTable = ({
 								activateCategory(index)
 							}}
 						>
-							<div className="flex flex-row gap-4">
-								{AppIcons[index]}
+							<div className="flex flex-row items-center gap-4">
+								<div className="rounded-full bg-white p-2">
+									{AppIcons[index]}
+								</div>
 								{detail.title}
 							</div>
 							{categoryTotal[index]}
 						</h3>
 
-						<div className="py-2 text-gray-600">
+						<div className="text-gray-600">
 							{detail.specs?.rows?.map(
 								(row: { cells: string[]; _key: string }) => {
 									const rowKey = `${row._key}`
 									const quantity = quantities[rowKey] || 0
 
 									return (
-										<div
-											key={row._key}
-											id={row._key}
-											className="mb-2 flex flex-row items-center justify-between border-b border-gray-200"
-										>
+										row.cells[2] && (
 											<div
-												key={'cell-title' + row._key}
-												className="flex w-full flex-wrap justify-start px-6 py-2"
+												key={row._key}
+												id={row._key}
+												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 text-sm max-lg:grid-cols-2 max-lg:py-3"
 											>
-												{row.cells[2]}
-											</div>
-											<div
-												key={'cell-value' + row._key}
-												className="flex w-full flex-wrap justify-start px-6 py-2"
-											>
-												{row.cells[!isYearly ? 1 : 0]} ريال / مندوب /{' '}
-												{!isYearly ? 'شهرياً' : 'سنوياً'}
-											</div>
-											<div className="flex h-full w-full flex-row items-center justify-center gap-x-2">
-												<button
-													className="rounded-full px-2 hover:bg-gray-50"
-													onClick={() => {
-														handlePlus(
-															row._key,
-															parseInt(row.cells[!isYearly ? 1 : 0]),
-															index,
-														)
-													}}
+												<div
+													id="row-title"
+													key={'row-title' + row._key}
+													className="flex w-full flex-wrap justify-start px-6 py-3 font-medium"
 												>
-													+
-												</button>
-												<div className="px-2">{quantity}</div>
-												<button
-													className="rounded-full px-2 hover:bg-gray-50"
-													onClick={() => {
-														handleMinus(
-															row._key,
-															parseInt(row.cells[!isYearly ? 1 : 0]),
-															index,
-														)
-													}}
+													{row.cells[2]}
+												</div>
+												<div
+													key={'cell-value' + row._key}
+													className="flex w-full flex-wrap justify-start px-6 py-3 text-gray-500"
 												>
-													-
-												</button>
-											</div>
-											<div className="flex h-full w-full flex-row items-center justify-end gap-x-2">
-												<div className="px-2">
-													{quantity * parseInt(row.cells[!isYearly ? 1 : 0])}{' '}
-													ريال / مندوب /{!isYearly ? 'شهرياً' : 'سنوياً'}
+													{row.cells[!isYearly ? 1 : 0]} ريال /
+													{!isYearly ? 'شهرياً' : 'سنوياً'}
+												</div>
+												<div className="flex h-full w-full flex-row items-center justify-center gap-1 px-6 *:transition-all max-lg:justify-start">
+													<button
+														className="group rounded-full p-2 hover:bg-gray-50"
+														onClick={() => {
+															handlePlus(
+																row._key,
+																parseInt(row.cells[!isYearly ? 1 : 0]),
+																index,
+															)
+														}}
+													>
+														<PiPlusBold className="text-sm text-gray-400 group-hover:text-gray-500" />
+													</button>
+													<div className="px-2">{quantity}</div>
+													<button
+														className="group rounded-full p-2 hover:bg-gray-50"
+														onClick={() => {
+															handleMinus(
+																row._key,
+																parseInt(row.cells[!isYearly ? 1 : 0]),
+																index,
+															)
+														}}
+													>
+														<PiMinusBold className="text-sm text-gray-400 group-hover:text-gray-500" />
+													</button>
+												</div>
+												<div className="flex h-full w-full flex-row items-center justify-end gap-x-2 px-6 py-3 font-medium text-gray-500 max-lg:justify-start">
+													{quantity * parseInt(row.cells[isYearly ? 0 : 1])}{' '}
+													ريال /{isYearly ? 'سنوياً' : 'شهرياً'}
 												</div>
 											</div>
-										</div>
+										)
 									)
 								},
 							)}
@@ -198,7 +203,7 @@ const CalculatorTable = ({
 					</div>
 				)
 			})}
-		</>
+		</div>
 	)
 }
 

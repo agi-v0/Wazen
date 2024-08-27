@@ -35,7 +35,7 @@ export default async function Plans({
 	return (
 		<section className="section py-[20vh]">
 			<div className="fluid-gap flex w-full flex-col items-center">
-				<div className="flex flex-col justify-center gap-6">
+				<div className="flex flex-col justify-center gap-6 text-center">
 					<PortableText value={content} components={set2} />
 				</div>
 				<Pricing plans={plans} />
