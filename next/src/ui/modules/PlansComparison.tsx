@@ -76,7 +76,7 @@ const PlansComparison = ({
 						)}
 					</div>
 					{/* table details */}
-					<div className="relative mt-6 flex w-full flex-col gap-9">
+					<div className="relative mt-6 flex w-full flex-col gap-9 text-sm">
 						{details?.slice(1).map((detail: any, index: any) => (
 							<div key={'details_' + index} id={'details_' + index}>
 								{/* table section header */}
@@ -86,9 +86,9 @@ const PlansComparison = ({
 								>
 									{detail.title}
 								</h3>
-								<div className="relative w-full overflow-x-scroll">
+								<div className="relative w-full max-lg:overflow-x-scroll">
 									{/* table section details */}
-									<div className="w-fit text-gray-800 lg:w-full">
+									<div className="w-fit text-gray-600 lg:w-full">
 										<div className="flex flex-row-reverse justify-end text-start text-sm font-medium text-gray-500 *:w-48 lg:hidden rtl:flex-row rtl:items-end">
 											{details[0].specs.rows.map(
 												(row: { cells: string[] }, index: string) => {
@@ -103,7 +103,6 @@ const PlansComparison = ({
 											>
 												{row.cells.map((cell: string, index: any) => {
 													const cleanedCell = clean(cell)
-													console.log(cleanedCell)
 													switch (cleanedCell) {
 														case '-':
 															return (

@@ -9,6 +9,10 @@
 	"App store": {
 		"Download": "تحميل"
 	},
+	"Pricing": {
+		"Monthly": "شهريا",
+		"Yearly": "سنويا"
+	},
 	"Contact": {
 		"First name": "الإسم الأول"
 	},

@@ -55,7 +55,7 @@ const PricingBox = (props: {
 				{/* <NumberTicker value={parseInt(price)} direction="up" /> */}
 				<span className="amount">{price}</span>
 				ريال
-				<span className="text-lg text-gray-950/40">/{duration}</span>
+				<span className="text-lg text-gray-400">/{duration}</span>
 			</h3>
 			<ul className="flex flex-col gap-4">
 				{apps.map((app: { title: string; active: boolean }, index: any) => (
