@@ -2,17 +2,20 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
-import Link from 'next/link'
+// import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 import { PiCaretRightBold } from 'react-icons/pi'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Rollup({
+	_type,
 	limit = 3,
 	category,
 	layout,
 	categoryRef = category?.length > 0 ? category[0]?._ref : null,
 	locale,
 }: Partial<{
+	_type: string
 	limit?: number
 	category: any
 	categoryRef: any
@@ -20,11 +23,22 @@ export default async function Rollup({
 	locale: string
 }>) {
 	const t = await getTranslations('Blog')
+	console.log('categoryRef', categoryRef)
 
-	const type = locale === 'ar' ? 'blog.post' : 'blog.post.en'
+	const type =
+		// 'help-center-categories-list'
+		_type === 'categories-list'
+			? locale === 'ar'
+				? 'blog.post'
+				: 'blog.post.en'
+			: locale === 'ar'
+				? 'help.center.post'
+				: 'help.center.post.en'
+
+	console.log(_type)
 
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == '${type}' && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
+		groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
 		 title,
 			publishDate,
 			metadata,
@@ -38,6 +52,7 @@ export default async function Rollup({
 			params: {
 				limit,
 				categoryRef,
+				type: type,
 			},
 			tags: ['posts'],
 		},

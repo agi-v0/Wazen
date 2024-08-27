@@ -6,7 +6,10 @@ import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
 import blogPostEn from './documents/blog.post.en'
 import blogCategory from './documents/blog.category'
-import helpCenterCategory from './documents/help.ceter.category'
+import helpCenterPost from './documents/help.center.post'
+import helpCenterPostEn from './documents/help.center.post.en'
+import helpCenterCategory from './documents/help.center.category'
+
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 import FAQ from './documents/FAQ'
@@ -67,6 +70,8 @@ export const schemaTypes = [
 	blogPost,
 	blogPostEn,
 	blogCategory,
+	helpCenterPost,
+	helpCenterPostEn,
 	helpCenterCategory,
 	appStoreApp,
 	logo,

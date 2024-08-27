@@ -21,6 +21,17 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('blog.category').title('Blog categories'),
 			S.divider(),
 
+			S.documentTypeListItem('help.center.post').title(
+				'Help Center posts (عربي)',
+			),
+			S.documentTypeListItem('help.center.post.en').title(
+				'Help Center posts (English)',
+			),
+			S.documentTypeListItem('help.center.category').title(
+				'Help Center Categories',
+			),
+			S.divider(),
+
 			S.documentTypeListItem('app.store.app').title('App store apps'),
 			S.divider(),
 
@@ -30,7 +41,9 @@ const structure: StructureResolver = (S, context) =>
 				S.documentTypeListItem('pricing').title('Pricing Tier'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 				S.documentTypeListItem('faq').title('FAQ'),
-				S.documentTypeListItem('help.center.category').title('Help Center Categories'),
+				S.documentTypeListItem('help.center.category').title(
+					'Help Center Categories',
+				),
 			]).icon(BsDatabaseAdd),
 		])
 

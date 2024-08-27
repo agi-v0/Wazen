@@ -4,16 +4,15 @@ import Rollup from './Rollup'
 // import { usePathname } from 'next/navigation'
 
 export default function Categories({
+	_type,
 	categories,
 	locale,
 }: {
+	_type: string
 	categories?: Sanity.BlogCategory[]
 	locale: any
 }) {
-
-	// const pathname = usePathname()
-
-	// console.log(pathname)
+	const pageType = _type == 'categories-list' ? 'blog' : 'help-center'
 
 	if (!categories?.length) return null
 	return (
@@ -25,7 +24,9 @@ export default function Categories({
 						key={_key}
 					>
 						<Link
-							href={decodeURIComponent(`/blog#${stegaClean(category.title)}`)}
+							href={decodeURIComponent(
+								`/${pageType}#${stegaClean(category.title)}`,
+							)}
 						>
 							{locale == 'ar' ? category.title : category.title_en}
 						</Link>
@@ -33,8 +34,10 @@ export default function Categories({
 				))}
 			</ul>
 			{categories.map((category, _key) => {
+				console.log(category)
 				return (
 					<Rollup
+						_type={_type}
 						categoryRef={category._id}
 						key={'rollup' + _key}
 						layout="grid"
