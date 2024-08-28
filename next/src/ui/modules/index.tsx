@@ -111,7 +111,9 @@ export default function Modules({
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
 					case 'pricing-calculator':
-						return <PlansCalculator {...module} key={module._key} />
+						return (
+							<PlansCalculator {...module} locale={locale} key={module._key} />
+						)
 					case 'pricing-comparison':
 						return <PlansComparison {...module} key={module._key} />
 					case 'richtext-module':

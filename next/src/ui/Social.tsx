@@ -1,18 +1,20 @@
 import { getSite } from '@/lib/sanity/queries'
 import CTA from './CTA'
 import { cn } from '@/lib/utils'
+import { Link } from '@/i18n/navigations'
 
 import {
-	FaFacebookF,
+	FaFacebook,
 	FaGithub,
 	FaInstagram,
-	FaLinkedinIn,
+	FaLinkedin,
 	FaTiktok,
 	FaXTwitter,
 	FaYoutube,
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import processUrl from '@/lib/processUrl'
 
 export default async function Social({
 	staticLinks,
@@ -23,7 +25,12 @@ export default async function Social({
 	className: string
 	locale: any
 }) {
+	const t = useTranslations('Index')
+
 	const { social } = await getSite(locale)
+
+	let currentDate = new Date()
+	let currentYear = currentDate.getFullYear()
 
 	if (!social?.items?.length) return null
 
@@ -34,8 +41,8 @@ export default async function Social({
 				className,
 			)}
 		>
-			<div className="flex flex-col items-start gap-8 lg:flex-row">
-				<div dir="rtl">© 2024 وازن المالية. جميع الحقوق محفوظة</div>
+			<div className="flex flex-col items-start gap-8 text-sm lg:flex-row">
+				<div>{`© ${currentYear} ${t('All rights reserved')}.`}</div>
 
 				<div className="inline-flex gap-4 text-start">
 					{staticLinks?.items?.map((item: any, key: any) => {
@@ -81,13 +88,13 @@ function Icon({
 	if (!url) return null
 
 	return url?.includes('facebook.com') ? (
-		<FaFacebookF {...props} />
+		<FaFacebook {...props} />
 	) : url?.includes('github.com') ? (
 		<FaGithub {...props} />
 	) : url?.includes('instagram.com') ? (
 		<FaInstagram {...props} />
 	) : url?.includes('linkedin.com') ? (
-		<FaLinkedinIn {...props} />
+		<FaLinkedin {...props} />
 	) : url?.includes('tiktok.com') ? (
 		<FaTiktok {...props} />
 	) : url?.includes('twitter.com') || url?.includes('x.com') ? (

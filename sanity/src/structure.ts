@@ -32,7 +32,7 @@ const structure: StructureResolver = (S, context) =>
 			),
 			S.divider(),
 
-			S.documentTypeListItem('app.store.app').title('App store apps'),
+			S.documentTypeListItem('app.store.app').title('Wazen store'),
 			S.divider(),
 
 			group(S, 'Miscellaneous', [

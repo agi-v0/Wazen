@@ -1,17 +1,19 @@
 {
 	"Index": {
-		"Translated Text": "Translated Text"
+		"All rights reserved": "All rights reserved"
 	},
 	"Blog": {
 		"Read more": "Read More",
-		"View more": "View More"
+		"View more": "View More",
+		"Contents": "On this page"
 	},
 	"App store": {
 		"Download": "Download"
 	},
 	"Pricing": {
 		"Monthly": "Monthly",
-		"Yearly": "Yearly"
+		"Yearly": "Yearly",
+		"Tap to add to estimated price": "Tap to add to estimated price"
 	},
 	"Contact": {
 		"First name": "First Name"

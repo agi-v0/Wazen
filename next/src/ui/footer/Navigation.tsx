@@ -18,14 +18,14 @@ export default async function Menu({ footerMenu, locale }: any) {
 				const { label, links } = item
 				return (
 					<div key={key}>
-						<div className="mb-4 h-9 rounded text-start text-white/50">
+						<div className="mb-4 h-9 rounded text-start text-sm text-white/40">
 							{label}
 						</div>
 						<ul className="text-start">
 							{links?.map((link: any, key: any) => (
 								<li
 									key={key}
-									className="group flex items-center py-2 text-white/80"
+									className="group flex items-center py-2 text-sm text-white/60"
 								>
 									<CTA
 										locale={locale}

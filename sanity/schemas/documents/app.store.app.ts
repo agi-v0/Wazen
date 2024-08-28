@@ -1,11 +1,11 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 import { PiSquaresFour } from 'react-icons/pi'
 
 export default defineType({
 	name: 'app.store.app',
-	title: 'App store apps',
+	title: 'App',
 	icon: PiSquaresFour,
 	type: 'document',
 	fields: [
@@ -43,13 +43,89 @@ export default defineType({
 			],
 		}),
 		defineField({
+			name: 'carousel',
+			title: 'Images',
+			type: 'array',
+			of: [
+				// defineArrayMember({
+				// 	name: 'carousel-items',
+				// 	title: 'Image',
+				// 	type: 'object',
+				// 	fields: [
+				// 		{
+				// 			name: 'item',
+				// 			title: 'Image',
+				// 			type: 'image',
+				// 			icon: IoIosImage,
+				// 			fields: [
+				// 				defineField({
+				// 					name: 'alt',
+				// 					type: 'string',
+				// 				}),
+				// 				defineField({
+				// 					name: 'caption',
+				// 					type: 'text',
+				// 					rows: 2,
+				// 				}),
+				// 			],
+				// 		},
+				// 	],
+				// }),
+				defineArrayMember({
+					name: 'carousel-items',
+					title: 'Image',
+					type: 'image',
+					icon: IoIosImage,
+					fields: [
+						defineField({
+							name: 'alt',
+							type: 'string',
+						}),
+						defineField({
+							name: 'caption',
+							type: 'text',
+							rows: 2,
+						}),
+					],
+				}),
+			],
+		}),
+		defineField({
+			name: 'permissions',
+			type: 'object',
+			fields: [
+				{
+					name: 'basicInfo',
+					type: 'boolean',
+				},
+
+				{
+					name: 'products',
+					type: 'boolean',
+				},
+				{
+					name: 'customers',
+					type: 'boolean',
+				},
+				{
+					name: 'orders',
+					type: 'boolean',
+				},
+				{
+					name: 'webhook',
+					type: 'boolean',
+				},
+			],
+		}),
+		defineField({
 			name: 'icon',
 			type: 'image',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'publishDate',
 			type: 'date',
-			validation: (Rule) => Rule.required(),
+			// validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'metadata',
