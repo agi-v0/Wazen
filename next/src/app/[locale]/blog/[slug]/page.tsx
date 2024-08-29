@@ -51,7 +51,7 @@ async function getStaticProps(params: Props['params']) {
         }`,
 		{
 			params: { slug: decodedSlug, type },
-			tags: ['blog.post'],
+			tags: [type],
 		},
 	)
 }
