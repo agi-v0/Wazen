@@ -13,7 +13,7 @@ import {
 	FaYoutube,
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
-import { useTranslations } from 'next-intl'
+import { getTranslations, getLocale } from 'next-intl/server'
 import processUrl from '@/lib/processUrl'
 
 export default async function Social({
@@ -25,7 +25,7 @@ export default async function Social({
 	className: string
 	locale: any
 }) {
-	const t = useTranslations('Index')
+	const t = await getTranslations('Index')
 
 	const { social } = await getSite(locale)
 

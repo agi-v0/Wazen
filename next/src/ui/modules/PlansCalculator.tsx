@@ -13,9 +13,11 @@ import { Switch } from '@/components/ui/switch'
 const PlansCalculator = ({
 	content,
 	details,
+	locale,
 }: Partial<{
 	content: any
 	details: any
+	locale: string
 }>) => {
 	const [isYearly, setIsYearly] = useState(false)
 
@@ -73,6 +75,7 @@ const PlansCalculator = ({
 						details={details}
 						setTotal={setTotal}
 						isYearly={isYearly}
+						locale={locale as string}
 					/>
 				</div>
 			</div>

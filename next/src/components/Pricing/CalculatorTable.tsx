@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import {
 	PiFlowArrowDuotone,
@@ -15,11 +16,14 @@ const CalculatorTable = ({
 	details,
 	setTotal,
 	isYearly,
+	locale,
 }: {
 	details: any
 	setTotal: any
 	isYearly: any
+	locale: string
 }) => {
+	// const t = useTranslations('Pricing')
 	const AppIcons = [
 		<PiTableDuotone className="text-2xl text-cyan-500" />,
 		<PiIdentificationCardDuotone className="text-2xl text-yellow-500" />,
@@ -119,7 +123,7 @@ const CalculatorTable = ({
 					<div key={'details_' + index}>
 						<h3
 							className={cn(
-								'text-main sticky top-[calc(var(--header-height)+72px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-50 active:bg-teal-100 max-lg:top-[calc(var(--header-height)+95.51px)] md:order-1',
+								'text-main sticky top-[calc(var(--header-height)+72px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-100 active:bg-teal-100 max-lg:top-[calc(var(--header-height)+95.51px)] md:order-1',
 								activateArray.includes(index) ? '' : 'grayscale',
 							)}
 							aria-hidden="true"
@@ -131,7 +135,14 @@ const CalculatorTable = ({
 								<div className="rounded-full bg-white p-2">
 									{AppIcons[index]}
 								</div>
-								{detail.title}
+								<div className="flex flex-col items-start">
+									{detail.title}
+									<span className="text-sm font-normal text-gray-950/40">
+										{locale == 'en'
+											? 'Tap to add to estimated price'
+											: 'انقر لإضافتها الى التكلفة التقديرية'}
+									</span>
+								</div>
 							</div>
 							{categoryTotal[index]}
 						</h3>
@@ -147,7 +158,7 @@ const CalculatorTable = ({
 											<div
 												key={row._key}
 												id={row._key}
-												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 text-sm max-lg:grid-cols-2 max-lg:py-3"
+												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-lg:grid-cols-2"
 											>
 												<div
 													id="row-title"
