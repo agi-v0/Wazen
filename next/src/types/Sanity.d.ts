@@ -40,6 +40,15 @@ declare global {
 			publishDate: string
 		}
 
+		type HelpCenterPost = PageBase & {
+			readonly _type: 'help.center.post'
+			body: any
+			readTime: number
+			headings?: { style: string; text: string }[]
+			categories: BlogCategory[]
+			publishDate: string
+		}
+
 		type BlogCategory = SanityDocument<{
 			title: string
 			title_en: string

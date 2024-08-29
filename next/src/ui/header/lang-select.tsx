@@ -25,7 +25,6 @@ const LangSelect = () => {
 	const [isPending, startTransition] = useTransition()
 	const pathname = usePathname()
 	const params = useParams()
-	console.log(pathname)
 
 	function onSelectChange(lang: string) {
 		startTransition(() => {
