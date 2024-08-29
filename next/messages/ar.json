@@ -5,7 +5,9 @@
 	"Blog": {
 		"Read more": "إقرأ المزيد",
 		"View more": "تصفح المزيد",
-		"Contents": "في هذه الصفحة"
+		"Contents": "في هذه الصفحة",
+		"Read time": "وقت القراءة",
+		"minutes": "دقيقة"
 	},
 	"App store": {
 		"Download": "تحميل"

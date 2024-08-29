@@ -33,10 +33,11 @@ export async function generateStaticParams() {
 async function getStaticProps(params: Props['params']) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 
-	console.log(decodedSlug)
+	const type =
+		params.locale == 'ar' ? 'help.center.post' : 'help.center.post.en'
 
 	return await fetchSanity<Sanity.BlogPost>(
-		groq`*[_type == 'help.center.post' && metadata.slug.current == $slug][0]{
+		groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
             'readTime': length(pt::text(body)) / 200,
@@ -51,7 +52,10 @@ async function getStaticProps(params: Props['params']) {
             }
         }`,
 		{
-			params: { slug: decodedSlug },
+			params: {
+				slug: decodedSlug,
+				type,
+			},
 			tags: ['help.center.post'],
 		},
 	)

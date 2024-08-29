@@ -5,7 +5,9 @@
 	"Blog": {
 		"Read more": "Read More",
 		"View more": "View More",
-		"Contents": "On this page"
+		"Contents": "On this page",
+		"Read time": "Read time",
+		"minutes": "minutes"
 	},
 	"App store": {
 		"Download": "Download"

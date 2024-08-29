@@ -1,7 +1,10 @@
+import { useTranslations } from 'next-intl'
+
 export default function ReadTime({ value }: { value: number }) {
+	const t = useTranslations('Blog')
 	return (
 		<span className="with-icon gap-1">
-			 وقت القراءة {Math.ceil(value)} دقيقة
+			{`${t('Read time')} ${Math.ceil(value)} ${t('minutes')}`}
 		</span>
 	)
 }
