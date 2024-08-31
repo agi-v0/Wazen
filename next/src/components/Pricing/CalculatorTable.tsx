@@ -80,19 +80,25 @@ const CalculatorTable = ({
 		}))
 	}
 
-	const CategoryTotals = (obj: {
-		[key: string]: number[]
-	}): { [key: string]: number } => {
+	const CategoryTotals = (
+		obj: { [key: string]: number[] },
+		activateArray: number[],
+	): { [key: string]: number } => {
 		const result: { [key: string]: number } = {}
-		let totalSum = 0
 
 		if (Object.entries(obj).length > 0) {
-			activateArray.forEach((key: any, index: any) => {
-				const sum = obj[key]?.reduce((acc, num) => acc + num, 0)
-				result[key] = sum
-				totalSum += sum
+			activateArray.forEach((key) => {
+				if (obj[key] && Array.isArray(obj[key])) {
+					const sum = obj[key].reduce((acc, num) => acc + num, 0)
+					result[key] = sum
+				} else {
+					result[key] = 0
+				}
 			})
 		}
+
+		const totalSum = Object.values(result).reduce((acc, num) => acc + num, 0)
+
 		setTotal(totalSum)
 
 		setCategoryTotal(result)
@@ -101,6 +107,11 @@ const CalculatorTable = ({
 	}
 
 	const activateCategory = (index: any) => {
+		setCategoryTotalObj((prev) => ({
+			...prev,
+			[index]: [...(prev[index] || []), 0],
+		}))
+
 		if (activateArray.includes(index)) {
 			setActivateArray(
 				activateArray.filter((item) => {
@@ -113,7 +124,7 @@ const CalculatorTable = ({
 	}
 
 	useEffect(() => {
-		CategoryTotals(categoryTotalObj)
+		CategoryTotals(categoryTotalObj, activateArray)
 	}, [quantities, activateArray])
 
 	return (
@@ -123,7 +134,7 @@ const CalculatorTable = ({
 					<div key={'details_' + index}>
 						<h3
 							className={cn(
-								'text-main sticky top-[calc(var(--header-height)+72px)] z-[1] flex cursor-pointer flex-row justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-100 active:bg-teal-100 max-lg:top-[calc(var(--header-height)+95.51px)] md:order-1',
+								'text-main sticky top-[calc(var(--header-height)+72px)] z-[1] flex cursor-pointer flex-row items-center justify-between rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold hover:bg-teal-100 active:bg-teal-100 max-lg:top-[calc(var(--header-height)+95.51px)] md:order-1',
 								activateArray.includes(index) ? '' : 'grayscale',
 							)}
 							aria-hidden="true"
