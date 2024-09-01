@@ -101,6 +101,7 @@ function generateSrcSet(
 		sizes: number[]
 	},
 ) {
+	// call format method only if the value of format is not false, useful for displaying svgs
 	return format
 		? sizes
 				.filter((size) => !width || size <= width)

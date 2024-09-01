@@ -46,6 +46,7 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
+			validation: (rule) => rule.required(),
 		}),
 	],
 	preview: {

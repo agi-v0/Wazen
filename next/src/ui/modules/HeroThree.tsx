@@ -31,7 +31,7 @@ export default function HeroThree({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="h1 text-pretty font-semibold leading-tight">
+						<h1 className="h1 text-pretty font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
@@ -44,7 +44,7 @@ export default function HeroThree({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-main mx-auto text-cyan-950/80 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)

@@ -30,31 +30,16 @@ export default function HeroTwo({
 	alignItems: React.CSSProperties['alignItems']
 }>) {
 	const hasImage = !!bgImage?.asset
-
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h1') {
-					return (
-						<h1 className="h1 mx-auto max-w-3xl text-center font-semibold leading-tight">
-							{value.children.map((child: any) => child.text).join('')}
-						</h1>
-					)
-				}
-				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
+	const FADE_UP_ANIMATION_VARIANTS = {
+		hidden: { opacity: 0, y: 10 },
+		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
 
 	return (
 		<section className="section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl bg-gradient-to-br from-white from-65% to-teal-50 p-12 py-24">
 				<div
-					className={cn('richtext relative space-y-6')}
+					className={cn('relative max-w-3xl space-y-6')}
 					style={{ textAlign: stegaClean(textAlign) }}
 				>
 					<Pretitle
