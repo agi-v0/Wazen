@@ -137,7 +137,8 @@ export default function FeaturesGridTwo({
 												<Img
 													image={feature.image}
 													imageWidth={block.features.length > 1 ? 640 : 1440}
-													format={false}
+													alt={feature.title}
+													svg={true}
 													className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
 												/>
 											</motion.li>

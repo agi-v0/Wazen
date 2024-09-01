@@ -10,6 +10,7 @@ import { ImageFormat } from '@sanity/image-url/lib/types/types'
 const SIZES = [60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440]
 
 export default function Img({
+	svg = false,
 	format = 'webp',
 	image,
 	imageWidth,
@@ -19,6 +20,7 @@ export default function Img({
 	options,
 	...props
 }: {
+	svg?: Boolean
 	format?: ImageFormat
 	image: Sanity.Image | undefined
 	imageWidth?: number
@@ -37,7 +39,7 @@ export default function Img({
 	return (
 		<img
 			src={src}
-			srcSet={generateSrcSet(image, format, {
+			srcSet={generateSrcSet(image, format, svg, {
 				width: imageWidth,
 				sizes: imageSizes,
 			})}
@@ -53,6 +55,7 @@ export default function Img({
 }
 
 export function Source({
+	svg = false,
 	format = 'webp',
 	image,
 	imageWidth,
@@ -60,6 +63,7 @@ export function Source({
 	options,
 	media = '(max-width: 768px)',
 }: {
+	svg?: Boolean
 	format?: ImageFormat
 	image: Sanity.Image | undefined
 	imageWidth?: number
@@ -78,7 +82,7 @@ export function Source({
 	return (
 		<source
 			srcSet={
-				generateSrcSet(image, format, {
+				generateSrcSet(image, format, svg, {
 					width: imageWidth,
 					sizes: imageSizes,
 				}) || src
@@ -93,6 +97,7 @@ export function Source({
 function generateSrcSet(
 	image: Sanity.Image,
 	format: ImageFormat,
+	svg: Boolean,
 	{
 		width,
 		sizes = SIZES,
@@ -101,13 +106,17 @@ function generateSrcSet(
 		sizes: number[]
 	},
 ) {
-	// call format method only if the value of format is not false, useful for displaying svgs
-	return format
+	// call format method only if the value of svg is false, useful for displaying svgs
+	return !svg
 		? sizes
 				.filter((size) => !width || size <= width)
 				.map(
 					(size) =>
-						`${urlFor(image).width(size).auto('format').format(format).url()} ${size}w`,
+						`${urlFor(image)
+							.width(size)
+							.auto('format')
+							.format(format)
+							.url()} ${size}w`,
 				)
 				.join(', ') || undefined
 		: sizes
