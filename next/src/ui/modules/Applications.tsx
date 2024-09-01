@@ -11,10 +11,6 @@ import { EmblaOptionsType } from 'embla-carousel'
 import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import { set2 } from '@/components/ui/portable-text'
 
-const EmblaCarousel = dynamic(
-	() => import('@/components/EmblaCarousel/EmblaCarousel'),
-)
-
 export default function Applications({
 	pretitle,
 	content,
@@ -71,7 +67,6 @@ export default function Applications({
 				<PortableText value={content} components={set2} />
 			</div>
 			<div className="" dir={direction}>
-				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
 					direction={'right'}
 					speed={'slow'}
