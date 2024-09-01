@@ -134,7 +134,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 									`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`,
 								)}
 							>
-								<div className="flex h-full w-full flex-col justify-between gap-4 p-6">
+								{/* <div className="flex h-full w-full flex-col justify-between gap-4 p-6">
 									<h3 className="h4 font-semibold">{title}</h3>
 									<p className="text-base text-gray-950/60">
 										{link.description}
@@ -153,7 +153,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 										imageWidth={300}
 										className="aspect-[3/4] h-auto w-full rounded-md object-cover object-left-top"
 									/>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					))}
