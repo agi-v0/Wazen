@@ -37,23 +37,14 @@ type PropType = {
 const components: PortableTextComponents = {
 	types: {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
-			if (value.style === 'h2') {
-				return (
-					<h2 className="h2 font-semibold leading-tight text-cyan-950">
-						{value.children.map((child: any) => child.text).join('')}
-					</h2>
-				)
-			}
-			if (value.style === 'h3') {
-				return (
-					<h3 className="font-semibold leading-tight text-cyan-950">
-						{value.children.map((child: any) => child.text).join('')}
-					</h3>
-				)
-			}
 			return (
 				<p className="text-larger mx-auto max-w-3xl font-semibold text-cyan-950 md:max-w-3xl">
-					{value.children.map((child: any) => clean(child.text)).join('')}
+					{value.children
+						.map((child: any) => {
+							// check if there are quotation marks in the testimonial text and add them if not
+							return child.text.includes(`"`) ? child.text : `"${child.text}"`
+						})
+						.join('')}
 				</p>
 			)
 		},
@@ -162,6 +153,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 							>
 								<PortableText value={content} components={components} />
 								<div className="flex flex-row gap-4">
+									<Img
+										loading="lazy"
+										image={author?.image}
+										imageWidth={360}
+										className="aspect-square h-auto w-10 rounded-full object-cover object-left-top"
+									/>
 									<div
 										className={cn(
 											'flex flex-col text-sm text-cyan-950',
@@ -179,12 +176,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 											</>
 										)}
 									</div>
-									<Img
-										loading="lazy"
-										image={author?.image}
-										imageWidth={40}
-										className="aspect-square h-auto w-full rounded-full object-cover object-left-top"
-									/>
 								</div>
 							</div>
 						</div>
