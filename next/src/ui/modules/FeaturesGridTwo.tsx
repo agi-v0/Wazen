@@ -93,9 +93,8 @@ export default function FeaturesGridTwo({
 						const ref = useRef<HTMLDivElement | null>(null) // Create a unique ref for each item
 						const isInView = useInView(ref) // Use the unique ref here
 						return (
-							<div ref={ref}>
+							<div key={index} ref={ref}>
 								<motion.ul
-									key={index}
 									className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
 									initial="hidden"
 									animate={isInView ? 'show' : 'hidden'}

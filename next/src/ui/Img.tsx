@@ -72,7 +72,6 @@ export function Source({
 	media?: string
 }) {
 	if (!image) return null
-
 	const { src, width, height } = useNextSanityImage(
 		client,
 		image,
