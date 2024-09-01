@@ -101,13 +101,19 @@ function generateSrcSet(
 		sizes: number[]
 	},
 ) {
-	return (
-		sizes
-			.filter((size) => !width || size <= width)
-			.map(
-				(size) =>
-					`${urlFor(image).width(size).auto('format').format(format).url()} ${size}w`,
-			)
-			.join(', ') || undefined
-	)
+	return format
+		? sizes
+				.filter((size) => !width || size <= width)
+				.map(
+					(size) =>
+						`${urlFor(image).width(size).auto('format').format(format).url()} ${size}w`,
+				)
+				.join(', ') || undefined
+		: sizes
+				.filter((size) => !width || size <= width)
+				.map(
+					(size) =>
+						`${urlFor(image).width(size).auto('format').url()} ${size}w`,
+				)
+				.join(', ') || undefined
 }
