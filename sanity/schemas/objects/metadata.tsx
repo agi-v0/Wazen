@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { SlugValidationContext, defineField, defineType } from 'sanity'
 import { MediaEditor } from '@catherineriver/sanity-plugin-generate-ogimage'
 import { OGImageEditor } from '../../src/OGImageEditor'
 import React from 'react'

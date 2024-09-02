@@ -1,6 +1,6 @@
 import { getSite } from '@/lib/sanity/queries'
 import CTA from './CTA'
-import { cn } from '@/lib/utils'
+import { clean, cn } from '@/lib/utils'
 import { Link } from '@/i18n/navigations'
 
 import {
@@ -64,11 +64,11 @@ export default async function Social({
 						case 'link':
 							return (
 								<CTA
-									className="px-2 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+									className="p-2 text-2xl hover:!opacity-100 group-has-[a:hover]:opacity-50"
 									link={item}
 									key={key}
 								>
-									<Icon url={item.external} aria-label={item.label} />
+									<Icon url={item.external} aria-label={clean(item.label)} />
 								</CTA>
 							)
 

@@ -1,18 +1,17 @@
-'use client'
-
 import { cn } from '@/lib/utils'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
+
 import {
 	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
-import React, { useEffect, useState } from 'react'
 import Img from '../Img'
 import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-testimonials'
 import { EmblaOptionsType } from 'embla-carousel'
 import Pretitle from '../Pretitle'
 
-const TestimonialListTwo = ({
+export default async function TestimonialListTwo({
 	pretitle,
 	content,
 	locale,
@@ -24,13 +23,17 @@ const TestimonialListTwo = ({
 	locale: string
 	testimonials: Sanity.Testimonial[]
 	className?: string
-}) => {
+}) {
+	const allTestimonials =
+		testimonials ||
+		(await fetchSanity<Sanity.Testimonial[]>(groq`*[_type == 'testimonial']`))
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 font-semibold text-cyan-950 ltr:leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
@@ -47,7 +50,7 @@ const TestimonialListTwo = ({
 	const OPTIONS: EmblaOptionsType = {
 		direction: direction,
 		loop: true,
-		duration: testimonials.length * 10,
+		duration: allTestimonials.length * 10,
 	}
 	return (
 		<section className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]">
@@ -57,9 +60,11 @@ const TestimonialListTwo = ({
 				</Pretitle>
 				{content && <PortableText value={content} components={components} />}
 			</div>
-			<EmblaCarousel slides={testimonials} options={OPTIONS} locale={locale} />
+			<EmblaCarousel
+				slides={allTestimonials}
+				options={OPTIONS}
+				locale={locale}
+			/>
 		</section>
 	)
 }
-
-export default TestimonialListTwo

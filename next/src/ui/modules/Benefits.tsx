@@ -23,13 +23,13 @@ export default function Benefits({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h2 text-balance text-start font-semibold leading-tight text-cyan-950">
+						<h2 className="h2 text-balance font-semibold text-cyan-950 ltr:leading-tight">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				return (
-					<p className="text-main max-w-xl text-gray-600">
+					<p className="text-main text-gray-950/80">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
