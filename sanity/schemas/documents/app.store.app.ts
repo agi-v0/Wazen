@@ -91,6 +91,12 @@ export default defineType({
 			],
 		}),
 		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+		}),
+		defineField({
 			name: 'permissions',
 			type: 'object',
 			fields: [

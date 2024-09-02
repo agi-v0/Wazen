@@ -42,7 +42,6 @@ import callToAction from './modules/call-to-action'
 import singleTestimony from './modules/single-testimony'
 import categoriesList from './modules/categories-list'
 import helpCenterCategoriesList from './modules/help-center-categories-list'
-import firstPost from './modules/first-post'
 import howItWorks from './modules/how-it-works'
 import heroThree from './modules/hero.three'
 import steps from './modules/steps'
@@ -101,7 +100,6 @@ export const schemaTypes = [
 	creativeModule,
 	customHtml,
 	faqList,
-	firstPost,
 	heroThree,
 	hero,
 	heroTwo,
