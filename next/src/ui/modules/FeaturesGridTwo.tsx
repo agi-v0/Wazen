@@ -1,3 +1,4 @@
+'use client'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -8,6 +9,8 @@ import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
 import { Icon } from '@iconify/react'
 import Img from '../Img'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function FeaturesGridTwo({
 	pretitle,
@@ -50,6 +53,11 @@ export default function FeaturesGridTwo({
 			},
 		},
 	}
+	const FADE_UP_ANIMATION_VARIANTS = {
+		hidden: { opacity: 0, y: 10 },
+		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
+	}
+
 	const featureStyle: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -81,43 +89,63 @@ export default function FeaturesGridTwo({
 					<PortableText value={content} components={components} />
 				</div>
 				<div className="flex flex-col gap-6">
-					{features?.map((block, index) => (
-						<ul
-							key={index}
-							className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
-						>
-							{block &&
-								block.features.map((feature) => (
-									<li
-										className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
-										key={feature.title}
-									>
-										<div className="space-y-2 p-6">
-											<div className="flex flex-row items-center gap-4">
-												{feature.icon && (
-													<div className="self-start rounded-md bg-cyan-800 p-2">
-														<Icon
-															icon={feature.icon.name}
-															className="text-xl text-cyan-50"
-														/>
+					{features?.map((block, index) => {
+						const ref = useRef<HTMLDivElement | null>(null) // Create a unique ref for each item
+						const isInView = useInView(ref) // Use the unique ref here
+						return (
+							<div key={index} ref={ref}>
+								<motion.ul
+									className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
+									initial="hidden"
+									animate={isInView ? 'show' : 'hidden'}
+									viewport={{ once: true }}
+									variants={{
+										hidden: {},
+										show: {
+											transition: {
+												staggerChildren: 0.15,
+											},
+										},
+									}}
+								>
+									{block &&
+										block.features.map((feature) => (
+											<motion.li
+												className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
+												key={feature.title}
+												variants={FADE_UP_ANIMATION_VARIANTS}
+											>
+												<div className="space-y-2 p-6">
+													<div className="flex flex-row items-center gap-4">
+														{feature.icon && (
+															<div className="self-start rounded-md bg-cyan-800 p-2">
+																<Icon
+																	icon={feature.icon.name}
+																	className="text-xl text-cyan-50"
+																/>
+															</div>
+														)}
+														<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
+															{feature.title}
+														</h3>
 													</div>
-												)}
-												<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
-													{feature.title}
-												</h3>
-											</div>
-											<p className="text-pretty text-base text-cyan-950/80">
-												{feature.description}
-											</p>
-										</div>
-										<Img
-											image={feature.image}
-											className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
-										/>
-									</li>
-								))}
-						</ul>
-					))}
+													<p className="text-pretty text-base text-cyan-950/80">
+														{feature.description}
+													</p>
+												</div>
+												<Img
+													image={feature.image}
+													imageWidth={block.features.length > 1 ? 640 : 1440}
+													alt={feature.title}
+													svg={true}
+													className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
+												/>
+											</motion.li>
+										))}
+								</motion.ul>
+							</div>
+						)
+					})}
 				</div>
 			</div>
 		</section>
