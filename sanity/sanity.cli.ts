@@ -6,4 +6,5 @@ export default defineCliConfig({
 		projectId: 'm7bjawr3',
 		dataset: 'production',
 	},
+	studioHost: 'wazen-dev',
 })

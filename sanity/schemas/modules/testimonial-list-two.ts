@@ -21,6 +21,7 @@ export default defineType({
 			name: 'testimonials',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'testimonial' }] }],
+			description: 'Leave empty to display all testimonials',
 		}),
 	],
 	preview: {
