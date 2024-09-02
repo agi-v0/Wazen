@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 // import Applications from './Applications'
 // import Benefits from './Benefits'
 import Categories from './blog/CategoriesList'
-import FirstPost from './blog/FirstPost'
+
 import BlogRollup from './blog/Rollup'
 // import Brief from './Brief'
 import CreativeModule from './CreativeModule'
@@ -94,8 +94,6 @@ export default function Modules({
 						return <FeaturesGridOne {...module} key={module._key} />
 					case 'features-grid-2':
 						return <FeaturesGridTwo {...module} key={module._key} />
-					case 'first-post':
-						return <FirstPost {...module} key={module._key} locale={locale} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':

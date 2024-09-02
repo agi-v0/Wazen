@@ -280,8 +280,8 @@ export default function MobileApp() {
 						y2="219.59"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#14B8A6" stop-opacity="0.1" />
-						<stop offset="1" stop-color="white" stop-opacity="0" />
+						<stop stopColor="#14B8A6" stopOpacity="0.1" />
+						<stop offset="1" stopColor="white" stopOpacity="0" />
 					</linearGradient>
 				</defs>
 			</svg>
