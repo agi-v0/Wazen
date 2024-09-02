@@ -44,7 +44,7 @@ export default function FeaturesGridOne({
 	return (
 		<section className="bg-cyan-950">
 			<div
-				className="fluid-gap section flex w-full flex-col items-center p-[var(--size--6rem)]"
+				className="fluid-gap section fluid-padding flex w-full flex-col items-center py-[var(--size--6rem)]"
 				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<div className="flex flex-col items-center gap-6">

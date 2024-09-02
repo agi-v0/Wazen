@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default async function Menu({ footerMenu, locale }: any) {
 	return (
-		<nav className="flex w-full flex-col flex-wrap items-start justify-start gap-8 md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
+		<nav className="flex w-full flex-col flex-wrap items-start justify-start gap-8 font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
 			<Link className="font-bold" href="/">
 				<Image
 					src="/wazen-logo-white.svg"
@@ -18,14 +18,14 @@ export default async function Menu({ footerMenu, locale }: any) {
 				const { label, links } = item
 				return (
 					<div key={key}>
-						<div className="mb-4 h-9 rounded text-start text-sm text-white/40">
+						<div className="mb-4 h-10 rounded text-start text-sm text-white">
 							{label}
 						</div>
 						<ul className="text-start">
 							{links?.map((link: any, key: any) => (
 								<li
 									key={key}
-									className="group flex items-center py-2 text-sm text-white/60"
+									className="group grid h-10 grid-cols-1 items-center text-sm text-white/60"
 								>
 									<CTA
 										locale={locale}

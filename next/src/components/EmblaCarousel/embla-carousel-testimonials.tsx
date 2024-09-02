@@ -148,7 +148,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 							<div
 								className={cn(
 									style.slide_item,
-									`slide-item flex flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-[var(--padding-horizontal--main)] py-[var(--size--4rem)] text-center transition-all`,
+									`slide-item flex h-full flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-[var(--padding-horizontal--main)] py-[var(--size--4rem)] text-center transition-all`,
 								)}
 							>
 								<PortableText value={content} components={components} />
