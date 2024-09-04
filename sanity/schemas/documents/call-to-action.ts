@@ -3,10 +3,10 @@ import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'call.to.action',
+	name: 'call.to.action.doc',
 	title: 'Call To Action',
 	icon: TfiLayoutCtaCenter,
-	type: 'object',
+	type: 'document',
 	groups: [
 		{ name: 'content', title: 'Content', default: true },
 		{ name: 'options', title: 'Options' },
@@ -18,9 +18,11 @@ export default defineType({
 	],
 	fields: [
 		defineField({
-			name: 'callToActionDoc',
-			type: 'array',
-			of: [{ type: 'reference', to: [{ type: 'call.to.action.doc' }] }],
+			// should match 'languageField' plugin configuration setting, if customized
+			name: 'language',
+			type: 'string',
+			readOnly: true,
+			hidden: true,
 		}),
 		defineField({
 			name: 'content',

@@ -54,7 +54,7 @@ export default defineConfig({
 				{ id: 'ar', title: 'Arabic' },
 				{ id: 'en', title: 'English' },
 			],
-			schemaTypes: ['site', 'navigation', 'page', 'app.store.app'],
+			schemaTypes: ['site', 'navigation', 'page', 'app.store.app' , 'call.to.action.doc'],
 		}),
 		inlineSvgInput(),
 		iconify({

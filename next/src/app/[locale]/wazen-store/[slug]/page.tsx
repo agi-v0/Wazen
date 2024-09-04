@@ -19,16 +19,13 @@ export async function generateStaticParams() {
 }
 
 async function getStaticProps(params: Props['params']) {
-	const decodedSlug = decodeURIComponent(params.slug || '')
-
-
-
 	return await fetchSanity<Sanity.BlogPost>(
 		groq`*[_type == 'app.store.app' && metadata.slug.current == 'wazen-store/${params.slug}' && language == $locale ]{
 			title, 
 			icon, 
 			ctas,
 			description,
+			carousel,
 			publishDate,
 			metadata
 	 }`,
@@ -41,27 +38,49 @@ async function getStaticProps(params: Props['params']) {
 	)
 }
 
+async function callToAction(params: Props['params']) {
+	return await fetchSanity<Sanity.Module>(
+		groq`*[_type == 'page' && language == $locale][0]{
+	
+			modules[7]{
+			
+				callToActionDoc[]->,
+				
+			}
+		}`,
+		{
+			params: {
+				locale: params.locale,
+			},
+			tags: ['apps'],
+		},
+	)
+}
+
 export default async function getStaticPaths({ params }: Props) {
 	unstable_setRequestLocale(params.locale)
 	const app = await getStaticProps(params)
+	const cta = await callToAction(params)
 	if (!app) notFound()
 
-		const direction = params.locale === 'en' ? 'ltr' : 'rtl'
-		const OPTIONS: EmblaOptionsType = {
-			direction: direction,
-			loop: true,
-			// duration: allTestimonials.length * 10,
-		}
+	const direction = params.locale === 'en' ? 'ltr' : 'rtl'
+	const OPTIONS: EmblaOptionsType = {
+		direction: direction,
+		loop: true,
+		// duration: allTestimonials.length * 10,
+	}
+
+	console.log(app)
 
 	return (
 		<div>
 			<SingleAppHeader app={app} />
-			<EmblaCarousel
-				slides={[]}
+			{/* <EmblaCarousel
+				slides={app[0]?.carousel}
 				options={OPTIONS}
 				locale={params.locale}
-			/>
-			<CallToAction  />
+			/> */}
+			<CallToAction callToActionDoc={cta.modules.callToActionDoc} />
 		</div>
 	)
 }

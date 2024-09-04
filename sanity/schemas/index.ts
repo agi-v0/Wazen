@@ -13,6 +13,7 @@ import helpCenterCategory from './documents/help.center.category'
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 import FAQ from './documents/FAQ'
+import callToActionDoc from './documents/call-to-action'
 
 // objects
 import cta from './objects/cta'
@@ -78,6 +79,7 @@ export const schemaTypes = [
 	pricing,
 	testimonial,
 	FAQ,
+	callToActionDoc,
 
 	// objects
 	cta,

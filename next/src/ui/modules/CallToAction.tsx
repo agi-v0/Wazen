@@ -14,19 +14,11 @@ import { PiCheckCircle } from 'react-icons/pi'
 // https://magicui.design/docs/components/neon-gradient-card
 
 export default function CallToAction({
-	content,
-	ctas,
 	image,
-	checkedList,
-	textAlign = 'start',
-	alignItems,
+	callToActionDoc,
 }: Partial<{
-	content: any
-	ctas: Sanity.CTA[]
 	image: Sanity.Image & { onRight?: boolean }
-	checkedList: any
-	textAlign: React.CSSProperties['textAlign']
-	alignItems: React.CSSProperties['alignItems']
+	callToActionDoc: any
 }>) {
 	const components: PortableTextComponents = {
 		types: {
@@ -52,6 +44,7 @@ export default function CallToAction({
 			},
 		},
 	}
+
 	const checkedListComponents: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -76,12 +69,18 @@ export default function CallToAction({
 				className="flex max-w-2xl flex-col items-start gap-8"
 				// style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<PortableText value={content} components={components} />
+				<PortableText
+					value={callToActionDoc[0].content}
+					components={components}
+				/>
 
-				<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
+				<CTAList
+					ctas={callToActionDoc[0].ctas}
+					className="w-full *:h-12 *:text-base"
+				/>
 				<div className="flex flex-col gap-2">
 					<PortableText
-						value={checkedList}
+						value={callToActionDoc[0].checkedList}
 						components={checkedListComponents}
 					/>
 				</div>

@@ -37,13 +37,11 @@ const structure: StructureResolver = (S, context) =>
 
 			group(S, 'Miscellaneous', [
 				S.documentTypeListItem('logo').title('Logos'),
-				S.documentTypeListItem('partnerslogos').title('Partners Logos'),
+				S.documentTypeListItem('partnerslogos').title('Partners logos'),
 				S.documentTypeListItem('pricing').title('Pricing Tier'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 				S.documentTypeListItem('faq').title('FAQ'),
-				S.documentTypeListItem('help.center.category').title(
-					'Help Center Categories',
-				),
+				S.documentTypeListItem('call.to.action.doc').title('Call to Action'),
 			]).icon(BsDatabaseAdd),
 		])
 
