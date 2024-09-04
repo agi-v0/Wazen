@@ -32,7 +32,7 @@ export default function Brief({
 				onRight ? 'lg:flex-row' : 'lg:flex-row-reverse',
 			)}
 		>
-			<div className="relative w-full overflow-hidden rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
+			<div className="relative w-full rounded-lg p-2 lg:aspect-square lg:max-w-[500px]">
 				{image && 'asset' in image ? (
 					<Img
 						image={image}
