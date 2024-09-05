@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import SingleAppHeader from '@/ui/modules/app-store/SingleAppHeader'
 import CallToAction from '@/ui/modules/CallToAction'
-import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-testimonials'
+import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-app-store'
 import { EmblaOptionsType } from 'embla-carousel'
 
 type Props = {
@@ -59,7 +59,7 @@ async function callToAction(params: Props['params']) {
 
 export default async function getStaticPaths({ params }: Props) {
 	unstable_setRequestLocale(params.locale)
-	const app = await getStaticProps(params)
+	const app: any = await getStaticProps(params)
 	const cta = await callToAction(params)
 	if (!app) notFound()
 
@@ -67,19 +67,17 @@ export default async function getStaticPaths({ params }: Props) {
 	const OPTIONS: EmblaOptionsType = {
 		direction: direction,
 		loop: true,
-		// duration: allTestimonials.length * 10,
+		duration: app[0]?.carousel.length * 10,
 	}
-
-	console.log(app)
 
 	return (
 		<div>
 			<SingleAppHeader app={app} />
-			{/* <EmblaCarousel
+			<EmblaCarousel
 				slides={app[0]?.carousel}
 				options={OPTIONS}
 				locale={params.locale}
-			/> */}
+			/>
 			<CallToAction callToActionDoc={cta.modules.callToActionDoc} />
 		</div>
 	)

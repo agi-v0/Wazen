@@ -25,9 +25,6 @@ const numberWithinRange = (number: number, min: number, max: number): number =>
 
 type PropType = {
 	slides: {
-		title: string
-		description: string
-		link: Sanity.Link
 		image: Sanity.Image
 	}[]
 	options?: EmblaOptionsType
@@ -39,6 +36,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
+
+	console.log(slides)
 
 	const { selectedIndex, scrollSnaps, onDotButtonClick } =
 		useDotButton(emblaApi)
@@ -126,7 +125,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 				ref={emblaRef}
 			>
 				<div className={cn(style.embla__container, 'embla__container')}>
-					{slides.map(({ title, link, image }, index) => (
+					{slides.map(( image: any , index) => (
 						<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
 							<div
 								className={cn(
@@ -134,26 +133,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 									`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`,
 								)}
 							>
-								{/* <div className="flex h-full w-full flex-col justify-between gap-4 p-6">
-									<h3 className="h4 font-semibold">{title}</h3>
-									<p className="text-base text-gray-950/60">
-										{link.description}
-									</p>
-									<div className="mt-6">
-										<span className="link flex items-center gap-1 text-teal-600 no-underline">
-											{link.label}
-											<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
-										</span>
-									</div>
-								</div>
-								<div className="h-auto w-full rounded-lg md:max-w-[50%]">
+								<div className="max-h-[480px] w-full rounded-lg">
 									<Img
 										loading="lazy"
 										image={image}
-										imageWidth={300}
-										className="aspect-[3/4] h-auto w-full rounded-md object-cover object-left-top"
+										imageWidth={3000}
+										className="h-full w-full rounded-md object-cover "
 									/>
-								</div> */}
+								</div>
 							</div>
 						</div>
 					))}
