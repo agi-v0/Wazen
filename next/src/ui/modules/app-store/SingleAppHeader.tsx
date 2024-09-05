@@ -2,7 +2,6 @@ import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 
 export default async function SingleAppHeader({ app }: { app: any }) {
-	console.log(app)
 	return (
 		<section className="section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
