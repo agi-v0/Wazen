@@ -2,6 +2,7 @@ import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 
 export default async function SingleAppHeader({ app }: { app: any }) {
+	console.log(app)
 	return (
 		<section className="section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
@@ -21,7 +22,7 @@ export default async function SingleAppHeader({ app }: { app: any }) {
 								{app[0].metadata.title}
 							</p>
 						)}
-						{app[0]?.description[0]?.children && (
+						{app[0].description && (
 							<p className="text-base text-gray-600">
 								{app[0].description[0].children[0].text}
 							</p>

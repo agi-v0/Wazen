@@ -67,17 +67,19 @@ export default async function getStaticPaths({ params }: Props) {
 	const OPTIONS: EmblaOptionsType = {
 		direction: direction,
 		loop: true,
-		duration: app[0]?.carousel.length * 10,
+		duration: app[0]?.carousel?.length * 10,
 	}
 
 	return (
 		<div>
 			<SingleAppHeader app={app} />
-			<EmblaCarousel
-				slides={app[0]?.carousel}
-				options={OPTIONS}
-				locale={params.locale}
-			/>
+			{app[0].carousel && (
+				<EmblaCarousel
+					slides={app[0]?.carousel}
+					options={OPTIONS}
+					locale={params.locale}
+				/>
+			)}
 			<CallToAction callToActionDoc={cta.modules.callToActionDoc} />
 		</div>
 	)
