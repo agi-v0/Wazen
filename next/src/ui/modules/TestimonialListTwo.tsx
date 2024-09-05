@@ -26,7 +26,15 @@ export default async function TestimonialListTwo({
 }) {
 	const allTestimonials =
 		testimonials ||
-		(await fetchSanity<Sanity.Testimonial[]>(groq`*[_type == 'testimonial']`))
+		(await fetchSanity<Sanity.Testimonial[]>(
+			groq`*[_type == 'testimonial' && language == $locale]`,
+			{
+				params: {
+					locale: locale,
+				},
+				tags: ['testimmonials'],
+			},
+		))
 
 	const components: PortableTextComponents = {
 		types: {
@@ -53,8 +61,8 @@ export default async function TestimonialListTwo({
 		duration: allTestimonials.length * 10,
 	}
 	return (
-		<section className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]">
-			<div className="section mx-auto text-center">
+		<section className="section fluid-gap max-w-screen flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]">
+			<div className="mx-auto text-center">
 				<Pretitle className="text-large font-medium text-gray-400">
 					{pretitle}
 				</Pretitle>
