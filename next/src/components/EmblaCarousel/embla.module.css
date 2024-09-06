@@ -5,13 +5,13 @@
 	/* --slide-height: 19rem; */
 	--slide-spacing: var(--padding-horizontal--main);
 	--slide-size: 100%;
-	padding: 0 var(--padding-horizontal--main);
+	/* padding: 0 var(--padding-horizontal--main); */
 }
 .embla__viewport {
 	overflow: hidden;
 }
 .embla__container {
-	/* backface-visibility: hidden; */
+	backface-visibility: hidden;
 	display: flex;
 	touch-action: pan-y pinch-zoom;
 	margin-left: calc(var(--slide-spacing) * -1);
@@ -20,7 +20,8 @@
 	transform: translate3d(0, 0, 0);
 	flex: 0 0 var(--slide-size);
 	min-width: 0;
-	max-width: 1280px;
+	/* max-width: 1280px; */
+	margin: 0;
 	padding-left: var(--slide-spacing);
 }
 @media (min-width: 768px) {

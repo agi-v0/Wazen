@@ -8,6 +8,13 @@ export default defineType({
 	type: 'document',
 	fields: [
 		defineField({
+			name: 'language',
+			type: 'string',
+			options: {
+				list: ['ar', 'en'],
+			},
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],

@@ -60,7 +60,7 @@ export default function FeaturesGridOne({
 					</div>
 				)}
 
-				<ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
+				<ul className="grid w-full grid-cols-1 place-content-center justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(even)]:bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))]">
 					{features &&
 						features.map(
 							(

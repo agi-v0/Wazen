@@ -157,11 +157,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 										loading="lazy"
 										image={author?.image}
 										imageWidth={360}
-										className="aspect-square h-auto w-10 rounded-full object-cover object-left-top"
+										className="aspect-square size-10 rounded-full object-cover object-left-top"
 									/>
 									<div
 										className={cn(
-											'flex flex-col text-sm text-cyan-950',
+											'flex flex-col text-start text-sm text-cyan-950',
 											author?.image && 'asset' in author?.image
 												? 'items-start'
 												: 'items-center',

@@ -9,6 +9,13 @@ export default defineType({
 	type: 'document',
 	fields: [
 		defineField({
+			name: 'language',
+			type: 'string',
+			options: {
+				list: ['ar', 'en'],
+			},
+		}),
+		defineField({
 			name: 'question',
 			type: 'string',
 		}),

@@ -101,7 +101,8 @@
 
 	.section {
 		@apply mx-auto max-w-screen-xl;
-		padding: 0 var(--padding-horizontal--main);
+		padding-left: var(--padding-horizontal--main);
+		padding-right: var(--padding-horizontal--main);
 	}
 
 	.fluid-gap {
@@ -113,7 +114,8 @@
 	}
 
 	.fluid-vertical-space {
-		padding: var(--size--4-5rem) 0;
+		padding-top: var(--size--4-5rem);
+		padding-bottom: var(--size--4-5rem);
 	}
 }
 

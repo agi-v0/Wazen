@@ -1,39 +1,50 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
+const REPORTS_ANIMATION_VARIANTS = {
+	hidden: { opacity: 0, scale: 0.75, y: -20 },
+	visible: {
+		opacity: 1,
+		scale: 1,
+		y: 0,
+	},
+}
+const slide = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0 },
+}
+
 const reports = () => {
 	return (
-		<div className="flex h-full flex-row-reverse items-center justify-center gap-2">
+		<motion.div
+			initial="hidden"
+			animate="visible"
+			variants={{
+				visible: {
+					transition: {
+						staggerChildren: 0.2,
+					},
+				},
+			}}
+			className="relative flex h-full max-w-md flex-row-reverse items-center gap-2"
+		>
 			<motion.img
 				src="/statistic-img-1.svg"
 				alt="reports"
-				initial={{ opacity: 0, scale: 0.75, rotate: 0, translateY: -5 }}
-				animate={{ opacity: 1, scale: 1, rotate: -5, translateY: 0 }}
-				transition={{
-					duration: 1,
-					delay: 0.3,
-
-					type: 'bounce',
-					repeat: Infinity,
-					repeatDelay: 1.5,
-				}}
-				className="max-w-[200px] rounded-lg shadow-lg"
+				// variants={REPORTS_ANIMATION_VARIANTS}
+				transition={{ repeat: 1, repeatType: 'loop', repeatDelay: 1 }}
+				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rotate-6 rounded-lg shadow-lg"
+				style={{ rotate: '-6deg' }} // {{ edit_1 }}
 			/>
 			<motion.img
 				src="/statistic-img-2.svg"
 				alt="reports"
-				initial={{ opacity: 0, scale: 0.75, rotate: 0, translateY: -5 }}
-				animate={{ opacity: 1, scale: 1, rotate: 5, translateY: 0 }}
-				transition={{
-					duration: 1,
-
-					type: 'bounce',
-					repeat: Infinity,
-					repeatDelay: 1.5,
-				}}
-				className="max-w-[200px] rounded-lg shadow-lg"
+				// variants={REPORTS_ANIMATION_VARIANTS}
+				transition={{ repeatType: 'loop', repeat: 1, repeatDelay: 1 }}
+				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 -rotate-6 rounded-lg shadow-lg"
+				style={{ rotate: '6deg' }} // {{ edit_2 }}
 			/>
-		</div>
+		</motion.div>
 	)
 }
 
