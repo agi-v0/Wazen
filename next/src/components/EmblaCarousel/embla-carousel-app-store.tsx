@@ -37,8 +37,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
 
-	console.log(slides)
-
 	const { selectedIndex, scrollSnaps, onDotButtonClick } =
 		useDotButton(emblaApi)
 
