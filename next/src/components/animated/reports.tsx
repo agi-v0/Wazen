@@ -1,5 +1,4 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import * as motion from 'framer-motion/client'
 
 const REPORTS_ANIMATION_VARIANTS = {
 	hidden: { opacity: 0, scale: 0.75, y: -20 },
