@@ -1,32 +1,35 @@
+import { set2 } from '@/components/ui/portable-text'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
+import { PortableText } from 'next-sanity'
 
-export default async function SingleAppHeader({ app }: { app: any }) {
+export default async function SingleAppHeader({
+	app,
+}: {
+	app: {
+		icon: Sanity.Image
+		title: string
+		description: any
+		ctas: Sanity.CTA[]
+	}
+}) {
 	return (
 		<section className="section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
 				<div className="relative flex flex-col items-start justify-center gap-8 p-6 lg:flex-row">
 					<div className="relative min-h-[150px] min-w-[150px] grow overflow-hidden rounded-md">
-						{app[0].icon && (
-							<Img
-								image={app[0].icon}
-								className="size-32 rounded-2xl object-cover shadow-md"
-								imageWidth={600}
-							/>
-						)}
+						<Img
+							image={app.icon}
+							className="size-32 rounded-2xl object-cover shadow-md"
+							imageWidth={600}
+						/>
 					</div>
 					<div className="content space-y-6">
-						{app[0].metadata.title && (
-							<p className="h2 font-semibold text-cyan-950 group-hover:text-cyan-900">
-								{app[0].metadata.title}
-							</p>
-						)}
-						{app[0].description && (
-							<p className="text-base text-gray-600">
-								{app[0].description[0].children[0].text}
-							</p>
-						)}
-						<CTAList ctas={app[0].ctas} className="w-full *:h-12 *:text-base" />
+						<h1 className="h2 font-semibold text-cyan-950 group-hover:text-cyan-900">
+							{app.title}
+						</h1>
+						<PortableText value={app.description} components={set2} />
+						<CTAList ctas={app.ctas} className="w-full *:h-12 *:text-base" />
 					</div>
 				</div>
 			</div>
