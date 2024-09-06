@@ -30,17 +30,35 @@ const reports = () => {
 			<motion.img
 				src="/statistic-img-1.svg"
 				alt="reports"
-				// variants={REPORTS_ANIMATION_VARIANTS}
-				transition={{ repeat: 1, repeatType: 'loop', repeatDelay: 1 }}
-				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rotate-6 rounded-lg shadow-lg"
+				variants={{
+					hidden: { opacity: 0, scale: 0.75, y: -20 },
+					visible: {
+						opacity: 1,
+						scale: 1,
+						y: 0,
+					},
+				}}
+				transition={{
+					repeat: Infinity,
+					repeatType: 'mirror',
+					repeatDelay: 1,
+				}}
+				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '-6deg' }} // {{ edit_1 }}
 			/>
 			<motion.img
 				src="/statistic-img-2.svg"
 				alt="reports"
-				// variants={REPORTS_ANIMATION_VARIANTS}
-				transition={{ repeatType: 'loop', repeat: 1, repeatDelay: 1 }}
-				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 -rotate-6 rounded-lg shadow-lg"
+				variants={{
+					hidden: { opacity: 0, scale: 0.75, y: -20 },
+					visible: {
+						opacity: 1,
+						scale: 1,
+						y: 0,
+					},
+				}}
+				transition={{ repeatType: 'mirror', repeat: Infinity, repeatDelay: 1 }}
+				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '6deg' }} // {{ edit_2 }}
 			/>
 		</motion.div>
