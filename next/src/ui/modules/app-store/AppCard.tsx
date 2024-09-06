@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/navigations'
 import Date from '@/ui/Date'
 import Image from 'next/image'
 import { PiArrowLineDownBold } from 'react-icons/pi'
@@ -19,6 +19,7 @@ export default function AppCard({
 		icon: Sanity.Image
 		description?: any
 		publishDate: string
+		metadata: Sanity.Metadata
 	}
 	locale: any
 }) {
@@ -39,7 +40,7 @@ export default function AppCard({
 	const t = useTranslations('App store')
 
 	return (
-		<Link href="/" className="group w-full md:h-full">
+		<Link href={app.metadata.slug.current} className="group w-full md:h-full">
 			<div className="-hover:bg-teal-50 flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 transition-all group-hover:bg-teal-50">
 				{/* <div className="w-fit rounded-full text-sm text-gray-400">
 					<Date value={app.publishDate} locale={locale} />

@@ -64,7 +64,7 @@ async function getPage(params: Props['params']) {
 				partnerslogos[]->,
 				plans[]->,
 				testimonials[]->,
-				calltoaction[]->,
+				callToActionDoc[]->,
 				'headings': select(
 					tableOfContents => content[style in ['h2', 'h3']]{
 						style,

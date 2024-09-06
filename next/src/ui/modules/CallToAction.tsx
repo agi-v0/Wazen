@@ -14,12 +14,29 @@ import { PiCheckCircle } from 'react-icons/pi'
 // https://magicui.design/docs/components/neon-gradient-card
 
 export default function CallToAction({
+	content,
+	ctas,
 	image,
+	checkedList,
+	textAlign = 'start',
+	alignItems,
 	callToActionDoc,
 }: Partial<{
+	content: any
+	ctas: Sanity.CTA[]
+	checkedList: any
+	textAlign: React.CSSProperties['textAlign']
+	alignItems: React.CSSProperties['alignItems']
 	image: Sanity.Image & { onRight?: boolean }
 	callToActionDoc: any
 }>) {
+	const callToActionContent = content ?? callToActionDoc?.[0]?.content ?? ''
+
+	const callToActionCTAs = ctas ?? callToActionDoc?.[0]?.ctas ?? ''
+	const callToActionCheckedList =
+		checkedList ?? callToActionDoc?.[0]?.checkedList ?? ''
+	const callToActionImage =
+		image && 'asset' in image ? image : callToActionDoc?.[0]?.image
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -69,18 +86,15 @@ export default function CallToAction({
 				className="flex max-w-2xl flex-col items-start gap-8"
 				// style={{ textAlign: stegaClean(textAlign) }}
 			>
-				<PortableText
-					value={callToActionDoc[0].content}
-					components={components}
-				/>
+				<PortableText value={callToActionContent} components={components} />
 
 				<CTAList
-					ctas={callToActionDoc[0].ctas}
+					ctas={callToActionCTAs}
 					className="w-full *:h-12 *:text-base"
 				/>
 				<div className="flex flex-col gap-2">
 					<PortableText
-						value={callToActionDoc[0].checkedList}
+						value={callToActionCheckedList}
 						components={checkedListComponents}
 					/>
 				</div>
@@ -89,12 +103,12 @@ export default function CallToAction({
 				<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
 					<div
 						className={cn(
-							image?.onRight ? 'left-8' : 'right-8',
+							callToActionImage?.onRight ? 'left-8' : 'right-8',
 							'absolute top-8 h-full w-full min-w-[800px]',
 						)}
 					>
 						<Img
-							image={image}
+							image={callToActionImage}
 							imageWidth={640}
 							className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
 						/>

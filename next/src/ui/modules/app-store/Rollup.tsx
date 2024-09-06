@@ -21,7 +21,11 @@ export default async function AppStoreRollup({
 		 title, 
 		 icon, 
 		 description,
-		 publishDate
+		 publishDate,
+		 metadata {
+                ...,
+                'ogimage': image.asset->url
+            }
 		}`,
 		{
 			params: {
@@ -31,7 +35,6 @@ export default async function AppStoreRollup({
 			tags: ['apps'],
 		},
 	)
-
 	if (apps)
 		return (
 			<section className="">
