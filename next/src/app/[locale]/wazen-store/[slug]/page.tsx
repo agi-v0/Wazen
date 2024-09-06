@@ -13,38 +13,34 @@ type Props = {
 
 export default async function Page({ params }: Props) {
 	unstable_setRequestLocale(params.locale)
-	const app = await getApp(params)
+	const app = await getPage(params)
 	const cta = await callToAction(params)
-	if (!app) notFound()
+	if (app) {
+		return (
+			<div>
+				<SingleAppHeader app={app} />
 
-	const direction = params.locale === 'en' ? 'ltr' : 'rtl'
-	const OPTIONS: EmblaOptionsType = {
-		direction: direction,
-		loop: true,
-		duration: app[0]?.carousel?.length * 10,
-	}
-	return (
-		<div>
-			<SingleAppHeader app={app?.[0]} />
-			{/* {app?.[0]?.carousel && (
-				<EmblaCarousel
-					slides={app[0]?.carousel}
-					options={OPTIONS}
+				{/* <EmblaCarousel
+					slides={app.carousel}
+					options={{
+						direction: params.locale === 'en' ? 'ltr' : 'rtl',
+						loop: true,
+						duration: app?.carousel?.length * 10,
+					}}
 					locale={params.locale}
-				/>
-			)} */}
-			<CallToAction {...cta} />
-		</div>
-	)
+				/> */}
+				<CallToAction {...cta} />
+			</div>
+		)
+	} else notFound()
 }
 
-// export async function generateMetadata({ params }: Props) {
-// 	unstable_setRequestLocale(params.locale)
-// 	const page = await getApp(params)
-// 	if (!page) notFound()
-// 	console.log('', processMetadata(page, params.locale))
-// 	return processMetadata(page, params.locale)
-// }
+export async function generateMetadata({ params }: Props) {
+	unstable_setRequestLocale(params.locale)
+	const page = await getPage(params)
+	if (!page) notFound()
+	return processMetadata(page, params.locale)
+}
 
 export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
@@ -53,16 +49,12 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getApp(params: Props['params']) {
+async function getPage(params: Props['params']) {
 	return await fetchSanity<any>(
-		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ]{
-			...,
-			title, 
-			icon {asset->}, 
-			ctas,
-			description,
-			carousel,
-			publishDate,
+		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
+			..., 
+			icon,
+			asset->,
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'

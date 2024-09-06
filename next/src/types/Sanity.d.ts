@@ -31,6 +31,10 @@ declare global {
 			modules?: Module[]
 		}
 
+		type AppPage = PageBase & {
+			readonly _type: 'page'
+		}
+
 		type BlogPost = PageBase & {
 			readonly _type: 'blog.post'
 			body: any
