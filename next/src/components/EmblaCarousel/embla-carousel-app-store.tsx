@@ -36,9 +36,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
-
-	console.log(slides)
-
 	const { selectedIndex, scrollSnaps, onDotButtonClick } =
 		useDotButton(emblaApi)
 
@@ -125,7 +122,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 				ref={emblaRef}
 			>
 				<div className={cn(style.embla__container, 'embla__container')}>
-					{slides.map(( image: any , index) => (
+					{slides.map((image: any, index) => (
 						<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
 							<div
 								className={cn(
@@ -138,7 +135,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 										loading="lazy"
 										image={image}
 										imageWidth={3000}
-										className="h-full w-full rounded-md object-cover "
+										className="h-full w-full rounded-md object-cover"
 									/>
 								</div>
 							</div>
