@@ -28,15 +28,19 @@ export default function CallToAction({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 	image: Sanity.Image & { onRight?: boolean }
-	callToActionDoc: any
+	callToActionDoc: {
+		content: any
+		ctas: Sanity.CTA[]
+		checkedList: any
+		image: Sanity.Image & { onRight?: boolean }
+	}[]
 }>) {
-	const callToActionContent = content ?? callToActionDoc?.[0]?.content ?? ''
-
-	const callToActionCTAs = ctas ?? callToActionDoc?.[0]?.ctas ?? ''
+	const callToActionContent = content ?? callToActionDoc?.[0].content
+	const callToActionCTAs = ctas ?? callToActionDoc?.[0].ctas
 	const callToActionCheckedList =
-		checkedList ?? callToActionDoc?.[0]?.checkedList ?? ''
+		checkedList ?? callToActionDoc?.[0].checkedList
 	const callToActionImage =
-		image && 'asset' in image ? image : callToActionDoc?.[0]?.image
+		image && 'asset' in image ? image : callToActionDoc?.[0].image
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
