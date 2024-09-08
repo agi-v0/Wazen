@@ -37,12 +37,12 @@ export default async function Social({
 	return (
 		<nav
 			className={cn(
-				'flex flex-col-reverse flex-wrap items-start gap-4 md:flex-row',
+				'flex flex-col-reverse flex-wrap items-center gap-4 md:flex-row',
 				className,
 			)}
 		>
-			<div className="flex flex-col items-start gap-8 text-sm lg:flex-row">
-				<div>{`© ${currentYear} ${t('All rights reserved')}.`}</div>
+			<div className="flex flex-col items-center gap-8 text-sm md:items-start lg:flex-row">
+				<div>{`© ${currentYear} ${t('All rights reserved')}`}</div>
 
 				<div className="inline-flex gap-4 text-start">
 					{staticLinks?.items?.map((item: any, key: any) => {
@@ -64,7 +64,7 @@ export default async function Social({
 						case 'link':
 							return (
 								<CTA
-									className="p-2 text-2xl hover:!opacity-100 group-has-[a:hover]:opacity-50"
+									className="p-2 text-lg hover:!opacity-100 group-has-[a:hover]:opacity-50"
 									link={item}
 									key={key}
 								>

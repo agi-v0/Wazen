@@ -40,7 +40,6 @@ export async function Navigation({
 						return (
 							<NavigationMenuItem key={key} className="w-full">
 								<Link
-									locale={locale as 'en' | 'ar'}
 									href={processUrl(item.internal, {
 										base: false,
 										params: item.params,

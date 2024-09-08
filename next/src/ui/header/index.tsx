@@ -55,7 +55,7 @@ export default async function Header({
 					{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 					<div className="flex w-full flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row lg:justify-end">
 						<LangSelect />
-						<CTAList className="text-base *:h-12 max-lg:w-full" ctas={ctas} />
+						<CTAList className="text-base max-lg:w-full" ctas={ctas} />
 					</div>
 				</NavigationMenu>
 			</div>
