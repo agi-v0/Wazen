@@ -6,6 +6,7 @@ import CallToAction from '@/ui/modules/CallToAction'
 import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-app-store'
 import { EmblaOptionsType } from 'embla-carousel'
 import processMetadata from '@/lib/processMetadata'
+import Permissions from '@/ui/modules/app-store/Permissions'
 
 type Props = {
 	params: { slug?: string; locale: string }
@@ -19,6 +20,7 @@ export default async function Page({ params }: Props) {
 		return (
 			<div>
 				<SingleAppHeader app={app} />
+				<Permissions app={app} />
 
 				{/* <EmblaCarousel
 					slides={app.carousel}
