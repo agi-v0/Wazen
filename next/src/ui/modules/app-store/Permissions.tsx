@@ -19,7 +19,6 @@ function Permissions({
 		permissions: any
 	}
 }) {
-
 	const PermissionIcons: any = {
 		webhook: <PiWebhooksLogo className="text-2xl" />,
 		orders: <PiBasket className="text-2xl" />,
@@ -30,16 +29,18 @@ function Permissions({
 
 	return (
 		<section className="section py-12">
-			<div className="grid w-full grid-cols-2 lg:grid-cols-5 gap-4 rounded-lg bg-gray-100 p-4">
-				{Object.keys(app.permissions).map((permission, index) => (
-					<div
-						key={index}
-						className="flex h-20 flex-col items-center justify-center gap-2"
-					>
-						{PermissionIcons[permission]}
-						{permission}
-					</div>
-				))}
+			<div className="flex w-full justify-around gap-4 rounded-lg bg-gray-100 p-4">
+				{Object.entries(app.permissions).map(([permission, isEnabled]) =>
+					isEnabled ? (
+						<div
+							key={permission}
+							className="flex h-20 flex-col items-center justify-center gap-2"
+						>
+							{PermissionIcons[permission]}
+							{permission}
+						</div>
+					) : null
+				)}
 			</div>
 		</section>
 	)
