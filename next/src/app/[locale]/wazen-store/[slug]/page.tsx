@@ -7,6 +7,7 @@ import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-app-store'
 import { EmblaOptionsType } from 'embla-carousel'
 import processMetadata from '@/lib/processMetadata'
 import Permissions from '@/ui/modules/app-store/Permissions'
+import SuggestedApps from '@/ui/modules/app-store/SuggestedApps'
 
 type Props = {
 	params: { slug?: string; locale: string }
@@ -31,6 +32,8 @@ export default async function Page({ params }: Props) {
 					}}
 					locale={params.locale}
 				/> */}
+				
+				<SuggestedApps />
 				<CallToAction {...cta} />
 			</div>
 		)
