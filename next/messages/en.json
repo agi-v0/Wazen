@@ -19,8 +19,16 @@
 		"Yearly": "Yearly",
 		"Tap to add to estimated price": "Tap to add to estimated price"
 	},
-	"Contact": {
-		"First name": "First Name"
+	"ContactUs": {
+		"First Name": "First Name",
+		"Family Name": "Family Name",
+		"Company Name": "Company Name",
+		"Business Field": "Business Field",
+		"Contact Number": "Contact Number",
+		"Email": "ُEmail",
+		"Write your message here": "Write your message here",
+		"Send Message": "Send Message",
+		"I agree to the terms and conditions": "I agree to the terms and conditions"
 	},
 	"FeaturesInfiniteScroll": {
 		"Check in and check out": "Check in and check out",
@@ -28,13 +36,11 @@
 		"Housing and accomodation": "Housing and accomodation",
 		"Insurance": "Insurance",
 		"Salaries": "Salaries",
-
 		"Leads": "Leads",
 		"Contracts": "Contracts",
 		"Subscriptions": "Subscriptions",
 		"Clients": "Clients",
 		"SMS and Whatsapp": "SMS and Whatsapp",
-
 		"Sales": "Sales",
 		"Purchases": "Purchases",
 		"Inventory": "Inventory",

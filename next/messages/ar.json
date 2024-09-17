@@ -19,8 +19,16 @@
 		"Yearly": "سنويا",
 		"Tap to add to estimated price": "انقر لإضافتها الى التكلفة التقديرية"
 	},
-	"Contact": {
-		"First name": "الإسم الأول"
+	"ContactUs": {
+		"First Name": "الإسم الأول",
+		"Family Name": "إسم العائلة",
+		"Company Name": "إسم الشركة",
+		"Business Field": "مجال العمل",
+		"Contact Number": "رقم للتواصل",
+		"Email": "البريد الإلكتروني",
+		"Write your message here": "اكتب رسالتك هنا",
+		"Send Message": "أرسل لنا رسالة",
+		"I agree to the terms and conditions": "أوافق على الشروط والأحكام"
 	},
 	"FeaturesInfiniteScroll": {
 		"Check in and check out": "الحضور والإنصراف",
@@ -28,26 +36,24 @@
 		"Housing and accomodation": "التسكين والعقارات",
 		"Insurance": "التأمين",
 		"Salaries": "رواتب الموظفين",
-
 		"Leads": "العملاء المحتملين",
 		"Contracts": "العقود",
 		"Subscriptions": "الإشتراكات",
 		"Clients": "العملاء",
 		"SMS and Whatsapp": "الرسائل القصيرة والواتساب",
-
 		"Sales": "المبيعات",
 		"Purchases": "المشتريات",
 		"Inventory": "المخزون",
 		"Financial lists": "القوائم المالية",
 		"Cost centers": "مراكز التكلفة",
-
 		"Replaces": "يستبدل",
 		"Wafeq": "وافق",
 		"Edara": "إدارة",
 		"Odoo": "أودو",
 		"Qoyod": "قيود",
 		"Daftra": "دفترة"
-	},"App": {
+	},
+	"App": {
 		"You may also be interested in": "قد يهمك أيضاً",
 		"View all": "تصفح الجميع"
 	}

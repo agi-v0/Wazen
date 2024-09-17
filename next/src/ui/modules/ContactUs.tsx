@@ -1,5 +1,3 @@
-'use client'
-
 import ContactForm from '@/components/ui/contact-form'
 import {
 	PortableText,
@@ -10,9 +8,8 @@ import Link from 'next/link'
 import { IoMdCall } from 'react-icons/io'
 import { IoMail } from 'react-icons/io5'
 import { PiMapPinFill } from 'react-icons/pi'
-import { NextIntlClientProvider } from 'next-intl'
 
-export default function ContactUs({
+export default async function ContactUs({
 	content,
 	contactInfo,
 	locale,
@@ -40,35 +37,34 @@ export default function ContactUs({
 		},
 	}
 
-	const icons = [IoMail, IoMdCall, PiMapPinFill]
+	const icons = [
+		<IoMdCall className="text-2xl" />,
+		<IoMail className="text-2xl" />,
+		<PiMapPinFill className="text-2xl" />,
+	]
 
 	return (
-		<NextIntlClientProvider
-			defaultTranslationValues={{
-				i: (text) => <i>{text}</i>,
-			}}
-			locale={locale}
-		>
-			<section className={'section p-24'}>
-				<div className={'mb-10 flex max-w-2xl flex-col items-start gap-8'}>
-					<PortableText value={content} components={components} />
-				</div>
-				<div className="flex justify-around gap-20">
+		<section className="section py-24">
+			<div className={'mb-10 flex max-w-2xl flex-col items-start gap-8'}>
+				<PortableText value={content} components={components} />
+			</div>
+			<div className="flex flex-col md:flex-row justify-around gap-20">
+				<div className="flex-1">
 					<ContactForm />
-					<div className="flec-row flex w-full flex-1 flex-wrap justify-end gap-4">
-						{contactInfo.map((info: any, index: any) => (
-							<div key={index} className="flex h-fit w-[240px] flex-col gap-3">
-								<IoMail className="text-2xl" />
-								<PortableText value={info.title} components={components} />
-								<PortableText value={info.subtitle} components={components} />
-								<Link href="" className="text-teal-600 no-underline">
-									{info.link.label}
-								</Link>
-							</div>
-						))}
-					</div>
 				</div>
-			</section>
-		</NextIntlClientProvider>
+				<div className="flex w-full flex-1 flex-col flex-wrap justify-end md:flex-row gap-4">
+					{contactInfo.map((info: any, index: any) => (
+						<div key={index} className="flex h-fit w-[240px] flex-col gap-3">
+							{icons[index]}
+							<PortableText value={info.title} components={components} />
+							<PortableText value={info.subtitle} components={components} />
+							<Link href="" className="text-teal-600 no-underline">
+								{info.link.label}
+							</Link>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
 	)
 }
