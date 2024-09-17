@@ -37,8 +37,8 @@ export default defineType({
 					{
 						name: 'generate-ogimage',
 						title: 'Generate Image',
-						component: (props) => (
-							<MediaEditor {...props} layouts={[OGImageEditor]} />
+						component: (props: any) => (
+							<MediaEditor {...props} layouts={[OGImageEditor as any]} />
 						),
 					},
 				],

@@ -27,7 +27,8 @@
 }
 .logo {
 	position: absolute;
-	right: 96px;
+	/* right: 96px; */
+	inset-inline-start: 96px;
 	top: 96px;
 	height: 32px;
 	width: auto;
@@ -38,7 +39,7 @@
 .root p {
 	z-index: 1;
 	position: relative;
-	text-align: right;
+	text-align: start;
 }
 
 .root h1 {

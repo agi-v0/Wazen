@@ -60,7 +60,7 @@ const PlansComparison = ({
 												/{isYearly ? 'سنوياً' : 'شهرياً'}
 											</span>
 										</p>
-										<button
+										{/* <button
 											className={cn(
 												'h-12 w-full text-base',
 												index == '1'
@@ -69,7 +69,7 @@ const PlansComparison = ({
 											)}
 										>
 											إبدأ تجربتك المجانية
-										</button>
+										</button> */}
 									</div>
 								)
 							},
