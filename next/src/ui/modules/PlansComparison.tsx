@@ -31,7 +31,7 @@ const PlansComparison = ({
 
 					<div className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white *:w-full max-lg:hidden max-lg:w-fit *:max-lg:w-48">
 						<div className="flex flex-col items-start justify-end px-2 py-4">
-							<div className="flex h-12 w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
+							<div className="flex h-10 w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
 								سنوي (شهرين مجاناً)
 								<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 							</div>
@@ -81,7 +81,7 @@ const PlansComparison = ({
 							<div key={'details_' + index} id={'details_' + index}>
 								{/* table section header */}
 								<h3
-									className="text-main sticky top-[calc(var(--header-height)+170px)] z-[1] flex w-full flex-col justify-end rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold text-gray-900 max-lg:top-[var(--header-height)]"
+									className="text-main sticky top-[calc(var(--header-height)+106.31px)] z-[1] flex w-full flex-col justify-end rounded-2xl bg-teal-100 p-[var(--text-main--font-size)] font-semibold text-gray-900 max-lg:top-[var(--header-height)]"
 									aria-hidden="true"
 								>
 									{detail.title}
