@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useState, useEffect, useMemo } from 'react'
-import { useMotionValueEvent, useScroll } from 'framer-motion'
+import { useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion'
 import { motion } from 'framer-motion'
 import Img from '@/ui/Img'
 import {
@@ -62,6 +62,7 @@ export default function Benefits({
 			},
 			0,
 		)
+		console.log(closestBreakpointIndex)
 		setActiveCard(closestBreakpointIndex)
 	})
 
@@ -128,11 +129,21 @@ export default function Benefits({
 					</div>
 
 					<div className="sticky left-0 top-32 h-full w-full">
-						<Img
-							image={imageList}
-							imageWidth={2400}
-							className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md fade-in fade-out"
-						/>
+						<AnimatePresence mode="wait">
+							<motion.div
+								key={activeCard}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								// exit={{ opacity: 0 }} 
+								transition={{ duration: 0.2 }}
+							>
+								<Img
+									image={imageList}
+									imageWidth={2400}
+									className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md fade-in fade-out"
+								/>
+							</motion.div>
+						</AnimatePresence>
 					</div>
 				</motion.div>
 			) : (
