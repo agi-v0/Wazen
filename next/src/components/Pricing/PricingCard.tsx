@@ -48,7 +48,9 @@ const PricingBox = (props: {
 			)}
 		>
 			<div className="flex flex-col items-start justify-between">
-				<h2 className="text-base font-semibold text-gray-950">{packageName}</h2>
+				<h2 className="text-large font-semibold text-gray-950">
+					{packageName}
+				</h2>
 				<p className="text-sm text-gray-600">{subtitle}</p>
 			</div>
 			<h3 className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
