@@ -244,7 +244,7 @@ export default function FeaturesInfiniteScroll({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div className="space-y-6" dir={direction}>
+			<div className="space-y-6" >
 				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
 					direction="right"

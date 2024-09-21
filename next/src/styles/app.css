@@ -221,9 +221,8 @@
 .contact-us {
 	background: radial-gradient(
 		25% 25% at 50% 30%,	
-		#99f6e4 0%,
-		#99f6e4 5%,
-		#ffffff 100%
+		#ECFEFF 25%,
+		#ffffff 150%
 	);
 }
 
