@@ -31,7 +31,7 @@ export default defineType({
 		},
 		prepare: ({ content, testimonials }) => ({
 			title: getBlockText(content) || count(testimonials, 'testimonial'),
-			subtitle: 'Testimonial list',
+			subtitle: 'Testimonial list two',
 		}),
 	},
 })

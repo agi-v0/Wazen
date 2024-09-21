@@ -56,7 +56,7 @@ export default defineType({
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero 4',
+			subtitle: 'Hero four',
 			media,
 		}),
 	},

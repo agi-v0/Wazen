@@ -10,6 +10,7 @@ import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import blob from '../../../public/gradient-blob.svg'
 import { PiCheckCircle } from 'react-icons/pi'
+import { urlFor } from '@/lib/sanity/urlFor'
 
 // https://magicui.design/docs/components/neon-gradient-card
 
@@ -85,36 +86,42 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className="section fluid-vertical-space fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row">
+		<section className="section fluid-padding">
 			<div
-				className="flex max-w-2xl flex-col items-start gap-8"
-				// style={{ textAlign: stegaClean(textAlign) }}
+				className={cn(
+					'fluid-gap fluid-padding cyan-gradient-background-1 relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row',
+					callToActionImage?.onRight ? '' : 'lg:flex-row-reverse',
+				)}
 			>
-				<PortableText value={callToActionContent} components={components} />
-
-				<CTAList
-					ctas={callToActionCTAs}
-					className="w-full *:h-12 *:text-base"
-				/>
-				<div className="flex flex-col gap-2">
-					<PortableText
-						value={callToActionCheckedList}
-						components={checkedListComponents}
-					/>
-				</div>
-			</div>
-			<div className="h-[400px] w-full lg:max-w-[400px]">
-				<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
+				<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-100 lg:max-w-[400px]">
 					<div
-						className={cn(
-							callToActionImage?.onRight ? 'left-8' : 'right-8',
-							'absolute top-8 h-full w-full min-w-[800px]',
-						)}
+						className={cn('absolute start-8 top-8 h-full w-full min-w-[800px]')}
 					>
-						<Img
-							image={callToActionImage}
-							imageWidth={640}
-							className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
+						<Image
+							src={urlFor(callToActionImage as Sanity.Image).url()}
+							alt={image?.alt as string}
+							height={455.11}
+							width={640}
+							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top"
+							draggable={false}
+							loading="lazy"
+						/>
+					</div>
+				</div>
+				<div
+					className="flex max-w-2xl flex-col items-start gap-8"
+					// style={{ textAlign: stegaClean(textAlign) }}
+				>
+					<PortableText value={callToActionContent} components={components} />
+
+					<CTAList
+						ctas={callToActionCTAs}
+						className="w-full *:h-12 *:text-base"
+					/>
+					<div className="flex flex-col gap-2">
+						<PortableText
+							value={callToActionCheckedList}
+							components={checkedListComponents}
 						/>
 					</div>
 				</div>
@@ -122,7 +129,7 @@ export default function CallToAction({
 			<Image
 				src={blob}
 				alt="hero"
-				className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
+				className="pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-[-1] h-full w-auto object-cover"
 				draggable={false}
 			/>
 		</section>

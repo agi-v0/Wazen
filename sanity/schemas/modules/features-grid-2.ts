@@ -118,7 +118,7 @@ export default defineType({
 		},
 		prepare: ({ content, features }) => ({
 			title: getBlockText(content) || count(features, 'feature'),
-			subtitle: 'Features Grid 2',
+			subtitle: 'Features grid two',
 		}),
 	},
 })

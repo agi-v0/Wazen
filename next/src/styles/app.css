@@ -218,9 +218,24 @@
 	);
 }
 
+.cyan-gradient-background-1 {
+	--a: #cffafe;
+	--a-shape: 40% 50% at 80% 40%;
+	background: radial-gradient(var(--a-shape), var(--a), transparent);
+}
+
+.cyan-gradient-background-2 {
+	--a: #f0fdfa;
+	--a-shape: ellipse 30% 23% at 30% 56%;
+	--b: #cffafe;
+	--b-shape: ellipse 30% 30% at 71% 52%;
+	background: radial-gradient(var(--a-shape), var(--a), transparent),
+		radial-gradient(var(--b-shape), var(--b), transparent);
+}
+
 .contact-us {
 	background: radial-gradient(
-		25% 25% at 50% 30%,	
+		25% 25% at 50% 30%,
 		#99f6e4 0%,
 		#99f6e4 5%,
 		#ffffff 100%

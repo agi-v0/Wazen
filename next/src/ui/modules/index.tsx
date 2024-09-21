@@ -127,7 +127,9 @@ export default function Modules({
 					case 'how-it-works':
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':
-						return <TestimonialList {...module} key={module._key} />
+						return (
+							<TestimonialList {...module} key={module._key} locale={locale} />
+						)
 					case 'testimonial-list-two':
 						return (
 							<TestimonialListTwo
