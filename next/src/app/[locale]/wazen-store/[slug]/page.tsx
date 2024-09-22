@@ -16,14 +16,13 @@ type Props = {
 export default async function Page({ params }: Props) {
 	unstable_setRequestLocale(params.locale)
 	const app = await getPage(params)
-	const cta = await callToAction(params)
-	if (app) {
-		return (
-			<div>
-				<SingleAppHeader app={app} />
-				<Permissions app={app} />
+	if (!app) notFound()
+	return (
+		<>
+			<SingleAppHeader app={app} />
+			<Permissions app={app} />
 
-				{/* <EmblaCarousel
+			{/* <EmblaCarousel
 					slides={app.carousel}
 					options={{
 						direction: params.locale === 'en' ? 'ltr' : 'rtl',
@@ -32,12 +31,13 @@ export default async function Page({ params }: Props) {
 					}}
 					locale={params.locale}
 				/> */}
-				
-				<SuggestedApps />
-				<CallToAction {...cta} />
-			</div>
-		)
-	} else notFound()
+
+			<SuggestedApps />
+			<CallToAction
+			// callToActionDoc={[{ ...cta }]}
+			/>
+		</>
+	)
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -69,20 +69,6 @@ async function getPage(params: Props['params']) {
 			params: {
 				locale: params.locale,
 				slug: 'wazen-store/' + params.slug,
-			},
-			tags: ['apps'],
-		},
-	)
-}
-
-async function callToAction(params: Props['params']) {
-	return await fetchSanity<Sanity.Module>(
-		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
-		...
-		}`,
-		{
-			params: {
-				locale: params.locale,
 			},
 			tags: ['apps'],
 		},

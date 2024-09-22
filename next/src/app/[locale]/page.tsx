@@ -42,7 +42,6 @@ async function getPage(locale: string) {
 				plans[]->,
 				partnerslogos[]->,
 				testimonials[]->,
-				callToActionDoc[]->,
 				items[]->,
 				${creativeModuleQuery}
 			},
