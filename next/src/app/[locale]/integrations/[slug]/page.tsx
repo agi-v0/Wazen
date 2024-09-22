@@ -68,7 +68,7 @@ async function getPage(params: Props['params']) {
 		{
 			params: {
 				locale: params.locale,
-				slug: 'wazen-store/' + params.slug,
+				slug: 'integrations/' + params.slug,
 			},
 			tags: ['apps'],
 		},

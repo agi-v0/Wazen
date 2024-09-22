@@ -220,7 +220,7 @@
 
 .cyan-gradient-background-1 {
 	--a: #cffafe;
-	--a-shape: 40% 50% at 80% 40%;
+	--a-shape: 40% 50% at 10% 40%;
 	background: radial-gradient(var(--a-shape), var(--a), transparent);
 }
 
