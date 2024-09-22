@@ -21,12 +21,12 @@
 	},
 	"ContactUs": {
 		"First Name": "الإسم الأول",
-		"Family Name": "إسم العائلة",
+		"Last Name": "الإسم الأخير",
 		"Company Name": "إسم الشركة",
 		"Business Field": "مجال العمل",
 		"Contact Number": "رقم للتواصل",
 		"Email": "البريد الإلكتروني",
-		"Write your message here": "اكتب رسالتك هنا",
+		"Write your message here": "اكتب رسالتك هنا...",
 		"Send Message": "أرسل لنا رسالة",
 		"I agree to the terms and conditions": "أوافق على الشروط والأحكام"
 	},
