@@ -5,9 +5,13 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Link from 'next/link'
-import { IoMdCall } from 'react-icons/io'
-import { IoMail } from 'react-icons/io5'
-import { PiMapPinFill } from 'react-icons/pi'
+
+import {
+	PiCaretLeftBold,
+	PiMapPinFill,
+	PiEnvelopeFill,
+	PiPhoneFill,
+} from 'react-icons/pi'
 
 export default async function ContactUs({
 	content,
@@ -23,9 +27,16 @@ export default async function ContactUs({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="font-bold leading-tight text-cyan-950 md:text-5xl">
+						<h1 className="h1 font-semibold leading-tight text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
+					)
+				}
+				if (value.style === 'h4') {
+					return (
+						<h4 className="h6 font-semibold leading-tight">
+							{value.children.map((child: any) => child.text).join('')}
+						</h4>
 					)
 				}
 				return (
@@ -38,29 +49,34 @@ export default async function ContactUs({
 	}
 
 	const icons = [
-		<IoMdCall className="text-2xl" />,
-		<IoMail className="text-2xl" />,
+		<PiPhoneFill className="text-2xl" />,
+		<PiEnvelopeFill className="text-2xl" />,
 		<PiMapPinFill className="text-2xl" />,
 	]
 
 	return (
 		<section className="section py-24">
-			<div className={'mb-10 flex max-w-2xl flex-col items-start gap-8'}>
+			<div className={'flex max-w-2xl flex-col items-start gap-6'}>
 				<PortableText value={content} components={components} />
 			</div>
-			<div className="flex flex-col md:flex-row justify-around gap-20">
-				<div className="flex-1">
-					<ContactForm />
-				</div>
-				<div className="flex w-full flex-1 flex-col flex-wrap justify-end md:flex-row gap-4">
+			<div className="fluid-gap grid grid-cols-1 justify-around md:grid-cols-2">
+				<ContactForm />
+				<div className="flex h-fit flex-col flex-wrap justify-end gap-x-8 gap-y-6 md:flex-row">
 					{contactInfo.map((info: any, index: any) => (
 						<div key={index} className="flex h-fit w-[240px] flex-col gap-3">
 							{icons[index]}
 							<PortableText value={info.title} components={components} />
-							<PortableText value={info.subtitle} components={components} />
-							<Link href="" className="text-teal-600 no-underline">
-								{info.link.label}
-							</Link>
+
+							<span className="text-main group flex items-center text-teal-600">
+								<Link
+									href=""
+									className="font-medium text-teal-600 no-underline"
+									dir="ltr"
+								>
+									{info.link.label}
+								</Link>
+								<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+							</span>
 						</div>
 					))}
 				</div>

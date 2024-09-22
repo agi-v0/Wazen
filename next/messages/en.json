@@ -21,12 +21,12 @@
 	},
 	"ContactUs": {
 		"First Name": "First Name",
-		"Family Name": "Family Name",
+		"Last Name": "Last Name",
 		"Company Name": "Company Name",
 		"Business Field": "Business Field",
 		"Contact Number": "Contact Number",
 		"Email": "ُEmail",
-		"Write your message here": "Write your message here",
+		"Write your message here": "Write your message here...",
 		"Send Message": "Send Message",
 		"I agree to the terms and conditions": "I agree to the terms and conditions"
 	},

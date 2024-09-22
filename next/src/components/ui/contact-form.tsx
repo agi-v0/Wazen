@@ -1,9 +1,9 @@
 import React from 'react'
 import { sendEmail } from '@/action/sendEmail'
 import { getTranslations } from 'next-intl/server'
+import { cn } from '@/lib/utils'
 
 const ContactForm = async () => {
-
 	const t = await getTranslations('ContactUs')
 
 	const handleSendEmail = async (formData: any) => {
@@ -33,15 +33,15 @@ const ContactForm = async () => {
 				<input
 					type="text"
 					id="first-name"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder={t('First Name')}
 					required
 				/>
 				<input
 					type="text"
 					id="last-name"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
-					placeholder={t('Family Name')}
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+					placeholder={t('Last Name')}
 					required
 				/>
 			</div>
@@ -49,14 +49,14 @@ const ContactForm = async () => {
 				<input
 					type="text"
 					id="company-name"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder={t('Company Name')}
 					required
 				/>
 				<input
 					type="text"
 					id="business-field"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder={t('Business Field')}
 					required
 				/>
@@ -65,14 +65,14 @@ const ContactForm = async () => {
 				<input
 					type="text"
 					id="contact-number"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder={t('Contact Number')}
 					required
 				/>
 				<input
 					type="email"
 					id="email"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder={t('Email')}
 					required
 				/>
@@ -80,17 +80,22 @@ const ContactForm = async () => {
 			<div className="sm:col-span-2">
 				<textarea
 					id="message"
-					className="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-sm border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm"
+					className="flex min-h-[60px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 					rows={4}
 					placeholder={t('Write your message here')}
 				></textarea>
 			</div>
-			<input id="terms-and-conditions" type="checkbox" className="me-2" />
-			<label htmlFor="terms-and-conditions">{t('I agree to the terms and conditions')}</label>
-			<button
-				type="submit"
-				className="hover:bg-primary-800 focus:ring-primary-300 w-full rounded-sm bg-gray-100 px-5 py-3 text-center text-sm font-medium text-gray-300 focus:outline-none focus:ring-4"
-			>
+			<div className="flex items-center gap-2">
+				<input
+					id="terms-and-conditions"
+					type="checkbox"
+					className="size-4 rounded"
+				/>
+				<label htmlFor="terms-and-conditions" className="text-sm text-gray-600">
+					{t('I agree to the terms and conditions')}
+				</label>
+			</div>
+			<button type="submit" className={cn('primary', 'h-12 w-full')}>
 				{t('Send Message')}
 			</button>
 		</form>

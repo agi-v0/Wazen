@@ -31,11 +31,6 @@ export default defineType({
 							of: [{ type: 'block' }],
 						}),
 						defineField({
-							name: 'subtitle',
-							type: 'array',
-							of: [{ type: 'block' }],
-						}),
-						defineField({
 							name: 'link',
 							type: 'link',
 						}),
