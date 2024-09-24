@@ -8,7 +8,7 @@ import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
-import { PiCheckCircle } from 'react-icons/pi'
+import { PiCheckCircle, PiCheckCircleFill } from 'react-icons/pi'
 import { urlFor } from '@/lib/sanity/urlFor'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { getLocale } from 'next-intl/server'
@@ -55,8 +55,6 @@ export default async function CallToAction({
 			tags: ['apps'],
 		},
 	)
-	console.log(ctaDoc.image.asset.url)
-
 	const callToAction = ctaDoc
 
 	content && (callToAction.content = content)
@@ -81,7 +79,7 @@ export default async function CallToAction({
 					)
 				}
 				return (
-					<p className="text-main max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-large max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -99,8 +97,8 @@ export default async function CallToAction({
 
 				return (
 					<div className="flex items-center gap-2">
-						<PiCheckCircle className="h-4 w-4 text-gray-400" />
-						<p className="text-small text-gray-400">{textContent}</p>
+						<PiCheckCircleFill className="size-5 text-teal-500" />
+						<p className="text-gray-600">{textContent}</p>
 					</div>
 				)
 			},
