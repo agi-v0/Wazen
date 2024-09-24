@@ -123,7 +123,7 @@ export default async function CallToAction({
 					>
 						<Image
 							src={urlFor(callToAction.image as Sanity.Image).url()}
-							alt={image?.alt as string}
+							alt={callToAction.image.alt}
 							height={455.11}
 							width={640}
 							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
