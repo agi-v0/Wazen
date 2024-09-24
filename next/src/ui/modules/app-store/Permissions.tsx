@@ -29,7 +29,7 @@ function Permissions({
 
 	return (
 		<section className="section py-12">
-			<div className="flex w-full justify-around gap-4 rounded-lg bg-gray-100 p-4">
+			<div className="flex w-full flex-col justify-around gap-4 rounded-lg bg-gray-100 p-4 lg:flex-row">
 				{Object.entries(app.permissions).map(([permission, isEnabled]) =>
 					isEnabled ? (
 						<div
@@ -39,7 +39,7 @@ function Permissions({
 							{PermissionIcons[permission]}
 							{permission}
 						</div>
-					) : null
+					) : null,
 				)}
 			</div>
 		</section>
