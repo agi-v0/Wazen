@@ -32,6 +32,7 @@ const reports = () => {
 				alt="reports"
 				width={255.88}
 				height={338.44}
+				loading="lazy"
 				variants={{
 					hidden: { opacity: 0, scale: 0.75, y: -20 },
 					visible: {
@@ -53,6 +54,7 @@ const reports = () => {
 				alt="reports"
 				width={255.88}
 				height={338.44}
+				loading="lazy"
 				variants={{
 					hidden: { opacity: 0, scale: 0.75, y: -20 },
 					visible: {
