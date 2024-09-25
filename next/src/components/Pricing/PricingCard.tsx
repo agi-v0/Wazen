@@ -41,9 +41,9 @@ const PricingBox = (props: {
 	return (
 		<div
 			className={cn(
-				'relative flex w-full flex-col justify-start gap-6 rounded-2xl border border-gray-200 bg-white p-8',
+				'relative flex w-full flex-col justify-start gap-6 rounded-2xl border-2 border-gray-200 bg-white p-8',
 				order == '1'
-					? 'border border-teal-500 shadow-[0px_0px_0px_4px_rgba(20,184,166,0.2),_0px_1px_2px_-1px_rgba(28,_40,_64,_0.10),_0px_2px_4px_0px_rgba(28,_40,_64,_0.06)]'
+					? '-shadow-[0px_0px_0px_4px_rgba(20,184,166,0.2),_0px_1px_2px_-1px_rgba(28,_40,_64,_0.10),_0px_2px_4px_0px_rgba(28,_40,_64,_0.06)] border-none bg-teal-100'
 					: '',
 			)}
 		>

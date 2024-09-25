@@ -20,7 +20,7 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<SingleAppHeader app={app} />
-			<Permissions app={app} />
+			{/* <Permissions app={app} /> */}
 
 			{/* <EmblaCarousel
 					slides={app.carousel}
