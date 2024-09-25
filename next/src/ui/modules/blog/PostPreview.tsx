@@ -14,10 +14,6 @@ export default function PostPreview({
 	post: Sanity.BlogPost
 	locale: any
 }) {
-	// const categoryTitle: any =
-	// 	locale == 'ar' ? post?.categories[0]?.title : post?.categories[0]?.title_en
-
-	const t = useTranslations('Blog')
 	const pageType = type == 'categories-list' ? 'blog' : 'help-center'
 
 	return (
@@ -58,7 +54,7 @@ export default function PostPreview({
 					{post.body && post.body[0].children[0].text.slice(0, 160) + ' ...'}
 				</p>
 				<div className="group font-medium text-cyan-950/80 transition-all group-hover:text-teal-600">
-					{t('Read more')}
+					{locale == 'en' ? 'Read' : 'قراءة'}
 					<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]" />
 				</div>
 			</div>
