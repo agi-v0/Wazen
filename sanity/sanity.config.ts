@@ -1,8 +1,8 @@
 import { defineConfig } from 'sanity'
-import { BASE_URL, projectId } from './src/env'
+import { BASE_URL, projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
-import defaultDocumentNode from './src/defaultDocumentNode'
 import structure from './src/structure'
+import defaultDocumentNode from './src/defaultDocumentNode'
 import { presentationTool } from 'sanity/presentation'
 import {
 	dashboardTool,
@@ -16,7 +16,7 @@ import { documentInternationalization } from '@sanity/document-internationalizat
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
 import { advancedArray } from './plugins/sanity-plugin-advanced-array'
-import { table } from '@sanity/table';
+import { table } from '@sanity/table'
 
 const singletonTypes = ['site']
 
@@ -26,6 +26,7 @@ export default defineConfig({
 
 	projectId: 'm7bjawr3',
 	dataset: 'production',
+	basePath: '/admin',
 
 	plugins: [
 		structureTool({
@@ -54,16 +55,23 @@ export default defineConfig({
 				{ id: 'ar', title: 'Arabic' },
 				{ id: 'en', title: 'English' },
 			],
-			schemaTypes: ['site', 'navigation', 'page', 'app.store.app' , 'call.to.action.doc'],
+			schemaTypes: [
+				'site',
+				'navigation',
+				'page',
+				'app.store.app',
+				'call.to.action.doc',
+			],
 		}),
 		inlineSvgInput(),
 		iconify({
 			collections: ['ph'],
 		}),
 		advancedArray(),
-		table()
+		table(),
 	],
 
+	tasks: { enabled: false },
 	scheduledPublishing: {
 		enabled: false,
 	},
