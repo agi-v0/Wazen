@@ -17,7 +17,7 @@ function addVariablesForColors({ addBase, theme }: any) {
 }
 
 const config: Config = {
-	content: ['./src/{app,ui}/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
 			colors: {

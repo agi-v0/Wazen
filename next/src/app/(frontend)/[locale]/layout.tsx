@@ -3,11 +3,11 @@ import Footer from '@/ui/footer'
 // import { draftMode } from 'next/headers'
 // import { VisualEditing } from 'next-sanity'
 import { inter, rubik } from './fonts'
-import '../../styles/app.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
 import { locales } from '@/i18n/config'
 import { unstable_setRequestLocale } from 'next-intl/server'
+import '../../../styles/app.css'
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }))
