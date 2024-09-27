@@ -9,7 +9,9 @@
 		"lint": "next lint",
 		"analyze": "cross-env ANALYZE=true next build",
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
-		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
+		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+		"sanity dev": "sanity dev",
+		"sanity deploy": "sanity deploy"
 	},
 	"dependencies": {
 		"@catherineriver/sanity-plugin-generate-ogimage": "^1.0.6",
