@@ -1,5 +1,3 @@
-import { inter } from '../(frontend)/[locale]/fonts'
-
 export default function RootLayout({
 	children,
 }: {
@@ -7,7 +5,16 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body style={{ margin: 0 }} className={inter.className}>
+			<body
+				style={{
+					height: '100vh',
+					maxHeight: '100dvh',
+					overscrollBehavior: 'none',
+					WebkitFontSmoothing: 'antialiased',
+					overflow: 'auto',
+					margin: 0,
+				}}
+			>
 				{children}
 			</body>
 		</html>

@@ -11,8 +11,8 @@ import { localePrefix, defaultLocale, locales, pathnames } from './i18n/config'
 export default function middleware(request: any) {
 	const { pathname } = request.nextUrl
 
-	// Skip locale negotiation for the /admin path
-	if (pathname.startsWith('/admin')) {
+	// Skip locale negotiation for the /admin path and its static assets
+	if (pathname.startsWith('/admin') || pathname.startsWith('/_next')) {
 		return // Exit without calling middleware
 	}
 
