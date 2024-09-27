@@ -11,7 +11,7 @@ import {
 // import NumberTicker from '../animated/number-ticker'
 
 const PricingBox = (props: {
-	order: string
+	order: number
 	price: string
 	apps: any
 	duration: string
@@ -42,8 +42,8 @@ const PricingBox = (props: {
 		<div
 			className={cn(
 				'relative flex w-full flex-col justify-start gap-6 rounded-2xl border-2 border-gray-200 bg-white p-8',
-				order == '1'
-					? '-shadow-[0px_0px_0px_4px_rgba(20,184,166,0.2),_0px_1px_2px_-1px_rgba(28,_40,_64,_0.10),_0px_2px_4px_0px_rgba(28,_40,_64,_0.06)] border-none bg-teal-100'
+				order == 1
+					? 'border-none bg-teal-50 shadow-[0px_0px_0px_2px_rgba(45,212,191,1),_0px_1px_2px_-1px_rgba(28,_40,_64,_0.10),_0px_2px_4px_0px_rgba(28,_40,_64,_0.06)]'
 					: '',
 			)}
 		>
@@ -57,13 +57,20 @@ const PricingBox = (props: {
 				{/* <NumberTicker value={parseInt(price)} direction="up" /> */}
 				<span className="amount">{price}</span>
 				ريال
-				<span className="text-lg text-gray-400">/{duration}</span>
+				<span
+					className={cn(
+						'text-lg text-gray-400',
+						order == 1 ? 'text-gray-950' : '',
+					)}
+				>
+					/{duration}
+				</span>
 			</h3>
 			<ul className="flex flex-col gap-4">
 				{apps.map((app: { title: string; active: boolean }, index: any) => (
 					<li
 						key={'feature' + index}
-						className={`flex flex-row items-center gap-2 text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
+						className={`flex flex-row items-center gap-2 font-medium text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
 					>
 						{AppIcons[index]}
 						{app.title}
