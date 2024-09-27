@@ -1,5 +1,5 @@
 import * as React from 'react'
-const Logo = () => (
+export const Logo = () => (
 	<svg
 		width={32}
 		height={32}

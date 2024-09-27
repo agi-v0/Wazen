@@ -17,14 +17,14 @@ import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
 import { advancedArray } from './plugins/sanity-plugin-advanced-array'
 import { table } from '@sanity/table'
-import WazenLogo from './static/wazen-logo'
+import { Logo } from './static/wazen-logo'
 
 const singletonTypes = ['site']
 
 export default defineConfig({
 	name: 'default',
 	title: 'Wazen',
-	icon: WazenLogo,
+	icon: Logo,
 	projectId: 'm7bjawr3',
 	dataset: 'production',
 	basePath: '/admin',
