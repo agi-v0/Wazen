@@ -62,7 +62,7 @@ export default function Benefits({
 			},
 			0,
 		)
-		console.log(closestBreakpointIndex)
+
 		setActiveCard(closestBreakpointIndex)
 	})
 
@@ -134,7 +134,7 @@ export default function Benefits({
 								key={activeCard}
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
-								// exit={{ opacity: 0 }} 
+								// exit={{ opacity: 0 }}
 								transition={{ duration: 0.2 }}
 							>
 								<Img
