@@ -13,6 +13,9 @@ import {
 	PiPhoneFill,
 } from 'react-icons/pi'
 
+import { NextIntlClientProvider } from 'next-intl';
+import {getMessages} from 'next-intl/server';
+
 export default async function ContactUs({
 	content,
 	contactInfo,
@@ -22,6 +25,9 @@ export default async function ContactUs({
 	contactInfo: any
 	locale: any
 }>) {
+
+	const messages = await getMessages();
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -56,11 +62,13 @@ export default async function ContactUs({
 
 	return (
 		<section className="section py-24">
-			<div className={'flex max-w-2xl flex-col items-start gap-6'}>
+			<div className={'mb-10 flex max-w-2xl flex-col items-start gap-6'}>
 				<PortableText value={content} components={components} />
 			</div>
 			<div className="fluid-gap grid grid-cols-1 justify-around md:grid-cols-2">
-				<ContactForm />
+				<NextIntlClientProvider messages={messages} >
+					<ContactForm />
+				</NextIntlClientProvider>
 				<div className="flex h-fit flex-col flex-wrap justify-end gap-x-8 gap-y-6 md:flex-row">
 					{contactInfo.map((info: any, index: any) => (
 						<div key={index} className="flex h-fit w-[240px] flex-col gap-3">
