@@ -48,11 +48,12 @@ export default async function LogoList({
 				</Pretitle>
 				<PortableText value={content} components={components} />
 
-				<figure className="flex w-full flex-wrap items-center justify-center gap-12 grayscale">
+				<figure className="flex w-full flex-wrap items-center justify-center gap-12">
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}
-							className="svg-container h-12 w-auto text-gray-400 *:fill-gray-400"
+							className="svg-container h-12 w-auto grayscale transition-all hover:grayscale-0"
+							aria-label={logo.name}
 							dangerouslySetInnerHTML={{ __html: logo.icon }}
 						/>
 					))}
