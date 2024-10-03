@@ -32,14 +32,11 @@ const ContactForm = () => {
 		switch (name) {
 			case 'firstName':
 			case 'lastName':
+			case 'companyName':
 			case 'businessField':
 				return /^[a-zA-Z\s]*$/.test(value)
 					? ''
 					: 'Only letters and spaces are allowed'
-			case 'companyName':
-				return /^[a-zA-Z0-9]*$/.test(value)
-					? ''
-					: 'only letters and numbers allowed'
 			case 'contactNumber':
 				return /^\d*$/.test(value) ? '' : 'Only numbers are allowed'
 			case 'email':
@@ -47,7 +44,7 @@ const ContactForm = () => {
 					? ''
 					: 'Invalid email format'
 			case 'message':
-				return value.length > 10
+				return value.length > 2
 					? ''
 					: 'Message must be longer than 10 characters'
 			default:
@@ -57,37 +54,43 @@ const ContactForm = () => {
 
 	const handleSendEmail = async () => {
 		const formErrors = Object.keys(formData).reduce((acc: any, key) => {
-			const error = validateField(key, formData[key])
+			const error = validateField(key, formData[key as keyof typeof formData])
 			if (error) acc[key] = error
 			return acc
 		}, {})
 
 		if (Object.keys(formErrors).length === 0) {
+			console.log(formErrors)
 			try {
-				const response = await sendEmail(formData)
+				const result = await sendEmail(formData)
 
-				if (response) {
-					console.log('Your message was sent successfully!')
+				console.log(result)
+
+				if (result.error == null) {
 					toast({
-						title: 'You made it!!!!',
-						description: "It's true.. Message was sent!",
+						title: 'Success!',
+						description: 'Your message was sent successfully!',
 					})
-					console.log('response...', response)
+					// Reset form
+					setFormData({
+						name: '',
+						email: '',
+						message: '',
+					})
+				} else {
+					throw new Error(result.error || 'Failed to send email')
 				}
-
-				toast({
-					title: 'You made it!!!!',
-					description: "It's true.. Message was sent!",
-				})
 			} catch (error) {
-				console.log(error)
-				console.log('Something went wrong!')
+				console.error('Error sending email:', error)
+				toast({
+					title: 'Error',
+					description: 'Something went wrong. Please try again.',
+					variant: 'destructive',
+				})
 			}
 		} else {
 			setErrors(formErrors)
 		}
-
-		(document.getElementById('contact-form') as HTMLFormElement).reset();
 	}
 
 	return (
@@ -202,6 +205,9 @@ const ContactForm = () => {
 					onChange={handleChange}
 					placeholder={t('Write your message here')}
 				></textarea>
+				{errors['message'] && (
+					<p className="mt-1 text-sm text-red-600">{errors['message']}</p>
+				)}
 			</div>
 			<div className="flex items-center gap-2">
 				<input
