@@ -58,10 +58,9 @@
 		"sanity-plugin-iconify": "^2.0.0",
 		"sanity-plugin-iframe-pane": "^3.1.6",
 		"sharp": "^0.33.4",
-		"styled-components": "^6.1.11",
+		"styled-components": "^6.1.13",
 		"tailwind-merge": "^2.3.0",
-		"tailwindcss-animate": "^1.0.7",
-		"unlighthouse": "^0.13.2"
+		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
 		"@iconify/react": "^5.0.1",

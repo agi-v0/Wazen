@@ -1,5 +1,5 @@
 {
-	"extends": ["next", "prettier", "@sanity/eslint-config-studio"],
+	"extends": ["prettier", "@sanity/eslint-config-studio"],
 	"rules": {
 		"@typescript-eslint/no-unused-vars": "off",
 		"react/jsx-key": "off",
