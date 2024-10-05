@@ -25,7 +25,7 @@ export default defineConfig({
 	name: 'default',
 	title: 'Wazen',
 	icon: Logo,
-	projectId: 'm7bjawr3',
+	projectId: process.env.SANITY_STUDIO_PROJECT_ID,
 	dataset: 'production',
 	basePath: '/admin',
 
