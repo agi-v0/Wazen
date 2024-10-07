@@ -8,19 +8,22 @@ import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
-import blob from '../../../public/gradient-blob.svg'
-import { PiCheckCircle } from 'react-icons/pi'
+import { PiCheckCircle, PiCheckCircleFill } from 'react-icons/pi'
+import { urlFor } from '@/lib/sanity/urlFor'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { getLocale } from 'next-intl/server'
+import { useLocale } from 'next-intl'
 
 // https://magicui.design/docs/components/neon-gradient-card
 
-export default function CallToAction({
+export default async function CallToAction({
 	content,
 	ctas,
 	image,
 	checkedList,
 	textAlign = 'start',
 	alignItems,
-	callToActionDoc,
+	// callToAction,
 }: Partial<{
 	content: any
 	ctas: Sanity.CTA[]
@@ -28,19 +31,37 @@ export default function CallToAction({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 	image: Sanity.Image & { onRight?: boolean }
-	callToActionDoc: {
+	callToAction: {
 		content: any
 		ctas: Sanity.CTA[]
 		checkedList: any
 		image: Sanity.Image & { onRight?: boolean }
-	}[]
+	}
 }>) {
-	const callToActionContent = content ?? callToActionDoc?.[0].content
-	const callToActionCTAs = ctas ?? callToActionDoc?.[0].ctas
-	const callToActionCheckedList =
-		checkedList ?? callToActionDoc?.[0].checkedList
-	const callToActionImage =
-		image && 'asset' in image ? image : callToActionDoc?.[0].image
+	const locale = await getLocale()
+	const ctaDoc = await fetchSanity<Sanity.Module>(
+		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
+		
+			...,
+			image{
+				...,
+				asset->
+			},}
+		`,
+		{
+			params: {
+				locale: locale,
+			},
+			tags: ['apps'],
+		},
+	)
+	const callToAction = ctaDoc
+
+	content && (callToAction.content = content)
+	ctas && (callToAction.ctas = content)
+	checkedList && (callToAction.checkedList = checkedList)
+	// image?.asset && (callToAction.image = image)
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -58,7 +79,7 @@ export default function CallToAction({
 					)
 				}
 				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
+					<p className="text-large max-w-xl text-gray-600 md:max-w-3xl">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -76,8 +97,8 @@ export default function CallToAction({
 
 				return (
 					<div className="flex items-center gap-2">
-						<PiCheckCircle className="h-4 w-4 text-gray-400" />
-						<p className="text-small text-gray-400">{textContent}</p>
+						<PiCheckCircleFill className="size-5 text-teal-500" />
+						<p className="text-gray-600">{textContent}</p>
 					</div>
 				)
 			},
@@ -85,46 +106,45 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className="section fluid-vertical-space fluid-gap fluid-padding relative flex w-full flex-col-reverse items-center justify-evenly overflow-hidden rounded-2xl lg:flex-row">
+		<section className="section fluid-padding">
 			<div
-				className="flex max-w-2xl flex-col items-start gap-8"
-				// style={{ textAlign: stegaClean(textAlign) }}
+				className={cn(
+					'fluid-gap fluid-padding -cyan-gradient-background-1 relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl bg-cyan-50 lg:flex-row lg:justify-start',
+					callToAction.image?.onRight
+						? ''
+						: 'lg:flex-row-reverse lg:justify-between',
+				)}
 			>
-				<PortableText value={callToActionContent} components={components} />
-
-				<CTAList
-					ctas={callToActionCTAs}
-					className="w-full *:h-12 *:text-base"
-				/>
-				<div className="flex flex-col gap-2">
-					<PortableText
-						value={callToActionCheckedList}
-						components={checkedListComponents}
-					/>
-				</div>
-			</div>
-			<div className="h-[400px] w-full lg:max-w-[400px]">
-				<div className="brief-background relative h-full overflow-hidden rounded-2xl border-8 border-white">
+				<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
 					<div
-						className={cn(
-							callToActionImage?.onRight ? 'left-8' : 'right-8',
-							'absolute top-8 h-full w-full min-w-[800px]',
-						)}
+						className={cn('absolute start-8 top-8 h-full w-full min-w-[800px]')}
 					>
-						<Img
-							image={callToActionImage}
-							imageWidth={640}
-							className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover lg:max-w-[450px]"
+						<Image
+							src={urlFor(callToAction.image as Sanity.Image).url()}
+							alt={callToAction.image.alt}
+							height={455.11}
+							width={640}
+							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
+							draggable={false}
+							loading="lazy"
+						/>
+					</div>
+				</div>
+				<div className="flex max-w-2xl flex-col items-start gap-8">
+					<PortableText value={callToAction.content} components={components} />
+
+					<CTAList
+						ctas={callToAction.ctas}
+						className="w-full *:h-12 *:text-base"
+					/>
+					<div className="flex flex-col gap-2">
+						<PortableText
+							value={callToAction.checkedList}
+							components={checkedListComponents}
 						/>
 					</div>
 				</div>
 			</div>
-			<Image
-				src={blob}
-				alt="hero"
-				className="pointer-events-none absolute right-0 top-0 z-[-1] h-full w-auto object-cover"
-				draggable={false}
-			/>
 		</section>
 	)
 }

@@ -58,7 +58,7 @@ export const DotButton: React.FC<PropType> = (props) => {
 	const { children, ...restProps } = props
 
 	return (
-		<button type="button" {...restProps}>
+		<button type="button" aria-label="slide" {...restProps}>
 			{children}
 		</button>
 	)

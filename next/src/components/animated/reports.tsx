@@ -30,6 +30,9 @@ const reports = () => {
 			<motion.img
 				src="/statistic-img-1.svg"
 				alt="reports"
+				width={255.88}
+				height={338.44}
+				loading="lazy"
 				variants={{
 					hidden: { opacity: 0, scale: 0.75, y: -20 },
 					visible: {
@@ -49,6 +52,9 @@ const reports = () => {
 			<motion.img
 				src="/statistic-img-2.svg"
 				alt="reports"
+				width={255.88}
+				height={338.44}
+				loading="lazy"
 				variants={{
 					hidden: { opacity: 0, scale: 0.75, y: -20 },
 					visible: {

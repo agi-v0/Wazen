@@ -132,10 +132,17 @@ export default function Benefits({
 						<AnimatePresence mode="wait">
 							<motion.div
 								key={activeCard}
+<<<<<<< HEAD
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								// exit={{ opacity: 0 }}
 								transition={{ duration: 0.2 }}
+=======
+								initial={{ opacity: 0, translateY: -40 }}
+								animate={{ opacity: 1, translateY: 0 }}
+								exit={{ opacity: 0.2, translateY: 40 }}
+								transition={{ ease: 'easeOut' }}
+>>>>>>> dev
 							>
 								<Img
 									image={imageList}

@@ -43,7 +43,7 @@ const Pricing = ({ plans }: any) => {
 			</div>
 
 			<div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-				{plans.map((plan: any, index: string) => (
+				{plans.map((plan: any, index: number) => (
 					<PricingCard
 						key={index}
 						order={index}

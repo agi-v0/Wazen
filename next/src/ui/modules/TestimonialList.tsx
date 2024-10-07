@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -9,7 +10,8 @@ import {
 import React, { useEffect, useState } from 'react'
 import Img from '../Img'
 
-const TestimonialList = ({
+export default async function TestimonialList({
+	locale,
 	content,
 	testimonials,
 	direction = 'left',
@@ -17,13 +19,14 @@ const TestimonialList = ({
 	pauseOnHover = true,
 	className,
 }: {
+	locale: string
 	content: any
 	testimonials: Sanity.Testimonial[]
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
 	className?: string
-}) => {
+}) {
 	const containerRef = React.useRef<HTMLDivElement>(null)
 	const scrollerRef = React.useRef<HTMLUListElement>(null)
 
@@ -31,6 +34,7 @@ const TestimonialList = ({
 		addAnimation()
 	}, [])
 	const [start, setStart] = useState(false)
+
 	function addAnimation() {
 		if (containerRef.current && scrollerRef.current) {
 			const scrollerContent = Array.from(scrollerRef.current.children)
@@ -73,7 +77,17 @@ const TestimonialList = ({
 			}
 		}
 	}
-
+	const allTestimonials =
+		testimonials ||
+		(await fetchSanity<Sanity.Testimonial[]>(
+			groq`*[_type == 'testimonial' && language == $locale]`,
+			{
+				params: {
+					locale: locale,
+				},
+				tags: ['testimmonials'],
+			},
+		))
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -100,7 +114,7 @@ const TestimonialList = ({
 		},
 	}
 	return (
-		<section
+		<div
 			className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]"
 			ref={containerRef}
 		>
@@ -115,47 +129,43 @@ const TestimonialList = ({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{testimonials?.map(({ content, author }, key) => {
+				{allTestimonials?.map(({ content, author }, key) => {
 					return (
 						<li
 							key={key}
 							className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
 						>
 							<article className="flex flex-col justify-between">
-								<blockquote className="space-y-6">
-									<div className="text-start group-hover:text-cyan-800">
-										<PortableText value={content} components={components} />
-									</div>
+								<div className="text-start group-hover:text-cyan-800">
+									<PortableText value={content} components={components} />
+								</div>
 
-									{author && (
-										<footer>
-											<div className="flex items-center justify-start gap-4">
-												<Img
-													className="size-12 rounded-full object-cover"
-													image={author?.image}
-													imageWidth={80}
-												/>
-												<div className={cn('text-main text-start')}>
-													<div className="font-semibold text-cyan-950">
-														{author?.name}
-													</div>
-													{author?.title && (
-														<div className="text-cyan-950/60">
-															{author?.title}
-														</div>
-													)}
+								{author && (
+									<footer>
+										<div className="flex items-center justify-start gap-4">
+											<Img
+												className="size-12 rounded-full object-cover"
+												image={author?.image}
+												imageWidth={80}
+											/>
+											<div className={cn('text-main text-start')}>
+												<div className="font-semibold text-cyan-950">
+													{author?.name}
 												</div>
+												{author?.title && (
+													<div className="text-cyan-950/60">
+														{author?.title}
+													</div>
+												)}
 											</div>
-										</footer>
-									)}
-								</blockquote>
+										</div>
+									</footer>
+								)}
 							</article>
 						</li>
 					)
 				})}
 			</ul>
-		</section>
+		</div>
 	)
 }
-
-export default TestimonialList
