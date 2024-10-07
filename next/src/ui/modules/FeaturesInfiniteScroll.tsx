@@ -10,6 +10,7 @@ import { EmblaOptionsType } from 'embla-carousel'
 // import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
+import ComparisonTable from './ComparisonTable'
 
 const InfiniteMovingCards = dynamic(
 	() => import('@/components/animated/infinite-moving-cards-apps'),
@@ -192,6 +193,7 @@ export default function FeaturesInfiniteScroll({
 	content,
 	cards,
 	locale,
+	altApps,
 	ctas,
 	textAlign = 'center',
 	alignItems,
@@ -200,6 +202,7 @@ export default function FeaturesInfiniteScroll({
 	content: any
 	cards: any
 	locale: string
+	altApps: any
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
@@ -244,7 +247,7 @@ export default function FeaturesInfiniteScroll({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div className="space-y-6" >
+			<div className="space-y-6">
 				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
 					direction="right"
@@ -265,7 +268,10 @@ export default function FeaturesInfiniteScroll({
 					items={Features().slice(10, 15)}
 				/>
 			</div>
-			<div className="section space-y-6">
+
+			<ComparisonTable altApps={altApps} />
+
+			{/* <div className="section space-y-6">
 				<p className="mx-auto text-center font-semibold uppercase text-gray-500">
 					{t('Replaces')}
 				</p>
@@ -280,7 +286,7 @@ export default function FeaturesInfiniteScroll({
 						</li>
 					))}
 				</ul>
-			</div>
+			</div> */}
 		</section>
 	)
 }
