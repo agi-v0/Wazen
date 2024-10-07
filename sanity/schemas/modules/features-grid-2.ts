@@ -7,6 +7,13 @@ import {
 } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { count, getBlockText } from '../../src/utils'
+import { ArrayOptions } from 'sanity'
+
+interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+	advanced?: {
+		select?: boolean
+	}
+}
 
 export default defineType({
 	name: 'features-grid-2',
@@ -91,7 +98,7 @@ export default defineType({
 							],
 							options: {
 								advanced: { select: true },
-							},
+							} as ExtendedArrayOptions<unknown>,
 							validation: (rule) => rule.required().min(1).max(4),
 						}),
 					],
@@ -108,7 +115,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 	],
 	preview: {

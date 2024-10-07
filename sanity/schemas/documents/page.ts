@@ -1,4 +1,10 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, ArrayOptions } from 'sanity'
+
+interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+	advanced?: {
+		select?: boolean
+	}
+}
 
 export default defineType({
 	name: 'page',
@@ -59,7 +65,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 		defineField({
 			name: 'metadata',

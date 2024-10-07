@@ -1,6 +1,13 @@
 import { defineField, defineType } from 'sanity'
 import { VscSymbolClass } from 'react-icons/vsc'
 import { count } from '../../src/utils'
+import { ArrayOptions } from 'sanity'
+
+interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+	advanced?: {
+		select?: boolean
+	}
+}
 
 export default defineType({
 	name: 'navigation',
@@ -28,7 +35,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 	],
 	preview: {

@@ -1,6 +1,13 @@
 import { defineField, defineType } from 'sanity'
 import { VscFolderOpened } from 'react-icons/vsc'
 import { count } from '../../src/utils'
+import { ArrayOptions } from 'sanity'
+
+interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+	advanced?: {
+		select?: boolean
+	}
+}
 
 export default defineType({
 	name: 'link.group',
@@ -20,7 +27,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 	],
 	preview: {
