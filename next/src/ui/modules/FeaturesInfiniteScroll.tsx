@@ -269,7 +269,7 @@ export default function FeaturesInfiniteScroll({
 				/>
 			</div>
 
-			<ComparisonTable altApps={altApps} />
+			<ComparisonTable {...altApps} />
 
 			{/* <div className="section space-y-6">
 				<p className="mx-auto text-center font-semibold uppercase text-gray-500">
