@@ -1,5 +1,12 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { LuDollarSign } from 'react-icons/lu'
+import { ArrayOptions } from 'sanity'
+
+interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+	advanced?: {
+		select?: boolean
+	}
+}
 
 export default defineType({
 	name: 'pricing',
@@ -39,7 +46,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 		defineField({
 			name: 'price',
@@ -87,7 +94,7 @@ export default defineType({
 				advanced: {
 					select: true,
 				},
-			},
+			} as ExtendedArrayOptions<unknown>,
 		}),
 		defineField({
 			name: 'details',
@@ -142,7 +149,6 @@ export default defineType({
 			price: 'price',
 		},
 		prepare: ({ title, price }) => {
-
 			return {
 				title,
 				subtitle: [price.month, price.yearly].filter(Boolean).join(' '),

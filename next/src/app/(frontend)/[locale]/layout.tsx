@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { getSite } from '@/lib/sanity/queries'
 import { locales } from '@/i18n/config'
 import { unstable_setRequestLocale } from 'next-intl/server'
+import { Toaster } from '@/components/ui/toaster'
 import '../../../styles/app.css'
 import { inter, rubik } from '../../../styles/fonts'
 
@@ -39,6 +40,7 @@ export default async function RootLayout({
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>
+				<Toaster />
 				<Footer
 					footerMenu={footerMenu}
 					staticLinks={staticLinks}

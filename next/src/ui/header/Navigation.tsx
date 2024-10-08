@@ -44,17 +44,12 @@ export async function Navigation({
 										base: false,
 										params: item.params,
 									})}
-									legacyBehavior
-									passHref
+									className={cn(
+										navigationMenuTriggerStyle(),
+										'min-w-fit text-nowrap',
+									)}
 								>
-									<NavigationMenuLink
-										className={cn(
-											navigationMenuTriggerStyle(),
-											'min-w-fit text-nowrap',
-										)}
-									>
-										{item.label || item.internal.title}
-									</NavigationMenuLink>
+									{item.label || item.internal.title}
 								</Link>
 							</NavigationMenuItem>
 						)

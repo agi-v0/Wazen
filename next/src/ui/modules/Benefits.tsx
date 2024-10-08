@@ -62,7 +62,7 @@ export default function Benefits({
 			},
 			0,
 		)
-		console.log(closestBreakpointIndex)
+
 		setActiveCard(closestBreakpointIndex)
 	})
 
