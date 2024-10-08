@@ -39,7 +39,7 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 								>
 									<Image
 										src={
-											'https://cdn.sanity.io/images/m7bjawr3/production/c971f5dc58e26dc7798d2bcd6acdf067328abbb8-1440x1024.svg?w=540&fm=webp'
+											'https://cdn.sanity.io/images/m7bjawr3/production/f1a3d88253ddea020853090ef92e690e79c3f012-1440x1024.svg?w=540&fm=webp'
 										}
 										alt={links?.[0].label}
 										width={250}
