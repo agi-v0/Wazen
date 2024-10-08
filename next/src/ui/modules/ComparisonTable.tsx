@@ -13,94 +13,58 @@ const ComparisonTable = ({
 }>) => {
 	return (
 		<div
-			className="section w-full overflow-x-scroll py-24"
+			className="section relative w-full py-6"
 			style={
 				{
-					'--col-count': altAppsLogos.length,
-					'--row-count': comparisonTable.rows.length + 1,
+					'--col-count': altAppsLogos.length || 0,
+					'--row-count': comparisonTable.rows.length + 1 || 0,
 				} as React.CSSProperties
 			}
 		>
-			{/* <div className="w-[1184]">
-				<div
-					className={`grid grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] items-center justify-center gap-2`}
-				>
-					{altAppsLogos?.map((logo: any, index: number) => (
-						<span
-							className={cn(
-								'flex h-full w-full items-center justify-center pb-4 pt-8',
-								index == 0 ? 'col-start-3 rounded-t-lg bg-teal-50 px-6' : '',
-							)}
+			<div className="absolute start-0 top-0 z-50 h-full w-4 translate-x-0 bg-white"></div>
+			<div className="w-full overflow-x-scroll">
+				<div className="grid w-[672px] grid-cols-[repeat(calc(var(--col-count)+2),_minmax(0,_1fr))] lg:w-full">
+					<div className="sticky start-0 col-span-2 mt-14 grid grid-flow-row grid-cols-1 grid-rows-[repeat(calc(var(--row-count)-1),_minmax(0,_1fr))] rounded-lg border-gray-200 bg-white *:border-t max-lg:w-48">
+						{comparisonTable.rows.map((featureRow: any, index: any) => {
+							return cellContent(featureRow.cells.slice(-1), index)
+						})}
+					</div>
+					<div className="col-span-5 grid w-[480px] grid-rows-[repeat(var(--row-count),_minmax(0,_1fr))] divide-y divide-gray-200 lg:w-full">
+						<div
+							className={`grid grid-flow-col grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] items-center justify-center gap-2 pb-4`}
 						>
-							<Img
-								image={logo}
-								className="mx-auto h-auto w-[80%]"
-								imageWidth={1000}
-								key={'logo-' + index}
-								alt="logo"
-							/>
-						</span>
-					))}
-				</div>
-				<div className="container">
-					<div className="relative flex w-full flex-col font-medium">
-						{comparisonTable.rows?.map((featureRow: any, index: any) => {
-							return (
-								<div
-									key={'row_' + index}
-									id={'row_' + index}
-									dir="ltr"
+							{altAppsLogos?.map((logo: any, index: number) => (
+								<span
 									className={cn(
-										'-[&last:&:nth-child(5)]:bg-teal-50 -[&last:&:nth-child(5)]:pb-7 grid grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] content-center gap-2 text-start *:w-full *:p-3 rtl:flex-row-reverse',
+										'flex h-10 w-24 items-center justify-center lg:w-full',
 									)}
 								>
-									{featureRow.cells.map((cell: string, index: number) =>
-										cellContent(cell, index),
-									)}
+									<Img
+										image={logo}
+										className="mx-auto h-auto w-[75%]"
+										imageWidth={1000}
+										key={'logo-' + index}
+										alt="logo"
+									/>
+								</span>
+							))}
+						</div>
+						{comparisonTable.rows.map((featureRow: any, index: any) => {
+							return (
+								<div
+									dir="ltr"
+									key={index}
+									className="grid grid-flow-col grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] gap-2 *:w-24 *:lg:w-full"
+								>
+									{featureRow.cells
+										.slice(0, featureRow.cells.length - 1)
+										.map((cell: string, index: number) =>
+											cellContent(cell, index),
+										)}
 								</div>
 							)
 						})}
 					</div>
-				</div>
-			</div> */}
-			<div className="grid w-full grid-cols-[repeat(calc(var(--col-count)+2),_minmax(0,_1fr))]">
-				<div className="col-span-2 mt-14 grid w-full grid-cols-1 grid-rows-[repeat(calc(var(--row-count)-1),_minmax(0,_1fr))]">
-					{comparisonTable.rows.map((featureRow: any, index: any) => {
-						return cellContent(featureRow.cells.slice(-1), index)
-					})}
-				</div>
-				<div className="col-span-5 grid w-full grid-rows-[repeat(var(--row-count),_minmax(0,_1fr))] divide-y divide-slate-700">
-					<div
-						className={`grid grid-flow-col grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] items-center justify-center gap-2 pb-4`}
-					>
-						{altAppsLogos?.map((logo: any, index: number) => (
-							<span
-								className={cn('flex h-10 w-full items-center justify-center')}
-							>
-								<Img
-									image={logo}
-									className="mx-auto h-auto w-[75%]"
-									imageWidth={1000}
-									key={'logo-' + index}
-									alt="logo"
-								/>
-							</span>
-						))}
-					</div>
-					{comparisonTable.rows.map((featureRow: any, index: any) => {
-						return (
-							<div
-								dir="ltr"
-								className="grid grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] gap-2"
-							>
-								{featureRow.cells
-									.slice(0, featureRow.cells.length - 1)
-									.map((cell: string, index: number) =>
-										cellContent(cell, index),
-									)}
-							</div>
-						)
-					})}
 				</div>
 			</div>
 		</div>
@@ -109,13 +73,13 @@ const ComparisonTable = ({
 
 export default ComparisonTable
 
-const cellContent = (cell: string, index?: number) => {
+const cellContent = (cell: string, index: number) => {
 	switch (clean(cell)) {
 		case 'x':
 			return (
 				<span
 					className="flex items-center justify-center text-gray-600"
-					key={index}
+					key={Math.random() * Math.random() + index}
 				>
 					<PiXBold />
 				</span>
