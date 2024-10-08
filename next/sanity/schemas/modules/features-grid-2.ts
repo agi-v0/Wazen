@@ -3,7 +3,6 @@ import {
 	defineField,
 	defineType,
 	useFormValue,
-	useGetFormValue,
 } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { count, getBlockText } from '../../src/utils'
