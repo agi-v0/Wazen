@@ -42,7 +42,7 @@ const nextConfig = {
 	// 	},
 	// },
 	experimental: {
-		optimizePackageImports: ['react-icons/pi'],
+		optimizePackageImports: ['react-icons/*'],
 	},
 }
 
