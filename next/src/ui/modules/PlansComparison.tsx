@@ -21,8 +21,6 @@ const PlansComparison = ({
 }>) => {
 	const [isYearly, setIsYearly] = useState(true)
 
-	console.log(details)
-
 	return (
 		<div className="section py-24">
 			<div className="fluid-gap flex w-full flex-col items-center">

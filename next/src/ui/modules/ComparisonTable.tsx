@@ -79,7 +79,7 @@ const cellContent = (cell: string, index: number) => {
 			return (
 				<span
 					className="flex items-center justify-center text-gray-600"
-					key={Math.random() * Math.random() + index}
+					key={Math.random() * (index + Math.random())}
 				>
 					<PiXBold />
 				</span>
@@ -92,7 +92,7 @@ const cellContent = (cell: string, index: number) => {
 						'flex items-center justify-center',
 						index === 4 ? 'bg-teal-50 text-teal-500' : 'text-teal-500',
 					)}
-					key={index}
+					key={Math.random() * (index + Math.random())}
 				>
 					<PiCheckBold />
 				</span>
@@ -102,7 +102,7 @@ const cellContent = (cell: string, index: number) => {
 			return (
 				<span
 					className={cn('flex items-center justify-start text-gray-600')}
-					key={index}
+					key={Math.random() * (index + Math.random())}
 				>
 					{clean(cell)}
 				</span>
