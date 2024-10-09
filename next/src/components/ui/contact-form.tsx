@@ -13,8 +13,11 @@ const ContactForm = () => {
 
 	const [formData, setFormData] = useState<any>({
 		firstName: '',
+		lasttName: '',
 		companyName: '',
+		businessField: '',
 		email: '',
+		contactNumber: '',
 		message: '',
 	})
 	const [errors, setErrors] = useState<any>({})
@@ -73,7 +76,11 @@ const ContactForm = () => {
 					})
 					// Reset form
 					setFormData({
-						name: '',
+						firstName: '',
+						lastName: '',
+						companyName: '',
+						businessField: '',
+						contactNumber: '',
 						email: '',
 						message: '',
 					})
@@ -120,6 +127,7 @@ const ContactForm = () => {
 						type="text"
 						id="lastName"
 						name="lastName"
+						value={formData.lastName}
 						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Last Name')}
 						onChange={handleChange}
@@ -136,9 +144,9 @@ const ContactForm = () => {
 						type="text"
 						id="companyName"
 						name="companyName"
+						value={formData.companyName}
 						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Company Name')}
-						value={formData.companyName}
 						onChange={handleChange}
 						required
 					/>
@@ -151,6 +159,7 @@ const ContactForm = () => {
 						type="text"
 						id="businessField"
 						name="businessField"
+						value={formData.businessField}
 						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Business Field')}
 						onChange={handleChange}
@@ -169,6 +178,7 @@ const ContactForm = () => {
 						type="text"
 						id="contactNumber"
 						name="contactNumber"
+						value={formData.contactNumber}
 						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Contact Number')}
 						onChange={handleChange}
@@ -185,6 +195,7 @@ const ContactForm = () => {
 						type="email"
 						id="email"
 						name="email"
+						value={formData.email}
 						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Email')}
 						onChange={handleChange}

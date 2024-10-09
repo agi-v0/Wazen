@@ -9,7 +9,15 @@ import {
 } from '@react-email/components'
 import * as React from 'react'
 
-export const EmailTemplate = ({ name, message }) => {
+export const EmailTemplate = ({
+	firstName,
+	lastName,
+	companyName,
+	businessField,
+	contactNumber,
+	email,
+	message,
+}) => {
 	return (
 		<Html>
 			<Head />
@@ -18,9 +26,28 @@ export const EmailTemplate = ({ name, message }) => {
 					<Container style={container}>
 						<Section style={section}>
 							<Text style={text}>
-								Message from <strong>{name}</strong>!
+								<strong>Name: </strong>
+								{firstName} {lastName}
 							</Text>
-							<Text style={text}>{message}</Text>
+							<Text style={text}>
+								<strong>Email: </strong> {email}
+							</Text>
+							<Text style={text}>
+								<strong>Company: </strong>
+								{companyName}
+							</Text>
+							<Text style={text}>
+								<strong>Business: </strong>
+								{businessField}
+							</Text>
+							<Text style={text}>
+								<strong>Phone: </strong>
+								{contactNumber}
+							</Text>
+							<Text style={text}>
+								<strong>Message: </strong>
+								{message}
+							</Text>
 						</Section>
 					</Container>
 				</Body>
