@@ -67,12 +67,10 @@ const ContactForm = () => {
 			try {
 				const result = await sendEmail(formData)
 
-				console.log(result)
-
 				if (result.error == null) {
 					toast({
-						title: 'Success!',
-						description: 'Your message was sent successfully!',
+						title: t('Success'),
+						description: t('Your message was sent successfully'),
 					})
 					// Reset form
 					setFormData({
@@ -90,8 +88,8 @@ const ContactForm = () => {
 			} catch (error) {
 				console.error('Error sending email:', error)
 				toast({
-					title: 'Error',
-					description: 'Something went wrong. Please try again.',
+					title: t('Error'),
+					description: t('Something went wrong'),
 					variant: 'destructive',
 				})
 			}
