@@ -52,7 +52,7 @@ export default async function CallToAction({
 			params: {
 				locale: locale,
 			},
-			tags: ['apps'],
+			tags: ['ctaDoc'],
 		},
 	)
 	const callToAction = ctaDoc
