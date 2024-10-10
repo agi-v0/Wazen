@@ -1,6 +1,6 @@
 import { clean, cn } from '@/lib/utils'
 import Img from '../Img'
-import { PiCheck, PiCheckBold, PiX, PiXBold } from 'react-icons/pi'
+import { PiCheckBold, PiXBold } from 'react-icons/pi'
 
 const ComparisonTable = ({
 	altApps,

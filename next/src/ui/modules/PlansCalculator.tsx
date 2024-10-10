@@ -9,6 +9,7 @@ import {
 
 import CalculatorTable from '@/components/Pricing/CalculatorTable'
 import { Switch } from '@/components/ui/switch'
+import { useTranslations } from 'use-intl'
 
 const PlansCalculator = ({
 	content,
@@ -19,6 +20,9 @@ const PlansCalculator = ({
 	details: any
 	locale: string
 }>) => {
+
+	const t = useTranslations('Pricing')
+
 	const [isYearly, setIsYearly] = useState(false)
 
 	const [total, setTotal] = useState<number>(0)
@@ -62,9 +66,9 @@ const PlansCalculator = ({
 								التكلفة التقديرية
 							</span>
 							<span className="text-larger inline-flex flex-row items-end gap-1 pt-1 font-semibold text-gray-950">
-								<span className="amount">{total}</span>ريال
+								<span className="amount">{total}</span>{t('SR')}
 								<span className="text-large font-medium text-gray-600">
-									/{isYearly ? 'سنوياً' : 'شهرياً'}
+									/{isYearly ? t('Yearly') : t('Monthly')}
 								</span>
 							</span>
 						</div>

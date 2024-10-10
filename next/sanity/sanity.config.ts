@@ -62,6 +62,7 @@ export default defineConfig({
 				'page',
 				'app.store.app',
 				'call.to.action.doc',
+				'pricing'
 			],
 		}),
 		inlineSvgInput(),

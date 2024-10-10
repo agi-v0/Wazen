@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 import { Switch } from '@/components/ui/switch'
 import PricingCard from './PricingCard'
@@ -8,8 +9,12 @@ import {
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
 import { PiCheckBold, PiX } from 'react-icons/pi'
+import { useTranslations } from 'next-intl'
+
 
 const Pricing = ({ plans }: any) => {
+	const t = useTranslations('Pricing')
+
 	const [isYearly, setIsYearly] = useState(false)
 
 	const PlanContent: PortableTextComponents = {
@@ -36,9 +41,10 @@ const Pricing = ({ plans }: any) => {
 	}
 
 	return (
+		
 		<div id="pricing" className="container space-y-6">
 			<div className="flex w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
-				سنوي (شهرين مجاناً)
+				{t('Yearly (two monthes free)')}
 				<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 			</div>
 
@@ -50,7 +56,7 @@ const Pricing = ({ plans }: any) => {
 						apps={plan.apps}
 						packageName={plan.title}
 						price={isYearly ? plan.price.yearly : plan.price.monthly}
-						duration={isYearly ? 'سنوياً' : 'شهرياً'}
+						duration={isYearly ? t('Yearly') : t('Monthly')}
 						subtitle={plan.highlight}
 						ctas={plan.ctas}
 					>

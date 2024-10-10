@@ -23,6 +23,8 @@ const CalculatorTable = ({
 	isYearly: any
 	locale: string
 }) => {
+	const t = useTranslations('Pricing')
+
 	// const t = useTranslations('Pricing')
 	const AppIcons = [
 		<PiTableDuotone className="text-2xl text-cyan-500" />,
@@ -182,8 +184,8 @@ const CalculatorTable = ({
 													key={'cell-value' + row._key}
 													className="flex w-full flex-wrap justify-start px-6 py-3 text-gray-500"
 												>
-													{row.cells[!isYearly ? 1 : 0]} ريال /
-													{!isYearly ? 'شهرياً' : 'سنوياً'}
+													{row.cells[!isYearly ? 1 : 0]} {t('SR')} /
+													{!isYearly ? t('Monthly') : t('Yearly')}
 												</div>
 												<div className="flex h-full w-full flex-row items-center justify-center gap-1 px-6 *:transition-all max-lg:justify-start">
 													<button
@@ -213,8 +215,8 @@ const CalculatorTable = ({
 													</button>
 												</div>
 												<div className="flex h-full w-full flex-row items-center justify-end gap-x-2 px-6 py-3 font-medium text-gray-500 max-lg:justify-start">
-													{quantity * parseInt(row.cells[isYearly ? 0 : 1])}{' '}
-													ريال /{isYearly ? 'سنوياً' : 'شهرياً'}
+													{quantity * parseInt(row.cells[isYearly ? 0 : 1])}
+													{t('SR')} /{isYearly ? t('Yearly') : t('Monthly')}
 												</div>
 											</div>
 										)

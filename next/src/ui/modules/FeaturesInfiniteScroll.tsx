@@ -270,23 +270,6 @@ export default function FeaturesInfiniteScroll({
 			</div>
 
 			<ComparisonTable {...altApps} />
-
-			{/* <div className="section space-y-6">
-				<p className="mx-auto text-center font-semibold uppercase text-gray-500">
-					{t('Replaces')}
-				</p>
-				<ul className="flex flex-row flex-wrap -items-center justify-center gap-4">
-					{Competitors().map((item) => (
-						<li
-							key={item.title}
-							className="flex flex-row items-center justify-center gap-2 rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-500"
-						>
-							{item.icon}
-							{item.title}
-						</li>
-					))}
-				</ul>
-			</div> */}
 		</section>
 	)
 }
