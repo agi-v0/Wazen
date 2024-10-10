@@ -30,7 +30,11 @@
 		"Email": "البريد الإلكتروني",
 		"Write your message here": "اكتب رسالتك هنا...",
 		"Send Message": "أرسل لنا رسالة",
-		"I agree to the terms and conditions": "أوافق على الشروط والأحكام"
+		"I agree to the terms and conditions": "أوافق على الشروط والأحكام",
+		"Success": "تم الإرسال بنجاح",
+		"Your message was sent successfully": "شكرا على تواصلك معنا. سيتم الرد على رسالتك بأقرب وقت.",
+		"Error": "عذرا، فشلت العملية",
+		"Something went wrong": "هناك خطأ تقني، يرجى إعادة المحاولة."
 	},
 	"FeaturesInfiniteScroll": {
 		"Check in and check out": "الحضور والإنصراف",
