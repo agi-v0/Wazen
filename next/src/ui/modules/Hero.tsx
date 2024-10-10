@@ -42,7 +42,7 @@ export default function Hero({
 				/>
 			</div>
 			<div className="section relative flex w-full flex-col justify-center">
-				<div className={cn('richtext relative space-y-6 pt-[25vh] text-white')}>
+				<div className="relative space-y-6 pt-[25vh] text-center text-white">
 					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
 						<PiSealCheck className="size-5" />
 						{pretitle}

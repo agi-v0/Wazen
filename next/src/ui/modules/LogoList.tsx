@@ -43,7 +43,7 @@ export default async function LogoList({
 	return (
 		<section className="section p-[var(--size--6rem)]">
 			<div className="fluid-gap flex w-full flex-col items-center">
-				<Pretitle className="text-main text-center font-normal text-gray-400">
+				<Pretitle className="text-main text-center font-medium text-cyan-950/80">
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={components} />
@@ -52,7 +52,7 @@ export default async function LogoList({
 					{allLogos.map((logo, key) => (
 						<div
 							key={key}
-							className="svg-container h-12 w-auto grayscale transition-all hover:grayscale-0"
+							className="svg-container h-12 w-auto opacity-50 grayscale transition-all hover:opacity-100 hover:grayscale-0"
 							aria-label={logo.name}
 							dangerouslySetInnerHTML={{ __html: logo.icon }}
 						/>
