@@ -11,10 +11,13 @@ import {
 	PiMapPinFill,
 	PiEnvelopeFill,
 	PiPhoneFill,
+	PiPhone,
+	PiEnvelope,
+	PiMapPin,
 } from 'react-icons/pi'
 
-import { NextIntlClientProvider } from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 
 export default async function ContactUs({
 	content,
@@ -25,28 +28,27 @@ export default async function ContactUs({
 	contactInfo: any
 	locale: any
 }>) {
-
-	const messages = await getMessages();
+	const messages = await getMessages()
 
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h1') {
 					return (
-						<h1 className="h1 font-semibold leading-tight text-cyan-950">
+						<h1 className="h1 max-w-3xl text-start text-cyan-950 ltr:leading-tight rtl:leading-snug">
 							{value.children.map((child: any) => child.text).join('')}
 						</h1>
 					)
 				}
 				if (value.style === 'h4') {
 					return (
-						<h4 className="h6 font-semibold leading-tight">
+						<p className="text-large font-semibold text-cyan-950 rtl:leading-snug">
 							{value.children.map((child: any) => child.text).join('')}
-						</h4>
+						</p>
 					)
 				}
 				return (
-					<p className="text-gray-700 md:max-w-3xl">
+					<p className="text-main text-cyan-950/80 rtl:leading-snug">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -55,9 +57,9 @@ export default async function ContactUs({
 	}
 
 	const icons = [
-		<PiPhoneFill className="text-2xl" />,
-		<PiEnvelopeFill className="text-2xl" />,
-		<PiMapPinFill className="text-2xl" />,
+		<PiPhone className="text-2xl text-cyan-950/60" />,
+		<PiEnvelope className="text-2xl text-cyan-950/60" />,
+		<PiMapPin className="text-2xl text-cyan-950/60" />,
 	]
 
 	return (
@@ -66,7 +68,7 @@ export default async function ContactUs({
 				<PortableText value={content} components={components} />
 			</div>
 			<div className="fluid-gap grid grid-cols-1 justify-around md:grid-cols-2">
-				<NextIntlClientProvider messages={messages} >
+				<NextIntlClientProvider messages={messages}>
 					<ContactForm />
 				</NextIntlClientProvider>
 				<div className="flex h-fit flex-col flex-wrap justify-end gap-x-8 gap-y-6 md:flex-row">

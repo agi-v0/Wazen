@@ -102,7 +102,7 @@ const ContactForm = () => {
 		<form
 			id="contact-form"
 			action={handleSendEmail}
-			className="contact-us w-full space-y-8"
+			className="w-full space-y-8"
 		>
 			<div className="flex gap-4">
 				<div className="w-full">
@@ -110,7 +110,7 @@ const ContactForm = () => {
 						type="text"
 						id="firstName"
 						name="firstName"
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('First Name')}
 						onChange={handleChange}
 						value={formData.firstName}
@@ -126,7 +126,7 @@ const ContactForm = () => {
 						id="lastName"
 						name="lastName"
 						value={formData.lastName}
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Last Name')}
 						onChange={handleChange}
 						required
@@ -143,7 +143,7 @@ const ContactForm = () => {
 						id="companyName"
 						name="companyName"
 						value={formData.companyName}
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Company Name')}
 						onChange={handleChange}
 						required
@@ -158,7 +158,7 @@ const ContactForm = () => {
 						id="businessField"
 						name="businessField"
 						value={formData.businessField}
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Business Field')}
 						onChange={handleChange}
 						required
@@ -177,7 +177,7 @@ const ContactForm = () => {
 						id="contactNumber"
 						name="contactNumber"
 						value={formData.contactNumber}
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Contact Number')}
 						onChange={handleChange}
 						required
@@ -194,7 +194,7 @@ const ContactForm = () => {
 						id="email"
 						name="email"
 						value={formData.email}
-						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+						className="flex h-12 w-full rounded-md border border-gray-200 bg-white px-3 py-1 text-sm transition-colors file:border-0 file:bg-white file:text-sm file:font-medium file:text-gray-400 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder={t('Email')}
 						onChange={handleChange}
 						required
@@ -208,7 +208,7 @@ const ContactForm = () => {
 				<textarea
 					id="message"
 					name="message"
-					className="flex min-h-[60px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+					className="flex min-h-[60px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500/60 disabled:cursor-not-allowed disabled:opacity-50"
 					rows={4}
 					value={formData.message}
 					onChange={handleChange}
