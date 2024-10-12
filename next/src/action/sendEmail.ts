@@ -14,7 +14,7 @@ type formData = {
 }
 
 export const sendEmail = async (formData: formData) => {
-	const resend = new Resend(process.env.RESEND_API_KEY)
+	const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
 
 	const firstName = formData.firstName
 	const lastName = formData.lastName
@@ -28,7 +28,7 @@ export const sendEmail = async (formData: formData) => {
 		// Send the main email to yourself
 		const response = await resend.emails.send({
 			from: 'Wazen <onboarding@resend.dev>',
-			to: process.env.EMAIL as string,
+			to: process.env.NEXT_PUBLIC_RESEND_EMAIL as string,
 			subject: 'Email From Wazen',
 			reply_to: email,
 			react: EmailTemplate({
