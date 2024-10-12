@@ -102,7 +102,7 @@ const PlansComparison = ({
 										{detail.specs?.rows?.map((row: any, index: any) => (
 											<div
 												key={'rows_' + index}
-												className="flex flex-row justify-between border-b border-gray-200 text-start *:w-full *:max-lg:w-48 rtl:flex-row-reverse"
+												className="flex flex-row-reverse justify-between border-b border-gray-200 text-start *:w-full *:max-lg:w-48"
 											>
 												{row.cells.map((cell: string, index: any) => {
 													const cleanedCell = clean(cell)
