@@ -63,7 +63,7 @@ const ContactForm = () => {
 		}, {})
 
 		if (Object.keys(formErrors).length === 0) {
-			console.log(formErrors)
+			
 			try {
 				const result = await sendEmail(formData)
 
