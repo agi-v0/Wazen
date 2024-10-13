@@ -5,9 +5,7 @@ import {
 	PiIdentificationCardDuotone,
 	PiTableDuotone,
 	PiUserListDuotone,
-	PiCheckBold,
-	PiXBold,
-} from 'react-icons/pi'
+} from '@/ui/Icons'
 // import NumberTicker from '../animated/number-ticker'
 
 const PricingBox = (props: {

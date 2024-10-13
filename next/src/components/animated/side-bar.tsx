@@ -1,5 +1,5 @@
 import React from 'react'
-import { PiTable } from 'react-icons/pi'
+import { PiTableDuotone } from '@/ui/Icons'
 import Icon from '@/ui/DynamicIcon'
 
 function SideBar() {
@@ -37,7 +37,7 @@ function SideBar() {
 	return (
 		<div className="relative mx-auto h-[450px] w-[350px] flex-1 items-center justify-center overflow-hidden rounded-lg bg-cyan-950/40 py-2 text-white shadow-lg">
 			<div className="text-main absolute left-0 right-0 top-0 z-[1] flex items-center gap-2 rounded-lg px-6 py-3 font-semibold backdrop-blur">
-				<Icon icon="PiTable" className="size-6" />
+				<PiTableDuotone className="size-6" />
 				<p>النظام الحسابي</p>
 			</div>
 			<div className="customScrollbar relative mx-3 h-full overflow-hidden pt-12">

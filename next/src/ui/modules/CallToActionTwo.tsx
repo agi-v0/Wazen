@@ -4,11 +4,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import CTAList from '@/ui/CTAList'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import blob from '../../../public/gradient-blob.svg'
-import { PiCaretRightBold, PiCheckCircle } from 'react-icons/pi'
+import { PiCaretRightBold, PiCheckCircle } from '@/ui/Icons'
 import Button from '../Button'
 
 // https://magicui.design/docs/components/neon-gradient-card

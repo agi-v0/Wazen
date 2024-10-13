@@ -10,7 +10,7 @@ import {
 	PiPlusBold,
 	PiTableDuotone,
 	PiUserListDuotone,
-} from 'react-icons/pi'
+} from '@/ui/Icons'
 
 const CalculatorTable = ({
 	details,

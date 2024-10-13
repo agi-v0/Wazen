@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold } from 'react-icons/pi'
+import { PiCaretRightBold } from '@/ui/Icons'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import AppCard from './AppCard'

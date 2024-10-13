@@ -2,7 +2,7 @@
 import { Link } from '@/i18n/navigations'
 import Date from '@/ui/Date'
 import Image from 'next/image'
-import { PiCaretRightBold } from 'react-icons/pi'
+import { PiCaretRightBold } from '@/ui/Icons'
 import { useTranslations } from 'next-intl'
 import { clean } from '@/lib/utils'
 

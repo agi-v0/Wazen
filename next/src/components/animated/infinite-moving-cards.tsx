@@ -1,9 +1,9 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import Icon from '@/ui/DynamicIcon'
 import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
-import { PiCaretRightBold } from 'react-icons/pi'
 
 export const InfiniteMovingCards = ({
 	direction,
@@ -110,7 +110,11 @@ export const InfiniteMovingCards = ({
 								</p>
 								<div className="flex items-center gap-1 text-teal-600 no-underline">
 									{link.label}
-									<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
+									{/* <PiCaretRightBold className="size-3 rotate-180 text-teal-600" /> */}
+									<Icon
+										icon="ph:caret-right-bold"
+										className="size-3 rotate-180 text-teal-600"
+									/>
 								</div>
 							</div>
 							<Img

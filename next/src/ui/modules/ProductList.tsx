@@ -7,7 +7,7 @@ import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
-import { PiCaretLeftBold } from 'react-icons/pi'
+import { PiCaretLeftBold } from '@/ui/Icons'
 import Img from '../Img'
 import { cn } from '@/lib/utils'
 

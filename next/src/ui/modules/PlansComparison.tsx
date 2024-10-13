@@ -9,7 +9,7 @@ import {
 import { stegaClean } from '@sanity/client/stega'
 import { Switch } from '@/components/ui/switch'
 import { clean, cn } from '@/lib/utils'
-import { PiCheckCircle, PiXBold } from 'react-icons/pi'
+import { PiCheckCircle, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
 
 const PlansComparison = ({

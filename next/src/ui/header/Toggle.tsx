@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
-import { PiList, PiX } from 'react-icons/pi'
+import { PiList } from '@/ui/Icons'
+import { PiX } from '@/ui/Icons'
 
 export default function Toggle(
 	className: React.HTMLAttributes<HTMLLabelElement>,

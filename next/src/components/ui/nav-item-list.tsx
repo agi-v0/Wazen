@@ -1,5 +1,5 @@
 import CTA from '@/ui/CTA'
-import { PiCaretLeftBold } from 'react-icons/pi'
+import { PiCaretLeftBold } from '@/ui/Icons'
 
 export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 	return (

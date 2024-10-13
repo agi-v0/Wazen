@@ -1,7 +1,5 @@
 import { Link } from '@/i18n/navigations'
-import Date from '@/ui/Date'
-import Image from 'next/image'
-import { PiArrowLineDownBold } from 'react-icons/pi'
+import { PiArrowLineDownBold } from '@/ui/Icons'
 import { useTranslations } from 'next-intl'
 import Img from '@/ui/Img'
 import {

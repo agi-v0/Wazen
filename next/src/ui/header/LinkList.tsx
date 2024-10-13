@@ -1,5 +1,5 @@
 import CTA from '@/ui/CTA'
-import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
+import { PiCaretRightBold, PiCaretLeftBold } from '@/ui/Icons'
 import processUrl from '@/lib/processUrl'
 import { Link } from '@/i18n/navigations'
 import Image from 'next/image'

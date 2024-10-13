@@ -8,7 +8,7 @@ import {
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Img from '@/ui/Img'
-import { PiCircleFill } from 'react-icons/pi'
+import { PiCircleFill } from '@/ui/Icons'
 // import Image from 'next/image'
 
 export default function Post({

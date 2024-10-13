@@ -3,12 +3,8 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold } from 'react-icons/pi'
-import { useTranslations } from 'next-intl'
+import { PiCaretRightBold } from '@/ui/Icons'
 import { useState } from 'react'
-import { span } from 'framer-motion/client'
 
 export default function RollupClient({
 	_type,

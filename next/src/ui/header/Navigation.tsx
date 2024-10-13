@@ -20,9 +20,6 @@ import {
 	navigationMenuTriggerStyle,
 	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
-import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
-import Image from 'next/image'
-import Logo from '@/components/ui/logo'
 
 export async function Navigation({
 	headerMenu,

@@ -1,5 +1,5 @@
 import InteractiveDetails from './InteractiveDetails'
-import { PiCaretRightBold } from 'react-icons/pi'
+import { PiCaretRightBold } from '@/ui/Icons'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { cn } from '@/lib/utils'

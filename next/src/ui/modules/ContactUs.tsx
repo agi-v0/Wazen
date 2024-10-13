@@ -6,15 +6,7 @@ import {
 } from '@portabletext/react'
 import Link from 'next/link'
 
-import {
-	PiCaretLeftBold,
-	PiMapPinFill,
-	PiEnvelopeFill,
-	PiPhoneFill,
-	PiPhone,
-	PiEnvelope,
-	PiMapPin,
-} from 'react-icons/pi'
+import { PiCaretLeftBold, PiPhone, PiEnvelope, PiMapPin } from '@/ui/Icons'
 
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'

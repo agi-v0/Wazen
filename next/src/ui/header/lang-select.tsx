@@ -14,7 +14,7 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold, PiGlobe } from 'react-icons/pi'
+import { PiCaretRightBold, PiGlobe } from '@/ui/Icons'
 import InteractiveDetails from '@/ui/header/InteractiveDetails'
 import { cn } from '@/lib/utils'
 
@@ -47,7 +47,7 @@ const LangSelect = () => {
 				<NavigationMenuList>
 					<NavigationMenuItem>
 						<NavigationMenuTrigger className="group flex flex-row items-center justify-center gap-1">
-							<PiGlobe />
+							<PiGlobe className="size-4" />
 							{locale == 'ar' ? 'AR' : 'EN'}
 						</NavigationMenuTrigger>
 						<NavigationMenuContent>

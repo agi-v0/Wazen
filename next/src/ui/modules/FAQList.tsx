@@ -10,7 +10,7 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion'
 import CTA from '../CTA'
-import { PiCaretLeftBold } from 'react-icons/pi'
+import { PiCaretLeftBold } from '@/ui/Icons'
 
 export default function FAQList({
 	locale = 'ar',

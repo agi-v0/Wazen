@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
-import { PiCaretRightBold } from 'react-icons/pi'
+
 import Icon from '@/ui/DynamicIcon'
 
 export default function InfiniteMovingCards({

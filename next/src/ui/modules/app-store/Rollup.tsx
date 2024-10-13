@@ -1,9 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import AppCard from './AppCard'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import Link from 'next/link'
-import { PiCaretRightBold } from 'react-icons/pi'
 import { getTranslations, getLocale } from 'next-intl/server'
 
 export default async function AppStoreRollup({

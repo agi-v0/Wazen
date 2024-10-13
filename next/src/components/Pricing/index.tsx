@@ -7,7 +7,8 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
-import { PiCheckBold, PiX } from 'react-icons/pi'
+import { PiCheckBold } from '@/ui/Icons'
+import { PiX } from '@/ui/Icons'
 
 const Pricing = ({ plans }: any) => {
 	const [isYearly, setIsYearly] = useState(false)

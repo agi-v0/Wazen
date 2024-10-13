@@ -14,7 +14,6 @@ import {
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import Img from '@/ui/Img'
-import { PiCaretRightBold } from 'react-icons/pi'
 import { clean, cn } from '@/lib/utils'
 import style from './embla.module.css'
 import {

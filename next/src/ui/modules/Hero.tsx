@@ -7,13 +7,11 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
-import CTA from '../CTA'
-import Pretitle from '@/ui/Pretitle'
 import lightray from '../../../public/lightrays3.svg'
-import { PiSealCheck } from 'react-icons/pi'
+import { PiSealCheck } from '@/ui/Icons'
 import { hero } from '@/components/ui/portable-text'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
-import { urlFor } from '@/lib/sanity/urlFor'
+import Img from '../Img'
 
 export default function Hero({
 	pretitle,
@@ -54,15 +52,14 @@ export default function Hero({
 					/>
 				</div>
 				<ContainerScroll>
-					<Image
-						src={urlFor(image as Sanity.Image).url()}
-						alt={image?.alt as string}
-						height={1024}
-						width={1440}
+					<Img
+						image={image}
+						alt={image?.alt}
+						imageWidth={1440}
 						className="mx-auto h-auto w-full object-cover object-left-top"
 						draggable={false}
+						fetchPriority="high"
 						loading="eager"
-						priority
 					/>
 				</ContainerScroll>
 			</div>

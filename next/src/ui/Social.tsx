@@ -41,8 +41,8 @@ export default async function Social({
 				className,
 			)}
 		>
-			<div className="flex flex-col items-center gap-8 text-sm md:items-start lg:flex-row">
-				<div>{`© ${currentYear} ${t('All rights reserved')}`}</div>
+			<div className="flex flex-col items-center gap-8 text-sm text-white/50 md:items-start lg:flex-row">
+				<span>{`© ${currentYear} ${t('All rights reserved')}`}</span>
 
 				<div className="inline-flex gap-4 text-start">
 					{staticLinks?.items?.map((item: any, key: any) => {
@@ -51,7 +51,7 @@ export default async function Social({
 								key={key}
 								link={item}
 								locale={locale}
-								className="no-underline transition-all hover:text-white/50"
+								className="no-underline transition-all hover:text-white"
 							/>
 						)
 					})}

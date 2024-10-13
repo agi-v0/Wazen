@@ -1,22 +1,17 @@
 import Link from 'next/link'
 import CTA from '../CTA'
-// import { PiCaretLeftBold } from 'react-icons/pi'
+// import { PiCaretLeftBold } from "@/ui/Icons"
 import Image from 'next/image'
-import {
-	PiAt,
-	PiEnvelope,
-	PiMapPin,
-	PiMapPinBold,
-	PiPhone,
-	PiPhoneBold,
-} from 'react-icons/pi'
+import { PiAt } from '@/ui/Icons'
+import { PiMapPin } from '@/ui/Icons'
+import { PiPhone } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Menu({ footerMenu, locale }: any) {
 	const t = await getTranslations('Index')
 	return (
-		<nav className="fluid-gap flex w-full flex-col flex-wrap items-start justify-start font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-4">
+		<nav className="fluid-gap flex w-full flex-col flex-wrap items-start justify-start font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
 			<div className="flex flex-col justify-start text-start text-sm font-normal lg:row-span-2">
 				<Link className="mb-4 h-10 font-bold" href="/">
 					<Image

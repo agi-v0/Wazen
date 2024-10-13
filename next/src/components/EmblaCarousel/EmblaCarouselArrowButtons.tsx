@@ -5,7 +5,7 @@ import React, {
 	useState,
 } from 'react'
 import { EmblaCarouselType } from 'embla-carousel'
-import { PiCaretRightBold, PiCaretLeftBold } from 'react-icons/pi'
+import { PiCaretRightBold, PiCaretLeftBold } from '@/ui/Icons'
 import style from './embla.module.css'
 import { cn } from '@/lib/utils'
 

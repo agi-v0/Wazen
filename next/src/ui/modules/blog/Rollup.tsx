@@ -1,12 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import PostPreview from './PostPreview'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold } from 'react-icons/pi'
+
 import { getTranslations } from 'next-intl/server'
 import RollupClient from './RollupClient'
-import { NextIntlClientProvider } from 'next-intl'
 
 export default async function Rollup({
 	_type,
