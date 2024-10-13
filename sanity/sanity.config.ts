@@ -26,7 +26,7 @@ export default defineConfig({
 	title: 'Wazen',
 	icon: Logo,
 	projectId: 'm7bjawr3',
-	dataset: 'testing',
+	dataset: 'production',
 	basePath: '/admin',
 
 	plugins: [
@@ -62,7 +62,7 @@ export default defineConfig({
 				'page',
 				'app.store.app',
 				'call.to.action.doc',
-				'pricing'
+				'pricing',
 			],
 		}),
 		inlineSvgInput(),
