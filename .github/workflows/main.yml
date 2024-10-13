@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v4
         with:
           ref: main
   
@@ -38,6 +38,9 @@ jobs:
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/}  
   Deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://wazen.sa
     needs: Build
     steps:
       - name: setup ssh
