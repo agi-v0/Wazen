@@ -15,13 +15,16 @@
 		"sanity"
 	],
 	"dependencies": {
+		"@ai-sdk/google": "^0.0.51",
 		"@catherineriver/sanity-plugin-generate-ogimage": "^1.0.6",
 		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.0.1",
+		"@google/generative-ai": "^0.21.0",
 		"@iconify/react": "^5.0.1",
 		"@sanity/dashboard": "^3.1.6",
 		"@sanity/document-internationalization": "^3.0.0",
 		"@sanity/table": "^1.1.2",
 		"@sanity/vision": "^3.42.1",
+		"ai": "^3.4.9",
 		"dotenv": "^16.4.5",
 		"install": "^0.13.0",
 		"npm": "^10.8.1",

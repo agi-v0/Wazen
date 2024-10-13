@@ -26,7 +26,7 @@ export default defineConfig({
 	title: 'Wazen',
 	icon: Logo,
 	projectId: 'm7bjawr3',
-	dataset: 'production',
+	dataset: 'testing',
 	basePath: '/admin',
 
 	plugins: [

@@ -4,7 +4,7 @@ import { projectId } from './src/env'
 export default defineCliConfig({
 	api: {
 		projectId: 'm7bjawr3',
-		dataset: 'production',
+		dataset: 'testing',
 	},
 	studioHost: 'wazen-dev',
 })
