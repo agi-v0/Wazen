@@ -53,4 +53,4 @@ jobs:
             ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Deploy to main
         run: |
-          ssh -o StrictHostkeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }}"sudo docker compose pull site && sudo docker compose up -d"
+          ssh -o StrictHostkeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }}"sudo docker compose pull site && sudo docker compose up -d && sudo docker system prune -af"
