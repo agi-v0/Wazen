@@ -8,8 +8,17 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import { EmblaOptionsType } from 'embla-carousel'
-import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
+// import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import { set2 } from '@/components/ui/portable-text'
+const InfiniteMovingCards = dynamic(
+	() =>
+		import('@/components/animated/infinite-moving-cards-apps').then(
+			(mod) => mod.default,
+		),
+	{
+		ssr: false,
+	},
+)
 
 export default function Applications({
 	pretitle,

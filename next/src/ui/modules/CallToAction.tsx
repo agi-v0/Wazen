@@ -1,4 +1,3 @@
-import Img from '@/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -6,13 +5,12 @@ import {
 } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import Image from 'next/image'
 import { PiCheckCircle, PiCheckCircleFill } from '@/ui/Icons'
 import { urlFor } from '@/lib/sanity/urlFor'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { getLocale } from 'next-intl/server'
-import { useLocale } from 'next-intl'
+import Img from '../Img'
 
 // https://magicui.design/docs/components/neon-gradient-card
 
@@ -119,11 +117,10 @@ export default async function CallToAction({
 					<div
 						className={cn('absolute start-8 top-8 h-full w-full min-w-[800px]')}
 					>
-						<Image
-							src={urlFor(callToAction.image as Sanity.Image).url()}
+						<Img
+							image={callToAction.image}
 							alt={callToAction.image.alt}
-							height={455.11}
-							width={640}
+							imageWidth={1440}
 							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
 							draggable={false}
 							loading="lazy"

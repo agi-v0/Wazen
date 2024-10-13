@@ -7,7 +7,9 @@ import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from '@sanity/client/stega'
 import { ImageFormat } from '@sanity/image-url/lib/types/types'
 
-const SIZES = [60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440]
+const SIZES = [
+	60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440, 1920, 2560, 3000,
+]
 
 export default function Img({
 	svg = false,

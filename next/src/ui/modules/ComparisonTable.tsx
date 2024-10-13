@@ -1,8 +1,9 @@
 import { clean, cn } from '@/lib/utils'
 import Img from '../Img'
 import { PiCheckBold, PiXBold } from '@/ui/Icons'
+import { useLocale } from 'next-intl'
 
-const ComparisonTable = ({
+export default async function ComparisonTable({
 	altApps,
 	altAppsLogos,
 	comparisonTable,
@@ -10,8 +11,10 @@ const ComparisonTable = ({
 	altApps: any
 	altAppsLogos: any
 	comparisonTable: any
-}>) => {
+}>) {
+	const locale = await useLocale()
 	return (
+		locale &&
 		comparisonTable.rows[0] &&
 		altAppsLogos && (
 			<div
@@ -28,7 +31,7 @@ const ComparisonTable = ({
 					<div className="grid w-[672px] grid-cols-[repeat(calc(var(--col-count)+2),_minmax(0,_1fr))] lg:w-full">
 						<div className="sticky start-0 col-span-2 mt-14 grid grid-flow-row grid-cols-1 grid-rows-[repeat(calc(var(--row-count)-1),_minmax(0,_1fr))] rounded-lg border-gray-200 bg-white *:border-t max-lg:w-48">
 							{comparisonTable.rows.map((featureRow: any, index: any) => {
-								return cellContent(featureRow.cells.slice(-1), index)
+								return cellContent(featureRow.cells.slice(-1), index, locale)
 							})}
 						</div>
 						<div className="col-span-5 grid w-[480px] grid-rows-[repeat(var(--row-count),_minmax(0,_1fr))] divide-y divide-gray-200 lg:w-full">
@@ -54,14 +57,14 @@ const ComparisonTable = ({
 							{comparisonTable.rows.map((featureRow: any, index: any) => {
 								return (
 									<div
-										dir="ltr"
+										dir={locale === 'ar' ? 'ltr' : 'rtl'}
 										key={index}
 										className="grid grid-flow-col grid-cols-[repeat(var(--col-count),_minmax(0,_1fr))] gap-2 *:w-24 *:lg:w-full"
 									>
 										{featureRow.cells
 											.slice(0, featureRow.cells.length - 1)
 											.map((cell: string, index: number) =>
-												cellContent(cell, index),
+												cellContent(cell, index, locale),
 											)}
 									</div>
 								)
@@ -74,9 +77,7 @@ const ComparisonTable = ({
 	)
 }
 
-export default ComparisonTable
-
-const cellContent = (cell: string, index: number) => {
+const cellContent = (cell: string, index: number, locale: string) => {
 	switch (clean(cell)) {
 		case 'x':
 			return (
@@ -84,7 +85,7 @@ const cellContent = (cell: string, index: number) => {
 					className="flex items-center justify-center text-gray-600"
 					key={Math.random() * (index + Math.random())}
 				>
-					<PiXBold />
+					<PiXBold className="size-4" />
 				</span>
 			)
 
@@ -92,12 +93,12 @@ const cellContent = (cell: string, index: number) => {
 			return (
 				<span
 					className={cn(
-						'flex items-center justify-center',
-						index === 4 ? 'bg-teal-50 text-teal-500' : 'text-teal-500',
+						'flex items-center justify-center text-teal-500',
+						index === 4 ? 'bg-teal-50' : '',
 					)}
 					key={Math.random() * (index + Math.random())}
 				>
-					<PiCheckBold />
+					<PiCheckBold className="size-4" />
 				</span>
 			)
 

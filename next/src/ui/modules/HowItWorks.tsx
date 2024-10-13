@@ -7,8 +7,6 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import user from '../../../public/How-it-works/User.svg'

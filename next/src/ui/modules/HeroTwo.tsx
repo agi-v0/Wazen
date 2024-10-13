@@ -36,8 +36,8 @@ export default function HeroTwo({
 	}
 
 	return (
-		<section className="section py-12">
-			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl bg-gradient-to-br from-white from-65% to-teal-50 p-12 py-24">
+		<section className="cyan-gradient-background-1 section py-12">
+			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
 				<div
 					className={cn('relative max-w-3xl space-y-6')}
 					style={{ textAlign: stegaClean(textAlign) }}

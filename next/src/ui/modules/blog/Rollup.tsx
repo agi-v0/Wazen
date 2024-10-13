@@ -53,5 +53,9 @@ export default async function Rollup({
 			tags: ['posts'],
 		},
 	)
-	return <RollupClient {...props} initialPosts={initialPosts} />
+	return (
+		initialPosts.length > 0 && (
+			<RollupClient {...props} initialPosts={initialPosts} />
+		)
+	)
 }

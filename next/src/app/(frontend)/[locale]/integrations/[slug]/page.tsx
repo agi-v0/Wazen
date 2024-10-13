@@ -3,10 +3,7 @@ import { notFound } from 'next/navigation'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import SingleAppHeader from '@/ui/modules/app-store/SingleAppHeader'
 import CallToAction from '@/ui/modules/CallToAction'
-import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-app-store'
-import { EmblaOptionsType } from 'embla-carousel'
 import processMetadata from '@/lib/processMetadata'
-import Permissions from '@/ui/modules/app-store/Permissions'
 import SuggestedApps from '@/ui/modules/app-store/SuggestedApps'
 
 type Props = {
@@ -20,22 +17,9 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<SingleAppHeader app={app} />
-			{/* <Permissions app={app} /> */}
-
-			{/* <EmblaCarousel
-					slides={app.carousel}
-					options={{
-						direction: params.locale === 'en' ? 'ltr' : 'rtl',
-						loop: true,
-						duration: app?.carousel?.length * 10,
-					}}
-					locale={params.locale}
-				/> */}
 
 			<SuggestedApps />
-			<CallToAction
-			// callToActionDoc={[{ ...cta }]}
-			/>
+			<CallToAction />
 		</>
 	)
 }

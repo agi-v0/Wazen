@@ -6,9 +6,8 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
-import { Icon } from '@iconify/react'
 
-export default function FeaturesGridOne({
+export default async function FeaturesGridOne({
 	pretitle,
 	content,
 	ctas,
@@ -22,6 +21,8 @@ export default function FeaturesGridOne({
 	features: { title: string; description: string; icon: { name: string } }[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
+	const { Icon } = await import('@iconify/react')
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {

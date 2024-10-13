@@ -7,7 +7,6 @@ import {
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
 import { EmblaOptionsType } from 'embla-carousel'
-// import { InfiniteMovingCards } from '@/components/animated/infinite-moving-cards'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 import ComparisonTable from './ComparisonTable'
@@ -248,7 +247,6 @@ export default function FeaturesInfiniteScroll({
 				<PortableText value={content} components={set2} />
 			</div>
 			<div className="space-y-6">
-				{/* <EmblaCarousel slides={cards} options={OPTIONS} locale={locale} /> */}
 				<InfiniteMovingCards
 					direction="right"
 					speed="slow"

@@ -5,8 +5,6 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
 import blob from '../../../public/gradient-blob2.svg'
@@ -61,9 +59,12 @@ export default function HeroThree({
 			>
 				<Img
 					image={image}
-					imageWidth={1024}
-					alt={pretitle}
+					alt={image?.alt || pretitle}
 					className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
+					imageWidth={3000}
+					draggable={false}
+					fetchPriority="high"
+					loading="eager"
 				/>
 				<div className="flex flex-col items-start gap-6">
 					<Pretitle className="text-base font-medium text-gray-400">

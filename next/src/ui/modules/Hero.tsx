@@ -1,11 +1,6 @@
 import Image from 'next/image'
-import { stegaClean } from '@sanity/client/stega'
 import { cn } from '@/lib/utils'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import lightray from '../../../public/lightrays3.svg'
 import { PiSealCheck } from '@/ui/Icons'
@@ -55,8 +50,8 @@ export default function Hero({
 					<Img
 						image={image}
 						alt={image?.alt}
-						imageWidth={1440}
-						className="mx-auto h-auto w-full object-cover object-left-top"
+						imageWidth={3000}
+						className="mx-auto h-auto w-full rounded-lg object-cover object-left-top"
 						draggable={false}
 						fetchPriority="high"
 						loading="eager"

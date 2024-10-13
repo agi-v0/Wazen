@@ -9,7 +9,7 @@ import BlogRollup from './blog/Rollup'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 // import FAQList from './FAQList'
-// import Hero from './Hero'
+import Hero from './Hero'
 import HeroFour from './HeroFour'
 import HeroThree from './HeroThree'
 import HeroTwo from './HeroTwo'
@@ -45,7 +45,7 @@ const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
-const Hero = dynamic(() => import('./Hero'))
+// const Hero = dynamic(() => import('./Hero'))
 
 export default function Modules({
 	modules,
@@ -124,6 +124,8 @@ export default function Modules({
 						return <StatList {...module} key={module._key} />
 					case 'call.to.action':
 						return <CallToAction {...module} key={module._key} />
+					case 'call.to.action.two':
+						return <CallToActionTwo {...module} key={module._key} />
 					case 'how-it-works':
 						return <HowItWorks {...module} key={module._key} />
 					case 'testimonial-list':

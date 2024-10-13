@@ -3,8 +3,7 @@
 import { cn } from '@/lib/utils'
 import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
-
-import Icon from '@/ui/DynamicIcon'
+import { Icon } from '@iconify/react'
 
 export default function InfiniteMovingCards({
 	direction,
@@ -72,15 +71,6 @@ export default function InfiniteMovingCards({
 			}
 		}
 	}
-
-	const colors = [
-		'to-yellow-50',
-		'to-lime-50',
-		'to-teal-50',
-		'to-cyan-50',
-		'to-violet-50',
-		'to-fuchsia-50',
-	]
 
 	return (
 		<div

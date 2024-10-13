@@ -1,6 +1,5 @@
 import React from 'react'
 import { PiTableDuotone } from '@/ui/Icons'
-import Icon from '@/ui/DynamicIcon'
 
 function SideBar() {
 	const list = [

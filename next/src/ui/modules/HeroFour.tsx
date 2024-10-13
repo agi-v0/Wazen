@@ -2,10 +2,7 @@ import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
-import Image from 'next/image'
-import { cn } from '@/lib/utils'
-import { hero, set2 } from '@/components/ui/portable-text'
-import { urlFor } from '@/lib/sanity/urlFor'
+import { set2 } from '@/components/ui/portable-text'
 
 export default function HeroPostcard({
 	pretitle,
@@ -27,15 +24,14 @@ export default function HeroPostcard({
 				<PortableText value={content} components={set2} />
 				<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
 			</div>
-			<Image
-				src={urlFor(image as Sanity.Image).url()}
-				alt="hero"
-				height={1194}
-				width={1440}
+			<Img
+				image={image}
+				alt={image?.alt}
+				imageWidth={3000}
 				className="section relative mx-auto h-auto w-full object-cover object-left-top"
 				draggable={false}
+				fetchPriority="high"
 				loading="eager"
-				priority
 			/>
 		</section>
 	)

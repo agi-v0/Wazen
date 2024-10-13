@@ -1,13 +1,7 @@
 import Img from '@/ui/Img'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
-import Image from 'next/image'
 import { set2 } from '@/components/ui/portable-text'
 
 export default function Brief({

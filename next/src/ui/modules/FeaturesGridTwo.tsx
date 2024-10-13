@@ -6,8 +6,8 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { stegaClean } from '@sanity/client/stega'
-import CTAList from '../CTAList'
 import { Icon } from '@iconify/react'
+
 import Img from '../Img'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
