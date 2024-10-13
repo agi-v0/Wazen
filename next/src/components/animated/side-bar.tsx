@@ -75,7 +75,7 @@ function SideBar() {
 			<div className="text-main absolute left-0 right-0 top-0 z-[1] flex items-center gap-2 rounded-lg px-6 py-3 font-semibold backdrop-blur">
 				<PiTableDuotone className="size-6" />
 
-				{locale == 'en' ? <p>Calculation system</p> : <p>النظام الحسابي</p>}
+				{locale == 'en' ? <p>Financial Management</p> : <p>النظام الحسابي</p>}
 			</div>
 			<div className="customScrollbar relative mx-3 h-full overflow-hidden pt-12">
 				<ul className="text-main -border mb-3 me-3 border-sky-300">
