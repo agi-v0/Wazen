@@ -42,7 +42,7 @@ const Pricing = ({ plans }: any) => {
 	return (
 		<div id="pricing" className="container space-y-6">
 			<div className="flex w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
-				{t('Yearly (two monthes free)')}
+				{t('Yearly (two months free)')}
 				<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 			</div>
 

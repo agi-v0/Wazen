@@ -163,14 +163,14 @@ const CalculatorTable = ({
 						<div className="text-gray-600">
 							{detail.specs?.rows?.map(
 								(row: { cells: string[]; _key: string }) => {
-									const rowKey = `${row._key}`
+									const rowKey = row._key
 									const quantity = quantities[rowKey] || 0
 
 									return (
 										row.cells[2] && (
 											<div
-												key={row._key}
-												id={row._key}
+												key={rowKey}
+												id={rowKey}
 												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-lg:grid-cols-2"
 											>
 												<div
@@ -187,7 +187,7 @@ const CalculatorTable = ({
 													{row.cells[!isYearly ? 1 : 0]} {t('SR')} /
 													{!isYearly ? t('Monthly') : t('Yearly')}
 												</div>
-												<div className="flex h-full w-full flex-row items-center justify-center gap-1 px-6 *:transition-all max-lg:justify-start">
+												<div className="flex h-full w-full flex-row items-center justify-center gap-1 px-6 *:transition-all max-lg:justify-start ltr:flex-row-reverse">
 													<button
 														className="group rounded-full p-2 hover:bg-gray-50"
 														onClick={() => {
@@ -198,7 +198,7 @@ const CalculatorTable = ({
 															)
 														}}
 													>
-														<PiPlusBold className="text-sm text-gray-400 group-hover:text-gray-500" />
+														<PiPlusBold className="size-4 text-gray-400 group-hover:text-gray-500" />
 													</button>
 													<div className="px-2">{quantity}</div>
 													<button
@@ -211,7 +211,7 @@ const CalculatorTable = ({
 															)
 														}}
 													>
-														<PiMinusBold className="text-sm text-gray-400 group-hover:text-gray-500" />
+														<PiMinusBold className="size-4 text-gray-400 group-hover:text-gray-500" />
 													</button>
 												</div>
 												<div className="flex h-full w-full flex-row items-center justify-end gap-x-2 px-6 py-3 font-medium text-gray-500 max-lg:justify-start">

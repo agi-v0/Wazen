@@ -9,7 +9,7 @@ import {
 import { stegaClean } from '@sanity/client/stega'
 import { Switch } from '@/components/ui/switch'
 import { clean, cn } from '@/lib/utils'
-import { PiCheckCircle, PiXBold } from '@/ui/Icons'
+import { PiCheckBold, PiCheckCircle, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 
@@ -35,7 +35,7 @@ const PlansComparison = ({
 					<div className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white *:w-full max-lg:hidden max-lg:w-fit *:max-lg:w-48">
 						<div className="flex flex-col items-start justify-end px-2 py-4">
 							<div className="flex h-10 w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
-								{t('Yearly (two monthes free)')}{' '}
+								{t('Yearly (two months free)')}{' '}
 								<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 							</div>
 						</div>
@@ -52,7 +52,7 @@ const PlansComparison = ({
 											</h3>
 											{/* <p className="text-base text-gray-600">description</p> */}
 										</div>
-										<p className="h5 inline-flex flex-row items-end gap-1 pt-1 font-semibold text-gray-950">
+										<p className="h5 inline-flex flex-row items-end gap-1 pt-1 font-semibold tracking-normal text-gray-950 ltr:items-center">
 											<span className="amount">
 												{' '}
 												{isYearly ? row.cells[0] : row.cells[1]}
@@ -117,16 +117,19 @@ const PlansComparison = ({
 																		index == 1 ? 'bg-teal-50' : '',
 																	)}
 																>
-																	<PiXBold className="text-sm text-gray-400" />
+																	<PiXBold className="size-4 text-gray-400" />
 																</div>
 															)
-														case '✓​​​​‌‍​‍​‍‌‍‌​‍‌‍‍‌‌‍‌‌‍‍‌‌‍‍​‍​‍​‍‍​‍​‍‌​‌‍​‌‌‍‍‌‍‍‌‌‌​‌‍‌​‍‍‌‍‍‌‌‍​‍​‍​‍​​‍​‍‌‍‍​‌​‍‌‍‌‌‌‍‌‍​‍​‍​‍‍​‍​‍‌‍‍​‌‌​‌‌​‌​​​‍‍​​​​​‌':
+														case '✓':
 															return (
 																<div
 																	key={'cell_' + index}
-																	className="flex justify-start px-6 py-2 text-sm text-teal-500"
+																	className={cn(
+																		'flex justify-start px-6 py-2 text-sm text-teal-500',
+																		index == 1 ? 'bg-teal-50' : '',
+																	)}
 																>
-																	<PiCheckCircle />
+																	<PiCheckBold className="size-4" />
 																</div>
 															)
 														default:
