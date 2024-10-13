@@ -5,6 +5,8 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
+import { NextIntlClientProvider } from 'next-intl'
+import {getMessages} from 'next-intl/server';
 
 export default async function Plans({
 	content,
@@ -13,6 +15,9 @@ export default async function Plans({
 	content: any
 	plans: any
 }>) {
+
+	const messages = await getMessages();
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -38,7 +43,9 @@ export default async function Plans({
 				<div className="flex flex-col justify-center gap-6 text-center">
 					<PortableText value={content} components={set2} />
 				</div>
+				<NextIntlClientProvider messages={messages}>
 				<Pricing plans={plans} />
+				</NextIntlClientProvider>
 			</div>
 		</section>
 	)

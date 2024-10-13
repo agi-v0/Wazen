@@ -15,9 +15,12 @@
 		"Download": "تحميل"
 	},
 	"Pricing": {
-		"Monthly": "شهريا",
-		"Yearly": "سنويا",
-		"Tap to add to estimated price": "انقر لإضافتها الى التكلفة التقديرية"
+		"Monthly": "شهرياً",
+		"Yearly": "سنوياً",
+		"Yearly (two monthes free)": "سنوي (شهرين مجاناً)",
+		"Tap to add to estimated price": "انقر لإضافتها الى التكلفة التقديرية",
+		"Estimated price": "التكلفة التقديرية",
+		"SR": "ريال"
 	},
 	"ContactUs": {
 		"First Name": "الإسم الأول",

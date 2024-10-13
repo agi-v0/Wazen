@@ -29,6 +29,8 @@ const PricingBox = (props: {
 		order,
 	} = props
 
+
+
 	const AppIcons = [
 		<PiTableDuotone className="text-2xl text-cyan-500" />,
 		<PiIdentificationCardDuotone className="text-2xl text-yellow-500" />,
@@ -54,7 +56,7 @@ const PricingBox = (props: {
 			<h3 className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
 				{/* <NumberTicker value={parseInt(price)} direction="up" /> */}
 				<span className="amount">{price}</span>
-				ريال
+				{/* {t('SR')} */}
 				<span
 					className={cn(
 						'text-lg text-gray-400',

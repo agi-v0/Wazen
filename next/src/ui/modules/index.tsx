@@ -35,6 +35,7 @@ import BenefitsBanner from './BenefitsBanner'
 import CallToActionTwo from './CallToActionTwo'
 import AppStoreRollup from './app-store/Rollup'
 import FeaturesInfiniteScroll from './FeaturesInfiniteScroll'
+import { NextIntlClientProvider, useMessages } from 'next-intl'
 
 const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
@@ -54,6 +55,8 @@ export default function Modules({
 	modules?: Sanity.Module[]
 	locale?: string
 }) {
+	const messages = useMessages()
+
 	return (
 		<>
 			{modules?.map((module) => {
@@ -110,10 +113,14 @@ export default function Modules({
 						return <Plans {...module} key={module._key} />
 					case 'pricing-calculator':
 						return (
-							<PlansCalculator {...module} locale={locale} key={module._key} />
+							<NextIntlClientProvider messages={messages}>
+								<PlansCalculator
+									{...module}
+									locale={locale}
+									key={module._key}
+								/>
+							</NextIntlClientProvider>
 						)
-					case 'pricing-comparison':
-						return <PlansComparison {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
 					case 'single-testimony':
@@ -139,6 +146,12 @@ export default function Modules({
 								key={module._key}
 								locale={locale}
 							/>
+						)
+					case 'pricing-comparison':
+						return (
+							<NextIntlClientProvider messages={messages}>
+								<PlansComparison {...module} key={module._key} />
+							</NextIntlClientProvider>
 						)
 					case 'product-list':
 						return <ProductList {...module} key={module._key} />

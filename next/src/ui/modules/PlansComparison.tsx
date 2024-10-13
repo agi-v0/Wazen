@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch'
 import { clean, cn } from '@/lib/utils'
 import { PiCheckCircle, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
+import { useTranslations } from 'next-intl'
 
 const PlansComparison = ({
 	content,
@@ -19,6 +20,8 @@ const PlansComparison = ({
 	content: any
 	details: any
 }>) => {
+	const t = useTranslations('Pricing')
+
 	const [isYearly, setIsYearly] = useState(true)
 
 	return (
@@ -32,7 +35,7 @@ const PlansComparison = ({
 					<div className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white *:w-full max-lg:hidden max-lg:w-fit *:max-lg:w-48">
 						<div className="flex flex-col items-start justify-end px-2 py-4">
 							<div className="flex h-10 w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
-								سنوي (شهرين مجاناً)
+								{t('Yearly (two monthes free)')}{' '}
 								<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 							</div>
 						</div>
@@ -54,10 +57,10 @@ const PlansComparison = ({
 												{' '}
 												{isYearly ? row.cells[0] : row.cells[1]}
 											</span>
-											ريال
+											{t('SR')}
 											<span className="text-large font-medium text-gray-400">
 												{' '}
-												/{isYearly ? 'سنوياً' : 'شهرياً'}
+												/{isYearly ? t('Yearly') : t('Monthly')}
 											</span>
 										</p>
 										{/* <button
@@ -99,7 +102,7 @@ const PlansComparison = ({
 										{detail.specs?.rows?.map((row: any, index: any) => (
 											<div
 												key={'rows_' + index}
-												className="flex flex-row justify-between border-b border-gray-200 text-start *:w-full *:max-lg:w-48 rtl:flex-row-reverse"
+												className="flex flex-row-reverse justify-between border-b border-gray-200 text-start *:w-full *:max-lg:w-48"
 											>
 												{row.cells.map((cell: string, index: any) => {
 													const cleanedCell = clean(cell)
