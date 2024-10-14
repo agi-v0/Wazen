@@ -1,0 +1,602 @@
+[
+	{
+		"_type": "redirect",
+		"destination": "/blog/ما-هو-نظام-حماية-الاجور؟",
+		"permanent": true,
+		"source": "/ما-هو-نظام-حماية-الاجور؟"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ما-هي-التسوية-البنكية",
+		"permanent": true,
+		"source": "/ما-هي-التسوية-البنكية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قائمة-التدفقات-النقدية",
+		"permanent": true,
+		"source": "/قائمة-التدفقات-النقدية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/أنواع-المصروفات",
+		"permanent": true,
+		"source": "/أنواع-المصروفات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/اتمته-المصانع",
+		"permanent": true,
+		"source": "/اتمته-المصانع"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ربط-خطوط-الانتاج",
+		"permanent": true,
+		"source": "/ربط-خطوط-الانتاج"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/سند-قبض-الكتروني",
+		"permanent": true,
+		"source": "/سند-قبض-الكتروني"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/سند-استلام-الاموال",
+		"permanent": true,
+		"source": "/سند-استلام-الاموال"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/حساب-رصيد-الاجازات",
+		"permanent": true,
+		"source": "/حساب-رصيد-الاجازات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المحاسبة-الادارية-2",
+		"permanent": true,
+		"source": "/المحاسبة-الادارية-2"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ما-هو-البيع-بالتجزئة",
+		"permanent": true,
+		"source": "/ما-هو-البيع-بالتجزئة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الرسوم-الجمركية",
+		"permanent": true,
+		"source": "/الرسوم-الجمركية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ادارة-المخاطر-في-المشاريع",
+		"permanent": true,
+		"source": "/ادارة-المخاطر-في-المشاريع"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ماهو-التحليل-المالي",
+		"permanent": true,
+		"source": "/ماهو-التحليل-المالي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تعريف-الاهلاك-فى-المحاسبة",
+		"permanent": true,
+		"source": "/تعريف-الاهلاك-فى-المحاسبة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ضريبة-الاستقطاع",
+		"permanent": true,
+		"source": "/ضريبة-الاستقطاع"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/برنامج-محاسبي-متكامل",
+		"permanent": true,
+		"source": "/برنامج-محاسبي-متكامل"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/إدارة-الحسابات-المالية",
+		"permanent": true,
+		"source": "/إدارة-الحسابات-المالية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ما-هي-قائمة-المركز-المالي",
+		"permanent": true,
+		"source": "/ما-هي-قائمة-المركز-المالي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/مطابقة-الرصيد",
+		"permanent": true,
+		"source": "/مطابقة-الرصيد"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/عناصر-قائمة-الدخل",
+		"permanent": true,
+		"source": "/عناصر-قائمة-الدخل"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/كشف-حساب-العملاء",
+		"permanent": true,
+		"source": "/كشف-حساب-العملاء"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الارباح-المحتجزة",
+		"permanent": true,
+		"source": "/الارباح-المحتجزة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/معرض-الذهب-والمجوهرات",
+		"permanent": true,
+		"source": "/معرض-الذهب-والمجوهرات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/اصدار-فواتير-الكترونية",
+		"permanent": true,
+		"source": "/اصدار-فواتير-الكترونية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ما-المقصود-بإعداد-الميزانية",
+		"permanent": true,
+		"source": "/ما-المقصود-بإعداد-الميزانية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/القوائم-المالية-للشركات",
+		"permanent": true,
+		"source": "/القوائم-المالية-للشركات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/برنامج-مشاركة-الطابعات",
+		"permanent": true,
+		"source": "/برنامج-مشاركة-الطابعات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/إدارة-الموارد-للمصانع",
+		"permanent": true,
+		"source": "/إدارة-الموارد-للمصانع"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/wazen-hr",
+		"permanent": true,
+		"source": "/wazen-hr"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تطبيق-وازن-hr-الخدمة-الذاتية",
+		"permanent": true,
+		"source": "/تطبيق-وازن-hr-الخدمة-الذاتية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/alrajhi-bank",
+		"permanent": true,
+		"source": "/alrajhi-bank"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/مصرف-الراجحي",
+		"permanent": true,
+		"source": "/مصرف-الراجحي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/mc-gov",
+		"permanent": true,
+		"source": "/mc-gov"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/وزارة-التجارة",
+		"permanent": true,
+		"source": "/وزارة-التجارة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/unifonic",
+		"permanent": true,
+		"source": "/unifonic"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/يونيفونيك",
+		"permanent": true,
+		"source": "/يونيفونيك"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/nearpay",
+		"permanent": true,
+		"source": "/nearpay"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/نير-باي",
+		"permanent": true,
+		"source": "/نير-باي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/whats-app-2",
+		"permanent": true,
+		"source": "/whats-app-2"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/واتس-اب-2",
+		"permanent": true,
+		"source": "/واتس-اب-2"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/woocommerce",
+		"permanent": true,
+		"source": "/woocommerce"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ووكومرس",
+		"permanent": true,
+		"source": "/ووكومرس"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/salla",
+		"permanent": true,
+		"source": "/salla"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/سلة",
+		"permanent": true,
+		"source": "/سلة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/foodics",
+		"permanent": true,
+		"source": "/foodics"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/فودكس",
+		"permanent": true,
+		"source": "/فودكس"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قائمة-الارباح-والخسائر",
+		"permanent": true,
+		"source": "/قائمة-الارباح-والخسائر"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/دليل-الحسابات",
+		"permanent": true,
+		"source": "/دليل-الحسابات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الاصول-والخصوم",
+		"permanent": true,
+		"source": "/الاصول-والخصوم"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/التحليل-المالي",
+		"permanent": true,
+		"source": "/التحليل-المالي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ادارة-المخازن",
+		"permanent": true,
+		"source": "/ادارة-المخازن"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/فوترة-الكترونية",
+		"permanent": true,
+		"source": "/فوترة-الكترونية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تخطيط-الموارد-البشرية",
+		"permanent": true,
+		"source": "/تخطيط-الموارد-البشرية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/حساب-تكاليف",
+		"permanent": true,
+		"source": "/حساب-تكاليف"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تطوير-مشروع",
+		"permanent": true,
+		"source": "/تطوير-مشروع"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تقارير-مناديب-المبيعات",
+		"permanent": true,
+		"source": "/تقارير-مناديب-المبيعات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/برنامج-مصانع-المستقبل",
+		"permanent": true,
+		"source": "/برنامج-مصانع-المستقبل"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/شركات-الحج",
+		"permanent": true,
+		"source": "/شركات-الحج"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/مؤتمر-الحج-والعمرة",
+		"permanent": true,
+		"source": "/مؤتمر-الحج-والعمرة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المصروفات-المستحقة",
+		"permanent": true,
+		"source": "/المصروفات-المستحقة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المتاجر-الالكترونية",
+		"permanent": true,
+		"source": "/المتاجر-الالكترونية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/صافي-الربح",
+		"permanent": true,
+		"source": "/صافي-الربح"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الضرائب-في-السعودية",
+		"permanent": true,
+		"source": "/الضرائب-في-السعودية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/التدفقات-النقدية",
+		"permanent": true,
+		"source": "/التدفقات-النقدية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/معايير-المحاسبة-الدولية",
+		"permanent": true,
+		"source": "/معايير-المحاسبة-الدولية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/التكاليف-الثابتة-والمتغيرة",
+		"permanent": true,
+		"source": "/التكاليف-الثابتة-والمتغيرة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قيد-مشتريات",
+		"permanent": true,
+		"source": "/قيد-مشتريات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ميزان-المراجعة",
+		"permanent": true,
+		"source": "/ميزان-المراجعة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/السنه-المالية-الجديده",
+		"permanent": true,
+		"source": "/السنه-المالية-الجديده"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تخطيط-اداري",
+		"permanent": true,
+		"source": "/تخطيط-اداري"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تقارير-سنوية",
+		"permanent": true,
+		"source": "/تقارير-سنوية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/نهاية-السنة-المالية",
+		"permanent": true,
+		"source": "/نهاية-السنة-المالية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/التخطيط-المالي",
+		"permanent": true,
+		"source": "/التخطيط-المالي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/مصانع-المستقبل",
+		"permanent": true,
+		"source": "/مصانع-المستقبل"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المحاسبة-الادارية",
+		"permanent": true,
+		"source": "/المحاسبة-الادارية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/نظام-حماية-الاجور",
+		"permanent": true,
+		"source": "/نظام-حماية-الاجور"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/برنامج-حساب-الراتب",
+		"permanent": true,
+		"source": "/برنامج-حساب-الراتب"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/سند-صرف",
+		"permanent": true,
+		"source": "/سند-صرف"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الجرد-الدوري-والمستمر",
+		"permanent": true,
+		"source": "/الجرد-الدوري-والمستمر"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المشتقات-المالية",
+		"permanent": true,
+		"source": "/المشتقات-المالية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/ادارة-المشتريات",
+		"permanent": true,
+		"source": "/ادارة-المشتريات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الجرد-السنوي-للمخازن",
+		"permanent": true,
+		"source": "/الجرد-السنوي-للمخازن"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قيود-الاهلاك",
+		"permanent": true,
+		"source": "/قيود-الاهلاك"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/international-technology-exhibition",
+		"permanent": true,
+		"source": "/international-technology-exhibition"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/المعرض-الدولي-للتكنولوجيا",
+		"permanent": true,
+		"source": "/المعرض-الدولي-للتكنولوجيا"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/حساب-الضريبة-في-السعودية",
+		"permanent": true,
+		"source": "/حساب-الضريبة-في-السعودية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قيد-المبيعات",
+		"permanent": true,
+		"source": "/قيد-المبيعات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/قيود-اليومية",
+		"permanent": true,
+		"source": "/قيود-اليومية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/جرد-المخزون-في-الشركات",
+		"permanent": true,
+		"source": "/جرد-المخزون-في-الشركات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/برنامج-حسابات",
+		"permanent": true,
+		"source": "/برنامج-حسابات"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/visa-mada-master-card",
+		"permanent": true,
+		"source": "/visa-mada-master-card"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/whats-app",
+		"permanent": true,
+		"source": "/whats-app"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/تطبيق-محاسبي",
+		"permanent": true,
+		"source": "/تطبيق-محاسبي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الاقرار-الضريبي",
+		"permanent": true,
+		"source": "/الاقرار-الضريبي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الزكاة-والدخل",
+		"permanent": true,
+		"source": "/الزكاة-والدخل"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/العنوان-الوطني-السعودي",
+		"permanent": true,
+		"source": "/العنوان-الوطني-السعودي"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/معادلة-الميزانية",
+		"permanent": true,
+		"source": "/معادلة-الميزانية"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/الالتزامات-المتداولة",
+		"permanent": true,
+		"source": "/الالتزامات-المتداولة"
+	},
+	{
+		"_type": "redirect",
+		"destination": "/blog/القيمة-الدفترية",
+		"permanent": true,
+		"source": "/القيمة-الدفترية"
+	}
+]
