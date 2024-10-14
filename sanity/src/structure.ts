@@ -35,7 +35,7 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('app.store.app').title('Integrations'),
 			S.divider(),
 
-			group(S, 'Miscellaneous', [
+			group(S, 'Global modules', [
 				S.documentTypeListItem('logo').title('Logos'),
 				S.documentTypeListItem('partnerslogos').title('Partners logos'),
 				S.documentTypeListItem('pricing').title('Pricing Tier'),

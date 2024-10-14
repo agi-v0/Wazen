@@ -7,6 +7,7 @@ import { PiMapPin } from '@/ui/Icons'
 import { PiPhone } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
 import { getTranslations } from 'next-intl/server'
+import Logo from '@/components/ui/logo'
 
 export default async function Menu({ footerMenu, locale }: any) {
 	const t = await getTranslations('Index')
@@ -14,12 +15,7 @@ export default async function Menu({ footerMenu, locale }: any) {
 		<nav className="fluid-gap flex w-full flex-col flex-wrap items-start justify-start font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
 			<div className="flex flex-col justify-start text-start text-sm font-normal lg:row-span-2">
 				<Link className="mb-4 h-10 font-bold" href="/">
-					<Image
-						src="/wazen-logo-white.svg"
-						alt="Logo"
-						height={24}
-						width={85.37}
-					/>
+					<Logo className="h-6 w-auto" locale={locale} light />
 				</Link>
 				<p className="flex h-10 items-center text-balance font-medium">
 					{t('The OS for your Business')}

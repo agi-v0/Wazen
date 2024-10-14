@@ -43,7 +43,7 @@ export default async function Header({
 						href="/"
 						aria-label={locale == 'en' ? 'Homepage' : 'الصفحة الرئيسية'}
 					>
-						<Logo className="max-lg:h-5" />
+						<Logo className="max-lg:h-5" locale={locale} />
 					</Link>
 					<Toggle className="" />
 				</div>

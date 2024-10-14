@@ -16,7 +16,6 @@ import {
 	navigationMenuTriggerStyle,
 	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
-import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 	return (
@@ -37,15 +36,14 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 										params: links[0].params,
 									})}
 								>
-									<Image
-										src={
-											'https://cdn.sanity.io/images/m7bjawr3/production/f1a3d88253ddea020853090ef92e690e79c3f012-1440x1024.svg?w=540&fm=webp'
-										}
+									<img
+										src="https://cdn.sanity.io/images/m7bjawr3/production/4d0c0529d981a468765adb5a1f3f3a896befe909-1440x1024.svg?w=540&fm=webp"
 										alt={links?.[0].label}
-										width={250}
-										height={250}
 										className="h-auto w-full rounded-md"
-										priority={true}
+										draggable={false}
+										fetchPriority="high"
+										loading="eager"
+										width={540}
 									/>
 									<div className="mb-2 mt-4 flex flex-row items-center text-lg font-medium text-white group-hover:text-teal-500">
 										{links?.[0].label}
