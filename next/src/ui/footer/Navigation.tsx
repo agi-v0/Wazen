@@ -21,16 +21,18 @@ export default async function Menu({ footerMenu, locale }: any) {
 					{t('The OS for your Business')}
 				</p>
 				<p className="flex h-10 flex-row items-center gap-2 text-white/60">
-					<PiPhone className="flex-none text-center text-white" /> 920008293
+					<PiPhone className="size-4 flex-none text-center text-white" />{' '}
+					920008293
 				</p>
 				<a
 					className="flex h-10 flex-row items-center gap-2 text-white/60 transition-colors hover:text-white"
 					href="mailto:info@wazen.sa"
 				>
-					<PiAt className="flex-none text-center text-white" /> info@wazen.sa
+					<PiAt className="size-4 flex-none text-center text-white" />{' '}
+					info@wazen.sa
 				</a>
-				<p className="flex h-10 flex-row items-center gap-2 text-white/60">
-					<PiMapPin className="flex-none text-sm text-white" />
+				<p className="flex h-fit flex-row items-center gap-2 text-white/60">
+					<PiMapPin className="size-4 flex-none text-white" />
 					<span>{t('Location')}</span>
 				</p>
 			</div>
