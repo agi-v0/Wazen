@@ -18,7 +18,7 @@
 		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.0.1",
 		"@iconify/react": "^5.0.1",
 		"@next/bundle-analyzer": "^14.2.5",
-		"@next/third-parties": "^14.2.3",
+		"@next/third-parties": "^14.2.15",
 		"@portabletext/react": "^3.0.18",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-navigation-menu": "^1.2.0",

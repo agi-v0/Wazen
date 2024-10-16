@@ -1,6 +1,7 @@
 // import { draftMode } from 'next/headers'
 // import { VisualEditing } from 'next-sanity'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+// import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { getSite } from '@/lib/sanity/queries'
 import { locales } from '@/i18n/config'
 import { unstable_setRequestLocale } from 'next-intl/server'
@@ -28,7 +29,7 @@ export default async function RootLayout({
 	if (!site) {
 		return
 	}
-	const { headerMenu, ctas, footerMenu, staticLinks } = site
+	const { headerMenu, ctas, footerMenu, staticLinks, ga4 } = site
 
 	return (
 		<html
@@ -48,7 +49,7 @@ export default async function RootLayout({
 					locale={locale}
 				/>
 				{/* {draftMode().isEnabled && <VisualEditing />} */}
-				<SpeedInsights />
+				{ga4 && <GoogleAnalytics gaId={ga4} />}
 			</body>
 		</html>
 	)
