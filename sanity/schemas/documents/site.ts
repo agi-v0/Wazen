@@ -68,6 +68,12 @@ export default defineType({
 			type: 'image',
 			group: 'general',
 		}),
+		defineField({
+			name: 'ga4',
+			title: 'Google Analytics 4 Tag',
+			type: 'string',
+			group: 'general',
+		}),
 	],
 	preview: {
 		prepare: () => ({

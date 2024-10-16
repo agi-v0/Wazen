@@ -14,6 +14,7 @@ declare global {
 			social?: Navigation
 			staticLinks?: Navigation
 			ogimage?: string
+			ga4?: string
 		}>
 
 		type Navigation = SanityDocument<{
