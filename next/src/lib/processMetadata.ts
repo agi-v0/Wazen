@@ -15,6 +15,8 @@ export default async function processMetadata(
 		metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
 		title,
 		description,
+		keywords:
+			'نظام إدارة موارد، نظام وازن، نظام محاسبة، إدارة مالية، إدارة موارد بشرية، إدارة علاقات عملاء، إدارة نقاط البيع',
 		openGraph: {
 			type: 'website',
 			url,
@@ -22,11 +24,19 @@ export default async function processMetadata(
 			description,
 			images: ogimage || site.ogimage,
 		},
+		twitter: {
+			card: 'summary_large_image',
+			site: '@MyWazen',
+			creator: '@MyWazen',
+			images: ogimage || site.ogimage,
+		},
 		robots: {
 			index: !noIndex,
 		},
+		creator: 'Studio Valence | byvalence.com',
 		alternates: {
 			canonical: url,
+			languages: { ar: url + 'ar', en: url + 'en' },
 			types: {
 				'application/rss+xml': '/blog/rss.xml',
 			},

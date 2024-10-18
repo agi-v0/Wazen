@@ -18,6 +18,8 @@ import Toggle from './Toggle'
 import Logo from '@/components/ui/logo'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
+import ContactBar from './ContactBar'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('./lang-select'))
 
@@ -25,13 +27,19 @@ export default async function Header({
 	locale,
 	headerMenu,
 	ctas,
+	contactInfo,
 }: {
 	locale: string
 	headerMenu?: Sanity.Navigation
 	ctas?: Sanity.CTA[]
+	contactInfo?: any
 }) {
 	return (
-		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
+		<Wrapper
+			className="fixed top-0 z-10 w-full bg-white"
+			contactInfo={contactInfo?.contactInfo}
+			locale={locale}
+		>
 			<div
 				className={
 					'section mx-auto flex w-full flex-row items-center justify-between gap-4 py-4 transition-all duration-200 max-lg:h-screen max-lg:flex-col max-lg:gap-4 max-lg:overflow-y-scroll max-lg:pb-5 max-lg:header-closed:h-full max-lg:header-closed:py-3'

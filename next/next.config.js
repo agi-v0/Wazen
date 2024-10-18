@@ -30,7 +30,7 @@ const nextConfig = {
 	async redirects() {
 		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
 		return redirects?.map(({ source, destination, permanent }) => ({
-			source,
+			source: '/' + encodeURIComponent(source),
 			destination,
 			permanent,
 		}))
@@ -42,7 +42,7 @@ const nextConfig = {
 	// 	},
 	// },
 	experimental: {
-		optimizePackageImports: ['react-icons/*'],
+		optimizePackageImports: ['react-icons/pi/*'],
 	},
 }
 

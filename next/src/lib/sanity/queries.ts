@@ -35,7 +35,7 @@ export const creativeModuleQuery = groq`
 export async function getSite(locale: any) {
 	return await fetchSanity<Sanity.Site>(
 		groq`
-			*[_type == 'site' && language == '${locale}'  ][0]{
+			*[_type == 'site' && language == $locale  ][0]{
 				...,
 				ctas[]{
 					...,
@@ -48,9 +48,17 @@ export async function getSite(locale: any) {
 				footerMenu->{ ${navigationQuery} },
 				social->{ ${navigationQuery} },
 				staticLinks->{ ${navigationQuery} },
-				'ogimage': ogimage.asset->url
+				'ogimage': ogimage.asset->url,
+				"contactInfo": *[_type == 'page' && metadata.slug.current == "contact-us" && language == $locale][0]{
+					"contactInfo": modules[0].contactInfo
+				}
 			}
 		`,
-		{ tags: ['site'] },
+		{
+			params: {
+				locale: locale,
+			},
+			tags: ['site'],
+		},
 	)
 }
