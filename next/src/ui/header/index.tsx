@@ -18,6 +18,8 @@ import Toggle from './Toggle'
 import Logo from '@/components/ui/logo'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
+import ContactBar from './ContactBar'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('./lang-select'))
 
@@ -30,11 +32,26 @@ export default async function Header({
 	headerMenu?: Sanity.Navigation
 	ctas?: Sanity.CTA[]
 }) {
+	const query = await fetchSanity(
+		groq`*[_type == 'page' && metadata.slug.current == "contact-us" && language == $locale][0]{
+			 "contactInfo": modules[0].contactInfo
+	}`,
+		{
+			params: {
+				locale,
+			},
+			tags: ['contact-info'],
+		},
+	)
+	const contactInfo = query.contactInfo
 	return (
-		<Wrapper className="fixed top-0 z-10 w-full bg-white backdrop-blur">
+		<Wrapper
+			className="fixed top-0 z-10 w-full bg-white"
+			contactInfo={contactInfo}
+		>
 			<div
 				className={
-					'section mx-auto flex w-full flex-row items-center justify-between gap-4 py-4 transition-all duration-200 max-lg:h-screen max-lg:flex-col max-lg:gap-4 max-lg:overflow-y-scroll max-lg:pb-5 max-lg:header-closed:h-full max-lg:header-closed:py-3'
+					'section mx-auto flex w-full flex-row items-center justify-between gap-4 bg-white py-4 transition-all duration-200 max-lg:h-screen max-lg:flex-col max-lg:gap-4 max-lg:overflow-y-scroll max-lg:pb-5 max-lg:header-closed:h-full max-lg:header-closed:py-3'
 				}
 			>
 				<div className="flex flex-row items-center justify-between max-lg:w-full">

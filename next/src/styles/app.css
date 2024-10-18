@@ -30,6 +30,22 @@
 	::-webkit-details-marker {
 		display: none;
 	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+	::-webkit-scrollbar-corner,
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		--tw-bg-opacity: 1;
+		background-color: rgb(229, 231, 235 / var(--tw-bg-opacity));
+		transition-duration: 0.15s;
+		transition-property: all;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
 }
 
 @layer components {

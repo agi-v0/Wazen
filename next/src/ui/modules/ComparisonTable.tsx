@@ -40,6 +40,7 @@ export default async function ComparisonTable({
 							>
 								{altAppsLogos?.map((logo: any, index: number) => (
 									<span
+										key={'logo-' + index}
 										className={cn(
 											'flex h-10 w-24 items-center justify-center lg:w-full',
 										)}
@@ -48,7 +49,6 @@ export default async function ComparisonTable({
 											image={logo}
 											className="mx-auto h-auto w-[75%]"
 											imageWidth={1000}
-											key={'logo-' + index}
 											alt="logo"
 										/>
 									</span>

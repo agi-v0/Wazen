@@ -70,7 +70,7 @@ export const Card = ({
 			}}
 			key={`container-scroll-${1}`}
 		>
-			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg">
+			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
 				{children}
 			</div>
 		</motion.div>

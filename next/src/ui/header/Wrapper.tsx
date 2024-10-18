@@ -2,11 +2,15 @@
 
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
+import ContactBar from './ContactBar'
+import useScrollPosition from '@/hooks/useScrollPosition'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 export default function Wrapper({
 	className,
 	children,
-}: React.HTMLAttributes<HTMLDivElement>) {
+	contactInfo,
+}: { contactInfo: any } & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 
@@ -33,9 +37,18 @@ export default function Wrapper({
 		const toggle = document.querySelector('#header-open') as HTMLInputElement
 		if (toggle) toggle.checked = false
 	}, [pathname])
+	const scrollPosition = useScrollPosition()
+	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 	return (
-		<div ref={ref} className={className}>
+		<div
+			ref={ref}
+			className={
+				className +
+				` transition-transform duration-200 ease-in-out ${scrollPosition > 0 ? '-translate-y-9' : ''}`
+			}
+		>
+			{isDesktop && <ContactBar contactInfo={contactInfo} />}
 			{children}
 		</div>
 	)

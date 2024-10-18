@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { BASE_URL, projectId, dataset } from './src/env'
+// import { BASE_URL, projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
 import structure from './src/structure'
 import defaultDocumentNode from './src/defaultDocumentNode'
@@ -25,8 +25,8 @@ export default defineConfig({
 	name: 'default',
 	title: 'Wazen',
 	icon: Logo,
-	projectId,
-	dataset,
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
 	basePath: '/admin',
 
 	plugins: [
@@ -39,7 +39,7 @@ export default defineConfig({
 			title: 'Editor',
 			previewUrl: {
 				draftMode: {
-					enable: `${BASE_URL}/api/draft`,
+					enable: `${process.env.NEXT_PUBLIC_BASE_URL}/api/draft`,
 				},
 			},
 		}),
@@ -62,7 +62,7 @@ export default defineConfig({
 				'page',
 				'app.store.app',
 				'call.to.action.doc',
-				'pricing'
+				'pricing',
 			],
 		}),
 		inlineSvgInput(),
