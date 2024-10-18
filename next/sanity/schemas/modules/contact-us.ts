@@ -37,8 +37,12 @@ export default defineType({
 					],
 					preview: {
 						select: {
-							title: 'text',
+							contactInfo: 'title',
 						},
+						prepare: ({ contactInfo }) => ({
+							title: getBlockText(contactInfo),
+							subtitle: 'Contact Info'
+						}),
 					},
 				}),
 			],
