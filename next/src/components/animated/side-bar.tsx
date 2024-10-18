@@ -1,5 +1,4 @@
 import React from 'react'
-import { PiTable } from 'react-icons/pi'
 import { PiTableDuotone } from '@/ui/Icons'
 import { useParams } from 'next/navigation'
 

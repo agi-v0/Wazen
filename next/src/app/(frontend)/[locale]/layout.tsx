@@ -29,8 +29,7 @@ export default async function RootLayout({
 	if (!site) {
 		return
 	}
-	const { headerMenu, ctas, footerMenu, staticLinks, ga4 } = site
-
+	const { headerMenu, ctas, footerMenu, staticLinks, ga4, contactInfo } = site
 	return (
 		<html
 			lang={locale}
@@ -38,7 +37,12 @@ export default async function RootLayout({
 			className={locale == 'en' ? inter.className : rubik.className}
 		>
 			<body className="w-full">
-				<Header headerMenu={headerMenu} ctas={ctas} locale={locale} />
+				<Header
+					headerMenu={headerMenu}
+					contactInfo={contactInfo}
+					ctas={ctas}
+					locale={locale}
+				/>
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>

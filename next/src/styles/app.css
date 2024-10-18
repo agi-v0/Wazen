@@ -116,9 +116,7 @@
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl;
-		padding-left: var(--padding-horizontal--main);
-		padding-right: var(--padding-horizontal--main);
+		@apply mx-auto max-w-screen-xl px-[var(--padding-horizontal--main)];
 	}
 
 	.fluid-gap {

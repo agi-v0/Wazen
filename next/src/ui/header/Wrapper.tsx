@@ -10,7 +10,11 @@ export default function Wrapper({
 	className,
 	children,
 	contactInfo,
-}: { contactInfo: any } & React.HTMLAttributes<HTMLDivElement>) {
+	locale,
+}: {
+	contactInfo: any
+	locale: string
+} & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 
@@ -48,7 +52,7 @@ export default function Wrapper({
 				` transition-transform duration-200 ease-in-out ${scrollPosition > 0 ? '-translate-y-9' : ''}`
 			}
 		>
-			{isDesktop && <ContactBar contactInfo={contactInfo} />}
+			{isDesktop && <ContactBar contactInfo={contactInfo} locale={locale} />}
 			{children}
 		</div>
 	)
