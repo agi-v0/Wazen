@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}`,
 		{
 			params: {
-				baseUrl: process.env.NEXT_PUBLIC_BASE_URL + '/',
+				baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 			},
 		},
 	)
