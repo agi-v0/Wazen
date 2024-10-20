@@ -8,7 +8,7 @@ import {
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Img from '@/ui/Img'
-import { PiCircleFill } from '@/ui/Icons'
+import { PiCalendarBlank, PiCircleFill } from '@/ui/Icons'
 // import Image from 'next/image'
 
 export default function Post({
@@ -24,18 +24,21 @@ export default function Post({
 				<div className="space-y-6 md:space-y-8">
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
 						{post?.categories && (
-							<div className="w-fit rounded-full border-2 border-teal-500/20 px-3 py-1 text-teal-600">
+							<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
 								{locale == 'ar'
 									? post?.categories[0]?.title
 									: post?.categories[0]?.title_en}
 							</div>
 						)}
-						<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
+						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-cyan-950/60">
+							<PiCalendarBlank className="size-4" />
 							<Date value={post.publishDate} locale={locale} />
 						</div>
 						<ReadTime value={post.readTime} />
 					</div>
-					<h1 className="h1 text-balance text-center">{post.title}</h1>
+					<h1 className="h1 mx-auto max-w-5xl text-balance text-center text-cyan-950">
+						{post.title}
+					</h1>
 				</div>
 				<Img
 					image={post.metadata.image}
@@ -105,7 +108,7 @@ export default function Post({
 										)
 									}
 									return (
-										<p className="text-main text-gray-800">
+										<p className="text-main text-gray-600">
 											{value.children.map((child: any) => child.text).join('')}
 										</p>
 									)
