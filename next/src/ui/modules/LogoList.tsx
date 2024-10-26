@@ -5,8 +5,6 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '../Pretitle'
-import Img from '../Img'
-import Image from 'next/image'
 
 export default async function LogoList({
 	pretitle,

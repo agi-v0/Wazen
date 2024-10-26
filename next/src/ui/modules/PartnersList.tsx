@@ -4,7 +4,6 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import Img from '../Img'
 
 export default async function Partners({
 	pretitle,

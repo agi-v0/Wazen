@@ -1,25 +1,10 @@
 import dynamic from 'next/dynamic'
-import { getSite } from '@/lib/sanity/queries'
-// import Wrapper from './Wrapper'
 import Link from 'next/link'
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
+import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { Navigation } from './Navigation'
 import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
-// import LangSelect from '@/components/ui/lang-select'
 import Logo from '@/components/ui/logo'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { cn } from '@/lib/utils'
-import ContactBar from './ContactBar'
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('./lang-select'))
 

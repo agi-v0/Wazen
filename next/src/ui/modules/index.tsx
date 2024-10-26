@@ -37,7 +37,6 @@ import AppStoreRollup from './app-store/Rollup'
 import FeaturesInfiniteScroll from './FeaturesInfiniteScroll'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 
-const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
 const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
 const Brief = dynamic(() => import('./Brief'))

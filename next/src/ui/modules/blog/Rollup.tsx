@@ -1,6 +1,4 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-
-import { getTranslations } from 'next-intl/server'
 import RollupClient from './RollupClient'
 
 export default async function Rollup({
@@ -21,7 +19,6 @@ export default async function Rollup({
 	locale: string
 }>) {
 	const props = { _type, title, limit, categoryRef, locale }
-	const t = await getTranslations('Blog')
 
 	const type =
 		// 'help-center-categories-list'

@@ -1,7 +1,6 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import Img from '@/ui/Img'
 import React, { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react'
 

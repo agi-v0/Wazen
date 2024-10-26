@@ -1,20 +1,13 @@
-import CTA from '@/ui/CTA'
-import { PiCaretRightBold, PiCaretLeftBold } from '@/ui/Icons'
+import { PiCaretLeftBold } from '@/ui/Icons'
 import processUrl from '@/lib/processUrl'
 import { Link } from '@/i18n/navigations'
-import Image from 'next/image'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import {
-	NavigationMenu,
 	NavigationMenuContent,
-	NavigationMenuIndicator,
 	NavigationMenuItem,
 	NavigationMenuLink,
-	NavigationMenuList,
 	NavigationMenuTrigger,
-	navigationMenuTriggerStyle,
-	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 
 export default function LinkList({ label, links, locale }: Sanity.LinkList) {

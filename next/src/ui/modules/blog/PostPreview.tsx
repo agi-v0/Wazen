@@ -1,9 +1,7 @@
 // import Link from 'next/link'
 import { Link } from '@/i18n/navigations'
 import Date from '@/ui/Date'
-import Image from 'next/image'
 import { PiCaretRightBold } from '@/ui/Icons'
-import { useTranslations } from 'next-intl'
 import { clean } from '@/lib/utils'
 
 export default function PostPreview({

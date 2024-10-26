@@ -14,8 +14,7 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold, PiGlobe } from '@/ui/Icons'
-import InteractiveDetails from '@/ui/header/InteractiveDetails'
+import { PiGlobe } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
 
 const LangSelect = () => {

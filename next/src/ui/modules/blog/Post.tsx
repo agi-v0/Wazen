@@ -1,5 +1,4 @@
 import Date from '@/ui/Date'
-import Categories from './CategoriesList'
 import ReadTime from './ReadTime'
 import {
 	PortableText,
@@ -8,7 +7,6 @@ import {
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Img from '@/ui/Img'
-import { PiCircleFill } from '@/ui/Icons'
 // import Image from 'next/image'
 
 export default function Post({

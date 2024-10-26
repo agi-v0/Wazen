@@ -169,7 +169,7 @@ const CalculatorTable = ({
 									return (
 										row.cells[2] && (
 											<div
-												key={rowKey}
+												key={rowKey + Math.random()}
 												id={rowKey}
 												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-lg:grid-cols-2"
 											>
