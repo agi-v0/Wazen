@@ -1,4 +1,3 @@
-import { set2 } from '@/components/ui/portable-text'
 import {
 	PortableText,
 	PortableTextComponents,

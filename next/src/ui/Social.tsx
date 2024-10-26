@@ -1,7 +1,6 @@
 import { getSite } from '@/lib/sanity/queries'
 import CTA from './CTA'
 import { clean, cn } from '@/lib/utils'
-import { Link } from '@/i18n/navigations'
 
 import {
 	FaFacebook,
@@ -13,8 +12,7 @@ import {
 	FaYoutube,
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
-import { getTranslations, getLocale } from 'next-intl/server'
-import processUrl from '@/lib/processUrl'
+import { getTranslations } from 'next-intl/server'
 
 export default async function Social({
 	staticLinks,

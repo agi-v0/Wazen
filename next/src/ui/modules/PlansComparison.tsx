@@ -1,15 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
-import { stegaClean } from '@sanity/client/stega'
+import { PortableText } from '@portabletext/react'
 import { Switch } from '@/components/ui/switch'
 import { clean, cn } from '@/lib/utils'
-import { PiCheckBold, PiCheckCircle, PiXBold } from '@/ui/Icons'
+import { PiCheckBold, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 

@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
 export default function Pretitle({
