@@ -4,6 +4,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
+import Img from '../Img'
 
 export default async function Partners({
 	pretitle,
@@ -18,7 +19,7 @@ export default async function Partners({
 }>) {
 	const allLogos =
 		logos ||
-		(await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'partnerslogos']`))
+		(await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'partners.logos']`))
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -45,10 +46,13 @@ export default async function Partners({
 
 				<figure className="flex w-full flex-wrap items-center justify-evenly gap-12 overflow-visible">
 					{allLogos.map((logo, key) => (
-						<div
+						<Img
 							key={key}
-							className="svg-container h-11 w-auto"
-							dangerouslySetInnerHTML={{ __html: logo.icon }}
+							image={logo.icon}
+							imageWidth={640}
+							alt={logo.name}
+							svg={true}
+							className="h-11 w-auto"
 						/>
 					))}
 				</figure>

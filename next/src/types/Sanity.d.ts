@@ -67,7 +67,7 @@ declare global {
 				light?: Image
 				dark?: Image
 			}
-			icon: SVGElement
+			icon: Image
 		}>
 
 		type Testimonial = SanityDocument<{

@@ -45,6 +45,7 @@ const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
+// const LogoList = dynamic(() => import('./LogoList'))
 // const Hero = dynamic(() => import('./Hero'))
 
 export default function Modules({
@@ -104,10 +105,10 @@ export default function Modules({
 						return <HeroThree {...module} key={module._key} />
 					case 'hero.four':
 						return <HeroFour {...module} key={module._key} />
-					// case 'logo-list':
-					// 	return <LogoList {...module} key={module._key} />
-					// case 'partners':
-					// 	return <Partners {...module} key={module._key} />
+					case 'logo-list':
+						return <LogoList {...module} key={module._key} />
+					case 'partners':
+						return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
 					case 'pricing-calculator':
