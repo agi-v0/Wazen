@@ -7,10 +7,12 @@ import { getSite } from '@/lib/sanity/queries'
 import { locales } from '@/i18n/config'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { inter, rubik } from '../../../styles/fonts'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { Toaster } from '@/components/ui/toaster'
-const Header = dynamic(() => import('@/ui/header'))
-const Footer = dynamic(() => import('@/ui/footer'))
+import Header from '@/ui/header'
+import Footer from '@/ui/footer'
+// const Header = dynamic(() => import('@/ui/header'))
+// const Footer = dynamic(() => import('@/ui/footer'))
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }))
