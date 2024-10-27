@@ -1,13 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import createIntlMiddleware from 'next-intl/middleware'
-import { localePrefix, defaultLocale, locales, pathnames } from './i18n/config'
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
-const intlMiddleware = createIntlMiddleware({
-	defaultLocale,
-	locales,
-	localePrefix,
-	pathnames,
-})
+const intlMiddleware = createMiddleware(routing)
 
 const PUBLIC_FILE = /\.(.*)$/
 

@@ -1,6 +1,6 @@
 import { PiCaretLeftBold } from '@/ui/Icons'
 import processUrl from '@/lib/processUrl'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import {
@@ -23,7 +23,7 @@ export default function LinkList({ label, links, locale }: Sanity.LinkList) {
 							<li key={links?.[0].label} className="group row-span-3">
 								<Link
 									className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-cyan-800 to-cyan-950 p-4 text-start no-underline outline-none transition-all focus:shadow-md"
-									locale={locale as 'en' | 'ar'}
+									locale={locale}
 									href={processUrl(links[0].internal as Sanity.PageBase, {
 										base: false,
 										params: links[0].params,

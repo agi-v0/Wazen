@@ -29,7 +29,6 @@ export default function TestimonialList({
 	direction = 'left',
 	speed = 'slow',
 	pauseOnHover = true,
-	className,
 }: TestimonialListProps) {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const scrollerRef = useRef<HTMLUListElement>(null)
@@ -65,7 +64,7 @@ export default function TestimonialList({
 			groq`*[_type == 'testimonial' && language == $locale]`,
 			{
 				params: {
-					locale: locale,
+					locale,
 				},
 				tags: ['testimmonials'],
 			},

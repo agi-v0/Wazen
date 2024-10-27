@@ -1,5 +1,5 @@
 // import Link from 'next/link'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import Date from '@/ui/Date'
 import { PiCaretRightBold } from '@/ui/Icons'
 import { clean } from '@/lib/utils'

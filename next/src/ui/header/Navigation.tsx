@@ -3,7 +3,7 @@ import LinkGroup from './LinkGroup'
 import processUrl from '@/lib/processUrl'
 
 import * as React from 'react'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 
 import { cn } from '@/lib/utils'
 import {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import processUrl from '@/lib/processUrl'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import {
 	NavigationMenuContent,
 	NavigationMenuItem,

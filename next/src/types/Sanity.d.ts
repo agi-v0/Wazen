@@ -125,7 +125,7 @@ declare global {
 			label: string
 			links?: Link[]
 			link?: Link
-			locale?: string
+			locale?: 'en' | 'ar' | undefined
 		}
 
 		type AppsLinkList = {

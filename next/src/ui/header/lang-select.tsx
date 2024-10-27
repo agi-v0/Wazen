@@ -8,16 +8,16 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Link } from '@/i18n/navigations'
+import Link from 'next/link'
 import { PiGlobe } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
 
-const LangSelect = (pathname: any) => {
+const LangSelect = ({ pathname }: any) => {
 	const locale = useLocale()
 	return (
 		<>
 			<NavigationMenu
-				dir={locale == 'en' ? 'ltr' : 'rtl'}
+				dir={locale === 'en' ? 'ltr' : 'rtl'}
 				className="z-0 flex-none"
 			>
 				<NavigationMenuList>
@@ -35,7 +35,7 @@ const LangSelect = (pathname: any) => {
 									>
 										عربي
 									</button> */}
-									<Link locale={'ar'} href={pathname} legacyBehavior passHref>
+									<Link href={'/ar' + pathname} legacyBehavior passHref>
 										<NavigationMenuLink
 											className={cn(
 												navigationMenuTriggerStyle(),
@@ -47,7 +47,7 @@ const LangSelect = (pathname: any) => {
 									</Link>
 								</NavigationMenuItem>
 								<NavigationMenuItem>
-									<Link locale={'en'} href={pathname} legacyBehavior passHref>
+									<Link href={'/en' + pathname} legacyBehavior passHref>
 										<NavigationMenuLink
 											className={cn(
 												navigationMenuTriggerStyle(),
