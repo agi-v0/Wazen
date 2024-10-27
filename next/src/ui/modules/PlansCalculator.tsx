@@ -9,7 +9,7 @@ import {
 
 import CalculatorTable from '@/components/Pricing/CalculatorTable'
 import { Switch } from '@/components/ui/switch'
-import { useTranslations } from 'use-intl'
+import { useTranslations } from 'next-intl'
 
 export default function PlansCalculator({
 	content,
@@ -20,11 +20,9 @@ export default function PlansCalculator({
 	details: any
 	locale: string
 }>) {
-	const t = useTranslations('Pricing')
-
 	const [isYearly, setIsYearly] = useState(false)
-
 	const [total, setTotal] = useState<number>(0)
+	const t = useTranslations('Pricing')
 
 	const components: PortableTextComponents = {
 		types: {
