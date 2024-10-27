@@ -1,7 +1,4 @@
-'use client'
-
 import { useLocale } from 'next-intl'
-import { usePathname } from '../../i18n/navigations'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -12,13 +9,15 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Link } from '@/i18n/navigations'
+// import Link from 'next/link'
 import { PiGlobe } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
+import { headers } from 'next/headers'
 
 const LangSelect = () => {
+	const headerList = headers()
 	const locale = useLocale()
-
-	const pathname = usePathname()
+	const pathname: any = headerList.get('x-current-path')
 
 	return (
 		<>

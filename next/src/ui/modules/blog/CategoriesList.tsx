@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { stegaClean } from '@sanity/client/stega'
 import Rollup from './Rollup'
-// import { usePathname } from 'next/navigation'
 
 export default function Categories({
 	_type,
