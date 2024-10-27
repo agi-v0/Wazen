@@ -4,7 +4,6 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import { stegaClean } from '@sanity/client/stega'
 
 export default function SingleTestimony({
 	logoImage,
@@ -28,13 +27,13 @@ export default function SingleTestimony({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h5') {
 					return (
-						<h5 className="text-2xl font-semibold my-2">
+						<h5 className="my-2 text-2xl font-semibold">
 							{value.children.map((child: any) => child.text).join('')}
 						</h5>
 					)
 				} else if (value.style === 'h6') {
 					return (
-						<h6 className="text-gray-400 text-xl">
+						<h6 className="text-xl text-gray-400">
 							{value.children.map((child: any) => child.text).join('')}
 						</h6>
 					)
@@ -56,14 +55,15 @@ export default function SingleTestimony({
 				}
 			>
 				<Img image={logoImage} imageWidth={80} />
-				<div
-					className={'flex flex-col gap-8'}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
+				<div className={'flex flex-col gap-8'}>
 					<PortableText value={testimony} components={components} />
 
 					<div>
-						<Img image={image} imageWidth={80} className="rounded-full mx-auto my-4" />
+						<Img
+							image={image}
+							imageWidth={80}
+							className="mx-auto my-4 rounded-full"
+						/>
 						<PortableText value={client} components={components} />
 						<PortableText value={position} components={components} />
 					</div>

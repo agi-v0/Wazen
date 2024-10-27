@@ -3,9 +3,9 @@ import {
 	type UseNextSanityImageOptions,
 } from 'next-sanity-image'
 import { ImageFormat } from '@sanity/image-url/lib/types/types'
-import { stegaClean } from '@sanity/client/stega'
 import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
+import { clean } from '@/lib/utils'
 
 const SIZES = [
 	60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440, 1920, 2560, 3000,
@@ -78,7 +78,7 @@ export default function Img({
 			height={finalHeight}
 			className={className}
 			alt={image.alt || alt}
-			loading={stegaClean(image.loading) || 'lazy'}
+			loading={clean(image.loading) || 'lazy'}
 			decoding="async"
 			{...props}
 		/>

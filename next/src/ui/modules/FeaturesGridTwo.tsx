@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import { motion, useInView } from 'framer-motion'
 import { Icon } from '@iconify/react'
-import { stegaClean } from '@sanity/client/stega'
 
 import Pretitle from '@/ui/Pretitle'
 import Img from '../Img'
@@ -83,10 +82,7 @@ export default function FeaturesGridTwo({
 }: FeaturesGridTwoProps) {
 	return (
 		<section className="bg-teal-400/10 py-[var(--size--4rem)]">
-			<div
-				className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white"
-				style={{ textAlign: stegaClean(textAlign) }}
-			>
+			<div className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white">
 				<div className="flex flex-col items-center gap-6">
 					<Pretitle className="text-large font-semibold text-teal-500">
 						{pretitle}

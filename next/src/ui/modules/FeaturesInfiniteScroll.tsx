@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { stegaClean } from '@sanity/client/stega'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 import ComparisonTable from './ComparisonTable'
@@ -107,7 +106,6 @@ export default function FeaturesInfiniteScroll({
 				className={
 					'mx-auto flex max-w-xl flex-col items-center gap-6 md:max-w-3xl'
 				}
-				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<Pretitle className="text-large font-semibold text-gray-400">
 					{pretitle}
