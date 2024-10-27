@@ -7,9 +7,6 @@ import { Icon } from '@iconify/react'
 type CardItem = {
 	title: string
 	icon: string
-	description: string
-	link: Sanity.Link
-	image: Sanity.Image
 }
 
 type InfiniteMovingCardsProps = {
