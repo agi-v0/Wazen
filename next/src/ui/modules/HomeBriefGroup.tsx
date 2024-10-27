@@ -1,5 +1,3 @@
-'use client'
-
 import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
