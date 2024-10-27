@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { m } from 'framer-motion'
 import { RefObject, useEffect, useId, useState } from 'react'
+import { m } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 export interface AnimatedBeamProps {
 	className?: string
