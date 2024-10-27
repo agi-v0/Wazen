@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { PortableText } from '@portabletext/react'
 import { Switch } from '@/components/ui/switch'
-import { clean, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { PiCheckBold, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
@@ -104,7 +104,7 @@ const PlansComparison = ({
 												className="flex flex-row-reverse justify-between border-b border-gray-200 text-start *:w-full *:max-lg:w-48"
 											>
 												{row.cells.map((cell: string, index: any) => {
-													const cleanedCell = clean(cell)
+													const cleanedCell = cell
 													switch (cleanedCell) {
 														case '-':
 															return (

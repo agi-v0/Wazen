@@ -8,7 +8,6 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
 import blob from '../../../public/gradient-blob2.svg'
-import { clean } from '@/lib/utils'
 
 export default function HeroThree({
 	pretitle,
@@ -58,7 +57,7 @@ export default function HeroThree({
 			>
 				<Img
 					image={image}
-					alt={clean(image?.alt || pretitle)}
+					alt={image?.alt || pretitle}
 					className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
 					imageWidth={3000}
 					draggable={false}

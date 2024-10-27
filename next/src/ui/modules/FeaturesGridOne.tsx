@@ -5,7 +5,6 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import CTAList from '../CTAList'
-import { clean } from '@/lib/utils'
 
 export default async function FeaturesGridOne({
 	pretitle,
@@ -46,7 +45,7 @@ export default async function FeaturesGridOne({
 		<section className="bg-cyan-950">
 			<div
 				className="fluid-gap section fluid-padding flex w-full flex-col items-center py-[var(--size--6rem)]"
-				style={{ textAlign: clean(textAlign) } as React.CSSProperties}
+				style={{ textAlign: textAlign } as React.CSSProperties}
 			>
 				<div className="flex flex-col items-center gap-6">
 					<Pretitle className="text-large font-semibold text-teal-100">

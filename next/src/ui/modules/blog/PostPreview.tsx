@@ -2,7 +2,6 @@
 import { Link } from '@/i18n/routing'
 import Date from '@/ui/Date'
 import { PiCaretRightBold } from '@/ui/Icons'
-import { clean } from '@/lib/utils'
 
 export default function PostPreview({
 	type,
@@ -25,8 +24,7 @@ export default function PostPreview({
 					<Date value={post.publishDate} locale={locale} />
 				</div>
 				<p className="text-large font-semibold text-cyan-950 group-hover:text-teal-600">
-					{post.title.slice(0, 64) +
-						(clean(post.title).length > 64 ? ' ...' : '')}
+					{post.title.slice(0, 64) + (post.title.length > 64 ? ' ...' : '')}
 				</p>
 				<p className="text-base text-cyan-950/60 group-hover:text-cyan-950/80">
 					{post.body && post.body[0].children[0].text.slice(0, 140) + ' ...'}

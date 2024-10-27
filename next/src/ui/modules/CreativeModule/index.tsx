@@ -8,7 +8,7 @@ import ImageSubModule, { type ImageSubModuleType } from './ImageSubModule'
 import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
-import { clean, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import React from 'react'
 
 export default function CreativeModule({
@@ -72,8 +72,7 @@ export default function CreativeModule({
 											<CTAsSubModule
 												module={subModule}
 												className={cn(
-													clean(textAlign as any) === 'center' &&
-														'justify-center',
+													(textAlign as any) === 'center' && 'justify-center',
 												)}
 												key={ii}
 											/>
@@ -87,8 +86,7 @@ export default function CreativeModule({
 											<IconSubModule
 												module={subModule}
 												className={cn(
-													clean(textAlign as any) === 'center' &&
-														'[&_img]:mx-auto',
+													(textAlign as any) === 'center' && '[&_img]:mx-auto',
 												)}
 												key={ii}
 											/>

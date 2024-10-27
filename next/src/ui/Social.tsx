@@ -1,6 +1,6 @@
 import { getSite } from '@/lib/sanity/queries'
 import CTA from './CTA'
-import { clean, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 import {
 	FaFacebook,
@@ -66,7 +66,7 @@ export default async function Social({
 									link={item}
 									key={key}
 								>
-									<Icon url={item.external} aria-label={clean(item.label)} />
+									<Icon url={item.external} aria-label={item.label} />
 								</CTA>
 							)
 
