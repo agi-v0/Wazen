@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
 import Pretitle from '@/ui/Pretitle'
