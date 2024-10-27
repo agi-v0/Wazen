@@ -47,7 +47,7 @@ const nextConfig = {
 	// 	},
 	// },
 	experimental: {
-		optimizePackageImports: ['react-icons/*'],
+		optimizePackageImports: ['react-icons/*', '@sanity/visual-editing'],
 	},
 }
 
