@@ -104,10 +104,10 @@ export default function Modules({
 						return <HeroThree {...module} key={module._key} />
 					case 'hero.four':
 						return <HeroFour {...module} key={module._key} />
-					case 'logo-list':
-						return <LogoList {...module} key={module._key} />
-					case 'partners':
-						return <Partners {...module} key={module._key} />
+					// case 'logo-list':
+					// 	return <LogoList {...module} key={module._key} />
+					// case 'partners':
+					// 	return <Partners {...module} key={module._key} />
 					case 'pricing-list':
 						return <Plans {...module} key={module._key} />
 					case 'pricing-calculator':
