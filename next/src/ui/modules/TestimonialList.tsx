@@ -1,16 +1,28 @@
 'use client'
 
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from 'next-sanity'
-import React, { useEffect, useState } from 'react'
+import { PortableText, PortableTextTypeComponentProps } from 'next-sanity'
 import Img from '../Img'
 
-export default async function TestimonialList({
+type TestimonialListProps = {
+	direction?: 'left' | 'right'
+	speed?: 'fast' | 'normal' | 'slow'
+	pauseOnHover?: boolean
+	content: any
+	testimonials: Sanity.Testimonial[]
+	locale: 'en' | 'ar'
+	className: string
+}
+
+const SPEED_MAP = {
+	fast: '10s',
+	normal: '40s',
+	slow: '100s',
+}
+
+export default function TestimonialList({
 	locale,
 	content,
 	testimonials,
@@ -18,68 +30,38 @@ export default async function TestimonialList({
 	speed = 'slow',
 	pauseOnHover = true,
 	className,
-}: {
-	locale: string
-	content: any
-	testimonials: Sanity.Testimonial[]
-	direction?: 'left' | 'right'
-	speed?: 'fast' | 'normal' | 'slow'
-	pauseOnHover?: boolean
-	className?: string
-}) {
-	const containerRef = React.useRef<HTMLDivElement>(null)
-	const scrollerRef = React.useRef<HTMLUListElement>(null)
-
-	useEffect(() => {
-		addAnimation()
-	}, [])
+}: TestimonialListProps) {
+	const containerRef = useRef<HTMLDivElement>(null)
+	const scrollerRef = useRef<HTMLUListElement>(null)
 	const [start, setStart] = useState(false)
 
-	function addAnimation() {
+	const animationDirection = direction === 'left' ? 'forwards' : 'reverse'
+	const animationDuration = SPEED_MAP[speed]
+
+	useEffect(() => {
 		if (containerRef.current && scrollerRef.current) {
 			const scrollerContent = Array.from(scrollerRef.current.children)
 
 			scrollerContent.forEach((item) => {
 				const duplicatedItem = item.cloneNode(true)
-				if (scrollerRef.current) {
-					scrollerRef.current.appendChild(duplicatedItem)
-				}
+				scrollerRef.current?.appendChild(duplicatedItem)
 			})
 
-			getDirection()
-			getSpeed()
+			containerRef.current.style.setProperty(
+				'--animation-direction',
+				animationDirection,
+			)
+			containerRef.current.style.setProperty(
+				'--animation-duration',
+				animationDuration,
+			)
+
 			setStart(true)
 		}
-	}
-	const getDirection = () => {
-		if (containerRef.current) {
-			if (direction === 'left') {
-				containerRef.current.style.setProperty(
-					'--animation-direction',
-					'forwards',
-				)
-			} else {
-				containerRef.current.style.setProperty(
-					'--animation-direction',
-					'reverse',
-				)
-			}
-		}
-	}
-	const getSpeed = () => {
-		if (containerRef.current) {
-			if (speed === 'fast') {
-				containerRef.current.style.setProperty('--animation-duration', '20s')
-			} else if (speed === 'normal') {
-				containerRef.current.style.setProperty('--animation-duration', '40s')
-			} else {
-				containerRef.current.style.setProperty('--animation-duration', '80s')
-			}
-		}
-	}
+	}, [animationDirection, animationDuration])
 	const allTestimonials =
 		testimonials ||
-		(await fetchSanity<Sanity.Testimonial[]>(
+		fetchSanity<Sanity.Testimonial[]>(
 			groq`*[_type == 'testimonial' && language == $locale]`,
 			{
 				params: {
@@ -87,32 +69,74 @@ export default async function TestimonialList({
 				},
 				tags: ['testimmonials'],
 			},
-		))
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h2') {
+		)
+	const components = useMemo(
+		() => ({
+			types: {
+				block: ({ value }: PortableTextTypeComponentProps<any>) => {
+					if (value.style === 'h2') {
+						return (
+							<h2 className="h2 font-semibold leading-tight text-cyan-950">
+								{value.children.map((child: any) => child.text).join('')}
+							</h2>
+						)
+					}
+					if (value.style === 'h3') {
+						return (
+							<h3 className="font-semibold leading-tight text-cyan-950">
+								{value.children.map((child: any) => child.text).join('')}
+							</h3>
+						)
+					}
 					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
+						<p className="text-main mx-auto max-w-xl text-cyan-950 md:max-w-3xl">
 							{value.children.map((child: any) => child.text).join('')}
-						</h2>
+						</p>
 					)
-				}
-				if (value.style === 'h3') {
-					return (
-						<h3 className="font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h3>
-					)
-				}
-				return (
-					<p className="text-main mx-auto max-w-xl text-cyan-950 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
+				},
 			},
-		},
-	}
+		}),
+		[],
+	)
+	const renderedTestimonials = useMemo(
+		() =>
+			allTestimonials?.map(({ content, author }, key) => {
+				return (
+					<li
+						key={key}
+						className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
+					>
+						<article className="flex flex-col justify-between">
+							<div className="text-start group-hover:text-cyan-800">
+								<PortableText value={content} components={components} />
+							</div>
+
+							{author && (
+								<footer>
+									<div className="flex items-center justify-start gap-4">
+										<Img
+											className="size-12 rounded-full object-cover"
+											image={author?.image}
+											imageWidth={80}
+										/>
+										<div className={cn('text-main text-start')}>
+											<div className="font-semibold text-cyan-950">
+												{author?.name}
+											</div>
+											{author?.title && (
+												<div className="text-cyan-950/60">{author?.title}</div>
+											)}
+										</div>
+									</div>
+								</footer>
+							)}
+						</article>
+					</li>
+				)
+			}),
+		[allTestimonials, components],
+	)
+
 	return (
 		<div
 			className="fluid-gap max-w-screen flex h-full max-h-fold w-full flex-col items-center justify-center overflow-hidden bg-white py-[var(--size--8rem)]"
@@ -129,42 +153,7 @@ export default async function TestimonialList({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{allTestimonials?.map(({ content, author }, key) => {
-					return (
-						<li
-							key={key}
-							className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
-						>
-							<article className="flex flex-col justify-between">
-								<div className="text-start group-hover:text-cyan-800">
-									<PortableText value={content} components={components} />
-								</div>
-
-								{author && (
-									<footer>
-										<div className="flex items-center justify-start gap-4">
-											<Img
-												className="size-12 rounded-full object-cover"
-												image={author?.image}
-												imageWidth={80}
-											/>
-											<div className={cn('text-main text-start')}>
-												<div className="font-semibold text-cyan-950">
-													{author?.name}
-												</div>
-												{author?.title && (
-													<div className="text-cyan-950/60">
-														{author?.title}
-													</div>
-												)}
-											</div>
-										</div>
-									</footer>
-								)}
-							</article>
-						</li>
-					)
-				})}
+				{renderedTestimonials}
 			</ul>
 		</div>
 	)

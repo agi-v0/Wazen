@@ -1,4 +1,3 @@
-import Img from '@/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,

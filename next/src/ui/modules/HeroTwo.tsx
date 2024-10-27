@@ -1,9 +1,4 @@
-import Img, { Source } from '@/ui/Img'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'

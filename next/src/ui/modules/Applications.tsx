@@ -1,12 +1,7 @@
 'use client'
 import dynamic from 'next/dynamic'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { EmblaOptionsType } from 'embla-carousel'
 import { set2 } from '@/components/ui/portable-text'
 const InfiniteMovingCards = dynamic(
 	() =>

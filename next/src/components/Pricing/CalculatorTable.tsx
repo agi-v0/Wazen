@@ -127,7 +127,7 @@ const CalculatorTable = ({
 
 	useEffect(() => {
 		CategoryTotals(categoryTotalObj, activateArray)
-	}, [quantities, activateArray])
+	}, [quantities, categoryTotalObj, CategoryTotals, activateArray])
 
 	return (
 		<div className="relative mt-6 flex w-full flex-col gap-9">

@@ -26,7 +26,11 @@ export default function Button({
 			)
 
 		case 'external':
-			return <a href={link.external} {...props} />
+			return (
+				<a href={link.external} {...props}>
+					{link.label}
+				</a>
+			)
 
 		default:
 			return null
