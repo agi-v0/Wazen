@@ -1,4 +1,4 @@
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 
 // import Applications from './Applications'
 // import Benefits from './Benefits'
@@ -27,7 +27,7 @@ import FeaturesGridTwo from './FeaturesGridTwo'
 
 import ContactUs from './ContactUs'
 import BriefGroup from './BriefGroup'
-import HomeBriefGroup from './HomeBriefGroup'
+// import HomeBriefGroup from './HomeBriefGroup'
 import Plans from './Plans'
 import PlansComparison from './PlansComparison'
 import PlansCalculator from './PlansCalculator'
@@ -35,20 +35,21 @@ import BenefitsBanner from './BenefitsBanner'
 import CallToActionTwo from './CallToActionTwo'
 import AppStoreRollup from './app-store/Rollup'
 import FeaturesInfiniteScroll from './FeaturesInfiniteScroll'
-import { NextIntlClientProvider, useMessages } from 'next-intl'
 import FAQList from './FAQList'
 import Brief from './Brief'
 import Benefits from './Benefits'
 import HowItWorks from './HowItWorks'
-import TestimonialList from './TestimonialList'
-import TestimonialListTwo from './TestimonialListTwo'
 import ProductList from './ProductList'
 
 // const Benefits = dynamic(() => import('./Benefits'))
-// const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
+const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'), { ssr: false })
 // const Brief = dynamic(() => import('./Brief'))
-// const TestimonialList = dynamic(() => import('./TestimonialList'))
-// const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
+const TestimonialList = dynamic(() => import('./TestimonialList'), {
+	ssr: false,
+})
+const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'), {
+	ssr: false,
+})
 // const ProductList = dynamic(() => import('./ProductList'))
 // const FAQList = dynamic(() => import('./FAQList'))
 // const HowItWorks = dynamic(() => import('./HowItWorks'))
@@ -62,8 +63,6 @@ export default function Modules({
 	modules?: Sanity.Module[]
 	locale?: string
 }) {
-	const messages = useMessages()
-
 	return (
 		<>
 			{modules?.map((module) => {
@@ -120,13 +119,7 @@ export default function Modules({
 						return <Plans {...module} key={module._key} />
 					case 'pricing-calculator':
 						return (
-							<NextIntlClientProvider messages={messages}>
-								<PlansCalculator
-									{...module}
-									locale={locale}
-									key={module._key}
-								/>
-							</NextIntlClientProvider>
+							<PlansCalculator {...module} locale={locale} key={module._key} />
 						)
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
@@ -155,11 +148,7 @@ export default function Modules({
 							/>
 						)
 					case 'pricing-comparison':
-						return (
-							<NextIntlClientProvider messages={messages}>
-								<PlansComparison {...module} key={module._key} />
-							</NextIntlClientProvider>
-						)
+						return <PlansComparison {...module} key={module._key} />
 					case 'product-list':
 						return <ProductList {...module} key={module._key} />
 					default:

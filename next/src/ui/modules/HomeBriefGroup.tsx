@@ -1,3 +1,4 @@
+import { domAnimation, LazyMotion } from 'framer-motion'
 import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
@@ -9,6 +10,8 @@ const Integrations = dynamic(() =>
 	import('@/components/animated/integrations').then((mod) => mod.default),
 )
 const Reports = dynamic(() => import('@/components/animated/reports'))
+
+const loadFeatures = () => domAnimation
 
 export default function BriefGroup({
 	briefs,
@@ -28,9 +31,13 @@ export default function BriefGroup({
 				<Brief
 					{...brief}
 					image={
-						brief.image && 'asset' in brief.image
-							? brief.image
-							: animatedComponents[index]
+						brief.image && 'asset' in brief.image ? (
+							brief.image
+						) : (
+							<LazyMotion features={loadFeatures()}>
+								{animatedComponents[index]}
+							</LazyMotion>
+						)
 					}
 					key={brief._key}
 				/>

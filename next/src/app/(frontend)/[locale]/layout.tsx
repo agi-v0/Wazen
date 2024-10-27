@@ -48,7 +48,7 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					<main id="main-content" tabIndex={-1}>
-						<LazyMotion features={loadFeatures}>{children}</LazyMotion>
+						{children}
 					</main>
 					<Toaster />
 					<Footer
