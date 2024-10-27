@@ -1,22 +1,22 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-import ContactBar from './ContactBar'
 import useScrollPosition from '@/hooks/useScrollPosition'
 import { useMediaQuery } from '@/hooks/use-media-query'
+import ContactBar from './ContactBar'
 
 export default function Wrapper({
 	className,
 	children,
 	contactInfo,
 	locale,
+	pathname,
 }: {
 	contactInfo: any
 	locale: string
+	pathname: any
 } & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)
-	const pathname = usePathname()
 
 	// set --header-height
 	useEffect(() => {

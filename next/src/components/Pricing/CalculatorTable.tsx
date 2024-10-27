@@ -127,7 +127,7 @@ const CalculatorTable = ({
 
 	useEffect(() => {
 		CategoryTotals(categoryTotalObj, activateArray)
-	}, [quantities, activateArray])
+	}, [quantities, categoryTotalObj, CategoryTotals, activateArray])
 
 	return (
 		<div className="relative mt-6 flex w-full flex-col gap-9">
@@ -169,7 +169,7 @@ const CalculatorTable = ({
 									return (
 										row.cells[2] && (
 											<div
-												key={rowKey}
+												key={rowKey + Math.random()}
 												id={rowKey}
 												className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-lg:grid-cols-2"
 											>

@@ -37,7 +37,6 @@ import AppStoreRollup from './app-store/Rollup'
 import FeaturesInfiniteScroll from './FeaturesInfiniteScroll'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 
-const Applications = dynamic(() => import('./Applications'))
 const Benefits = dynamic(() => import('./Benefits'))
 const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
 const Brief = dynamic(() => import('./Brief'))
@@ -46,6 +45,7 @@ const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 const ProductList = dynamic(() => import('./ProductList'))
 const FAQList = dynamic(() => import('./FAQList'))
 const HowItWorks = dynamic(() => import('./HowItWorks'))
+// const LogoList = dynamic(() => import('./LogoList'))
 // const Hero = dynamic(() => import('./Hero'))
 
 export default function Modules({

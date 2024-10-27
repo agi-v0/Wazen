@@ -1,9 +1,4 @@
-'use client'
-
 import { useLocale } from 'next-intl'
-import { useParams } from 'next/navigation'
-import { useTransition } from 'react'
-import { useRouter, usePathname } from '../../i18n/navigations'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -13,35 +8,16 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Link } from '@/i18n/navigations'
-import { PiCaretRightBold, PiGlobe } from '@/ui/Icons'
-import InteractiveDetails from '@/ui/header/InteractiveDetails'
+import Link from 'next/link'
+import { PiGlobe } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
 
-const LangSelect = () => {
+const LangSelect = ({ pathname }: any) => {
 	const locale = useLocale()
-
-	const router = useRouter()
-	const [isPending, startTransition] = useTransition()
-	const pathname = usePathname()
-	const params = useParams()
-
-	function onSelectChange(lang: string) {
-		startTransition(() => {
-			router.replace(
-				// @ts-expect-error -- TypeScript will validate that only known `params`
-				// are used in combination with a given `pathname`. Since the two will
-				// always match for the current route, we can skip runtime checks.
-				{ pathname, params },
-				{ locale: lang },
-			)
-		})
-	}
-
 	return (
 		<>
 			<NavigationMenu
-				dir={locale == 'en' ? 'ltr' : 'rtl'}
+				dir={locale === 'en' ? 'ltr' : 'rtl'}
 				className="z-0 flex-none"
 			>
 				<NavigationMenuList>
@@ -59,7 +35,7 @@ const LangSelect = () => {
 									>
 										عربي
 									</button> */}
-									<Link locale={'ar'} href={pathname} legacyBehavior passHref>
+									<Link href={'/ar' + pathname} legacyBehavior passHref>
 										<NavigationMenuLink
 											className={cn(
 												navigationMenuTriggerStyle(),
@@ -71,7 +47,7 @@ const LangSelect = () => {
 									</Link>
 								</NavigationMenuItem>
 								<NavigationMenuItem>
-									<Link locale={'en'} href={pathname} legacyBehavior passHref>
+									<Link href={'/en' + pathname} legacyBehavior passHref>
 										<NavigationMenuLink
 											className={cn(
 												navigationMenuTriggerStyle(),
@@ -84,14 +60,6 @@ const LangSelect = () => {
 								</NavigationMenuItem>
 							</ul>
 						</NavigationMenuContent>
-
-						{/* <ul className="anim-fade-to-b start-0 top-full flex flex-col gap-10 rounded-lg border border-gray-100 bg-white p-3 shadow-md md:absolute md:max-h-[400px] md:min-w-max md:flex-row md:backdrop-blur">
-				{links
-					?.slice(0, 2)
-					.map((label: any, key: any) => (
-						<NavItemList {...label} key={key} locale={locale} />
-					))}
-			</ul> */}
 					</NavigationMenuItem>
 				</NavigationMenuList>
 			</NavigationMenu>

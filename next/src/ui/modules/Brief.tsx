@@ -37,10 +37,7 @@ export default function Brief({
 					image
 				)}
 			</div>
-			<div
-				className="flex max-w-2xl flex-col gap-6"
-				// style={{ textAlign: stegaClean(textAlign) }}
-			>
+			<div className="flex max-w-2xl flex-col gap-6">
 				<Pretitle className="text-base font-medium text-teal-500">
 					{pretitle}
 				</Pretitle>

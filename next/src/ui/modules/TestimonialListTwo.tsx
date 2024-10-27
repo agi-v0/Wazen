@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 
 import {
@@ -6,7 +5,6 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
-import Img from '../Img'
 import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-testimonials'
 import { EmblaOptionsType } from 'embla-carousel'
 import Pretitle from '../Pretitle'

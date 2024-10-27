@@ -1,18 +1,5 @@
 import * as motion from 'framer-motion/client'
 
-const REPORTS_ANIMATION_VARIANTS = {
-	hidden: { opacity: 0, scale: 0.75, y: -20 },
-	visible: {
-		opacity: 1,
-		scale: 1,
-		y: 0,
-	},
-}
-const slide = {
-	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0 },
-}
-
 const reports = () => {
 	return (
 		<motion.div

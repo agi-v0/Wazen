@@ -1,13 +1,7 @@
-import Img, { Source } from '@/ui/Img'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import { set2 } from '@/components/ui/portable-text'
 
 export default function HeroTwo({
@@ -38,10 +32,7 @@ export default function HeroTwo({
 	return (
 		<section className="cyan-gradient-background-1 section py-12">
 			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
-				<div
-					className={cn('relative max-w-3xl space-y-6')}
-					style={{ textAlign: stegaClean(textAlign) }}
-				>
+				<div className={cn('relative max-w-3xl space-y-6')}>
 					<Pretitle
 						className={cn(
 							hasImage
@@ -52,17 +43,7 @@ export default function HeroTwo({
 						{pretitle}
 					</Pretitle>
 					<PortableText value={content} components={set2} />
-					<CTAList
-						ctas={ctas}
-						className={cn(
-							{
-								'justify-start': stegaClean(textAlign) === 'left',
-								'justify-center': stegaClean(textAlign) === 'center',
-								'justify-end': stegaClean(textAlign) === 'right',
-							},
-							'*:h-12 *:px-6 *:text-lg',
-						)}
-					/>
+					<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
 				</div>
 			</div>
 		</section>

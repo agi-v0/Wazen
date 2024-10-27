@@ -1,10 +1,7 @@
 'use client'
-import React, { useCallback, useEffect, useRef } from 'react'
-import {
-	EmblaCarouselType,
-	EmblaEventType,
-	EmblaOptionsType,
-} from 'embla-carousel'
+
+import React, { useCallback, useEffect, useRef, useMemo } from 'react'
+import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import {
@@ -30,14 +27,17 @@ type PropType = {
 	locale?: string
 }
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
-	const { slides, options, locale } = props
+const EmblaCarousel: React.FC<PropType> = ({
+	slides,
+	options,
+	locale = 'en',
+}) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
+
 	const { selectedIndex, scrollSnaps, onDotButtonClick } =
 		useDotButton(emblaApi)
-
 	const {
 		prevBtnDisabled,
 		nextBtnDisabled,
@@ -46,9 +46,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	} = usePrevNextButtons(emblaApi)
 
 	const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
-		tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
-			return slideNode.querySelector('.slide-item') as HTMLElement
-		})
+		tweenNodes.current = emblaApi
+			.slideNodes()
+			.map((slideNode) => slideNode.querySelector('.slide-item') as HTMLElement)
 	}, [])
 
 	const setTweenFactor = useCallback((emblaApi: EmblaCarouselType) => {
@@ -56,40 +56,31 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	}, [])
 
 	const tweenScale = useCallback(
-		(emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
+		(emblaApi: EmblaCarouselType, eventName?: string) => {
 			const engine = emblaApi.internalEngine()
 			const scrollProgress = emblaApi.scrollProgress()
 			const slidesInView = emblaApi.slidesInView()
 			const isScrollEvent = eventName === 'scroll'
 
 			emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-				let diffToTarget = scrollSnap - scrollProgress
-				const slidesInSnap = engine.slideRegistry[snapIndex]
-
-				slidesInSnap.forEach((slideIndex) => {
+				engine.slideRegistry[snapIndex].forEach((slideIndex) => {
 					if (isScrollEvent && !slidesInView.includes(slideIndex)) return
+
+					let diffToTarget = scrollSnap - scrollProgress
 
 					if (engine.options.loop) {
 						engine.slideLooper.loopPoints.forEach((loopItem) => {
 							const target = loopItem.target()
-
 							if (slideIndex === loopItem.index && target !== 0) {
-								const sign = Math.sign(target)
-
-								if (sign === -1) {
-									diffToTarget = scrollSnap - (1 + scrollProgress)
-								}
-								if (sign === 1) {
-									diffToTarget = scrollSnap + (1 - scrollProgress)
-								}
+								diffToTarget =
+									scrollSnap + Math.sign(target) * (1 - scrollProgress)
 							}
 						})
 					}
 
 					const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current)
 					const scale = numberWithinRange(tweenValue, 0, 1).toString()
-					const tweenNode = tweenNodes.current[slideIndex]
-					tweenNode.style.transform = `scale(${scale})`
+					tweenNodes.current[slideIndex].style.transform = `scale(${scale})`
 				})
 			})
 		},
@@ -107,45 +98,59 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 			.on('reInit', setTweenNodes)
 			.on('reInit', setTweenFactor)
 			.on('reInit', tweenScale)
-			.on('scroll', tweenScale)
+			.on('scroll', () => tweenScale(emblaApi, 'scroll'))
 			.on('slideFocus', tweenScale)
-	}, [emblaApi, tweenScale])
+
+		return () => {
+			emblaApi.off('reInit', setTweenNodes)
+			emblaApi.off('reInit', setTweenFactor)
+			emblaApi.off('reInit', tweenScale)
+			emblaApi.off('scroll', tweenScale)
+			emblaApi.off('slideFocus', tweenScale)
+		}
+	}, [emblaApi, setTweenNodes, setTweenFactor, tweenScale])
+
+	const carouselSlides = useMemo(
+		() =>
+			slides.map((slide, index) => (
+				<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
+					<div
+						className={cn(
+							style.slide_item,
+							'slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between',
+						)}
+					>
+						<div className="max-h-[480px] w-full rounded-lg">
+							<Img
+								loading="lazy"
+								image={slide.image}
+								imageWidth={3000}
+								className="h-full w-full rounded-md object-cover"
+							/>
+						</div>
+					</div>
+				</div>
+			)),
+		[slides],
+	)
 
 	return (
 		<div
 			className={cn(style.embla, 'embla fluid-gap flex flex-col')}
-			dir={locale == 'en' ? 'ltr' : 'rtl'}
+			dir={locale === 'en' ? 'ltr' : 'rtl'}
 		>
 			<div
 				className={cn(style.embla__viewport, 'embla__viewport')}
 				ref={emblaRef}
 			>
 				<div className={cn(style.embla__container, 'embla__container')}>
-					{slides.map((image: any, index) => (
-						<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
-							<div
-								className={cn(
-									style.slide_item,
-									`slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between`,
-								)}
-							>
-								<div className="max-h-[480px] w-full rounded-lg">
-									<Img
-										loading="lazy"
-										image={image}
-										imageWidth={3000}
-										className="h-full w-full rounded-md object-cover"
-									/>
-								</div>
-							</div>
-						</div>
-					))}
+					{carouselSlides}
 				</div>
 			</div>
 
 			<div
 				className="mx-auto flex w-full max-w-xs flex-row justify-between md:max-w-md lg:max-w-lg"
-				dir={locale == 'en' ? 'ltr' : 'rtl'}
+				dir={locale === 'en' ? 'ltr' : 'rtl'}
 			>
 				<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
 				<div className={style.embla__dots}>
@@ -153,7 +158,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 						<DotButton
 							key={index}
 							onClick={() => onDotButtonClick(index)}
-							className={`${style.embla__dot} ${index === selectedIndex ? style['embla__dot--selected'] : ''}`}
+							className={cn(
+								style.embla__dot,
+								index === selectedIndex && style['embla__dot--selected'],
+							)}
 						/>
 					))}
 				</div>
@@ -162,4 +170,5 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		</div>
 	)
 }
+
 export default EmblaCarousel

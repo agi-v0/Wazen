@@ -49,9 +49,9 @@ export default async function ContactUs({
 	}
 
 	const icons = [
-		<PiPhone className="text-2xl text-cyan-950/60" />,
-		<PiEnvelope className="text-2xl text-cyan-950/60" />,
-		<PiMapPin className="text-2xl text-cyan-950/60" />,
+		<PiPhone key="PiPhone" className="text-2xl text-cyan-950/60" />,
+		<PiEnvelope key="PiEnvelope" className="text-2xl text-cyan-950/60" />,
+		<PiMapPin key="PiMapPin" className="text-2xl text-cyan-950/60" />,
 	]
 
 	return (

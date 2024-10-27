@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import CTA from '../CTA'
-// import { PiCaretLeftBold } from "@/ui/Icons"
-import Image from 'next/image'
 import { PiAt } from '@/ui/Icons'
 import { PiMapPin } from '@/ui/Icons'
 import { PiPhone } from '@/ui/Icons'

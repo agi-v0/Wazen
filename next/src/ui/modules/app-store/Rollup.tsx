@@ -1,7 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import AppCard from './AppCard'
 import { cn } from '@/lib/utils'
-import { getTranslations, getLocale } from 'next-intl/server'
+import { getLocale } from 'next-intl/server'
 
 export default async function AppStoreRollup({
 	limit = 100,
@@ -11,7 +11,6 @@ export default async function AppStoreRollup({
 	category: any
 }>) {
 	const locale = await getLocale()
-	const t = await getTranslations('Blog')
 
 	const apps = await fetchSanity<any>(
 		groq`*[_type == 'app.store.app' && language == $locale ]{

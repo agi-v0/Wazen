@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import { PiCaretRightBold } from '@/ui/Icons'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'

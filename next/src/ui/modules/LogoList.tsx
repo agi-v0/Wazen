@@ -6,7 +6,6 @@ import {
 } from '@portabletext/react'
 import Pretitle from '../Pretitle'
 import Img from '../Img'
-import Image from 'next/image'
 
 export default async function LogoList({
 	pretitle,
@@ -50,11 +49,13 @@ export default async function LogoList({
 
 				<figure className="flex w-full flex-wrap items-center justify-center gap-12">
 					{allLogos.map((logo, key) => (
-						<div
+						<Img
 							key={key}
 							className="svg-container h-12 w-auto opacity-50 grayscale transition-all hover:opacity-100 hover:grayscale-0"
-							aria-label={logo.name}
-							dangerouslySetInnerHTML={{ __html: logo.icon }}
+							image={logo.icon}
+							imageWidth={640}
+							alt={logo.name}
+							svg={true}
 						/>
 					))}
 				</figure>
