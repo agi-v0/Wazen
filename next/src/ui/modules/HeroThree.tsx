@@ -14,8 +14,6 @@ export default function HeroThree({
 	content,
 	ctas,
 	image,
-	textAlign = 'start',
-	alignItems,
 }: Partial<{
 	pretitle: any
 	content: any
