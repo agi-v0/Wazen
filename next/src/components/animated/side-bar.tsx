@@ -1,11 +1,9 @@
 import React from 'react'
 import { PiTableDuotone } from '@/ui/Icons'
-import { useParams } from 'next/navigation'
+import { useLocale } from 'next-intl'
 
 function SideBar() {
-	// const t = useTranslations('Index')
-
-	const { locale } = useParams()
+	const locale = useLocale()
 
 	const list = [
 		' الحسابات',
