@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
 import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/routing'
 
 export default async function Social({
 	staticLinks,
@@ -61,13 +62,13 @@ export default async function Social({
 					switch (item._type) {
 						case 'link':
 							return (
-								<CTA
+								<Link
 									className="p-2 text-lg hover:!opacity-100 group-has-[a:hover]:opacity-50"
-									link={item}
+									href={item.external}
 									key={key}
 								>
 									<Icon url={item.external} aria-label={item.label} />
-								</CTA>
+								</Link>
 							)
 
 						default:

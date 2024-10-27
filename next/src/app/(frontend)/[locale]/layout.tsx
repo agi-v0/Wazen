@@ -16,8 +16,6 @@ import { domAnimation, LazyMotion } from 'framer-motion'
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
-const loadFeatures = () =>
-	import('@/styles/features').then((res) => res.default)
 
 export default async function RootLayout({
 	children,
