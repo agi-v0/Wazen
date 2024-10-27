@@ -1,24 +1,16 @@
-import { getSite } from '@/lib/sanity/queries'
-import CTA from '@/ui/CTA'
 import LinkList from './LinkList'
 import LinkGroup from './LinkGroup'
 import processUrl from '@/lib/processUrl'
 
 import * as React from 'react'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 
 import { cn } from '@/lib/utils'
-// import { Icons } from '@/components/icons'
 import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuIndicator,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
-	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
 
 export async function Navigation({

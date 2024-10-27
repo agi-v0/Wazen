@@ -4,7 +4,6 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from '@/ui/Icons'
@@ -62,8 +61,9 @@ export default function ProductList({
 				className={'section fluid-gap flex w-full flex-col items-center py-12'}
 			>
 				<div
-					className={'mb-12 flex max-w-4xl flex-col items-center gap-8'}
-					style={{ textAlign: stegaClean(textAlign) }}
+					className={
+						'mb-12 flex max-w-4xl flex-col items-center gap-8 text-center'
+					}
 				>
 					<Pretitle className="text-large font-semibold text-gray-400">
 						{pretitle}

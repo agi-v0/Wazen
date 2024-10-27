@@ -67,7 +67,7 @@ declare global {
 				light?: Image
 				dark?: Image
 			}
-			icon: SVGElement
+			icon: Image
 		}>
 
 		type Testimonial = SanityDocument<{
@@ -125,7 +125,7 @@ declare global {
 			label: string
 			links?: Link[]
 			link?: Link
-			locale?: string
+			locale?: 'en' | 'ar' | undefined
 		}
 
 		type AppsLinkList = {

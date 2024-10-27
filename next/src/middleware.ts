@@ -1,28 +1,32 @@
+import { NextRequest, NextResponse } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
-import { localePrefix, defaultLocale, locales, pathnames } from './i18n/config'
+import { routing } from './i18n/routing'
 
-// export default createMiddleware({
-// 	defaultLocale,
-// 	locales,
-// 	localePrefix,
-// 	pathnames,
-// })
+const intlMiddleware = createMiddleware(routing)
 
-export default function middleware(request: any) {
+const PUBLIC_FILE = /\.(.*)$/
+
+export default function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl
 
-	// Skip locale negotiation for the /admin path and its static assets
-	if (pathname.startsWith('/admin') || pathname.startsWith('/_next')) {
-		return // Exit without calling middleware
+	// Skip middleware for static files and specific paths
+	if (
+		PUBLIC_FILE.test(pathname) ||
+		pathname.startsWith('/admin') ||
+		pathname.startsWith('/_next')
+	) {
+		return NextResponse.next()
 	}
 
-	// Apply locale middleware for other paths
-	return createMiddleware({
-		defaultLocale,
-		locales,
-		localePrefix,
-		pathnames,
-	})(request) // Call createMiddleware directly
+	// Add x-current-path header
+	const response = intlMiddleware(request)
+	// Split pathname and remove locale prefix
+	const cleanedPathname = pathname
+		.split('/')
+		.filter((segment) => segment !== 'ar' && segment !== 'en')
+		.join('/')
+	response.headers.set('x-current-path', cleanedPathname)
+	return response
 }
 
 export const config = {
@@ -37,7 +41,5 @@ export const config = {
 		// Enable redirects that add missing locales
 		// (e.g. `/pathnames` -> `/en/pathnames`)
 		'/((?!_next|_vercel|.*\\..*).*)',
-
-		// '/((?!admin).*)',
 	],
 }

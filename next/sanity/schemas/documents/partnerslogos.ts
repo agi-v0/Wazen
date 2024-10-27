@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 import { VscSymbolMisc } from 'react-icons/vsc'
 
 export default defineType({
-	name: 'partnerslogos',
+	name: 'partners.logos',
 	title: 'Partners Logos',
 	icon: VscSymbolMisc,
 	type: 'document',
@@ -13,7 +13,7 @@ export default defineType({
 		}),
 		{
 			name: 'icon',
-			type: 'inlineSvg',
+			type: 'image',
 		},
 	],
 	preview: {

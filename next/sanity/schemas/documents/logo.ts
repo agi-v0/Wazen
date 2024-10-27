@@ -13,7 +13,7 @@ export default defineType({
 		}),
 		{
 			name: 'icon',
-			type: 'inlineSvg',
+			type: 'image',
 		},
 	],
 	preview: {

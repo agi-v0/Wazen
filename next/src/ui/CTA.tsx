@@ -1,8 +1,7 @@
 // import Link from 'next/link'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
+import { clean, cn } from '@/lib/utils'
 
 export default function CTA({
 	link,
@@ -32,7 +31,11 @@ export default function CTA({
 		)
 
 	if (link?.type === 'external' && link.external)
-		return <a href={stegaClean(link.external)} {...props} />
+		return (
+			<a href={clean(link.external)} {...props}>
+				{link.label}
+			</a>
+		)
 
 	return props.children
 }

@@ -9,9 +9,9 @@ export default function ContactBar({
 	locale: string
 }>) {
 	const icons = [
-		<PiPhone className="size-4 text-cyan-950/60" />,
-		<PiEnvelope className="size-4 text-cyan-950/60" />,
-		<PiMapPin className="size-4 text-cyan-950/60" />,
+		<PiPhone key="PiPhone" className="size-4 text-cyan-950/60" />,
+		<PiEnvelope key="PiEnvelope" className="size-4 text-cyan-950/60" />,
+		<PiMapPin key="PiMapPin" className="size-4 text-cyan-950/60" />,
 	]
 	return (
 		<div id="contactBar" className="h-9 w-full bg-gray-50">

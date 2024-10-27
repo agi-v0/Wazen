@@ -1,5 +1,4 @@
 import Date from '@/ui/Date'
-import Categories from './CategoriesList'
 import ReadTime from './ReadTime'
 import {
 	PortableText,

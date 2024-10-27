@@ -29,13 +29,20 @@ const PricingBox = (props: {
 		order,
 	} = props
 
-
-
 	const AppIcons = [
-		<PiTableDuotone className="text-2xl text-cyan-500" />,
-		<PiIdentificationCardDuotone className="text-2xl text-yellow-500" />,
-		<PiUserListDuotone className="text-2xl text-indigo-500" />,
-		<PiFlowArrowDuotone className="text-2xl text-teal-500" />,
+		<PiTableDuotone key="PiTableDuotone" className="text-2xl text-cyan-500" />,
+		<PiIdentificationCardDuotone
+			key="PiIdentificationCardDuotone"
+			className="text-2xl text-yellow-500"
+		/>,
+		<PiUserListDuotone
+			key="PiUserListDuotone"
+			className="text-2xl text-indigo-500"
+		/>,
+		<PiFlowArrowDuotone
+			key="PiFlowArrowDuotone"
+			className="text-2xl text-teal-500"
+		/>,
 	]
 
 	return (

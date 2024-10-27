@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import { PiArrowLineDownBold } from '@/ui/Icons'
 import { useTranslations } from 'next-intl'
 import Img from '@/ui/Img'

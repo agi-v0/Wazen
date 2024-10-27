@@ -4,7 +4,6 @@ import {
 } from '@portabletext/react'
 import TableOfContents from './TableOfContents'
 import AnchoredHeading from './AnchoredHeading'
-import Image from './Image'
 
 export default function RichtextModule({
 	content,

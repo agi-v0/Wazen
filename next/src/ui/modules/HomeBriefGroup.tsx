@@ -1,5 +1,3 @@
-'use client'
-
 import Brief from './Brief'
 import dynamic from 'next/dynamic'
 
@@ -19,10 +17,10 @@ export default function BriefGroup({
 }>) {
 	//replace images and image components with an array of interactive components
 	const animatedComponents: any = [
-		<Sidebar />,
-		<Reports />,
-		<MobileApp />,
-		<Integrations />,
+		<Sidebar key="Sidebar" />,
+		<Reports key="Reports" />,
+		<MobileApp key="MobileApp" />,
+		<Integrations key="Integrations" />,
 	]
 	return (
 		<div className="bg-white py-[var(--size--4-5rem)]">

@@ -1,12 +1,6 @@
 import dynamic from 'next/dynamic'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { stegaClean } from '@sanity/client/stega'
-import { EmblaOptionsType } from 'embla-carousel'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 import ComparisonTable from './ComparisonTable'
@@ -102,28 +96,6 @@ export default function FeaturesInfiniteScroll({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const t = useTranslations('FeaturesInfiniteScroll')
-
-	const components: PortableTextComponents = {
-		types: {
-			block: ({ value }: PortableTextTypeComponentProps<any>) => {
-				if (value.style === 'h2') {
-					return (
-						<h2 className="h2 font-semibold leading-tight text-cyan-950">
-							{value.children.map((child: any) => child.text).join('')}
-						</h2>
-					)
-				}
-				return (
-					<p className="text-main mx-auto max-w-xl text-gray-600 md:max-w-3xl">
-						{value.children.map((child: any) => child.text).join('')}
-					</p>
-				)
-			},
-		},
-	}
-
-	const direction = locale === 'en' ? 'ltr' : 'rtl'
 	return (
 		<section
 			className={
@@ -134,7 +106,6 @@ export default function FeaturesInfiniteScroll({
 				className={
 					'mx-auto flex max-w-xl flex-col items-center gap-6 md:max-w-3xl'
 				}
-				style={{ textAlign: stegaClean(textAlign) }}
 			>
 				<Pretitle className="text-large font-semibold text-gray-400">
 					{pretitle}

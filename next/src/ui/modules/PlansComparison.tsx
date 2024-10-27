@@ -1,15 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-	PortableText,
-	PortableTextComponents,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
-import { stegaClean } from '@sanity/client/stega'
+import { PortableText } from '@portabletext/react'
 import { Switch } from '@/components/ui/switch'
 import { clean, cn } from '@/lib/utils'
-import { PiCheckBold, PiCheckCircle, PiXBold } from '@/ui/Icons'
+import { PiCheckBold, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 
@@ -95,7 +90,11 @@ const PlansComparison = ({
 										<div className="flex flex-row-reverse justify-end text-start text-sm font-medium text-gray-500 *:w-48 lg:hidden rtl:flex-row rtl:items-end">
 											{details[0].specs.rows.map(
 												(row: { cells: string[] }, index: string) => {
-													return <div className="px-6 py-3">{row.cells[2]}</div>
+													return (
+														<div key={index} className="px-6 py-3">
+															{row.cells[2]}
+														</div>
+													)
 												},
 											)}
 										</div>

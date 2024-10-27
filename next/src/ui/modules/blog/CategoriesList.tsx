@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { stegaClean } from '@sanity/client/stega'
 import Rollup from './Rollup'
-// import { usePathname } from 'next/navigation'
+import { clean } from '@/lib/utils'
 
 export default function Categories({
 	_type,
@@ -24,9 +23,7 @@ export default function Categories({
 						key={_key}
 					>
 						<Link
-							href={decodeURIComponent(
-								`/${pageType}#${stegaClean(category.title)}`,
-							)}
+							href={decodeURIComponent(`/${pageType}#${clean(category.title)}`)}
 						>
 							{locale == 'ar' ? category.title : category.title_en}
 						</Link>

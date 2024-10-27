@@ -1,5 +1,4 @@
 import {
-	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'

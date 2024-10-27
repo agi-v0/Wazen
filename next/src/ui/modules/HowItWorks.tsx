@@ -1,12 +1,9 @@
 'use client'
-
-import Img from '@/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import Pretitle from '@/ui/Pretitle'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import user from '../../../public/How-it-works/User.svg'

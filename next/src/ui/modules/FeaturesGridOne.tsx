@@ -4,8 +4,8 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
-import { stegaClean } from '@sanity/client/stega'
 import CTAList from '../CTAList'
+import { clean } from '@/lib/utils'
 
 export default async function FeaturesGridOne({
 	pretitle,
@@ -46,7 +46,7 @@ export default async function FeaturesGridOne({
 		<section className="bg-cyan-950">
 			<div
 				className="fluid-gap section fluid-padding flex w-full flex-col items-center py-[var(--size--6rem)]"
-				style={{ textAlign: stegaClean(textAlign) }}
+				style={{ textAlign: clean(textAlign) } as React.CSSProperties}
 			>
 				<div className="flex flex-col items-center gap-6">
 					<Pretitle className="text-large font-semibold text-teal-100">

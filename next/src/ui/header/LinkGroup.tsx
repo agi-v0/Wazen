@@ -1,22 +1,14 @@
-import InteractiveDetails from './InteractiveDetails'
-import { PiCaretRightBold } from '@/ui/Icons'
-import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import processUrl from '@/lib/processUrl'
-import { Link } from '@/i18n/navigations'
+import { Link } from '@/i18n/routing'
 import {
-	NavigationMenu,
 	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
-	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-	NavigationMenuViewport,
 } from '@/components/ui/navigation-menu'
-import { ScrollArea } from '@/components/ui/scroll-area'
-// import Link from 'next/link'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 	const linkCount = links?.[0]?.links && links?.[0].links.length

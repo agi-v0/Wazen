@@ -15,6 +15,6 @@ export function slug(str: string) {
 	)
 }
 
-export function clean(inputs: string) {
+export function clean(inputs: any) {
 	return stegaClean(inputs)
 }

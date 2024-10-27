@@ -1,76 +1,77 @@
 'use client'
 
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import Img from '@/ui/Img'
-import React, { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react'
 
-export default function InfiniteMovingCards({
-	direction,
-	speed,
-	pauseOnHover = true,
-	items,
-}: {
+type CardItem = {
+	title: string
+	icon: string
+}
+
+type InfiniteMovingCardsProps = {
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	items: {
-		title: string
-		icon: string
-		// description?: string
-		// link?: Sanity.Link
-		// image?: Sanity.Image
-	}[]
-}) {
-	const containerRef = React.useRef<HTMLDivElement>(null)
-	const scrollerRef = React.useRef<HTMLUListElement>(null)
+	items: CardItem[]
+}
+const SPEED_MAP = {
+	fast: '10s',
+	normal: '40s',
+	slow: '100s',
+}
+export default function InfiniteMovingCards({
+	direction = 'left',
+	speed = 'normal',
+	pauseOnHover = true,
+	items,
+}: InfiniteMovingCardsProps) {
+	const containerRef = useRef<HTMLDivElement>(null)
+	const scrollerRef = useRef<HTMLUListElement>(null)
+	const [start, setStart] = useState(false)
+
+	const animationDirection = direction === 'left' ? 'forwards' : 'reverse'
+	const animationDuration = SPEED_MAP[speed]
 
 	useEffect(() => {
-		addAnimation()
-	}, [])
-	const [start, setStart] = useState(false)
-	function addAnimation() {
 		if (containerRef.current && scrollerRef.current) {
 			const scrollerContent = Array.from(scrollerRef.current.children)
 
 			scrollerContent.forEach((item) => {
 				const duplicatedItem = item.cloneNode(true)
-				if (scrollerRef.current) {
-					scrollerRef.current.appendChild(duplicatedItem)
-				}
+				scrollerRef.current?.appendChild(duplicatedItem)
 			})
+			containerRef.current.style.setProperty(
+				'--animation-direction',
+				animationDirection,
+			)
+			containerRef.current.style.setProperty(
+				'--animation-duration',
+				animationDuration,
+			)
 
-			getDirection()
-			getSpeed()
 			setStart(true)
 		}
-	}
-	const getDirection = () => {
-		if (containerRef.current) {
-			if (direction === 'left') {
-				containerRef.current.style.setProperty(
-					'--animation-direction',
-					'forwards',
+	}, [animationDirection, animationDuration])
+
+	const renderedItems = useMemo(
+		() =>
+			items.map(({ title, icon }) => {
+				return (
+					<li
+						key={title}
+						className="flex h-full flex-row items-center justify-center gap-2 rounded-2xl border border-gray-200 p-4"
+					>
+						<Icon
+							icon={icon ? icon : 'ph:cube-duotone'}
+							className="text-xl text-gray-500"
+						/>
+						<p className="text-start text-base font-medium">{title}</p>
+					</li>
 				)
-			} else {
-				containerRef.current.style.setProperty(
-					'--animation-direction',
-					'reverse',
-				)
-			}
-		}
-	}
-	const getSpeed = () => {
-		if (containerRef.current) {
-			if (speed === 'fast') {
-				containerRef.current.style.setProperty('--animation-duration', '10s')
-			} else if (speed === 'normal') {
-				containerRef.current.style.setProperty('--animation-duration', '40s')
-			} else {
-				containerRef.current.style.setProperty('--animation-duration', '60s')
-			}
-		}
-	}
+			}),
+		[items],
+	)
 
 	return (
 		<div
@@ -85,20 +86,7 @@ export default function InfiniteMovingCards({
 					pauseOnHover && 'hover:[animation-play-state:paused]',
 				)}
 			>
-				{items.map(({ title, icon }) => {
-					return (
-						<li
-							key={title}
-							className="flex h-full flex-row items-center justify-center gap-2 rounded-2xl border border-gray-200 p-4"
-						>
-							<Icon
-								icon={icon ? icon : 'ph:cube-duotone'}
-								className="text-xl text-gray-500"
-							/>
-							<p className="text-start text-base font-medium">{title}</p>
-						</li>
-					)
-				})}
+				{renderedItems}
 			</ul>
 		</div>
 	)
