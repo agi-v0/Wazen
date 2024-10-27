@@ -9,15 +9,11 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Link } from '@/i18n/navigations'
-// import Link from 'next/link'
 import { PiGlobe } from '@/ui/Icons'
 import { cn } from '@/lib/utils'
-import { headers } from 'next/headers'
 
-const LangSelect = () => {
-	const headerList = headers()
+const LangSelect = (pathname: any) => {
 	const locale = useLocale()
-	const pathname: any = headerList.get('x-current-path')
 
 	return (
 		<>
