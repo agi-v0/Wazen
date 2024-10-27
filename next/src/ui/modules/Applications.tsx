@@ -36,7 +36,7 @@ export default function Applications({
 				'fluid-vertical-space fluid-gap flex min-h-screen w-full flex-col items-center justify-evenly overflow-hidden'
 			}
 		>
-			<div className="section flex flex-col items-center gap-6">
+			<div className="section flex flex-col items-center gap-6 text-center">
 				<Pretitle className="text-base font-medium text-teal-500">
 					{pretitle}
 				</Pretitle>
