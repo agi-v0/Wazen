@@ -8,6 +8,7 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
 import blob from '../../../public/gradient-blob2.svg'
+import { clean } from '@/lib/utils'
 
 export default function HeroThree({
 	pretitle,
@@ -49,7 +50,7 @@ export default function HeroThree({
 	}
 
 	return (
-		<section className="section">
+		<section className="section bg-white">
 			<div
 				className={
 					'md:fluid-gap flex w-full flex-col items-center justify-evenly gap-8 lg:min-h-screen lg:flex-row'
@@ -57,7 +58,7 @@ export default function HeroThree({
 			>
 				<Img
 					image={image}
-					alt={image?.alt || pretitle}
+					alt={clean(image?.alt || pretitle)}
 					className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
 					imageWidth={3000}
 					draggable={false}
@@ -74,7 +75,6 @@ export default function HeroThree({
 						className="mt-2 w-full *:h-12 *:text-lg *:max-md:w-full"
 					/>
 				</div>
-
 				<Image
 					src={blob}
 					alt="hero"
