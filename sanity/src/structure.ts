@@ -37,7 +37,7 @@ const structure: StructureResolver = (S, context) =>
 
 			group(S, 'Global modules', [
 				S.documentTypeListItem('logo').title('Logos'),
-				S.documentTypeListItem('partner.logos').title('Partners logos'),
+				S.documentTypeListItem('partners.logos').title('Partners logos'),
 				S.documentTypeListItem('pricing').title('Pricing Tier'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 				S.documentTypeListItem('faq').title('FAQ'),
