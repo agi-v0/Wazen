@@ -104,7 +104,7 @@ export default function FeaturesInfiniteScroll({
 		>
 			<div
 				className={
-					'mx-auto flex max-w-xl flex-col items-center gap-6 md:max-w-3xl'
+					'section mx-auto flex max-w-xl flex-col items-center gap-6 text-center md:max-w-3xl'
 				}
 			>
 				<Pretitle className="text-large font-semibold text-gray-400">

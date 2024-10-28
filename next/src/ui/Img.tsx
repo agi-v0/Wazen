@@ -5,7 +5,6 @@ import {
 import { ImageFormat } from '@sanity/image-url/lib/types/types'
 import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
-import { clean } from '@/lib/utils'
 
 const SIZES = [
 	60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440, 1920, 2560, 3000,
@@ -78,7 +77,7 @@ export default function Img({
 			height={finalHeight}
 			className={className}
 			alt={image.alt || alt}
-			loading={clean(image.loading) || 'lazy'}
+			loading={image.loading || 'lazy'}
 			decoding="async"
 			{...props}
 		/>

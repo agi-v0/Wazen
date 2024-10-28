@@ -62,7 +62,7 @@ export default function ProductList({
 			>
 				<div
 					className={
-						'mb-12 flex max-w-4xl flex-col items-center gap-8 text-center'
+						'mb-12 flex w-full max-w-4xl flex-col items-center gap-8 text-center'
 					}
 				>
 					<Pretitle className="text-large font-semibold text-gray-400">

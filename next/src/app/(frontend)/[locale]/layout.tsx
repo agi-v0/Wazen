@@ -9,6 +9,7 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { domAnimation, LazyMotion } from 'framer-motion'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 

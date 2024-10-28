@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@catherineriver/sanity-plugin-generate-ogimage": "^1.0.6",
-		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.0.1",
+		"@focus-reactive/sanity-plugin-inline-svg-input": "^1.1.0",
 		"@iconify/react": "^5.0.1",
 		"@next/bundle-analyzer": "^14.2.5",
 		"@next/third-parties": "^14.2.15",
@@ -27,11 +27,11 @@
 		"@radix-ui/react-toast": "^1.2.1",
 		"@react-email/components": "^0.0.19",
 		"@sanity/dashboard": "^3.1.6",
-		"@sanity/document-internationalization": "^3.0.0",
+		"@sanity/document-internationalization": "^3.1.0",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/preview-url-secret": "^1.6.13",
 		"@sanity/table": "^1.1.2",
-		"@sanity/vision": "^3.42.1",
+		"@sanity/vision": "^3.62.2",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
@@ -60,7 +60,8 @@
 		"sharp": "^0.33.4",
 		"styled-components": "^6.1.13",
 		"tailwind-merge": "^2.3.0",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"usehooks-ts": "^3.1.0"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.25.8",

@@ -21,7 +21,7 @@ export default function Hero({
 }>) {
 	return (
 		<section
-			className="hero-background relative min-h-screen"
+			className="-hero-background relative min-h-screen"
 			style={{
 				backgroundImage: `linear-gradient(to bottom, transparent, white), radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #ffffff 100%)`,
 			}}

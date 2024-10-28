@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
 import Pretitle from '@/ui/Pretitle'
@@ -45,7 +45,7 @@ const portableTextComponents: PortableTextComponents = {
 }
 
 const FeatureItem = ({ feature }: { feature: Feature }) => (
-	<motion.li
+	<m.li
 		className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
 		variants={FADE_UP_ANIMATION_VARIANTS}
 	>
@@ -71,7 +71,7 @@ const FeatureItem = ({ feature }: { feature: Feature }) => (
 			svg={true}
 			className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
 		/>
-	</motion.li>
+	</m.li>
 )
 
 export default function FeaturesGridTwo({
@@ -105,7 +105,7 @@ const FeatureBlock = ({ features }: { features: Feature[] }) => {
 
 	return (
 		<div ref={ref}>
-			<motion.ul
+			<m.ul
 				className="grid w-full grid-flow-row gap-6 *:bg-cyan-950/10 md:grid-flow-col"
 				initial="hidden"
 				animate={isInView ? 'show' : 'hidden'}
@@ -122,7 +122,7 @@ const FeatureBlock = ({ features }: { features: Feature[] }) => {
 				{features.map((feature) => (
 					<FeatureItem key={feature.title} feature={feature} />
 				))}
-			</motion.ul>
+			</m.ul>
 		</div>
 	)
 }

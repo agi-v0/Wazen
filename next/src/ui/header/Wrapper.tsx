@@ -49,7 +49,7 @@ export default function Wrapper({
 			ref={ref}
 			className={
 				className +
-				` transition-transform duration-200 ease-in-out ${scrollPosition > 0 ? '-translate-y-9' : ''}`
+				` transition-transform duration-200 ease-in-out ${scrollPosition > 0 ? 'xl:-translate-y-9' : ''}`
 			}
 		>
 			{isDesktop && <ContactBar contactInfo={contactInfo} locale={locale} />}

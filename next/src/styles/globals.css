@@ -300,14 +300,16 @@
 		background: radial-gradient(var(--a-shape), var(--a), transparent),
 			radial-gradient(var(--b-shape), var(--b), transparent);
 	}
+	.cyan-gradient-background-3 {
+		--a: #f0fdfa;
+		--a-shape: ellipse 30% 33% at 50% 56%;
+		--b: #cffafe;
+		--b-shape: ellipse 50% 50% at 51% 32%;
+		background: radial-gradient(var(--b-shape), var(--b), transparent);
+	}
 
 	.bg-grid {
 		background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2298%22%20height%3D%2298%22%20viewBox%3D%220%200%2098%2098%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%2297%22%20height%3D%2297%22%20stroke%3D%22white%22%2F%3E%3C%2Fsvg%3E');
-	}
-
-	.svg-container svg {
-		height: 100% !important; /* Override any existing height */
-		width: auto !important; /* Maintain aspect ratio */
 	}
 
 	.customScrollbar {
