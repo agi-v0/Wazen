@@ -22,7 +22,7 @@ export function fetchSanity<T = any>(
 		params,
 		preview
 			? {
-					stega: true,
+					stega: false,
 					perspective: 'previewDrafts',
 					token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 					useCdn: false,
@@ -32,6 +32,7 @@ export function fetchSanity<T = any>(
 					},
 				}
 			: {
+					stega: false,
 					perspective: 'published',
 					useCdn: true,
 					next: {

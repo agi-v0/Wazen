@@ -1,7 +1,7 @@
 'use client'
 import React, { useRef, useState, useEffect, useMemo } from 'react'
 import { useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import Img from '@/ui/Img'
 import {
 	PortableText,
@@ -86,11 +86,11 @@ export default function Benefits({
 			}
 		>
 			{isDesktop ? (
-				<motion.div className="fluid-gap flex pb-12" ref={ref}>
+				<m.div className="fluid-gap flex pb-12" ref={ref}>
 					{/* <div className="sticky top-32 hidden h-full md:block">
 				<div className="flex h-80 flex-col items-center justify-between py-6">
 					{numbers.map((number, index) => (
-						<motion.div
+						<m.div
 							initial={{
 								opacity: 0,
 							}}
@@ -101,7 +101,7 @@ export default function Benefits({
 							key={number + index}
 						>
 							{number}
-						</motion.div>
+						</m.div>
 					))}
 				</div>
 			</div> */}
@@ -109,7 +109,7 @@ export default function Benefits({
 					<div className="flex w-full flex-col items-start">
 						{content.map((item: any, index: any) => {
 							return (
-								<motion.div
+								<m.div
 									initial={{
 										opacity: 0,
 									}}
@@ -123,14 +123,14 @@ export default function Benefits({
 									key={'desktop_' + item.content + index}
 								>
 									<PortableText value={item.content} components={components} />
-								</motion.div>
+								</m.div>
 							)
 						})}
 					</div>
 
 					<div className="sticky left-0 top-32 h-full w-full">
 						<AnimatePresence mode="wait">
-							<motion.div
+							<m.div
 								key={activeCard}
 								initial={{ opacity: 0, translateY: -40 }}
 								animate={{ opacity: 1, translateY: 0 }}
@@ -142,18 +142,18 @@ export default function Benefits({
 									imageWidth={2400}
 									className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md fade-in fade-out"
 								/>
-							</motion.div>
+							</m.div>
 						</AnimatePresence>
 					</div>
-				</motion.div>
+				</m.div>
 			) : (
-				<motion.div
+				<m.div
 					className="flex flex-col gap-6 px-[var(--padding-horizontal--main)] xl:hidden"
 					ref={ref}
 				>
 					{content.map((item: any, index: any) => {
 						return (
-							<motion.div
+							<m.div
 								initial={{
 									opacity: 0,
 								}}
@@ -170,10 +170,10 @@ export default function Benefits({
 									imageWidth={2400}
 									className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:max-w-[450px]"
 								/>
-							</motion.div>
+							</m.div>
 						)
 					})}
-				</motion.div>
+				</m.div>
 			)}
 		</section>
 	)

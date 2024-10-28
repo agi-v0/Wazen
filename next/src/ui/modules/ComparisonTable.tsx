@@ -1,4 +1,4 @@
-import { clean, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import Img from '../Img'
 import { PiCheckBold, PiXBold } from '@/ui/Icons'
 import { useLocale } from 'next-intl'
@@ -78,7 +78,7 @@ export default async function ComparisonTable({
 }
 
 const cellContent = (cell: string, index: number, locale: string) => {
-	switch (clean(cell)) {
+	switch (cell) {
 		case 'x':
 			return (
 				<span
@@ -108,7 +108,7 @@ const cellContent = (cell: string, index: number, locale: string) => {
 					className={cn('flex items-center justify-start text-gray-600')}
 					key={Math.random() * (index + Math.random())}
 				>
-					{clean(cell)}
+					{cell}
 				</span>
 			)
 	}

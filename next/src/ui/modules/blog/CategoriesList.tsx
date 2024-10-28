@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Rollup from './Rollup'
-import { clean } from '@/lib/utils'
 
 export default function Categories({
 	_type,
@@ -22,9 +21,7 @@ export default function Categories({
 						className="inline-flex h-10 cursor-pointer items-center justify-center rounded-md px-6 py-3 font-medium text-cyan-950/80 hover:bg-teal-50 hover:text-cyan-700"
 						key={_key}
 					>
-						<Link
-							href={decodeURIComponent(`/${pageType}#${clean(category.title)}`)}
-						>
+						<Link href={decodeURIComponent(`/${pageType}#${category.title}`)}>
 							{locale == 'ar' ? category.title : category.title_en}
 						</Link>
 					</li>

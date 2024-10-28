@@ -1,8 +1,8 @@
-import * as motion from 'framer-motion/client'
+import * as m from 'framer-motion/m'
 
 const reports = () => {
 	return (
-		<motion.div
+		<m.div
 			initial="hidden"
 			animate="visible"
 			variants={{
@@ -14,7 +14,7 @@ const reports = () => {
 			}}
 			className="relative flex h-full max-w-md flex-row-reverse items-center gap-2"
 		>
-			<motion.img
+			<m.img
 				src="/statistic-img-1.svg"
 				alt="reports"
 				width={255.88}
@@ -36,7 +36,7 @@ const reports = () => {
 				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '-6deg' }} // {{ edit_1 }}
 			/>
-			<motion.img
+			<m.img
 				src="/statistic-img-2.svg"
 				alt="reports"
 				width={255.88}
@@ -54,7 +54,7 @@ const reports = () => {
 				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '6deg' }} // {{ edit_2 }}
 			/>
-		</motion.div>
+		</m.div>
 	)
 }
 

@@ -4,7 +4,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import user from '../../../public/How-it-works/User.svg'
 import chart from '../../../public/How-it-works/Chart.svg'
@@ -58,7 +58,7 @@ export default function HowItWorks({
 				<PortableText value={content} components={components} />
 				<ul ref={ref} className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
 					{steps?.map((step, index) => (
-						<motion.li
+						<m.li
 							key={step.title}
 							initial="hidden"
 							animate={isInView ? 'visible' : 'hidden'}
@@ -83,7 +83,7 @@ export default function HowItWorks({
 									{step.description}
 								</p>
 							</div>
-						</motion.li>
+						</m.li>
 					))}
 				</ul>
 			</div>

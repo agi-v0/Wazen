@@ -14,8 +14,6 @@ export default function HeroThree({
 	content,
 	ctas,
 	image,
-	textAlign = 'start',
-	alignItems,
 }: Partial<{
 	pretitle: any
 	content: any
@@ -51,7 +49,7 @@ export default function HeroThree({
 	}
 
 	return (
-		<section className="section">
+		<section className="section bg-white">
 			<div
 				className={
 					'md:fluid-gap flex w-full flex-col items-center justify-evenly gap-8 lg:min-h-screen lg:flex-row'
@@ -76,7 +74,6 @@ export default function HeroThree({
 						className="mt-2 w-full *:h-12 *:text-lg *:max-md:w-full"
 					/>
 				</div>
-
 				<Image
 					src={blob}
 					alt="hero"
