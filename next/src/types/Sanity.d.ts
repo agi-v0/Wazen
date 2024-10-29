@@ -15,6 +15,7 @@ declare global {
 			staticLinks?: Navigation
 			ogimage?: string
 			ga4?: string
+			gtmId?: string
 			contactInfo?: { contactInfo: any }
 		}>
 
