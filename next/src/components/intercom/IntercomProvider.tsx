@@ -15,20 +15,25 @@ export default function IntercomProvider() {
                 const i: any = function (...args: any[]) { (i.q = i.q || []).push(args); };
                 i.q = i.q || [];
                 w.Intercom = i;
-                const l = function () {
-                    const s = d.createElement("script");
-                    s.type = "text/javascript";
-                    s.async = true;
-                    s.src = "https://widget.intercom.io/widget/YOUR_APP_ID";
-                    const x = d.getElementsByTagName("script")[0];
-                    x.parentNode.insertBefore(s, x);
+
+                const loadScript = () => {
+                    const scriptElement = d.createElement("script");
+                    scriptElement.type = "text/javascript";
+                    scriptElement.async = true;
+                    scriptElement.src = "https://widget.intercom.io/widget/YOUR_APP_ID";
+
+                    const firstScript = d.getElementsByTagName("script")[0];
+                    if (firstScript?.parentNode) {
+                        firstScript.parentNode.insertBefore(scriptElement, firstScript);
+                    }
                 };
+
                 if (document.readyState === "complete") {
-                    l();
+                    loadScript();
                 } else if (w.attachEvent) {
-                    w.attachEvent("onload", l);
+                    w.attachEvent("onload", loadScript);
                 } else {
-                    w.addEventListener("load", l, false);
+                    w.addEventListener("load", loadScript, false);
                 }
             }
         })();
