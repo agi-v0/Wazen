@@ -1,14 +1,18 @@
 import { domAnimation, LazyMotion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import Hero from './Hero'
+import HeroTwo from './HeroTwo'
+import HeroThree from './HeroThree'
+import HeroFour from './HeroFour'
 
 const Categories = dynamic(() => import('./blog/CategoriesList'))
 const BlogRollup = dynamic(() => import('./blog/Rollup'))
 const CreativeModule = dynamic(() => import('./CreativeModule'))
 const CustomHTML = dynamic(() => import('./CustomHTML'))
-const Hero = dynamic(() => import('./Hero'))
-const HeroFour = dynamic(() => import('./HeroFour'))
-const HeroThree = dynamic(() => import('./HeroThree'))
-const HeroTwo = dynamic(() => import('./HeroTwo'))
+// const Hero = dynamic(() => import('./Hero'))
+// const HeroFour = dynamic(() => import('./HeroFour'))
+// const HeroThree = dynamic(() => import('./HeroThree'))
+// const HeroTwo = dynamic(() => import('./HeroTwo'))
 const LogoList = dynamic(() => import('./LogoList'))
 const Partners = dynamic(() => import('./PartnersList'))
 const RichtextModule = dynamic(() => import('./RichtextModule'))
