@@ -9,8 +9,11 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+
+
 import Script from 'next/script'
 import IntercomClientComponent from '@/components/ui/intercom'
+
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -59,7 +62,7 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					{/* {draftMode().isEnabled && <VisualEditing />} */}
-					{ga4 && <GoogleAnalytics gaId={ga4} />}
+				
 					<Script
 						strategy="afterInteractive"
 						id="intercom-settings"
@@ -68,6 +71,7 @@ export default async function RootLayout({
 						}}
 					/>
 					<IntercomClientComponent />
+          	{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
 		</NextIntlClientProvider>
