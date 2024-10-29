@@ -31,6 +31,7 @@ export default async function RootLayout({
 	}
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
+
 	return (
 		<NextIntlClientProvider>
 			<html
@@ -38,8 +39,6 @@ export default async function RootLayout({
 				dir={locale == 'en' ? 'ltr' : 'rtl'}
 				className={locale == 'en' ? inter.className : rubik.className}
 			>
-				{' '}
-				{ga4 && <GoogleAnalytics gaId={ga4} />}
 				{gtmId && <GoogleTagManager gtmId={gtmId} />}
 				<body className="w-full">
 					<Header
@@ -58,6 +57,7 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					{/* {draftMode().isEnabled && <VisualEditing />} */}
+					{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
 		</NextIntlClientProvider>
