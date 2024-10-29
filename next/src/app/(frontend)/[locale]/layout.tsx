@@ -9,7 +9,11 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
-import IntercomProvider from '@/components/intercom/IntercomProvider'
+
+
+import Script from 'next/script'
+import IntercomClientComponent from '@/components/ui/intercom'
+
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -57,9 +61,17 @@ export default async function RootLayout({
 						staticLinks={staticLinks}
 						locale={locale}
 					/>
-					<IntercomProvider />
 					{/* {draftMode().isEnabled && <VisualEditing />} */}
-					{ga4 && <GoogleAnalytics gaId={ga4} />}
+				
+					<Script
+						strategy="afterInteractive"
+						id="intercom-settings"
+						dangerouslySetInnerHTML={{
+							__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
+						}}
+					/>
+					<IntercomClientComponent />
+          	{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
 		</NextIntlClientProvider>
