@@ -2,21 +2,21 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { notFound } from 'next/navigation'
 import Post from '@/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 
 type Props = {
 	params: { slug?: string; locale: string }
 }
 
 export default async function getStaticPaths({ params }: Props) {
-	unstable_setRequestLocale(params.locale)
+	setRequestLocale(params.locale)
 	const post = await getStaticProps(params)
 	if (!post) notFound()
 	return <Post post={post} locale={params.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	unstable_setRequestLocale(params.locale)
+	setRequestLocale(params.locale)
 	const post = await getStaticProps(params)
 	if (!post) notFound()
 	return processMetadata(post, params.locale)
