@@ -17,7 +17,7 @@ export function fetchSanity<T = any>(
 		perspective: 'published',
 		useCdn: true,
 		next: {
-			revalidate: 3600,
+			revalidate: 60,
 			...next,
 		},
 	})

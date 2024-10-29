@@ -29,9 +29,9 @@ export default async function RootLayout({
 	if (!site) {
 		return
 	}
+
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
-
 	return (
 		<NextIntlClientProvider>
 			<html
