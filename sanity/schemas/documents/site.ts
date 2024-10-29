@@ -71,6 +71,14 @@ export default defineType({
 		defineField({
 			name: 'ga4',
 			title: 'Google Analytics 4 Tag',
+			description: 'Your measurement ID. Usually starts with G-.',
+			type: 'string',
+			group: 'general',
+		}),
+		defineField({
+			name: 'gtmId',
+			title: 'Google Tag Manager Container ID',
+			description: 'Your GTM container ID. Usually starts with GTM-.',
 			type: 'string',
 			group: 'general',
 		}),
