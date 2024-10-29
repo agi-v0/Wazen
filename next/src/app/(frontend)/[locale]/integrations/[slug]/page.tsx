@@ -1,6 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { notFound } from 'next/navigation'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import SingleAppHeader from '@/ui/modules/app-store/SingleAppHeader'
 import CallToAction from '@/ui/modules/CallToAction'
 import processMetadata from '@/lib/processMetadata'
@@ -11,7 +11,7 @@ type Props = {
 }
 
 export default async function Page({ params }: Props) {
-	unstable_setRequestLocale(params.locale)
+	setRequestLocale(params.locale)
 	const app = await getPage(params)
 	if (!app) notFound()
 	return (
@@ -25,7 +25,7 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props) {
-	unstable_setRequestLocale(params.locale)
+	setRequestLocale(params.locale)
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page, params.locale)
