@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { getSite } from '@/lib/sanity/queries'
 import { routing } from '@/i18n/routing'
 import { inter, rubik } from '@/styles/fonts'
@@ -29,7 +29,8 @@ export default async function RootLayout({
 	if (!site) {
 		return
 	}
-	const { headerMenu, ctas, footerMenu, staticLinks, ga4, contactInfo } = site
+	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
+		site
 	return (
 		<NextIntlClientProvider>
 			<html
@@ -37,6 +38,9 @@ export default async function RootLayout({
 				dir={locale == 'en' ? 'ltr' : 'rtl'}
 				className={locale == 'en' ? inter.className : rubik.className}
 			>
+				{' '}
+				{ga4 && <GoogleAnalytics gaId={ga4} />}
+				{gtmId && <GoogleTagManager gtmId={gtmId} />}
 				<body className="w-full">
 					<Header
 						headerMenu={headerMenu}
@@ -54,7 +58,6 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					{/* {draftMode().isEnabled && <VisualEditing />} */}
-					{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
 		</NextIntlClientProvider>
