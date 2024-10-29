@@ -15,7 +15,6 @@ import { cn } from '@/lib/utils'
 
 const LangSelect = ({ pathname }: any) => {
 	const locale = useLocale()
-	console.log(pathname)
 	return (
 		<>
 			<NavigationMenu
