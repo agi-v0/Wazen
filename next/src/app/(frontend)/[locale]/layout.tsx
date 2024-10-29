@@ -1,15 +1,14 @@
-import '../../../styles/globals.css'
+import '@/styles/globals.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { getSite } from '@/lib/sanity/queries'
 import { routing } from '@/i18n/routing'
-import { inter, rubik } from '../../../styles/fonts'
+import { inter, rubik } from '@/styles/fonts'
 // import dynamic from 'next/dynamic'
 import { Toaster } from '@/components/ui/toaster'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
-import { domAnimation, LazyMotion } from 'framer-motion'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
