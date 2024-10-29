@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 export default function IntercomProvider() {
     useEffect(() => {
-        window.intercomSettings = { app_id: "YOUR_APP_ID" };
+        window.intercomSettings = { app_id: "desatz83" };
         (function () {
             const w = window as any;
             const ic = w.Intercom;
