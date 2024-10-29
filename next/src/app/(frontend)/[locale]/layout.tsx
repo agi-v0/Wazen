@@ -9,7 +9,7 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
-import IntercomProvider from '@/components/intercom/IntercomProvider';
+import IntercomProvider from '@/components/intercom/IntercomProvider'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
