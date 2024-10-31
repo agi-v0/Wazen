@@ -1,11 +1,11 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import Modules from '@/ui/modules'
+import Modules from '@/components/ui/modules'
 
 export default async function NotFound() {
 	const page = await get404()
 	if (!page)
 		return (
-			<div className="h-screen flex justify-center items-center">
+			<div className="flex h-screen items-center justify-center">
 				<h1 className="h1 text-center text-5xl">404</h1>
 			</div>
 		)

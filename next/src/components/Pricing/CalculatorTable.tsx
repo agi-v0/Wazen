@@ -10,7 +10,7 @@ import {
 	PiPlusBold,
 	PiTableDuotone,
 	PiUserListDuotone,
-} from '@/ui/Icons'
+} from '@/components/ui/Icons'
 
 const CalculatorTable = ({
 	details,

@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils'
-import CTAList from '@/ui/CTAList'
+import CTAList from '@/components/ui/CTAList'
 import {
 	PiFlowArrowDuotone,
 	PiIdentificationCardDuotone,
 	PiTableDuotone,
 	PiUserListDuotone,
-} from '@/ui/Icons'
+} from '@/components/ui/Icons'
 // import NumberTicker from '../animated/number-ticker'
 
 const PricingBox = (props: {

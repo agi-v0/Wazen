@@ -1,10 +1,10 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
-import SingleAppHeader from '@/ui/modules/app-store/SingleAppHeader'
-import CallToAction from '@/ui/modules/CallToAction'
+import SingleAppHeader from '@/components/ui/modules/app-store/SingleAppHeader'
+import CallToAction from '@/components/ui/modules/CallToAction'
 import processMetadata from '@/lib/processMetadata'
-import SuggestedApps from '@/ui/modules/app-store/SuggestedApps'
+import SuggestedApps from '@/components/ui/modules/app-store/SuggestedApps'
 
 type Props = {
 	params: { slug?: string; locale: string }

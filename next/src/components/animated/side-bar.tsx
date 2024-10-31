@@ -1,5 +1,5 @@
 import React from 'react'
-import { PiTableDuotone } from '@/ui/Icons'
+import { PiTableDuotone } from '@/components/ui/Icons'
 import { useLocale } from 'next-intl'
 
 function SideBar() {

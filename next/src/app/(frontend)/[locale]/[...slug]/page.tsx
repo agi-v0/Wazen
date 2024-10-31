@@ -1,7 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { creativeModuleQuery } from '@/lib/sanity/queries'
 import { notFound } from 'next/navigation'
-import Modules from '@/ui/modules'
+import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 

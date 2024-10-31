@@ -1,6 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { creativeModuleQuery } from '@/lib/sanity/queries'
-import Modules from '@/ui/modules'
+import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
 type Props = {

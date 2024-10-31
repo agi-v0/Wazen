@@ -10,7 +10,7 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import Img from '@/ui/Img'
+import Img from '@/components/ui/Img'
 import { cn } from '@/lib/utils'
 import style from './embla.module.css'
 

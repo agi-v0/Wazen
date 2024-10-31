@@ -1,5 +1,5 @@
-import CTA from '@/ui/CTA'
-import { PiCaretLeftBold } from '@/ui/Icons'
+import CTA from '@/components/ui/CTA'
+import { PiCaretLeftBold } from '@/components/ui/Icons'
 
 export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 	return (
