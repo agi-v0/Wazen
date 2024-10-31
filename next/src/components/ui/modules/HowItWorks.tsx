@@ -6,9 +6,9 @@ import {
 } from '@portabletext/react'
 import { m, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import user from '../../../public/How-it-works/User.svg'
-import chart from '../../../public/How-it-works/Chart.svg'
-import sidebar from '../../../public/How-it-works/Sidebar.svg'
+import user from '../../../../public/How-it-works/User.svg'
+import chart from '../../../../public/How-it-works/Chart.svg'
+import sidebar from '../../../../public/How-it-works/Sidebar.svg'
 import Image from 'next/image'
 
 export default function HowItWorks({

@@ -7,7 +7,7 @@ import {
 import CTAList from '@/components/ui/CTAList'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
-import blob from '../../../public/gradient-blob2.svg'
+import blob from '../../../../public/gradient-blob2.svg'
 
 export default function HeroThree({
 	pretitle,
