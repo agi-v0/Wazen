@@ -20,7 +20,7 @@ export default async function Header({
 	ctas?: Sanity.CTA[]
 	contactInfo?: any
 }) {
-	const headerList = headers()
+	const headerList = await headers()
 	const pathname: any = headerList.get('x-current-path')
 	return (
 		<Wrapper

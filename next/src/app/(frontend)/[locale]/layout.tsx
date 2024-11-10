@@ -19,11 +19,13 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
 	children,
-	params: { locale },
+	params,
 }: {
 	children: React.ReactNode
 	params: { locale: any }
 }) {
+	const resolvedParams = await params
+	const locale = resolvedParams.locale
 	// Ensure that the incoming `locale` is valid
 	if (!routing.locales.includes(locale as any)) {
 		notFound()
@@ -58,7 +60,7 @@ export default async function RootLayout({
 						staticLinks={staticLinks}
 						locale={locale}
 					/>
-					{/* {draftMode().isEnabled && <VisualEditing />} */}
+
 					{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
