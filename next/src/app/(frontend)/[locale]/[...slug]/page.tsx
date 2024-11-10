@@ -10,17 +10,20 @@ type Props = {
 }
 
 export default async function Page({ params }: Props) {
-	setRequestLocale(params.locale)
-	const page = await getPage(params)
+	const resolvedParams = await params
+
+	setRequestLocale(resolvedParams.locale)
+	const page = await getPage(resolvedParams)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} locale={params.locale} />
+	return <Modules modules={page?.modules} locale={resolvedParams.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	setRequestLocale(params.locale)
-	const page = await getPage(params)
+	const resolvedParams = await params
+	setRequestLocale(resolvedParams.locale)
+	const page = await getPage(resolvedParams)
 	if (!page) notFound()
-	return processMetadata(page, params.locale)
+	return processMetadata(page, resolvedParams.locale)
 }
 
 export async function generateStaticParams() {

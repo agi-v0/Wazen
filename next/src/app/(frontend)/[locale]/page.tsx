@@ -8,13 +8,16 @@ type Props = {
 }
 
 export default async function Page({ params }: Props) {
-	const page = await getPage(params.locale)
-	return <Modules modules={page?.modules} locale={params.locale} />
+	const resolvedParams = await params
+	const page = await getPage(resolvedParams.locale)
+	return <Modules modules={page?.modules} locale={resolvedParams.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	const page = await getPage(params.locale)
-	return processMetadata(page, params.locale)
+	const resolvedParams = await params
+
+	const page = await getPage(resolvedParams.locale)
+	return processMetadata(page, resolvedParams.locale)
 }
 
 async function getPage(locale: string) {

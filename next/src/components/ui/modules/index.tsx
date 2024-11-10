@@ -148,7 +148,13 @@ export default function Modules({
 								/>
 							)
 						case 'pricing-comparison':
-							return <PlansComparison {...module} key={module._key} />
+							return (
+								<PlansComparison
+									{...module}
+									key={module._key}
+									locale={locale}
+								/>
+							)
 						case 'product-list':
 							return <ProductList {...module} key={module._key} />
 						default:

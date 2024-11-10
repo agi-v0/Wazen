@@ -6,16 +6,21 @@ import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
 import { PiCheckBold, PiXBold } from '@/components/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
-import { useTranslations } from 'next-intl'
 
 const PlansComparison = ({
 	content,
 	details,
+	locale,
 }: Partial<{
 	content: any
 	details: any
+	locale: 'en' | 'ar'
 }>) => {
-	const t = useTranslations('Pricing')
+	const switchLabel =
+		locale === 'en' ? 'Yearly (two months free)' : 'سنوي (شهرين مجاناً)'
+	const SR = locale === 'en' ? 'SR' : 'ريال'
+	const monthly = locale === 'en' ? 'monthly' : 'شهرياً'
+	const yearly = locale === 'en' ? 'Yearly' : 'سنوياً'
 
 	const [isYearly, setIsYearly] = useState(true)
 
@@ -30,7 +35,7 @@ const PlansComparison = ({
 					<div className="sticky top-[var(--header-height)] z-[2] flex w-full flex-row items-end justify-between bg-white *:w-full max-lg:hidden max-lg:w-fit *:max-lg:w-48">
 						<div className="flex flex-col items-start justify-end px-2 py-4">
 							<div className="flex h-10 w-full flex-row items-center justify-center gap-4 text-sm font-medium text-gray-400 rtl:flex-row-reverse">
-								{t('Yearly (two months free)')}{' '}
+								{switchLabel}
 								<Switch checked={isYearly} onCheckedChange={setIsYearly} />
 							</div>
 						</div>
@@ -52,10 +57,10 @@ const PlansComparison = ({
 												{' '}
 												{isYearly ? row.cells[0] : row.cells[1]}
 											</span>
-											{t('SR')}
+											{SR}
 											<span className="text-large font-medium text-gray-400">
 												{' '}
-												/{isYearly ? t('Yearly') : t('Monthly')}
+												/{isYearly ? yearly : monthly}
 											</span>
 										</p>
 										{/* <button

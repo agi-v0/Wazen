@@ -10,10 +10,10 @@ import Footer from '@/components/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 
-
 import Script from 'next/script'
 import IntercomClientComponent from '@/components/ui/intercom'
 
+import { notFound } from 'next/navigation'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -23,11 +23,17 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
 	children,
-	params: { locale },
+	params,
 }: {
 	children: React.ReactNode
 	params: { locale: any }
 }) {
+	const resolvedParams = await params
+	const locale = resolvedParams.locale
+	// Ensure that the incoming `locale` is valid
+	if (!routing.locales.includes(locale as any)) {
+		notFound()
+	}
 	setRequestLocale(locale)
 	//loading header and footer in one query
 	const site = await getSite(locale)
@@ -62,7 +68,7 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					{/* {draftMode().isEnabled && <VisualEditing />} */}
-				
+
 					<Script
 						strategy="afterInteractive"
 						id="intercom-settings"
@@ -71,7 +77,7 @@ export default async function RootLayout({
 						}}
 					/>
 					<IntercomClientComponent />
-          	{ga4 && <GoogleAnalytics gaId={ga4} />}
+					{ga4 && <GoogleAnalytics gaId={ga4} />}
 				</body>
 			</html>
 		</NextIntlClientProvider>
