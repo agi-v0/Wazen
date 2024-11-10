@@ -19,7 +19,10 @@ export default function NumberTicker({
 	const ref = useRef<HTMLSpanElement>(null)
 	const motionValue = useMotionValue(direction === 'down' ? value : 0)
 	const springValue = useSpring(motionValue, { damping: 50, stiffness: 75 })
-	const isInView = useInView(ref, { once: true, margin: '0px' })
+	const isInView = useInView(ref as React.RefObject<Element>, {
+		once: true,
+		margin: '0px',
+	})
 
 	useEffect(() => {
 		isInView &&
