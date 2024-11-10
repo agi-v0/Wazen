@@ -1,4 +1,4 @@
-import * as m from 'framer-motion/m'
+import { m } from 'framer-motion'
 
 const reports = () => {
 	return (

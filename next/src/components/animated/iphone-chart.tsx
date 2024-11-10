@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import * as m from 'framer-motion/m'
+import { m } from 'framer-motion'
 
 export default function MobileApp() {
 	return (
