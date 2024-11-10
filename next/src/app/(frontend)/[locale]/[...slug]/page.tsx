@@ -6,7 +6,7 @@ import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 
 type Props = {
-	params: { slug: string[]; locale: string }
+	params: Promise<{ slug: string[]; locale: 'en' | 'ar' }>
 }
 
 export default async function Page({ params }: Props) {
@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
-async function getPage(params: Props['params']) {
+async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
 			_type == 'page' &&

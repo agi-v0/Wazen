@@ -4,7 +4,7 @@ import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
 type Props = {
-	params: { locale: string }
+	params: Promise<{ locale: string }>
 }
 
 export default async function Page({ params }: Props) {
