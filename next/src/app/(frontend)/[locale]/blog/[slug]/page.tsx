@@ -5,21 +5,24 @@ import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 
 type Props = {
-	params: { slug?: string; locale: string }
+	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
 }
 
-export default async function getStaticPaths({ params }: Props) {
-	setRequestLocale(params.locale)
-	const post = await getStaticProps(params)
+export default async function Page({ params }: Props) {
+	const resolvedParams = await params
+
+	setRequestLocale(resolvedParams.locale)
+	const post = await getPost(await params)
 	if (!post) notFound()
-	return <Post post={post} locale={params.locale} />
+	return <Post post={post} locale={resolvedParams.locale} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	setRequestLocale(params.locale)
-	const post = await getStaticProps(params)
+	const resolvedParams = await params
+	setRequestLocale(resolvedParams.locale)
+	const post = await getPost(await params)
 	if (!post) notFound()
-	return processMetadata(post, params.locale)
+	return processMetadata(post, resolvedParams.locale)
 }
 
 export async function generateStaticParams() {
@@ -30,7 +33,7 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getStaticProps(params: Props['params']) {
+async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
 

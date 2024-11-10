@@ -7,12 +7,13 @@ import processMetadata from '@/lib/processMetadata'
 import SuggestedApps from '@/components/ui/modules/app-store/SuggestedApps'
 
 type Props = {
-	params: { slug?: string; locale: string }
+	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
 }
 
 export default async function Page({ params }: Props) {
-	setRequestLocale(params.locale)
-	const app = await getPage(params)
+	const resolvedParams = await params
+	setRequestLocale(resolvedParams.locale)
+	const app = await getPage(resolvedParams)
 	if (!app) notFound()
 	return (
 		<>
@@ -25,10 +26,11 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props) {
-	setRequestLocale(params.locale)
-	const page = await getPage(params)
+	const resolvedParams = await params
+	setRequestLocale(resolvedParams.locale)
+	const page = await getPage(resolvedParams)
 	if (!page) notFound()
-	return processMetadata(page, params.locale)
+	return processMetadata(page, resolvedParams.locale)
 }
 
 export async function generateStaticParams() {
@@ -38,7 +40,7 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getPage(params: Props['params']) {
+async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 	return await fetchSanity<any>(
 		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
