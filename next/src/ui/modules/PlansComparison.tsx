@@ -6,7 +6,6 @@ import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
 import { PiCheckBold, PiXBold } from '@/ui/Icons'
 import { set2 } from '@/components/ui/portable-text'
-import { useTranslations } from 'next-intl'
 
 const PlansComparison = ({
 	content,
