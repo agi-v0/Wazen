@@ -2,6 +2,7 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { creativeModuleQuery } from '@/lib/sanity/queries'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import { setRequestLocale } from 'next-intl/server'
 
 type Props = {
 	params: Promise<{ locale: string }>
@@ -9,6 +10,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
 	const resolvedParams = await params
+	setRequestLocale(resolvedParams.locale)
 	const page = await getPage(resolvedParams.locale)
 	return <Modules modules={page?.modules} locale={resolvedParams.locale} />
 }

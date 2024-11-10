@@ -1,6 +1,13 @@
 'use client'
 import React, { useRef } from 'react'
-import { useScroll, useTransform, m, MotionValue } from 'framer-motion'
+import {
+	useScroll,
+	useTransform,
+	m,
+	MotionValue,
+	LazyMotion,
+	domAnimation,
+} from 'framer-motion'
 
 export const ContainerScroll = ({
 	children,
@@ -63,16 +70,18 @@ export const Card = ({
 	children: React.ReactNode
 }) => {
 	return (
-		<m.div
-			style={{
-				rotateX: rotate,
-				scale,
-			}}
-			key={`container-scroll-${1}`}
-		>
-			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
-				{children}
-			</div>
-		</m.div>
+		<LazyMotion features={domAnimation}>
+			<m.div
+				style={{
+					rotateX: rotate,
+					scale,
+				}}
+				key={`container-scroll-${1}`}
+			>
+				<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
+					{children}
+				</div>
+			</m.div>
+		</LazyMotion>
 	)
 }

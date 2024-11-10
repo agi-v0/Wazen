@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import { m, useInView } from 'framer-motion'
+import { domAnimation, LazyMotion, m, useInView } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
 import Pretitle from '@/components/ui/Pretitle'
@@ -81,21 +81,23 @@ export default function FeaturesGridTwo({
 	textAlign = 'center',
 }: FeaturesGridTwoProps) {
 	return (
-		<section className="bg-teal-400/10 py-[var(--size--4rem)]">
-			<div className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white">
-				<div className="flex flex-col items-center gap-6">
-					<Pretitle className="text-large font-semibold text-teal-500">
-						{pretitle}
-					</Pretitle>
-					<PortableText value={content} components={portableTextComponents} />
+		<LazyMotion features={domAnimation}>
+			<section className="bg-teal-400/10 py-[var(--size--4rem)]">
+				<div className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white">
+					<div className="flex flex-col items-center gap-6">
+						<Pretitle className="text-large font-semibold text-teal-500">
+							{pretitle}
+						</Pretitle>
+						<PortableText value={content} components={portableTextComponents} />
+					</div>
+					<div className="flex flex-col gap-6">
+						{features?.map((block, index) => (
+							<FeatureBlock key={index} features={block.features} />
+						))}
+					</div>
 				</div>
-				<div className="flex flex-col gap-6">
-					{features?.map((block, index) => (
-						<FeatureBlock key={index} features={block.features} />
-					))}
-				</div>
-			</div>
-		</section>
+			</section>
+		</LazyMotion>
 	)
 }
 

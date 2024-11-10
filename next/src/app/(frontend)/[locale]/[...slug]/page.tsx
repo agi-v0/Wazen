@@ -11,7 +11,6 @@ type Props = {
 
 export default async function Page({ params }: Props) {
 	const resolvedParams = await params
-
 	setRequestLocale(resolvedParams.locale)
 	const page = await getPage(resolvedParams)
 	if (!page) notFound()
@@ -20,7 +19,6 @@ export default async function Page({ params }: Props) {
 
 export async function generateMetadata({ params }: Props) {
 	const resolvedParams = await params
-	setRequestLocale(resolvedParams.locale)
 	const page = await getPage(resolvedParams)
 	if (!page) notFound()
 	return processMetadata(page, resolvedParams.locale)
