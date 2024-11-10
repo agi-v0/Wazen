@@ -39,6 +39,38 @@ const TestimonialList = dynamic(() => import('./TestimonialList'))
 const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 
 const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+const dynamicComponents = {
+	applications: dynamic(() => import('./FeaturesInfiniteScroll')),
+	'app-store-rollup': dynamic(() => import('./app-store/Rollup')),
+	'benefits-banner': dynamic(() => import('./BenefitsBanner')),
+	'blog-rollup': dynamic(() => import('./blog/Rollup')),
+	'brief-group': dynamic(() => import('./BriefGroup')),
+	'home-brief-group': dynamic(() => import('./HomeBriefGroup')),
+	brief: dynamic(() => import('./Brief')),
+	'categories-list': dynamic(() => import('./blog/CategoriesList')),
+	'help-center-categories-list': dynamic(() => import('./blog/CategoriesList')),
+	'contact-us': dynamic(() => import('./ContactUs')),
+	'creative-module': dynamic(() => import('./CreativeModule')),
+	'custom-html': dynamic(() => import('./CustomHTML')),
+	'faq-list': dynamic(() => import('./FAQList')),
+	'features-grid': dynamic(() => import('./FeaturesGridOne')),
+	'features-grid-2': dynamic(() => import('./FeaturesGridTwo')),
+	'logo-list': dynamic(() => import('./LogoList')),
+	partners: dynamic(() => import('./PartnersList')),
+	'pricing-list': dynamic(() => import('./Plans')),
+	'pricing-calculator': dynamic(() => import('./PlansCalculator')),
+	'richtext-module': dynamic(() => import('./RichtextModule')),
+	'single-testimony': dynamic(() => import('./SingleTestimony')),
+	'solutions-benefits': dynamic(() => import('./Benefits')),
+	'stat-list': dynamic(() => import('./StatList')),
+	'call.to.action': dynamic(() => import('./CallToAction')),
+	'call.to.action.two': dynamic(() => import('./CallToActionTwo')),
+	'how-it-works': dynamic(() => import('./HowItWorks')),
+	'testimonial-list': dynamic(() => import('./TestimonialList')),
+	'testimonial-list-two': dynamic(() => import('./TestimonialListTwo')),
+	'pricing-comparison': dynamic(() => import('./PlansComparison')),
+	'product-list': dynamic(() => import('./ProductList')),
+}
 
 export default function Modules({
 	modules,
@@ -49,45 +81,17 @@ export default function Modules({
 }) {
 	return (
 		<>
-			{/* <LazyMotion features={loadFeatures}> */}
 			{modules?.map((module) => {
+				const DynamicComponent =
+					dynamicComponents[module._type as keyof typeof dynamicComponents]
+
+				if (DynamicComponent) {
+					return (
+						<DynamicComponent {...module} key={module._key} locale={locale} />
+					)
+				}
+
 				switch (module._type) {
-					case 'applications':
-						return (
-							<FeaturesInfiniteScroll
-								{...module}
-								key={module._key}
-								locale={locale}
-							/>
-						)
-					case 'app-store-rollup':
-						return <AppStoreRollup {...module} key={module._key} />
-					case 'benefits-banner':
-						return <BenefitsBanner {...module} key={module._key} />
-					case 'blog-rollup':
-						return <BlogRollup {...module} key={module._key} locale={locale} />
-					case 'brief-group':
-						return <BriefGroup {...module} key={module._key} />
-					case 'home-brief-group':
-						return <HomeBriefGroup {...module} key={module._key} />
-					case 'brief':
-						return <Brief {...module} key={module._key} />
-					case 'categories-list':
-						return <Categories {...module} key={module._key} locale={locale} />
-					case 'help-center-categories-list':
-						return <Categories {...module} key={module._key} locale={locale} />
-					case 'contact-us':
-						return <ContactUs {...module} key={module._key} locale={locale} />
-					case 'creative-module':
-						return <CreativeModule {...module} key={module._key} />
-					case 'custom-html':
-						return <CustomHTML {...module} key={module._key} />
-					case 'faq-list':
-						return <FAQList {...module} key={module._key} />
-					case 'features-grid':
-						return <FeaturesGridOne {...module} key={module._key} />
-					case 'features-grid-2':
-						return <FeaturesGridTwo {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.two':
@@ -96,53 +100,46 @@ export default function Modules({
 						return <HeroThree {...module} key={module._key} />
 					case 'hero.four':
 						return <HeroFour {...module} key={module._key} />
-					case 'logo-list':
-						return <LogoList {...module} key={module._key} />
-					case 'partners':
-						return <Partners {...module} key={module._key} />
-					case 'pricing-list':
-						return <Plans {...module} key={module._key} />
-					case 'pricing-calculator':
-						return (
-							<PlansCalculator {...module} locale={locale} key={module._key} />
-						)
-					case 'richtext-module':
-						return <RichtextModule {...module} key={module._key} />
-					case 'single-testimony':
-						return <SingleTestimony {...module} key={module._key} />
-					case 'solutions-benefits':
-						return <Benefits {...module} key={module._key} />
-					case 'stat-list':
-						return <StatList {...module} key={module._key} />
-					case 'call.to.action':
-						return <CallToAction {...module} key={module._key} />
-					case 'call.to.action.two':
-						return <CallToActionTwo {...module} key={module._key} />
-					case 'how-it-works':
-						return <HowItWorks {...module} key={module._key} />
-					case 'testimonial-list':
-						return (
-							<TestimonialList {...module} key={module._key} locale={locale} />
-						)
-					case 'testimonial-list-two':
-						return (
-							<TestimonialListTwo
-								{...module}
-								key={module._key}
-								locale={locale}
-							/>
-						)
-					case 'pricing-comparison':
-						return (
-							<PlansComparison {...module} key={module._key} locale={locale} />
-						)
-					case 'product-list':
-						return <ProductList {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}
 			})}
-			{/* </LazyMotion> */}
 		</>
 	)
 }
+
+const MODULE_COMPONENTS = {
+	'categories-list': dynamic(() => import('./blog/CategoriesList')),
+	'blog-rollup': dynamic(() => import('./blog/Rollup')),
+	'creative-module': dynamic(() => import('./CreativeModule')),
+	'custom-html': dynamic(() => import('./CustomHTML')),
+	hero: dynamic(() => import('./Hero')),
+	'hero.four': dynamic(() => import('./HeroFour')),
+	'hero.three': dynamic(() => import('./HeroThree')),
+	'hero.two': dynamic(() => import('./HeroTwo')),
+	'logo-list': dynamic(() => import('./LogoList')),
+	partners: dynamic(() => import('./PartnersList')),
+	'richtext-module': dynamic(() => import('./RichtextModule')),
+	'single-testimony': dynamic(() => import('./SingleTestimony')),
+	'call.to.action': dynamic(() => import('./CallToAction')),
+	'stat-list': dynamic(() => import('./StatList')),
+	'features-grid': dynamic(() => import('./FeaturesGridOne')),
+	'features-grid-2': dynamic(() => import('./FeaturesGridTwo')),
+	'contact-us': dynamic(() => import('./ContactUs')),
+	'brief-group': dynamic(() => import('./BriefGroup')),
+	'home-brief-group': dynamic(() => import('./HomeBriefGroup')),
+	'pricing-list': dynamic(() => import('./Plans')),
+	'pricing-comparison': dynamic(() => import('./PlansComparison')),
+	'pricing-calculator': dynamic(() => import('./PlansCalculator')),
+	'benefits-banner': dynamic(() => import('./BenefitsBanner')),
+	'call.to.action.two': dynamic(() => import('./CallToActionTwo')),
+	'app-store-rollup': dynamic(() => import('./app-store/Rollup')),
+	applications: dynamic(() => import('./FeaturesInfiniteScroll')),
+	'faq-list': dynamic(() => import('./FAQList')),
+	brief: dynamic(() => import('./Brief')),
+	'solutions-benefits': dynamic(() => import('./Benefits')),
+	'how-it-works': dynamic(() => import('./HowItWorks')),
+	'product-list': dynamic(() => import('./ProductList')),
+	'testimonial-list': dynamic(() => import('./TestimonialList')),
+	'testimonial-list-two': dynamic(() => import('./TestimonialListTwo')),
+} as const
