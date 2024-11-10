@@ -9,6 +9,7 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -23,6 +24,10 @@ export default async function RootLayout({
 	children: React.ReactNode
 	params: { locale: any }
 }) {
+	// Ensure that the incoming `locale` is valid
+	if (!routing.locales.includes(locale as any)) {
+		notFound()
+	}
 	setRequestLocale(locale)
 	//loading header and footer in one query
 	const site = await getSite(locale)
