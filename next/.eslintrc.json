@@ -2,7 +2,8 @@
 	"extends": [
 		"prettier",
 		"next/core-web-vitals",
-		"@sanity/eslint-config-studio"
+		"next"
+		// "@sanity/eslint-config-studio"
 	],
 	"rules": {
 		// "@typescript-eslint/no-unused-vars": "off",

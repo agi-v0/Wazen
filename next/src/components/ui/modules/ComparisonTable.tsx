@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import Img from '../Img'
 import { PiCheckBold, PiXBold } from '@/components/ui/Icons'
-import { useLocale } from 'next-intl'
+import { getLocale } from 'next-intl/server'
 
 export default async function ComparisonTable({
 	altApps,
@@ -12,7 +12,7 @@ export default async function ComparisonTable({
 	altAppsLogos: any
 	comparisonTable: any
 }>) {
-	const locale = await useLocale()
+	const locale = await getLocale()
 	return (
 		locale &&
 		comparisonTable.rows[0] &&
