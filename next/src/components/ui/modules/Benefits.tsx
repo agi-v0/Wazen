@@ -5,7 +5,6 @@ import {
 	useScroll,
 	AnimatePresence,
 	LazyMotion,
-	domAnimation,
 } from 'framer-motion'
 import { m } from 'framer-motion'
 import Img from '@/components/ui/Img'
@@ -84,9 +83,10 @@ export default function Benefits({
 	}, [activeCard, images])
 
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
 
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<section
 				className={
 					'section fluid-vertical-space px-[var(--padding-horizontal--main)]'

@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image'
-import { domAnimation, LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'framer-motion'
 
 export default function MobileApp() {
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<div className="relative mx-auto w-full max-w-md">
 				<Image
 					src="/iphone.png"

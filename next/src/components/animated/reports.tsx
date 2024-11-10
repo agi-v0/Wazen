@@ -1,9 +1,11 @@
 'use client'
-import { domAnimation, LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'framer-motion'
 
 const reports = () => {
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<m.div
 				initial="hidden"
 				animate="visible"

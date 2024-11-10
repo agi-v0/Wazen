@@ -6,7 +6,6 @@ import {
 	m,
 	MotionValue,
 	LazyMotion,
-	domAnimation,
 } from 'framer-motion'
 
 export const ContainerScroll = ({
@@ -69,8 +68,10 @@ export const Card = ({
 	translate: MotionValue<number>
 	children: React.ReactNode
 }) => {
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<m.div
 				style={{
 					rotateX: rotate,

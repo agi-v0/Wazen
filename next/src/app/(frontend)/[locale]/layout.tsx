@@ -67,7 +67,6 @@ export default async function RootLayout({
 						staticLinks={staticLinks}
 						locale={locale}
 					/>
-					{/* {draftMode().isEnabled && <VisualEditing />} */}
 
 					<Script
 						strategy="afterInteractive"

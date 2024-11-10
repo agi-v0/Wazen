@@ -80,8 +80,10 @@ export default function FeaturesGridTwo({
 	features,
 	textAlign = 'center',
 }: FeaturesGridTwoProps) {
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<section className="bg-teal-400/10 py-[var(--size--4rem)]">
 				<div className="section fluid-padding fluid-gap fluid-padding flex w-full flex-col items-center justify-center rounded-2xl bg-white">
 					<div className="flex flex-col items-center gap-6">

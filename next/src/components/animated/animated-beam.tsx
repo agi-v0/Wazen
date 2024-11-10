@@ -1,7 +1,7 @@
 'use client'
 
 import { RefObject, useEffect, useId, useState } from 'react'
-import { domAnimation, LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export interface AnimatedBeamProps {
@@ -120,9 +120,10 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
 		endXOffset,
 		endYOffset,
 	])
+	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
 
 	return (
-		<LazyMotion features={domAnimation}>
+		<LazyMotion features={loadFeatures}>
 			<svg
 				fill="none"
 				width={svgDimensions.width}

@@ -1,4 +1,3 @@
-import { domAnimation, LazyMotion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Hero from './Hero'
 import HeroTwo from './HeroTwo'
