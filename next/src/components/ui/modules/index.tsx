@@ -194,7 +194,7 @@ export default function Modules({
 							dynamic(() => import('./BriefGroup')),
 						)
 						break
-					case 'home-brief-group ':
+					case 'home-brief-group':
 						componentMap.set(
 							module._type,
 							dynamic(() => import('./HomeBriefGroup')),
