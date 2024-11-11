@@ -12,7 +12,11 @@ export default async function Menu({ footerMenu, locale }: any) {
 	return (
 		<nav className="fluid-gap flex w-full flex-col flex-wrap items-start justify-start font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
 			<div className="flex flex-col justify-start text-start text-sm font-normal lg:row-span-2">
-				<Link className="mb-4 h-10 font-bold" href="/">
+				<Link
+					className="mb-4 h-10 font-bold"
+					href="/"
+					aria-label={locale == 'en' ? 'Homepage' : 'الصفحة الرئيسية'}
+				>
 					<Logo className="h-6 w-auto" locale={locale} light />
 				</Link>
 				<p className="flex h-10 items-center text-balance font-medium">
