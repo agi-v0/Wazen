@@ -77,7 +77,7 @@ export default function AnimatedBackground({
 				...interactionProps,
 			},
 			<>
-				<LazyMotion features={domMax}>
+				<LazyMotion features={loadFeatures}>
 					<AnimatePresence initial={false}>
 						{activeId === id && (
 							<m.div
