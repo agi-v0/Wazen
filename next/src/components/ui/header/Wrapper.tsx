@@ -3,9 +3,12 @@
 import { useEffect, useRef, useCallback } from 'react'
 import useScrollPosition from '@/hooks/useScrollPosition'
 import { useMediaQuery } from '@/hooks/use-media-query'
-import ContactBar from './ContactBar'
-import { cn } from '@/lib/utils'
+// import ContactBar from './ContactBar'
 
+import { cn } from '@/lib/utils'
+import dynamic from 'next/dynamic'
+
+const ContactBar = dynamic(() => import('./ContactBar'), { ssr: false })
 export default function Wrapper({
 	className,
 	children,
