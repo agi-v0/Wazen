@@ -71,8 +71,7 @@ export const Card = ({
 	translate: MotionValue<number>
 	children: React.ReactNode
 }) => {
-	const loadFeatures = () =>
-		import('@/lib/domAnimation').then((res) => res.default)
+	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

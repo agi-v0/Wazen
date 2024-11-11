@@ -120,8 +120,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
 		endXOffset,
 		endYOffset,
 	])
-	const loadFeatures = () =>
-		import('@/lib/domAnimation').then((res) => res.default)
+	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>
