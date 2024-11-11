@@ -9,74 +9,6 @@ const InfiniteMovingCards = dynamic(
 	() => import('@/components/animated/infinite-moving-cards-apps'),
 )
 
-const Features = (): { title: string; icon: string }[] => {
-	const t = useTranslations('FeaturesInfiniteScroll')
-	return [
-		{
-			title: t('Check in and check out'),
-			icon: 'PiUserCheck',
-		},
-		{
-			title: t('Employee info'),
-			icon: 'PiIdentificationCard',
-		},
-		{
-			title: t('Housing and accomodation'),
-			icon: 'PiBuildingOffice',
-		},
-		{
-			title: t('Insurance'),
-			icon: 'PiShieldCheck',
-		},
-		{
-			title: t('Salaries'),
-			icon: 'PiMoney',
-		},
-
-		{
-			title: t('Leads'),
-			icon: 'PiFlagPennant',
-		},
-		{
-			title: t('Contracts'),
-			icon: 'PiScroll',
-		},
-		{
-			title: t('Subscriptions'),
-			icon: 'PiCalendarDots',
-		},
-		{
-			title: t('Clients'),
-			icon: 'PiUserRectangle',
-		},
-		{
-			title: t('SMS and Whatsapp'),
-			icon: 'PiChatCircleText',
-		},
-
-		{
-			title: t('Sales'),
-			icon: 'PiMoney',
-		},
-		{
-			title: t('Purchases'),
-			icon: 'PiMinusSquare',
-		},
-		{
-			title: t('Inventory'),
-			icon: 'PiWarehouse',
-		},
-		{
-			title: t('Financial lists'),
-			icon: 'PiInvoice',
-		},
-		{
-			title: t('Cost centers'),
-			icon: 'PiChartPie',
-		},
-	]
-}
-
 export default function FeaturesInfiniteScroll({
 	pretitle,
 	content,
@@ -96,6 +28,73 @@ export default function FeaturesInfiniteScroll({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
+	const Features = (): { title: string; icon: string }[] => {
+		const t = useTranslations('FeaturesInfiniteScroll')
+		return [
+			{
+				title: t('Check in and check out'),
+				icon: 'ph:user-check',
+			},
+			{
+				title: t('Employee info'),
+				icon: 'ph:identification-card',
+			},
+			{
+				title: t('Housing and accomodation'),
+				icon: 'ph:building-office',
+			},
+			{
+				title: t('Insurance'),
+				icon: 'ph:shield-check',
+			},
+			{
+				title: t('Salaries'),
+				icon: 'ph:money',
+			},
+
+			{
+				title: t('Leads'),
+				icon: 'ph:flag-pennant',
+			},
+			{
+				title: t('Contracts'),
+				icon: 'ph:scroll',
+			},
+			{
+				title: t('Subscriptions'),
+				icon: 'ph:calendar-dots',
+			},
+			{
+				title: t('Clients'),
+				icon: 'ph:user-rectangle',
+			},
+			{
+				title: t('SMS and Whatsapp'),
+				icon: 'ph:chat-circle-text',
+			},
+
+			{
+				title: t('Sales'),
+				icon: 'ph:money',
+			},
+			{
+				title: t('Purchases'),
+				icon: 'ph:shopping-cart',
+			},
+			{
+				title: t('Inventory'),
+				icon: 'ph:warehouse',
+			},
+			{
+				title: t('Financial lists'),
+				icon: 'ph:invoice',
+			},
+			{
+				title: t('Cost centers'),
+				icon: 'ph:chart-pie',
+			},
+		]
+	}
 	return (
 		<section
 			className={
@@ -112,23 +111,23 @@ export default function FeaturesInfiniteScroll({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div className="space-y-6">
+			<div dir="ltr" className="w-full space-y-2">
 				<InfiniteMovingCards
 					direction="right"
 					speed="slow"
-					pauseOnHover={true}
+					pauseOnHover={false}
 					items={Features().slice(0, 5)}
 				/>
 				<InfiniteMovingCards
 					direction="left"
 					speed="slow"
-					pauseOnHover={true}
+					pauseOnHover={false}
 					items={Features().slice(5, 10)}
 				/>
 				<InfiniteMovingCards
 					direction="right"
 					speed="slow"
-					pauseOnHover={true}
+					pauseOnHover={false}
 					items={Features().slice(10, 15)}
 				/>
 			</div>

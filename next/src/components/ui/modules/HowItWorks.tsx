@@ -51,7 +51,8 @@ export default function HowItWorks({
 	const images = [user, sidebar, chart]
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true })
-	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+	const loadFeatures = () =>
+		import('@/lib/domAnimation').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

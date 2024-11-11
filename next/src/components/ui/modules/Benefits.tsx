@@ -83,7 +83,8 @@ export default function Benefits({
 	}, [activeCard, images])
 
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
-	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+	const loadFeatures = () =>
+		import('@/lib/domAnimation').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

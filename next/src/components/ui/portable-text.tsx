@@ -8,7 +8,19 @@ export const hero: PortableTextComponents = {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
 			if (value.style === 'h1') {
 				return (
-					<h1 className="display mx-auto max-w-3xl text-balance leading-tight drop-shadow-md">
+					<h1
+						className=""
+						style={{
+							fontSize: 'clamp(2.99rem, 2.2724rem + 3.12vw, 4.77rem)',
+							fontWeight: '600',
+							marginInline: 'auto',
+							maxWidth: '48rem',
+							filter:
+								'drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))',
+							lineHeight: 1.25,
+							textWrap: 'balance',
+						}}
+					>
 						{value.children.map((child: any) => child.text).join('')}
 					</h1>
 				)

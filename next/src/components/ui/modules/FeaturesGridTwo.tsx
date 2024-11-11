@@ -80,7 +80,8 @@ export default function FeaturesGridTwo({
 	features,
 	textAlign = 'center',
 }: FeaturesGridTwoProps) {
-	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+	const loadFeatures = () =>
+		import('@/lib/domAnimation').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

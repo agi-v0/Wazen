@@ -39,7 +39,8 @@ const ProductList = dynamic(() => import('./ProductList'))
 const TestimonialList = dynamic(() => import('./TestimonialList'))
 const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 
-const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+const loadFeatures = () =>
+	import('@/lib/domAnimation').then((res) => res.default)
 // const dynamicComponents = {
 // 	applications: dynamic(() => import('./FeaturesInfiniteScroll')),
 // 	'app-store-rollup': dynamic(() => import('./app-store/Rollup')),

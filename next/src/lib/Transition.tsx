@@ -7,7 +7,8 @@ export default function Transition({
 }: {
 	children: React.ReactNode
 }) {
-	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+	const loadFeatures = () =>
+		import('@/lib/domAnimation').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

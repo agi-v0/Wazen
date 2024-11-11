@@ -45,9 +45,12 @@ export const ContainerScroll = ({
 			ref={containerRef}
 		>
 			<div
-				className="relative py-10 md:py-20"
+				// className="relative py-10 md:py-20"
 				style={{
 					perspective: '1000px',
+					position: 'relative',
+					paddingTop: 'clamp(2.5rem, 5.263vw + 2.5rem, 5rem)',
+					paddingBottom: 'clamp(2.5rem, 5.263vw + 2.5rem, 5rem)',
 				}}
 			>
 				<Card rotate={rotate} translate={translate} scale={scale}>
@@ -68,7 +71,8 @@ export const Card = ({
 	translate: MotionValue<number>
 	children: React.ReactNode
 }) => {
-	const loadFeatures = () => import('@/lib/features').then((res) => res.default)
+	const loadFeatures = () =>
+		import('@/lib/domAnimation').then((res) => res.default)
 
 	return (
 		<LazyMotion features={loadFeatures}>

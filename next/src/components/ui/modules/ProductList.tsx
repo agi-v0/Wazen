@@ -9,6 +9,7 @@ import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from '@/components/ui/Icons'
 import Img from '../Img'
 import { cn } from '@/lib/utils'
+import AnimatedBackground from '@/components/animated/animated-background'
 
 export default function ProductList({
 	pretitle,
@@ -48,12 +49,6 @@ export default function ProductList({
 			},
 		},
 	}
-	const hoverColors = [
-		'group-hover:bg-teal-100',
-		'group-hover:bg-yellow-100',
-		'group-hover:bg-indigo-100',
-		'group-hover:bg-cyan-100',
-	]
 
 	return (
 		<section className={'fluid-vertical-space bg-white'}>
@@ -71,41 +66,53 @@ export default function ProductList({
 					<PortableText value={content} components={components} />
 				</div>
 				{products && (
-					<ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-						{products.map((product, index) => (
-							<li
-								key={product.productTitle}
-								className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
-							>
-								<Link
-									href={processUrl(product.link.internal as Sanity.PageBase, {
-										base: false,
-										params: product.link.params,
-									})}
+					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+						<AnimatedBackground
+							className="rounded-3xl bg-cyan-950"
+							transition={{
+								type: 'spring',
+								bounce: 0.2,
+								duration: 0.6,
+							}}
+							enableHover
+						>
+							{products.map((product, index) => (
+								<li
+									key={product.productTitle}
+									data-id={`card-${index}`}
+									className="group z-[5] flex flex-col rounded-3xl p-4 transition-all"
 								>
-									<Img
-										image={product.productImage}
-										alt={product.productTitle}
-										width={100}
-										height={100}
-										className={cn(
-											'my-auto grid h-auto w-full place-items-center overflow-hidden rounded-xl bg-cyan-950/20 object-scale-down object-center px-4 py-6',
-											hoverColors[index],
-										)}
-										loading="lazy"
-									/>
-									<div className="space-y-1 p-4 text-start">
-										<h3 className="text-main font-semibold group-hover:text-teal-600">
-											{product.productTitle}
-											<PiCaretLeftBold className="inline-block size-3 translate-x-0 text-teal-600/50 opacity-0 transition-transform duration-150 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
-										</h3>
-										<p className="text-small text-gray-600">
-											{product.productDescription}
-										</p>
-									</div>
-								</Link>
-							</li>
-						))}
+									<Link
+										href={processUrl(product.link.internal as Sanity.PageBase, {
+											base: false,
+											params: product.link.params,
+										})}
+									>
+										<div className="overflow-hidden rounded-2xl bg-cyan-950/20 p-4">
+											<Img
+												image={product.productImage}
+												alt={product.productTitle}
+												width={100}
+												height={100}
+												className={cn(
+													'h-auto w-full rounded-lg object-scale-down object-center',
+												)}
+												loading="lazy"
+											/>
+										</div>
+										<div className="duration-[600ms] space-y-1 p-4 text-start transition-all">
+											<h3 className="text-main font-semibold text-gray-600 group-hover:text-teal-500">
+												{product.productTitle}
+												<PiCaretLeftBold className="duration-[600ms] inline-block size-4 translate-x-0 text-teal-500 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+											</h3>
+											<p className="text-small text-gray-600 group-hover:text-white">
+												{product.productDescription}
+											</p>
+										</div>
+									</Link>
+								</li>
+							))}
+						</AnimatedBackground>
 					</ul>
 				)}
 			</div>

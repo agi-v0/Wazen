@@ -26,7 +26,9 @@ export default function Hero({
 				backgroundImage: `linear-gradient(to bottom, transparent, white), radial-gradient(ellipse at top center, #155e75 0%, #2dd4bf 60%, #ffffff 100%)`,
 			}}
 		>
-			<div className="absolute top-0 h-full w-full">
+			<div
+				style={{ position: 'absolute', top: 0, height: '100%', width: '100%' }}
+			>
 				<Image
 					src={lightray}
 					alt="hero"

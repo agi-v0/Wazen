@@ -10,7 +10,6 @@ type Props = {
 
 export default async function Page({ params }: Props) {
 	const resolvedParams = await params
-
 	setRequestLocale(resolvedParams.locale)
 	const post = await getPost(await params)
 	if (!post) notFound()

@@ -52,6 +52,7 @@
     "react-dom": "^19.0.0-rc-5c56b873-20241107",
     "react-icons": "^5.2.1",
     "react-is": "19.0.0-rc-66855b96-20241106",
+    "react-live-chat-loader": "^2.9.2",
     "resend": "^3.4.0",
     "rss": "^1.2.2",
     "sanity": "^3.50.0",
