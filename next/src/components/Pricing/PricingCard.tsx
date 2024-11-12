@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 
 export default function PricingBox(props: {
 	order: number
+	displayPrice: boolean
 	price: string
 	apps: any
 	duration: string
@@ -15,6 +16,7 @@ export default function PricingBox(props: {
 	ctas: Sanity.CTA[]
 }) {
 	const {
+		displayPrice,
 		price,
 		apps,
 		duration,
@@ -24,7 +26,6 @@ export default function PricingBox(props: {
 		ctas,
 		order,
 	} = props
-
 	// const AppIcons = [
 	// 	<PiTableDuotone key="PiTableDuotone" className="text-2xl text-cyan-500" />,
 	// 	<PiIdentificationCardDuotone
@@ -41,7 +42,7 @@ export default function PricingBox(props: {
 	// 	/>,
 	// ]
 
-	const displayPrice = Number(price)
+	const numberPrice = Number(price)
 
 	return (
 		<div
@@ -62,7 +63,7 @@ export default function PricingBox(props: {
 				{/* <NumberTicker value={parseInt(price)} direction="up" /> */}
 				<span className="amount">{price}</span>
 
-				{!isNaN(displayPrice) && (
+				{!isNaN(numberPrice) && (
 					<span
 						className={cn(
 							'text-lg text-gray-400',

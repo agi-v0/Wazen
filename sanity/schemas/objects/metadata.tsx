@@ -1,7 +1,8 @@
 import { SlugValidationContext, defineField, defineType } from 'sanity'
-import { MediaEditor } from '@catherineriver/sanity-plugin-generate-ogimage'
+// import { MediaEditor } from '@catherineriver/sanity-plugin-generate-ogimage'
 import { OGImageEditor } from '../../src/OGImageEditor'
 import React from 'react'
+import { MediaEditor } from '../../plugins/sanity-plugin-generate-og-image/src'
 
 export default defineType({
 	name: 'metadata',
@@ -35,7 +36,7 @@ export default defineType({
 			options: {
 				sources: [
 					{
-						name: 'generate-ogimage',
+						name: 'sharing-ogimage',
 						title: 'Generate Image',
 						component: (props: any) => (
 							<MediaEditor {...props} layouts={[OGImageEditor as any]} />

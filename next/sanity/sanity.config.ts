@@ -20,7 +20,6 @@ import { table } from '@sanity/table'
 import { Logo } from './static/wazen-logo'
 
 const singletonTypes = ['site']
-console.log(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID)
 
 export default defineConfig({
 	name: 'default',
