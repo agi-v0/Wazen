@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/Icons'
 // import NumberTicker from '../animated/number-ticker'
 
-const PricingBox = (props: {
+export default async function PricingBox(props: {
 	order: number
 	price: string
 	apps: any
@@ -17,7 +17,7 @@ const PricingBox = (props: {
 	subtitle: string
 	children: React.ReactNode
 	ctas: Sanity.CTA[]
-}) => {
+}) {
 	const {
 		price,
 		apps,
@@ -29,21 +29,24 @@ const PricingBox = (props: {
 		order,
 	} = props
 
-	const AppIcons = [
-		<PiTableDuotone key="PiTableDuotone" className="text-2xl text-cyan-500" />,
-		<PiIdentificationCardDuotone
-			key="PiIdentificationCardDuotone"
-			className="text-2xl text-yellow-500"
-		/>,
-		<PiUserListDuotone
-			key="PiUserListDuotone"
-			className="text-2xl text-indigo-500"
-		/>,
-		<PiFlowArrowDuotone
-			key="PiFlowArrowDuotone"
-			className="text-2xl text-teal-500"
-		/>,
-	]
+	// const AppIcons = [
+	// 	<PiTableDuotone key="PiTableDuotone" className="text-2xl text-cyan-500" />,
+	// 	<PiIdentificationCardDuotone
+	// 		key="PiIdentificationCardDuotone"
+	// 		className="text-2xl text-yellow-500"
+	// 	/>,
+	// 	<PiUserListDuotone
+	// 		key="PiUserListDuotone"
+	// 		className="text-2xl text-indigo-500"
+	// 	/>,
+	// 	<PiFlowArrowDuotone
+	// 		key="PiFlowArrowDuotone"
+	// 		className="text-2xl text-teal-500"
+	// 	/>,
+	// ]
+
+	const displayPrice = Number(price)
+	const { Icon } = await import('@iconify/react')
 
 	return (
 		<div
@@ -63,31 +66,39 @@ const PricingBox = (props: {
 			<h3 className="inline-flex flex-row items-end gap-1 pt-4 text-3xl font-semibold text-gray-950">
 				{/* <NumberTicker value={parseInt(price)} direction="up" /> */}
 				<span className="amount">{price}</span>
-				{/* {t('SR')} */}
-				<span
-					className={cn(
-						'text-lg text-gray-400',
-						order == 1 ? 'text-gray-950' : '',
-					)}
-				>
-					/{duration}
-				</span>
+
+				{!isNaN(displayPrice) && (
+					<span
+						className={cn(
+							'text-lg text-gray-400',
+							order == 1 ? 'text-gray-950' : '',
+						)}
+					>
+						/{duration}
+					</span>
+				)}
 			</h3>
 			<ul className="flex flex-col gap-4">
-				{apps.map((app: { title: string; active: boolean }, index: any) => (
-					<li
-						key={'feature' + index}
-						className={`flex flex-row items-center gap-2 font-medium text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
-					>
-						{AppIcons[index]}
-						{app.title}
-					</li>
-				))}
+				{apps.map(
+					(
+						app: { title: string; active: boolean; icon: { name: string } },
+						index: any,
+					) => (
+						<li
+							key={'feature' + index}
+							className={`flex flex-row items-center gap-2 font-medium text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
+						>
+							<Icon
+								icon={app.icon ? app.icon.name : 'ph:cube-duotone'}
+								className="text-2xl text-cyan-950/60"
+							/>
+							{app.title}
+						</li>
+					),
+				)}
 			</ul>
 			<CTAList ctas={ctas} className="*:h-12 *:w-full *:text-base" />
 			<div>{children}</div>
 		</div>
 	)
 }
-
-export default PricingBox

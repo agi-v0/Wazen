@@ -13,6 +13,7 @@ export default defineType({
 	title: 'Pricing tier',
 	icon: LuDollarSign,
 	type: 'document',
+	fieldsets: [{ name: 'priceInfo', title: 'Price info' }],
 	fields: [
 		defineField({
 			name: 'language',
@@ -42,6 +43,12 @@ export default defineType({
 							type: 'string',
 						}),
 						defineField({
+							name: 'icon',
+							title: 'Icon (Phosphor icons',
+							description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
+							type: 'icon',
+						}),
+						defineField({
 							name: 'active',
 							type: 'boolean',
 						}),
@@ -55,6 +62,18 @@ export default defineType({
 			} as ExtendedArrayOptions<unknown>,
 		}),
 		defineField({
+			name: 'displayPrice',
+			title: 'Display price',
+			type: 'boolean',
+			initialValue: true,
+			fieldset: 'priceInfo',
+		}),
+		// defineField({
+		// 	name: 'label',
+		// 	type: 'string',
+		// 	fieldset: 'priceInfo',
+		// }),
+		defineField({
 			name: 'price',
 			type: 'object',
 			options: {
@@ -63,13 +82,14 @@ export default defineType({
 			fields: [
 				defineField({
 					name: 'monthly',
-					type: 'number',
+					type: 'string',
 				}),
 				defineField({
 					name: 'yearly',
-					type: 'number',
+					type: 'string',
 				}),
 			],
+			fieldset: 'priceInfo',
 		}),
 		defineField({
 			name: 'ctas',
@@ -101,52 +121,6 @@ export default defineType({
 					select: true,
 				},
 			} as ExtendedArrayOptions<unknown>,
-		}),
-		defineField({
-			name: 'details',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					name: 'apps',
-					type: 'object',
-					fields: [
-						defineField({
-							name: 'title',
-							type: 'string',
-						}),
-						defineField({
-							name: 'specs',
-							type: 'array',
-							of: [
-								defineArrayMember({
-									name: 'spec',
-									type: 'object',
-									fields: [
-										defineField({
-											name: 'title',
-											title: 'Specification title',
-											type: 'string',
-										}),
-										defineField({
-											name: 'active',
-											type: 'boolean',
-										}),
-										defineField({
-											name: 'count',
-											type: 'number',
-										}),
-										defineField({
-											name: 'unlimited',
-											title: 'Unlimited?',
-											type: 'boolean',
-										}),
-									],
-								}),
-							],
-						}),
-					],
-				}),
-			],
 		}),
 	],
 	preview: {

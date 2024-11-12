@@ -44,41 +44,41 @@ export default async function RootLayout({
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
 	return (
-		<NextIntlClientProvider>
-			<html
-				lang={locale}
-				dir={locale == 'en' ? 'ltr' : 'rtl'}
-				className={locale == 'en' ? inter.className : rubik.className}
-			>
-				{gtmId && <GoogleTagManager gtmId={gtmId} />}
-				<body className="w-full">
-					<Header
-						headerMenu={headerMenu}
-						contactInfo={contactInfo}
-						ctas={ctas}
-						locale={locale}
-					/>
-					<main id="main-content" tabIndex={-1}>
-						{children}
-					</main>
-					<Toaster />
-					<Footer
-						footerMenu={footerMenu}
-						staticLinks={staticLinks}
-						locale={locale}
-					/>
+		// <NextIntlClientProvider>
+		<html
+			lang={locale}
+			dir={locale == 'en' ? 'ltr' : 'rtl'}
+			className={locale == 'en' ? inter.className : rubik.className}
+		>
+			{gtmId && <GoogleTagManager gtmId={gtmId} />}
+			<body className="w-full">
+				<Header
+					headerMenu={headerMenu}
+					contactInfo={contactInfo}
+					ctas={ctas}
+					locale={locale}
+				/>
+				<main id="main-content" tabIndex={-1}>
+					{children}
+				</main>
+				<Toaster />
+				<Footer
+					footerMenu={footerMenu}
+					staticLinks={staticLinks}
+					locale={locale}
+				/>
 
-					<Script
-						strategy="afterInteractive"
-						id="intercom-settings"
-						dangerouslySetInnerHTML={{
-							__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
-						}}
-					/>
-					<IntercomClientComponent />
-					{ga4 && <GoogleAnalytics gaId={ga4} />}
-				</body>
-			</html>
-		</NextIntlClientProvider>
+				<Script
+					strategy="afterInteractive"
+					id="intercom-settings"
+					dangerouslySetInnerHTML={{
+						__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
+					}}
+				/>
+				<IntercomClientComponent />
+				{ga4 && <GoogleAnalytics gaId={ga4} />}
+			</body>
+		</html>
+		// </NextIntlClientProvider>
 	)
 }
