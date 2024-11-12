@@ -6,9 +6,12 @@ import {
 	PiTableDuotone,
 	PiUserListDuotone,
 } from '@/components/ui/Icons'
+import dynamic from 'next/dynamic'
+import { Icon } from '@iconify/react/dist/iconify.js'
+
 // import NumberTicker from '../animated/number-ticker'
 
-export default async function PricingBox(props: {
+export default function PricingBox(props: {
 	order: number
 	price: string
 	apps: any
@@ -46,7 +49,6 @@ export default async function PricingBox(props: {
 	// ]
 
 	const displayPrice = Number(price)
-	const { Icon } = await import('@iconify/react')
 
 	return (
 		<div
