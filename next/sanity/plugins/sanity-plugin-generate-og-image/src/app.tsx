@@ -47,11 +47,14 @@ const MediaEditor: React.FC<Props> = (props) => {
 	const prefersDark = usePrefersDark()
 	const scheme = prefersDark ? 'dark' : 'light'
 
-	const handleGlobalKeyDown = useCallback((event: KeyboardEvent) => {
-		if (isHotkey('esc', event) && onClose) {
-			onClose()
-		}
-	}, [])
+	const handleGlobalKeyDown = useCallback(
+		(event: KeyboardEvent) => {
+			if (isHotkey('esc', event) && onClose) {
+				onClose()
+			}
+		},
+		[onClose],
+	)
 	useGlobalKeyDown(handleGlobalKeyDown)
 
 	let layouts =
