@@ -81,11 +81,11 @@ export default function PricingBox(props: {
 					) => (
 						<li
 							key={'feature' + index}
-							className={`flex flex-row items-center gap-2 font-medium text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
+							className={`flex flex-row items-center gap-2 text-sm font-medium text-gray-600 ${!app.active ? 'opacity-40 grayscale' : ''}`}
 						>
 							<Icon
 								icon={app.icon ? app.icon.name : 'ph:cube-duotone'}
-								className="text-2xl text-cyan-950/60"
+								className="size-6 text-cyan-950/60"
 							/>
 							{app.title}
 						</li>

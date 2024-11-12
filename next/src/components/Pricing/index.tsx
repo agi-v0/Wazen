@@ -37,12 +37,12 @@ const Pricing = ({ plans }: any) => {
 									(feature: { title: string; active: boolean }, index: any) => (
 										<li
 											key={'feature' + index}
-											className="flex flex-row items-center gap-2 text-sm text-gray-600"
+											className="flex flex-row items-center gap-2 text-sm text-gray-500"
 										>
 											{feature.active ? (
-												<PiCheckBold className="text-gray-600" />
+												<PiCheckBold className="size-4 text-gray-500" />
 											) : (
-												<PiX className="text-gray-500" />
+												<PiX className="size-4 text-gray-400" />
 											)}
 											{feature.title}
 										</li>
