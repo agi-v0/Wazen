@@ -1,12 +1,5 @@
 import { cn } from '@/lib/utils'
 import CTAList from '@/components/ui/CTAList'
-import {
-	PiFlowArrowDuotone,
-	PiIdentificationCardDuotone,
-	PiTableDuotone,
-	PiUserListDuotone,
-} from '@/components/ui/Icons'
-import dynamic from 'next/dynamic'
 import { Icon } from '@iconify/react/dist/iconify.js'
 
 // import NumberTicker from '../animated/number-ticker'

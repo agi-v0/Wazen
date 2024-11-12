@@ -1,8 +1,10 @@
-import Pricing from '@/components/Pricing'
+// import Pricing from '@/components/Pricing'
 import { set2 } from '@/components/ui/portable-text'
 import { PortableText } from '@portabletext/react'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
+import dynamic from 'next/dynamic'
+const Pricing = dynamic(() => import('@/components/Pricing'))
 
 export default async function Plans({
 	content,
