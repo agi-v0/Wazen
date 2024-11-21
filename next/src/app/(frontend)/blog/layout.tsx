@@ -17,14 +17,23 @@ import { notFound } from 'next/navigation'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
-//
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }))
+}
 
 export default async function RootLayout({
 	children,
+	params,
 }: {
 	children: React.ReactNode
+	params: { locale: any }
 }) {
-	const locale: string = 'ar'
+	const resolvedParams = await params
+	const locale = resolvedParams.locale
+	// Ensure that the incoming `locale` is valid
+	if (!routing.locales.includes(locale as any)) {
+		notFound()
+	}
 	setRequestLocale(locale)
 	//loading header and footer in one query
 	const site = await getSite(locale)
