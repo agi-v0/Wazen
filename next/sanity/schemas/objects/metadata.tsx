@@ -23,6 +23,7 @@ export default defineType({
 		defineField({
 			name: 'slug',
 			type: 'slug',
+			description: 'يرجى اتباع سياق "كلمة-كلمة-كلمة"',
 			options: {
 				source: (doc: any) => doc.name || doc.title,
 				isUnique: isUniqueOtherThanLanguage,

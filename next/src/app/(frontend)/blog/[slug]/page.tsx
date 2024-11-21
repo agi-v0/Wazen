@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props) {
 
 export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
-		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
+		groq`*[_type == 'blog.post' || _type == 'blog.post.en' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
 
 	return slugs.map((slug) => ({ slug }))
