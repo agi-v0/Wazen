@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Switch } from '@/components/ui/switch'
-import PricingCard from './PricingCard'
+import PricingBox from './PricingCard'
 import { PiCheckBold } from '@/components/ui/Icons'
 import { PiX } from '@/components/ui/Icons'
 import { useTranslations } from 'next-intl'
@@ -32,7 +32,7 @@ const Pricing = ({ plans }: any) => {
 						order,
 					} = plan
 					return (
-						<PricingCard
+						<PricingBox
 							key={index}
 							order={index}
 							apps={apps}
@@ -64,7 +64,7 @@ const Pricing = ({ plans }: any) => {
 										),
 									)}
 							</ul>
-						</PricingCard>
+						</PricingBox>
 					)
 				})}
 			</div>

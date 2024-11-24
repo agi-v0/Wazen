@@ -7,7 +7,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 
-import CalculatorTable from '@/components/Pricing/CalculatorTable'
+import CalculatorTable from '@/components/ui/modules/pricing/CalculatorTable'
 import { Switch } from '@/components/ui/switch'
 
 export default function PlansCalculator({
@@ -21,6 +21,7 @@ export default function PlansCalculator({
 }>) {
 	const [isYearly, setIsYearly] = useState(false)
 	const [total, setTotal] = useState<number>(0)
+
 	const switchLabel =
 		locale === 'en' ? 'Yearly (two months free)' : 'سنوي (شهرين مجاناً)'
 	const SR = locale === 'en' ? 'SR' : 'ريال'
