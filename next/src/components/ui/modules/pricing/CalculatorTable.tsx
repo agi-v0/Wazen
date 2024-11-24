@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useEffect } from 'react'
 import {
 	PiFlowArrowDuotone,
 	PiIdentificationCardDuotone,
@@ -18,13 +18,26 @@ const AppIcons = [
 	<PiFlowArrowDuotone key="flow" className="text-2xl text-teal-500" />,
 ]
 
+interface RowData {
+	cells: string[]
+}
+
+interface SpecsData {
+	rows: RowData[]
+}
+
+interface DetailData {
+	title: string
+	specs: SpecsData
+}
+
 export default function CalculatorTable({
 	details,
 	setTotal,
 	isYearly,
 	locale,
 }: {
-	details: any[]
+	details: DetailData[]
 	setTotal: (total: number) => void
 	isYearly: boolean
 	locale: string
@@ -32,73 +45,82 @@ export default function CalculatorTable({
 	const [quantities, setQuantities] = React.useState<Record<string, number>>({})
 	const [activeCategories, setActiveCategories] = React.useState<number[]>([])
 
+	const reducedDetails = useMemo(
+		() => details.filter((detail) => detail.specs?.rows[0]?.cells[0]),
+		[details],
+	)
+
 	const SR = locale === 'en' ? 'SR' : 'ريال'
 	const monthly = locale === 'en' ? 'monthly' : 'شهرياً'
 	const yearly = locale === 'en' ? 'Yearly' : 'سنوياً'
 
-	const handleQuantityChange = useCallback(
-		(id: string, delta: number, value: number, categoryIndex: number) => {
-			setQuantities((prev) => {
-				const newQuantity = Math.max(0, (prev[id] || 0) + delta)
-				const newQuantities = { ...prev, [id]: newQuantity }
+	const getItemId = useCallback(
+		(categoryIndex: number, rowIndex: number) => `${categoryIndex}_${rowIndex}`,
+		[],
+	)
 
-				// Calculate new total
-				const newTotal = Object.entries(newQuantities).reduce(
-					(acc, [key, quantity]) => {
-						const [categoryIndex, rowIndex] = key.split('_').map(Number)
-						const price = parseInt(
-							details[categoryIndex].specs.rows[rowIndex].cells[
-								isYearly ? 0 : 1
-							],
-						)
-						return acc + quantity * price
-					},
-					0,
-				)
+	const calculateRowTotal = useCallback(
+		(price: number, quantity: number) => price * quantity,
+		[],
+	)
 
-				setTotal(newTotal)
-
-				// Update active categories
-				if (newQuantity > 0 && !activeCategories.includes(categoryIndex)) {
-					setActiveCategories((prev) => [...prev, categoryIndex])
-				} else if (newQuantity === 0) {
-					const categoryIsEmpty = Object.keys(newQuantities).every((key) =>
-						key.startsWith(`${categoryIndex}_`)
-							? newQuantities[key] === 0
-							: true,
-					)
-					if (categoryIsEmpty) {
-						setActiveCategories((prev) =>
-							prev.filter((cat) => cat !== categoryIndex),
-						)
-					}
-				}
-
-				return newQuantities
-			})
+	const calculateCategoryTotal = useCallback(
+		(categoryIndex: number, quantities: Record<string, number>) => {
+			return details[categoryIndex].specs.rows.reduce((acc, row, rowIndex) => {
+				const itemId = getItemId(categoryIndex, rowIndex)
+				const quantity = quantities[itemId] || 0
+				const price = parseInt(row.cells[isYearly ? 0 : 1])
+				return acc + calculateRowTotal(price, quantity)
+			}, 0)
 		},
-		[details, isYearly, activeCategories, setTotal],
+		[details, isYearly, getItemId, calculateRowTotal],
+	)
+
+	const calculateOverallTotal = useCallback(
+		(quantities: Record<string, number>, activeCategories: number[]) => {
+			return activeCategories.reduce((total, categoryIndex) => {
+				return total + calculateCategoryTotal(categoryIndex, quantities)
+			}, 0)
+		},
+		[calculateCategoryTotal],
 	)
 
 	const toggleCategory = useCallback((index: number) => {
-		setActiveCategories((prev) =>
-			prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
-		)
+		setActiveCategories((prev) => {
+			const newActiveCategories = prev.includes(index)
+				? prev.filter((item) => item !== index)
+				: [...prev, index]
+
+			return newActiveCategories
+		})
 	}, [])
 
-	const categoryTotals = useMemo(() => {
-		return details.map((detail, categoryIndex) =>
-			detail.specs?.rows?.reduce((acc: number, row: any, rowIndex: number) => {
-				const quantity = quantities[`${categoryIndex}_${rowIndex}`] || 0
-				const price = parseInt(row.cells[isYearly ? 0 : 1])
-				return acc + quantity * price
-			}, 0),
-		)
-	}, [details, quantities, isYearly])
+	const handleQuantityChange = useCallback(
+		(id: string, delta: number, value: number, categoryIndex: number) => {
+			setActiveCategories((prev) => {
+				if (delta > 0 && !prev.includes(categoryIndex)) {
+					return [...prev, categoryIndex]
+				}
+				return prev
+			})
+
+			setQuantities((prev) => {
+				const newQuantities = { ...prev }
+				newQuantities[id] = Math.max(0, (prev[id] || 0) + delta)
+				return newQuantities
+			})
+		},
+		[],
+	)
+
+	useEffect(() => {
+		const newTotal = calculateOverallTotal(quantities, activeCategories)
+		setTotal(newTotal)
+	}, [quantities, activeCategories, calculateOverallTotal, setTotal])
 
 	return (
 		<div className="relative mt-6 flex w-full flex-col gap-9">
-			{details.map((detail, categoryIndex) => (
+			{reducedDetails.map((detail, categoryIndex) => (
 				<div key={`details_${categoryIndex}`}>
 					<h3
 						className={cn(
@@ -120,12 +142,12 @@ export default function CalculatorTable({
 								</span>
 							</div>
 						</div>
-						{categoryTotals[categoryIndex]}
+						{calculateCategoryTotal(categoryIndex, quantities)}
 					</h3>
 
 					<div className="text-gray-600">
 						{detail.specs?.rows?.map((row: any, rowIndex: number) => {
-							const id = `${categoryIndex}_${rowIndex}`
+							const id = getItemId(categoryIndex, rowIndex)
 							const quantity = quantities[id] || 0
 							const price = parseInt(row.cells[isYearly ? 0 : 1])
 
@@ -133,7 +155,7 @@ export default function CalculatorTable({
 								row.cells[2] && (
 									<div
 										key={id}
-										className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-lg:grid-cols-2"
+										className="grid grid-cols-4 items-center justify-between border-b border-gray-200 py-3 text-sm max-sm:grid-cols-2"
 									>
 										<div className="flex w-full flex-wrap justify-start px-6 py-3 font-medium">
 											{row.cells[2]}
@@ -143,16 +165,18 @@ export default function CalculatorTable({
 										</div>
 										<div className="flex h-full w-full flex-row items-center justify-center gap-1 px-6 *:transition-all max-lg:justify-start ltr:flex-row-reverse">
 											<button
-												className="group rounded-full p-2 hover:bg-gray-50"
+												className="group rounded-full p-2 transition-colors duration-300 hover:bg-gray-100 active:bg-gray-200"
 												onClick={() =>
 													handleQuantityChange(id, 1, price, categoryIndex)
 												}
 											>
 												<PiPlusBold className="size-4 text-gray-400 group-hover:text-gray-500" />
 											</button>
-											<div className="px-2">{quantity}</div>
+											<span className="max-w-8 flex-grow px-2 text-center">
+												{quantity}
+											</span>
 											<button
-												className="group rounded-full p-2 hover:bg-gray-50"
+												className="group rounded-full p-2 transition-colors duration-300 hover:bg-gray-100 active:bg-gray-200"
 												onClick={() =>
 													handleQuantityChange(id, -1, price, categoryIndex)
 												}
@@ -161,7 +185,8 @@ export default function CalculatorTable({
 											</button>
 										</div>
 										<div className="flex h-full w-full flex-row items-center justify-end gap-x-2 px-6 py-3 font-medium text-gray-500 max-lg:justify-start">
-											{quantity * price} {SR} /{isYearly ? yearly : monthly}
+											{calculateRowTotal(price, quantity)} {SR} /
+											{isYearly ? yearly : monthly}
 										</div>
 									</div>
 								)
