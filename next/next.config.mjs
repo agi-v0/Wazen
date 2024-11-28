@@ -1,8 +1,9 @@
-const { createClient } = require('next-sanity')
-const groq = require('groq')
-const withPlugins = require('next-compose-plugins')
+import { createClient } from 'next-sanity'
+import groq from 'groq'
+import withPlugins from 'next-compose-plugins'
 
-const createNextIntlPlugin = require('next-intl/plugin')
+import createNextIntlPlugin from 'next-intl/plugin'
+import withBundleAnalyzer from '@next/bundle-analyzer'
 const withNextIntl = createNextIntlPlugin()
 
 const client = createClient({
@@ -12,7 +13,7 @@ const client = createClient({
 	useCdn: true,
 })
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const bundleAnalyzer = withBundleAnalyzer({
 	enabled: process.env.ANALYZE === 'true',
 })
 
@@ -51,4 +52,4 @@ const nextConfig = {
 	},
 }
 
-module.exports = withPlugins([withNextIntl, [withBundleAnalyzer]], nextConfig)
+export default withPlugins([withNextIntl, [bundleAnalyzer]], nextConfig)
