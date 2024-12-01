@@ -63,6 +63,7 @@ export default async function RootLayout({
 				</main>
 				<Toaster />
 				<Footer
+					contactInfo={contactInfo}
 					footerMenu={footerMenu}
 					staticLinks={staticLinks}
 					locale={locale}

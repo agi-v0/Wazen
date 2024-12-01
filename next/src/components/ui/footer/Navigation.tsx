@@ -1,14 +1,29 @@
 import Link from 'next/link'
 import CTA from '../CTA'
-import { PiAt } from '@/components/ui/Icons'
+import { PiAt, PiEnvelope } from '@/components/ui/Icons'
 import { PiMapPin } from '@/components/ui/Icons'
 import { PiPhone } from '@/components/ui/Icons'
 import { cn } from '@/lib/utils'
 import { getTranslations } from 'next-intl/server'
 import Logo from '@/components/ui/logo'
 
-export default async function Menu({ footerMenu, locale }: any) {
+export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 	const t = await getTranslations('Index')
+	const icons = [
+		<PiPhone
+			key="PiPhone"
+			className="size-4 flex-none text-center text-white"
+		/>,
+		<PiEnvelope
+			key="PiEnvelope"
+			className="size-4 flex-none text-center text-white"
+		/>,
+		<PiMapPin
+			key="PiMapPin"
+			className="size-4 flex-none text-center text-white"
+		/>,
+	]
+
 	return (
 		<nav className="fluid-gap flex w-full flex-col flex-wrap items-start justify-start font-medium md:grid md:grid-cols-2 md:justify-around lg:grid-cols-5">
 			<div className="flex flex-col justify-start text-start text-sm font-normal lg:row-span-2">
@@ -22,21 +37,20 @@ export default async function Menu({ footerMenu, locale }: any) {
 				<p className="flex h-10 items-center text-balance font-medium">
 					{t('The OS for your Business')}
 				</p>
-				<p className="flex h-10 flex-row items-center gap-2 text-white/60">
-					<PiPhone className="size-4 flex-none text-center text-white" />{' '}
-					920008293
-				</p>
-				<a
-					className="flex h-10 flex-row items-center gap-2 text-white/60 transition-colors hover:text-white"
-					href="mailto:info@wazen.sa"
-				>
-					<PiAt className="size-4 flex-none text-center text-white" />{' '}
-					info@wazen.sa
-				</a>
-				<p className="flex h-fit flex-row items-center gap-2 text-white/60">
-					<PiMapPin className="size-4 flex-none text-white" />
-					<span>{t('Location')}</span>
-				</p>
+				{contactInfo?.map(
+					(item: { link: Sanity.Link; title: any }, index: number) => {
+						if (item.link.external)
+							return (
+								<span
+									key={index}
+									className="flex h-10 flex-row items-center gap-2 text-white/60"
+								>
+									{icons[index]}
+									<CTA link={item.link} className="hover:text-white" />
+								</span>
+							)
+					},
+				)}
 			</div>
 			{footerMenu?.items?.map((item: any, key: any) => {
 				const { label, links } = item
