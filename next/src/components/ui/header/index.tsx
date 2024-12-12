@@ -7,7 +7,7 @@ import Toggle from './Toggle'
 import Logo from '@/components/ui/logo'
 import { headers } from 'next/headers'
 const Wrapper = dynamic(() => import('./Wrapper'))
-const LangSelect = dynamic(() => import('./lang-select'))
+const LangSelect = dynamic(() => import('./LangSelect'))
 
 export default async function Header({
 	locale,

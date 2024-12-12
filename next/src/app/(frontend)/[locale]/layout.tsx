@@ -48,7 +48,7 @@ export default async function RootLayout({
 		<html
 			lang={locale}
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
-			className={locale == 'en' ? inter.className : rubik.className}
+			className={rubik.className}
 		>
 			{gtmId && <GoogleTagManager gtmId={gtmId} />}
 			<body className="w-full">

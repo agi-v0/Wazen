@@ -29,12 +29,14 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 						<NavigationMenuItem key={item.label}>
 							<Link
 								locale={locale as 'en' | 'ar'}
-								href={processUrl(item.internal, {
-									base: false,
-									params: item.params,
-								})}
-								legacyBehavior
-								passHref
+								href={
+									item.type === 'internal'
+										? processUrl(item.internal, {
+												base: false,
+												params: item.params,
+											})
+										: item.external
+								}
 							>
 								<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 									{item.label || item.internal.title}

@@ -26,18 +26,21 @@ export async function generateMetadata({ params }: Props) {
 
 export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
-		groq`*[_type == 'blog.post' || _type == 'blog.post.en' && defined(metadata.slug.current)].metadata.slug.current`,
+		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
 
-	return slugs.map((slug) => ({ slug }))
+	return slugs.flatMap((slug) => [
+		{ slug, locale: 'ar' },
+		{ slug, locale: 'en' },
+	])
 }
 
-async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
+async function getPost(params: { slug?: string }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
-	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
+	// const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
 
 	return await fetchSanity<Sanity.BlogPost>(
-		groq`*[_type == $type && metadata.slug.current == $slug][0]{
+		groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
             'readTime': length(pt::text(body)) / 200,
@@ -52,8 +55,8 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
             }
         }`,
 		{
-			params: { slug: decodedSlug, type },
-			tags: [type],
+			params: { slug: decodedSlug },
+			tags: ['blog.post'],
 		},
 	)
 }
