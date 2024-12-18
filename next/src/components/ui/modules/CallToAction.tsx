@@ -42,7 +42,15 @@ export default async function CallToAction({
 			image{
 				...,
 				asset->
-			},}
+			},
+			ctas[]{
+					...,
+					link{
+						...,
+						internal->{ title, metadata }
+					}
+				},
+			}
 		`,
 		{
 			params: {
@@ -52,11 +60,10 @@ export default async function CallToAction({
 		},
 	)
 	const callToAction = ctaDoc
-
-	content && (callToAction.content = content)
-	ctas && (callToAction.ctas = content)
-	checkedList && (callToAction.checkedList = checkedList)
-	// image?.asset && (callToAction.image = image)
+	content ||= callToAction.content
+	ctas ||= callToAction.ctas
+	checkedList ||= callToAction.checkedList
+	image?.asset || (image = callToAction.image)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -106,9 +113,7 @@ export default async function CallToAction({
 			<div
 				className={cn(
 					'fluid-gap fluid-padding -cyan-gradient-background-1 relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl bg-cyan-50 lg:flex-row lg:justify-start',
-					callToAction.image?.onRight
-						? ''
-						: 'lg:flex-row-reverse lg:justify-between',
+					image?.onRight ? '' : 'lg:flex-row-reverse lg:justify-between',
 				)}
 			>
 				<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
@@ -116,8 +121,8 @@ export default async function CallToAction({
 						className={cn('absolute start-8 top-8 h-full w-full min-w-[800px]')}
 					>
 						<Img
-							image={callToAction.image}
-							alt={callToAction.image.alt}
+							image={image}
+							alt={image?.alt}
 							imageWidth={1440}
 							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
 							draggable={false}
@@ -126,15 +131,12 @@ export default async function CallToAction({
 					</div>
 				</div>
 				<div className="flex max-w-2xl flex-col items-start gap-8">
-					<PortableText value={callToAction.content} components={components} />
+					<PortableText value={content} components={components} />
 
-					<CTAList
-						ctas={callToAction.ctas}
-						className="w-full *:h-12 *:text-base"
-					/>
+					<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
 					<div className="flex flex-col gap-2">
 						<PortableText
-							value={callToAction.checkedList}
+							value={checkedList}
 							components={checkedListComponents}
 						/>
 					</div>
