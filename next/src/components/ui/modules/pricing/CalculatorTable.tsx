@@ -69,7 +69,7 @@ export default function CalculatorTable({
 			return details[categoryIndex].specs.rows.reduce((acc, row, rowIndex) => {
 				const itemId = getItemId(categoryIndex, rowIndex)
 				const quantity = quantities[itemId] || 0
-				const price = parseInt(row.cells[isYearly ? 0 : 1])
+				const price = Number(row.cells[isYearly ? 0 : 1])
 				return acc + calculateRowTotal(price, quantity)
 			}, 0)
 		},
@@ -149,7 +149,7 @@ export default function CalculatorTable({
 						{detail.specs?.rows?.map((row: any, rowIndex: number) => {
 							const id = getItemId(categoryIndex, rowIndex)
 							const quantity = quantities[id] || 0
-							const price = parseInt(row.cells[isYearly ? 0 : 1])
+							const price = Number(row.cells[isYearly ? 0 : 1])
 
 							return (
 								row.cells[2] && (
