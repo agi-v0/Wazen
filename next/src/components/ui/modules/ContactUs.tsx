@@ -4,7 +4,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 
 import {
 	PiCaretLeftBold,
@@ -15,6 +15,7 @@ import {
 
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
+import processUrl from '@/lib/processUrl'
 
 export default async function ContactUs({
 	content,
@@ -39,13 +40,13 @@ export default async function ContactUs({
 				}
 				if (value.style === 'h4') {
 					return (
-						<p className="text-large font-semibold text-cyan-950 rtl:leading-snug">
+						<p className="text-large font-medium text-cyan-950 rtl:leading-snug">
 							{value.children.map((child: any) => child.text).join('')}
 						</p>
 					)
 				}
 				return (
-					<p className="text-main text-cyan-950/80 rtl:leading-snug">
+					<p className="text-cyan-950/80 rtl:leading-snug">
 						{value.children.map((child: any) => child.text).join('')}
 					</p>
 				)
@@ -54,9 +55,9 @@ export default async function ContactUs({
 	}
 
 	const icons = [
-		<PiPhone key="PiPhone" className="text-2xl text-cyan-950/60" />,
-		<PiEnvelope key="PiEnvelope" className="text-2xl text-cyan-950/60" />,
-		<PiMapPin key="PiMapPin" className="text-2xl text-cyan-950/60" />,
+		<PiPhone key="PiPhone" className="mb-2 text-2xl text-cyan-950/60" />,
+		<PiEnvelope key="PiEnvelope" className="mb-2 text-2xl text-cyan-950/60" />,
+		<PiMapPin key="PiMapPin" className="mb-2 text-2xl text-cyan-950/60" />,
 	]
 
 	return (
@@ -68,24 +69,32 @@ export default async function ContactUs({
 				<NextIntlClientProvider messages={messages}>
 					<ContactForm />
 				</NextIntlClientProvider>
-				<div className="flex h-fit flex-col flex-wrap justify-end gap-x-8 gap-y-6 md:flex-row">
-					{contactInfo.map((info: any, index: any) => (
-						<div key={index} className="flex h-fit w-[240px] flex-col gap-3">
-							{icons[index]}
-							<PortableText value={info.title} components={components} />
-
-							<span className="text-main group flex items-center text-teal-600">
-								<Link
-									href=""
-									className="font-medium text-teal-600 no-underline"
-									dir="ltr"
-								>
-									{info.link.label}
-								</Link>
-								<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
-							</span>
-						</div>
-					))}
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+					{contactInfo.map(
+						(info: { title: any; link: Sanity.Link }, index: any) => (
+							<div key={index} className={`flex w-full flex-col gap-1`}>
+								{icons[index]}
+								<PortableText value={info.title} components={components} />
+								<span className="text-main group flex items-center text-teal-600">
+									<Link
+										locale={locale}
+										href={
+											info.link.type === 'internal'
+												? processUrl(info.link.internal as any, {
+														base: false,
+														params: info.link.params,
+													})
+												: (info.link.external as string)
+										}
+										className="font-medium text-teal-600 no-underline"
+									>
+										{info.link.label}
+									</Link>
+									<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+								</span>
+							</div>
+						),
+					)}
 				</div>
 			</div>
 		</section>
