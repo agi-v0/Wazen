@@ -42,6 +42,16 @@ async function getPage(locale: string) {
 							internal->{ title, metadata },
 					}
 				},
+				_type == 'faq-list' => {
+          sideNote {
+            ...,
+            link {
+              ...,
+              internal->{ title, metadata }
+            }
+          }
+        },
+
 				categories[]->{title},
 				logos[]->,
 				plans[]->,

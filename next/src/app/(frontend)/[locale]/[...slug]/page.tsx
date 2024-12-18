@@ -59,6 +59,15 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 							internal->{ title, metadata },
 					}
 				},
+				_type == 'faq-list' => {
+          sideNote {
+            ...,
+            link {
+              ...,
+              internal->{ title, metadata }
+            }
+          }
+        },
 				categories[]->{title , title_en, _id},
 				items[]->,
 				logos[]->,
