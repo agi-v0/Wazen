@@ -12,6 +12,7 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { Icon } from '@iconify/react'
 
 export async function Navigation({
 	headerMenu,
@@ -38,6 +39,7 @@ export async function Navigation({
 										'min-w-fit text-nowrap',
 									)}
 								>
+									{/* <Icon icon={item.iconify?.name} className="size-4" /> */}
 									{item.label || item.internal.title}
 								</Link>
 							</NavigationMenuItem>

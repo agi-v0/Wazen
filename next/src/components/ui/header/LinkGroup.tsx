@@ -9,6 +9,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 	const linkCount = links?.[0]?.links && links?.[0].links.length
@@ -21,7 +22,7 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 			<NavigationMenuContent className="max-lg:w-full">
 				<ul
 					className={cn(
-						'grid gap-1 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px]',
+						'grid gap-1 p-4 md:w-[400px] md:grid-cols-2 md:gap-y-0 lg:w-[500px]',
 						linkCount && linkCount < 6 ? 'md:grid-cols-1' : '',
 					)}
 				>
@@ -37,8 +38,23 @@ export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
 											})
 										: item.external
 								}
+								legacyBehavior
+								passHref
 							>
-								<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+								<NavigationMenuLink
+									className={cn(
+										navigationMenuTriggerStyle(),
+										item.iconify?.name && 'h-12 px-2',
+									)}
+								>
+									{item.iconify?.name && (
+										<div className="-absolute -start-0 me-2 rounded-md bg-teal-50 p-1 transition-colors duration-200 group-hover:bg-cyan-800">
+											<Icon
+												icon={item.iconify.name}
+												className="size-6 text-teal-600 group-hover:text-teal-50"
+											/>
+										</div>
+									)}
 									{item.label || item.internal.title}
 								</NavigationMenuLink>
 							</Link>

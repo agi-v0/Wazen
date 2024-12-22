@@ -15,6 +15,12 @@ export default defineType({
 			name: 'description',
 			type: 'text',
 		}),
+
+		defineField({
+			name: 'iconify',
+			title: 'Icon',
+			type: 'icon',
+		}),
 		defineField({
 			name: 'type',
 			type: 'string',

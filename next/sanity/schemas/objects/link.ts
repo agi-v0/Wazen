@@ -16,6 +16,11 @@ export default defineType({
 			type: 'text',
 		}),
 		defineField({
+			name: 'iconify',
+			title: 'Icon',
+			type: 'icon',
+		}),
+		defineField({
 			name: 'type',
 			type: 'string',
 			options: {

@@ -68,6 +68,7 @@ export default defineConfig({
 		inlineSvgInput(),
 		iconify({
 			collections: ['ph'],
+			showName: true,
 		}),
 		advancedArray(),
 		table(),
