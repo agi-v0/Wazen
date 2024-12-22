@@ -44,7 +44,7 @@ export default defineType({
 						}),
 						defineField({
 							name: 'icon',
-							title: 'Icon (Phosphor icons',
+							title: 'Icon (Phosphor icons)',
 							description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
 							type: 'icon',
 						}),
