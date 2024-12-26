@@ -1,7 +1,7 @@
 'use client'
 
 import { RefObject, useEffect, useId, useState } from 'react'
-import { LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface AnimatedBeamProps {

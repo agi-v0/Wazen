@@ -5,8 +5,8 @@ import {
 	useScroll,
 	AnimatePresence,
 	LazyMotion,
-} from 'framer-motion'
-import { m } from 'framer-motion'
+} from 'motion/react'
+import { m } from 'motion/react'
 import Img from '@/components/ui/Img'
 import {
 	PortableText,

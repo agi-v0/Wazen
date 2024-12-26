@@ -4,7 +4,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import { LazyMotion, m, useInView } from 'framer-motion'
+import { LazyMotion, m, useInView } from 'motion/react'
 import { useRef } from 'react'
 import user from '../../../../public/How-it-works/User.svg'
 import chart from '../../../../public/How-it-works/Chart.svg'

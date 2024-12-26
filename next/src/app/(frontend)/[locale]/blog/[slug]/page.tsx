@@ -28,7 +28,12 @@ export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
 		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
-
+	// console.log(
+	// 	slugs.flatMap((slug) => [
+	// 		{ slug, locale: 'ar' },
+	// 		{ slug, locale: 'en' },
+	// 	]),
+	// )
 	return slugs.flatMap((slug) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },

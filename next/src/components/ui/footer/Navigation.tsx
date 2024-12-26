@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CTA from '../CTA'
+import Button from '../LinkButton'
 import { PiAt, PiEnvelope } from '@/components/ui/Icons'
 import { PiMapPin } from '@/components/ui/Icons'
 import { PiPhone } from '@/components/ui/Icons'
@@ -46,7 +46,8 @@ export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 									className="flex h-10 flex-row items-center gap-2 text-white/60"
 								>
 									{icons[index]}
-									<CTA link={item.link} className="hover:text-white" />
+
+									<Button link={item.link} className="hover:text-white" />
 								</span>
 							)
 					},
@@ -70,13 +71,13 @@ export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 						>
 							{links?.map((link: any, key: any) => (
 								<li key={key} className={cn('group')}>
-									<CTA
+									<Button
 										locale={locale}
 										link={link}
 										className="grid h-10 items-center text-sm text-white/60 no-underline transition-colors group-hover:text-white"
 									>
 										{link.label}
-									</CTA>
+									</Button>
 									{/* <PiCaretLeftBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
 								</li>
 							))}

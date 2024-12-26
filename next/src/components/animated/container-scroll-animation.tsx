@@ -6,7 +6,7 @@ import {
 	m,
 	MotionValue,
 	LazyMotion,
-} from 'framer-motion'
+} from 'motion/react'
 
 export const ContainerScroll = ({
 	children,

@@ -1,6 +1,6 @@
 'use client'
 
-import { LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'motion/react'
 
 export default function Transition({
 	children,

@@ -6,6 +6,7 @@ import CTAList from '@/components/ui/CTAList'
 import Toggle from './Toggle'
 import Logo from '@/components/ui/logo'
 import { headers } from 'next/headers'
+import Button from '../LinkButton'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('./LangSelect'))
 
@@ -52,7 +53,9 @@ export default async function Header({
 					{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 					<div className="flex w-full flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row lg:justify-end">
 						<LangSelect pathname={pathname} />
-						<CTAList className="text-base max-lg:w-full" ctas={ctas} />
+						<div className="flex flex-col items-center gap-4 text-base max-lg:w-full md:flex-row">
+							{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
+						</div>
 					</div>
 				</NavigationMenu>
 			</div>

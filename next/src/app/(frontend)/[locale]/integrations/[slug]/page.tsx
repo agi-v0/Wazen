@@ -18,7 +18,6 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<SingleAppHeader app={app} />
-
 			<SuggestedApps />
 			<CallToAction />
 		</>
@@ -37,10 +36,16 @@ export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
 		groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
-	return slugs.map((slug) => ({ slug }))
+	const x = slugs.flatMap((slug) => [
+		{ slug, locale: 'ar' },
+		{ slug, locale: 'en' },
+	])
+	console.log(x)
+	return x
 }
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
+	console.log(params)
 	return await fetchSanity<any>(
 		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
@@ -54,7 +59,7 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 		{
 			params: {
 				locale: params.locale,
-				slug: 'integrations/' + params.slug,
+				slug: params.slug,
 			},
 			tags: ['apps'],
 		},

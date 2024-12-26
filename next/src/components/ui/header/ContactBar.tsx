@@ -1,4 +1,4 @@
-import CTA from '../CTA'
+import Button from '../LinkButton'
 import { PiEnvelope, PiMapPin, PiPhone } from '../Icons'
 
 export default function ContactBar({
@@ -28,7 +28,7 @@ export default function ContactBar({
 									className="flex shrink-0 flex-row items-center gap-1 px-2 py-1 text-sm text-gray-400 *:hover:text-teal-600"
 								>
 									{icons[index]}
-									<CTA link={item.link} />
+									<Button link={item.link} />
 								</div>
 							)
 					},

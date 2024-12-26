@@ -2,9 +2,8 @@
 import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
-import * as m from 'motion/react-client'
 
-export default function CTA({
+export default function LinkButton({
 	link,
 	locale,
 	style,
@@ -18,10 +17,6 @@ export default function CTA({
 			children || link?.label || link?.internal?.title || link?.external,
 		...rest,
 	}
-	const FADE_DOWN_ANIMATION_VARIANTS = {
-		hidden: { opacity: 0, y: -10 },
-		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
-	}
 
 	if (link?.type === 'internal' && link.internal)
 		return (
@@ -31,22 +26,15 @@ export default function CTA({
 					base: false,
 					params: link.params,
 				})}
-				legacyBehavior
-				passHref
-			>
-				<m.a {...props} variants={FADE_DOWN_ANIMATION_VARIANTS}></m.a>
-			</Link>
+				{...props}
+			/>
 		)
 
 	if (link?.type === 'external' && link.external)
 		return (
-			<m.a
-				href={link.external}
-				{...props}
-				variants={FADE_DOWN_ANIMATION_VARIANTS}
-			>
+			<a href={link.external} {...props}>
 				{link.label}
-			</m.a>
+			</a>
 		)
 
 	return props.children

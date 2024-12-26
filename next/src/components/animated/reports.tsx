@@ -1,5 +1,5 @@
 'use client'
-import { LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'motion/react'
 
 const reports = () => {
 	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)

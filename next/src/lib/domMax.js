@@ -1,3 +1,3 @@
 // features.js
-import { domMax } from 'framer-motion'
+import { domMax } from 'motion/react'
 export default domMax

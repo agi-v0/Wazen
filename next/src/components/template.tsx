@@ -1,6 +1,6 @@
 'use client'
 
-import { m } from 'framer-motion'
+import { m } from 'motion/react'
 
 export default function Template({ children }: { children: React.ReactNode }) {
 	return (

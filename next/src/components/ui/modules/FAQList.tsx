@@ -10,7 +10,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion'
-import CTA from '../CTA'
+import Button from '../LinkButton'
 import { PiCaretLeftBold } from '@/components/ui/Icons'
 
 export default function FAQList({
@@ -77,9 +77,13 @@ export default function FAQList({
 					</h3>
 					<p className="text-main text-teal-900">{sideNote.subtitle}</p>
 					<span className="text-main group flex items-center rounded-full p-2 px-4 font-medium text-teal-600">
-						<CTA locale={locale} link={sideNote.link} className="no-underline">
+						<Button
+							locale={locale}
+							link={sideNote.link}
+							className="no-underline"
+						>
 							{sideNote.link.label}
-						</CTA>
+						</Button>
 						<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
 					</span>
 				</div>

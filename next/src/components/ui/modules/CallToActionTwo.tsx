@@ -4,7 +4,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import { PiCaretRightBold, PiCheckCircle } from '@/components/ui/Icons'
-import Button from '../Button'
+import Button from '../LinkButton'
 
 // https://magicui.design/docs/components/neon-gradient-card
 

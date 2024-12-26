@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'motion/react'
 
 export default function MobileApp() {
 	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)

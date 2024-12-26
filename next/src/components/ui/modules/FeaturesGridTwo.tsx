@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import { domAnimation, LazyMotion, m, useInView } from 'framer-motion'
+import { LazyMotion, m, useInView } from 'motion/react'
 import { Icon } from '@iconify/react'
 
 import Pretitle from '@/components/ui/Pretitle'

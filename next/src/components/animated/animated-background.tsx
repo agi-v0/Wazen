@@ -8,7 +8,7 @@ import {
 	domMax,
 	m,
 	motion,
-} from 'framer-motion'
+} from 'motion/react'
 import {
 	Children,
 	cloneElement,
