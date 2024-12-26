@@ -1,4 +1,3 @@
-// import Link from 'next/link'
 import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
@@ -34,7 +33,10 @@ export default function CTA({
 				legacyBehavior
 				passHref
 			>
-				<m.a {...props} variants={FADE_DOWN_ANIMATION_VARIANTS}></m.a>
+				<m.a
+					{...(props as any)}
+					variants={FADE_DOWN_ANIMATION_VARIANTS as any}
+				></m.a>
 			</Link>
 		)
 
@@ -42,7 +44,7 @@ export default function CTA({
 		return (
 			<m.a
 				href={link.external}
-				{...props}
+				{...(props as any)}
 				variants={FADE_DOWN_ANIMATION_VARIANTS}
 			>
 				{link.label}
