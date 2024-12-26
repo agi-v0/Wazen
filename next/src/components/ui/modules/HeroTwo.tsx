@@ -1,8 +1,13 @@
-import { PortableText } from '@portabletext/react'
+import {
+	PortableText,
+	PortableTextComponents,
+	PortableTextTypeComponentProps,
+} from '@portabletext/react'
 import CTAList from '@/components/ui/CTAList'
 import Pretitle from '@/components/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { set2 } from '@/components/ui/portable-text'
+import * as m from 'motion/react-m'
 
 export default function HeroTwo({
 	pretitle,
@@ -24,14 +29,27 @@ export default function HeroTwo({
 	alignItems: React.CSSProperties['alignItems']
 }>) {
 	const hasImage = !!bgImage?.asset
-	const FADE_UP_ANIMATION_VARIANTS = {
-		hidden: { opacity: 0, y: 10 },
+	const FADE_DOWN_ANIMATION_VARIANTS = {
+		hidden: { opacity: 0, y: -10 },
 		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
 
 	return (
 		<section className="cyan-gradient-background-1 section py-12">
-			<div className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24">
+			<m.div
+				className="flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24"
+				initial="hidden"
+				animate="show"
+				viewport={{ once: true }}
+				variants={{
+					hidden: {},
+					show: {
+						transition: {
+							staggerChildren: 0.15,
+						},
+					},
+				}}
+			>
 				<div className={cn('relative max-w-3xl space-y-6')}>
 					<Pretitle
 						className={cn(
@@ -45,7 +63,7 @@ export default function HeroTwo({
 					<PortableText value={content} components={set2} />
 				</div>
 				<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
-			</div>
+			</m.div>
 		</section>
 	)
 }

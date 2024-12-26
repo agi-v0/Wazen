@@ -27,7 +27,6 @@ export default function HeroThree({
 		hidden: { opacity: 0, y: -10 },
 		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	const components: PortableTextComponents = {
 		types: {

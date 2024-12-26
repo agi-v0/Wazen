@@ -2,7 +2,11 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-
+import * as m from 'motion/react-m'
+const FADE_DOWN_ANIMATION_VARIANTS = {
+	hidden: { opacity: 0, y: -10 },
+	show: { opacity: 1, y: 0, transition: { type: 'spring' } },
+}
 export const hero: PortableTextComponents = {
 	types: {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -37,22 +41,31 @@ export const set2: PortableTextComponents = {
 		block: ({ value }: PortableTextTypeComponentProps<any>) => {
 			if (value.style === 'h1') {
 				return (
-					<h1 className="h1 mx-auto max-w-3xl text-balance text-center text-cyan-950 ltr:leading-tight rtl:leading-snug">
+					<m.h1
+						variants={FADE_DOWN_ANIMATION_VARIANTS}
+						className="h1 mx-auto max-w-3xl text-balance text-center text-cyan-950 ltr:leading-tight rtl:leading-snug"
+					>
 						{value.children.map((child: any) => child.text).join('')}
-					</h1>
+					</m.h1>
 				)
 			}
 			if (value.style === 'h2') {
 				return (
-					<h2 className="h2 font-semibold leading-tight text-cyan-950">
+					<m.h2
+						variants={FADE_DOWN_ANIMATION_VARIANTS}
+						className="h2 font-semibold leading-tight text-cyan-950"
+					>
 						{value.children.map((child: any) => child.text).join('')}
-					</h2>
+					</m.h2>
 				)
 			}
 			return (
-				<p className="text-large text-cyan-950/80 rtl:leading-snug">
+				<m.p
+					variants={FADE_DOWN_ANIMATION_VARIANTS}
+					className="text-large text-cyan-950/80 rtl:leading-snug"
+				>
 					{value.children.map((child: any) => child.text).join('')}
-				</p>
+				</m.p>
 			)
 		},
 	},
