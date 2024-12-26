@@ -52,7 +52,7 @@ export default async function Header({
 				>
 					{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
 					<div className="flex w-full flex-col-reverse items-center justify-center gap-4 text-center max-lg:header-closed:hidden lg:flex-row lg:justify-end">
-						<LangSelect pathname={pathname} />
+						<LangSelect />
 						<div className="flex flex-col items-center gap-4 text-base max-lg:w-full md:flex-row">
 							{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
 						</div>

@@ -1,3 +1,4 @@
+'use client'
 import { useLocale } from 'next-intl'
 import {
 	NavigationMenu,
@@ -9,12 +10,32 @@ import {
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 // import Link from 'next/link'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname, useRouter } from '@/i18n/routing'
+import { useParams } from 'next/navigation'
+
 import { PiGlobe } from '@/components/ui/Icons'
 import { cn } from '@/lib/utils'
+import { ChangeEvent, useTransition } from 'react'
 
-const LangSelect = ({ pathname }: any) => {
+const LangSelect = () => {
 	const locale = useLocale()
+	const router = useRouter()
+	const [isPending, startTransition] = useTransition()
+	const pathname = usePathname()
+	const params = useParams()
+
+	function onSelectChange(locale: string) {
+		const nextLocale = locale as 'en' | 'ar'
+		startTransition(() => {
+			router.replace(
+				// @ts-expect-error -- TypeScript will validate that only known `params`
+				// are used in combination with a given `pathname`. Since the two will
+				// always match for the current route, we can skip runtime checks.
+				{ pathname, params },
+				{ locale: nextLocale },
+			)
+		})
+	}
 	return (
 		<NavigationMenu
 			dir={locale === 'en' ? 'ltr' : 'rtl'}
@@ -29,13 +50,13 @@ const LangSelect = ({ pathname }: any) => {
 					<NavigationMenuContent>
 						<ul className={cn('grid gap-1 p-4')}>
 							<NavigationMenuItem>
-								{/* <button
-										onClick={() => onSelectChange('ar')}
-										className={navigationMenuTriggerStyle()}
-									>
-										عربي
-									</button> */}
-								<Link
+								<button
+									onClick={() => onSelectChange('ar')}
+									className={navigationMenuTriggerStyle()}
+								>
+									عربي
+								</button>
+								{/* <Link
 									locale="ar"
 									href={pathname || '/'}
 									legacyBehavior
@@ -49,10 +70,16 @@ const LangSelect = ({ pathname }: any) => {
 									>
 										عربي
 									</NavigationMenuLink>
-								</Link>
+								</Link> */}
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link
+								<button
+									onClick={() => onSelectChange('en')}
+									className={navigationMenuTriggerStyle()}
+								>
+									English
+								</button>
+								{/* <Link
 									locale="en"
 									href={pathname || '/'}
 									legacyBehavior
@@ -66,7 +93,7 @@ const LangSelect = ({ pathname }: any) => {
 									>
 										English
 									</NavigationMenuLink>
-								</Link>
+								</Link> */}
 							</NavigationMenuItem>
 						</ul>
 					</NavigationMenuContent>
