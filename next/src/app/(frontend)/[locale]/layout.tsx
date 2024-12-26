@@ -14,6 +14,7 @@ import Script from 'next/script'
 import IntercomClientComponent from '@/components/ui/intercom'
 
 import { notFound } from 'next/navigation'
+import Transition from '@/lib/Transition'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -58,9 +59,11 @@ export default async function RootLayout({
 					ctas={ctas}
 					locale={locale}
 				/>
-				<main id="main-content" tabIndex={-1}>
-					{children}
-				</main>
+				<Transition>
+					<main id="main-content" tabIndex={-1}>
+						{children}
+					</main>
+				</Transition>
 				<Toaster />
 				<Footer
 					contactInfo={contactInfo}

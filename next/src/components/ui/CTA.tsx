@@ -1,7 +1,7 @@
 import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
-import * as m from 'motion/react-client'
+import * as m from 'motion/react-m'
 
 export default function CTA({
 	link,

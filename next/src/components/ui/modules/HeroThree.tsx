@@ -8,7 +8,7 @@ import CTAList from '@/components/ui/CTAList'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
 import blob from '../../../../public/gradient-blob2.svg'
-import * as m from 'motion/react-client'
+import * as m from 'motion/react-m'
 
 export default function HeroThree({
 	pretitle,
@@ -27,6 +27,8 @@ export default function HeroThree({
 		hidden: { opacity: 0, y: -10 },
 		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
+	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
+
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {

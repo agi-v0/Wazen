@@ -1,6 +1,7 @@
 'use client'
 
-import { LazyMotion, m } from 'motion/react'
+import { LazyMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 
 export default function Transition({
 	children,
@@ -11,13 +12,13 @@ export default function Transition({
 
 	return (
 		<LazyMotion features={loadFeatures}>
-			<m.div
+			{/* <m.div
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ ease: 'easeInOut', duration: 0.3 }}
-			>
-				{children}
-			</m.div>
+			> */}
+			{children}
+			{/* </m.div> */}
 		</LazyMotion>
 	)
 }
