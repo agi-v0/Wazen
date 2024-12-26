@@ -1,13 +1,8 @@
 'use client'
 
 import { LazyMotion } from 'motion/react'
-import * as m from 'motion/react-m'
 
-export default function Transition({
-	children,
-}: {
-	children: React.ReactNode
-}) {
+export default function Motion({ children }: { children: React.ReactNode }) {
 	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return (

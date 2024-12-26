@@ -1,12 +1,7 @@
 'use client'
 import React, { useRef } from 'react'
-import {
-	useScroll,
-	useTransform,
-	m,
-	MotionValue,
-	LazyMotion,
-} from 'motion/react'
+import { useScroll, useTransform, MotionValue } from 'motion/react'
+import * as m from 'motion/react-m'
 
 export const ContainerScroll = ({
 	children,
@@ -74,18 +69,18 @@ export const Card = ({
 	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return (
-		<LazyMotion features={loadFeatures}>
-			<m.div
-				style={{
+		<m.div
+			style={
+				{
 					rotateX: rotate,
 					scale,
-				}}
-				key={`container-scroll-${1}`}
-			>
-				<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
-					{children}
-				</div>
-			</m.div>
-		</LazyMotion>
+				} as any
+			}
+			key={`container-scroll-${1}`}
+		>
+			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
+				{children}
+			</div>
+		</m.div>
 	)
 }
