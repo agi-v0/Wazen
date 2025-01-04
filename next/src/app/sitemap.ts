@@ -10,12 +10,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				metadata.noIndex != true
 			]|order(metadata.slug.current)
 			{
-				'url': $baseUrl + '/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+				'url': $baseUrl  + select(metadata.slug.current == 'index' => '', metadata.slug.current),
 				'lastModified': _updatedAt,
 				'alternates': {
 					'languages': {
-						'en': $baseUrl + '/en/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
-						'ar': $baseUrl + '/ar/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						'en': $baseUrl + 'en/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+						'ar': $baseUrl + 'ar/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
 					}
 				},
 				'priority': select(
@@ -29,12 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				metadata.noIndex != true
 			]|order(name)
 			{
-				'url': $baseUrl + '/blog/' + metadata.slug.current,
+				'url': $baseUrl + 'blog/' + metadata.slug.current,
 				'lastModified': _updatedAt,
 				'alternates': {
 					'languages': {
-						'en': $baseUrl + '/en/blog/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
-						'ar': $baseUrl + '/ar/blog/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						'en': $baseUrl + 'en/blog/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+						'ar': $baseUrl + 'ar/blog/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
 					}
 				},
 				'priority': 0.4,
@@ -45,12 +45,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				metadata.noIndex != true
 			]|order(name)
 			{
-				'url': $baseUrl + '/help-center/' + metadata.slug.current,
+				'url': $baseUrl + 'help-center/' + metadata.slug.current,
 				'lastModified': _updatedAt,
 				'alternates': {
 					'languages': {
-						'en': $baseUrl + '/en/help-center/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
-						'ar': $baseUrl + '/ar/help-center/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						'en': $baseUrl + 'en/help-center/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+						'ar': $baseUrl + 'ar/help-center/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
 					}
 				},
 				'priority': 0.4,
@@ -61,12 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				metadata.noIndex != true
 			]|order(name)
 			{
-				'url': $baseUrl + '/integrations/' + metadata.slug.current,
+				'url': $baseUrl + 'integrations/' + metadata.slug.current,
 				'lastModified': _updatedAt,
 				'alternates': {
 					'languages': {
-						'en': $baseUrl + '/en/integrations/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
-						'ar': $baseUrl + '/ar/integrations/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
+						'en': $baseUrl + 'en/integrations/' + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+						'ar': $baseUrl + 'ar/integrations/' + select(metadata.slug.current == 'index' => '', metadata.slug.current)
 					}
 				},
 				'priority': 0.4,
@@ -78,6 +78,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			},
 		},
 	)
-	console.dir(Object.values(allPages).flat())
 	return Object.values(allPages).flat()
 }
