@@ -3,7 +3,7 @@ import LinkGroup from './LinkGroup'
 import processUrl from '@/lib/processUrl'
 
 import * as React from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 
 import { cn } from '@/lib/utils'
 import {
@@ -30,6 +30,7 @@ export async function Navigation({
 						return (
 							<NavigationMenuItem key={key} className="w-full">
 								<Link
+									locale={locale as 'en' | 'ar'}
 									href={processUrl(item.internal, {
 										base: false,
 										params: item.params,
@@ -39,7 +40,6 @@ export async function Navigation({
 										'min-w-fit text-nowrap',
 									)}
 								>
-									{/* <Icon icon={item.iconify?.name} className="size-4" /> */}
 									{item.label || item.internal.title}
 								</Link>
 							</NavigationMenuItem>
