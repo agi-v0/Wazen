@@ -23,6 +23,10 @@ export default async function processMetadata(
 			title,
 			description,
 			images: ogimage || site.ogimage,
+			siteName:
+				locale == 'en'
+					? 'Wazen ERP - Operating System for your Business'
+					: 'وازن - النظام التشغيلي لأعمالك',
 		},
 		twitter: {
 			card: 'summary_large_image',
