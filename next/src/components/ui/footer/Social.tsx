@@ -1,5 +1,6 @@
 import { getSite } from '@/lib/sanity/queries'
-import CTA from './CTA'
+import CTA from '../CTA'
+import { Link } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 
 import {
@@ -13,7 +14,7 @@ import {
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
 import { getTranslations } from 'next-intl/server'
-import { Link } from '@/i18n/routing'
+import processUrl from '@/lib/processUrl'
 
 export default async function Social({
 	staticLinks,
@@ -46,12 +47,17 @@ export default async function Social({
 				<div className="inline-flex gap-4 text-start">
 					{staticLinks?.items?.map((item: any, key: any) => {
 						return (
-							<CTA
+							<Link
 								key={key}
-								link={item}
-								locale={locale}
+								locale={locale as 'ar' | 'en'}
+								href={processUrl(item.internal, {
+									base: false,
+									params: item.params,
+								})}
 								className="no-underline transition-all hover:text-white"
-							/>
+							>
+								{item.label}
+							</Link>
 						)
 					})}
 				</div>

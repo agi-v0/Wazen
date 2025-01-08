@@ -1,5 +1,5 @@
 import Navigation from './Navigation'
-import Social from '@/components/ui/Social'
+import Social from './Social'
 
 export default async function Footer({
 	locale,
