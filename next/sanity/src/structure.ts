@@ -16,17 +16,11 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('page').title('Pages'),
 			S.divider(),
 
-			S.documentTypeListItem('blog.post').title('Blog posts (عربي)'),
-			S.documentTypeListItem('blog.post.en').title('Blog posts (English)'),
+			S.documentTypeListItem('blog.post').title('Blog posts'),
 			S.documentTypeListItem('blog.category').title('Blog categories'),
 			S.divider(),
 
-			S.documentTypeListItem('help.center.post').title(
-				'Help Center posts (عربي)',
-			),
-			S.documentTypeListItem('help.center.post.en').title(
-				'Help Center posts (English)',
-			),
+			S.documentTypeListItem('help.center.post').title('Help center posts'),
 			S.documentTypeListItem('help.center.category').title(
 				'Help Center Categories',
 			),

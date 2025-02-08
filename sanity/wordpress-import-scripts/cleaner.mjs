@@ -20,8 +20,9 @@ async function main() {
 		// Add metadata and categories keys to each object, set _createdAt and _publishedAt, and delete link and slug
 		const updatedArray = arrayOfObjects.map((obj) => {
 			obj._type = 'blog.post'
-			obj._createdAt = `${obj.date}Z`
-			obj.publishDate = formatDate(obj._createdAt) // Use a hardcoded date for example
+			// obj._createdAt = `${obj.date}Z`
+			// obj.publishDate = formatDate(obj._createdAt) // Use a hardcoded date for example
+			obj.publishDate = obj.publishDate.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/i)[0]
 
 			const slug = obj.slug // Store slug before deleting
 

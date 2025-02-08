@@ -29,9 +29,15 @@ def fetch_html(url, retries=3):
             return None
 
 # Function to parse the HTML content
-def parse_content(html_content, content_xpath):
+def parse_content(html_content, content_xpath, date_xpath):
     soup = BeautifulSoup(html_content, 'html.parser')
     dom = html.fromstring(str(soup))
+    # Extract publish date
+    date_elements = dom.xpath(date_xpath)
+    publish_date = None
+    if date_elements:
+        publish_date = date_elements[0].get('content')
+    # Extract content
     content_elements = dom.xpath(content_xpath)
     if content_elements:
         content_soup = BeautifulSoup(html.tostring(content_elements[0], encoding='unicode', method='html'), 'html.parser')
@@ -48,45 +54,23 @@ def parse_content(html_content, content_xpath):
     else:
         content = 'No Content'
     
-    return content
+    return content, publish_date
 
-# Function to convert HTML content to PortableText format
-# def convert_to_portabletext(html_content):
-    # soup = BeautifulSoup(html_content, 'html.parser')
-    # blocks = []
-# 
-    # for tag in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ul', 'li']):
-        # block = {
-            # "_type": "block",
-            # "style": "normal" if tag.name == 'p' else tag.name,
-            # "children": []
-        # }
-# 
-        # if tag.name == 'ul':
-            # for li in tag.find_all('li'):
-                # block['children'].append({
-                    # "_type": "block",
-                    # "style": "normal",
-                    # "children": [{"_type": "span", "text": li.get_text(), "marks": []}]
-                # })
-        # else:
-            # block['children'].append({"_type": "span", "text": tag.get_text(), "marks": []})
-# 
-        # blocks.append(block)
-# 
-    # return blocks
+
 
 # Function to process each link in the JSON data
-def process_links(json_data, content_xpath):
-    for obj in json_data:
+def process_links(json_data, content_xpath, date_xpath):
+    for index, obj in enumerate(json_data):
         if 'link' in obj:
             url = obj['link']
-            print(f"Scraping {url}")
+            print(f"Scraping {index}: {url}")
             html_content = fetch_html(url)
             if html_content:
-                content_html = parse_content(html_content, content_xpath)
+                content_html, publish_date = parse_content(html_content, content_xpath, date_xpath)
                 #content_portabletext = convert_to_portabletext(content_html)
                 obj['body'] = content_html
+                if publish_date:
+                    obj['publishDate'] = publish_date
                 print(f"Successfully scraped {url}")
             else:
                 obj['content'] = 'Failed to retrieve content'
@@ -94,18 +78,20 @@ def process_links(json_data, content_xpath):
     return json_data
 
 # Load JSON data from a file
-with open('graphql.json', 'r', encoding='utf-8') as f:
+with open('links.json', 'r', encoding='utf-8') as f:
     json_data = json.load(f)
 
 # Define the XPath for content
 content_xpath = '/html/body/div[1]/div[3]/div/main/article/div/div/section/div[2]/div/div/div[2]/div/div'  # Adjust this XPath as needed
+date_xpath = '//meta[@property="article:published_time"]' 
 
 # Process links and update JSON data
-updated_json_data = process_links(json_data, content_xpath)
+updated_json_data = process_links(json_data, content_xpath, date_xpath)
 
 # Save updated JSON data to a file
 with open('scraped.json', 'w', encoding='utf-8') as f:
     json.dump(updated_json_data, f, ensure_ascii=False, indent=4)
 
 #step1: scraper.py 
-#step2: node cleaner.mjs orr script.mjs
+#step2: node format.mjs
+#step3: node cleaner.mjs
