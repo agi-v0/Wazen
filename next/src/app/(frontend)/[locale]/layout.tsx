@@ -80,7 +80,6 @@ export default async function RootLayout({
 					}}
 				/>
 				<IntercomClientComponent />
-				{ga4 && <GoogleAnalytics gaId={ga4} />}
 			</body>
 		</html>
 		// </NextIntlClientProvider>
