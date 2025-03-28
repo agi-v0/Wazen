@@ -10,7 +10,7 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import { cn } from '@/lib/utils'
 import style from './embla.module.css'
 
@@ -124,7 +124,6 @@ const EmblaCarousel: React.FC<PropType> = ({
 							<Img
 								loading="lazy"
 								image={slide.image}
-								imageWidth={3000}
 								className="h-full w-full rounded-md object-cover"
 							/>
 						</div>

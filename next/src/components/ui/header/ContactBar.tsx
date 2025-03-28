@@ -6,7 +6,7 @@ export default function ContactBar({
 	locale,
 }: Partial<{
 	contactInfo: any
-	locale: string
+	locale: 'en' | 'ar'
 }>) {
 	const icons = [
 		<PiPhone key="PiPhone" className="size-4 text-cyan-950/60" />,

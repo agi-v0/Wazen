@@ -17,7 +17,7 @@ export default function Wrapper({
 	pathname,
 }: {
 	contactInfo: any
-	locale: string
+	locale: 'en' | 'ar'
 	pathname: string
 } & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)

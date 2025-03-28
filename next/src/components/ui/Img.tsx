@@ -1,121 +1,119 @@
-import {
-	useNextSanityImage,
-	type UseNextSanityImageOptions,
-} from 'next-sanity-image'
-import { ImageFormat } from '@sanity/image-url/lib/types/types'
-import client from '@/lib/sanity/client'
-import { urlFor } from '@/lib/sanity/urlFor'
+import { preload } from 'react-dom'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlFor } from '@/sanity/lib/image'
+import NextImage, { type ImageProps } from 'next/image'
+import type { ComponentProps } from 'react'
+import { stegaClean } from 'next-sanity'
+import type { SanityImageSource } from '@sanity/asset-utils'
 
-const SIZES = [
-	60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440, 1920, 2560, 3000,
-]
+type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
 
-type ImageProps = {
-	svg?: boolean
-	format?: ImageFormat
-	image: Sanity.Image | undefined
-	imageWidth?: number
-	className?: string
-	imageSizes?: number[]
-	alt?: string
-	options?: UseNextSanityImageOptions
-} & React.ImgHTMLAttributes<HTMLImageElement>
-
-type SourceProps = Omit<ImageProps, 'className' | 'alt'> & {
-	media?: string
-}
-const FADE_DOWN_ANIMATION_VARIANTS = {
-	hidden: { opacity: 0, y: -10 },
-	show: { opacity: 1, y: 0, transition: { type: 'spring' } },
-}
-
-function generateSrcSet(
-	image: Sanity.Image,
-	format: ImageFormat,
-	svg: boolean,
-	width?: number,
-	sizes: number[] = SIZES,
-): string | undefined {
-	if (!image) return undefined
-
-	const filteredSizes = sizes.filter((size) => !width || size <= width)
-	const urlGenerator = (size: number) => {
-		let imageUrl = urlFor(image).width(size).auto('format')
-		if (!svg) {
-			imageUrl = imageUrl.format(format)
-		}
-		return `${imageUrl.url()} ${size}w`
-	}
-
-	return filteredSizes.map(urlGenerator).join(', ')
-}
-
-export default function Img({
-	svg = false,
-	format = 'webp',
-	image,
-	imageWidth,
-	className,
-	imageSizes = SIZES,
-	alt = '',
-	options,
+export function ResponsiveImg({
+	img,
+	pictureProps,
 	...props
-}: ImageProps) {
-	const imageProps = useNextSanityImage(client, image || {})
+}: {
+	img?: Sanity.Image
+	pictureProps?: ComponentProps<'picture'>
+} & ImgProps) {
+	if (!img) return null
 
-	if (!image?.asset) return null
-
-	const { src, width, height } = imageProps
-	const finalWidth = imageWidth || width
-	const finalHeight = imageWidth
-		? Math.round((imageWidth / width) * height)
-		: height
-
-	const srcSet = generateSrcSet(image, format, svg, finalWidth, imageSizes)
+	const { responsive, ...imgProps } = img
 
 	return (
-		<img
+		<picture {...pictureProps}>
+			{responsive?.map(
+				(r: { media: string; image: Sanity.Image }, key: number) => (
+					<Source {...r} key={key} />
+				),
+			)}
+			<Img {...imgProps} {...props} />
+		</picture>
+	)
+}
+
+export function Img({
+	image,
+	width: w,
+	height: h,
+	...props
+}: { image?: Sanity.Image } & ImgProps) {
+	if (!image?.asset) return null
+
+	const { src, width, height } = generateSrc(image, w, h)
+
+	if (stegaClean(image.loading) === 'eager') {
+		preload(src, { as: 'image' })
+	}
+
+	return (
+		<NextImage
 			src={src}
-			srcSet={srcSet}
-			width={finalWidth}
-			height={finalHeight}
-			className={className}
-			alt={image.alt || alt}
-			loading={image.loading || 'lazy'}
-			decoding="async"
+			width={width}
+			height={height}
+			alt={props.alt || image.alt || ''}
+			loading={stegaClean(image.loading)}
 			{...props}
 		/>
 	)
 }
 
 export function Source({
-	svg = false,
-	format = 'webp',
 	image,
-	imageWidth,
-	imageSizes = SIZES,
-	options,
-	media = '(max-width: 768px)',
-}: SourceProps) {
-	const imageProps = useNextSanityImage(client, image || {})
+	media = '(width < 48rem)',
+	width: w,
+	height: h,
+	...props
+}: {
+	image?: Sanity.Image
+} & ComponentProps<'source'>) {
+	if (!image?.asset) return null
 
-	if (!image) return null
+	const { src, width, height } = generateSrc(image, w, h)
 
-	const { src, width, height } = imageProps
-	const finalWidth = imageWidth || width
-	const finalHeight = imageWidth
-		? Math.round((imageWidth / width) * height)
-		: height
-
-	const srcSet =
-		generateSrcSet(image, format, svg, finalWidth, imageSizes) || src
+	if (stegaClean(image.loading) === 'eager') {
+		preload(src, { as: 'image' })
+	}
 
 	return (
 		<source
-			srcSet={srcSet}
-			width={finalWidth}
-			height={finalHeight}
+			srcSet={src}
+			width={width}
+			height={height}
 			media={media}
+			{...props}
 		/>
 	)
+}
+
+function generateSrc(
+	image: Sanity.Image,
+	w?: number | `${number}` | string,
+	h?: number | `${number}` | string,
+) {
+	const { width: w_orig, height: h_orig } = getImageDimensions(
+		image as SanityImageSource,
+	)
+
+	const w_calc = !!w // if width is provided
+		? Number(w)
+		: // if height is provided, calculate width
+			!!h && Math.floor((Number(h) * w_orig) / h_orig)
+
+	const h_calc = !!h // if height is provided
+		? Number(h)
+		: // if width is provided, calculate height
+			!!w && Math.floor((Number(w) * h_orig) / w_orig)
+
+	return {
+		src: urlFor(image)
+			.withOptions({
+				width: !!w ? Number(w) : undefined,
+				height: !!h ? Number(h) : undefined,
+				auto: 'format',
+			})
+			.url(),
+		width: w_calc || w_orig,
+		height: h_calc || h_orig,
+	}
 }

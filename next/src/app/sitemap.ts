@@ -1,5 +1,7 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import type { MetadataRoute } from 'next'
+
+export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const allPages = await fetchSanity<Record<string, MetadataRoute.Sitemap>>(

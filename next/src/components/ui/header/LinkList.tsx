@@ -10,7 +10,11 @@ import {
 	NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 
-export default function LinkList({ label, links, locale }: Sanity.LinkList) {
+export default function LinkList({
+	label,
+	links,
+	locale,
+}: Sanity.LinkList & { locale: 'en' | 'ar' }) {
 	return (
 		<NavigationMenuItem key={label} className="w-full">
 			<NavigationMenuTrigger className="group relative">

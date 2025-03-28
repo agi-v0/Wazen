@@ -1,6 +1,6 @@
 'use client'
 
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { PiCaretRightBold } from '@/components/ui/Icons'
@@ -21,7 +21,7 @@ export default function RollupClient({
 	limit: number
 	categoryRef: any
 	initialPosts: Sanity.BlogPost[]
-	locale: string
+	locale: 'en' | 'ar'
 }>) {
 	const [posts, setPosts] = useState(initialPosts || [])
 	const [loading, setLoading] = useState(false)

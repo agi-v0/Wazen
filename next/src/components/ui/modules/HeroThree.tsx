@@ -1,4 +1,4 @@
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -89,7 +89,6 @@ export default function HeroThree({
 						image={image}
 						alt={image?.alt || pretitle}
 						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
-						imageWidth={3000}
 						draggable={false}
 						fetchPriority="high"
 						loading="eager"

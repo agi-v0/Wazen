@@ -7,7 +7,7 @@ import Pretitle from '@/components/ui/Pretitle'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { PiCaretLeftBold } from '@/components/ui/Icons'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 import { cn } from '@/lib/utils'
 import AnimatedBackground from '@/components/animated/animated-background'
 

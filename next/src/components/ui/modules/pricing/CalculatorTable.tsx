@@ -40,7 +40,7 @@ export default function CalculatorTable({
 	details: DetailData[]
 	setTotal: (total: number) => void
 	isYearly: boolean
-	locale: string
+	locale: 'en' | 'ar'
 }) {
 	const [quantities, setQuantities] = React.useState<Record<string, number>>({})
 	const [activeCategories, setActiveCategories] = React.useState<number[]>([])

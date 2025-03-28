@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 import { PiCheckBold, PiXBold } from '@/components/ui/Icons'
 import { getLocale } from 'next-intl/server'
 
@@ -12,7 +12,7 @@ export default async function ComparisonTable({
 	altAppsLogos: any
 	comparisonTable: any
 }>) {
-	const locale = await getLocale()
+	const locale = (await getLocale()) as 'en' | 'ar'
 	return (
 		locale &&
 		comparisonTable.rows[0] &&
@@ -48,7 +48,6 @@ export default async function ComparisonTable({
 										<Img
 											image={logo}
 											className="mx-auto h-auto w-[75%]"
-											imageWidth={1000}
 											alt="logo"
 										/>
 									</span>
@@ -77,7 +76,7 @@ export default async function ComparisonTable({
 	)
 }
 
-const cellContent = (cell: string, index: number, locale: string) => {
+const cellContent = (cell: string, index: number, locale: 'en' | 'ar') => {
 	switch (cell) {
 		case 'x':
 			return (

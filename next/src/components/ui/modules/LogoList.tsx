@@ -1,11 +1,11 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import {
 	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '../Pretitle'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 export default async function LogoList({
 	pretitle,
@@ -53,9 +53,8 @@ export default async function LogoList({
 							key={key}
 							className="svg-container h-12 w-auto opacity-50 grayscale transition-all hover:opacity-100 hover:grayscale-0"
 							image={logo.icon}
-							imageWidth={640}
 							alt={logo.name}
-							svg={true}
+							// svg={true}
 						/>
 					))}
 				</figure>

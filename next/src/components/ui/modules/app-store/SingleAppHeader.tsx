@@ -1,6 +1,6 @@
 import { set2 } from '@/components/ui/portable-text'
 import CTAList from '@/components/ui/CTAList'
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import { PortableText } from 'next-sanity'
 import Image from 'next/image'
 
@@ -23,7 +23,6 @@ export default async function SingleAppHeader({
 							<Img
 								image={app.icon}
 								className="size-32 rounded-2xl object-cover shadow-md"
-								imageWidth={600}
 							/>
 						) : (
 							<Image

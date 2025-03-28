@@ -17,7 +17,7 @@ export default function PlansCalculator({
 }: Partial<{
 	content: any
 	details: any
-	locale: string
+	locale: 'en' | 'ar'
 }>) {
 	const [isYearly, setIsYearly] = useState(false)
 	const [total, setTotal] = useState<number>(0)
@@ -80,7 +80,7 @@ export default function PlansCalculator({
 					details={details}
 					setTotal={setTotal}
 					isYearly={isYearly}
-					locale={locale as string}
+					locale={locale as 'en' | 'ar'}
 				/>
 			</div>
 		</div>

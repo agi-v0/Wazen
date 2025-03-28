@@ -6,7 +6,7 @@ import lightray from '../../../../public/lightrays3.svg'
 import { PiSealCheck } from '@/components/ui/Icons'
 import { hero } from '@/components/ui/portable-text'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 export default function Hero({
 	pretitle,
@@ -52,7 +52,6 @@ export default function Hero({
 					<Img
 						image={image}
 						alt={image?.alt}
-						imageWidth={3000}
 						className="mx-auto h-auto w-full rounded-lg object-cover object-left-top"
 						draggable={false}
 						fetchPriority="high"

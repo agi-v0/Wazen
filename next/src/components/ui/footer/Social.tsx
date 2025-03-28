@@ -1,4 +1,4 @@
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import CTA from '../CTA'
 import { Link } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
@@ -29,8 +29,8 @@ export default async function Social({
 
 	const { social } = await getSite(locale)
 
-	let currentDate = new Date()
-	let currentYear = currentDate.getFullYear()
+	const currentDate = new Date()
+	const currentYear = currentDate.getFullYear()
 
 	if (!social?.items?.length) return null
 
@@ -67,15 +67,16 @@ export default async function Social({
 				{social.items.map((item, key) => {
 					switch (item._type) {
 						case 'link':
-							return (
-								<Link
-									className="p-2 text-lg hover:!opacity-100 group-has-[a:hover]:opacity-50"
-									href={item.external}
-									key={key}
-								>
-									<Icon url={item.external} aria-label={item.label} />
-								</Link>
-							)
+							if (item.external)
+								return (
+									<Link
+										className="p-2 text-lg hover:!opacity-100 group-has-[a:hover]:opacity-50"
+										href={item.external}
+										key={key}
+									>
+										<Icon url={item.external} aria-label={item.label} />
+									</Link>
+								)
 
 						default:
 							return null

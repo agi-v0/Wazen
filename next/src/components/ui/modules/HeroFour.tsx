@@ -5,7 +5,7 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/components/ui/Pretitle'
 import CTAList from '@/components/ui/CTAList'
-import Img from '@/components/ui/Img'
+import { Img, ResponsiveImg } from '@/components/ui/Img'
 import { set2 } from '@/components/ui/portable-text'
 import * as m from 'motion/react-m'
 
@@ -18,13 +18,13 @@ export default function HeroPostcard({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	image: Sanity.Image & { onRight?: boolean }
+	image: Sanity.Image
 }>) {
 	const FADE_DOWN_ANIMATION_VARIANTS = {
 		hidden: { opacity: 0, y: -10 },
 		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
-
+	console.log(image)
 	return (
 		<m.section
 			className="cyan-gradient-background-2 relative flex min-h-screen flex-col gap-6 py-[20vh] lg:gap-12"
@@ -54,11 +54,11 @@ export default function HeroPostcard({
 				<Img
 					image={image}
 					alt={image?.alt}
-					imageWidth={3000}
-					className="object-cover object-left-top"
+					className="h-auto w-full object-cover object-left-top"
 					draggable={false}
 					fetchPriority="high"
 					loading="eager"
+					priority
 				/>
 			</m.div>
 		</m.section>

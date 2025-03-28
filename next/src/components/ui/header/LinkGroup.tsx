@@ -11,7 +11,11 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Icon } from '@iconify/react/dist/iconify.js'
 
-export default function LinkGroup({ label, links, locale }: Sanity.LinkGroup) {
+export default function LinkGroup({
+	label,
+	links,
+	locale,
+}: Sanity.LinkGroup & { locale: 'en' | 'ar' }) {
 	const linkCount = links?.[0]?.links && links?.[0].links.length
 
 	return (

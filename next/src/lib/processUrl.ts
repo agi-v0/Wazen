@@ -1,4 +1,6 @@
-import { stegaClean } from '@sanity/client/stega'
+// import { stegaClean } from 'next-sanity'
+
+import { stegaClean } from 'next-sanity'
 
 export default function processUrl(
 	page: Sanity.PageBase,

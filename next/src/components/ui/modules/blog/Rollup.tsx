@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import RollupClient from './RollupClient'
 
 export default async function Rollup({
@@ -16,7 +16,7 @@ export default async function Rollup({
 	category: any
 	categoryRef: any
 	layout: 'grid' | 'carousel'
-	locale: string
+	locale: 'en' | 'ar'
 }>) {
 	const props = { _type, title, limit, categoryRef, locale }
 

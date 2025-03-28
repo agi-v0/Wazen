@@ -23,9 +23,11 @@ export default function PostPreview({
 				<div className="w-fit rounded-full text-sm text-gray-400">
 					<Date value={post.publishDate} locale={locale} />
 				</div>
-				<p className="text-large font-semibold text-cyan-950 group-hover:text-teal-600">
-					{post.title.slice(0, 64) + (post.title.length > 64 ? ' ...' : '')}
-				</p>
+				{post.title && (
+					<p className="text-large font-semibold text-cyan-950 group-hover:text-teal-600">
+						{post.title?.slice(0, 64) + (post.title?.length > 64 ? ' ...' : '')}
+					</p>
+				)}
 				<p className="text-base text-cyan-950/60 group-hover:text-cyan-950/80">
 					{post.body && post.body[0].children[0].text.slice(0, 140) + ' ...'}
 				</p>

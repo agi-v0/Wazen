@@ -2,9 +2,9 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, PortableTextTypeComponentProps } from 'next-sanity'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 type TestimonialListProps = {
 	direction?: 'left' | 'right'
@@ -116,7 +116,6 @@ export default function TestimonialList({
 										<Img
 											className="size-12 rounded-full object-cover"
 											image={author?.image}
-											imageWidth={80}
 										/>
 										<div className={cn('text-main text-start')}>
 											<div className="font-semibold text-cyan-950">

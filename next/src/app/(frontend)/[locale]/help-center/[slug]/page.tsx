@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'

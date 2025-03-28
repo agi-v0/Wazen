@@ -6,7 +6,7 @@ export default function Logo({
 	light,
 }: {
 	className: string
-	locale: string
+	locale: 'en' | 'ar'
 	light?: boolean
 }) {
 	return locale === 'ar' ? (

@@ -6,9 +6,9 @@ import {
 import CTAList from '@/components/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { PiCheckCircleFill } from '@/components/ui/Icons'
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { getLocale } from 'next-intl/server'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 // https://magicui.design/docs/components/neon-gradient-card
 
@@ -35,7 +35,7 @@ export default async function CallToAction({
 	}
 }>) {
 	const locale = await getLocale()
-	const ctaDoc = await fetchSanity<Sanity.Module>(
+	const ctaDoc = await fetchSanity(
 		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
 		
 			...,
@@ -123,7 +123,6 @@ export default async function CallToAction({
 						<Img
 							image={image}
 							alt={image?.alt}
-							imageWidth={1440}
 							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
 							draggable={false}
 							loading="lazy"

@@ -8,7 +8,7 @@ import * as m from 'motion/react-m'
 import { Icon } from '@iconify/react'
 
 import Pretitle from '@/components/ui/Pretitle'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 type Feature = {
 	icon: { name: string }
@@ -46,36 +46,6 @@ const portableTextComponents: PortableTextComponents = {
 	},
 }
 
-const FeatureItem = ({ feature }: { feature: Feature }) => (
-	<m.li
-		className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
-		variants={FADE_UP_ANIMATION_VARIANTS}
-	>
-		<div className="space-y-2 p-6">
-			<div className="flex flex-row items-center gap-4">
-				{feature.icon && (
-					<div className="self-start rounded-md bg-cyan-800 p-2">
-						<Icon icon={feature.icon.name} className="text-xl text-cyan-50" />
-					</div>
-				)}
-				<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
-					{feature.title}
-				</h3>
-			</div>
-			<p className="text-pretty text-base text-cyan-950/80">
-				{feature.description}
-			</p>
-		</div>
-		<Img
-			image={feature.image}
-			imageWidth={640}
-			alt={feature.title}
-			svg={true}
-			className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
-		/>
-	</m.li>
-)
-
 export default function FeaturesGridTwo({
 	pretitle,
 	content,
@@ -102,6 +72,34 @@ export default function FeaturesGridTwo({
 		</section>
 	)
 }
+
+const FeatureItem = ({ feature }: { feature: Feature }) => (
+	<m.li
+		className="group flex max-h-[400px] w-full flex-col justify-start overflow-hidden rounded-xl text-start hover:bg-teal-100 lg:max-h-[500px]"
+		variants={FADE_UP_ANIMATION_VARIANTS}
+	>
+		<div className="space-y-2 p-6">
+			<div className="flex flex-row items-center gap-4">
+				{feature.icon && (
+					<div className="self-start rounded-md bg-cyan-800 p-2">
+						<Icon icon={feature.icon.name} className="text-xl text-cyan-50" />
+					</div>
+				)}
+				<h3 className="text-large font-semibold text-cyan-950 ltr:leading-tight">
+					{feature.title}
+				</h3>
+			</div>
+			<p className="text-pretty text-base text-cyan-950/80">
+				{feature.description}
+			</p>
+		</div>
+		<Img
+			image={feature.image}
+			alt={feature.title}
+			className="h-auto w-full translate-y-0 scale-[99%] px-6 opacity-90 transition-all ease-out group-hover:-translate-y-1 group-hover:scale-100 group-hover:opacity-100 group-hover:drop-shadow-lg"
+		/>
+	</m.li>
+)
 
 const FeatureBlock = ({ features }: { features: Feature[] }) => {
 	const ref = useRef<HTMLDivElement>(null)

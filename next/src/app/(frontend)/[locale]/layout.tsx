@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import { routing } from '@/i18n/routing'
 import { inter, rubik } from '@/styles/fonts'
 // import dynamic from 'next/dynamic'
@@ -15,6 +15,7 @@ import IntercomClientComponent from '@/components/ui/intercom'
 
 import { notFound } from 'next/navigation'
 import Motion from '@/lib/MotionProvider'
+import Providers from './providers'
 // const Header = dynamic(() => import('@/ui/header'))
 // const Footer = dynamic(() => import('@/ui/footer'))
 
@@ -45,7 +46,6 @@ export default async function RootLayout({
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
 	return (
-		// <NextIntlClientProvider>
 		<html
 			lang={locale}
 			dir={locale == 'en' ? 'ltr' : 'rtl'}
@@ -59,11 +59,9 @@ export default async function RootLayout({
 					ctas={ctas}
 					locale={locale}
 				/>
-				<Motion>
-					<main id="main-content" tabIndex={-1}>
-						{children}
-					</main>
-				</Motion>
+				<main id="main-content" tabIndex={-1}>
+					<Providers>{children}</Providers>
+				</main>
 				<Toaster />
 				<Footer
 					contactInfo={contactInfo}
@@ -71,7 +69,6 @@ export default async function RootLayout({
 					staticLinks={staticLinks}
 					locale={locale}
 				/>
-
 				<Script
 					strategy="afterInteractive"
 					id="intercom-settings"
@@ -79,9 +76,8 @@ export default async function RootLayout({
 						__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
 					}}
 				/>
-				<IntercomClientComponent />
+				{/* <IntercomClientComponent /> */}
 			</body>
 		</html>
-		// </NextIntlClientProvider>
 	)
 }

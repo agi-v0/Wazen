@@ -7,7 +7,7 @@ export default async function Footer({
 	staticLinks,
 	contactInfo,
 }: {
-	locale: string
+	locale: 'en' | 'ar'
 	footerMenu?: Sanity.Navigation
 	staticLinks?: Sanity.Navigation
 	contactInfo: any

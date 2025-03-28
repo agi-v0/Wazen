@@ -19,7 +19,7 @@ export async function Navigation({
 	locale,
 }: {
 	headerMenu: Sanity.Navigation
-	locale: string
+	locale: 'en' | 'ar'
 }) {
 	// const { headerMenu } = await getSite(locale)
 	return (
@@ -29,19 +29,21 @@ export async function Navigation({
 					case 'link':
 						return (
 							<NavigationMenuItem key={key} className="w-full">
-								<Link
-									locale={locale as 'en' | 'ar'}
-									href={processUrl(item.internal, {
-										base: false,
-										params: item.params,
-									})}
-									className={cn(
-										navigationMenuTriggerStyle(),
-										'min-w-fit text-nowrap',
-									)}
-								>
-									{item.label || item.internal.title}
-								</Link>
+								{item.internal && (
+									<Link
+										locale={locale as 'en' | 'ar'}
+										href={processUrl(item.internal, {
+											base: false,
+											params: item.params,
+										})}
+										className={cn(
+											navigationMenuTriggerStyle(),
+											'min-w-fit text-nowrap',
+										)}
+									>
+										{item.label || item.internal.title}
+									</Link>
+								)}
 							</NavigationMenuItem>
 						)
 

@@ -22,7 +22,7 @@ export default function FeaturesInfiniteScroll({
 	pretitle: string
 	content: any
 	cards: any
-	locale: string
+	locale: 'en' | 'ar'
 	altApps: any
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']

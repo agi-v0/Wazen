@@ -24,7 +24,7 @@ const LangSelect = () => {
 	const pathname = usePathname()
 	const params = useParams()
 
-	function onSelectChange(locale: string) {
+	function onSelectChange(locale: 'en' | 'ar') {
 		const nextLocale = locale as 'en' | 'ar'
 		startTransition(() => {
 			router.replace(

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { PiCaretRightBold } from '@/components/ui/Icons'
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 
 type CardItem = {
 	title: string
@@ -92,7 +92,6 @@ export default function InfiniteMovingCards({
 					</div>
 					<Img
 						image={image}
-						imageWidth={300}
 						className="aspect-square h-full w-auto rounded-md object-cover object-center"
 					/>
 				</li>

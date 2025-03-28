@@ -16,7 +16,7 @@ export default async function Header({
 	ctas,
 	contactInfo,
 }: {
-	locale: string
+	locale: 'en' | 'ar'
 	headerMenu?: Sanity.Navigation
 	ctas?: Sanity.CTA[]
 	contactInfo?: any

@@ -1,7 +1,7 @@
 import { Link } from '@/i18n/routing'
 import { PiArrowLineDownBold } from '@/components/ui/Icons'
 import { useTranslations } from 'next-intl'
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -46,7 +46,6 @@ export default function AppCard({
 				<Img
 					image={app.icon}
 					className="-border-4 size-20 rounded-2xl border-white object-cover shadow-md"
-					imageWidth={300}
 				/>
 				<p className="text-larger font-semibold text-cyan-950">{app.title}</p>
 				{/* <p className="text-main text-gray-600 group-hover:text-cyan-950/80">

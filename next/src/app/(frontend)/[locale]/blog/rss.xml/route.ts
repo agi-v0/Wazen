@@ -1,5 +1,5 @@
 import RSS from 'rss'
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import processUrl from '@/lib/processUrl'
 
 export async function GET() {
@@ -34,7 +34,7 @@ export async function GET() {
 
 	posts.map((post) =>
 		feed.item({
-			title: post.title,
+			title: post.title ?? '',
 			url: processUrl(post),
 			date: post.publishDate,
 			description: post.metadata.description,

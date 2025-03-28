@@ -1,10 +1,10 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import {
 	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import Img from '../Img'
+import { Img } from '@/components/ui/Img'
 
 export default async function Partners({
 	pretitle,
@@ -49,9 +49,8 @@ export default async function Partners({
 						<Img
 							key={key}
 							image={logo.icon}
-							imageWidth={640}
 							alt={logo.name}
-							svg={true}
+							// svg={true}
 							className="h-11 w-auto"
 						/>
 					))}

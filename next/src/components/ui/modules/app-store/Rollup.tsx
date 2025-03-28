@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import AppCard from './AppCard'
 import { cn } from '@/lib/utils'
 import { getLocale } from 'next-intl/server'

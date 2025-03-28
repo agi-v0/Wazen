@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { Link } from '@/i18n/routing'
 import { PiCaretRightBold } from '@/components/ui/Icons'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import AppCard from './AppCard'
 
 const SuggestedApps = async () => {

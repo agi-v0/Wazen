@@ -1,11 +1,11 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { creativeModuleQuery } from '@/lib/sanity/queries'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { creativeModuleQuery } from '@/sanity/lib/queries'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 
 type Props = {
-	params: Promise<{ locale: string }>
+	params: Promise<{ locale: 'en' | 'ar' }>
 }
 
 export default async function Page({ params }: Props) {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props) {
 	return processMetadata(page, resolvedParams.locale)
 }
 
-async function getPage(locale: string) {
+async function getPage(locale: 'en' | 'ar') {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
 			...,
@@ -51,7 +51,6 @@ async function getPage(locale: string) {
             }
           }
         },
-
 				categories[]->{title},
 				logos[]->,
 				plans[]->,

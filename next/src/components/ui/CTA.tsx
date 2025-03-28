@@ -10,7 +10,8 @@ export default function CTA({
 	className,
 	children,
 	...rest
-}: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
+}: Sanity.CTA &
+	React.HTMLAttributes<HTMLAnchorElement> & { locale?: 'ar' | 'en' }) {
 	const props = {
 		className: cn(style, className) || undefined,
 		children:

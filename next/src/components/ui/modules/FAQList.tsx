@@ -19,7 +19,7 @@ export default function FAQList({
 	items,
 	sideNote,
 }: Partial<{
-	locale: string
+	locale: 'en' | 'ar'
 	content: any
 	items: {
 		question: string

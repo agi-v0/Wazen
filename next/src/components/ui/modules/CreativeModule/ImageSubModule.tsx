@@ -1,5 +1,5 @@
-import Img from '@/components/ui/Img'
-import { stegaClean } from '@sanity/client/stega'
+import { Img } from '@/components/ui/Img'
+import { stegaClean } from 'next-sanity'
 import type { ComponentProps } from 'react'
 
 export type ImageSubModuleType = Sanity.Module<'image'> &

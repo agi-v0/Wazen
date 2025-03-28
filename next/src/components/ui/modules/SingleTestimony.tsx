@@ -1,4 +1,4 @@
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import {
 	PortableText,
 	PortableTextComponents,
@@ -54,16 +54,12 @@ export default function SingleTestimony({
 					'section flex w-full flex-col items-center justify-evenly gap-10 gap-y-6 p-10'
 				}
 			>
-				<Img image={logoImage} imageWidth={80} />
+				<Img image={logoImage} />
 				<div className={'flex flex-col gap-8'}>
 					<PortableText value={testimony} components={components} />
 
 					<div>
-						<Img
-							image={image}
-							imageWidth={80}
-							className="mx-auto my-4 rounded-full"
-						/>
+						<Img image={image} className="mx-auto my-4 rounded-full" />
 						<PortableText value={client} components={components} />
 						<PortableText value={position} components={components} />
 					</div>

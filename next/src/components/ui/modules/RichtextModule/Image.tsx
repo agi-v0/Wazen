@@ -1,4 +1,4 @@
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 
 export default function Image({
 	value,
@@ -9,7 +9,7 @@ export default function Image({
 }) {
 	return (
 		<figure className="!my-8 text-center">
-			<Img className="mx-auto" image={value} imageWidth={1200} />
+			<Img className="mx-auto" image={value} />
 
 			{value.caption && (
 				<figcaption className="italic">{value.caption}</figcaption>

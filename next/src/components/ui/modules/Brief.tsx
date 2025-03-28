@@ -1,4 +1,4 @@
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import { PortableText } from '@portabletext/react'
 import Pretitle from '@/components/ui/Pretitle'
 import { cn } from '@/lib/utils'
@@ -30,7 +30,6 @@ export default function Brief({
 				{image && 'asset' in image ? (
 					<Img
 						image={image}
-						imageWidth={2000}
 						className="relative h-auto w-full overflow-hidden rounded-lg object-cover p-2 lg:aspect-square lg:max-w-[500px]"
 					/>
 				) : (

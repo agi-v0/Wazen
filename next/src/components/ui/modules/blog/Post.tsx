@@ -6,7 +6,7 @@ import {
 } from '@portabletext/react'
 import TableOfContents from '@/components/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/components/ui/modules/RichtextModule/AnchoredHeading'
-import Img from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import { PiCalendarBlank, PiCircleFill } from '@/components/ui/Icons'
 // import Image from 'next/image'
 
@@ -41,8 +41,9 @@ export default function Post({
 				</div>
 				<Img
 					image={post.metadata.image}
-					imageWidth={1200}
+					//
 					className="aspect-[inherit] w-full rounded-2xl"
+					priority
 				/>
 			</header>
 

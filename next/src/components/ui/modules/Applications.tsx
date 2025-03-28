@@ -24,7 +24,7 @@ export default function Applications({
 	pretitle: string
 	content: any
 	cards: any
-	locale: string
+	locale: 'en' | 'ar'
 	ctas: any
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']

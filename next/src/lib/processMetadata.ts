@@ -1,10 +1,10 @@
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import processUrl from './processUrl'
 import type { Metadata } from 'next'
 
 export default async function processMetadata(
 	page: Sanity.Page | Sanity.BlogPost,
-	locale: string,
+	locale: 'en' | 'ar',
 ): Promise<Metadata> {
 	const site = await getSite(locale)
 

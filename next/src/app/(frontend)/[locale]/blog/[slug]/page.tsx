@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
@@ -28,12 +28,6 @@ export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
 		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
-	// console.log(
-	// 	slugs.flatMap((slug) => [
-	// 		{ slug, locale: 'ar' },
-	// 		{ slug, locale: 'en' },
-	// 	]),
-	// )
 	return slugs.flatMap((slug) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },

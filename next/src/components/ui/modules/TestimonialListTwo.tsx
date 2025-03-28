@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 
 import {
 	PortableText,
@@ -18,7 +18,7 @@ export default async function TestimonialListTwo({
 }: {
 	pretitle: string
 	content: any
-	locale: string
+	locale: 'en' | 'ar'
 	testimonials: Sanity.Testimonial[]
 	className?: string
 }) {

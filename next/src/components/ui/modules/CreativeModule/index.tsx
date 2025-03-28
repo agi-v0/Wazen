@@ -93,13 +93,7 @@ export default function CreativeModule({
 										)
 
 									case 'image':
-										return (
-											<ImageSubModule
-												module={subModule}
-												imageWidth={imageWidth}
-												key={ii}
-											/>
-										)
+										return <ImageSubModule module={subModule} key={ii} />
 
 									case 'richtext':
 										return <RichtextSubModule module={subModule} key={ii} />

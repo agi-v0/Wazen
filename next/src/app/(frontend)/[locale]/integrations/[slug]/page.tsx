@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import SingleAppHeader from '@/components/ui/modules/app-store/SingleAppHeader'
@@ -36,16 +36,14 @@ export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
 		groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
-	const x = slugs.flatMap((slug) => [
+	const params = slugs.flatMap((slug) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },
 	])
-	console.log(x)
-	return x
+	return params
 }
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
-	console.log(params)
 	return await fetchSanity<any>(
 		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 

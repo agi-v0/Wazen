@@ -1,4 +1,4 @@
-import client from '@/lib/sanity/client'
+import { client } from '@/sanity/lib/client'
 import type { QueryParams, ResponseQueryOptions } from 'next-sanity'
 
 export { default as groq } from 'groq'

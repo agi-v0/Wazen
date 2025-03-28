@@ -1,5 +1,5 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { creativeModuleQuery } from '@/lib/sanity/queries'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { creativeModuleQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
