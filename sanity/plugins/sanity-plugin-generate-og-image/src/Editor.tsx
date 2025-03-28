@@ -37,7 +37,7 @@ const Editor: React.FC<EditorProps> = (props) => {
 	const fields = activeLayout.fields || []
 	const width = activeLayout.dimensions?.width || DEFAULT_DIMENSIONS.width
 	const height = activeLayout.dimensions?.height || DEFAULT_DIMENSIONS.height
-	console.log(data)
+
 	return (
 		<Card
 			scheme={scheme}
