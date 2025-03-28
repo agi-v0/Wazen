@@ -53,8 +53,6 @@ export default function Benefits({
 		setimage(content[activeCard % content.length].image)
 	}, [activeCard, content])
 
-	console.log(image)
-
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
 	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
@@ -76,7 +74,6 @@ export default function Benefits({
 			},
 		},
 	}
-	console.log('benefits', image)
 	return (
 		<section
 			className={

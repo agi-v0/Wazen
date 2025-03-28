@@ -24,7 +24,6 @@ export default function HeroPostcard({
 		hidden: { opacity: 0, y: -10 },
 		show: { opacity: 1, y: 0, transition: { type: 'spring' } },
 	}
-	console.log(image)
 	return (
 		<m.section
 			className="cyan-gradient-background-2 relative flex min-h-screen flex-col gap-6 py-[20vh] lg:gap-12"
