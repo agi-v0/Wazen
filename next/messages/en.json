@@ -55,5 +55,9 @@
 		"Odoo": "Odoo",
 		"Qoyod": "Qoyod",
 		"Daftra": "Daftra"
+	},
+	"App": {
+		"You may also be interested in": "You may also be interested in",
+		"View all": "View all"
 	}
 }

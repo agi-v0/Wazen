@@ -1,6 +1,6 @@
 'use server'
 
-import EmailTemplate from '@/lib/email-template'
+import EmailTemplate from '@/lib/emailTemplate'
 import { Resend } from 'resend'
 
 type formData = {

@@ -9,7 +9,7 @@ import { PiCheckCircleFill } from '@/components/ui/Icons'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { getLocale } from 'next-intl/server'
 import { Img } from '@/components/ui/Img'
-
+import { useLocale } from 'next-intl'
 // https://magicui.design/docs/components/neon-gradient-card
 
 export default async function CallToAction({

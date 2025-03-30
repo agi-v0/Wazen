@@ -1,23 +1,19 @@
 import '@/styles/globals.css'
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { getSite } from '@/sanity/lib/queries'
 import { routing } from '@/i18n/routing'
-import { inter, rubik } from '@/styles/fonts'
-// import dynamic from 'next/dynamic'
-import { Toaster } from '@/components/ui/toaster'
+import { rubik } from '@/styles/fonts'
+
 import Header from '@/components/ui/header'
 import Footer from '@/components/ui/footer'
-import { NextIntlClientProvider } from 'next-intl'
+
 import { setRequestLocale } from 'next-intl/server'
 
 import Script from 'next/script'
-import IntercomClientComponent from '@/components/ui/intercom'
 
 import { notFound } from 'next/navigation'
-import Motion from '@/lib/MotionProvider'
+
 import Providers from './providers'
-// const Header = dynamic(() => import('@/ui/header'))
-// const Footer = dynamic(() => import('@/ui/footer'))
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
@@ -37,12 +33,12 @@ export default async function RootLayout({
 		notFound()
 	}
 	setRequestLocale(locale)
-	//loading header and footer in one query
+
 	const site = await getSite(locale)
+
 	if (!site) {
 		return
 	}
-
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
 	return (
@@ -62,7 +58,6 @@ export default async function RootLayout({
 				<main id="main-content" tabIndex={-1}>
 					<Providers>{children}</Providers>
 				</main>
-				<Toaster />
 				<Footer
 					contactInfo={contactInfo}
 					footerMenu={footerMenu}
