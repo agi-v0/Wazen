@@ -1,7 +1,11 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef, useMemo } from 'react'
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
+import {
+	EmblaCarouselType,
+	EmblaEventType,
+	EmblaOptionsType,
+} from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import {
