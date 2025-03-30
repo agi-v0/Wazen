@@ -32,7 +32,9 @@ const EmblaCarousel: React.FC<PropType> = ({
 	options,
 	locale = 'en',
 }) => {
-	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
+	const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+		Autoplay({ playOnInit: true, delay: 3000, stopOnInteraction: false }),
+	])
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
 
@@ -99,14 +101,14 @@ const EmblaCarousel: React.FC<PropType> = ({
 			.on('reInit', setTweenFactor)
 			.on('reInit', tweenScale)
 			.on('scroll', () => tweenScale(emblaApi, 'scroll'))
-			.on('slideFocus', tweenScale)
+			.on('select', tweenScale)
 
 		return () => {
 			emblaApi.off('reInit', setTweenNodes)
 			emblaApi.off('reInit', setTweenFactor)
 			emblaApi.off('reInit', tweenScale)
 			emblaApi.off('scroll', tweenScale)
-			emblaApi.off('slideFocus', tweenScale)
+			emblaApi.off('select', tweenScale)
 		}
 	}, [emblaApi, setTweenNodes, setTweenFactor, tweenScale])
 
