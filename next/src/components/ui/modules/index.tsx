@@ -2,24 +2,15 @@ import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
 
 // Static imports for commonly used components
-const Hero = dynamic(() => import('./Hero'))
-const HeroTwo = dynamic(() => import('./HeroTwo'))
-const HeroThree = dynamic(() => import('./HeroThree'))
-const HeroFour = dynamic(() => import('./HeroFour'))
-const CallToAction = dynamic(() => import('./CallToAction'))
-const RichtextModule = dynamic(() => import('./RichtextModule'))
-const StatList = dynamic(() => import('./StatList'))
-const LogoList = dynamic(() => import('./LogoList'))
-const CustomHTML = dynamic(() => import('./CustomHTML'))
-const SingleTestimony = dynamic(() => import('./SingleTestimony'))
-const ContactUs = dynamic(() => import('./ContactUs'))
-const FAQList = dynamic(() => import('./FAQList'))
-const Brief = dynamic(() => import('./Brief'))
-const Benefits = dynamic(() => import('./Benefits'))
-const HowItWorks = dynamic(() => import('./HowItWorks'))
-const ProductList = dynamic(() => import('./ProductList'))
-const TestimonialList = dynamic(() => import('./TestimonialList'))
-const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
+import Hero from './Hero'
+import HeroTwo from './HeroTwo'
+import HeroThree from './HeroThree'
+import HeroFour from './HeroFour'
+import ProductList from './ProductList'
+import HowItWorks from './HowItWorks'
+import LogoList from './LogoList'
+
+
 
 // Dynamic imports for less commonly used components
 const Categories = dynamic(() => import('./blog/CategoriesList'))
@@ -37,6 +28,17 @@ const BenefitsBanner = dynamic(() => import('./BenefitsBanner'))
 const CallToActionTwo = dynamic(() => import('./CallToActionTwo'))
 const AppStoreRollup = dynamic(() => import('./app-store/Rollup'))
 const FeaturesInfiniteScroll = dynamic(() => import('./FeaturesInfiniteScroll'))
+const CallToAction = dynamic(() => import('./CallToAction'))
+const RichtextModule = dynamic(() => import('./RichtextModule'))
+const StatList = dynamic(() => import('./StatList'))
+const CustomHTML = dynamic(() => import('./CustomHTML'))
+const ContactUs = dynamic(() => import('./ContactUs'))
+const FAQList = dynamic(() => import('./FAQList'))
+const Brief = dynamic(() => import('./Brief'))
+const Benefits = dynamic(() => import('./Benefits'))
+const SingleTestimony = dynamic(() => import('./SingleTestimony'))
+const TestimonialList = dynamic(() => import('./TestimonialList'))
+const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
 
 const MODULE_MAP = {
 	'categories-list': Categories,
