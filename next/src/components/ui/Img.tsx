@@ -7,6 +7,8 @@ export const Img = ({
 	image,
 	className,
 	alt,
+	width,
+	height,
 	loading,
 	priority,
 	quality,
@@ -20,6 +22,8 @@ export const Img = ({
 	image: any
 	className?: React.HTMLAttributes<HTMLImageElement>['className']
 	alt?: string
+	width?: number
+	height?: number
 	loading?: 'lazy' | 'eager'
 	priority?: boolean
 	quality?: number
@@ -48,8 +52,8 @@ export const Img = ({
 				<Image
 					src={urlFor(image).url()}
 					alt={altText}
-					width={getImageDimensions(image).width}
-					height={getImageDimensions(image).height}
+					width={width ?? getImageDimensions(image).width}
+					height={height ?? getImageDimensions(image).height}
 					placeholder="blur"
 					blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
 					sizes="
