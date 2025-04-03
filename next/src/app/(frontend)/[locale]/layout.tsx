@@ -14,6 +14,7 @@ import Script from 'next/script'
 import { notFound } from 'next/navigation'
 
 import Providers from './providers'
+import IntercomClientComponent from '@/components/ui/intercom'
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
@@ -71,7 +72,7 @@ export default async function RootLayout({
 						__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
 					}}
 				/>
-				{/* <IntercomClientComponent /> */}
+				<IntercomClientComponent />
 			</body>
 		</html>
 	)

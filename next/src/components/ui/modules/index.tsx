@@ -14,18 +14,27 @@ import LogoList from './LogoList'
 const Categories = dynamic(() => import('./blog/CategoriesList'))
 const BlogRollup = dynamic(() => import('./blog/Rollup'))
 const CreativeModule = dynamic(() => import('./CreativeModule'))
-const Partners = dynamic(() => import('./PartnersList'))
-const FeaturesGridOne = dynamic(() => import('./FeaturesGridOne'))
-const FeaturesGridTwo = dynamic(() => import('./FeaturesGridTwo'))
+const Partners = dynamic(() => import('./PartnersList'), { ssr: true })
+const FeaturesGridOne = dynamic(() => import('./FeaturesGridOne'), {
+	ssr: true,
+})
+const FeaturesGridTwo = dynamic(() => import('./FeaturesGridTwo'), {
+	ssr: true,
+})
 const BriefGroup = dynamic(() => import('./BriefGroup'))
 const HomeBriefGroup = dynamic(() => import('./HomeBriefGroup'))
 const Plans = dynamic(() => import('./Plans'))
 const PlansComparison = dynamic(() => import('./PlansComparison'))
 const PlansCalculator = dynamic(() => import('./PlansCalculator'))
 const BenefitsBanner = dynamic(() => import('./BenefitsBanner'))
-const CallToActionTwo = dynamic(() => import('./CallToActionTwo'))
+const CallToActionTwo = dynamic(() => import('./CallToActionTwo'), {
+	ssr: true,
+})
 const AppStoreRollup = dynamic(() => import('./app-store/Rollup'))
-const FeaturesInfiniteScroll = dynamic(() => import('./FeaturesInfiniteScroll'))
+const FeaturesInfiniteScroll = dynamic(
+	() => import('./FeaturesInfiniteScroll'),
+	{ ssr: true },
+)
 const CallToAction = dynamic(() => import('./CallToAction'), { ssr: true })
 const RichtextModule = dynamic(() => import('./RichtextModule'))
 const StatList = dynamic(() => import('./StatList'))
@@ -33,7 +42,7 @@ const CustomHTML = dynamic(() => import('./CustomHTML'))
 const ContactUs = dynamic(() => import('./ContactUs'))
 const FAQList = dynamic(() => import('./FAQList'))
 const Brief = dynamic(() => import('./Brief'))
-const Benefits = dynamic(() => import('./Benefits'))
+const Benefits = dynamic(() => import('./Benefits'), { ssr: true })
 const SingleTestimony = dynamic(() => import('./SingleTestimony'))
 const TestimonialList = dynamic(() => import('./TestimonialList'), {
 	ssr: true,

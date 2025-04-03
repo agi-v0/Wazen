@@ -1,13 +1,9 @@
-'use client'
 import {
 	PortableText,
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import { useInView } from 'motion/react'
-import * as m from 'motion/react-m'
-
-import { useRef } from 'react'
+// import * as m from 'motion/react-m'
 import user from '../../../../public/How-it-works/User.svg'
 import chart from '../../../../public/How-it-works/Chart.svg'
 import sidebar from '../../../../public/How-it-works/Sidebar.svg'
@@ -51,25 +47,30 @@ export default function HowItWorks({
 		},
 	}
 	const images = [user, sidebar, chart]
-	const ref = useRef(null)
-	const isInView = useInView(ref, { once: true })
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return (
 		<section className="section rounded-2xl bg-teal-100 from-teal-100 to-cyan-50 p-[var(--size--6rem)]">
 			<div className="fluid-gap flex w-full flex-col items-center justify-center rounded-xl">
 				<PortableText value={content} components={components} />
-				<ul ref={ref} className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+				<ul
+					// initial="hidden"
+					// whileInView="visible"
+					// variants={{
+					// 	hidden: { opacity: 0 },
+					// 	visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+					// }}
+					className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3"
+				>
 					{steps?.map((step, index) => (
-						<m.li
+						<li
 							key={step.title}
-							initial="hidden"
-							animate={isInView ? 'visible' : 'hidden'}
-							variants={{
-								hidden: { y: 20, opacity: 0 },
-								visible: { y: 0, opacity: 1 },
-							}}
-							transition={{ type: 'easeOut', delay: index * 0.2 }}
+							// initial="hidden"
+							// animate="visible"
+							// variants={{
+							// 	hidden: { y: 20, opacity: 0 },
+							// 	visible: { y: 0, opacity: 1 },
+							// }}
+							// transition={{ type: 'easeOut' }}
 							className="group z-[5] flex flex-col rounded-xl p-2 transition-all hover:bg-white hover:shadow-md"
 						>
 							<Image
@@ -86,7 +87,7 @@ export default function HowItWorks({
 									{step.description}
 								</p>
 							</div>
-						</m.li>
+						</li>
 					))}
 				</ul>
 			</div>

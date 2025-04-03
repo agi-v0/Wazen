@@ -8,7 +8,7 @@ import { useMediaQuery } from '@/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 import dynamic from 'next/dynamic'
 
-const ContactBar = dynamic(() => import('./ContactBar'), { ssr: false })
+const ContactBar = dynamic(() => import('./ContactBar'), { ssr: true })
 export default function Wrapper({
 	className,
 	children,

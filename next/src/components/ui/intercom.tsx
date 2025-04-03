@@ -1,5 +1,3 @@
-// src/components/IntercomClientComponent.tsx
-
 'use client'
 import { useEffect } from 'react'
 
