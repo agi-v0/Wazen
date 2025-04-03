@@ -3,7 +3,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
-import { PiCaretRightBold, PiCheckCircle } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import Button from '../LinkButton'
 
 // https://magicui.design/docs/components/neon-gradient-card
@@ -57,7 +57,7 @@ export default function CallToActionTwo({
 
 				return (
 					<div className="flex items-center gap-2 text-cyan-950/60">
-						<PiCheckCircle className="h-4 w-4" />
+						<Icon icon="ph:check-circle-line" className="h-4 w-4" />
 						<p className="text-small">{textContent}</p>
 					</div>
 				)
@@ -77,7 +77,10 @@ export default function CallToActionTwo({
 					className="h2 mx-4 flex h-[var(--size--8rem)] items-center justify-center gap-[var(--size--2rem)] rounded-3xl bg-cyan-950 px-[var(--size--4rem)] font-semibold leading-tight text-white hover:bg-cyan-950/90 max-md:gap-2 max-md:rounded-2xl max-md:px-4"
 				>
 					{ctas[0].link?.label}
-					<PiCaretRightBold className="h2 text-white rtl:rotate-180" />
+					<Icon
+						icon="ph:caret-right-bold"
+						className="h2 text-white rtl:rotate-180"
+					/>
 				</Button>
 			)}
 			<div className="section flex flex-row items-center justify-center gap-2">

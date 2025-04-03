@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 import CTAList from '@/components/ui/CTAList'
 import lightray from '../../../../public/lightrays3.svg'
-import { PiSealCheck } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { hero } from '@/components/ui/portable-text'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import { Img } from '@/components/ui/Img'
@@ -39,7 +39,7 @@ export default function Hero({
 			<div className="section relative flex w-full flex-col justify-center">
 				<div className="relative space-y-6 pt-[25vh] text-center text-white">
 					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
-						<PiSealCheck className="size-5" />
+						<Icon icon="ph:seal-check-line" className="size-5" />
 						{pretitle}
 					</span>
 					<PortableText value={content} components={hero} />

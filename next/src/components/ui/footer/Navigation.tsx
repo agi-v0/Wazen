@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Button from '../LinkButton'
-import { PiAt, PiEnvelope } from '@/components/ui/Icons'
-import { PiMapPin } from '@/components/ui/Icons'
-import { PiPhone } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { cn } from '@/lib/utils'
 import { getTranslations } from 'next-intl/server'
 import Logo from '@/components/ui/logo'
@@ -10,15 +8,18 @@ import Logo from '@/components/ui/logo'
 export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 	const t = await getTranslations('Index')
 	const icons = [
-		<PiPhone
+		<Icon
+			icon="ph:phone-line"
 			key="PiPhone"
 			className="size-4 flex-none text-center text-white"
 		/>,
-		<PiEnvelope
+		<Icon
+			icon="ph:envelope-line"
 			key="PiEnvelope"
 			className="size-4 flex-none text-center text-white"
 		/>,
-		<PiMapPin
+		<Icon
+			icon="ph:map-pin-line"
 			key="PiMapPin"
 			className="size-4 flex-none text-center text-white"
 		/>,
@@ -78,7 +79,7 @@ export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 									>
 										{link.label}
 									</Button>
-									{/* <PiCaretLeftBold className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
+									{/* <Icon icon='ph:caret-left-bold' className="size-3 translate-x-0 text-gray-50/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" /> */}
 								</li>
 							))}
 						</ul>

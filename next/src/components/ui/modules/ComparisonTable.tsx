@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { Img } from '@/components/ui/Img'
-import { PiCheckBold, PiXBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { getLocale } from 'next-intl/server'
 
 export default async function ComparisonTable({
@@ -84,7 +84,7 @@ const cellContent = (cell: string, index: number, locale: 'en' | 'ar') => {
 					className="flex items-center justify-center text-gray-600"
 					key={Math.random() * (index + Math.random())}
 				>
-					<PiXBold className="size-4" />
+					<Icon icon="ph:x" className="size-4" />
 				</span>
 			)
 
@@ -97,7 +97,7 @@ const cellContent = (cell: string, index: number, locale: 'en' | 'ar') => {
 					)}
 					key={Math.random() * (index + Math.random())}
 				>
-					<PiCheckBold className="size-4" />
+					<Icon icon="ph:check-bold" className="size-4" />
 				</span>
 			)
 

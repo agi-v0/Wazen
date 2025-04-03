@@ -6,7 +6,7 @@ import {
 import Pretitle from '@/components/ui/Pretitle'
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
-import { PiCaretLeftBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { Img } from '@/components/ui/Img'
 import { cn } from '@/lib/utils'
 import AnimatedBackground from '@/components/animated/animated-background'
@@ -103,7 +103,10 @@ export default function ProductList({
 										<div className="duration-[600ms] space-y-1 p-4 text-start transition-all">
 											<h3 className="text-main font-semibold text-gray-600 group-hover:text-teal-500">
 												{product.productTitle}
-												<PiCaretLeftBold className="duration-[600ms] inline-block size-4 translate-x-0 text-teal-500 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+												<Icon
+													icon="ph:caret-left-bold"
+													className="duration-[600ms] inline-block size-4 translate-x-0 text-teal-500 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+												/>
 											</h3>
 											<p className="text-small text-gray-600 group-hover:text-white">
 												{product.productDescription}

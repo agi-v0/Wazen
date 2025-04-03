@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/routing'
-import { PiArrowLineDownBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { useTranslations } from 'next-intl'
 import { Img } from '@/components/ui/Img'
 import {
@@ -55,7 +55,10 @@ export default function AppCard({
 				<PortableText value={app.description} components={components} />
 
 				<div className="-group-hover:border-2 group flex h-10 items-center justify-center gap-2 self-start rounded-full px-4 font-medium text-teal-600 transition-all hover:bg-white">
-					<PiArrowLineDownBold className="inline-block size-4" />
+					<Icon
+						icon="ph:arrow-line-down-bold"
+						className="inline-block size-4"
+					/>
 					{t('Download')}
 				</div>
 			</div>

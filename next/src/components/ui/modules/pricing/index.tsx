@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { Switch } from '@/components/ui/switch'
 import PricingBox from './PricingCard'
-import { PiCheckBold } from '@/components/ui/Icons'
-import { PiX } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { useTranslations } from 'next-intl'
 
 const Pricing = ({ plans }: any) => {
@@ -55,9 +54,12 @@ const Pricing = ({ plans }: any) => {
 												className="flex flex-row items-center gap-2 text-sm text-gray-500"
 											>
 												{feature.active ? (
-													<PiCheckBold className="size-4 text-gray-500" />
+													<Icon
+														icon="ph:check-bold"
+														className="size-4 text-gray-500"
+													/>
 												) : (
-													<PiX className="size-4 text-gray-400" />
+													<Icon icon="ph:x" className="size-4 text-gray-400" />
 												)}
 												{feature.title}
 											</li>

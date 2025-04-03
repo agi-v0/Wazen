@@ -7,7 +7,7 @@ import {
 import TableOfContents from '@/components/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/components/ui/modules/RichtextModule/AnchoredHeading'
 import { Img } from '@/components/ui/Img'
-import { PiCalendarBlank, PiCircleFill } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 // import Image from 'next/image'
 
 export default function Post({
@@ -30,7 +30,7 @@ export default function Post({
 							</div>
 						)}
 						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-cyan-950/60">
-							<PiCalendarBlank className="size-4" />
+							<Icon icon="ph:calendar-blank-line" className="size-4" />
 							<Date value={post.publishDate} locale={locale} />
 						</div>
 						<ReadTime value={post.readTime} />

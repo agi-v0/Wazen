@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { cn } from '@/lib/utils'
-import { PiCaretRightBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { Img } from '@/components/ui/Img'
 
 type CardItem = {
@@ -87,7 +87,10 @@ export default function InfiniteMovingCards({
 						<p className="text-start text-sm text-gray-500">{description}</p>
 						<div className="flex items-center gap-1 text-teal-600 no-underline">
 							{link.label}
-							<PiCaretRightBold className="size-3 rotate-180 text-teal-600" />
+							<Icon
+								icon="ph:caret-right-bold"
+								className="size-3 rotate-180 text-teal-600"
+							/>
 						</div>
 					</div>
 					<Img

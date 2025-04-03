@@ -27,16 +27,16 @@ export default function PricingBox(props: {
 		order,
 	} = props
 	// const AppIcons = [
-	// 	<PiTableDuotone key="PiTableDuotone" className="text-2xl text-cyan-500" />,
-	// 	<PiIdentificationCardDuotone
-	// 		key="PiIdentificationCardDuotone"
+	// 	<Icon icon='ph:table-duotone' key="PiTableDuotone" className="text-2xl text-cyan-500" />,
+	// 	<<Icon icon='ph:identification-card-duotone'
+	// 		key="<Icon icon='ph:identification-card-duotone'"
 	// 		className="text-2xl text-yellow-500"
 	// 	/>,
-	// 	<PiUserListDuotone
+	// 	<Icon icon='ph:user-list-duotone'
 	// 		key="PiUserListDuotone"
 	// 		className="text-2xl text-indigo-500"
 	// 	/>,
-	// 	<PiFlowArrowDuotone
+	// 	<Icon icon='ph:flow-arrow-duotone'
 	// 		key="PiFlowArrowDuotone"
 	// 		className="text-2xl text-teal-500"
 	// 	/>,

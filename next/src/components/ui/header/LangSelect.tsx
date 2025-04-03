@@ -13,7 +13,7 @@ import {
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import { useParams } from 'next/navigation'
 
-import { PiGlobe } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { cn } from '@/lib/utils'
 import { ChangeEvent, useTransition } from 'react'
 
@@ -44,7 +44,7 @@ const LangSelect = () => {
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className="group flex flex-row items-center justify-center gap-1">
-						<PiGlobe className="size-4" />
+						<Icon icon="ph:globe-line" className="size-4" />
 						{locale == 'ar' ? 'AR' : 'EN'}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>

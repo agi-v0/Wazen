@@ -1,5 +1,5 @@
 import Button from '../LinkButton'
-import { PiEnvelope, PiMapPin, PiPhone } from '../Icons'
+import { Icon } from '@iconify-icon/react'
 
 export default function ContactBar({
 	contactInfo,
@@ -9,9 +9,21 @@ export default function ContactBar({
 	locale: 'en' | 'ar'
 }>) {
 	const icons = [
-		<PiPhone key="PiPhone" className="size-4 text-cyan-950/60" />,
-		<PiEnvelope key="PiEnvelope" className="size-4 text-cyan-950/60" />,
-		<PiMapPin key="PiMapPin" className="size-4 text-cyan-950/60" />,
+		<Icon
+			icon="ph:phone-line"
+			key="PiPhone"
+			className="size-4 text-cyan-950/60"
+		/>,
+		<Icon
+			icon="ph:envelope-line"
+			key="PiEnvelope"
+			className="size-4 text-cyan-950/60"
+		/>,
+		<Icon
+			icon="ph:map-pin-line"
+			key="PiMapPin"
+			className="size-4 text-cyan-950/60"
+		/>,
 	]
 	return (
 		<div id="contactBar" className="h-9 w-full bg-gray-50">

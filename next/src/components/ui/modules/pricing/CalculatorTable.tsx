@@ -2,20 +2,29 @@
 
 import { cn } from '@/lib/utils'
 import React, { useCallback, useMemo, useEffect } from 'react'
-import {
-	PiFlowArrowDuotone,
-	PiIdentificationCardDuotone,
-	PiMinusBold,
-	PiPlusBold,
-	PiTableDuotone,
-	PiUserListDuotone,
-} from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 
 const AppIcons = [
-	<PiTableDuotone key="table" className="text-2xl text-cyan-500" />,
-	<PiIdentificationCardDuotone key="id" className="text-2xl text-yellow-500" />,
-	<PiUserListDuotone key="user" className="text-2xl text-indigo-500" />,
-	<PiFlowArrowDuotone key="flow" className="text-2xl text-teal-500" />,
+	<Icon
+		icon="ph:table-duotone"
+		key="table"
+		className="text-2xl text-cyan-500"
+	/>,
+	<Icon
+		icon="ph:identification-card-duotone"
+		key="id"
+		className="text-2xl text-yellow-500"
+	/>,
+	<Icon
+		icon="ph:user-list-duotone"
+		key="user"
+		className="text-2xl text-indigo-500"
+	/>,
+	<Icon
+		icon="ph:flow-arrow-duotone"
+		key="flow"
+		className="text-2xl text-teal-500"
+	/>,
 ]
 
 interface RowData {
@@ -170,7 +179,10 @@ export default function CalculatorTable({
 													handleQuantityChange(id, 1, price, categoryIndex)
 												}
 											>
-												<PiPlusBold className="size-4 text-gray-400 group-hover:text-gray-500" />
+												<Icon
+													icon="ph:plus-bold"
+													className="size-4 text-gray-400 group-hover:text-gray-500"
+												/>
 											</button>
 											<span className="max-w-8 flex-grow px-2 text-center">
 												{quantity}
@@ -181,7 +193,10 @@ export default function CalculatorTable({
 													handleQuantityChange(id, -1, price, categoryIndex)
 												}
 											>
-												<PiMinusBold className="size-4 text-gray-400 group-hover:text-gray-500" />
+												<Icon
+													icon="ph:minus-bold"
+													className="size-4 text-gray-400 group-hover:text-gray-500"
+												/>
 											</button>
 										</div>
 										<div className="flex h-full w-full flex-row items-center justify-end gap-x-2 px-6 py-3 font-medium text-gray-500 max-lg:justify-start">

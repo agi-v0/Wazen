@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { PortableText } from '@portabletext/react'
 import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
-import { PiCheckBold, PiXBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { set2 } from '@/components/ui/portable-text'
 
 const PlansComparison = ({
@@ -121,7 +121,10 @@ const PlansComparison = ({
 																		index == 1 ? 'bg-teal-50' : '',
 																	)}
 																>
-																	<PiXBold className="size-4 text-gray-400" />
+																	<Icon
+																		icon="ph:x"
+																		className="size-4 text-gray-400"
+																	/>
 																</div>
 															)
 														case '✓':
@@ -133,7 +136,10 @@ const PlansComparison = ({
 																		index == 1 ? 'bg-teal-50' : '',
 																	)}
 																>
-																	<PiCheckBold className="size-4" />
+																	<Icon
+																		icon="ph:check-bold"
+																		className="size-4"
+																	/>
 																</div>
 															)
 														default:

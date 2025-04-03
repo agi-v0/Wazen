@@ -6,12 +6,7 @@ import {
 } from '@portabletext/react'
 import { Link } from '@/i18n/routing'
 
-import {
-	PiCaretLeftBold,
-	PiPhone,
-	PiEnvelope,
-	PiMapPin,
-} from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
@@ -55,9 +50,21 @@ export default async function ContactUs({
 	}
 
 	const icons = [
-		<PiPhone key="PiPhone" className="mb-2 text-2xl text-cyan-950/60" />,
-		<PiEnvelope key="PiEnvelope" className="mb-2 text-2xl text-cyan-950/60" />,
-		<PiMapPin key="PiMapPin" className="mb-2 text-2xl text-cyan-950/60" />,
+		<Icon
+			icon="ph:phone-line"
+			key="PiPhone"
+			className="mb-2 text-2xl text-cyan-950/60"
+		/>,
+		<Icon
+			icon="ph:envelope-line"
+			key="PiEnvelope"
+			className="mb-2 text-2xl text-cyan-950/60"
+		/>,
+		<Icon
+			icon="ph:map-pin-line"
+			key="PiMapPin"
+			className="mb-2 text-2xl text-cyan-950/60"
+		/>,
 	]
 
 	return (
@@ -90,7 +97,10 @@ export default async function ContactUs({
 									>
 										{info.link.label}
 									</Link>
-									<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+									<Icon
+										icon="ph:caret-left-bold"
+										className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1"
+									/>
 								</span>
 							</div>
 						),

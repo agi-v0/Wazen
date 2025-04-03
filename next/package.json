@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"type-check": "tsc --noEmit",
+		"type-check": "tsc --noEmit --watch",
 		"analyze": "cross-env ANALYZE=true next build",
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
@@ -75,6 +75,7 @@
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.25.8",
+		"@iconify-icon/react": "^2.3.0",
 		"@iconify/react": "^5.0.1",
 		"@sanity/eslint-config-studio": "^4.0.0",
 		"@tailwindcss/typography": "^0.5.13",

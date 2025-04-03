@@ -5,7 +5,7 @@ import React, {
 	useState,
 } from 'react'
 import { EmblaCarouselType } from 'embla-carousel'
-import { PiCaretRightBold, PiCaretLeftBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import style from './embla.module.css'
 import { cn } from '@/lib/utils'
 
@@ -67,7 +67,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
 			aria-label="previous"
 			{...restProps}
 		>
-			<PiCaretLeftBold className="size-12 rtl:rotate-180" />
+			<Icon icon="ph:caret-left-bold" className="size-12 rtl:rotate-180" />
 			{children}
 		</button>
 	)
@@ -83,7 +83,7 @@ export const NextButton: React.FC<PropType> = (props) => {
 			aria-label="next"
 			{...restProps}
 		>
-			<PiCaretRightBold className="size-12 rtl:rotate-180" />
+			<Icon icon="ph:caret-right-bold" className="size-12 rtl:rotate-180" />
 
 			{children}
 		</button>

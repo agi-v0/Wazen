@@ -2,7 +2,7 @@ import * as React from 'react'
 // import { ChevronDownIcon } from "@radix-ui/react-icons"
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
-import { PiCaretDownBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { cn } from '@/lib/utils'
 
 const NavigationMenu = React.forwardRef<
@@ -69,7 +69,8 @@ const NavigationMenuTrigger = React.forwardRef<
 		{children}
 		{''}
 
-		<PiCaretDownBold
+		<Icon
+			icon="ph:caret-down-bold"
 			className="relative top-[1px] ms-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
 			aria-hidden="true"
 		/>

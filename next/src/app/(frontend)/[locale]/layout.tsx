@@ -51,23 +51,26 @@ export default async function RootLayout({
 		>
 			{gtmId && <GoogleTagManager gtmId={gtmId} />}
 			<body className="w-full">
-				<Header
-					headerMenu={headerMenu}
-					contactInfo={contactInfo}
-					ctas={ctas}
-					locale={locale}
-				/>
-				<main id="main-content" tabIndex={-1}>
-					<Providers>{children}</Providers>
-				</main>
-				<Suspense>
-					<Footer
+				<Providers>
+					<Header
+						headerMenu={headerMenu}
 						contactInfo={contactInfo}
-						footerMenu={footerMenu}
-						staticLinks={staticLinks}
+						ctas={ctas}
 						locale={locale}
 					/>
-				</Suspense>
+					<main id="main-content" tabIndex={-1}>
+						{children}
+					</main>
+					<Suspense>
+						<Footer
+							contactInfo={contactInfo}
+							footerMenu={footerMenu}
+							staticLinks={staticLinks}
+							locale={locale}
+						/>
+					</Suspense>
+				</Providers>
+
 				<Script
 					strategy="afterInteractive"
 					id="intercom-settings"

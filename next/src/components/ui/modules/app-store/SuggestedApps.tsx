@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { Link } from '@/i18n/routing'
-import { PiCaretRightBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import AppCard from './AppCard'
@@ -46,7 +46,10 @@ const SuggestedApps = async () => {
 						className="group flex flex-row items-center justify-center rounded-lg py-3 font-medium text-teal-600 no-underline"
 					>
 						{t('View all')}
-						<PiCaretRightBold className="size- translate-x-0 text-teal-600/60 opacity-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
+						<Icon
+							icon="ph:caret-right-bold"
+							className="size- translate-x-0 text-teal-600/60 opacity-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 rtl:rotate-180 rtl:group-hover:-translate-x-1"
+						/>
 					</Link>
 				</div>
 

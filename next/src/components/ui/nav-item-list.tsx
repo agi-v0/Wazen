@@ -1,5 +1,5 @@
 import CTA from '@/components/ui/CTA'
-import { PiCaretLeftBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 
 export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 	return (
@@ -19,7 +19,10 @@ export default function NavItemList({ label, links, locale }: Sanity.LinkList) {
 							locale={locale}
 							className="no-underline group-hover:text-teal-600"
 						/>
-						<PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+						<Icon
+							icon="ph:caret-left-bold"
+							className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+						/>
 					</li>
 				))}
 			</ul>

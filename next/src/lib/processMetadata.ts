@@ -9,8 +9,7 @@ export default async function processMetadata(
 	const site = await getSite(locale)
 
 	const url = processUrl(page)
-	const { title, description, ogimage, noIndex } = page.metadata
-
+	const { title, description, ogimage, noIndex, slug } = page.metadata
 	return {
 		metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
 		title,
@@ -40,10 +39,38 @@ export default async function processMetadata(
 		creator: 'Studio Valence | byvalence.com',
 		alternates: {
 			canonical: url,
-			languages: { ar: url + 'ar', en: url + 'en' },
+			//url = https://wazen.sa/blog/slug
+			languages: {
+				ar:
+					process.env.NEXT_PUBLIC_BASE_URL +
+					'/ar' +
+					//add directory if page is not homepage
+					(slug.current !== 'index'
+						? `${directory(page)}/${slug.current}`
+						: ''),
+				en:
+					process.env.NEXT_PUBLIC_BASE_URL +
+					'/en' +
+					//add directory if page is not homepage
+					(slug.current !== 'index'
+						? `${directory(page)}/${slug.current}`
+						: ''),
+			},
 			types: {
 				'application/rss+xml': '/blog/rss.xml',
 			},
 		},
+	}
+}
+const directory = (
+	page: Sanity.Page | Sanity.BlogPost | Sanity.HelpCenterPost,
+) => {
+	switch (page?._type) {
+		case 'blog.post':
+			return '/blog'
+		case 'help.center.post':
+			return '/help-center'
+		default:
+			return ''
 	}
 }

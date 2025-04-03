@@ -1,4 +1,4 @@
-import { PiCaretLeftBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import processUrl from '@/lib/processUrl'
 import { Link } from '@/i18n/routing'
 import * as React from 'react'
@@ -44,7 +44,10 @@ export default function LinkList({
 									/>
 									<div className="mb-2 mt-4 flex flex-row items-center text-lg font-medium text-white group-hover:text-teal-500">
 										{links?.[0].label}
-										<PiCaretLeftBold className="size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+										<Icon
+											icon="ph:caret-left-bold"
+											className="size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+										/>
 									</div>
 									<p className="text-sm leading-tight text-white/80 group-hover:text-white">
 										{links?.[0].description}
@@ -68,7 +71,10 @@ export default function LinkList({
 								>
 									<div className="flex flex-row items-center font-medium text-gray-950 group-hover:text-teal-600">
 										{link.label}
-										<PiCaretLeftBold className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+										<Icon
+											icon="ph:caret-left-bold"
+											className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+										/>
 									</div>
 									<p className="text-gray-600 group-hover:text-cyan-950">
 										{link.description}

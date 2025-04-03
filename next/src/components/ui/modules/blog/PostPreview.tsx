@@ -1,7 +1,7 @@
 // import Link from 'next/link'
 import { Link } from '@/i18n/routing'
 import Date from '@/components/ui/Date'
-import { PiCaretRightBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 
 export default function PostPreview({
 	type,
@@ -34,7 +34,10 @@ export default function PostPreview({
 			</div>
 			<div className="group font-medium text-cyan-950/80 transition-all group-hover:text-teal-600">
 				{locale == 'en' ? 'Read' : 'قراءة'}
-				<PiCaretRightBold className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]" />
+				<Icon
+					icon="ph:caret-right-bold"
+					className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]"
+				/>
 			</div>
 		</Link>
 	)

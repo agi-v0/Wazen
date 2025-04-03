@@ -10,7 +10,7 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion'
 import Button from '../LinkButton'
-import { PiCaretLeftBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 
 export default function FAQList({
 	locale = 'ar',
@@ -83,7 +83,10 @@ export default function FAQList({
 						>
 							{sideNote.link.label}
 						</Button>
-						<PiCaretLeftBold className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+						<Icon
+							icon="ph:caret-left-bold"
+							className="ms-1 size-3 translate-x-0 text-teal-500/50 transition-transform duration-300 group-hover:-translate-x-1 group-hover:text-teal-600 ltr:rotate-180 ltr:group-hover:translate-x-1"
+						/>
 					</span>
 				</div>
 			</div>

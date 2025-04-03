@@ -3,7 +3,7 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
-import { PiCaretRightBold } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { useState } from 'react'
 
 export default function RollupClient({
@@ -121,7 +121,8 @@ export default function RollupClient({
 						></path>
 					</svg>
 
-					<PiCaretRightBold
+					<Icon
+						icon="ph:caret-right-bold"
 						className="size-3 translate-x-0 text-cyan-950/60 opacity-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 data-[loading=false]:block data-[loading=true]:hidden rtl:rotate-180 rtl:group-hover:-translate-x-1"
 						data-loading={loading}
 					/>

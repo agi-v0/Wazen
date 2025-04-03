@@ -5,7 +5,7 @@ import {
 } from '@portabletext/react'
 import CTAList from '@/components/ui/CTAList'
 import { cn } from '@/lib/utils'
-import { PiCheckCircleFill } from '@/components/ui/Icons'
+import { Icon } from '@iconify-icon/react'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { getLocale } from 'next-intl/server'
 import { Img } from '@/components/ui/Img'
@@ -100,7 +100,10 @@ export default async function CallToAction({
 
 				return (
 					<div className="flex items-center gap-2">
-						<PiCheckCircleFill className="size-5 text-teal-500" />
+						<Icon
+							icon="ph:check-circle-line"
+							className="size-5 text-teal-500"
+						/>
 						<p className="text-gray-600">{textContent}</p>
 					</div>
 				)
