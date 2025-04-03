@@ -1,119 +1,72 @@
-import { preload } from 'react-dom'
+import { ReactElement } from 'react'
+import Image from 'next/image'
 import { getImageDimensions } from '@sanity/asset-utils'
-import { urlFor } from '@/sanity/lib/image'
-import NextImage, { type ImageProps } from 'next/image'
-import type { ComponentProps } from 'react'
-import { stegaClean } from 'next-sanity'
-import type { SanityImageSource } from '@sanity/asset-utils'
+import { urlFor } from '@/sanity/lib/urlFor'
 
-type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
-
-export function ResponsiveImg({
-	img,
-	pictureProps,
-	...props
+export const Img = ({
+	image,
+	className,
+	alt,
+	loading,
+	priority,
+	quality,
+	placeholder,
+	style,
+	onLoad,
+	onError,
+	draggable,
+	fetchPriority,
 }: {
-	img?: Sanity.Image
-	pictureProps?: ComponentProps<'picture'>
-} & ImgProps) {
-	if (!img) return null
-
-	const { responsive, ...imgProps } = img
-
+	image: any
+	className?: React.HTMLAttributes<HTMLImageElement>['className']
+	alt?: string
+	loading?: 'lazy' | 'eager'
+	priority?: boolean
+	quality?: number
+	placeholder?: 'blur' | 'empty'
+	style?: React.CSSProperties
+	onLoad?: React.ReactEventHandler<HTMLImageElement>
+	onError?: React.ReactEventHandler<HTMLImageElement>
+	draggable?: boolean
+	fetchPriority?: 'high' | 'low' | 'auto'
+	sizes?: string
+	fill?: boolean
+} & Omit<
+	React.ComponentProps<typeof Image>,
+	| 'src'
+	| 'width'
+	| 'height'
+	| 'blurDataURL'
+	| 'placeholder'
+	| 'alt'
+	| 'className'
+>) => {
+	const altText = alt ?? image?.alt ?? 'An image without an alt, whoops'
 	return (
-		<picture {...pictureProps}>
-			{responsive?.map(
-				(r: { media: string; image: Sanity.Image }, key: number) => (
-					<Source {...r} key={key} />
-				),
+		<>
+			{image?.asset && (
+				<Image
+					src={urlFor(image).url()}
+					alt={altText}
+					width={getImageDimensions(image).width}
+					height={getImageDimensions(image).height}
+					placeholder="blur"
+					blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
+					sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            40vw"
+					className={className}
+					loading={loading}
+					priority={priority}
+					quality={quality}
+					style={style}
+					onLoad={onLoad}
+					onError={onError}
+					draggable={draggable}
+					fetchPriority={fetchPriority}
+				/>
 			)}
-			<Img {...imgProps} {...props} />
-		</picture>
+		</>
 	)
-}
-
-export function Img({
-	image,
-	width: w,
-	height: h,
-	...props
-}: { image?: Sanity.Image } & ImgProps) {
-	if (!image?.asset) return null
-
-	const { src, width, height } = generateSrc(image, w, h)
-
-	if (stegaClean(image.loading) === 'eager') {
-		preload(src, { as: 'image' })
-	}
-
-	return (
-		<NextImage
-			src={src}
-			width={width}
-			height={height}
-			alt={props.alt || image.alt || ''}
-			loading={stegaClean(image.loading)}
-			{...props}
-		/>
-	)
-}
-
-export function Source({
-	image,
-	media = '(width < 48rem)',
-	width: w,
-	height: h,
-	...props
-}: {
-	image?: Sanity.Image
-} & ComponentProps<'source'>) {
-	if (!image?.asset) return null
-
-	const { src, width, height } = generateSrc(image, w, h)
-
-	if (stegaClean(image.loading) === 'eager') {
-		preload(src, { as: 'image' })
-	}
-
-	return (
-		<source
-			srcSet={src}
-			width={width}
-			height={height}
-			media={media}
-			{...props}
-		/>
-	)
-}
-
-function generateSrc(
-	image: Sanity.Image,
-	w?: number | `${number}` | string,
-	h?: number | `${number}` | string,
-) {
-	const { width: w_orig, height: h_orig } = getImageDimensions(
-		image as SanityImageSource,
-	)
-
-	const w_calc = !!w // if width is provided
-		? Number(w)
-		: // if height is provided, calculate width
-			!!h && Math.floor((Number(h) * w_orig) / h_orig)
-
-	const h_calc = !!h // if height is provided
-		? Number(h)
-		: // if width is provided, calculate height
-			!!w && Math.floor((Number(w) * h_orig) / w_orig)
-
-	return {
-		src: urlFor(image)
-			.withOptions({
-				width: !!w ? Number(w) : undefined,
-				height: !!h ? Number(h) : undefined,
-				auto: 'format',
-			})
-			.url(),
-		width: w_calc || w_orig,
-		height: h_calc || h_orig,
-	}
 }

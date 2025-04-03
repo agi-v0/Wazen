@@ -52,7 +52,7 @@ export default function Hero({
 					<Img
 						image={image}
 						alt={image?.alt}
-						className="mx-auto h-auto w-full rounded-lg object-cover object-left-top"
+						className="mx-auto h-auto w-full rounded-lg object-cover"
 						draggable={false}
 						fetchPriority="high"
 						loading="eager"

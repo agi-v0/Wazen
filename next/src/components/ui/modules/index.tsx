@@ -10,8 +10,6 @@ import ProductList from './ProductList'
 import HowItWorks from './HowItWorks'
 import LogoList from './LogoList'
 
-
-
 // Dynamic imports for less commonly used components
 const Categories = dynamic(() => import('./blog/CategoriesList'))
 const BlogRollup = dynamic(() => import('./blog/Rollup'))
@@ -28,7 +26,7 @@ const BenefitsBanner = dynamic(() => import('./BenefitsBanner'))
 const CallToActionTwo = dynamic(() => import('./CallToActionTwo'))
 const AppStoreRollup = dynamic(() => import('./app-store/Rollup'))
 const FeaturesInfiniteScroll = dynamic(() => import('./FeaturesInfiniteScroll'))
-const CallToAction = dynamic(() => import('./CallToAction'))
+const CallToAction = dynamic(() => import('./CallToAction'), { ssr: true })
 const RichtextModule = dynamic(() => import('./RichtextModule'))
 const StatList = dynamic(() => import('./StatList'))
 const CustomHTML = dynamic(() => import('./CustomHTML'))
@@ -37,8 +35,12 @@ const FAQList = dynamic(() => import('./FAQList'))
 const Brief = dynamic(() => import('./Brief'))
 const Benefits = dynamic(() => import('./Benefits'))
 const SingleTestimony = dynamic(() => import('./SingleTestimony'))
-const TestimonialList = dynamic(() => import('./TestimonialList'))
-const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'))
+const TestimonialList = dynamic(() => import('./TestimonialList'), {
+	ssr: true,
+})
+const TestimonialListTwo = dynamic(() => import('./TestimonialListTwo'), {
+	ssr: true,
+})
 
 const MODULE_MAP = {
 	'categories-list': Categories,

@@ -43,6 +43,7 @@ export const ContainerScroll = ({
 				// className="relative py-10 md:py-20"
 				style={{
 					perspective: '1000px',
+					width: '100%',
 					position: 'relative',
 					paddingTop: 'clamp(2.5rem, 5.263vw + 2.5rem, 5rem)',
 					paddingBottom: 'clamp(2.5rem, 5.263vw + 2.5rem, 5rem)',
@@ -78,7 +79,7 @@ export const Card = ({
 			}
 			key={`container-scroll-${1}`}
 		>
-			<div className="h-full w-fit overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
+			<div className="h-auto w-full overflow-hidden rounded-xl bg-white/20 p-1 shadow-lg backdrop-blur-lg will-change-auto">
 				{children}
 			</div>
 		</m.div>
