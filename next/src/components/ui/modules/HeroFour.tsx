@@ -5,7 +5,7 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/components/ui/Pretitle'
 import CTAList from '@/components/ui/CTAList'
-import { Img, ResponsiveImg } from '@/components/ui/Img'
+import { Img } from '@/components/ui/Img'
 import { set2 } from '@/components/ui/portable-text'
 import * as m from 'motion/react-m'
 

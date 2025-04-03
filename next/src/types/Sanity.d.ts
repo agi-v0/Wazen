@@ -92,10 +92,6 @@ declare global {
 			Partial<{
 				alt: string
 				loading: 'lazy' | 'eager'
-				responsive?: Array<{
-					media: string
-					image: Image
-				}>
 			}>
 
 		type Link = {
