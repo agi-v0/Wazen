@@ -15,6 +15,7 @@ import { notFound } from 'next/navigation'
 
 import Providers from './providers'
 import IntercomClientComponent from '@/components/ui/intercom'
+import { Suspense } from 'react'
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
@@ -59,12 +60,14 @@ export default async function RootLayout({
 				<main id="main-content" tabIndex={-1}>
 					<Providers>{children}</Providers>
 				</main>
-				<Footer
-					contactInfo={contactInfo}
-					footerMenu={footerMenu}
-					staticLinks={staticLinks}
-					locale={locale}
-				/>
+				<Suspense>
+					<Footer
+						contactInfo={contactInfo}
+						footerMenu={footerMenu}
+						staticLinks={staticLinks}
+						locale={locale}
+					/>
+				</Suspense>
 				<Script
 					strategy="afterInteractive"
 					id="intercom-settings"

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import Brief from './Brief'
+import { Suspense } from 'react'
 
 const Sidebar = dynamic(() => import('@/components/animated/side-bar'))
 const MobileApp = dynamic(() =>
@@ -23,18 +24,20 @@ export default function BriefGroup({
 }>) {
 	//replace images and image components with an array of interactive components
 	return (
-		<div className="bg-white py-[var(--size--4-5rem)]">
-			{briefs?.map((brief, index) => (
-				<Brief
-					{...brief}
-					image={
-						brief.image && 'asset' in brief.image
-							? brief.image
-							: animatedComponents[index]
-					}
-					key={brief._key}
-				/>
-			))}
-		</div>
+		<Suspense>
+			<div className="bg-white py-[var(--size--4-5rem)]">
+				{briefs?.map((brief, index) => (
+					<Brief
+						{...brief}
+						image={
+							brief.image && 'asset' in brief.image
+								? brief.image
+								: animatedComponents[index]
+						}
+						key={brief._key}
+					/>
+				))}
+			</div>
+		</Suspense>
 	)
 }
