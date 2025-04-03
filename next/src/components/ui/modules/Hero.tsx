@@ -55,6 +55,7 @@ export default function Hero({
 						className="mx-auto h-auto w-full rounded-lg object-cover"
 						draggable={false}
 						fetchPriority="high"
+						priority
 						loading="eager"
 					/>
 				</ContainerScroll>

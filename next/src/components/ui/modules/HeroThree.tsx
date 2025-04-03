@@ -62,7 +62,6 @@ export default function HeroThree({
 			},
 		},
 	}
-
 	return (
 		<section className="section bg-white max-lg:pt-16">
 			<m.div
@@ -91,6 +90,7 @@ export default function HeroThree({
 						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
 						draggable={false}
 						fetchPriority="high"
+						priority
 						loading="eager"
 					/>
 				</m.div>
