@@ -71,14 +71,14 @@ export default async function RootLayout({
 					</Suspense>
 				</Providers>
 
-				<Script
+				{/* <Script
 					strategy="afterInteractive"
 					id="intercom-settings"
 					dangerouslySetInnerHTML={{
 						__html: `window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "desatz83"};`,
 					}}
-				/>
-				<IntercomClientComponent />
+				/> */}
+				{/* <IntercomClientComponent /> */}
 			</body>
 		</html>
 	)
