@@ -12,7 +12,7 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Icon } from '@iconify/react'
+import { Icon } from '@iconify-icon/react'
 
 export async function Navigation({
 	headerMenu,

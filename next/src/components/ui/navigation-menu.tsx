@@ -71,7 +71,7 @@ const NavigationMenuTrigger = React.forwardRef<
 
 		<Icon
 			icon="ph:caret-down-bold"
-			className="relative top-[1px] ms-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+			className="relative ms-1 text-xs leading-none transition duration-200 group-data-[state=open]:rotate-180"
 			aria-hidden="true"
 		/>
 	</NavigationMenuPrimitive.Trigger>

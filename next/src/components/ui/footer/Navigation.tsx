@@ -9,19 +9,19 @@ export default async function Menu({ footerMenu, locale, contactInfo }: any) {
 	const t = await getTranslations('Index')
 	const icons = [
 		<Icon
-			icon="ph:phone-line"
+			icon="ph:phone"
 			key="PiPhone"
-			className="size-4 flex-none text-center text-white"
+			className="flex-none text-center text-base leading-none text-white"
 		/>,
 		<Icon
-			icon="ph:envelope-line"
+			icon="ph:envelope"
 			key="PiEnvelope"
-			className="size-4 flex-none text-center text-white"
+			className="flex-none text-center text-base leading-none text-white"
 		/>,
 		<Icon
 			icon="ph:map-pin-line"
 			key="PiMapPin"
-			className="size-4 flex-none text-center text-white"
+			className="flex-none text-center text-base leading-none text-white"
 		/>,
 	]
 

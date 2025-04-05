@@ -43,8 +43,8 @@ const LangSelect = () => {
 		>
 			<NavigationMenuList>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="group flex flex-row items-center justify-center gap-1">
-						<Icon icon="ph:globe-line" className="size-4" />
+					<NavigationMenuTrigger className="group flex flex-row items-center justify-center">
+						<Icon icon="ph:globe" className="me-1 text-base leading-none" />
 						{locale == 'ar' ? 'AR' : 'EN'}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>

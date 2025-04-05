@@ -2,7 +2,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, PortableTextTypeComponentProps } from 'next-sanity'
 import { Img } from '@/components/ui/Img'
 
@@ -10,10 +9,10 @@ type TestimonialListProps = {
 	direction?: 'left' | 'right'
 	speed?: 'fast' | 'normal' | 'slow'
 	pauseOnHover?: boolean
-	content: any
+	content?: any
 	testimonials: Sanity.Testimonial[]
 	locale: 'en' | 'ar'
-	className: string
+	className?: string
 }
 
 const SPEED_MAP = {
@@ -38,8 +37,16 @@ export default function TestimonialList({
 	const animationDuration = SPEED_MAP[speed]
 
 	useEffect(() => {
-		if (containerRef.current && scrollerRef.current) {
+		if (
+			containerRef.current &&
+			scrollerRef.current &&
+			testimonials?.length > 0
+		) {
 			const scrollerContent = Array.from(scrollerRef.current.children)
+
+			while (scrollerRef.current.children.length > testimonials.length) {
+				scrollerRef.current.removeChild(scrollerRef.current.lastChild!)
+			}
 
 			scrollerContent.forEach((item) => {
 				const duplicatedItem = item.cloneNode(true)
@@ -57,18 +64,10 @@ export default function TestimonialList({
 
 			setStart(true)
 		}
-	}, [animationDirection, animationDuration])
-	const allTestimonials =
-		testimonials ||
-		fetchSanity<Sanity.Testimonial[]>(
-			groq`*[_type == 'testimonial' && language == $locale]`,
-			{
-				params: {
-					locale,
-				},
-				tags: ['testimmonials'],
-			},
-		)
+	}, [animationDirection, animationDuration, testimonials])
+
+	const allTestimonials = testimonials
+
 	const components = useMemo(
 		() => ({
 			types: {
@@ -99,41 +98,49 @@ export default function TestimonialList({
 	)
 	const renderedTestimonials = useMemo(
 		() =>
-			allTestimonials?.map(({ content, author }, key) => {
-				return (
-					<li
-						key={key}
-						className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
-					>
-						<article className="flex flex-col justify-between">
-							<div className="text-start group-hover:text-cyan-800">
-								<PortableText value={content} components={components} />
-							</div>
-
-							{author && (
-								<footer>
-									<div className="flex items-center justify-start gap-4">
-										<Img
-											className="size-12 rounded-full object-cover"
-											image={author?.image}
-										/>
-										<div className={cn('text-main text-start')}>
-											<div className="font-semibold text-cyan-950">
-												{author?.name}
-											</div>
-											{author?.title && (
-												<div className="text-cyan-950/60">{author?.title}</div>
-											)}
-										</div>
+			Array.isArray(allTestimonials)
+				? allTestimonials?.map(({ content, author }, key) => {
+						return (
+							<li
+								key={key}
+								className="group flex w-full max-w-[420px] flex-shrink-0 scale-95 flex-row rounded-2xl border-2 border-teal-500/20 bg-white/80 p-6 transition-all hover:scale-100 hover:border-0 hover:bg-teal-500/20 hover:shadow-lg"
+							>
+								<article className="flex flex-col justify-between">
+									<div className="text-start group-hover:text-cyan-800">
+										<PortableText value={content} components={components} />
 									</div>
-								</footer>
-							)}
-						</article>
-					</li>
-				)
-			}),
+
+									{author && (
+										<footer>
+											<div className="flex items-center justify-start gap-4">
+												<Img
+													className="size-12 rounded-full object-cover"
+													image={author?.image}
+												/>
+												<div className={cn('text-main text-start')}>
+													<div className="font-semibold text-cyan-950">
+														{author?.name}
+													</div>
+													{author?.title && (
+														<div className="text-cyan-950/60">
+															{author?.title}
+														</div>
+													)}
+												</div>
+											</div>
+										</footer>
+									)}
+								</article>
+							</li>
+						)
+					})
+				: [],
 		[allTestimonials, components],
 	)
+
+	if (!allTestimonials || allTestimonials.length === 0) {
+		return null
+	}
 
 	return (
 		<div

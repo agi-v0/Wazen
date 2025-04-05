@@ -54,7 +54,6 @@ export default function Benefits({
 	}, [activeCard, content])
 
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	const components: PortableTextComponents = {
 		types: {

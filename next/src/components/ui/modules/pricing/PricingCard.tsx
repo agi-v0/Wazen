@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import CTAList from '@/components/ui/CTAList'
-import { Icon } from '@iconify/react/dist/iconify.js'
+import { Icon } from '@iconify-icon/react'
 
 // import NumberTicker from '../animated/number-ticker'
 
@@ -86,7 +86,7 @@ export default function PricingBox(props: {
 						>
 							<Icon
 								icon={app.icon ? app.icon.name : 'ph:cube-duotone'}
-								className="size-6 text-cyan-950/60"
+								className="text-2xl leading-none text-cyan-950/60"
 							/>
 							{app.title}
 						</li>

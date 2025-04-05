@@ -46,7 +46,6 @@ export default function AnimatedBackground({
 			setActiveId(defaultValue)
 		}
 	}, [defaultValue])
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
 
 	return Children.map(children, (child: any, index) => {
 		const id = child.props['data-id']

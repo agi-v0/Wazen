@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react'
+import { Icon } from '@iconify-icon/react'
 
 export default function BenefitsBanner({
 	pretitle,
@@ -36,10 +36,10 @@ export default function BenefitsBanner({
 								className="flex w-full flex-col justify-start gap-4 rounded-xl p-4 text-start"
 								key={index}
 							>
-								<div className="self-start rounded-full bg-cyan-50 p-4">
+								<div className="size-14 self-start rounded-full bg-cyan-50 p-4">
 									<Icon
 										icon={feature.icon ? feature.icon.name : 'ph:cube-duotone'}
-										className="text-2xl text-teal-600"
+										className="text-2xl leading-none text-teal-600"
 									/>
 								</div>
 								<h3 className="text-large font-semibold leading-tight text-cyan-950">

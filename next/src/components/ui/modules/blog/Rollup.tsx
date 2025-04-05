@@ -1,5 +1,7 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
-import RollupClient from './RollupClient'
+import dynamic from 'next/dynamic'
+
+const RollupClient = dynamic(() => import('./RollupClient'))
 
 export default async function Rollup({
 	_type,

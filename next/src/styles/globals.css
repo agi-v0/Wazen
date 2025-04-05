@@ -251,6 +251,12 @@
 		padding-top: var(--size--4-5rem);
 		padding-bottom: var(--size--4-5rem);
 	}
+
+	iconify-icon {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+	}
 }
 
 @layer utilities {
@@ -277,7 +283,8 @@
 	}
 
 	.hero-background {
-		background-image: linear-gradient(to bottom, transparent, white),
+		background-image:
+			linear-gradient(to bottom, transparent, white),
 			radial-gradient(
 				ellipse at top center,
 				#155e75 0%,
@@ -297,7 +304,8 @@
 		--a-shape: ellipse 30% 23% at 30% 56%;
 		--b: #cffafe;
 		--b-shape: ellipse 30% 30% at 71% 52%;
-		background: radial-gradient(var(--a-shape), var(--a), transparent),
+		background:
+			radial-gradient(var(--a-shape), var(--a), transparent),
 			radial-gradient(var(--b-shape), var(--b), transparent);
 	}
 	.cyan-gradient-background-3 {

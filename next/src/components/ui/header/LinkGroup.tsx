@@ -9,7 +9,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Icon } from '@iconify/react/dist/iconify.js'
+import { Icon } from '@iconify-icon/react'
 
 export default function LinkGroup({
 	label,
@@ -48,14 +48,14 @@ export default function LinkGroup({
 								<NavigationMenuLink
 									className={cn(
 										navigationMenuTriggerStyle(),
-										item.iconify?.name && 'h-12 px-2',
+										item.iconify?.name && 'h-12 gap-2 px-2',
 									)}
 								>
 									{item.iconify?.name && (
-										<div className="-absolute -start-0 me-2 rounded-md bg-teal-50 p-1 transition-colors duration-200 group-hover:bg-cyan-800">
+										<div className="size-8 flex-none rounded-md bg-teal-50 p-1 transition-colors duration-200 group-hover:bg-cyan-800">
 											<Icon
 												icon={item.iconify.name}
-												className="size-6 text-teal-600 group-hover:text-teal-50"
+												className="h-6 text-2xl text-teal-600 group-hover:text-teal-50"
 											/>
 										</div>
 									)}

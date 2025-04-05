@@ -5,6 +5,7 @@ import {
 } from '@portabletext/react'
 import Pretitle from '@/components/ui/Pretitle'
 import CTAList from '../CTAList'
+import { Icon } from '@iconify-icon/react'
 
 export default async function FeaturesGridOne({
 	pretitle,
@@ -20,8 +21,6 @@ export default async function FeaturesGridOne({
 	features: { title: string; description: string; icon: { name: string } }[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
-	const { Icon } = await import('@iconify/react')
-
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
@@ -75,12 +74,12 @@ export default async function FeaturesGridOne({
 									className="flex w-full flex-col justify-start gap-2 rounded-xl p-4 text-start"
 									key={index}
 								>
-									<div className="mb-2 self-start rounded-md bg-teal-700 p-2">
+									<div className="mb-2 size-9 self-start rounded-md bg-teal-700 p-2">
 										<Icon
 											icon={
 												feature.icon ? feature.icon.name : 'ph:cube-duotone'
 											}
-											className="text-xl text-white"
+											className="text-xl leading-none text-white"
 										/>
 									</div>
 									<h3 className="text-main font-semibold leading-tight text-teal-50">

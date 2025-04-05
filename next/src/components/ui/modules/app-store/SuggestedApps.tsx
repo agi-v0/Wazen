@@ -1,14 +1,16 @@
 import { cn } from '@/lib/utils'
 import { Link } from '@/i18n/routing'
 import { Icon } from '@iconify-icon/react'
-import { getLocale, getTranslations } from 'next-intl/server'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import AppCard from './AppCard'
 
-const SuggestedApps = async () => {
-	const t = await getTranslations('App')
-	const locale = await getLocale()
-
+const SuggestedApps = async ({
+	locale,
+	t,
+}: {
+	locale: 'en' | 'ar'
+	t: (key: string) => string
+}) => {
 	const apps = await fetchSanity<any>(
 		groq`*[_type == 'app.store.app' && language == $locale ]{
 		 title, 
@@ -29,7 +31,9 @@ const SuggestedApps = async () => {
 		},
 	)
 
-	const randomlySortedApps = apps
+	const validApps = apps?.filter((app: any) => app) || []
+
+	const randomlySortedApps = validApps
 		.map((app: object) => ({ app, sort: Math.random() }))
 		.sort((a: any, b: any) => a.sort - b.sort)
 		.map(({ app }: { app: object }) => app)
@@ -59,13 +63,15 @@ const SuggestedApps = async () => {
 						'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 					)}
 				>
-					{randomlySortedApps.slice(0, 3)?.map((app: any, key: string) => {
-						return (
-							<li key={key}>
-								<AppCard app={app} locale={locale} />
-							</li>
-						)
-					})}
+					{randomlySortedApps
+						.slice(0, 3)
+						?.map((app: any, key: string | number) => {
+							return (
+								<li key={app?._id || key}>
+									<AppCard app={app} locale={locale} />
+								</li>
+							)
+						})}
 				</ul>
 			</div>
 		</section>

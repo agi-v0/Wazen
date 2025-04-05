@@ -1,8 +1,7 @@
 'use client'
-
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Icon } from '@iconify/react'
+import { Icon } from '@iconify-icon/react'
 
 type CardItem = {
 	title: string

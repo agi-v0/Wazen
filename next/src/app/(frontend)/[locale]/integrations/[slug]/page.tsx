@@ -5,28 +5,75 @@ import SingleAppHeader from '@/components/ui/modules/app-store/SingleAppHeader'
 import CallToAction from '@/components/ui/modules/CallToAction'
 import processMetadata from '@/lib/processMetadata'
 import SuggestedApps from '@/components/ui/modules/app-store/SuggestedApps'
+import { getTranslations } from 'next-intl/server'
 
 type Props = {
 	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
 }
 
+// Define type for the CTA Document fetched from Sanity
+type CtaDoc = {
+	content: any
+	ctas: Sanity.CTA[]
+	checkedList: any
+	image: Sanity.Image & { alt?: string; onRight?: boolean }
+}
+
 export default async function Page({ params }: Props) {
 	const resolvedParams = await params
+	const locale = resolvedParams.locale
 	setRequestLocale(resolvedParams.locale)
+
+	const t = await getTranslations('App')
+
 	const app = await getPage(resolvedParams)
 	if (!app) notFound()
+
+	// Fetch the default CTA document data within the Page component
+	const ctaDocData = await fetchSanity<CtaDoc>(
+		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
+			content,
+			ctas[]{
+				...,
+				link{
+					...,
+					internal->{ title, metadata }
+				}
+			},
+			checkedList,
+			image{
+				...,
+				alt,
+				onRight,
+				asset->
+			},
+		}`,
+		{
+			params: { locale },
+			tags: ['ctaDoc'], // Use appropriate tag for revalidation
+		},
+	)
+
 	return (
 		<>
 			<SingleAppHeader app={app} />
-			<SuggestedApps />
-			<CallToAction />
+			<SuggestedApps locale={locale} t={t} />
+			{/* Pass the fetched ctaDocData to CallToAction */}
+			{ctaDocData && (
+				<CallToAction
+					content={ctaDocData.content}
+					ctas={ctaDocData.ctas}
+					checkedList={ctaDocData.checkedList}
+					image={ctaDocData.image}
+					// Pass other props if needed, e.g., textAlign
+				/>
+			)}
 		</>
 	)
 }
 
 export async function generateMetadata({ params }: Props) {
 	const resolvedParams = await params
-	setRequestLocale(resolvedParams.locale)
 	const page = await getPage(resolvedParams)
 	if (!page) notFound()
 	return processMetadata(page, resolvedParams.locale)

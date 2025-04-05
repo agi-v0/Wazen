@@ -6,64 +6,33 @@ import {
 import CTAList from '@/components/ui/CTAList'
 import { cn } from '@/lib/utils'
 import { Icon } from '@iconify-icon/react'
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
-import { getLocale } from 'next-intl/server'
-import { Img } from '@/components/ui/Img'
-import { useLocale } from 'next-intl'
-// https://magicui.design/docs/components/neon-gradient-card
 
-export default async function CallToAction({
+import { Img } from '@/components/ui/Img'
+
+// Define the expected prop types more clearly
+type CallToActionProps = Partial<{
+	content: any
+	ctas: Sanity.CTA[]
+	checkedList: any
+	textAlign: React.CSSProperties['textAlign']
+	alignItems: React.CSSProperties['alignItems']
+	image: Sanity.Image & { alt?: string; onRight?: boolean }
+	// locale: 'en' | 'ar' // Add locale if needed for CTAList or other parts
+}>
+
+// Component is now simpler, receives all data via props
+export default function CallToAction({
 	content,
 	ctas,
 	image,
 	checkedList,
 	textAlign = 'start',
 	alignItems,
-	// callToAction,
-}: Partial<{
-	content: any
-	ctas: Sanity.CTA[]
-	checkedList: any
-	textAlign: React.CSSProperties['textAlign']
-	alignItems: React.CSSProperties['alignItems']
-	image: Sanity.Image & { onRight?: boolean }
-	callToAction: {
-		content: any
-		ctas: Sanity.CTA[]
-		checkedList: any
-		image: Sanity.Image & { onRight?: boolean }
+}: CallToActionProps) {
+	// Return null or placeholder if essential content is missing
+	if (!content && !ctas) {
+		return null
 	}
-}>) {
-	const locale = await getLocale()
-	const ctaDoc = await fetchSanity(
-		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
-		
-			...,
-			image{
-				...,
-				asset->
-			},
-			ctas[]{
-					...,
-					link{
-						...,
-						internal->{ title, metadata }
-					}
-				},
-			}
-		`,
-		{
-			params: {
-				locale: locale,
-			},
-			tags: ['ctaDoc'],
-		},
-	)
-	const callToAction = ctaDoc
-	content ||= callToAction.content
-	ctas ||= callToAction.ctas
-	checkedList ||= callToAction.checkedList
-	image?.asset || (image = callToAction.image)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -119,29 +88,38 @@ export default async function CallToAction({
 					image?.onRight ? '' : 'lg:flex-row-reverse lg:justify-between',
 				)}
 			>
-				<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
-					<div
-						className={cn('absolute start-8 top-8 h-full w-full min-w-[800px]')}
-					>
-						<Img
-							image={image}
-							alt={image?.alt}
-							className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
-							draggable={false}
-							loading="lazy"
-						/>
+				{/* Only render image section if image data exists */}
+				{image?.asset && (
+					<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
+						<div
+							className={cn(
+								'absolute start-8 top-8 h-full w-full min-w-[800px]',
+							)}
+						>
+							<Img
+								image={image}
+								alt={image?.alt || ''} // Provide default alt text
+								className="mx-auto h-auto w-full rounded-lg object-cover object-left-top shadow-lg"
+								draggable={false}
+								loading="lazy"
+							/>
+						</div>
 					</div>
-				</div>
+				)}
 				<div className="flex max-w-2xl flex-col items-start gap-8">
-					<PortableText value={content} components={components} />
+					{content && <PortableText value={content} components={components} />}
 
-					<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
-					<div className="flex flex-col gap-2">
-						<PortableText
-							value={checkedList}
-							components={checkedListComponents}
-						/>
-					</div>
+					{ctas && (
+						<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
+					)}
+					{checkedList && (
+						<div className="flex flex-col gap-2">
+							<PortableText
+								value={checkedList}
+								components={checkedListComponents}
+							/>
+						</div>
+					)}
 				</div>
 			</div>
 		</section>

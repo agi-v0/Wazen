@@ -1,8 +1,6 @@
 import * as m from 'motion/react-m'
 
 const reports = () => {
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
-
 	return (
 		<m.div
 			initial="hidden"

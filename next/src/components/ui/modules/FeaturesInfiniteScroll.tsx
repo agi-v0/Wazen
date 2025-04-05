@@ -4,6 +4,7 @@ import Pretitle from '@/components/ui/Pretitle'
 import { set2 } from '@/components/ui/portable-text'
 import { useTranslations } from 'next-intl'
 import ComparisonTable from './ComparisonTable'
+import { useMemo } from 'react'
 
 const InfiniteMovingCards = dynamic(
 	() => import('@/components/animated/infinite-moving-cards-apps'),
@@ -28,8 +29,8 @@ export default function FeaturesInfiniteScroll({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const Features = (): { title: string; icon: string }[] => {
-		const t = useTranslations('FeaturesInfiniteScroll')
+	const t = useTranslations('FeaturesInfiniteScroll')
+	const features = useMemo(() => {
 		return [
 			{
 				title: t('Check in and check out'),
@@ -94,7 +95,7 @@ export default function FeaturesInfiniteScroll({
 				icon: 'ph:chart-pie',
 			},
 		]
-	}
+	}, [t])
 	return (
 		<section
 			className={
@@ -116,19 +117,19 @@ export default function FeaturesInfiniteScroll({
 					direction="right"
 					speed="slow"
 					pauseOnHover={false}
-					items={Features().slice(0, 5)}
+					items={features.slice(0, 5)}
 				/>
 				<InfiniteMovingCards
 					direction="left"
 					speed="slow"
 					pauseOnHover={false}
-					items={Features().slice(5, 10)}
+					items={features.slice(5, 10)}
 				/>
 				<InfiniteMovingCards
 					direction="right"
 					speed="slow"
 					pauseOnHover={false}
-					items={Features().slice(10, 15)}
+					items={features.slice(10, 15)}
 				/>
 			</div>
 

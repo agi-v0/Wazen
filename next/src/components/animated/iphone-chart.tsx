@@ -2,8 +2,6 @@ import Image from 'next/image'
 import * as m from 'motion/react-m'
 
 export default function MobileApp() {
-	const loadFeatures = () => import('@/lib/domMax').then((res) => res.default)
-
 	return (
 		<div className="relative mx-auto w-full max-w-md">
 			<Image

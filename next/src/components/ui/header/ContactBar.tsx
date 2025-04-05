@@ -9,22 +9,19 @@ export default function ContactBar({
 	locale: 'en' | 'ar'
 }>) {
 	const icons = [
+		<Icon icon="ph:phone" key="PiPhone" className="text-base text-gray-400" />,
 		<Icon
-			icon="ph:phone-line"
-			key="PiPhone"
-			className="size-4 text-cyan-950/60"
-		/>,
-		<Icon
-			icon="ph:envelope-line"
+			icon="ph:envelope"
 			key="PiEnvelope"
-			className="size-4 text-cyan-950/60"
+			className="text-base text-gray-400"
 		/>,
 		<Icon
-			icon="ph:map-pin-line"
+			icon="ph:map-pin"
 			key="PiMapPin"
-			className="size-4 text-cyan-950/60"
+			className="text-base text-gray-400"
 		/>,
 	]
+
 	return (
 		<div id="contactBar" className="h-9 w-full bg-gray-50">
 			<div className="section flex flex-row justify-end gap-2 py-1">
@@ -37,7 +34,7 @@ export default function ContactBar({
 							return (
 								<div
 									key={index}
-									className="flex shrink-0 flex-row items-center gap-1 px-2 py-1 text-sm text-gray-400 *:hover:text-teal-600"
+									className="flex shrink-0 flex-row items-center gap-1 px-2 py-1 text-sm text-cyan-950/60 *:hover:text-teal-600"
 								>
 									{icons[index]}
 									<Button link={item.link} />
