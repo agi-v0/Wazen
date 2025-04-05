@@ -30,8 +30,8 @@ export default async function Page({ params }: Props) {
 	if (!app) notFound()
 
 	// Fetch the default CTA document data within the Page component
-	const ctaDocData = await fetchSanity<CtaDoc>(
-		groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
+	const ctaDocData = await fetchSanity<CtaDoc>({
+		query: groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
 			content,
 			ctas[]{
 				...,
@@ -48,11 +48,10 @@ export default async function Page({ params }: Props) {
 				asset->
 			},
 		}`,
-		{
-			params: { locale },
-			tags: ['ctaDoc'], // Use appropriate tag for revalidation
-		},
-	)
+
+		params: { locale },
+		tags: ['ctaDoc'], // Use appropriate tag for revalidation
+	})
 
 	return (
 		<>
@@ -80,9 +79,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity<string[]>(
-		groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
-	)
+	const slugs = await fetchSanity<string[]>({
+		query: groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
+	})
 	const params = slugs.flatMap((slug) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },
@@ -91,8 +90,8 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
-	return await fetchSanity<any>(
-		groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
+	return await fetchSanity<any>({
+		query: groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
 			icon,
 			asset->,
@@ -101,12 +100,11 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 				'ogimage': image.asset->url + '?w=1200'
 			}
 	 }`,
-		{
-			params: {
-				locale: params.locale,
-				slug: params.slug,
-			},
-			tags: ['apps'],
+
+		params: {
+			locale: params.locale,
+			slug: params.slug,
 		},
-	)
+		tags: ['apps'],
+	})
 }

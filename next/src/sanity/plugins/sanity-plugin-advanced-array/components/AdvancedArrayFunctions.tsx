@@ -14,14 +14,13 @@ import {
 import {
 	ArrayOfObjectsInputProps,
 	ArrayOptions,
-	KeyedObject,
+	// KeyedObject,
 	insert,
 	unset,
 	useWorkspace,
 } from 'sanity'
 import { randomKey } from '@sanity/util/content'
 import { useLocalStorage } from 'usehooks-ts'
-
 import { useMultiSelectContext } from './MultiSelectContext'
 
 export function AdvancedArrayFunctions(props: ArrayOfObjectsInputProps) {
@@ -48,7 +47,7 @@ export function AdvancedArrayFunctions(props: ArrayOfObjectsInputProps) {
 			return
 		}
 
-		const parsedItems = JSON.parse(copiedItems) as KeyedObject[]
+		const parsedItems = JSON.parse(copiedItems) as { _key: string }[]
 
 		if (!Array.isArray(parsedItems) || !parsedItems.length) {
 			return
@@ -124,7 +123,7 @@ export function AdvancedArrayFunctions(props: ArrayOfObjectsInputProps) {
 		collapseAll()
 	}, [collapseAll])
 
-	interface ExtendedArrayOptions extends ArrayOptions<unknown> {
+	interface ExtendedArrayOptions {
 		advanced?: any // Adjust the type as needed
 	}
 	const { advanced } = (props.schemaType.options as ExtendedArrayOptions) || {}

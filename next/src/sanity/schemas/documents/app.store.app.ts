@@ -1,26 +1,25 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 import { PiSquaresFour } from 'react-icons/pi'
 
-export default defineType({
+export default {
 	name: 'app.store.app',
 	title: 'App',
 	icon: PiSquaresFour,
 	type: 'document',
 	fields: [
-		defineField({
+		{
 			// should match 'languageField' plugin configuration setting, if customized
 			name: 'language',
 			type: 'string',
 			readOnly: true,
 			hidden: true,
-		}),
-		defineField({
+		},
+		{
 			name: 'title',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'description',
 			type: 'array',
 			of: [
@@ -29,25 +28,24 @@ export default defineType({
 					type: 'image',
 					icon: IoIosImage,
 					fields: [
-						defineField({
+						{
 							name: 'alt',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'caption',
 							type: 'text',
 							rows: 2,
-						}),
+						},
 					],
 				},
 			],
-		}),
-		defineField({
-			name: 'carousel',
-			title: 'Images',
+		},
+		{
+			name: 'images',
 			type: 'array',
 			of: [
-				// defineArrayMember({
+				// {
 				// 	name: 'carousel-items',
 				// 	title: 'Image',
 				// 	type: 'object',
@@ -58,45 +56,44 @@ export default defineType({
 				// 			type: 'image',
 				// 			icon: IoIosImage,
 				// 			fields: [
-				// 				defineField({
+				// 				{
 				// 					name: 'alt',
 				// 					type: 'string',
-				// 				}),
-				// 				defineField({
+				// 				},
+				// 				{
 				// 					name: 'caption',
 				// 					type: 'text',
 				// 					rows: 2,
-				// 				}),
+				// 				},
 				// 			],
 				// 		},
 				// 	],
-				// }),
-				defineArrayMember({
+				// },
+				{
 					name: 'carousel-items',
 					title: 'Image',
 					type: 'image',
 					icon: IoIosImage,
 					fields: [
-						defineField({
+						{
 							name: 'alt',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'caption',
 							type: 'text',
 							rows: 2,
-						}),
+						},
 					],
-				}),
+				},
 			],
-		}),
-		defineField({
-			name: 'ctas',
-			title: 'Call-to-actions',
+		},
+		{
+			name: 'call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'permissions',
 			type: 'object',
 			fields: [
@@ -122,21 +119,21 @@ export default defineType({
 					type: 'boolean',
 				},
 			],
-		}),
-		defineField({
+		},
+		{
 			name: 'icon',
 			type: 'image',
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
+			validation: (rule: any) => rule.required(),
+		},
+		{
 			name: 'publishDate',
 			type: 'date',
-			// validation: (Rule) => Rule.required(),
-		}),
-		defineField({
+			// validation: (rule: any) => rule.required(),
+		},
+		{
 			name: 'metadata',
 			type: 'metadata',
-		}),
+		},
 	],
 	preview: {
 		select: {
@@ -157,4 +154,4 @@ export default defineType({
 			by: [{ field: 'title', direction: 'asc' }],
 		},
 	],
-})
+}

@@ -1,27 +1,26 @@
-import { defineField, defineType } from 'sanity'
 import { VscLink } from 'react-icons/vsc'
 
-export default defineType({
+export default {
 	name: 'link',
 	title: 'Link',
 	icon: VscLink,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'label',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'description',
 			type: 'text',
-		}),
-		defineField({
+		},
+		{
 			name: 'iconify',
 			title: 'Icon (Phosphor icons)',
 			description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
 			type: 'icon',
-		}),
-		defineField({
+		},
+		{
 			name: 'type',
 			type: 'string',
 			options: {
@@ -32,29 +31,29 @@ export default defineType({
 				],
 			},
 			initialValue: 'internal',
-		}),
-		defineField({
+		},
+		{
 			name: 'internal',
 			type: 'reference',
 			to: [{ type: 'page' }, { type: 'blog.post' }],
-			hidden: ({ parent }) => parent?.type !== 'internal',
-		}),
-		defineField({
+			hidden: ({ parent }: any) => parent?.type !== 'internal',
+		},
+		{
 			name: 'external',
 			type: 'url',
-			validation: (Rule) =>
+			validation: (Rule: any) =>
 				Rule.uri({
 					scheme: ['http', 'https', 'mailto', 'tel'],
 					allowRelative: true,
 				}),
-			hidden: ({ parent }) => parent?.type !== 'external',
-		}),
-		defineField({
+			hidden: ({ parent }: any) => parent?.type !== 'external',
+		},
+		{
 			name: 'params',
 			title: 'URL params',
 			type: 'string',
-			hidden: ({ parent }) => parent?.type !== 'internal',
-		}),
+			hidden: ({ parent }: any) => parent?.type !== 'internal',
+		},
 	],
 	preview: {
 		select: {
@@ -65,7 +64,7 @@ export default defineType({
 			external: 'external',
 			params: 'params',
 		},
-		prepare: ({ label, _type, title, slug, external, params }) => ({
+		prepare: ({ label, _type, title, slug, external, params }: any) => ({
 			title: label || title,
 			subtitle: [
 				_type === 'blog.post' ? '/blog' : null,
@@ -76,4 +75,4 @@ export default defineType({
 				.join(''),
 		}),
 	},
-})
+}

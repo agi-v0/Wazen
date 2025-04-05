@@ -43,7 +43,8 @@ export default function RollupClient({
 		try {
 			const newPosts = await fetchSanity<Sanity.BlogPost[]>(
 				// Use BATCH_SIZE in the query slice
-				groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[$start...($start + ${BATCH_SIZE})]{
+				{
+					query: groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[$start...($start + ${BATCH_SIZE})]{
 				 	title,
 					publishDate,
 					metadata,
@@ -53,7 +54,7 @@ export default function RollupClient({
 					title_en
 				 }
 				}`,
-				{
+
 					params: {
 						type: type,
 						categoryRef: categoryRef,

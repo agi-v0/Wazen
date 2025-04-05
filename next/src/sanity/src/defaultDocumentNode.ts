@@ -1,8 +1,8 @@
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import { BASE_URL } from './env'
 import { VscEdit, VscEye } from 'react-icons/vsc'
-import type { SanityDocument } from 'sanity'
 import type { DefaultDocumentNodeResolver } from 'sanity/structure'
+import { SanityDocumentStub } from 'next-sanity'
 
 const defaultDocumentNode: DefaultDocumentNodeResolver = (
 	S,
@@ -21,7 +21,7 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 					.icon(VscEye)
 					.options({
 						url: (
-							doc: SanityDocument & {
+							doc: SanityDocumentStub & {
 								metadata?: { slug?: { current: string } }
 							},
 						) => {

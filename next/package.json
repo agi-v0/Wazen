@@ -12,7 +12,8 @@
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
 		"sanity dev": "sanity dev",
-		"sanity deploy": "sanity deploy"
+		"sanity deploy": "sanity deploy",
+		"typegen": "sanity schema extract --path=src/sanity/extract.json && sanity typegen generate"
 	},
 	"dependencies": {
 		"@catherineriver/sanity-plugin-generate-ogimage": "^1.0.6",
@@ -33,7 +34,7 @@
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/preview-url-secret": "^1.6.13",
 		"@sanity/table": "^1.1.2",
-		"@sanity/ui": "^2.15.8",
+		"@sanity/ui": "2.15.12",
 		"@sanity/util": "^3.81.0",
 		"@sanity/vision": "^3.62.2",
 		"class-variance-authority": "^0.7.0",
@@ -63,11 +64,11 @@
 		"react-live-chat-loader": "^2.9.2",
 		"resend": "^3.4.0",
 		"rss": "^1.2.2",
-		"sanity": "^3.50.0",
+		"sanity": "^3.82.0",
 		"sanity-plugin-iconify": "^2.0.0",
 		"sanity-plugin-iframe-pane": "^3.1.6",
 		"sharp": "^0.33.4",
-		"styled-components": "^6.1.13",
+		"styled-components": "^6.1.17",
 		"tailwind-merge": "^2.3.0",
 		"tailwindcss-animate": "^1.0.7",
 		"usehooks-ts": "^3.1.0"

@@ -1,46 +1,45 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
 import { LuDollarSign } from 'react-icons/lu'
 import { getBlockText } from '../../src/utils'
 
-export default defineType({
+export default {
 	name: 'pricing-comparison',
 	title: 'Pricing comparison',
 	icon: LuDollarSign,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'details',
 			type: 'array',
 			of: [
-				defineArrayMember({
+				{
 					name: 'apps',
 					type: 'object',
 					fields: [
-						defineField({
+						{
 							name: 'title',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'specs',
 							type: 'table',
-						}),
+						},
 					],
-				}),
+				},
 			],
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 		},
-		prepare: ({ content }) => ({
+		prepare: ({ content }: any) => ({
 			title: getBlockText(content),
 			subtitle: 'Pricing comparison',
 		}),
 	},
-})
+}

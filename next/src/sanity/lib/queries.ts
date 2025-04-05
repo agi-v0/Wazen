@@ -33,8 +33,8 @@ export const creativeModuleQuery = groq`
 `
 
 export async function getSite(locale: any) {
-	return await fetchSanity<Sanity.Site>(
-		groq`
+	return await fetchSanity<Sanity.Site>({
+		query: groq`
 			*[_type == 'site' && language == $locale  ][0]{
 				...,
 				ctas[]{
@@ -54,11 +54,10 @@ export async function getSite(locale: any) {
 				}
 			}
 		`,
-		{
-			params: {
-				locale: locale,
-			},
-			tags: ['site'],
+
+		params: {
+			locale: locale,
 		},
-	)
+		tags: ['site'],
+	})
 }

@@ -1,8 +1,7 @@
-import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
-export default defineType({
+export default {
 	name: 'call.to.action.two',
 	title: 'Call To Action',
 	icon: TfiLayoutCtaCenter,
@@ -17,39 +16,39 @@ export default defineType({
 		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],
 	fields: [
-		defineField({
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
-		}),
-		defineField({
+		},
+		{
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
 			group: 'content',
-		}),
-		defineField({
+		},
+		{
 			name: 'checkedList',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
-		}),
-		defineField({
+		},
+		{
 			name: 'image',
 			type: 'image',
 			fields: [
-				defineField({
+				{
 					name: 'alt',
 					type: 'string',
-				}),
-				defineField({
+				},
+				{
 					name: 'onRight',
 					type: 'boolean',
 					initialValue: false,
-				}),
-				defineField({
+				},
+				{
 					name: 'loading',
 					type: 'string',
 					options: {
@@ -57,10 +56,10 @@ export default defineType({
 						list: ['lazy', 'eager'],
 					},
 					initialValue: 'lazy',
-				}),
+				},
 			],
-		}),
-		defineField({
+		},
+		{
 			name: 'textAlign',
 			type: 'string',
 			options: {
@@ -70,8 +69,8 @@ export default defineType({
 			initialValue: 'center',
 			group: 'options',
 			fieldset: 'alignment',
-		}),
-		defineField({
+		},
+		{
 			name: 'alignItems',
 			title: 'Vertical alignment',
 			type: 'string',
@@ -86,8 +85,8 @@ export default defineType({
 			initialValue: 'center',
 			group: 'options',
 			fieldset: 'alignment',
-		}),
-		defineField({
+		},
+		{
 			name: 'bgImage',
 			title: 'Background image',
 			type: 'image',
@@ -95,11 +94,11 @@ export default defineType({
 				hotspot: true,
 			},
 			fields: [
-				defineField({
+				{
 					name: 'alt',
 					type: 'string',
-				}),
-				defineField({
+				},
+				{
 					name: 'loading',
 					type: 'string',
 					options: {
@@ -107,13 +106,14 @@ export default defineType({
 						list: ['lazy', 'eager'],
 					},
 					initialValue: 'lazy',
-				}),
+				},
 			],
 			fieldset: 'image',
 			group: 'image',
-		}),
-		defineField({
+		},
+		{
 			name: 'bgImageMobile',
+
 			title: 'Background image (mobile)',
 			type: 'image',
 			options: {
@@ -121,15 +121,15 @@ export default defineType({
 			},
 			fieldset: 'image',
 			group: 'image',
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 		},
-		prepare: ({ content }) => ({
+		prepare: ({ content }: any) => ({
 			title: getBlockText(content),
 			subtitle: 'Call to action',
 		}),
 	},
-})
+}

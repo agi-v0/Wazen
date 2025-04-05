@@ -1,4 +1,3 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
 import creativeCtas from './creativeCtas'
 import creativeIcon from './creativeIcon'
 import creativeImage from './creativeImage'
@@ -7,7 +6,7 @@ import { count, getBlockText } from '../../../src/utils'
 
 import { VscExtensions } from 'react-icons/vsc'
 
-export default defineType({
+export default {
 	name: 'creative-module',
 	title: 'Creative module',
 	icon: VscExtensions,
@@ -20,21 +19,21 @@ export default defineType({
 		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],
 	fields: [
-		defineField({
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
 			group: 'content',
-		}),
-		defineField({
+		},
+		{
 			name: 'modules',
 			type: 'array',
 			of: [
-				defineArrayMember({
+				{
 					title: 'module',
 					type: 'object',
 					fields: [
-						defineField({
+						{
 							name: 'subModules',
 							type: 'array',
 							of: [
@@ -44,19 +43,19 @@ export default defineType({
 								creativeRichtext,
 								{ type: 'custom-html' },
 							],
-						}),
-						defineField({
+						},
+						{
 							name: 'colSpan',
 							title: 'Column span',
 							type: 'number',
-							validation: (Rule) => Rule.min(1).integer(),
-						}),
+							validation: (rule: any) => rule.min(1).integer(),
+						},
 					],
 					preview: {
 						select: {
 							subModules: 'subModules',
 						},
-						prepare: ({ subModules }) => {
+						prepare: ({ subModules }: any) => {
 							return {
 								title: subModules
 									.map(
@@ -68,18 +67,18 @@ export default defineType({
 							}
 						},
 					},
-				}),
+				},
 			],
 			group: 'content',
-		}),
-		defineField({
+		},
+		{
 			name: 'columns',
 			type: 'number',
 			description: 'Leave empty to use the number of modules as columns',
-			validation: (Rule) => Rule.min(1).integer(),
+			validation: (rule: any) => rule.min(1).integer(),
 			group: 'options',
-		}),
-		defineField({
+		},
+		{
 			name: 'textAlign',
 			type: 'string',
 			options: {
@@ -88,8 +87,8 @@ export default defineType({
 			initialValue: 'left',
 			group: 'options',
 			fieldset: 'alignment',
-		}),
-		defineField({
+		},
+		{
 			name: 'alignItems',
 			title: 'Vertical alignment',
 			type: 'string',
@@ -103,16 +102,16 @@ export default defineType({
 			initialValue: 'center',
 			group: 'options',
 			fieldset: 'alignment',
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 			modules: 'modules',
 		},
-		prepare: ({ content, modules }) => ({
+		prepare: ({ content, modules }: any) => ({
 			title: getBlockText(content),
 			subtitle: count(modules, 'module'),
 		}),
 	},
-})
+}

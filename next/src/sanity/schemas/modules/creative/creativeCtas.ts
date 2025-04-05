@@ -1,26 +1,25 @@
-import { defineArrayMember, defineField } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
 import { count } from '../../../src/utils'
 
-export default defineArrayMember({
+export default {
 	name: 'ctas',
 	title: 'Call-to-actions',
 	icon: VscInspect,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-		}),
+		},
 	],
 	preview: {
 		select: {
 			ctas: 'ctas',
 		},
-		prepare: ({ ctas }) => ({
+		prepare: ({ ctas }: any) => ({
 			title: count(ctas, 'CTA'),
 		}),
 	},
-})
+}

@@ -1,26 +1,26 @@
-import { SlugValidationContext, defineField, defineType } from 'sanity'
+import { ValidationContext } from 'sanity'
 // import { MediaEditor } from '@catherineriver/sanity-plugin-generate-ogimage'
 import { OGImageEditor } from '../../src/OGImageEditor'
 import React from 'react'
 import { MediaEditor } from '../../plugins/sanity-plugin-generate-og-image/src'
 
-export default defineType({
+export default {
 	name: 'metadata',
 	title: 'Metadata',
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'title',
 			type: 'string',
-			validation: (Rule) => Rule.max(60).warning(),
-		}),
-		defineField({
+			validation: (rule: any) => rule.max(60).warning(),
+		},
+		{
 			name: 'description',
 			type: 'text',
 			rows: 3,
-			validation: (Rule) => Rule.max(160).warning(),
-		}),
-		defineField({
+			validation: (rule: any) => rule.max(160).warning(),
+		},
+		{
 			name: 'slug',
 			type: 'slug',
 			description: 'يرجى اتباع سياق "كلمة-كلمة-كلمة"',
@@ -28,9 +28,9 @@ export default defineType({
 				source: (doc: any) => doc.name || doc.title,
 				isUnique: isUniqueOtherThanLanguage,
 			},
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
+			validation: (rule: any) => rule.required(),
+		},
+		{
 			name: 'image',
 			description: 'Used for social sharing previews',
 			type: 'image',
@@ -45,13 +45,13 @@ export default defineType({
 					},
 				],
 			},
-		}),
-		defineField({
+		},
+		{
 			name: 'noIndex',
 			description: 'Prevent search engines from indexing this page.',
 			type: 'boolean',
 			initialValue: false,
-		}),
+		},
 	],
 	preview: {
 		select: {
@@ -59,12 +59,13 @@ export default defineType({
 			subtitle: 'description',
 		},
 	},
-})
+}
+
 export async function isUniqueOtherThanLanguage(
 	slug: string,
-	context: SlugValidationContext,
+	context: ValidationContext,
 ) {
-	const { document, getClient } = context
+	const { document, getClient } = context as any
 	if (!document?.language) {
 		return true
 	}

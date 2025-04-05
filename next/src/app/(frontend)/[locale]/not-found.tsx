@@ -17,8 +17,8 @@ export async function generateMetadata() {
 }
 
 async function get404() {
-	return await fetchSanity<Sanity.Page>(
-		groq`*[_type == 'page' && metadata.slug.current == '404'][0]{
+	return await fetchSanity<Sanity.Page>({
+		query: groq`*[_type == 'page' && metadata.slug.current == '404'][0]{
 			...,
 			modules[]{
 				...,
@@ -31,8 +31,7 @@ async function get404() {
 				}
 			}
 		}`,
-		{
-			tags: ['404'],
-		},
-	)
+
+		tags: ['404'],
+	})
 }

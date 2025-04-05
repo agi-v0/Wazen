@@ -1,70 +1,64 @@
-import {
-	defineField,
-	defineType,
-	defineArrayMember,
-	ArrayOptions,
-} from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
-interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+interface ExtendedArrayOptions<T> {
 	advanced?: {
 		select?: boolean
 	}
 }
 
-export default defineType({
+export default {
 	name: 'applications',
 	title: 'Applications',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 
 	fields: [
-		defineField({
+		{
 			name: 'pretitle',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'chips',
 			type: 'array',
 			of: [
-				defineArrayMember({
+				{
 					type: 'object',
 					fields: [
-						defineField({
+						{
 							name: 'icon',
 							title: 'Icon (Phosphor icons)',
 							description: `Go to https://phosphoricons.com/ and find the icon of your choice. Copy it's name and paste it here to look it up.`,
 							type: 'icon',
-						}),
-						defineField({
+						},
+						{
 							name: 'image',
 							title: 'Image',
 							type: 'image',
-						}),
-						defineField({
+						},
+						{
 							name: 'title',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'description',
 							type: 'text',
-						}),
-						defineField({
+						},
+						{
 							name: 'link',
 							type: 'link',
-						}),
+						},
 					],
 					preview: {
 						select: {
@@ -72,41 +66,34 @@ export default defineType({
 							description: 'description',
 							image: 'image',
 						},
-						prepare: ({ card, description, image }) => ({
+						prepare: ({ card, description, image }: any) => ({
 							title: card,
 							subtitle: description,
 							media: image,
 						}),
 					},
-				}),
+				},
 			],
 			options: {
 				advanced: {
 					select: true,
 				},
 			} as ExtendedArrayOptions<unknown>,
-		}),
-		defineField({
-			name: 'altApps',
-			title: 'Competitor comparison',
-			type: 'object',
-			fields: [
-				defineField({
-					name: 'altAppsLogos',
-					title: 'Competitor logos',
-					type: 'array',
-					of: [
-						{
-							type: 'image',
-						},
-					],
-				}),
-				defineField({
-					name: 'comparisonTable',
-					type: 'table',
-				}),
+		},
+		{
+			name: 'altAppsLogos',
+			title: 'Competitor logos',
+			type: 'array',
+			of: [
+				{
+					type: 'image',
+				},
 			],
-		}),
+		},
+		{
+			name: 'comparisonTable',
+			type: 'table',
+		},
 	],
 	preview: {
 		select: {
@@ -114,10 +101,10 @@ export default defineType({
 			content: 'content',
 			media: 'image',
 		},
-		prepare: ({ pretitle, content, media }) => ({
+		prepare: ({ pretitle, content, media }: any) => ({
 			title: getBlockText(content),
 			subtitle: 'Applications',
 			media,
 		}),
 	},
-})
+}

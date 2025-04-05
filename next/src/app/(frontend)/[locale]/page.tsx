@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 async function getPage(locale: 'en' | 'ar') {
-	return await fetchSanity<Sanity.Page>(
-		groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
+	return await fetchSanity<Sanity.Page>({
+		query: groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
 			...,
 			modules[]{
 				...,
@@ -64,8 +64,7 @@ async function getPage(locale: 'en' | 'ar') {
 				'ogimage': image.asset->url
 			}
 		}`,
-		{
-			tags: ['homepage'],
-		},
-	)
+		params: {},
+		tags: ['homepage'],
+	})
 }

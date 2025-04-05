@@ -1,18 +1,17 @@
-import { defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 
-export default defineType({
+export default {
 	name: 'help.center.post.en',
 	title: 'Help center post',
 	icon: VscEdit,
 	type: 'document',
 	fields: [
-		defineField({
+		{
 			name: 'title',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'body',
 			type: 'array',
 			of: [
@@ -21,20 +20,20 @@ export default defineType({
 					type: 'image',
 					icon: IoIosImage,
 					fields: [
-						defineField({
+						{
 							name: 'alt',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'caption',
 							type: 'text',
 							rows: 2,
-						}),
+						},
 					],
 				},
 			],
-		}),
-		defineField({
+		},
+		{
 			name: 'categories',
 			type: 'array',
 			of: [
@@ -43,16 +42,16 @@ export default defineType({
 					to: [{ type: 'help.center.category' }],
 				},
 			],
-		}),
-		defineField({
+		},
+		{
 			name: 'publishDate',
 			type: 'date',
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
+			validation: (rule: any) => rule.required(),
+		},
+		{
 			name: 'metadata',
 			type: 'metadata',
-		}),
+		},
 	],
 	preview: {
 		select: {
@@ -73,4 +72,4 @@ export default defineType({
 			by: [{ field: 'title', direction: 'asc' }],
 		},
 	],
-})
+}

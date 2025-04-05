@@ -1,14 +1,11 @@
+// ./src/sanity/lib/client.ts
 import { createClient } from 'next-sanity'
-import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
-import { dev } from '@/lib/env'
+
+import { apiVersion, dataset, projectId } from './env'
 
 export const client = createClient({
 	projectId,
 	dataset,
-	apiVersion,
-	useCdn: !dev,
-	stega: {
-		enabled: false,
-		studioUrl: '/admin',
-	},
+	apiVersion, // https://www.sanity.io/docs/api-versioning
+	useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
 })

@@ -1,6 +1,6 @@
 import { ArrayOfObjectsInputProps, insert } from 'sanity'
 import { useDocumentPane } from 'sanity/desk'
-import { Text, Flex, Autocomplete } from '@sanity/ui'
+import { Text, Flex, Autocomplete, BaseAutocompleteOption } from '@sanity/ui'
 import { randomKey } from '@sanity/util/content'
 import { createElement, useCallback, useState } from 'react'
 
@@ -30,16 +30,18 @@ export function AddItemSearch(props: ArrayOfObjectsInputProps) {
 	return (
 		<Autocomplete
 			id="array-type-selector"
-			options={schemaType.of.map((memberType) => ({
+			options={schemaType.of.map((memberType: any) => ({
 				id: memberType.name,
 				value: memberType.name,
 				type: memberType,
 			}))}
 			placeholder={`Search ${schemaType.of.length} item types`}
-			renderOption={({ type }: { type: any }) => (
+			renderOption={(option: BaseAutocompleteOption & { type: any }) => (
 				<Flex align="center" gap={3} padding={4}>
-					{type?.icon ? <Text size={3}>{createElement(type.icon)}</Text> : null}
-					<Text>{type.title || type.name}</Text>
+					{option.type?.icon ? (
+						<Text size={3}>{createElement(option.type.icon)}</Text>
+					) : null}
+					<Text>{option.type.title || option.type.name}</Text>
 				</Flex>
 			)}
 			onChange={handleChange}

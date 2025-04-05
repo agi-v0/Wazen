@@ -11,8 +11,8 @@ const SuggestedApps = async ({
 	locale: 'en' | 'ar'
 	t: (key: string) => string
 }) => {
-	const apps = await fetchSanity<any>(
-		groq`*[_type == 'app.store.app' && language == $locale ]{
+	const apps = await fetchSanity<any>({
+		query: groq`*[_type == 'app.store.app' && language == $locale ]{
 		 title, 
 		 icon, 
 		 description,
@@ -22,14 +22,13 @@ const SuggestedApps = async ({
                 'ogimage': image.asset->url
             }
 		}`,
-		{
-			params: {
-				locale: locale,
-				limit: 3,
-			},
-			tags: ['apps'],
+
+		params: {
+			locale: locale,
+			limit: 3,
 		},
-	)
+		tags: ['apps'],
+	})
 
 	const validApps = apps?.filter((app: any) => app) || []
 

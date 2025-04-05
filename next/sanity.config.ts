@@ -1,8 +1,8 @@
 import { defineConfig } from 'sanity'
 // import { BASE_URL, projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
-import structure from './src/structure'
-import defaultDocumentNode from './src/defaultDocumentNode'
+import structure from './src/sanity/src/structure'
+import defaultDocumentNode from './src/sanity/src/defaultDocumentNode'
 import { presentationTool } from 'sanity/presentation'
 import {
 	dashboardTool,
@@ -10,14 +10,14 @@ import {
 	projectUsersWidget,
 } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
-import { schemaTypes } from './schemas'
+import { schemaTypes } from './src/sanity/schemas'
 
 import { documentInternationalization } from '@sanity/document-internationalization'
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 import { iconify } from 'sanity-plugin-iconify'
-import { advancedArray } from './plugins/sanity-plugin-advanced-array'
+import { advancedArray } from './src/sanity/plugins/sanity-plugin-advanced-array'
 import { table } from '@sanity/table'
-import { Logo } from './static/wazen-logo'
+import { Logo } from './src/sanity/static/wazen-logo'
 
 const singletonTypes = ['site']
 
@@ -35,14 +35,14 @@ export default defineConfig({
 			defaultDocumentNode,
 			structure,
 		}),
-		presentationTool({
-			title: 'Editor',
-			previewUrl: {
-				draftMode: {
-					enable: `${process.env.NEXT_PUBLIC_BASE_URL}/api/draft`,
-				},
-			},
-		}),
+		// presentationTool({
+		// 	title: 'Editor',
+		// 	previewUrl: {
+		// 		draftMode: {
+		// 			enable: `${process.env.NEXT_PUBLIC_BASE_URL}/api/draft`,
+		// 		},
+		// 	},
+		// }),
 		dashboardTool({
 			title: 'Deployment',
 			widgets: [projectInfoWidget(), projectUsersWidget()],

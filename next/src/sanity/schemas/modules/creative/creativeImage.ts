@@ -1,7 +1,6 @@
-import { defineArrayMember, defineField } from 'sanity'
 import { IoIosImage } from 'react-icons/io'
 
-export default defineArrayMember({
+export default {
 	name: 'image',
 	icon: IoIosImage,
 	type: 'image',
@@ -9,13 +8,18 @@ export default defineArrayMember({
 		hotspot: true,
 	},
 	fields: [
-		defineField({
+		{
 			name: 'alt',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'aspectRatio',
 			type: 'string',
-		}),
+		},
 	],
-})
+	preview: {
+		select: {
+			media: 'image',
+		},
+	},
+}

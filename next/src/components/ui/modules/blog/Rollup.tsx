@@ -26,8 +26,8 @@ export default async function Rollup({
 		// 'help-center-categories-list'
 		_type === 'categories-list' ? 'blog.post' : 'help.center.post'
 
-	const initialPosts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
+	const initialPosts = await fetchSanity<Sanity.BlogPost[]>({
+		query: groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
 		 title,
 			publishDate,
 			metadata,
@@ -37,15 +37,14 @@ export default async function Rollup({
 			title_en
 		 }
 		}`,
-		{
-			params: {
-				limit,
-				categoryRef,
-				type: type,
-			},
-			tags: ['posts'],
+
+		params: {
+			limit,
+			categoryRef,
+			type: type,
 		},
-	)
+		tags: ['posts'],
+	})
 	return (
 		initialPosts.length > 0 && (
 			<RollupClient {...props} initialPosts={initialPosts} />

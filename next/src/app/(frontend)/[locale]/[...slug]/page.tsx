@@ -25,19 +25,19 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity<string[]>(
-		groq`*[
+	const slugs = await fetchSanity<string[]>({
+		query: groq`*[
 			_type == 'page' &&
 			defined(metadata.slug.current) &&
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
-	)
+	})
 	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
-	return await fetchSanity<Sanity.Page>(
-		groq`*[
+	return await fetchSanity<Sanity.Page>({
+		query: groq`*[
 			_type == 'page' &&
 			metadata.slug.current == $slug && language == '${params.locale}' &&
 			!(metadata.slug.current in ['index', '404'])
@@ -88,12 +88,11 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 				'ogimage': image.asset->url + '?w=1200'
 			}
 		}`,
-		{
-			params: {
-				locale: params.locale,
-				slug: params.slug?.join('/'),
-			},
-			tags: ['pages'],
+
+		params: {
+			locale: params.locale,
+			slug: params.slug?.join('/'),
 		},
-	)
+		tags: ['pages'],
+	})
 }

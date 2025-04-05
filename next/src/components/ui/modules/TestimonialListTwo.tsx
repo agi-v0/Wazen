@@ -24,15 +24,13 @@ export default async function TestimonialListTwo({
 }) {
 	const allTestimonials =
 		testimonials ||
-		(await fetchSanity<Sanity.Testimonial[]>(
-			groq`*[_type == 'testimonial' && language == $locale]`,
-			{
-				params: {
-					locale: locale,
-				},
-				tags: ['testimmonials'],
+		(await fetchSanity<Sanity.Testimonial[]>({
+			query: groq`*[_type == 'testimonial' && language == $locale]`,
+			params: {
+				locale: locale,
 			},
-		))
+			tags: ['testimmonials'],
+		}))
 
 	const components: PortableTextComponents = {
 		types: {

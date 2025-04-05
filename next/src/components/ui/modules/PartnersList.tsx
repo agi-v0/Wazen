@@ -19,7 +19,9 @@ export default async function Partners({
 }>) {
 	const allLogos =
 		logos ||
-		(await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'partners.logos']`))
+		(await fetchSanity<Sanity.Logo[]>({
+			query: groq`*[_type == 'partners.logos']`,
+		}))
 	const components: PortableTextComponents = {
 		types: {
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {

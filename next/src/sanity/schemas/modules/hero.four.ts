@@ -1,42 +1,41 @@
-import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
-export default defineType({
+export default {
 	name: 'hero.four',
 	title: 'Hero 4',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'pretitle',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'image',
 			type: 'image',
 			fields: [
-				defineField({
+				{
 					name: 'alt',
 					type: 'string',
-				}),
-				defineField({
+				},
+				{
 					name: 'onRight',
 					type: 'boolean',
 					initialValue: false,
-				}),
-				defineField({
+				},
+				{
 					name: 'loading',
 					type: 'string',
 					options: {
@@ -44,20 +43,15 @@ export default defineType({
 						list: ['lazy', 'eager'],
 					},
 					initialValue: 'lazy',
-				}),
+				},
 			],
-			validation: (rule) => rule.required(),
-		}),
-	],
-	preview: {
-		select: {
-			content: 'content',
-			media: 'image.asset',
+			validation: (rule: any) => rule.required(),
 		},
-		prepare: ({ content, media }) => ({
-			title: getBlockText(content),
-			subtitle: 'Hero four',
-			media,
-		}),
-	},
-})
+	],
+	preview: { select: 'content', media: 'image.asset' },
+	prepare: ({ content, media }: any) => ({
+		title: getBlockText(content),
+		subtitle: 'Hero four',
+		media,
+	}),
+}

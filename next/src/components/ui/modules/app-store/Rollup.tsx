@@ -12,8 +12,8 @@ export default async function AppStoreRollup({
 }>) {
 	const locale = await getLocale()
 
-	const apps = await fetchSanity<any>(
-		groq`*[_type == 'app.store.app' && language == $locale ]{
+	const apps = await fetchSanity<any>({
+		query: groq`*[_type == 'app.store.app' && language == $locale ]{
 		 title, 
 		 icon, 
 		 description,
@@ -23,14 +23,12 @@ export default async function AppStoreRollup({
                 'ogimage': image.asset->url
             }
 		}`,
-		{
-			params: {
-				locale: locale,
-				limit,
-			},
-			tags: ['apps'],
+		params: {
+			locale: locale,
+			limit,
 		},
-	)
+		tags: ['apps'],
+	})
 	if (apps)
 		return (
 			<section className="">

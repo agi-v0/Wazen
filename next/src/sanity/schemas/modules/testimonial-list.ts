@@ -1,37 +1,36 @@
-import { defineField, defineType } from 'sanity'
 import { GrBlockQuote } from 'react-icons/gr'
 import { count, getBlockText } from '../../src/utils'
 
-export default defineType({
+export default {
 	name: 'testimonial-list',
 	title: 'Testimonial list',
 	icon: GrBlockQuote,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'pretitle',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-		}),
-		defineField({
+		},
+		{
 			name: 'testimonials',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'testimonial' }] }],
 			description: 'Leave empty to display all testimonials',
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 			testimonials: 'testimonials',
 		},
-		prepare: ({ content, testimonials }) => ({
+		prepare: ({ content, testimonials }: any) => ({
 			title: getBlockText(content) || count(testimonials, 'testimonial'),
 			subtitle: 'Testimonial list',
 		}),
 	},
-})
+}

@@ -1,25 +1,24 @@
-import { defineArrayMember, defineField } from 'sanity'
 import { getBlockText } from '../../../src/utils'
 import { VscSymbolKeyword } from 'react-icons/vsc'
 
-export default defineArrayMember({
+export default {
 	name: 'richtext',
 	icon: VscSymbolKeyword,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 		},
-		prepare: ({ content }) => ({
+		prepare: ({ content }: any) => ({
 			title: getBlockText(content),
 			subtitle: 'Richtext',
 		}),
 	},
-})
+}

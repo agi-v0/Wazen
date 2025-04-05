@@ -4,8 +4,8 @@ import type { MetadataRoute } from 'next'
 export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const allPages = await fetchSanity<Record<string, MetadataRoute.Sitemap>>(
-		groq`{
+	const allPages = await fetchSanity<Record<string, MetadataRoute.Sitemap>>({
+		query: groq`{
 			'pages': *[
 				_type == 'page' && language == 'ar' &&
 				!(metadata.slug.current in ['404']) &&
@@ -74,11 +74,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				'priority': 0.4,
 			}
 		}`,
-		{
-			params: {
-				baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
-			},
+
+		params: {
+			baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 		},
-	)
+	})
 	return Object.values(allPages).flat()
 }

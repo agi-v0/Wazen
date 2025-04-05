@@ -6,8 +6,8 @@ export async function GET() {
 	const { helpCenter, posts } = await fetchSanity<{
 		helpCenter: Sanity.Page
 		posts: Sanity.HelpCenterPost[]
-	}>(
-		groq`{
+	}>({
+		query: groq`{
 			'helpCenter': *[_type == 'page' && metadata.slug.current == 'help-center'][0]{
 				_type,
 				title,
@@ -20,8 +20,8 @@ export async function GET() {
 				metadata
 			}
 		}`,
-		{ tags: ['helpCenter-rss'] },
-	)
+		tags: ['helpCenter-rss'],
+	})
 
 	const url = processUrl(helpCenter)
 

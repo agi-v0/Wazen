@@ -1,28 +1,26 @@
-import { defineField, defineType, ArrayOptions } from 'sanity'
-
-interface ExtendedArrayOptions<T> extends ArrayOptions<T> {
+interface ExtendedArrayOptions<T> {
 	advanced?: {
 		select?: boolean
 	}
 }
 
-export default defineType({
+export default {
 	name: 'page',
 	title: 'Page',
 	type: 'document',
 	fields: [
-		defineField({
+		{
 			// should match 'languageField' plugin configuration setting, if customized
 			name: 'language',
 			type: 'string',
 			readOnly: true,
 			hidden: true,
-		}),
-		defineField({
+		},
+		{
 			name: 'title',
 			type: 'string',
-		}),
-		defineField({
+		},
+		{
 			name: 'modules',
 			type: 'array',
 			of: [
@@ -66,11 +64,11 @@ export default defineType({
 					select: true,
 				},
 			} as ExtendedArrayOptions<unknown>,
-		}),
-		defineField({
+		},
+		{
 			name: 'metadata',
 			type: 'metadata',
-		}),
+		},
 	],
 	orderings: [
 		{
@@ -90,9 +88,9 @@ export default defineType({
 			slug: 'metadata.slug.current',
 			media: 'metadata.image',
 		},
-		prepare: ({ title, slug }) => ({
+		prepare: ({ title, slug }: any) => ({
 			title,
 			subtitle: slug && (slug === 'index' ? '/' : `/${slug}`),
 		}),
 	},
-})
+}

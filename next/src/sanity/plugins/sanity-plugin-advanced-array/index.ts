@@ -31,7 +31,6 @@ export const advancedArray = definePlugin(() => {
 				input: (props) => {
 					if (
 						isArrayOfObjectsInputProps(props) &&
-						// @ts-expect-error
 						props.schemaType.options?.advanced
 					) {
 						return AdvancedArrayInput(props)
@@ -42,11 +41,8 @@ export const advancedArray = definePlugin(() => {
 				item: (props) => {
 					if (
 						isObjectItemProps(props) &&
-						// @ts-expect-error
 						props.parentSchemaType.options?.advanced &&
-						// @ts-expect-error
 						(props.parentSchemaType.options.advanced.inline !== 'off' ||
-							// @ts-expect-error
 							props.parentSchemaType.options.advanced.select)
 					) {
 						return AdvancedArrayItem(props)

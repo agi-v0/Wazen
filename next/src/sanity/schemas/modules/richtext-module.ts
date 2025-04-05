@@ -1,15 +1,14 @@
-import { defineField, defineType } from 'sanity'
 import { VscSymbolKeyword } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 import { getBlockText } from '../../src/utils'
 
-export default defineType({
+export default {
 	name: 'richtext-module',
 	title: 'Richtext module',
 	icon: VscSymbolKeyword,
 	type: 'object',
 	fields: [
-		defineField({
+		{
 			name: 'content',
 			type: 'array',
 			of: [
@@ -18,32 +17,32 @@ export default defineType({
 					type: 'image',
 					icon: IoIosImage,
 					fields: [
-						defineField({
+						{
 							name: 'alt',
 							type: 'string',
-						}),
-						defineField({
+						},
+						{
 							name: 'caption',
 							type: 'text',
 							rows: 2,
-						}),
+						},
 					],
 				},
 			],
-		}),
-		defineField({
-			name: 'tableOfContents',
+		},
+		{
+			name: 'contents',
 			type: 'boolean',
 			initialValue: false,
-		}),
+		},
 	],
 	preview: {
 		select: {
 			content: 'content',
 		},
-		prepare: ({ content }) => ({
+		prepare: ({ content }: any) => ({
 			title: getBlockText(content),
 			subtitle: 'Richtext module',
 		}),
 	},
-})
+}
