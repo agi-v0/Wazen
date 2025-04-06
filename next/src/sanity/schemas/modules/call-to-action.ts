@@ -43,7 +43,8 @@ export default {
 			],
 		},
 		{
-			name: 'call-to-actions',
+			name: 'ctas',
+			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
 		},

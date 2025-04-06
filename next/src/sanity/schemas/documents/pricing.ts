@@ -60,7 +60,8 @@ export default {
 			} as ExtendedArrayOptions<unknown>,
 		},
 		{
-			name: 'Display price',
+			name: 'displayPrice',
+			title: 'Display price',
 			type: 'boolean',
 			initialValue: true,
 			fieldset: 'priceInfo',
@@ -89,7 +90,8 @@ export default {
 			fieldset: 'priceInfo',
 		},
 		{
-			name: 'call-to-actions',
+			name: 'ctas',
+			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
 		},

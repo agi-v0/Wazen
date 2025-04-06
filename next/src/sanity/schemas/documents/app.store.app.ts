@@ -42,7 +42,8 @@ export default {
 			],
 		},
 		{
-			name: 'images',
+			name: 'carousel',
+			title: 'Images',
 			type: 'array',
 			of: [
 				// {
@@ -89,7 +90,8 @@ export default {
 			],
 		},
 		{
-			name: 'call-to-actions',
+			name: 'ctas',
+			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
 		},

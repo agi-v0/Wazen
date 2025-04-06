@@ -48,7 +48,7 @@ export default {
 			validation: (rule: any) => rule.required(),
 		},
 	],
-	preview: { select: 'content', media: 'image.asset' },
+	preview: { select: { content: 'content', media: 'image.asset' } },
 	prepare: ({ content, media }: any) => ({
 		title: getBlockText(content),
 		subtitle: 'Hero four',
