@@ -2,10 +2,8 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { Navigation } from './Navigation'
-import CTAList from '@/components/ui/CTAList'
 import Toggle from './Toggle'
 import Logo from '@/components/ui/logo'
-import { headers } from 'next/headers'
 import Button from '../LinkButton'
 const Wrapper = dynamic(() => import('./Wrapper'))
 const LangSelect = dynamic(() => import('./LangSelect'))
@@ -21,14 +19,11 @@ export default async function Header({
 	ctas?: Sanity.CTA[]
 	contactInfo?: any
 }) {
-	const headerList = await headers()
-	const pathname: any = headerList.get('x-current-path')
 	return (
 		<Wrapper
 			className="fixed top-0 z-10 w-full bg-white"
 			contactInfo={contactInfo?.contactInfo}
 			locale={locale}
-			pathname={pathname}
 		>
 			<div
 				className={

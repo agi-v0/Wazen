@@ -18,15 +18,8 @@ export default function middleware(request: NextRequest) {
 		return NextResponse.next()
 	}
 
-	// Add x-current-path header
-	const response = intlMiddleware(request)
-	// Split pathname and remove locale prefix
-	const cleanedPathname = pathname
-		.split('/')
-		.filter((segment) => segment !== 'ar' && segment !== 'en')
-		.join('/')
-	response.headers.set('x-current-path', cleanedPathname)
-	return response
+	// Run the next-intl middleware and return its response directly
+	return intlMiddleware(request)
 }
 
 export const config = {

@@ -14,11 +14,9 @@ export default function Wrapper({
 	children,
 	contactInfo,
 	locale,
-	pathname,
 }: {
 	contactInfo: any
 	locale: 'en' | 'ar'
-	pathname: string
 } & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)
 
@@ -45,7 +43,7 @@ export default function Wrapper({
 	useEffect(() => {
 		const toggle = document.querySelector('#header-open') as HTMLInputElement
 		if (toggle) toggle.checked = false
-	}, [pathname])
+	}, [])
 
 	const scrollPosition = useScrollPosition()
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
