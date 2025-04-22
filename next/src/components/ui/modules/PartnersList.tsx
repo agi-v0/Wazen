@@ -52,7 +52,6 @@ export default async function Partners({
 							key={key}
 							image={logo.icon}
 							alt={logo.name}
-							// svg={true}
 							className="h-11 w-auto"
 						/>
 					))}

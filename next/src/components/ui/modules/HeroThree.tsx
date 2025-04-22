@@ -9,6 +9,7 @@ import Pretitle from '../Pretitle'
 import Image from 'next/image'
 import blob from '../../../../public/gradient-blob2.svg'
 import * as m from 'motion/react-m'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 export default function HeroThree({
 	pretitle,
@@ -87,11 +88,10 @@ export default function HeroThree({
 					<Img
 						image={image}
 						alt={image?.alt || pretitle}
-						className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
+						className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-contain shadow-md lg:aspect-square lg:max-w-[560px]"
 						draggable={false}
-						fetchPriority="high"
 						priority
-						loading="eager"
+						fetchPriority="high"
 					/>
 				</m.div>
 				<div className="flex flex-col items-start gap-6">
