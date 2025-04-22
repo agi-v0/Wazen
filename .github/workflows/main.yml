@@ -30,8 +30,7 @@ jobs:
   
       - name: Create .env file
         run: |
-          echo "${{ env.DOT_ENV }}" > ./next/.env
-          echo "${{ env.DOT_ENV }}"
+          echo "${{ vars.DOT_ENV }}" > ./next/.env
       - name: add secret
         run: echo "${{ secrets.SANITY_REVALIDATE_SECRET }}" >> ./next/.env
 
