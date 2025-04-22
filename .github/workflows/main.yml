@@ -30,6 +30,8 @@ jobs:
   
       - name: Create .env file
         run: echo "${{ env.DOT_ENV }}" > ./next/.env
+      - name: add secret
+      - run: echo "${{ secrets.SANITY_REVALIDATE_SECRET }}" >> ./next/.env
 
       - name: Docker Login
         uses: docker/login-action@v3.1.0
