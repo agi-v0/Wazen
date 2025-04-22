@@ -60,7 +60,7 @@ export default function RollupClient({
 						categoryRef: categoryRef,
 						start: start,
 					},
-					tags: ['posts'],
+					tags: ['blog.post', 'help.center.post', 'categories-list'],
 				},
 			)
 

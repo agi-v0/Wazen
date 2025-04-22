@@ -18,6 +18,7 @@ export function fetchSanity<T = any>({
 		stega: false,
 		perspective: 'published',
 		useCdn: true,
+		cache: process.env.NODE_ENV === 'production' ? 'force-cache' : 'no-store',
 		next: {
 			revalidate: tags.length ? false : revalidate, // for simple, time-based revalidation
 			tags, // for tag-based revalidation

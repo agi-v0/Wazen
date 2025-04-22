@@ -65,6 +65,6 @@ async function getPage(locale: 'en' | 'ar') {
 			}
 		}`,
 		params: {},
-		tags: ['homepage'],
+		tags: ['pages', 'homepage'],
 	})
 }
