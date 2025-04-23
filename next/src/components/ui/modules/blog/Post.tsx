@@ -57,11 +57,13 @@ export default function Post({
 						value={post.body}
 						components={{
 							block: {
-								h2: (node) => <AnchoredHeading as="h2" {...node} />,
-								h3: (node) => <AnchoredHeading as="h3" {...node} />,
+								normal: ({ children }) => (
+									<p className="text-main text-gray-600">{children}</p>
+								),
+								h2: (props) => <AnchoredHeading as="h2" {...props} />,
+								h3: (props) => <AnchoredHeading as="h3" {...props} />,
 							},
 							list: {
-								// Ex. 1: customizing common list types
 								bullet: ({ children }) => (
 									<ul className="ms-[1.5rem] list-disc space-y-4 text-gray-800">
 										{children}
@@ -72,47 +74,15 @@ export default function Post({
 										{children}
 									</ol>
 								),
-
-								// Ex. 2: rendering custom lists
 								checkmarks: ({ children }) => (
 									<ol className="m-auto text-lg">{children}</ol>
 								),
 							},
 							listItem: {
-								// Ex. 1: customizing common list types
 								bullet: ({ children }) => (
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
-
-								// Ex. 2: rendering custom list items
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
-							},
-							types: {
-								// image: Image,
-								block: ({ value }: PortableTextTypeComponentProps<any>) => {
-									if (value.style === 'h2') {
-										return (
-											<h2 className="h2 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
-												{value.children
-													.map((child: any) => child.text)
-													.join('')}
-											</h2>
-										)
-									} else if (value.style === 'h3') {
-										return (
-											<h3 className="h3 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
-												{value.children
-													.map((child: any) => child.text)
-													.join('')}
-											</h3>
-										)
-									}
-									return (
-										<p className="text-main text-gray-600">
-											{value.children.map((child: any) => child.text).join('')}
-										</p>
-									)
-								},
 							},
 						}}
 					/>
