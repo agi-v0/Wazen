@@ -1,4 +1,6 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
+
 import type { MetadataRoute } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -78,7 +80,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		params: {
 			baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 		},
-		tags: ['pages', 'blog.post', 'help.center.post', 'app.store.app'],
 	})
 	return Object.values(allPages).flat()
 }

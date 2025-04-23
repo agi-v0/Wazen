@@ -1,6 +1,7 @@
 'use client'
 
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
 import { Icon } from '@iconify-icon/react'
@@ -60,7 +61,6 @@ export default function RollupClient({
 						categoryRef: categoryRef,
 						start: start,
 					},
-					tags: ['blog.post', 'help.center.post', 'categories-list'],
 				},
 			)
 

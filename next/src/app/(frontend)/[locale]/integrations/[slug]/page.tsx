@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import SingleAppHeader from '@/components/ui/modules/app-store/SingleAppHeader'
@@ -49,8 +50,7 @@ export default async function Page({ params }: Props) {
 			},
 		}`,
 
-		params: { locale },
-		tags: ['ctaDoc'], // Use appropriate tag for revalidation
+		params: { locale }, // Use appropriate tag for revalidation
 	})
 
 	return (
@@ -105,6 +105,5 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 			locale: params.locale,
 			slug: params.slug,
 		},
-		tags: ['apps'],
 	})
 }

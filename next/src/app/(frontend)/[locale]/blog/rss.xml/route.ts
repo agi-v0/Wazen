@@ -1,5 +1,6 @@
 import RSS from 'rss'
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import processUrl from '@/lib/processUrl'
 
 export async function GET() {
@@ -20,7 +21,6 @@ export async function GET() {
 				metadata
 			}
 		}`,
-		tags: ['blog-rss'],
 	})
 
 	const url = processUrl(blog)

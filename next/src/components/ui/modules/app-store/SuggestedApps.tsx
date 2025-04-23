@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils'
 import { Link } from '@/i18n/routing'
 import { Icon } from '@iconify-icon/react'
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import AppCard from './AppCard'
 
 const SuggestedApps = async ({
@@ -27,7 +28,6 @@ const SuggestedApps = async ({
 			locale: locale,
 			limit: 3,
 		},
-		tags: ['apps'],
 	})
 
 	const validApps = apps?.filter((app: any) => app) || []

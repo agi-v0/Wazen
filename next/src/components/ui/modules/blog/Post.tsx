@@ -47,12 +47,12 @@ export default function Post({
 				/>
 			</header>
 
-			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
+			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-3">
+				<aside className="md:sticky-below-header mx-auto w-full self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
 
-				<div className="mx-auto space-y-[1.5rem]">
+				<div className="mx-auto space-y-[1.5rem] md:col-span-2">
 					<PortableText
 						value={post.body}
 						components={{
