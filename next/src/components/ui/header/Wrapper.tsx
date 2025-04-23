@@ -19,18 +19,21 @@ export default function Wrapper({
 	locale: 'en' | 'ar'
 } & React.HTMLAttributes<HTMLDivElement>) {
 	const ref = useRef<HTMLDivElement>(null)
+	const scrollPosition = useScrollPosition()
+	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 	// Memoize setHeight function
 	const setHeight = useCallback(() => {
 		if (!ref.current) return
-		const height = `${ref.current.offsetHeight}px`
+		const contactBarHeight = isDesktop && scrollPosition <= 1 ? 0 : 36 // subtract 36px (h-9 * 4) when ContactBar is hidden
+		const height = `${ref.current.offsetHeight - contactBarHeight}px`
 		if (
 			document.documentElement.style.getPropertyValue('--header-height') !==
 			height
 		) {
 			document.documentElement.style.setProperty('--header-height', height)
 		}
-	}, [])
+	}, [isDesktop, scrollPosition])
 
 	// set --header-height
 	useEffect(() => {
@@ -44,9 +47,6 @@ export default function Wrapper({
 		const toggle = document.querySelector('#header-open') as HTMLInputElement
 		if (toggle) toggle.checked = false
 	}, [])
-
-	const scrollPosition = useScrollPosition()
-	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 	return (
 		<div
