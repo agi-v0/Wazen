@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from './fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 
 const navigationQuery = groq`
 	title,
@@ -58,6 +59,5 @@ export async function getSite(locale: any) {
 		params: {
 			locale: locale,
 		},
-		tags: ['site'],
 	})
 }

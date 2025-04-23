@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import AppCard from './AppCard'
 import { cn } from '@/lib/utils'
 import { getLocale } from 'next-intl/server'
@@ -27,7 +28,6 @@ export default async function AppStoreRollup({
 			locale: locale,
 			limit,
 		},
-		tags: ['app.store.app'],
 	})
 	if (apps)
 		return (

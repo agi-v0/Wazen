@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { creativeModuleQuery } from '@/sanity/lib/queries'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -65,6 +66,5 @@ async function getPage(locale: 'en' | 'ar') {
 			}
 		}`,
 		params: {},
-		tags: ['pages', 'homepage'],
 	})
 }

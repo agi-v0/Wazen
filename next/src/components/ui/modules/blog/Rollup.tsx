@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import dynamic from 'next/dynamic'
 
 const RollupClient = dynamic(() => import('./RollupClient'))
@@ -43,7 +44,6 @@ export default async function Rollup({
 			categoryRef,
 			type: type,
 		},
-		tags: ['blog.post', 'help.center.post', 'categories-list'],
 	})
 	return (
 		initialPosts.length > 0 && (

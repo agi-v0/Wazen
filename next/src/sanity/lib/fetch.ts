@@ -1,27 +1,44 @@
+'use server'
+
 import { client } from '@/sanity/lib/client'
-import type { QueryParams, ResponseQueryOptions } from 'next-sanity'
+import { token } from '@/sanity/lib/token'
+import { dev } from '@/lib/env'
+// import { draftMode } from 'next/headers'
+import { defineLive, type QueryOptions, type QueryParams } from 'next-sanity'
 
-export { default as groq } from 'groq'
-
-export function fetchSanity<T = any>({
+export async function fetchSanity<T = any>({
 	query,
 	params = {},
-	revalidate = 60, // default revalidation time in seconds
-	tags = [],
+	next,
 }: {
 	query: string
-	params?: QueryParams
-	revalidate?: number | false
-	tags?: string[]
+	params?: Partial<QueryParams>
+	next?: QueryOptions['next']
 }) {
-	return client.fetch<T>(query, params, {
-		stega: false,
-		perspective: 'published',
-		useCdn: true,
-		cache: process.env.NODE_ENV === 'production' ? 'force-cache' : 'no-store',
-		next: {
-			revalidate: tags.length ? false : revalidate, // for simple, time-based revalidation
-			tags, // for tag-based revalidation
+	// const preview = dev || (await draftMode()).isEnabled
+
+	return client.fetch<T>(
+		query,
+		params,
+		// preview
+		// 	? {
+		// 			stega: true,
+		// 			perspective: 'drafts',
+		// 			useCdn: false,
+		// 			token,
+		// 			next: {
+		// 				revalidate: 0,
+		// 				...next,
+		// 			},
+		// 		}
+		// 	:
+		{
+			perspective: 'published',
+			useCdn: true,
+			next: {
+				revalidate: 3600, // every hour
+				...next,
+			},
 		},
-	})
+	)
 }

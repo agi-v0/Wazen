@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
@@ -55,6 +56,5 @@ async function getPost(params: { slug?: string }) {
         }`,
 
 		params: { slug: decodedSlug },
-		tags: ['blog.post'],
 	})
 }

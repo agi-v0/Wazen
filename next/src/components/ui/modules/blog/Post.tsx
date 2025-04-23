@@ -47,21 +47,23 @@ export default function Post({
 				/>
 			</header>
 
-			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header -md:w-[250px] mx-auto w-full max-w-xl self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
+			<div className="fluid-gap grid py-[var(--size--3rem)] md:grid-cols-3">
+				<aside className="md:sticky-below-header mx-auto w-full self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
 					<TableOfContents headings={post.headings} />
 				</aside>
 
-				<div className="mx-auto space-y-[1.5rem]">
+				<div className="mx-auto space-y-[1.5rem] md:col-span-2">
 					<PortableText
 						value={post.body}
 						components={{
 							block: {
-								h2: (node) => <AnchoredHeading as="h2" {...node} />,
-								h3: (node) => <AnchoredHeading as="h3" {...node} />,
+								normal: ({ children }) => (
+									<p className="text-main text-gray-600">{children}</p>
+								),
+								h2: (props) => <AnchoredHeading as="h2" {...props} />,
+								h3: (props) => <AnchoredHeading as="h3" {...props} />,
 							},
 							list: {
-								// Ex. 1: customizing common list types
 								bullet: ({ children }) => (
 									<ul className="ms-[1.5rem] list-disc space-y-4 text-gray-800">
 										{children}
@@ -72,47 +74,15 @@ export default function Post({
 										{children}
 									</ol>
 								),
-
-								// Ex. 2: rendering custom lists
 								checkmarks: ({ children }) => (
 									<ol className="m-auto text-lg">{children}</ol>
 								),
 							},
 							listItem: {
-								// Ex. 1: customizing common list types
 								bullet: ({ children }) => (
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
-
-								// Ex. 2: rendering custom list items
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
-							},
-							types: {
-								// image: Image,
-								block: ({ value }: PortableTextTypeComponentProps<any>) => {
-									if (value.style === 'h2') {
-										return (
-											<h2 className="h2 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
-												{value.children
-													.map((child: any) => child.text)
-													.join('')}
-											</h2>
-										)
-									} else if (value.style === 'h3') {
-										return (
-											<h3 className="h3 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
-												{value.children
-													.map((child: any) => child.text)
-													.join('')}
-											</h3>
-										)
-									}
-									return (
-										<p className="text-main text-gray-600">
-											{value.children.map((child: any) => child.text).join('')}
-										</p>
-									)
-								},
 							},
 						}}
 					/>

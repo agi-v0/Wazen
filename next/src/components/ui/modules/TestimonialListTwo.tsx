@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 
 import {
 	PortableText,
@@ -29,7 +30,6 @@ export default async function TestimonialListTwo({
 			params: {
 				locale: locale,
 			},
-			tags: ['testimonial'],
 		}))
 
 	const components: PortableTextComponents = {
