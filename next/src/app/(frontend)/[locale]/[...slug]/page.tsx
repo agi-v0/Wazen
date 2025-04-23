@@ -96,3 +96,12 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 		tags: ['pages'],
 	})
 }
+_type in
+	[
+		'pages',
+		'homepage',
+		'blog.post',
+		'help.center.post',
+		'app.store.app',
+		'testimonial',
+	]

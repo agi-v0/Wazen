@@ -13,7 +13,7 @@ export default async function AppStoreRollup({
 	const locale = await getLocale()
 
 	const apps = await fetchSanity<any>({
-		query: groq`*[_type == 'app.store.app' && language == $locale ]{
+		query: groq`*[_type == 'a' && language == $locale ]{
 		 title, 
 		 icon, 
 		 description,
@@ -27,7 +27,7 @@ export default async function AppStoreRollup({
 			locale: locale,
 			limit,
 		},
-		tags: ['apps'],
+		tags: ['app.store.app'],
 	})
 	if (apps)
 		return (

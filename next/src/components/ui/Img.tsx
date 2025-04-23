@@ -9,6 +9,7 @@ export const Img = ({
 	alt,
 	width,
 	height,
+	sizes,
 	loading,
 	priority,
 	quality,
@@ -24,6 +25,7 @@ export const Img = ({
 	alt?: string
 	width?: number
 	height?: number
+	sizes?: string
 	loading?: 'lazy' | 'eager'
 	priority?: boolean
 	quality?: number
@@ -33,7 +35,6 @@ export const Img = ({
 	onError?: React.ReactEventHandler<HTMLImageElement>
 	draggable?: boolean
 	fetchPriority?: 'high' | 'low' | 'auto'
-	sizes?: string
 	fill?: boolean
 } & Omit<
 	React.ComponentProps<typeof Image>,
@@ -56,10 +57,8 @@ export const Img = ({
 					height={height ?? getImageDimensions(image).height}
 					placeholder="blur"
 					blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
-					sizes="
-            (max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            40vw"
+					sizes={sizes}
+					// "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
 					className={className}
 					loading={loading}
 					priority={priority}

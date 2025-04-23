@@ -29,7 +29,7 @@ export default async function TestimonialListTwo({
 			params: {
 				locale: locale,
 			},
-			tags: ['testimmonials'],
+			tags: ['testimonial'],
 		}))
 
 	const components: PortableTextComponents = {

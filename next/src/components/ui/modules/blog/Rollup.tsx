@@ -43,7 +43,7 @@ export default async function Rollup({
 			categoryRef,
 			type: type,
 		},
-		tags: ['posts'],
+		tags: ['blog.post', 'help.center.post', 'categories-list'],
 	})
 	return (
 		initialPosts.length > 0 && (
