@@ -55,16 +55,6 @@ const EmblaCarousel: React.FC<PropType> = ({
 	const tweenFactor = useRef(0)
 	const tweenNodes = useRef<HTMLElement[]>([])
 
-	const { selectedIndex, scrollSnaps, onDotButtonClick } =
-		useDotButton(emblaApi)
-
-	const {
-		prevBtnDisabled,
-		nextBtnDisabled,
-		onPrevButtonClick,
-		onNextButtonClick,
-	} = usePrevNextButtons(emblaApi)
-
 	const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
 		tweenNodes.current = emblaApi
 			.slideNodes()
@@ -106,6 +96,16 @@ const EmblaCarousel: React.FC<PropType> = ({
 		},
 		[],
 	)
+
+	const { selectedIndex, scrollSnaps, onDotButtonClick } =
+		useDotButton(emblaApi)
+
+	const {
+		prevBtnDisabled,
+		nextBtnDisabled,
+		onPrevButtonClick,
+		onNextButtonClick,
+	} = usePrevNextButtons(emblaApi)
 
 	useEffect(() => {
 		if (!emblaApi) return

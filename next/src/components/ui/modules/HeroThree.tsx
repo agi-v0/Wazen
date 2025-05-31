@@ -35,6 +35,7 @@ export default function HeroThree({
 				if (value.style === 'h1') {
 					return (
 						<m.h1
+							layout
 							className="h1 text-pretty font-semibold leading-tight text-cyan-950"
 							variants={FADE_DOWN_ANIMATION_VARIANTS}
 						>
@@ -45,6 +46,7 @@ export default function HeroThree({
 				if (value.style === 'h2') {
 					return (
 						<m.h2
+							layout
 							className="text-large font-semibold leading-tight text-teal-600"
 							variants={FADE_DOWN_ANIMATION_VARIANTS}
 						>
@@ -54,6 +56,7 @@ export default function HeroThree({
 				}
 				return (
 					<m.p
+						layout
 						className="text-main mx-auto text-cyan-950/80 md:max-w-3xl"
 						variants={FADE_DOWN_ANIMATION_VARIANTS}
 					>
@@ -84,6 +87,7 @@ export default function HeroThree({
 				<m.div
 					className="h-auto w-full lg:max-w-[560px]"
 					variants={FADE_DOWN_ANIMATION_VARIANTS}
+					layout
 				>
 					<Img
 						image={image}
@@ -94,16 +98,18 @@ export default function HeroThree({
 						fetchPriority="high"
 					/>
 				</m.div>
-				<div className="flex flex-col items-start gap-6">
-					<Pretitle className="text-base font-medium text-gray-400">
-						{pretitle}
-					</Pretitle>
+				<m.div layout className="flex flex-col items-start gap-6">
+					<m.span layout variants={FADE_DOWN_ANIMATION_VARIANTS}>
+						<Pretitle className="text-base font-medium text-gray-400">
+							{pretitle}
+						</Pretitle>
+					</m.span>
 					<PortableText value={content} components={components} />
 					<CTAList
 						ctas={ctas}
 						className="mt-2 w-full *:h-12 *:text-lg *:max-md:w-full"
 					/>
-				</div>
+				</m.div>
 
 				<Image
 					src={blob}
