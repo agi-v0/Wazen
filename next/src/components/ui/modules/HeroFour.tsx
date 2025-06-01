@@ -44,7 +44,10 @@ export default function HeroPostcard({
 					{pretitle}
 				</Pretitle>
 				<PortableText value={content} components={set2} />
-				<CTAList ctas={ctas} className="*:h-12 *:px-6 *:text-lg" />
+				<CTAList
+					ctas={ctas}
+					className="mt-2 *:h-12 *:px-6 *:text-lg max-md:w-full"
+				/>
 			</div>
 			<m.div
 				variants={FADE_DOWN_ANIMATION_VARIANTS}
