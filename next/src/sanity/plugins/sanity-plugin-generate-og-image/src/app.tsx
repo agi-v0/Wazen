@@ -42,6 +42,7 @@ type Props = {
 	darkMode?: boolean
 }
 const MediaEditor: React.FC<Props> = (props) => {
+	// console.log('props', props)
 	const { tool, onClose, dialog, onSelect } = props
 
 	const theme = buildTheme()

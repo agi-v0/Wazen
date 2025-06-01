@@ -3,6 +3,7 @@ import css from './OGImageLayout.module.css'
 // import logoAr from '../static/wazen-logo-ar.svg'
 // import logoEn from '../static/wazen-logo-en.svg'
 import { useFormValue } from 'sanity'
+import { EditorLayout } from '../plugins/sanity-plugin-generate-og-image/src/types'
 
 let language = 'ar'
 const logoAr =
@@ -26,7 +27,7 @@ const Component = () => {
 	)
 }
 
-export const OGImageEditor = {
+export const OGImageEditor: EditorLayout = {
 	name: 'OGImage',
 	title: 'OG Image Editor',
 	prepare: () => {
