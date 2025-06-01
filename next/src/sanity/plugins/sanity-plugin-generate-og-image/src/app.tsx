@@ -2,10 +2,10 @@ import {
 	Box,
 	Portal,
 	ThemeProvider,
-	studioTheme,
 	useGlobalKeyDown,
 	usePrefersDark,
 } from '@sanity/ui'
+import { buildTheme } from '@sanity/ui/theme'
 import { SanityDocument, EditorLayout, DialogLabels } from './types'
 import Editor from './Editor'
 import React, { useCallback } from 'react'
@@ -44,6 +44,7 @@ type Props = {
 const MediaEditor: React.FC<Props> = (props) => {
 	const { tool, onClose, dialog, onSelect } = props
 
+	const theme = buildTheme()
 	const prefersDark = usePrefersDark()
 	const scheme = prefersDark ? 'dark' : 'light'
 
@@ -81,7 +82,7 @@ const MediaEditor: React.FC<Props> = (props) => {
 		dialog,
 	}
 	return (
-		<ThemeProvider theme={studioTheme}>
+		<ThemeProvider theme={theme}>
 			{tool ? (
 				<Box
 					style={{
