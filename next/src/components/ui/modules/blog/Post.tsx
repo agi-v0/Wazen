@@ -8,7 +8,6 @@ import TableOfContents from '@/components/ui/modules/RichtextModule/TableOfConte
 import AnchoredHeading from '@/components/ui/modules/RichtextModule/AnchoredHeading'
 import { Img } from '@/components/ui/Img'
 import { Icon } from '@iconify-icon/react'
-// import Image from 'next/image'
 
 export default function Post({
 	post,
@@ -18,7 +17,7 @@ export default function Post({
 	locale: any
 }) {
 	return (
-		<article className="section">
+		<article className="section mb-[25vh]">
 			<header className="mt-[25vh] md:space-y-12">
 				<div className="space-y-6 md:space-y-8">
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
@@ -83,6 +82,11 @@ export default function Post({
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
+							},
+							types: {
+								image: ({ value }) => (
+									<Img image={value} className="h-auto w-full rounded-2xl" />
+								),
 							},
 						}}
 					/>
