@@ -133,7 +133,10 @@ export default function MobileNav({
 
 											case 'link.list':
 												return (
-													<div key={key} className="overflow-hidden rounded-lg">
+													<div
+														key={key}
+														className="space-y-1 overflow-hidden rounded-lg"
+													>
 														{/* Accordion Header */}
 														<button
 															onClick={() => toggleExpanded(itemKey)}
@@ -150,77 +153,85 @@ export default function MobileNav({
 														</button>
 
 														{/* Accordion Content */}
-														{isExpanded && item.links && (
-															<div className="flex flex-col gap-1 bg-gray-50/30">
-																{/* Featured First Item */}
-																{item.links[0] && (
-																	<Link
-																		locale={locale as 'en' | 'ar'}
-																		href={processUrl(item.links[0].internal, {
-																			base: false,
-																			params: item.links[0].params,
-																		})}
-																		className={mobileFeaturedLinkStyle}
-																		onClick={() => setIsMenuOpen(false)}
-																	>
-																		<img
-																			src="https://cdn.sanity.io/images/m7bjawr3/production/4d0c0529d981a468765adb5a1f3f3a896befe909-1440x1024.svg?w=540&fm=webp"
-																			alt={item.links[0].label}
-																			className="mb-3 h-auto w-full rounded-md"
-																			draggable={false}
-																			loading="lazy"
-																			width={540}
-																		/>
-																		<div className="flex flex-row items-center text-sm font-medium text-white group-hover:text-teal-200">
-																			{item.links[0].label}
-																			<Icon
-																				icon="ph:caret-left-bold"
-																				className="ml-1 size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
-																			/>
-																		</div>
-																		{item.links[0].description && (
-																			<p className="mt-1 text-xs leading-tight text-white/80 group-hover:text-white">
-																				{item.links[0].description}
-																			</p>
-																		)}
-																	</Link>
-																)}
-
-																{/* Remaining Items */}
-																{item.links
-																	.slice(1)
-																	.map((link: any, linkKey: number) => (
+														<div
+															data-state={isExpanded ? 'open' : 'closed'}
+															className="overflow-hidden transition-all data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in"
+														>
+															{isExpanded && item.links && (
+																<div className="flex flex-col gap-1 bg-gray-50/30">
+																	{/* Featured First Item */}
+																	{item.links[0] && (
 																		<Link
-																			key={linkKey}
 																			locale={locale as 'en' | 'ar'}
-																			href={processUrl(link.internal, {
+																			href={processUrl(item.links[0].internal, {
 																				base: false,
-																				params: link.params,
+																				params: item.links[0].params,
 																			})}
-																			className={cn(
-																				mobileSubLinkStyle,
-																				'flex-col items-start',
-																			)}
-																			onClick={() => setIsMenuOpen(false)} // Close menu when link is clicked
+																			className={mobileFeaturedLinkStyle}
+																			onClick={() => setIsMenuOpen(false)}
 																		>
-																			<span className="font-medium">
-																				{link.label}
-																			</span>
-																			{link.description && (
-																				<span className="mt-1 text-xs font-normal text-gray-500">
-																					{link.description}
-																				</span>
+																			<img
+																				src="https://cdn.sanity.io/images/m7bjawr3/production/4d0c0529d981a468765adb5a1f3f3a896befe909-1440x1024.svg?w=540&fm=webp"
+																				alt={item.links[0].label}
+																				className="mb-3 h-auto w-full rounded-md"
+																				draggable={false}
+																				loading="lazy"
+																				width={540}
+																			/>
+																			<div className="flex flex-row items-center text-sm font-medium text-white group-hover:text-teal-200">
+																				{item.links[0].label}
+																				<Icon
+																					icon="ph:caret-left-bold"
+																					className="ml-1 size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+																				/>
+																			</div>
+																			{item.links[0].description && (
+																				<p className="mt-1 text-xs leading-tight text-white/80 group-hover:text-white">
+																					{item.links[0].description}
+																				</p>
 																			)}
 																		</Link>
-																	))}
-															</div>
-														)}
+																	)}
+
+																	{/* Remaining Items */}
+																	{item.links
+																		.slice(1)
+																		.map((link: any, linkKey: number) => (
+																			<Link
+																				key={linkKey}
+																				locale={locale as 'en' | 'ar'}
+																				href={processUrl(link.internal, {
+																					base: false,
+																					params: link.params,
+																				})}
+																				className={cn(
+																					mobileSubLinkStyle,
+																					'flex-col items-start',
+																				)}
+																				onClick={() => setIsMenuOpen(false)} // Close menu when link is clicked
+																			>
+																				<span className="font-medium">
+																					{link.label}
+																				</span>
+																				{link.description && (
+																					<span className="mt-1 text-xs font-normal text-gray-500">
+																						{link.description}
+																					</span>
+																				)}
+																			</Link>
+																		))}
+																</div>
+															)}
+														</div>
 													</div>
 												)
 
 											case 'link.group':
 												return (
-													<div key={key} className="overflow-hidden rounded-lg">
+													<div
+														key={key}
+														className="space-y-1 overflow-hidden rounded-lg"
+													>
 														{/* Accordion Header */}
 														<button
 															onClick={() => toggleExpanded(itemKey)}
@@ -237,43 +248,48 @@ export default function MobileNav({
 														</button>
 
 														{/* Accordion Content */}
-														{isExpanded && item.links?.[0]?.links && (
-															<div className="flex flex-col bg-gray-50/30">
-																{item.links[0].links.map(
-																	(link: any, linkKey: number) => (
-																		<Link
-																			key={linkKey}
-																			locale={locale as 'en' | 'ar'}
-																			href={
-																				link.type === 'internal'
-																					? processUrl(link.internal, {
-																							base: false,
-																							params: link.params,
-																						})
-																					: link.external
-																			}
-																			className={cn(
-																				mobileSubLinkStyle,
-																				'px-3 py-2',
-																			)}
-																			onClick={() => setIsMenuOpen(false)} // Close menu when link is clicked
-																		>
-																			{link.iconify?.name && (
-																				<div className="me-2 size-8 flex-none rounded-md bg-teal-50 p-1 transition-colors duration-200 group-hover:bg-cyan-800">
-																					<Icon
-																						icon={link.iconify.name}
-																						className="h-6 text-2xl text-teal-600 transition-colors group-hover:text-teal-50"
-																					/>
-																				</div>
-																			)}
-																			<span className="font-medium">
-																				{link.label || link.internal?.title}
-																			</span>
-																		</Link>
-																	),
-																)}
-															</div>
-														)}
+														<div
+															data-state={isExpanded ? 'open' : 'closed'}
+															className="overflow-hidden transition-all data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in"
+														>
+															{isExpanded && item.links?.[0]?.links && (
+																<div className="flex flex-col bg-gray-50/30">
+																	{item.links[0].links.map(
+																		(link: any, linkKey: number) => (
+																			<Link
+																				key={linkKey}
+																				locale={locale as 'en' | 'ar'}
+																				href={
+																					link.type === 'internal'
+																						? processUrl(link.internal, {
+																								base: false,
+																								params: link.params,
+																							})
+																						: link.external
+																				}
+																				className={cn(
+																					mobileSubLinkStyle,
+																					'px-3 py-2',
+																				)}
+																				onClick={() => setIsMenuOpen(false)} // Close menu when link is clicked
+																			>
+																				{link.iconify?.name && (
+																					<div className="me-2 size-8 flex-none rounded-md bg-teal-50 p-1 transition-colors duration-200 group-hover:bg-cyan-800">
+																						<Icon
+																							icon={link.iconify.name}
+																							className="h-6 text-2xl text-teal-600 transition-colors group-hover:text-teal-50"
+																						/>
+																					</div>
+																				)}
+																				<span className="font-medium">
+																					{link.label || link.internal?.title}
+																				</span>
+																			</Link>
+																		),
+																	)}
+																</div>
+															)}
+														</div>
 													</div>
 												)
 
