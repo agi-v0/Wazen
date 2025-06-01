@@ -92,7 +92,7 @@ export default function HeroThree({
 					<Img
 						image={image}
 						alt={image?.alt || pretitle}
-						className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-contain shadow-md lg:aspect-square lg:max-w-[560px]"
+						className="relative h-auto w-full overflow-hidden rounded-2xl border-8 border-white object-cover shadow-md lg:aspect-square lg:max-w-[560px]"
 						draggable={false}
 						priority
 						fetchPriority="high"
