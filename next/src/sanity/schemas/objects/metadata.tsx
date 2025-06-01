@@ -40,7 +40,7 @@ export default {
 						name: 'sharing-ogimage',
 						title: 'Generate Image',
 						component: (props: any) => (
-							<MediaEditor {...props} layouts={[OGImageEditor as any]} />
+							<MediaEditor {...props} layouts={[OGImageEditor]} />
 						),
 					},
 				],

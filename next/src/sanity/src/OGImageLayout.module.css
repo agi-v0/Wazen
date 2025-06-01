@@ -1,11 +1,4 @@
-@font-face {
-	font-family: 'ٌRubik-Semibold';
-	font-style: normal;
-	font-weight: 600;
-	src:
-		local('../static/Rubik-SemiBold.woff'),
-		url('../static/Rubik-SemiBold.woff') format ('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,600;1,600&display=swap');
 
 .root {
 	position: relative;

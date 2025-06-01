@@ -35,12 +35,12 @@ export async function generateStaticParams() {
 	])
 }
 
-async function getPost(params: { slug?: string }) {
+async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
-	// const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
+	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
 
 	return await fetchSanity<Sanity.BlogPost>({
-		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
+		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
             'readTime': length(pt::text(body)) / 200,
@@ -55,6 +55,6 @@ async function getPost(params: { slug?: string }) {
             }
         }`,
 
-		params: { slug: decodedSlug },
+		params: { slug: decodedSlug, type },
 	})
 }

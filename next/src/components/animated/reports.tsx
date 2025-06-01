@@ -12,7 +12,7 @@ const reports = () => {
 					},
 				},
 			}}
-			className="relative flex h-full max-w-md flex-row-reverse items-center gap-2"
+			className="relative mx-auto flex h-full max-w-md flex-row-reverse items-center gap-2"
 		>
 			<m.img
 				src="/statistic-img-1.svg"

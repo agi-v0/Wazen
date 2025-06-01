@@ -31,13 +31,14 @@ export default function CTA({
 					base: false,
 					params: link.params,
 				})}
-				legacyBehavior
-				passHref
+				{...(props as any)}
+
+				// legacyBehavior
+				// passHref
 			>
-				<m.a
-					{...(props as any)}
-					variants={FADE_DOWN_ANIMATION_VARIANTS as any}
-				></m.a>
+				<m.span layout variants={FADE_DOWN_ANIMATION_VARIANTS as any}>
+					{props.children}
+				</m.span>
 			</Link>
 		)
 

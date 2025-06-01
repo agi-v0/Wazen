@@ -23,9 +23,11 @@ export default async function Rollup({
 }>) {
 	const props = { _type, title, limit, categoryRef, locale }
 
-	const type =
-		// 'help-center-categories-list'
-		_type === 'categories-list' ? 'blog.post' : 'help.center.post'
+	const type = (() => {
+		const isBlogPost = _type === 'categories-list'
+		const baseType = isBlogPost ? 'blog.post' : 'help.center.post'
+		return locale === 'en' ? `${baseType}.en` : baseType
+	})()
 
 	const initialPosts = await fetchSanity<Sanity.BlogPost[]>({
 		query: groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{

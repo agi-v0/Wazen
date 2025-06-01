@@ -36,7 +36,7 @@ export default function RollupClient({
 		const baseType = isBlogPost ? 'blog.post' : 'help.center.post'
 		return locale === 'en' ? `${baseType}.en` : baseType
 	})()
-
+	console.log(locale, type)
 	const loadMore = async () => {
 		setLoading(true)
 		setError(null) // Reset error on new attempt
@@ -155,7 +155,7 @@ export default function RollupClient({
 						{/* Arrow icon */}
 						<Icon
 							icon="ph:caret-right-bold"
-							className="size-3 translate-x-0 text-cyan-950/60 opacity-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 data-[loading=false]:block data-[loading=true]:hidden rtl:rotate-180 rtl:group-hover:-translate-x-1"
+							className="translate-x-0 text-xs text-cyan-950/60 opacity-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 data-[loading=false]:block data-[loading=true]:hidden rtl:rotate-180 rtl:group-hover:-translate-x-1"
 							data-loading={loading}
 						/>
 					</button>

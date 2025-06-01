@@ -15,7 +15,7 @@ export default function Categories({
 	if (!categories?.length) return null
 	return (
 		<>
-			<ul className="section mx-auto my-[var(--size--2rem)] flex w-full flex-row overflow-x-scroll lg:justify-center">
+			<ul className="section mx-auto my-[var(--size--2rem)] flex w-full flex-row flex-wrap overflow-x-scroll lg:justify-center">
 				{categories?.map((category, _key) => (
 					<li
 						className="inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded-md px-6 py-3 font-medium text-cyan-950/80 hover:bg-teal-50 hover:text-cyan-700"

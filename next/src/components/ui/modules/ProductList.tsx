@@ -9,7 +9,7 @@ import processUrl from '@/lib/processUrl'
 import { Icon } from '@iconify-icon/react'
 import { Img } from '@/components/ui/Img'
 import { cn } from '@/lib/utils'
-import AnimatedBackground from '@/components/animated/animated-background'
+import { AnimatedBackground } from '@/components/animated/animated-background'
 
 export default function ProductList({
 	pretitle,
@@ -51,15 +51,9 @@ export default function ProductList({
 	}
 
 	return (
-		<section className={'fluid-vertical-space bg-white'}>
-			<div
-				className={'section fluid-gap flex w-full flex-col items-center py-12'}
-			>
-				<div
-					className={
-						'mb-12 flex w-full max-w-4xl flex-col items-center gap-8 text-center'
-					}
-				>
+		<section className="fluid-vertical-space bg-white">
+			<div className="section fluid-gap flex w-full flex-col items-center py-12">
+				<div className="mb-12 flex w-full max-w-4xl flex-col items-center gap-8 text-center">
 					<Pretitle className="text-large font-semibold text-gray-400">
 						{pretitle}
 					</Pretitle>
@@ -79,7 +73,7 @@ export default function ProductList({
 							{products.map((product, index) => (
 								<li
 									key={product.productTitle}
-									data-id={`card-${index}`}
+									data-id={`product-card-${product.productTitle}`}
 									className="group z-[5] flex flex-col rounded-3xl p-4 transition-all"
 								>
 									<Link
@@ -92,11 +86,7 @@ export default function ProductList({
 											<Img
 												image={product.productImage}
 												alt={product.productTitle}
-												width={100}
-												height={100}
-												className={cn(
-													'h-auto w-full rounded-lg object-scale-down object-center',
-												)}
+												className={cn('h-auto w-full rounded-lg')}
 												loading="lazy"
 											/>
 										</div>

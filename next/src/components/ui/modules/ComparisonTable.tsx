@@ -28,7 +28,7 @@ export default async function ComparisonTable({
 			>
 				<div className="absolute start-0 top-0 z-50 h-full w-4 translate-x-0 bg-white"></div>
 				<div className="w-full max-lg:overflow-x-scroll">
-					<div className="grid w-[672px] grid-cols-[repeat(calc(var(--col-count)+2),_minmax(0,_1fr))] lg:w-full">
+					<div className="mx-auto grid w-[672px] grid-cols-[repeat(calc(var(--col-count)+2),_minmax(0,_1fr))] lg:w-full">
 						<div className="sticky start-0 col-span-2 mt-14 grid grid-flow-row grid-cols-1 grid-rows-[repeat(calc(var(--row-count)-1),_minmax(0,_1fr))] rounded-lg border-gray-200 bg-white *:border-t max-lg:w-48">
 							{comparisonTable.rows.map((featureRow: any, index: any) => {
 								return cellContent(featureRow.cells.slice(-1), index, locale)

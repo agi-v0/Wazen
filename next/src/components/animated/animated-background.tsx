@@ -11,7 +11,7 @@ import {
 	useId,
 } from 'react'
 
-type AnimatedBackgroundProps = {
+export type AnimatedBackgroundProps = {
 	children:
 		| ReactElement<{ 'data-id': string }>[]
 		| ReactElement<{ 'data-id': string }>
@@ -22,7 +22,7 @@ type AnimatedBackgroundProps = {
 	enableHover?: boolean
 }
 
-export default function AnimatedBackground({
+export function AnimatedBackground({
 	children,
 	defaultValue,
 	onValueChange,
@@ -64,7 +64,6 @@ export default function AnimatedBackground({
 			{
 				key: index,
 				className: cn('relative inline-flex', child.props.className),
-				// 'aria-selected': activeId === id,
 				'data-checked': activeId === id ? 'true' : 'false',
 				...interactionProps,
 			},
@@ -85,7 +84,7 @@ export default function AnimatedBackground({
 						/>
 					)}
 				</AnimatePresence>
-				<span className="z-10">{child.props.children}</span>
+				<div className="z-10">{child.props.children}</div>
 			</>,
 		)
 	})

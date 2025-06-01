@@ -39,7 +39,7 @@ export default function Hero({
 			<div className="section relative flex w-full flex-col justify-center">
 				<div className="relative space-y-6 pt-[25vh] text-center text-white">
 					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
-						<Icon icon="ph:seal-check-line" className="size-5" />
+						<Icon icon="ph:seal-check" className="text-xl" />
 						{pretitle}
 					</span>
 					<PortableText value={content} components={hero} />

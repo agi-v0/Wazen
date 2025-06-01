@@ -40,7 +40,7 @@
 	@apply flex size-8 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full bg-transparent p-2 text-cyan-950 transition-all hover:bg-gray-200 hover:text-cyan-950;
 }
 .embla__button:disabled {
-	color: theme(colors.gray.400);
+	color: var(--color-gray-400);
 }
 .embla__dots {
 	display: flex;
@@ -50,7 +50,7 @@
 	margin-inline-end: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 .embla__dot {
-	-webkit-tap-highlight-color: theme(colors.cyan.950);
+	-webkit-tap-highlight-color: var(--color-cyan-950);
 	text-decoration: none;
 	border: 0;
 	padding: 0;

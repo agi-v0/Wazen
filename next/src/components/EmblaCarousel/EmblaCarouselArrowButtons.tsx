@@ -67,7 +67,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
 			aria-label="previous"
 			{...restProps}
 		>
-			<Icon icon="ph:caret-left-bold" className="size-12 rtl:rotate-180" />
+			<Icon icon="ph:caret-left-bold" className="rtl:rotate-180" />
 			{children}
 		</button>
 	)
@@ -83,7 +83,7 @@ export const NextButton: React.FC<PropType> = (props) => {
 			aria-label="next"
 			{...restProps}
 		>
-			<Icon icon="ph:caret-right-bold" className="size-12 rtl:rotate-180" />
+			<Icon icon="ph:caret-right-bold" className="rtl:rotate-180" />
 
 			{children}
 		</button>
