@@ -8,7 +8,7 @@ import { useMediaQuery } from '@/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 import dynamic from 'next/dynamic'
 
-const ContactBar = dynamic(() => import('./ContactBar'), { ssr: true })
+const ContactBar = dynamic(() => import('./Desktop/ContactBar'), { ssr: true })
 export default function Wrapper({
 	className,
 	children,
@@ -41,12 +41,6 @@ export default function Wrapper({
 		window.addEventListener('resize', setHeight)
 		return () => window.removeEventListener('resize', setHeight)
 	}, [setHeight])
-
-	// close mobile menu after navigation
-	useEffect(() => {
-		const toggle = document.querySelector('#header-open') as HTMLInputElement
-		if (toggle) toggle.checked = false
-	}, [])
 
 	return (
 		<div

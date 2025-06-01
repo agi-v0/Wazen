@@ -43,7 +43,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
-            'readTime': length(pt::text(body)) / 200,
+            'readTime': length(pt::text(body)) / 1700,
             'headings': body[style in ['h2', 'h3']]{
                 style,
                 'text': pt::text(@)

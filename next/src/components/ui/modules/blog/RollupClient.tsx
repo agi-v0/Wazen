@@ -36,7 +36,7 @@ export default function RollupClient({
 		const baseType = isBlogPost ? 'blog.post' : 'help.center.post'
 		return locale === 'en' ? `${baseType}.en` : baseType
 	})()
-	console.log(locale, type)
+
 	const loadMore = async () => {
 		setLoading(true)
 		setError(null) // Reset error on new attempt
