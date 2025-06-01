@@ -31,6 +31,7 @@ export const OGImageEditor: EditorLayout = {
 	name: 'OGImage',
 	title: 'OG Image Editor',
 	prepare: () => {
+		/* eslint-disable */
 		const title = useFormValue(['metadata.title'])
 		language = useFormValue(['language']) as string
 		return {
