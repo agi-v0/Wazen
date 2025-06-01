@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 import useScrollPosition from '@/hooks/useScrollPosition'
 import { useMediaQuery } from '@/hooks/use-media-query'
-// import ContactBar from './ContactBar'
 
 import { cn } from '@/lib/utils'
 import dynamic from 'next/dynamic'
@@ -22,25 +21,19 @@ export default function Wrapper({
 	const scrollPosition = useScrollPosition()
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
-	// Memoize setHeight function
-	const setHeight = useCallback(() => {
-		if (!ref.current) return
-		const contactBarHeight = isDesktop && scrollPosition <= 1 ? 0 : 36 // subtract 36px (h-9 * 4) when ContactBar is hidden
-		const height = `${ref.current.offsetHeight - contactBarHeight}px`
-		if (
-			document.documentElement.style.getPropertyValue('--header-height') !==
-			height
-		) {
-			document.documentElement.style.setProperty('--header-height', height)
-		}
-	}, [isDesktop, scrollPosition])
-
-	// set --header-height
 	useEffect(() => {
-		setHeight()
-		window.addEventListener('resize', setHeight)
-		return () => window.removeEventListener('resize', setHeight)
-	}, [setHeight])
+		if (isDesktop) {
+			document.documentElement.style.setProperty(
+				'--header-height',
+				ref.current?.offsetHeight + 'px',
+			)
+		} else {
+			document.documentElement.style.setProperty(
+				'--header-height',
+				ref.current?.offsetHeight + 'px',
+			)
+		}
+	}, [isDesktop])
 
 	return (
 		<div
