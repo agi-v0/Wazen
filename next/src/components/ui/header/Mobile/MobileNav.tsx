@@ -9,6 +9,7 @@ import processUrl from '@/lib/processUrl'
 import { Icon } from '@iconify-icon/react'
 import { cn } from '@/lib/utils'
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
+import MobileLangSelect from './MobileLangSelect'
 
 const LangSelect = dynamic(() => import('../LangSelect'))
 
@@ -286,24 +287,17 @@ export default function MobileNav({
 
 						{/* Mobile Footer Actions */}
 						<div className="border-t border-gray-100">
-							<div className="section mx-auto py-6">
-								<div className="space-y-4">
-									{/* Language Selector */}
-									<div className="flex justify-center">
-										<LangSelect />
-									</div>
-
-									{/* CTA Buttons */}
-									<div className="space-y-3">
-										{ctas?.map((cta, key) => (
-											<div key={key} className="w-full">
-												<Button
-													{...cta}
-													className="h-12 w-full justify-center py-3 text-base font-medium"
-												/>
-											</div>
-										))}
-									</div>
+							<div className="section mx-auto py-2">
+								<div className="space-y-1">
+									<MobileLangSelect />
+									{ctas?.map((cta, key) => (
+										<div key={key} className="w-full">
+											<Button
+												{...cta}
+												className="h-12 w-full justify-center py-3 text-base font-medium"
+											/>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>
