@@ -1,4 +1,4 @@
-import Button from '../LinkButton'
+import Button from '../../LinkButton'
 import { Icon } from '@iconify-icon/react'
 
 export default function ContactBar({

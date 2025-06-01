@@ -8,7 +8,6 @@ import TableOfContents from '@/components/ui/modules/RichtextModule/TableOfConte
 import AnchoredHeading from '@/components/ui/modules/RichtextModule/AnchoredHeading'
 import { Img } from '@/components/ui/Img'
 import { Icon } from '@iconify-icon/react'
-// import Image from 'next/image'
 
 export default function Post({
 	post,
@@ -18,18 +17,18 @@ export default function Post({
 	locale: any
 }) {
 	return (
-		<article className="section">
-			<header className="mt-[25vh] md:space-y-12">
+		<article className="section mb-[25vh]">
+			<header className="mt-[15vh] md:space-y-12">
 				<div className="space-y-6 md:space-y-8">
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
 						{post?.categories && (
-							<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-teal-600">
+							<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-center text-teal-600">
 								{locale == 'ar'
 									? post?.categories[0]?.title
 									: post?.categories[0]?.title_en}
 							</div>
 						)}
-						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-cyan-950/60">
+						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-center text-cyan-950/60">
 							<Icon icon="ph:calendar-blank-line" className="size-4" />
 							<Date value={post.publishDate} locale={locale} />
 						</div>
@@ -83,6 +82,11 @@ export default function Post({
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
+							},
+							types: {
+								image: ({ value }) => (
+									<Img image={value} className="h-auto w-full rounded-2xl" />
+								),
 							},
 						}}
 					/>
