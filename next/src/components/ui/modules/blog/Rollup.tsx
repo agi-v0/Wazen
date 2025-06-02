@@ -7,7 +7,7 @@ const RollupClient = dynamic(() => import('./RollupClient'))
 export default async function Rollup({
 	_type,
 	title,
-	limit = 3,
+	limit = 6,
 	category,
 	layout,
 	categoryRef = category?.length > 0 ? category[0]?._ref : null,
@@ -29,8 +29,23 @@ export default async function Rollup({
 		return locale === 'en' ? `${baseType}.en` : baseType
 	})()
 
+	const categories = await fetchSanity<Sanity.BlogCategory[]>({
+		query: groq`*[_type == "blog.category"]{
+			title,
+			title_en,
+		
+			_id,
+
+		}`,
+	})
+
+	const allCategory = await fetchSanity<Sanity.BlogCategory>({
+		query: groq`*[_type == "blog.category" && title == 'الكل']{_id}[0]`,
+	})
+
 	const initialPosts = await fetchSanity<Sanity.BlogPost[]>({
-		query: groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[0...$limit]{
+		query: groq`*[_type == $type && ($allCategoryId in categories[]->_id || $categoryRef in categories[]->_id) ]
+		|order(publishDate desc)[0...$limit]{
 		 title,
 			publishDate,
 			metadata,
@@ -45,8 +60,10 @@ export default async function Rollup({
 			limit,
 			categoryRef,
 			type: type,
+			allCategoryId: allCategory?._id,
 		},
 	})
+
 	return (
 		initialPosts.length > 0 && (
 			<RollupClient {...props} initialPosts={initialPosts} />

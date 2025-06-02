@@ -8,6 +8,9 @@ import TableOfContents from '@/components/ui/modules/RichtextModule/TableOfConte
 import AnchoredHeading from '@/components/ui/modules/RichtextModule/AnchoredHeading'
 import { Img } from '@/components/ui/Img'
 import { Icon } from '@iconify-icon/react'
+import CTA from '../../CTA'
+import { Link } from '@/i18n/routing'
+import processUrl from '@/lib/processUrl'
 
 export default function Post({
 	post,
@@ -87,6 +90,18 @@ export default function Post({
 								image: ({ value }) => (
 									<Img image={value} className="h-auto w-full rounded-2xl" />
 								),
+							},
+							marks: {
+								link: ({ children, value }) => {
+									return (
+										<Link
+											href={value.href}
+											className="text-gray-600 underline decoration-teal-500/60 underline-offset-8 transition-all hover:text-teal-600 hover:underline-offset-[10px]"
+										>
+											{children}
+										</Link>
+									)
+								},
 							},
 						}}
 					/>

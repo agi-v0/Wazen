@@ -36,7 +36,7 @@ export default function PostPreview({
 				{locale == 'en' ? 'Read' : 'قراءة'}
 				<Icon
 					icon="ph:caret-right-bold"
-					className="inline-block size-3 translate-x-0 rotate-180 text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]"
+					className="inline-block translate-x-0 rotate-180 text-xs text-teal-500/50 opacity-0 transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:opacity-100 ltr:rotate-0 ltr:group-hover:translate-x-[2px]"
 				/>
 			</div>
 		</Link>
