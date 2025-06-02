@@ -31,7 +31,7 @@ const mobileNavLinkStyle = cn(
 const mobileAccordionHeaderStyle = cn(
 	navigationMenuTriggerStyle(),
 	// Mobile-specific adjustments for accordion headers
-	'h-12 text-base font-medium rounded-lg px-4 py-3 justify-between',
+	'h-12 text-base font-medium rounded-lg ps-4 py-3 justify-between pe-2',
 	'touch-manipulation min-h-[44px]',
 )
 
