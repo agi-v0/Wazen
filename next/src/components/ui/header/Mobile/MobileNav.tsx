@@ -146,7 +146,7 @@ export default function MobileNav({
 															<Icon
 																icon="ph:caret-down-bold"
 																className={cn(
-																	'text-gray-400 transition-transform duration-200',
+																	'text-xl text-gray-400 transition-transform duration-200',
 																	isExpanded && 'rotate-180',
 																)}
 															/>
@@ -241,7 +241,7 @@ export default function MobileNav({
 															<Icon
 																icon="ph:caret-down-bold"
 																className={cn(
-																	'text-gray-400 transition-transform duration-200',
+																	'text-xl text-gray-400 transition-transform duration-200',
 																	isExpanded && 'rotate-180',
 																)}
 															/>
