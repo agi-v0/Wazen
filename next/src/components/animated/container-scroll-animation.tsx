@@ -9,11 +9,13 @@ export const ContainerScroll = ({
 	children: React.ReactNode
 }) => {
 	const containerRef = useRef<any>(null)
-	const { scrollYProgress } = useScroll()
-	// {
-	// 	target: containerRef
-	// }
 	const [isMobile, setIsMobile] = React.useState(false)
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: isMobile
+			? ['start end', 'start center']
+			: ['start end', 'start start'],
+	})
 
 	React.useEffect(() => {
 		const checkMobile = () => {
@@ -27,16 +29,16 @@ export const ContainerScroll = ({
 	}, [])
 
 	const scaleDimensions = () => {
-		return isMobile ? [0.7, 0.9] : [1.05, 1]
+		return isMobile ? [0.9, 1] : [1.05, 1]
 	}
 
-	const rotate = useTransform(scrollYProgress, [0, 0.1], [20, 0])
-	const scale = useTransform(scrollYProgress, [0, 0.1], scaleDimensions())
-	const translate = useTransform(scrollYProgress, [0, 0.1], [0, -100])
+	const rotate = useTransform(scrollYProgress, [0, 1], [20, 0])
+	const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
+	const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
 
 	return (
 		<div
-			className="relative mx-auto flex w-[85%] items-center justify-center"
+			className="relative mx-auto flex items-center justify-center lg:w-[85%]"
 			ref={containerRef}
 		>
 			<div

@@ -38,7 +38,10 @@ export default function AppCard({
 	const t = useTranslations('App store')
 
 	return (
-		<Link href={app.metadata.slug.current} className="group w-full md:h-full">
+		<Link
+			href={`/integrations/${app.metadata.slug.current}`}
+			className="group w-full md:h-full"
+		>
 			<div className="-hover:bg-teal-50 flex flex-col gap-[var(--text-large--font-size)] rounded-2xl bg-white p-6 transition-all group-hover:bg-teal-50">
 				{/* <div className="w-fit rounded-full text-sm text-gray-400">
 					<Date value={app.publishDate} locale={locale} />
