@@ -96,7 +96,7 @@ export default function Post({
 									return (
 										<Link
 											href={value.href}
-											className="text-gray-600 underline decoration-teal-500/60 underline-offset-8 transition-all hover:text-teal-600 hover:underline-offset-[10px]"
+											className="text-teal-600 underline decoration-teal-500/60 underline-offset-8 transition-all hover:text-teal-500 hover:underline-offset-[10px]"
 										>
 											{children}
 										</Link>

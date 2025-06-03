@@ -13,11 +13,13 @@ export default function Hero({
 	content,
 	image,
 	ctas,
+	locale,
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
 	image: Sanity.Image
+	locale: 'en' | 'ar'
 }>) {
 	return (
 		<section
@@ -38,10 +40,21 @@ export default function Hero({
 			</div>
 			<div className="section relative flex w-full flex-col justify-center">
 				<div className="relative space-y-6 pt-[25vh] text-center text-white">
-					<span className="text-small mx-auto flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
-						<Icon icon="ph:seal-check" className="text-xl" />
-						{pretitle}
-					</span>
+					<div className="flex flex-col items-center justify-center gap-2 md:flex-row">
+						<div className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
+							<Icon icon="ph:seal-check" className="text-xl" />
+							<span>{pretitle}</span>
+						</div>
+						<div className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
+							<Icon icon="ph:seal-check" className="text-xl" />
+							<span>
+								{locale === 'ar'
+									? 'معتمد للمرحلة الثانية للفاتورة الإلكترونية'
+									: 'Approved for Phase 2 of the electronic invoice'}
+							</span>
+						</div>
+					</div>
+
 					<PortableText value={content} components={hero} />
 					<CTAList
 						ctas={ctas}
