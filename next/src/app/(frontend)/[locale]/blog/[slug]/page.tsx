@@ -26,10 +26,10 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity<string[]>({
+	const slugs = await fetchSanity({
 		query: groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	})
-	return slugs.flatMap((slug) => [
+	return slugs.flatMap((slug: string) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },
 	])
@@ -38,8 +38,8 @@ export async function generateStaticParams() {
 async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
-
-	return await fetchSanity<Sanity.BlogPost>({
+	const pathKey = `/${params.locale}/blog/${params.slug}`
+	return await fetchSanity({
 		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
@@ -56,5 +56,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
         }`,
 
 		params: { slug: decodedSlug, type },
+		pathKey,
+		tags: ['blog'],
 	})
 }

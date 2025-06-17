@@ -29,7 +29,7 @@ export default async function Rollup({
 		return locale === 'en' ? `${baseType}.en` : baseType
 	})()
 
-	const categories = await fetchSanity<Sanity.BlogCategory[]>({
+	const categories = await fetchSanity({
 		query: groq`*[_type == "blog.category"]{
 			title,
 			title_en,
@@ -39,11 +39,11 @@ export default async function Rollup({
 		}`,
 	})
 
-	const allCategory = await fetchSanity<Sanity.BlogCategory>({
+	const allCategory = await fetchSanity({
 		query: groq`*[_type == "blog.category" && title == 'الكل']{_id}[0]`,
 	})
 
-	const initialPosts = await fetchSanity<Sanity.BlogPost[]>({
+	const initialPosts = await fetchSanity({
 		query: groq`*[_type == $type && ($allCategoryId in categories[]->_id || $categoryRef in categories[]->_id) ]
 		|order(publishDate desc)[0...$limit]{
 		 title,

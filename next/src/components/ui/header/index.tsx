@@ -17,7 +17,7 @@ export default async function Header({
 }) {
 	return (
 		<Wrapper
-			className="fixed top-0 z-10 w-full bg-white"
+			className="fixed top-0 z-10 w-full bg-white shadow-sm"
 			contactInfo={contactInfo?.contactInfo}
 			locale={locale}
 		>

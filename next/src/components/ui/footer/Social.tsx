@@ -64,7 +64,7 @@ export default async function Social({
 			</div>
 
 			<div className="group flex flex-wrap items-center">
-				{social.items.map((item, key) => {
+				{social.items.map((item: Sanity.Link, key: number) => {
 					switch (item._type) {
 						case 'link':
 							if (item.external)

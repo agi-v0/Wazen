@@ -4,10 +4,7 @@ import { groq } from 'next-sanity'
 import processUrl from '@/lib/processUrl'
 
 export async function GET() {
-	const { helpCenter, posts } = await fetchSanity<{
-		helpCenter: Sanity.Page
-		posts: Sanity.HelpCenterPost[]
-	}>({
+	const { helpCenter, posts } = await fetchSanity({
 		query: groq`{
 			'helpCenter': *[_type == 'page' && metadata.slug.current == 'help-center'][0]{
 				_type,
@@ -21,6 +18,8 @@ export async function GET() {
 				metadata
 			}
 		}`,
+		pathKey: '/help-center/rss.xml',
+		tags: ['help-center'],
 	})
 
 	const url = processUrl(helpCenter)
@@ -32,7 +31,7 @@ export async function GET() {
 		language: 'en',
 	})
 
-	posts.map((post) =>
+	posts.map((post: Sanity.HelpCenterPost) =>
 		feed.item({
 			title: post.title ?? '',
 			url: processUrl(post),

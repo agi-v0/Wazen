@@ -18,9 +18,9 @@ export default async function Partners({
 	logoType: 'default' | 'light' | 'dark'
 	logos: Sanity.Logo[]
 }>) {
-	const allLogos =
+	const allLogos: Sanity.Logo[] =
 		logos ||
-		(await fetchSanity<Sanity.Logo[]>({
+		(await fetchSanity({
 			query: groq`*[_type == 'partners.logos']`,
 		}))
 	const components: PortableTextComponents = {

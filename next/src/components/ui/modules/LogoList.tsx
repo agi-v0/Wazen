@@ -19,9 +19,8 @@ export default async function LogoList({
 	logoType: 'default' | 'light' | 'dark'
 	logos: Sanity.Logo[]
 }>) {
-	const allLogos =
-		logos ||
-		(await fetchSanity<Sanity.Logo[]>({ query: groq`*[_type == 'logo']` }))
+	const allLogos: Sanity.Logo[] =
+		logos || (await fetchSanity({ query: groq`*[_type == 'logo']` }))
 
 	const components: PortableTextComponents = {
 		types: {

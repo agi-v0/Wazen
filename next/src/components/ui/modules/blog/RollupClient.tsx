@@ -42,7 +42,7 @@ export default function RollupClient({
 		setError(null) // Reset error on new attempt
 
 		try {
-			const newPosts = await fetchSanity<Sanity.BlogPost[]>(
+			const newPosts = await fetchSanity(
 				// Use BATCH_SIZE in the query slice
 				{
 					query: groq`*[_type == $type && $categoryRef in categories[]->_id]|order(publishDate desc)[$start...($start + ${BATCH_SIZE})]{

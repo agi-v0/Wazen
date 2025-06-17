@@ -34,6 +34,11 @@ const nextConfig = {
 			},
 		],
 	},
+	logging: {
+		fetches: {
+			fullUrl: true,
+		},
+	},
 
 	async redirects() {
 		const redirects = await client.fetch(groq`*[_type == 'redirect']`)

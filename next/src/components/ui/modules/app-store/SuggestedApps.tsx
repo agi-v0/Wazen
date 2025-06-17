@@ -12,7 +12,7 @@ const SuggestedApps = async ({
 	locale: 'en' | 'ar'
 	t: (key: string) => string
 }) => {
-	const apps = await fetchSanity<any>({
+	const apps = await fetchSanity({
 		query: groq`*[_type == 'app.store.app' && language == $locale ]{
 		 title, 
 		 icon, 
