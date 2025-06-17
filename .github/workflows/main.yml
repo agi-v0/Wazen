@@ -4,16 +4,15 @@ name: Deploy from main
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
-
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Confirm start'     
+        description: "Confirm start"
         required: false
-        default: 'yes'
+        default: "yes"
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Build:
@@ -27,7 +26,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-  
+
       - name: Create .env file
         run: echo "${{ env.DOT_ENV }}" > ./next/.env
 
@@ -39,18 +38,20 @@ jobs:
       - name: docker build
         run: |
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/} ./next
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/}  
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/}
   Deploy:
     runs-on: ubuntu-latest
-    environment: 
+    environment:
       name: production
       url: https://wazen.sa
     needs: Build
+    env:
+      DOT_ENV: ${{ secrets.DOT_ENV }}
     steps:
       - name: setup ssh
         uses: webfactory/ssh-agent@v0.9.0
         with:
-            ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Deploy to main
         run: |
-          ssh -o StrictHostkeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "sudo docker compose pull site && sudo docker compose up -d && sudo docker system prune -af"
+          ssh -o StrictHostkeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo '${{ env.DOT_ENV }}' > .env && sudo docker compose pull site && sudo docker compose up -d && sudo docker system prune -af"

@@ -16,13 +16,6 @@ export async function POST(req: NextRequest) {
 			return new Response('Missing SANITY_REVALIDATE_SECRET', { status: 500 })
 		}
 
-		// Debug logging for the secret
-		console.log('Secret length:', process.env.SANITY_REVALIDATE_SECRET.length)
-		console.log(
-			'Secret first 4 chars:',
-			process.env.SANITY_REVALIDATE_SECRET.substring(0, 4),
-		)
-
 		const { isValidSignature, body } = await parseBody<WebhookPayload>(
 			req,
 			process.env.SANITY_REVALIDATE_SECRET,
