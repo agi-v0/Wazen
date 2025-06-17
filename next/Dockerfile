@@ -24,14 +24,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# ---- TEMPORARY DEBUGGING ----
-# Check if the node module exists
-RUN echo "--- Checking node_modules ---" && ls -l /app/node_modules | grep downloadjs || echo "downloadjs not found in node_modules"
-# Check if the source file exists
-RUN echo "--- Checking source file ---" && ls -l /app/src/sanity/plugins/sanity-plugin-generate-og-image/src/useEditorLogic.ts || echo "useEditorLogic.ts not found"
-RUN echo "--- Dumping package.json ---" && cat /app/package.json || echo "Could not cat package.json"
-# ---- END DEBUGGING ----
-
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
