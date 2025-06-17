@@ -13,7 +13,8 @@ export default function middleware(request: NextRequest) {
 	if (
 		PUBLIC_FILE.test(pathname) ||
 		pathname.startsWith('/admin') ||
-		pathname.startsWith('/_next')
+		pathname.startsWith('/_next') ||
+		pathname.startsWith('/api/revalidate-tag')
 	) {
 		return NextResponse.next()
 	}
