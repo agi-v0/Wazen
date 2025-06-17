@@ -22,18 +22,15 @@ export default function Wrapper({
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 	useEffect(() => {
-		if (isDesktop) {
-			document.documentElement.style.setProperty(
-				'--header-height',
-				ref.current?.offsetHeight + 'px',
-			)
-		} else {
-			document.documentElement.style.setProperty(
-				'--header-height',
-				ref.current?.offsetHeight + 'px',
-			)
-		}
-	}, [isDesktop])
+		const headerHeight = ref.current?.offsetHeight || 0
+		const contactBarHeight = isDesktop ? 36 : 0
+		const adjustedHeight =
+			scrollPosition > 1 ? headerHeight - contactBarHeight : headerHeight
+		document.documentElement.style.setProperty(
+			'--header-height',
+			adjustedHeight + 'px',
+		)
+	}, [isDesktop, scrollPosition])
 
 	return (
 		<div
