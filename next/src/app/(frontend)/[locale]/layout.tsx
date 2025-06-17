@@ -40,10 +40,11 @@ export default async function RootLayout({
 	}
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
-
 	const secret = process.env.SANITY_REVALIDATE_SECRET?.trim() ?? ''
 	console.log('secret length =', secret.length)
 	console.log('secret hex    =', Buffer.from(secret).toString('hex'))
+	console.log('secret =', secret)
+	console.log(process.env.SANITY_REVALIDATE_SECRET)
 
 	return (
 		<html
