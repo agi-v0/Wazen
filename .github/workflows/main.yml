@@ -28,7 +28,7 @@ jobs:
           ref: main
 
       - name: Create .env file
-        run: echo "${{ env.DOT_ENV }}" | base64 -d > ./next/.env
+          run: printf '%s' "${{ env.DOT_ENV }}" > ./next/.env
 
       - name: Docker Login
         uses: docker/login-action@v3.1.0
@@ -53,5 +53,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Deploy to main
-        run: |
-          ssh -o StrictHostkeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo '${{ env.DOT_ENV }}' | base64 -d > .env && sudo docker compose pull site && sudo docker compose up -d && sudo docker system prune -af"
+          run: |
+            ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "\
+              printf '%s' '${{ env.DOT_ENV }}' > .env && \
+              sudo docker compose pull site && \
+              sudo docker compose up -d && \
+              sudo docker system prune -af"
