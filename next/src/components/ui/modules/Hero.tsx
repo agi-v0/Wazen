@@ -45,14 +45,6 @@ export default function Hero({
 							<Icon icon="ph:seal-check" className="text-xl" />
 							<span>{pretitle}</span>
 						</div>
-						<div className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
-							<Icon icon="ph:seal-check" className="text-xl" />
-							<span>
-								{locale === 'ar'
-									? 'معتمد للمرحلة الثانية للفاتورة الإلكترونية'
-									: 'Approved for Phase 2 of the electronic invoice'}
-							</span>
-						</div>
 					</div>
 
 					<PortableText value={content} components={hero} />
