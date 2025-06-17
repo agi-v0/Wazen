@@ -31,7 +31,7 @@ export default async function Page({ params }: Props) {
 	if (!app) notFound()
 
 	// Fetch the default CTA document data within the Page component
-	const ctaDocData = await fetchSanity<CtaDoc>({
+	const ctaDocData = await fetchSanity({
 		query: groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
 			content,
 			ctas[]{
@@ -49,7 +49,6 @@ export default async function Page({ params }: Props) {
 				asset->
 			},
 		}`,
-
 		params: { locale }, // Use appropriate tag for revalidation
 	})
 
@@ -79,10 +78,10 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity<string[]>({
+	const slugs = await fetchSanity({
 		query: groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
 	})
-	const params = slugs.flatMap((slug) => [
+	const params = slugs.flatMap((slug: string) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },
 	])
@@ -90,7 +89,8 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
-	return await fetchSanity<any>({
+	const pathKey = `/${params.locale}/integrations/${params.slug}`
+	return await fetchSanity({
 		query: groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
 			icon,
@@ -105,5 +105,7 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 			locale: params.locale,
 			slug: params.slug,
 		},
+		pathKey,
+		tags: ['integrations'],
 	})
 }

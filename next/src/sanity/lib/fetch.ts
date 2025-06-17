@@ -3,42 +3,31 @@
 import { client } from '@/sanity/lib/client'
 import { token } from '@/sanity/lib/token'
 import { dev } from '@/lib/env'
-// import { draftMode } from 'next/headers'
 import { defineLive, type QueryOptions, type QueryParams } from 'next-sanity'
 
-export async function fetchSanity<T = any>({
+export async function fetchSanity<const QueryString extends string>({
 	query,
 	params = {},
-	next,
+	revalidate = 60,
+	tags = [],
+	pathKey, // New parameter for path-based caching
 }: {
-	query: string
-	params?: Partial<QueryParams>
-	next?: QueryOptions['next']
+	query: QueryString
+	params?: QueryParams
+	revalidate?: number | false
+	tags?: string[]
+	pathKey?: string // Used to create path-specific cache keys
 }) {
-	// const preview = dev || (await draftMode()).isEnabled
+	const cacheOptions: RequestInit['cache'] = 'force-cache'
 
-	return client.fetch<T>(
-		query,
-		params,
-		// preview
-		// 	? {
-		// 			stega: true,
-		// 			perspective: 'drafts',
-		// 			useCdn: false,
-		// 			token,
-		// 			next: {
-		// 				revalidate: 0,
-		// 				...next,
-		// 			},
-		// 		}
-		// 	:
-		{
-			perspective: 'published',
-			useCdn: true,
-			next: {
-				revalidate: 3600, // every hour
-				...next,
-			},
+	// Create cache tags that include path information
+	const cacheTags = pathKey ? [...tags, `path:${pathKey}`] : tags
+
+	return client.fetch(query, params, {
+		cache: cacheOptions,
+		next: {
+			revalidate: cacheTags.length ? false : revalidate,
+			tags: cacheTags,
 		},
-	)
+	})
 }

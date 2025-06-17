@@ -25,7 +25,7 @@ export default async function TestimonialListTwo({
 }) {
 	const allTestimonials =
 		testimonials ||
-		(await fetchSanity<Sanity.Testimonial[]>({
+		(await fetchSanity({
 			query: groq`*[_type == 'testimonial' && language == $locale]`,
 			params: {
 				locale: locale,
