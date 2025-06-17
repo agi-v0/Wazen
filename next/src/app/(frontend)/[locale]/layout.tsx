@@ -9,12 +9,9 @@ import Footer from '@/components/ui/footer'
 
 import { setRequestLocale } from 'next-intl/server'
 
-import Script from 'next/script'
-
 import { notFound } from 'next/navigation'
 
 import Providers from './providers'
-import IntercomClientComponent from '@/components/ui/intercom'
 import { Suspense } from 'react'
 
 export function generateStaticParams() {
@@ -44,7 +41,7 @@ export default async function RootLayout({
 	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
 		site
 
-	const secret = process.env.SANITY_REVALIDATE_SECRET ?? ''
+	const secret = process.env.SANITY_REVALIDATE_SECRET?.trim() ?? ''
 	console.log('secret length =', secret.length)
 	console.log('secret hex    =', Buffer.from(secret).toString('hex'))
 
