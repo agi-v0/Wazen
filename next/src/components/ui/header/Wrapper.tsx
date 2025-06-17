@@ -38,7 +38,7 @@ export default function Wrapper({
 			className={cn(
 				className,
 				'transition-transform duration-200 ease-in-out',
-				scrollPosition > 1 && 'xl:-translate-y-9',
+				scrollPosition > 1 && 'shadow-sm xl:-translate-y-9',
 			)}
 		>
 			{isDesktop && <ContactBar contactInfo={contactInfo} locale={locale} />}
