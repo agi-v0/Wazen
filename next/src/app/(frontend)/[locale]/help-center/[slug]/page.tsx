@@ -38,7 +38,7 @@ export async function generateStaticParams() {
 
 async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
-	const pathKey = `/${params.locale}/help-center/${params.slug}`
+
 	// const type =
 	// 	params.locale == 'ar' ? 'help.center.post' : 'help.center.post.en'
 

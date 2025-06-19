@@ -13,61 +13,6 @@
  */
 
 // Source: schema.json
-export type SanityImagePaletteSwatch = {
-	_type: 'sanity.imagePaletteSwatch'
-	background?: string
-	foreground?: string
-	population?: number
-	title?: string
-}
-
-export type SanityImagePalette = {
-	_type: 'sanity.imagePalette'
-	darkMuted?: SanityImagePaletteSwatch
-	lightVibrant?: SanityImagePaletteSwatch
-	darkVibrant?: SanityImagePaletteSwatch
-	vibrant?: SanityImagePaletteSwatch
-	dominant?: SanityImagePaletteSwatch
-	lightMuted?: SanityImagePaletteSwatch
-	muted?: SanityImagePaletteSwatch
-}
-
-export type SanityImageDimensions = {
-	_type: 'sanity.imageDimensions'
-	height?: number
-	width?: number
-	aspectRatio?: number
-}
-
-export type SanityFileAsset = {
-	_id: string
-	_type: 'sanity.fileAsset'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	originalFilename?: string
-	label?: string
-	title?: string
-	description?: string
-	altText?: string
-	sha1hash?: string
-	extension?: string
-	mimeType?: string
-	size?: number
-	assetId?: string
-	uploadId?: string
-	path?: string
-	url?: string
-	source?: SanityAssetSourceData
-}
-
-export type Geopoint = {
-	_type: 'geopoint'
-	lat?: number
-	lng?: number
-	alt?: number
-}
-
 export type ProductList = {
 	_type: 'product-list'
 	pretitle?: string
@@ -104,6 +49,7 @@ export type ProductList = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			_type: 'image'
@@ -143,6 +89,7 @@ export type SolutionsBenefits = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			alt?: string
@@ -183,6 +130,7 @@ export type FeaturesGrid2 = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -261,6 +209,7 @@ export type HowItWorks = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			_type: 'image'
@@ -412,6 +361,7 @@ export type Steps = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -423,6 +373,7 @@ export type Steps = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -434,6 +385,7 @@ export type Steps = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -474,6 +426,7 @@ export type CallToAction = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -542,6 +495,7 @@ export type SingleTestimony = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -572,6 +526,7 @@ export type SingleTestimony = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -653,6 +608,7 @@ export type RichtextModule = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -661,7 +617,7 @@ export type RichtextModule = {
 				_key: string
 		  }
 	>
-	tableOfContents?: boolean
+	contents?: boolean
 }
 
 export type PricingComparison = {
@@ -769,24 +725,6 @@ export type Partners = {
 		_type: 'block'
 		_key: string
 	}>
-	Subtitle?: Array<{
-		children?: Array<{
-			marks?: Array<string>
-			text?: string
-			_type: 'span'
-			_key: string
-		}>
-		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-		listItem?: 'bullet' | 'number'
-		markDefs?: Array<{
-			href?: string
-			_type: 'link'
-			_key: string
-		}>
-		level?: number
-		_type: 'block'
-		_key: string
-	}>
 	logoType?: 'default' | 'light' | 'dark'
 	logos?: Array<{
 		_ref: string
@@ -860,6 +798,7 @@ export type HeroFour = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -925,6 +864,7 @@ export type Hero = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -965,6 +905,7 @@ export type HeroThree = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -1057,6 +998,7 @@ export type CreativeModule = {
 							_weak?: boolean
 							[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 						}
+						media?: unknown
 						hotspot?: SanityImageHotspot
 						crop?: SanityImageCrop
 						_type: 'image'
@@ -1072,6 +1014,7 @@ export type CreativeModule = {
 						_weak?: boolean
 						[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 					}
+					media?: unknown
 					hotspot?: SanityImageHotspot
 					crop?: SanityImageCrop
 					alt?: string
@@ -1235,6 +1178,7 @@ export type Brief = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -1349,6 +1293,7 @@ export type Applications = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			_type: 'image'
@@ -1358,27 +1303,20 @@ export type Applications = {
 		link?: Link
 		_key: string
 	}>
-	altApps?: {
-		altAppsLogos?: Array<{
-			asset?: {
-				_ref: string
-				_type: 'reference'
-				_weak?: boolean
-				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-			}
-			hotspot?: SanityImageHotspot
-			crop?: SanityImageCrop
-			_type: 'image'
-			_key: string
-		}>
-		comparisonTable?: Table
-	}
-}
-
-export type Slug = {
-	_type: 'slug'
-	current?: string
-	source?: string
+	altAppsLogos?: Array<{
+		asset?: {
+			_ref: string
+			_type: 'reference'
+			_weak?: boolean
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+		}
+		media?: unknown
+		hotspot?: SanityImageHotspot
+		crop?: SanityImageCrop
+		_type: 'image'
+		_key: string
+	}>
+	comparisonTable?: Table
 }
 
 export type LinkGroup = {
@@ -1470,6 +1408,7 @@ export type Testimonial = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			_type: 'image'
@@ -1491,6 +1430,7 @@ export type PartnersLogos = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -1511,6 +1451,7 @@ export type Logo = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -1568,6 +1509,7 @@ export type HelpCenterPostEn = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -1628,6 +1570,7 @@ export type HelpCenterPost = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -1653,8 +1596,10 @@ export type BlogCategory = {
 	_createdAt: string
 	_updatedAt: string
 	_rev: string
-	title?: string
-	title_en?: string
+	title?: {
+		ar?: string
+		en?: string
+	}
 }
 
 export type BlogPostEn = {
@@ -1698,6 +1643,7 @@ export type BlogPostEn = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -1758,6 +1704,7 @@ export type BlogPost = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -1916,6 +1863,7 @@ export type CallToActionDoc = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -1990,6 +1938,7 @@ export type AppStoreApp = {
 					_weak?: boolean
 					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 				}
+				media?: unknown
 				hotspot?: SanityImageHotspot
 				crop?: SanityImageCrop
 				alt?: string
@@ -2005,6 +1954,7 @@ export type AppStoreApp = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		alt?: string
@@ -2031,6 +1981,7 @@ export type AppStoreApp = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -2166,6 +2117,7 @@ export type Metadata = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
@@ -2227,6 +2179,7 @@ export type Site = {
 				_weak?: boolean
 				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 			}
+			media?: unknown
 			hotspot?: SanityImageHotspot
 			crop?: SanityImageCrop
 			_type: 'image'
@@ -2269,69 +2222,13 @@ export type Site = {
 			_weak?: boolean
 			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 		}
+		media?: unknown
 		hotspot?: SanityImageHotspot
 		crop?: SanityImageCrop
 		_type: 'image'
 	}
 	ga4?: string
 	gtmId?: string
-}
-
-export type SanityImageCrop = {
-	_type: 'sanity.imageCrop'
-	top?: number
-	bottom?: number
-	left?: number
-	right?: number
-}
-
-export type SanityImageHotspot = {
-	_type: 'sanity.imageHotspot'
-	x?: number
-	y?: number
-	height?: number
-	width?: number
-}
-
-export type SanityImageAsset = {
-	_id: string
-	_type: 'sanity.imageAsset'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	originalFilename?: string
-	label?: string
-	title?: string
-	description?: string
-	altText?: string
-	sha1hash?: string
-	extension?: string
-	mimeType?: string
-	size?: number
-	assetId?: string
-	uploadId?: string
-	path?: string
-	url?: string
-	metadata?: SanityImageMetadata
-	source?: SanityAssetSourceData
-}
-
-export type SanityAssetSourceData = {
-	_type: 'sanity.assetSourceData'
-	name?: string
-	id?: string
-	url?: string
-}
-
-export type SanityImageMetadata = {
-	_type: 'sanity.imageMetadata'
-	location?: Geopoint
-	dimensions?: SanityImageDimensions
-	palette?: SanityImagePalette
-	lqip?: string
-	blurHash?: string
-	hasAlpha?: boolean
-	isOpaque?: boolean
 }
 
 export type Navigation = {
@@ -2361,12 +2258,125 @@ export type InternationalizedArrayReference = Array<
 	} & InternationalizedArrayReferenceValue
 >
 
+export type SanityImagePaletteSwatch = {
+	_type: 'sanity.imagePaletteSwatch'
+	background?: string
+	foreground?: string
+	population?: number
+	title?: string
+}
+
+export type SanityImagePalette = {
+	_type: 'sanity.imagePalette'
+	darkMuted?: SanityImagePaletteSwatch
+	lightVibrant?: SanityImagePaletteSwatch
+	darkVibrant?: SanityImagePaletteSwatch
+	vibrant?: SanityImagePaletteSwatch
+	dominant?: SanityImagePaletteSwatch
+	lightMuted?: SanityImagePaletteSwatch
+	muted?: SanityImagePaletteSwatch
+}
+
+export type SanityImageDimensions = {
+	_type: 'sanity.imageDimensions'
+	height?: number
+	width?: number
+	aspectRatio?: number
+}
+
+export type SanityImageHotspot = {
+	_type: 'sanity.imageHotspot'
+	x?: number
+	y?: number
+	height?: number
+	width?: number
+}
+
+export type SanityImageCrop = {
+	_type: 'sanity.imageCrop'
+	top?: number
+	bottom?: number
+	left?: number
+	right?: number
+}
+
+export type SanityFileAsset = {
+	_id: string
+	_type: 'sanity.fileAsset'
+	_createdAt: string
+	_updatedAt: string
+	_rev: string
+	originalFilename?: string
+	label?: string
+	title?: string
+	description?: string
+	altText?: string
+	sha1hash?: string
+	extension?: string
+	mimeType?: string
+	size?: number
+	assetId?: string
+	uploadId?: string
+	path?: string
+	url?: string
+	source?: SanityAssetSourceData
+}
+
+export type SanityImageAsset = {
+	_id: string
+	_type: 'sanity.imageAsset'
+	_createdAt: string
+	_updatedAt: string
+	_rev: string
+	originalFilename?: string
+	label?: string
+	title?: string
+	description?: string
+	altText?: string
+	sha1hash?: string
+	extension?: string
+	mimeType?: string
+	size?: number
+	assetId?: string
+	uploadId?: string
+	path?: string
+	url?: string
+	metadata?: SanityImageMetadata
+	source?: SanityAssetSourceData
+}
+
+export type SanityImageMetadata = {
+	_type: 'sanity.imageMetadata'
+	location?: Geopoint
+	dimensions?: SanityImageDimensions
+	palette?: SanityImagePalette
+	lqip?: string
+	blurHash?: string
+	hasAlpha?: boolean
+	isOpaque?: boolean
+}
+
+export type Geopoint = {
+	_type: 'geopoint'
+	lat?: number
+	lng?: number
+	alt?: number
+}
+
+export type Slug = {
+	_type: 'slug'
+	current?: string
+	source?: string
+}
+
+export type SanityAssetSourceData = {
+	_type: 'sanity.assetSourceData'
+	name?: string
+	id?: string
+	url?: string
+}
+
 export type AllSanitySchemaTypes =
-	| SanityImagePaletteSwatch
-	| SanityImagePalette
-	| SanityImageDimensions
-	| SanityFileAsset
-	| Geopoint
 	| ProductList
 	| SolutionsBenefits
 	| FeaturesGrid2
@@ -2401,7 +2411,6 @@ export type AllSanitySchemaTypes =
 	| BenefitsBanner
 	| AppStoreRollup
 	| Applications
-	| Slug
 	| LinkGroup
 	| LinkList
 	| Cta
@@ -2429,13 +2438,19 @@ export type AllSanitySchemaTypes =
 	| Link
 	| Icon
 	| Site
-	| SanityImageCrop
-	| SanityImageHotspot
-	| SanityImageAsset
-	| SanityAssetSourceData
-	| SanityImageMetadata
 	| Navigation
 	| InternationalizedArrayReference
+	| SanityImagePaletteSwatch
+	| SanityImagePalette
+	| SanityImageDimensions
+	| SanityImageHotspot
+	| SanityImageCrop
+	| SanityFileAsset
+	| SanityImageAsset
+	| SanityImageMetadata
+	| Geopoint
+	| Slug
+	| SanityAssetSourceData
 export declare const internalGroqTypeReferenceTo: unique symbol
 // Source: ./src/sanity/lib/queries.ts
 // Variable: creativeModuleQuery

@@ -37,8 +37,7 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
-	const pathKey = `/${params.locale}/${params.slug.join('/')}`
-	return await fetchSanityLive({
+	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
 			metadata.slug.current == $slug && language == '${params.locale}' &&

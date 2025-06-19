@@ -38,7 +38,7 @@ export async function generateStaticParams() {
 async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
-	const pathKey = `/${params.locale}/blog/${params.slug}`
+
 	return await fetchSanityLive({
 		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,

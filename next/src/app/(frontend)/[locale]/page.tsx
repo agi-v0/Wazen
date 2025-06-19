@@ -24,7 +24,6 @@ export async function generateMetadata({ params }: Props) {
 }
 
 async function getPage(locale: 'en' | 'ar') {
-	const pathKey = `/${locale}/`
 	return await fetchSanityLive({
 		query: groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
 			...,
