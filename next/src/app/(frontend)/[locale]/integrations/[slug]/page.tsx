@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
@@ -90,7 +90,7 @@ export async function generateStaticParams() {
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const pathKey = `/${params.locale}/integrations/${params.slug}`
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
 			icon,
@@ -105,7 +105,6 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 			locale: params.locale,
 			slug: params.slug,
 		},
-		pathKey,
 		tags: ['integrations'],
 	})
 }

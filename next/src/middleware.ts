@@ -14,7 +14,7 @@ export default function middleware(request: NextRequest) {
 		PUBLIC_FILE.test(pathname) ||
 		pathname.startsWith('/admin') ||
 		pathname.startsWith('/_next') ||
-		pathname.startsWith('/api/revalidate-tag')
+		pathname.startsWith('/api')
 	) {
 		return NextResponse.next()
 	}

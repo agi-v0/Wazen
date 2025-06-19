@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
@@ -42,7 +42,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	// const type =
 	// 	params.locale == 'ar' ? 'help.center.post' : 'help.center.post.en'
 
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == 'help.center.post' && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
@@ -61,7 +61,6 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 		params: {
 			slug: decodedSlug,
 		},
-		pathKey,
 		tags: ['help-center'],
 	})
 }

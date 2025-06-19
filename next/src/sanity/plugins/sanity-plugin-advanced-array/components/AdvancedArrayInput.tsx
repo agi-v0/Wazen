@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useEffect, useState } from 'react'
 import { ArrayOfObjectsInputProps } from 'sanity'
 import { Stack } from '@sanity/ui'

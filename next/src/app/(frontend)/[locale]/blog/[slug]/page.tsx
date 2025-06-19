@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
@@ -39,7 +39,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
 	const pathKey = `/${params.locale}/blog/${params.slug}`
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
@@ -56,7 +56,6 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
         }`,
 
 		params: { slug: decodedSlug, type },
-		pathKey,
 		tags: ['blog'],
 	})
 }

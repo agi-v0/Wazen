@@ -1,5 +1,5 @@
 import { Iframe } from 'sanity-plugin-iframe-pane'
-import { BASE_URL } from './env'
+import { BASE_URL } from '../../lib/env'
 import { VscEdit, VscEye } from 'react-icons/vsc'
 import type { DefaultDocumentNodeResolver } from 'sanity/structure'
 import { SanityDocumentStub } from 'next-sanity'
@@ -12,7 +12,9 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 
 	switch (schemaType) {
 		case 'page':
+		case 'app.store.app':
 		case 'blog.post':
+		case 'blog.post.en':
 			return S.document().views([
 				editorView,
 				S.view
@@ -23,13 +25,25 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 						url: (
 							doc: SanityDocumentStub & {
 								metadata?: { slug?: { current: string } }
+								language?: string
 							},
 						) => {
 							const slug = doc?.metadata?.slug?.current
 							const path = slug === 'index' ? '' : slug
-							const directory = schemaType === 'blog.post' ? 'blog' : null
+							let directory = null
+							// const directory = schemaType === 'blog.post' ? 'blog' : null
+							switch (schemaType) {
+								case 'blog.post':
+									directory = 'blog'
+								case 'blog.post.en':
+									directory = 'blog'
+								case 'app.store.app':
+									directory = 'integrations'
+							}
 
-							return [BASE_URL, directory, path].filter(Boolean).join('/')
+							return [BASE_URL, doc?.language, directory, path]
+								.filter(Boolean)
+								.join('/')
 						},
 						reload: {
 							button: true,
