@@ -51,8 +51,7 @@ export default function RollupClient({
 					metadata,
 					body,
 				 categories[]->{
-					title,
-					title_en
+					title
 				 }
 				}`,
 
