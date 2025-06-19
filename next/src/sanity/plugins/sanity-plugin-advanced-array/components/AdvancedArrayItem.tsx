@@ -12,7 +12,7 @@ import { useMultiSelectContext } from './MultiSelectContext'
 import { CircleButton } from './CircleButton'
 
 export function AdvancedArrayItem(props: ObjectItemProps<any>) {
-	const { advanced } = props.parentSchemaType.options
+	const { advanced } = props.parentSchemaType.options as any
 	const { selected, toggleSelected, expanded, toggleExpanded } =
 		useMultiSelectContext()
 	const isSelected = selected.includes(props.value._key)

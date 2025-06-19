@@ -14,7 +14,7 @@ import { AddItemSearch } from './AddItemSearch'
 export function AdvancedArrayInput(props: ArrayOfObjectsInputProps) {
 	const [selected, setSelected] = useState<string[]>([])
 	const initialExpanded =
-		props.schemaType.options.advanced.inline === 'expanded' &&
+		(props.schemaType.options as any).advanced?.inline === 'expanded' &&
 		props.value &&
 		props.value.length
 			? props.value.map((item) => item._key)
@@ -69,13 +69,13 @@ export function AdvancedArrayInput(props: ArrayOfObjectsInputProps) {
 	//   props.schemaType.options.advanced.inline,
 	// ])
 
-	if (!props.schemaType.options.advanced) {
+	if (!(props.schemaType.options as any).advanced) {
 		return props.renderDefault(props)
 	}
 
 	const combinedConfig: AdvancedArrayOptions = {
 		...CONFIG_DEFAULTS,
-		...props.schemaType.options.advanced,
+		...(props.schemaType.options as any).advanced,
 	}
 	const { addItemSearch } = combinedConfig
 
