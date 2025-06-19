@@ -61,6 +61,9 @@ declare global {
 				ar: string
 				en: string
 			}
+			slug?: {
+				current: string
+			}
 		}>
 
 		type Logo = SanityDocument<{

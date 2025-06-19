@@ -346,6 +346,10 @@
 		background: #ffffff20;
 	}
 
+	.hide-scrollbar {
+		scrollbar-width: none;
+	}
+
 	/* animations */
 
 	@keyframes anim-fade-to {
