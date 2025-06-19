@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity } from './fetch'
 import { groq } from 'next-sanity'
 
 const navigationQuery = groq`

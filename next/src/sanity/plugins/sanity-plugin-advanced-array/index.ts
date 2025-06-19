@@ -31,7 +31,7 @@ export const advancedArray = definePlugin(() => {
 				input: (props) => {
 					if (
 						isArrayOfObjectsInputProps(props) &&
-						props.schemaType.options?.advanced
+						(props.schemaType.options as any)?.advanced
 					) {
 						return AdvancedArrayInput(props)
 					}
@@ -41,9 +41,10 @@ export const advancedArray = definePlugin(() => {
 				item: (props) => {
 					if (
 						isObjectItemProps(props) &&
-						props.parentSchemaType.options?.advanced &&
-						(props.parentSchemaType.options.advanced.inline !== 'off' ||
-							props.parentSchemaType.options.advanced.select)
+						(props.parentSchemaType.options as any)?.advanced &&
+						((props.parentSchemaType.options as any)?.advanced?.inline !==
+							'off' ||
+							(props.parentSchemaType.options as any)?.advanced?.select)
 					) {
 						return AdvancedArrayItem(props)
 					}

@@ -1,9 +1,10 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import Post from '@/components/ui/modules/blog/Post'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
@@ -26,9 +27,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity({
-		query: groq`*[_type == 'help.center.post' && defined(metadata.slug.current)].metadata.slug.current`,
-	})
+	const slugs = await client.fetch<string[]>(
+		groq`*[_type == 'help.center.post' && defined(metadata.slug.current)].metadata.slug.current`,
+	)
 
 	return slugs.flatMap((slug: string) => [
 		{ slug, locale: 'ar' },
@@ -38,11 +39,11 @@ export async function generateStaticParams() {
 
 async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
-	const pathKey = `/${params.locale}/help-center/${params.slug}`
+
 	// const type =
 	// 	params.locale == 'ar' ? 'help.center.post' : 'help.center.post.en'
 
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == 'help.center.post' && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
@@ -61,7 +62,6 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 		params: {
 			slug: decodedSlug,
 		},
-		pathKey,
 		tags: ['help-center'],
 	})
 }

@@ -13,11 +13,6 @@ export default {
 			of: [{ type: 'block' }],
 		},
 		{
-			name: 'Subtitle',
-			type: 'array',
-			of: [{ type: 'block' }],
-		},
-		{
 			name: 'logoType',
 			type: 'string',
 			options: {

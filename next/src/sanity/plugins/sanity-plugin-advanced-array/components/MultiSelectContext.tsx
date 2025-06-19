@@ -1,36 +1,41 @@
-import {PropsWithChildren, useContext} from 'react'
-import {createContext} from 'react'
+'use client'
+import { PropsWithChildren, useContext } from 'react'
+import { createContext } from 'react'
 
 type MultiSelectContextValue = {
-  selected: string[]
-  toggleSelected: (key: string) => void
-  selectAll: (keys: string[]) => void
-  expanded: string[]
-  toggleExpanded: (key: string) => void
-  collapseAll: () => void
-  expandAll: () => void
+	selected: string[]
+	toggleSelected: (key: string) => void
+	selectAll: (keys: string[]) => void
+	expanded: string[]
+	toggleExpanded: (key: string) => void
+	collapseAll: () => void
+	expandAll: () => void
 }
 
 const MultiSelectContext = createContext<MultiSelectContextValue>({
-  selected: [],
-  toggleSelected: () => null,
-  selectAll: () => null,
-  expanded: [],
-  toggleExpanded: () => null,
-  collapseAll: () => null,
-  expandAll: () => null,
+	selected: [],
+	toggleSelected: () => null,
+	selectAll: () => null,
+	expanded: [],
+	toggleExpanded: () => null,
+	collapseAll: () => null,
+	expandAll: () => null,
 })
 
 export function useMultiSelectContext() {
-  const current = useContext(MultiSelectContext)
+	const current = useContext(MultiSelectContext)
 
-  return current
+	return current
 }
 
 type MultiSelectProviderProps = PropsWithChildren & MultiSelectContextValue
 
 export function MultiSelectProvider(props: MultiSelectProviderProps) {
-  const {children, ...rest} = props
+	const { children, ...rest } = props
 
-  return <MultiSelectContext.Provider value={rest}>{children}</MultiSelectContext.Provider>
+	return (
+		<MultiSelectContext.Provider value={rest}>
+			{children}
+		</MultiSelectContext.Provider>
+	)
 }

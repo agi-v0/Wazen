@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
@@ -7,6 +7,7 @@ import CallToAction from '@/components/ui/modules/CallToAction'
 import processMetadata from '@/lib/processMetadata'
 import SuggestedApps from '@/components/ui/modules/app-store/SuggestedApps'
 import { getTranslations } from 'next-intl/server'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
@@ -31,7 +32,7 @@ export default async function Page({ params }: Props) {
 	if (!app) notFound()
 
 	// Fetch the default CTA document data within the Page component
-	const ctaDocData = await fetchSanity({
+	const ctaDocData = await fetchSanityLive<Sanity.Module>({
 		query: groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
 			content,
 			ctas[]{
@@ -78,9 +79,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity({
-		query: groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
-	})
+	const slugs = await client.fetch<string[]>(
+		groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
+	)
 	const params = slugs.flatMap((slug: string) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },
@@ -89,8 +90,7 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
-	const pathKey = `/${params.locale}/integrations/${params.slug}`
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == 'app.store.app' && metadata.slug.current == $slug && language == $locale ][0]{
 			..., 
 			icon,
@@ -105,7 +105,6 @@ async function getPage(params: { slug?: string; locale: 'en' | 'ar' }) {
 			locale: params.locale,
 			slug: params.slug,
 		},
-		pathKey,
 		tags: ['integrations'],
 	})
 }

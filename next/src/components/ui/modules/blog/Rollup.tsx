@@ -32,15 +32,12 @@ export default async function Rollup({
 	const categories = await fetchSanity({
 		query: groq`*[_type == "blog.category"]{
 			title,
-			title_en,
-		
 			_id,
-
 		}`,
 	})
 
 	const allCategory = await fetchSanity({
-		query: groq`*[_type == "blog.category" && title == 'الكل']{_id}[0]`,
+		query: groq`*[_type == "blog.category" && title.ar == 'الكل']{_id}[0]`,
 	})
 
 	const initialPosts = await fetchSanity({
@@ -52,7 +49,6 @@ export default async function Rollup({
 			body,
 		 categories[]->{
 			title,
-			title_en
 		 }
 		}`,
 

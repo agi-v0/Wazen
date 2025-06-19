@@ -18,12 +18,8 @@ export async function POST(req: NextRequest) {
 
 		const { isValidSignature, body } = await parseBody<WebhookPayload>(
 			req,
-			process.env.SANITY_REVALIDATE_SECRET.trim(),
+			process.env.SANITY_REVALIDATE_SECRET,
 		)
-
-		// Debug logging for signature validation
-		console.log('Signature validation result:', isValidSignature)
-		console.log('Request body:', body)
 
 		if (!body) {
 			return new Response('Bad Request', { status: 400 })

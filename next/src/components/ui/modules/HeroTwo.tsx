@@ -37,7 +37,7 @@ export default function HeroTwo({
 	return (
 		<section className="section pb-12 pt-16 lg:pt-28">
 			<m.div
-				className="cyan-gradient-background-1 flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12 py-24"
+				className="cyan-gradient-background-1 flex w-full flex-col items-center justify-center gap-y-6 rounded-2xl p-12"
 				initial="hidden"
 				animate="show"
 				viewport={{ once: true }}

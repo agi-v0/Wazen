@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { creativeModuleQuery } from '@/sanity/lib/queries'
 import Modules from '@/components/ui/modules'
@@ -24,8 +24,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 async function getPage(locale: 'en' | 'ar') {
-	const pathKey = `/${locale}/`
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`*[_type == 'page' && metadata.slug.current == "index" && language == '${locale}'][0]{
 			...,
 			modules[]{
@@ -67,7 +66,6 @@ async function getPage(locale: 'en' | 'ar') {
 			}
 		}`,
 		params: {},
-		pathKey,
 		tags: ['page'],
 	})
 }

@@ -1,10 +1,11 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { creativeModuleQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ slug: string[]; locale: 'en' | 'ar' }>
@@ -26,19 +27,18 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity({
-		query: groq`*[
+	const slugs = await client.fetch<string[]>(
+		groq`*[
 			_type == 'page' &&
 			defined(metadata.slug.current) &&
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
-	})
+	)
 	return slugs.map((slug: string) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
-	const pathKey = `/${params.locale}/${params.slug.join('/')}`
-	return await fetchSanity({
+	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
 			metadata.slug.current == $slug && language == '${params.locale}' &&
@@ -70,7 +70,7 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
             }
           }
         },
-				categories[]->{title , title_en, _id},
+				categories[]->{title, _id},
 				items[]->,
 				logos[]->,
 				partnerslogos[]->,
@@ -95,7 +95,6 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 			locale: params.locale,
 			slug: params.slug?.join('/'),
 		},
-		pathKey,
 		tags: ['page'],
 	})
 }

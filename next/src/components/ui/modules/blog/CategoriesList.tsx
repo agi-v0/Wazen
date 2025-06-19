@@ -21,8 +21,10 @@ export default function Categories({
 						className="inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded-md px-6 py-3 font-medium text-cyan-950/80 hover:bg-teal-50 hover:text-cyan-700"
 						key={_key}
 					>
-						<Link href={decodeURIComponent(`/${pageType}#${category.title}`)}>
-							{locale == 'ar' ? category.title : category.title_en}
+						<Link
+							href={decodeURIComponent(`/${pageType}#${category.title.ar}`)}
+						>
+							{locale == 'ar' ? category.title.ar : category.title.en}
 						</Link>
 					</li>
 				))}
@@ -31,7 +33,7 @@ export default function Categories({
 				return (
 					<Rollup
 						_type={_type}
-						title={locale == 'ar' ? category.title : category.title_en}
+						title={locale == 'ar' ? category.title.ar : category.title.en}
 						categoryRef={category._id}
 						key={'rollup' + _key}
 						layout="grid"
