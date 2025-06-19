@@ -9,7 +9,7 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import { Img } from '@/components/ui/Img'
+import { Img } from '@/components/Img'
 import { clean, cn } from '@/lib/utils'
 import style from './embla.module.css'
 import {
@@ -137,7 +137,7 @@ const EmblaCarousel: React.FC<PropType> = ({
 					<div
 						className={cn(
 							style.slide_item,
-							`slide-item flex h-full flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-[var(--padding-horizontal--main)] py-[var(--size--4rem)] text-center transition-all`,
+							`slide-item flex h-full flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-(--padding-horizontal--main) py-(--size--4rem) text-center transition-all`,
 						)}
 					>
 						<PortableText value={content} components={components} />
@@ -145,7 +145,7 @@ const EmblaCarousel: React.FC<PropType> = ({
 							<Img
 								loading="lazy"
 								image={author?.image}
-								className="aspect-square size-10 rounded-full object-cover object-left-top"
+								className="aspect-square size-10 rounded-full object-cover object-top-left"
 							/>
 							<div
 								className={cn(

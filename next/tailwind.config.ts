@@ -1,4 +1,3 @@
-import plugin from 'tailwindcss/plugin'
 import type { Config } from 'tailwindcss'
 
 const {
@@ -20,13 +19,6 @@ const config: Config = {
 	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
-			colors: {
-				ink: '#000',
-				canvas: '#fff',
-			},
-			fontFamily: {
-				sans: ['Rubik', 'sans-serif'],
-			},
 			maxHeight: {
 				fold: 'calc(100svh - var(--header-height))',
 			},
@@ -55,6 +47,5 @@ const config: Config = {
 	},
 
 	plugins: [require('tailwindcss-animate'), addVariablesForColors],
-	safelist: ['primary', 'secondary', 'tertiary'],
 }
 export default config

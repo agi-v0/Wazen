@@ -14,7 +14,7 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import { Img } from '@/components/ui/Img'
+import { Img } from '@/components/Img'
 import { cn } from '@/lib/utils'
 import style from './embla.module.css'
 
@@ -123,7 +123,7 @@ const EmblaCarousel: React.FC<PropType> = ({
 					<div
 						className={cn(
 							style.slide_item,
-							'slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-gradient-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between',
+							'slide-item flex flex-col items-center justify-start rounded-lg border border-gray-100 bg-linear-to-br from-white to-indigo-50 p-3 text-start transition-all md:flex-row md:justify-between',
 						)}
 					>
 						<div className="max-h-[480px] w-full rounded-lg">

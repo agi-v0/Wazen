@@ -13,7 +13,7 @@ const Circle = forwardRef<
 			id="parentDiv"
 			ref={ref}
 			className={cn(
-				'z-[5] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 shadow-lg backdrop-blur hover:bg-cyan-950/60',
+				'z-5 flex h-16 w-16 items-center justify-center rounded-full bg-cyan-950/40 p-3 shadow-lg backdrop-blur hover:bg-cyan-950/60',
 				className,
 			)}
 		>

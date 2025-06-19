@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { Icon } from '@iconify-icon/react'
-import { Img } from '@/components/ui/Img'
+import { Img } from '@/components/Img'
 
 type CardItem = {
 	title: string
@@ -75,7 +75,7 @@ export default function InfiniteMovingCards({
 				<li
 					key={idx}
 					className={cn(
-						'-from-40% scale-100 bg-gradient-to-br from-white hover:scale-105',
+						'-from-40% scale-100 bg-linear-to-br from-white hover:scale-105',
 						COLORS[idx % COLORS.length],
 						'grid grid-cols-2 items-center justify-between rounded-lg border border-gray-100 p-3 transition-all hover:shadow-lg lg:w-[600px]',
 					)}

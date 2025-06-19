@@ -33,7 +33,7 @@ const reports = () => {
 					repeatType: 'mirror',
 					repeatDelay: 1,
 				}}
-				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
+				className="h-auto w-full max-w-[50%] shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '-6deg' }} // {{ edit_1 }}
 			/>
 			<m.img
@@ -55,7 +55,7 @@ const reports = () => {
 					repeat: Infinity,
 					repeatDelay: 1,
 				}}
-				className="h-auto w-full max-w-[50%] flex-shrink basis-1/2 rounded-lg shadow-lg"
+				className="h-auto w-full max-w-[50%] shrink basis-1/2 rounded-lg shadow-lg"
 				style={{ rotate: '6deg' }} // {{ edit_2 }}
 			/>
 		</m.div>
