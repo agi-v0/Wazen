@@ -16,6 +16,7 @@ export async function fetchSanity<T = any>({
 	next?: QueryOptions['next']
 }) {
 	const preview = dev || (await draftMode()).isEnabled
+	// const preview = (await draftMode()).isEnabled
 
 	return client.fetch<T>(
 		query,

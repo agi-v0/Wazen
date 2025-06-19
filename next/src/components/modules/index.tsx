@@ -78,9 +78,11 @@ export default function Modules({
 	modules,
 	locale,
 	page,
+	slug,
 }: {
 	modules?: Sanity.Module[]
 	locale?: string
+	slug?: string
 	page?: Sanity.Page
 }) {
 	return (
@@ -96,6 +98,7 @@ export default function Modules({
 					<Component
 						{...module}
 						locale={locale}
+						slug={slug}
 						data-sanity={
 							!!page?._id &&
 							createDataAttribute({
