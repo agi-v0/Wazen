@@ -2,9 +2,10 @@
 
 // import { useDraftModeEnvironment } from 'next-sanity/hooks'
 import { usePathname } from 'next/navigation'
-import { VscSymbolField, VscBeakerStop } from 'react-icons/vsc'
+// import { VscSymbolField, VscBeakerStop } from 'react-icons/vsc'
 import { createDataAttribute, SanityDocument, stegaClean } from 'next-sanity'
 import Module from 'module'
+import { Icon } from '@iconify-icon/react'
 
 interface GlobalModule extends SanityDocument {
 	path: string
@@ -35,10 +36,10 @@ export default function DraftModeControls({
 		.sort((a, b) => a.path.localeCompare(b.path))
 
 	return (
-		<details className="frosted-glass not-hover:opacity-50 fixed bottom-0 right-4 rounded-t bg-amber-200/90 text-xs shadow-xl open:opacity-100">
+		<details className="fixed bottom-7 left-0 right-0 z-10 mx-auto h-10 w-fit rounded-full bg-amber-200 text-sm open:h-auto open:rounded-2xl open:opacity-100">
 			<summary className="p-2">Draft Mode</summary>
 
-			<menu className="anim-fade-to-r p-2 pt-0">
+			<menu className="p-2 pt-0">
 				{filteredGlobalModules?.map(({ _id, path }) => {
 					const attr = createDataAttribute({
 						id: _id,
@@ -52,7 +53,10 @@ export default function DraftModeControls({
 								className="inline-flex items-center gap-1 py-0.5"
 								data-sanity={attr().toString()}
 							>
-								<VscSymbolField className="shrink-0" />
+								<Icon
+									icon="ph:globe-simple-bold"
+									className="shrink-0 text-cyan-950/60"
+								/>
 								Global modules (<code>{path}</code>)
 							</button>
 						</li>
@@ -63,10 +67,13 @@ export default function DraftModeControls({
 
 				<li>
 					<a
-						className="inline-flex items-center gap-1 py-0.5 hover:underline"
-						href="/api/draft-mode/disable"
+						className="inline-flex items-center gap-1 py-0.5 text-cyan-950 hover:underline"
+						href="/api/disable-draft"
 					>
-						<VscBeakerStop className="shrink-0" />
+						<Icon
+							icon="ph:pencil-simple-slash-bold"
+							className="shrink-0 text-cyan-950/60"
+						/>
 						Disable Draft Mode
 					</a>
 				</li>

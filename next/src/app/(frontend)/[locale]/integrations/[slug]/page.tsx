@@ -7,6 +7,7 @@ import CallToAction from '@/components/ui/modules/CallToAction'
 import processMetadata from '@/lib/processMetadata'
 import SuggestedApps from '@/components/ui/modules/app-store/SuggestedApps'
 import { getTranslations } from 'next-intl/server'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ slug?: string; locale: 'en' | 'ar' }>
@@ -78,9 +79,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity({
-		query: groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
-	})
+	const slugs = await client.fetch<string[]>(
+		groq`*[_type == 'app.store.app' && defined(metadata.slug.current)].metadata.slug.current`,
+	)
 	const params = slugs.flatMap((slug: string) => [
 		{ slug, locale: 'ar' },
 		{ slug, locale: 'en' },

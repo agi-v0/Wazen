@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Modules from '@/components/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ slug: string[]; locale: 'en' | 'ar' }>
@@ -26,13 +27,13 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity({
-		query: groq`*[
+	const slugs = await client.fetch<string[]>(
+		groq`*[
 			_type == 'page' &&
 			defined(metadata.slug.current) &&
 			!(metadata.slug.current in ['index', '404'])
 		].metadata.slug.current`,
-	})
+	)
 	return slugs.map((slug: string) => ({ slug: slug.split('/') }))
 }
 
@@ -69,7 +70,7 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
             }
           }
         },
-				categories[]->{title , title_en, _id},
+				categories[]->{title, _id},
 				items[]->,
 				logos[]->,
 				partnerslogos[]->,

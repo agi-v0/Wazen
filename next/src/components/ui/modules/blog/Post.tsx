@@ -26,9 +26,9 @@ export default function Post({
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
 						{post?.categories && (
 							<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-center text-teal-600">
-								{locale == 'ar'
-									? post?.categories[0]?.title
-									: post?.categories[0]?.title_en}
+								{locale === 'ar'
+									? post?.categories[0]?.title.ar
+									: post?.categories[0]?.title.en}
 							</div>
 						)}
 						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-center text-cyan-950/60">
