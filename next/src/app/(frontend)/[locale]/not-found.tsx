@@ -1,6 +1,6 @@
 import { fetchSanity } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import Modules from '@/components/ui/modules'
+import Modules from '@/components/modules'
 
 export default async function NotFound() {
 	const page = await get404()

@@ -30,7 +30,7 @@ export const sendEmail = async (formData: formData) => {
 			from: 'Wazen <onboarding@resend.dev>',
 			to: process.env.NEXT_PUBLIC_RESEND_EMAIL as string,
 			subject: 'Email From Wazen',
-			reply_to: email,
+			replyTo: email,
 			react: EmailTemplate({
 				firstName,
 				lastName,

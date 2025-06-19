@@ -1,3 +1,5 @@
+@reference 'tailwindcss';
+
 .embla {
 	/* max-width: 48rem; */
 	max-width: 100%;

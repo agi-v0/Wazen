@@ -4,8 +4,8 @@ import { getSite } from '@/sanity/lib/queries'
 import { routing } from '@/i18n/routing'
 import { rubik } from '@/styles/fonts'
 
-import Header from '@/components/ui/header'
-import Footer from '@/components/ui/footer'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 import { setRequestLocale } from 'next-intl/server'
 
@@ -15,7 +15,7 @@ import Providers from './providers'
 import { Suspense } from 'react'
 
 import { draftMode } from 'next/headers'
-import VisualEditingControls from '@/components/ui/VisualEditingControls'
+import VisualEditingControls from '@/components/VisualEditingControls'
 import { createClient } from 'next-sanity'
 
 export function generateStaticParams() {
