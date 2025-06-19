@@ -5,7 +5,6 @@ import Modules from '@/components/modules'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 import BlogList from '@/components/modules/blog/BlogList'
-import Link from 'next/link'
 
 type Props = {
 	params: Promise<{ locale: 'en' | 'ar' }>

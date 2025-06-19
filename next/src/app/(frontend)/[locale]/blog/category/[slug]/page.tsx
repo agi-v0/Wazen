@@ -1,4 +1,4 @@
-import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { creativeModuleQuery } from '@/sanity/lib/queries'
 import Modules from '@/components/modules'
@@ -7,6 +7,7 @@ import { setRequestLocale } from 'next-intl/server'
 import BlogList from '@/components/modules/blog/BlogList'
 import { notFound } from 'next/navigation'
 import { slugify } from '@/lib/slugify'
+import { client } from '@/sanity/lib/client'
 
 type Props = {
 	params: Promise<{ locale: 'en' | 'ar'; slug: string }>
@@ -45,7 +46,14 @@ export default async function CategoryPage({ params }: Props) {
 
 export async function generateMetadata({ params }: Props) {
 	const resolvedParams = await params
-	const category = await getCategory(resolvedParams.slug, resolvedParams.locale)
+	const category = await client.fetch<Sanity.BlogCategory>(
+		groq`*[_type == 'blog.category' && slug.current == $slug][0] {
+			title
+		}`,
+		{
+			slug: resolvedParams.slug,
+		},
+	)
 
 	if (!category) {
 		return {
@@ -67,11 +75,11 @@ export async function generateMetadata({ params }: Props) {
 
 export async function generateStaticParams() {
 	// Get all categories
-	const categories = await fetchSanity({
-		query: groq`*[_type == 'blog.category'] {
+	const categories = await client.fetch<Sanity.BlogCategory[]>(
+		groq`*[_type == 'blog.category'] {
 			title
 		}`,
-	})
+	)
 
 	const params = []
 
@@ -98,15 +106,13 @@ async function getCategory(slug: string, locale: 'en' | 'ar') {
 	const decodedSlug = decodeURIComponent(slug)
 
 	// Get all categories and find the one that matches the slug
-	const categories = await fetchSanityLive({
-		query: groq`*[_type == 'blog.category']{
+	const categories = await client.fetch<Sanity.BlogCategory[]>(
+		groq`*[_type == 'blog.category']{
 			_id,
 			title,
 			slug
 		}`,
-		params: {},
-		tags: ['blog-category'],
-	})
+	)
 
 	// Find category by comparing slugified titles (both encoded and decoded versions)
 	return categories.find((category: any) => {
