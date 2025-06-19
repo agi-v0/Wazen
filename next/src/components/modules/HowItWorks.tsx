@@ -4,9 +4,9 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 // import * as m from 'motion/react-m'
-import user from '../../../../public/How-it-works/User.svg'
-import chart from '../../../../public/How-it-works/Chart.svg'
-import sidebar from '../../../../public/How-it-works/Sidebar.svg'
+import user from '/public/How-it-works/User.svg'
+import chart from '/public/How-it-works/Chart.svg'
+import sidebar from '/public/How-it-works/Sidebar.svg'
 import Image from 'next/image'
 
 export default function HowItWorks({
@@ -26,14 +26,14 @@ export default function HowItWorks({
 			block: ({ value }: PortableTextTypeComponentProps<any>) => {
 				if (value.style === 'h2') {
 					return (
-						<h2 className="h4 text-center font-semibold leading-tight text-cyan-950">
+						<h2 className="h4 text-center leading-tight font-semibold text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h2>
 					)
 				}
 				if (value.style === 'h3') {
 					return (
-						<h3 className="text-large font-semibold leading-tight text-cyan-950">
+						<h3 className="text-large leading-tight font-semibold text-cyan-950">
 							{value.children.map((child: any) => child.text).join('')}
 						</h3>
 					)

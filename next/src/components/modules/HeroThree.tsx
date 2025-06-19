@@ -7,9 +7,8 @@ import {
 import CTAList from '@/components/CTAList'
 import Pretitle from '../Pretitle'
 import Image from 'next/image'
-import blob from '../../../../public/gradient-blob2.svg'
+import blob from '/public/gradient-blob2.svg'
 import * as m from 'motion/react-m'
-import { useMediaQuery } from '@/hooks/use-media-query'
 import { Variants } from 'motion/react'
 
 export default function HeroThree({
