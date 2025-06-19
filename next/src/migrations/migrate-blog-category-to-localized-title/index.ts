@@ -34,7 +34,7 @@ export default defineMigration({
 			}
 
 			// Get the Arabic title and existing English title
-			const arabicTitle = doc.title || ''
+			const arabicTitle = (typeof doc.title === 'string' ? doc.title : '') || ''
 			const existingEnglishTitle = doc.title_en || ''
 
 			// Translate Arabic to English if no English title exists
