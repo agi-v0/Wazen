@@ -2,6 +2,7 @@ import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
 import * as m from 'motion/react-m'
+import { stegaClean } from 'next-sanity'
 
 export default function CTA({
 	link,
@@ -13,7 +14,7 @@ export default function CTA({
 }: Sanity.CTA &
 	React.HTMLAttributes<HTMLAnchorElement> & { locale?: 'ar' | 'en' }) {
 	const props = {
-		className: cn(style, className) || undefined,
+		className: cn(stegaClean(style), className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
 		...rest,
