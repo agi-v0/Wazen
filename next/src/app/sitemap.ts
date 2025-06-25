@@ -79,6 +79,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		params: {
 			baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 		},
+		next: {
+			revalidate: 0,
+		},
 	})
 	return Object.values(allPages).flat() as MetadataRoute.Sitemap
 }
