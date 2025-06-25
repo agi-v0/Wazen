@@ -43,14 +43,14 @@ export default async function processMetadata(
 			languages: {
 				ar:
 					process.env.NEXT_PUBLIC_BASE_URL +
-					'/ar' +
+					'ar' +
 					//add directory if page is not homepage
 					(slug.current !== 'index'
 						? `${directory(page)}/${slug.current}`
 						: ''),
 				en:
 					process.env.NEXT_PUBLIC_BASE_URL +
-					'/en' +
+					'en' +
 					//add directory if page is not homepage
 					(slug.current !== 'index'
 						? `${directory(page)}/${slug.current}`
