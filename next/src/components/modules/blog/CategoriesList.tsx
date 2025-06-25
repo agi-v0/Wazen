@@ -1,5 +1,5 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { slugify } from '@/lib/slugify'
 import { useRouter } from 'next/navigation'
 import {

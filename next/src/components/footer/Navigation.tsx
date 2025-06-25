@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Button from '../LinkButton'
 import { Icon } from '@iconify-icon/react'
 import { cn } from '@/lib/utils'

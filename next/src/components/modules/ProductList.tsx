@@ -4,7 +4,7 @@ import {
 	PortableTextTypeComponentProps,
 } from '@portabletext/react'
 import Pretitle from '@/components/Pretitle'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { Icon } from '@iconify-icon/react'
 import { Img } from '@/components/Img'
