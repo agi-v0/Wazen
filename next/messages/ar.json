@@ -63,5 +63,18 @@
 	"App": {
 		"You may also be interested in": "قد يهمك أيضاً",
 		"View all": "تصفح الجميع"
+	},
+	"Sitemap": {
+		"title": "خريطة الموقع",
+		"description": "استكشف جميع صفحات موقع وازن واعثر على ما تحتاجه بسهولة",
+		"searchPlaceholder": "البحث في الصفحات...",
+		"mainPages": "الصفحات الرئيسية",
+		"blogPosts": "المدونة",
+		"helpCenter": "مركز المساعدة",
+		"integrations": "التطبيقات والتكاملات",
+		"blogCategories": "فئات المدونة",
+		"cantFind": "لم تجد ما تبحث عنه؟",
+		"contactHelp": "تواصل معنا وسنساعدك في العثور على ما تحتاجه",
+		"contactUs": "تواصل معنا"
 	}
 }
