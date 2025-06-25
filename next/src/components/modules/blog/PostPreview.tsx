@@ -50,7 +50,8 @@ export default function PostPreview({
 					</h3>
 				)}
 				<p className="text-base text-cyan-950/60 group-hover:text-cyan-950/80">
-					{post.body && post.body[0].children[0].text.slice(0, 140) + ' ...'}
+					{post.body &&
+						post.body?.[0]?.children?.[0]?.text?.slice(0, 140) + ' ...'}
 				</p>
 			</div>
 			<Link
