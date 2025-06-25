@@ -2,7 +2,7 @@ import { fetchSanity, fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { slugify } from '@/lib/slugify'
 
 type Props = {

@@ -41,7 +41,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
 
 	return await fetchSanityLive({
-		query: groq`*[_type == $type && metadata.slug.current == $slug][0]{
+		query: groq`*[(_type == 'blog.post' || _type == 'blog.post.en') && metadata.slug.current == $slug][0]{
             ...,
             'body': select(_type == 'image' => asset->, body),
             'readTime': length(pt::text(body)) / 1700,

@@ -9,7 +9,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-// import Link from 'next/link'
+// import {Link} from '@/i18n/routing'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import { useParams } from 'next/navigation'
 

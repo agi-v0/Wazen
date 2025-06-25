@@ -84,6 +84,11 @@ export default function Post({
 								bullet: ({ children }) => (
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
+								number: ({ children }) => (
+									<ol className="ms-6 list-decimal space-y-4 text-gray-800">
+										{children}
+									</ol>
+								),
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
 							},
 							types: {

@@ -13,15 +13,26 @@ import { client } from '@/sanity/lib/client'
 const POSTS_PER_PAGE = 18
 
 type Props = {
-	params: Promise<{ locale: 'en' | 'ar'; slug: string }>
+	params: Promise<{ locale: 'en' | 'ar'; slug: string; page: string }>
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPaginationPage({ params }: Props) {
 	const resolvedParams = await params
+
+	// Parse and validate page number
+	const pageNumber = parseInt(resolvedParams.page)
+	if (isNaN(pageNumber) || pageNumber < 2) {
+		// Page 1 should use the main category route, not pagination route
+		notFound()
+	}
 
 	const [categoryData, blogData, page] = await Promise.all([
 		getCategory(resolvedParams.slug, resolvedParams.locale),
-		getBlogPostsByCategory(resolvedParams.slug, resolvedParams.locale),
+		getBlogPostsByCategory(
+			resolvedParams.slug,
+			resolvedParams.locale,
+			pageNumber,
+		),
 		getPage(resolvedParams.locale),
 	])
 
@@ -29,7 +40,11 @@ export default async function CategoryPage({ params }: Props) {
 		notFound()
 	}
 
+	// Check if page number is valid (not beyond total pages)
 	const totalPages = Math.ceil(blogData.totalCount / POSTS_PER_PAGE)
+	if (pageNumber > totalPages) {
+		notFound()
+	}
 
 	return (
 		<>
@@ -47,18 +62,38 @@ export default async function CategoryPage({ params }: Props) {
 						: 'لم يتم العثور على مقالات في هذه الفئة.'
 				}
 			/>
-			{totalPages > 1 && (
-				<div className="section py-8">
-					<BlogPagination
-						locale={resolvedParams.locale}
-						currentPage={1}
-						totalPages={totalPages}
-						categorySlug={resolvedParams.slug}
-					/>
-				</div>
-			)}
+			<div className="section py-8">
+				<BlogPagination
+					locale={resolvedParams.locale}
+					currentPage={pageNumber}
+					totalPages={totalPages}
+					categorySlug={resolvedParams.slug}
+				/>
+			</div>
 		</>
 	)
+}
+
+export async function generateStaticParams({
+	params,
+}: {
+	params: { locale: 'en' | 'ar'; slug: string }
+}) {
+	// Get the category first
+	const category = await getCategory(params.slug, params.locale)
+	if (!category) return []
+
+	const totalCount = await getTotalCategoryPostCount(params.slug, params.locale)
+	const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE)
+
+	const paths = []
+
+	// Generate paths for pages 2 and beyond (page 1 is handled by the main category route)
+	for (let i = 2; i <= totalPages; i++) {
+		paths.push({ page: i.toString() })
+	}
+
+	return paths
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -84,38 +119,12 @@ export async function generateMetadata({ params }: Props) {
 			? category.title?.en || category.title
 			: category.title?.ar || category.title
 
+	const pageNumber = parseInt(resolvedParams.page)
+
 	return {
-		title: `${title} - Blog`,
-		description: `Browse blog posts in the ${title} category`,
+		title: `${title} - Blog - Page ${pageNumber}`,
+		description: `Browse blog posts in the ${title} category - Page ${pageNumber}`,
 	}
-}
-
-export async function generateStaticParams() {
-	// Get all categories
-	const categories = await client.fetch<Sanity.BlogCategory[]>(
-		groq`*[_type == 'blog.category'] {
-			title
-		}`,
-	)
-
-	const params = []
-
-	// Generate slugs for both locales
-	for (const category of categories) {
-		// English locale with slugified English title
-		params.push({
-			locale: 'en' as const,
-			slug: encodeURIComponent(slugify(category.title.en)),
-		})
-
-		// Arabic locale with slugified Arabic title
-		params.push({
-			locale: 'ar' as const,
-			slug: encodeURIComponent(slugify(category.title.ar)),
-		})
-	}
-
-	return params
 }
 
 async function getCategory(slug: string, locale: 'en' | 'ar') {
@@ -144,6 +153,31 @@ async function getCategory(slug: string, locale: 'en' | 'ar') {
 			arSlug === decodedSlug
 		)
 	})
+}
+
+async function getTotalCategoryPostCount(
+	categorySlug: string,
+	locale: 'en' | 'ar',
+) {
+	const type = locale === 'en' ? 'blog.post.en' : 'blog.post'
+
+	// First get the category ID
+	const category = await getCategory(categorySlug, locale)
+	if (!category) {
+		return 0
+	}
+
+	return await client.fetch(
+		groq`count(*[_type == $type && $categoryId in categories[]->_id])`,
+		{
+			type,
+			categoryId: category._id,
+		},
+		{
+			perspective: 'published',
+			useCdn: true,
+		},
+	)
 }
 
 async function getBlogPostsByCategory(

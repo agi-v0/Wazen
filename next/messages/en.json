@@ -59,5 +59,18 @@
 	"App": {
 		"You may also be interested in": "You may also be interested in",
 		"View all": "View all"
+	},
+	"Sitemap": {
+		"title": "Sitemap",
+		"description": "Explore all pages on the Wazen website and find what you need easily",
+		"searchPlaceholder": "Search pages...",
+		"mainPages": "Main Pages",
+		"blogPosts": "Blog Posts",
+		"helpCenter": "Help Center",
+		"integrations": "Apps & Integrations",
+		"blogCategories": "Blog Categories",
+		"cantFind": "Can't find what you're looking for?",
+		"contactHelp": "Contact us and we'll help you find what you need",
+		"contactUs": "Contact Us"
 	}
 }

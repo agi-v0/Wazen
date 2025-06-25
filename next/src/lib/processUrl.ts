@@ -27,7 +27,7 @@ export default function processUrl(
 	const path = slug === 'index' ? null : slug
 
 	return (
-		(base ? process.env.NEXT_PUBLIC_BASE_URL + '/' : '/') +
+		(base ? process.env.NEXT_PUBLIC_BASE_URL : '/') +
 		[directory(), path, stegaClean(params)].filter(Boolean).join('/')
 	)
 }

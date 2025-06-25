@@ -1,5 +1,5 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { slugify } from '@/lib/slugify'
 import { useRouter } from 'next/navigation'
 import {
@@ -103,7 +103,7 @@ export default function Categories({
 				<nav className="hide-scrollbar -border-b hidden overflow-x-auto border-gray-200 md:flex">
 					<Link
 						key={'all'}
-						href={`/${locale}/${pageType}`}
+						href={`/${pageType}`}
 						className={`border-b-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
 							!slug || slug === 'all'
 								? 'border-teal-500 text-teal-600'
@@ -124,7 +124,7 @@ export default function Categories({
 						return (
 							<Link
 								key={_key}
-								href={`/${locale}/${pageType}/category/${encodeURIComponent(categorySlug)}`}
+								href={`/${pageType}/category/${encodeURIComponent(categorySlug)}`}
 								className={`border-b-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors duration-200 last:pe-0 ${
 									isActive
 										? 'border-teal-500 text-teal-600'

@@ -2,7 +2,7 @@ import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { Navigation } from './Navigation'
 import Logo from '@/components/logo'
 import Button from '../../LinkButton'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import dynamic from 'next/dynamic'
 
 const LangSelect = dynamic(() => import('../LangSelect'))

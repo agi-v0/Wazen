@@ -57,6 +57,11 @@ export default function RichtextModule({
 								bullet: ({ children }) => (
 									<li style={{ listStyleType: 'revert' }}>{children}</li>
 								),
+								number: ({ children }) => (
+									<ol className="ms-6 list-decimal space-y-4 text-gray-800">
+										{children}
+									</ol>
+								),
 
 								// Ex. 2: rendering custom list items
 								checkmarks: ({ children }) => <li>✅ {children}</li>,
@@ -66,7 +71,7 @@ export default function RichtextModule({
 								block: ({ value }: PortableTextTypeComponentProps<any>) => {
 									if (value.style === 'h2') {
 										return (
-											<h2 className="h2 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
+											<h2 className="h2 max-w-3xl leading-tight font-semibold text-pretty text-cyan-950">
 												{value.children
 													.map((child: any) => child.text)
 													.join('')}
@@ -74,7 +79,7 @@ export default function RichtextModule({
 										)
 									} else if (value.style === 'h3') {
 										return (
-											<h3 className="h3 max-w-3xl text-pretty font-semibold leading-tight text-cyan-950">
+											<h3 className="h3 max-w-3xl leading-tight font-semibold text-pretty text-cyan-950">
 												{value.children
 													.map((child: any) => child.text)
 													.join('')}
