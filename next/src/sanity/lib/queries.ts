@@ -1,4 +1,4 @@
-import { fetchSanity } from './fetch'
+import { fetchSanity, fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 
 const navigationQuery = groq`
@@ -34,7 +34,7 @@ export const creativeModuleQuery = groq`
 `
 
 export async function getSite(locale: any) {
-	return await fetchSanity({
+	return await fetchSanityLive({
 		query: groq`
 			*[_type == 'site' && language == $locale  ][0]{
 				...,

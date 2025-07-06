@@ -2,6 +2,7 @@
 import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
+import { stegaClean } from 'next-sanity'
 
 export default function LinkButton({
 	link,
@@ -12,7 +13,7 @@ export default function LinkButton({
 	...rest
 }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
 	const props = {
-		className: cn(style, className) || undefined,
+		className: cn(stegaClean(style), className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
 		...rest,
