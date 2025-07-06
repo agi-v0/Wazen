@@ -39,7 +39,18 @@ export default async function BlogPaginationPage({ params }: Props) {
 	return (
 		<>
 			<Modules modules={page?.modules} locale={resolvedParams.locale} />
-			<BlogList locale={resolvedParams.locale} posts={blogData.posts} />
+			<div>
+				<BlogList locale={resolvedParams.locale} posts={blogData.posts} />
+				{totalPages > 1 && (
+					<div className="section py-8">
+						<BlogPagination
+							locale={resolvedParams.locale}
+							currentPage={pageNumber}
+							totalPages={totalPages}
+						/>
+					</div>
+				)}
+			</div>
 		</>
 	)
 }

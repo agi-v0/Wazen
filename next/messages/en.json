@@ -72,5 +72,9 @@
 		"cantFind": "Can't find what you're looking for?",
 		"contactHelp": "Contact us and we'll help you find what you need",
 		"contactUs": "Contact Us"
+	},
+	"Pagination": {
+		"previous": "Previous",
+		"next": "Next"
 	}
 }
