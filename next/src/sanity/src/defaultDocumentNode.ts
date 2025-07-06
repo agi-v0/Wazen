@@ -34,13 +34,15 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 							// const directory = schemaType === 'blog.post' ? 'blog' : null
 							switch (schemaType) {
 								case 'blog.post':
-									directory = 'blog'
+									directory = 'ar/blog'
+									break
 								case 'blog.post.en':
-									directory = 'blog'
+									directory = 'en/blog'
+									break
 								case 'app.store.app':
 									directory = 'integrations'
+									break
 							}
-
 							return [BASE_URL, doc?.language, directory, path]
 								.filter(Boolean)
 								.join('/')
