@@ -9,7 +9,7 @@ const withNextIntl = createNextIntlPlugin()
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	apiVersion: '2024-04-01',
+	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-06-02',
 	useCdn: true,
 })
 
