@@ -38,8 +38,11 @@ export default async function processMetadata(
 		},
 		creator: 'Studio Valence | byvalence.com',
 		alternates: {
-			canonical: url + locale,
-			//url = https://wazen.sa/blog/slug
+			canonical:
+				process.env.NEXT_PUBLIC_BASE_URL +
+				locale +
+				//add directory if page is not homepage
+				(slug.current !== 'index' ? `${directory(page)}/${slug.current}` : ''),
 			languages: {
 				ar:
 					process.env.NEXT_PUBLIC_BASE_URL +
