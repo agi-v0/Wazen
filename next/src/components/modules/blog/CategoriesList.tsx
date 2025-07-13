@@ -113,9 +113,7 @@ export default function Categories({
 						{locale == 'ar' ? 'الكل' : 'All'}
 					</Link>
 					{categories?.map((category, _key) => {
-						const categorySlug = slugify(
-							locale === 'ar' ? category.title.ar : category.title.en,
-						)
+						const categorySlug = category.slug?.current || ''
 						const isActive =
 							slug &&
 							(slug === categorySlug ||

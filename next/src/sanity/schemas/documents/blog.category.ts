@@ -32,7 +32,19 @@ export default {
 	title: 'Blog category',
 	icon: VscEdit,
 	type: 'document',
-	fields: [localeString],
+	fields: [
+		localeString,
+		{
+			name: 'slug',
+			type: 'slug',
+			description: 'URL-friendly slug (based on English title)',
+			options: {
+				source: (doc: any) => doc.title?.en,
+				maxLength: 96,
+			},
+			validation: (rule: any) => rule.required(),
+		},
+	],
 	preview: {
 		select: {
 			title: 'title.ar',

@@ -61,7 +61,7 @@ async function getBlogPosts(locale: 'en' | 'ar', page: number = 1) {
 				metadata,
 				body,
 				categories[]->{
-					title
+					title, slug
 				}
 			}`,
 			params: {
@@ -113,7 +113,7 @@ async function getPage(locale: 'en' | 'ar') {
             }
           }
         },
-				categories[]->{title},
+				categories[]->{title, slug},
 				logos[]->,
 				plans[]->,
 				partnerslogos[]->,

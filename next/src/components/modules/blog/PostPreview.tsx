@@ -23,9 +23,7 @@ export default function PostPreview({
 						{post.categories.map((category, index) => (
 							<Link
 								key={index}
-								href={`/${pageType}/category/${slugify(
-									locale === 'ar' ? category.title.ar : category.title.en,
-								)}`}
+								href={`/${pageType}/category/${category.slug?.current}`}
 								className="inline-flex rounded-full bg-teal-100 px-2 py-1 text-xs font-medium text-teal-600 transition-colors hover:bg-teal-200"
 							>
 								{locale === 'ar' ? category.title.ar : category.title.en}

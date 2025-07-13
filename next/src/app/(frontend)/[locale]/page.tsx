@@ -52,7 +52,7 @@ async function getPage(locale: 'en' | 'ar') {
             }
           }
         },
-				categories[]->{title},
+				categories[]->{title, slug},
 				logos[]->,
 				plans[]->,
 				partnerslogos[]->,

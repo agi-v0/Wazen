@@ -70,7 +70,7 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
             }
           }
         },
-				categories[]->{title, _id},
+				categories[]->{title, _id, slug},
 				items[]->,
 				logos[]->,
 				partnerslogos[]->,
