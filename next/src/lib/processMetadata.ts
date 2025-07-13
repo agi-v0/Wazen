@@ -38,7 +38,7 @@ export default async function processMetadata(
 		},
 		creator: 'Studio Valence | byvalence.com',
 		alternates: {
-			canonical: url + (locale == 'en' ? '/en' : '/ar'),
+			canonical: url + (locale == 'en' ? 'en' : 'ar'),
 			//url = https://wazen.sa/blog/slug
 			languages: {
 				ar:
