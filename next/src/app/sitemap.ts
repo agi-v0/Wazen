@@ -18,6 +18,8 @@ interface SitemapEntry {
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
+const locales = ['en', 'ar']
+
 // Helper function to create alternates
 const createAlternates = (path: string, slug: string) => ({
 	languages: {
@@ -30,11 +32,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const query = groq`{
 		'pages': *[
 			_type == 'page' && 
-			language == 'ar' &&
+			(language == 'ar' || language == 'en') &&
 			!(metadata.slug.current in ['404']) &&
 			metadata.noIndex != true
 		] | order(metadata.slug.current) {
-			'url': $baseUrl + select(
+			'url': $baseUrl + language + '/' + select(
 				metadata.slug.current == 'index' => '', 
 				metadata.slug.current
 			),
@@ -50,7 +52,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			(_type == 'blog.post' || _type == 'blog.post.en') &&
 			metadata.noIndex != true
 		] | order(name) {
-			'url': $baseUrl + 'blog/' + metadata.slug.current,
+			'url': $baseUrl + select(
+				_type == 'blog.post.en' => 'en/',
+				'ar/'
+			) + 'blog/' + metadata.slug.current,
 			'lastModified': _updatedAt,
 			'slug': metadata.slug.current,
 			'priority': 0.4,
@@ -60,7 +65,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			(_type == 'help.center.post' || _type == 'help.center.post.en') &&
 			metadata.noIndex != true
 		] | order(name) {
-			'url': $baseUrl + 'help-center/' + metadata.slug.current,
+			'url': $baseUrl + select(
+				_type == 'help.center.post.en' => 'en/',
+				'ar/'
+			) + 'help-center/' + metadata.slug.current,
 			'lastModified': _updatedAt,
 			'slug': metadata.slug.current,
 			'priority': 0.4,
@@ -70,7 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			_type == 'app.store.app' &&
 			metadata.noIndex != true
 		] | order(name) {
-			'url': $baseUrl + 'integrations/' + metadata.slug.current,
+			'url': $baseUrl + select(language == 'en' => 'en/', 'ar/') + 'integrations/' + metadata.slug.current,
 			'lastModified': _updatedAt,
 			'slug': metadata.slug.current,
 			'priority': 0.4,
@@ -88,42 +96,52 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	// Add pages
 	data.pages?.forEach((page: any) => {
+		const { url, lastModified, slug, priority } = page
 		sitemap.push({
-			url: page.url,
-			lastModified: new Date(page.lastModified),
-			alternates: createAlternates('', page.slug),
-			priority: page.priority,
+			url: url,
+			lastModified: new Date(lastModified),
+			alternates: createAlternates('', slug),
+			priority: priority,
 		})
 	})
 
 	// Add blog posts
 	data.posts?.forEach((post: any) => {
+		const { url, lastModified, slug, priority } = post
 		sitemap.push({
-			url: post.url,
-			lastModified: new Date(post.lastModified),
-			alternates: createAlternates('blog/', post.slug),
-			priority: post.priority,
+			url: url,
+			lastModified: new Date(lastModified),
+			alternates: createAlternates('blog/', slug),
+			priority: priority,
 		})
 	})
 
 	// Add help center guides
 	data.guides?.forEach((guide: any) => {
+		const { url, lastModified, slug, priority } = guide
 		sitemap.push({
-			url: guide.url,
-			lastModified: new Date(guide.lastModified),
-			alternates: createAlternates('help-center/', guide.slug),
-			priority: guide.priority,
+			url: url,
+			lastModified: new Date(lastModified),
+			alternates: createAlternates('help-center/', slug),
+			priority: priority,
 		})
 	})
 
 	// Add integrations
 	data.integrations?.forEach((integration: any) => {
+		const { url, lastModified, slug, priority } = integration
 		sitemap.push({
-			url: integration.url,
-			lastModified: new Date(integration.lastModified),
-			alternates: createAlternates('integrations/', integration.slug),
-			priority: integration.priority,
+			url: url,
+			lastModified: new Date(lastModified),
+			alternates: createAlternates('integrations/', slug),
+			priority: priority,
 		})
+		if (url.split('/').includes('en')) {
+			console.log(url)
+		}
+		if (url.split('/').includes('ar')) {
+			console.log(url)
+		}
 	})
 
 	return sitemap
