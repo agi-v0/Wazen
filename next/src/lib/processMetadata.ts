@@ -70,6 +70,8 @@ const directory = (
 			return '/blog'
 		case 'help.center.post':
 			return '/help-center'
+		case 'app.store.app' as any:
+			return '/integrations'
 		default:
 			return ''
 	}
