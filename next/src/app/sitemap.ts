@@ -136,12 +136,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			alternates: createAlternates('integrations/', slug),
 			priority: priority,
 		})
-		if (url.split('/').includes('en')) {
-			console.log(url)
-		}
-		if (url.split('/').includes('ar')) {
-			console.log(url)
-		}
 	})
 
 	return sitemap
