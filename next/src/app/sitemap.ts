@@ -108,7 +108,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	data.pages?.forEach((page: any) => {
 		const { url, lastModified, slug, priority } = page
 		sitemap.push({
-			url: url.split('/'),
+			url: url,
 			lastModified: new Date(lastModified),
 			alternates: createAlternates('', slug),
 			priority: priority,
