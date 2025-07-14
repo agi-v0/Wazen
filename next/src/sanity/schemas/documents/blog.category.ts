@@ -47,10 +47,14 @@ export default {
 	],
 	preview: {
 		select: {
-			title: 'title.ar',
+			title: 'title',
+			subtitle: 'slug.current',
 		},
-		prepare(selection: { title: string }) {
-			return { title: selection.title }
+		prepare(value: Record<string, any>) {
+			return {
+				title: value.title,
+				subtitle: value.subtitle,
+			}
 		},
 	},
 }
