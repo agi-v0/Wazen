@@ -60,6 +60,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			'slug': metadata.slug.current,
 			'priority': 0.4,
 		},
+
+		'categories': *[
+			_type == 'blog.category' &&
+			metadata.noIndex != true
+		] | order(name) {
+			'url': $baseUrl + 'blog/category/' + slug.current,
+			'lastModified': _updatedAt,
+			'slug': slug.current,
+			'priority': 0.4,
+		},
 		
 		'guides': *[
 			(_type == 'help.center.post' || _type == 'help.center.post.en') &&
@@ -98,7 +108,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	data.pages?.forEach((page: any) => {
 		const { url, lastModified, slug, priority } = page
 		sitemap.push({
-			url: url,
+			url: url.split('/'),
 			lastModified: new Date(lastModified),
 			alternates: createAlternates('', slug),
 			priority: priority,
@@ -113,6 +123,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			lastModified: new Date(lastModified),
 			alternates: createAlternates('blog/', slug),
 			priority: priority,
+		})
+	})
+
+	// Add blog categories
+	data.categories?.forEach((category: any) => {
+		const { url, lastModified, slug, priority } = category
+		locales.forEach((locale) => {
+			const segments = url.split('/')
+			segments.splice(3, 0, locale)
+			const newUrl = segments.join('/')
+			sitemap.push({
+				url: newUrl,
+				lastModified: new Date(lastModified),
+				alternates: createAlternates('blog/category/', slug),
+				priority: priority,
+			})
 		})
 	})
 

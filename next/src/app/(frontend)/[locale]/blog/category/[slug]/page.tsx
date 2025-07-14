@@ -6,6 +6,7 @@ import BlogList from '@/components/modules/blog/BlogList'
 import BlogPagination from '@/components/modules/blog/BlogPagination'
 import { notFound } from 'next/navigation'
 import { client } from '@/sanity/lib/client'
+import site from '@/sanity/schemas/documents/site'
 
 const POSTS_PER_PAGE = 18
 
@@ -60,9 +61,10 @@ export default async function CategoryPage({ params }: Props) {
 
 export async function generateMetadata({ params }: Props) {
 	const resolvedParams = await params
+	const locale = resolvedParams.locale
 	const category = await client.fetch(
 		groq`*[_type == 'blog.category' && slug.current == $slug][0] {
-			title
+			title, slug
 		}`,
 		{ slug: resolvedParams.slug },
 	)
@@ -75,13 +77,58 @@ export async function generateMetadata({ params }: Props) {
 	}
 
 	const title =
-		resolvedParams.locale === 'en'
-			? category.title?.en || category.title
-			: category.title?.ar || category.title
+		locale === 'en'
+			? (category.title?.en || category.title) + ' - Blog'
+			: (category.title?.ar || category.title) + ' - المدونة'
+
+	const description =
+		locale === 'en'
+			? `Browse blog posts in the ${category.title?.en} category`
+			: `تصفح مقالات المدونة في فئة ${category.title?.ar}`
+
+	const url =
+		process.env.NEXT_PUBLIC_BASE_URL +
+		locale +
+		'/blog/category/' +
+		category.slug?.current
 
 	return {
-		title: `${title} - Blog`,
-		description: `Browse blog posts in the ${title} category`,
+		title,
+		description,
+		openGraph: {
+			type: 'website',
+			url,
+			title,
+			description,
+			// images: ogimage || site.ogimage,
+			siteName:
+				locale == 'en'
+					? 'Wazen ERP - Operating System for your Business'
+					: 'وازن - النظام التشغيلي لأعمالك',
+		},
+		twitter: {
+			card: 'summary_large_image',
+			site: '@MyWazen',
+			creator: '@MyWazen',
+			// images: ogimage || site.ogimage,
+		},
+		creator: 'Studio Valence | byvalence.com',
+		alternates: {
+			canonical: url,
+			languages: {
+				ar:
+					process.env.NEXT_PUBLIC_BASE_URL +
+					'ar/blog/category/' +
+					category.slug?.current,
+				en:
+					process.env.NEXT_PUBLIC_BASE_URL +
+					'en/blog/category/' +
+					category.slug?.current,
+			},
+			types: {
+				'application/rss+xml': '/blog/rss.xml',
+			},
+		},
 	}
 }
 
