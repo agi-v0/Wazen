@@ -39,9 +39,10 @@ export async function generateStaticParams() {
 async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	const decodedSlug = decodeURIComponent(params.slug || '')
 	const type = params.locale == 'ar' ? 'blog.post' : 'blog.post.en'
+	const locale = params.locale == 'ar' ? 'ar' : 'en'
 
-	return await fetchSanityLive({
-		query: groq`*[(_type == 'blog.post' || _type == 'blog.post.en') && metadata.slug.current == $slug][0]{
+	const data = await await fetchSanityLive({
+		query: groq`*[(_type == 'blog.post' || _type == 'blog.post.en') && metadata.slug.current == $slug]{
             ...,
             'body': select(_type == 'image' => asset->, body),
             'readTime': length(pt::text(body)) / 1700,
@@ -59,4 +60,19 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 		params: { slug: decodedSlug, type },
 		tags: ['blog'],
 	})
+
+	// if locale is en, return the en post, otherwise return the ar post
+	if (locale === 'en') {
+		return (
+			data.find((post: Sanity.BlogPostEn) => post._type === 'blog.post.en') ||
+			data.find((post: Sanity.BlogPost) => post._type === 'blog.post') ||
+			null
+		)
+	}
+
+	return (
+		data.find((post: Sanity.BlogPost) => post._type === 'blog.post') ||
+		data.find((post: Sanity.BlogPostEn) => post._type === 'blog.post.en') ||
+		null
+	)
 }

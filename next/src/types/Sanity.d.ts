@@ -47,6 +47,15 @@ declare global {
 			publishDate: string
 		}
 
+		type BlogPostEn = PageBase & {
+			readonly _type: 'blog.post.en'
+			body: any
+			readTime: number
+			headings?: { style: string; text: string }[]
+			categories: BlogCategory[]
+			publishDate: string
+		}
+
 		type HelpCenterPost = PageBase & {
 			readonly _type: 'help.center.post'
 			body: any

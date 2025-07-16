@@ -50,5 +50,11 @@ export default {
 			title: 'title',
 			subtitle: 'slug.current',
 		},
+		prepare(selection: Record<string, any>) {
+			return {
+				title: selection.title,
+				subtitle: selection.subtitle,
+			}
+		},
 	},
 }
