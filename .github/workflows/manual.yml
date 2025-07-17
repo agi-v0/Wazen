@@ -1,0 +1,86 @@
+# A name for the workflow, which will be displayed in the Actions tab.
+name: Deploy from specific commit
+
+# Controls when the workflow will run.
+on:
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+    # Defines the input fields that will be presented when the workflow is run manually.
+    inputs:
+      commit_sha:
+        description: "The full commit SHA to deploy (e.g., 123abc456def)"
+        required: true # This input is mandatory.
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+jobs:
+  # The 'Build' job is responsible for building and publishing the Docker image.
+  Build:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    env:
+      DOT_ENV: ${{ secrets.DOT_ENV }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job.
+    steps:
+      # Checks-out your repository at a specific commit.
+      # The commit SHA is taken from the manual input provided when the workflow was triggered.
+      - name: Checkout specific commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.commit_sha }}
+
+      # Creates the .env file from a GitHub secret.
+      - name: Create .env file
+        run: printf '%s' "${{ env.DOT_ENV }}" > ./next/.env
+
+      # Logs into Docker Hub using credentials stored in secrets.
+      - name: Docker Login
+        uses: docker/login-action@v3.1.0
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      # Builds the Docker image from the specified commit and tags it as 'main'.
+      # This overwrites the previous 'main' tag in your Docker registry.
+      - name: Build and Push Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:main ./next
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:main
+
+  # The 'Deploy' job is responsible for deploying the new image to the production server.
+  Deploy:
+    # The runner for this job.
+    runs-on: ubuntu-latest
+    # Specifies the deployment environment.
+    environment:
+      name: production
+      url: https://wazen.sa
+    # This job will only run after the 'Build' job has completed successfully.
+    needs: Build
+    env:
+      DOT_ENV: ${{ secrets.DOT_ENV }}
+
+    steps:
+      # Sets up an SSH agent with the private key to allow secure access to your server.
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      # Connects to the server and runs the deployment commands.
+      - name: Deploy to main
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "\
+            # Create the .env file on the server.
+            printf '%s' '${{ env.DOT_ENV }}' > .env && \
+            
+            # Pull the 'main' tagged Docker image.
+            # Your docker-compose.yml file on the server should be configured to use the 'main' tag.
+            sudo docker compose pull site && \
+            
+            # Bring up the services with the new image.
+            sudo docker compose up -d && \
+            
+            # Clean up old, unused Docker images to save space.
+            sudo docker system prune -af"
