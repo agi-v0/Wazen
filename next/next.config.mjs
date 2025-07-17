@@ -40,14 +40,14 @@ const nextConfig = {
 	// 	},
 	// },
 
-	// async redirects() {
-	// 	const redirects = await client.fetch(groq`*[_type == 'redirect']`)
-	// 	return redirects?.map(({ source, destination, permanent }) => ({
-	// 		source: (source.startsWith('/') ? '' : '/') + encodeURI(source),
-	// 		destination,
-	// 		permanent,
-	// 	}))
-	// },
+	async redirects() {
+		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
+		return redirects?.map(({ source, destination, permanent }) => ({
+			source: (source.startsWith('/') ? '' : '/') + encodeURI(source),
+			destination,
+			permanent,
+		}))
+	},
 
 	// logging: {
 	// 	fetches: {
