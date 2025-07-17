@@ -41,12 +41,12 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      # Builds the Docker image and tags it with the commit SHA.
-      # This ensures each deployed version has a unique, traceable image tag.
+      # Builds the Docker image from the specified commit and tags it as 'main'.
+      # This overwrites the previous 'main' tag in your Docker registry.
       - name: Build and Push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:${{ github.event.inputs.commit_sha }} ./next
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:${{ github.event.inputs.commit_sha }}
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:main ./next
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:main
 
   # The 'Deploy' job is responsible for deploying the new image to the production server.
   Deploy:
@@ -72,19 +72,15 @@ jobs:
       - name: Deploy to main
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "\
-            # Export the commit SHA as an environment variable on the server.
-            # This variable will be used by docker-compose to pull the correct image tag.
-            export IMAGE_TAG=${{ github.event.inputs.commit_sha }} && \
-            
             # Create the .env file on the server.
             printf '%s' '${{ env.DOT_ENV }}' > .env && \
             
-            # Pull the new Docker image tagged with the commit SHA.
-            # The -E flag for sudo preserves the environment variables (like IMAGE_TAG).
-            sudo -E docker compose pull site && \
+            # Pull the 'main' tagged Docker image.
+            # Your docker-compose.yml file on the server should be configured to use the 'main' tag.
+            sudo docker compose pull site && \
             
             # Bring up the services with the new image.
-            sudo -E docker compose up -d && \
+            sudo docker compose up -d && \
             
             # Clean up old, unused Docker images to save space.
             sudo docker system prune -af"
