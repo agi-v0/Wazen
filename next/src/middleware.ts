@@ -4,6 +4,13 @@ import { routing } from './i18n/routing'
 import { createClient } from 'next-sanity'
 import groq from 'groq'
 
+type Redirect = {
+	_updatedAt: string
+	destination: string
+	permanent: boolean
+	source: string
+}
+
 const intlMiddleware = createMiddleware(routing)
 
 const PUBLIC_FILE = /\.(.*)$/
@@ -14,10 +21,11 @@ const client = createClient({
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
 	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-06-02',
 	useCdn: true,
+	perspective: 'published',
 })
 
 // Cache for redirects with TTL
-let redirectsCache: { data: any[] | null; timestamp: number } = {
+let redirectsCache: { data: Redirect[] | null; timestamp: number } = {
 	data: null,
 	timestamp: 0,
 }
@@ -32,11 +40,13 @@ async function getRedirects() {
 	}
 
 	try {
-		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
+		const redirects = await client.fetch<Redirect[]>(
+			groq`*[_type == 'redirect']`,
+		)
 		redirectsCache = { data: redirects || [], timestamp: now }
 		return redirects || []
 	} catch (error) {
-		console.warn('Failed to fetch redirects:', error)
+		console.warn('Failed to fetch redirects: ', error)
 		// Return cached data even if expired, or empty array
 		return redirectsCache.data || []
 	}
@@ -50,7 +60,6 @@ function normalizePath(path: string): string {
 
 export default async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl
-
 	// Skip middleware for static files and specific paths
 	if (
 		PUBLIC_FILE.test(pathname) ||
@@ -83,6 +92,7 @@ export default async function middleware(request: NextRequest) {
 			// Check for locale-prefixed matches
 			// Extract potential locale from pathname (e.g., /ar/our-pricing -> ar, our-pricing)
 			const pathParts = pathname.split('/').filter(Boolean)
+
 			if (pathParts.length > 0) {
 				const potentialLocale = pathParts[0]
 				const restOfPath = pathParts.slice(1).join('/')
@@ -92,6 +102,7 @@ export default async function middleware(request: NextRequest) {
 					const pathWithoutLocale = '/' + restOfPath
 					const sourceWithoutLocale = normalizedSource
 
+					// Check if the rest of the path matches the redirect source
 					if (
 						normalizePath(pathWithoutLocale) ===
 						normalizePath(sourceWithoutLocale)
@@ -104,10 +115,7 @@ export default async function middleware(request: NextRequest) {
 						) {
 							finalDestination = `/${potentialLocale}${destination.startsWith('/') ? '' : '/'}${destination}`
 						}
-						return NextResponse.redirect(
-							new URL(finalDestination, request.url),
-							permanent ? 308 : 307,
-						)
+						request.nextUrl.pathname = finalDestination
 					}
 				}
 			}
