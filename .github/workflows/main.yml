@@ -13,6 +13,11 @@ on:
         description: "Confirm start"
         required: false
         default: "yes"
+
+  # 21:00 UTC daily (≈ 00:00 Arabia Standard Time GMT + 3).
+  schedule:
+    - cron: "0 21 * * *"
+
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Build:
