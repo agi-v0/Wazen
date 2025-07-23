@@ -1,6 +1,5 @@
 'use client'
 import { Link } from '@/i18n/routing'
-import { slugify } from '@/lib/slugify'
 import { useRouter } from 'next/navigation'
 import {
 	Select,
@@ -38,7 +37,7 @@ export default function Categories({
 
 	const getCurrentValue = () => {
 		if (!slug || slug === 'all') return 'all'
-		return decodeURIComponent(slug)
+		return slug
 	}
 
 	const getCurrentLabel = () => {
@@ -47,10 +46,7 @@ export default function Categories({
 		}
 
 		const currentCategory = categories?.find((category) => {
-			const categorySlug = slugify(
-				locale === 'ar' ? category.title.ar : category.title.en,
-			)
-			return slug === categorySlug || decodeURIComponent(slug) === categorySlug
+			return slug === category.slug?.current
 		})
 
 		return currentCategory
@@ -86,11 +82,8 @@ export default function Categories({
 								{locale === 'ar' ? 'الكل' : 'All'}
 							</SelectItem>
 							{categories?.map((category, _key) => {
-								const categorySlug = slugify(
-									locale === 'ar' ? category.title.ar : category.title.en,
-								)
 								return (
-									<SelectItem key={_key} value={categorySlug}>
+									<SelectItem key={_key} value={category.slug?.current || ''}>
 										{locale === 'ar' ? category.title.ar : category.title.en}
 									</SelectItem>
 								)
