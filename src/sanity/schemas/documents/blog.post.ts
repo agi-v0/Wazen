@@ -1,5 +1,6 @@
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
+import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 
 export default {
 	name: 'blog.post',
@@ -42,6 +43,13 @@ export default {
 					to: [{ type: 'blog.category' }],
 				},
 			],
+		},
+		{
+			name: 'callToAction',
+			title: 'Call To Action',
+			icon: TfiLayoutCtaCenter,
+			type: 'reference',
+			to: [{ type: 'call.to.action.doc' }],
 		},
 		{
 			name: 'publishDate',

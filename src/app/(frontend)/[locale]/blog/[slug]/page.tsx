@@ -51,6 +51,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
                 'text': pt::text(@)
             },
             categories[]->,
+						callToAction->,
             metadata {
                 ...,
                 'ogimage': image.asset->url

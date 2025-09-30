@@ -11,6 +11,7 @@ import { Icon } from '@iconify-icon/react'
 import CTA from '../../CTA'
 import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
+import CallToAction from '../CallToAction'
 
 export default function Post({
 	post,
@@ -19,30 +20,40 @@ export default function Post({
 	post: Sanity.BlogPost
 	locale: any
 }) {
+	const {
+		categories,
+		publishDate,
+		readTime,
+		title,
+		metadata,
+		headings,
+		body,
+		callToAction,
+	} = post
 	return (
 		<article className="section mb-[25vh]">
 			<header className="mt-[15vh] md:space-y-12">
 				<div className="space-y-6 md:space-y-8">
 					<div className="flex items-center justify-center gap-2 text-sm font-medium">
-						{post?.categories && (
+						{categories && (
 							<div className="w-fit rounded-full bg-teal-100 px-3 py-1 text-center text-teal-600">
 								{locale === 'ar'
-									? post?.categories[0]?.title.ar
-									: post?.categories[0]?.title.en}
+									? categories[0]?.title.ar
+									: categories[0]?.title.en}
 							</div>
 						)}
 						<div className="flex w-fit flex-row items-center gap-1 rounded-full px-3 py-1 text-center text-cyan-950/60">
 							<Icon icon="ph:calendar-blank-line" className="size-4" />
-							<Date value={post.publishDate} locale={locale} />
+							<Date value={publishDate} locale={locale} />
 						</div>
-						<ReadTime value={post.readTime} />
+						<ReadTime value={readTime} />
 					</div>
 					<h1 className="h1 mx-auto max-w-5xl text-center text-balance text-cyan-950">
-						{post.title}
+						{title}
 					</h1>
 				</div>
 				<Img
-					image={post.metadata.image}
+					image={metadata.image}
 					//
 					className="aspect-[inherit] w-full rounded-2xl"
 					priority
@@ -51,12 +62,12 @@ export default function Post({
 
 			<div className="fluid-gap grid py-(--size--3rem) md:grid-cols-3">
 				<aside className="md:sticky-below-header mx-auto w-full self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
-					<TableOfContents headings={post.headings} />
+					<TableOfContents headings={headings} />
 				</aside>
 
 				<div className="mx-auto space-y-6 md:col-span-2">
 					<PortableText
-						value={post.body}
+						value={body}
 						components={{
 							block: {
 								normal: ({ children }) => (
@@ -110,6 +121,7 @@ export default function Post({
 							},
 						}}
 					/>
+					<CallToAction {...callToAction} className="px-0" />
 				</div>
 			</div>
 		</article>

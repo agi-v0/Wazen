@@ -8,17 +8,7 @@ import { cn } from '@/lib/utils'
 import { Icon } from '@iconify-icon/react'
 
 import { Img } from '@/components/Img'
-
-// Define the expected prop types more clearly
-type CallToActionProps = Partial<{
-	content: any
-	ctas: Sanity.CTA[]
-	checkedList: any
-	textAlign: React.CSSProperties['textAlign']
-	alignItems: React.CSSProperties['alignItems']
-	image: Sanity.Image & { alt?: string; onRight?: boolean }
-	// locale: 'en' | 'ar' // Add locale if needed for CTAList or other parts
-}>
+import { CallToActionDoc } from 'sanity'
 
 // Component is now simpler, receives all data via props
 export default function CallToAction({
@@ -26,9 +16,8 @@ export default function CallToAction({
 	ctas,
 	image,
 	checkedList,
-	textAlign = 'start',
-	alignItems,
-}: CallToActionProps) {
+	className,
+}: CallToActionDoc & { className?: string }) {
 	// Return null or placeholder if essential content is missing
 	if (!content && !ctas) {
 		return null
@@ -81,7 +70,7 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className="section fluid-padding">
+		<section className={cn(`section fluid-padding`, className)}>
 			<div
 				className={cn(
 					'fluid-gap fluid-padding -cyan-gradient-background-1 relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl bg-cyan-50 lg:flex-row lg:justify-start',
