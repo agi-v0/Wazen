@@ -1,4 +1,4 @@
-import { VscEdit } from 'react-icons/vsc'
+import { VscTag } from 'react-icons/vsc'
 
 const supportedLanguages = [
 	{ id: 'ar', title: 'Arabic', isDefault: true },
@@ -30,7 +30,7 @@ const localeString = {
 export default {
 	name: 'blog.category',
 	title: 'Blog category',
-	icon: VscEdit,
+	icon: VscTag,
 	type: 'document',
 	fields: [
 		localeString,
