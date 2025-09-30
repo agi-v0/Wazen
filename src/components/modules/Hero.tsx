@@ -8,6 +8,8 @@ import { hero } from '@/components/portable-text'
 import { ContainerScroll } from '@/components/animated/container-scroll-animation'
 import { Img } from '@/components/Img'
 
+import { Link } from '@/i18n/routing'
+
 export default function Hero({
 	pretitle,
 	content,
@@ -15,7 +17,10 @@ export default function Hero({
 	ctas,
 	locale,
 }: Partial<{
-	pretitle: string
+	pretitle?: {
+		label?: string
+		href?: string
+	}
 	content: any
 	ctas: Sanity.CTA[]
 	image: Sanity.Image
@@ -41,10 +46,22 @@ export default function Hero({
 			<div className="section relative flex w-full flex-col justify-center">
 				<div className="relative space-y-6 pt-[25vh] text-center text-white">
 					<div className="flex flex-col items-center justify-center gap-2 md:flex-row">
-						<div className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
-							<Icon icon="ph:seal-check" className="text-xl" />
-							<span>{pretitle}</span>
-						</div>
+						{pretitle?.href ? (
+							<Link
+								href={pretitle.href}
+								className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white hover:bg-cyan-950/60"
+							>
+								<Icon icon="ph:seal-check" className="text-xl" />
+								<span>{pretitle.label}</span>
+							</Link>
+						) : (
+							pretitle?.label && (
+								<div className="text-small flex w-fit grow-0 flex-row items-center gap-2 rounded-full bg-cyan-950/40 px-4 py-2 font-normal text-white">
+									<Icon icon="ph:seal-check" className="text-xl" />
+									<span>{pretitle.label}</span>
+								</div>
+							)
+						)}
 					</div>
 
 					<PortableText value={content} components={hero} />

@@ -8,8 +8,17 @@ export default {
 	type: 'object',
 	fields: [
 		{
+			title: 'Pretitle',
 			name: 'pretitle',
-			type: 'string',
+			type: 'object',
+			fields: [
+				{ name: 'label', type: 'string' },
+				{ name: 'href', type: 'url', title: 'Link' },
+			],
+			options: {
+				collapsible: true,
+				collapsed: true,
+			},
 		},
 		{
 			name: 'content',
