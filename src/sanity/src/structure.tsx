@@ -25,7 +25,7 @@ export const structure = structureTool({
 
 				S.documentTypeListItem('help.center.post').title('Help center posts'),
 				S.documentTypeListItem('help.center.category').title(
-					'Help Center Categories',
+					'Help center categories',
 				),
 				S.divider(),
 

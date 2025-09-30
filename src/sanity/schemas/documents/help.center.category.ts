@@ -2,7 +2,7 @@ import { VscTag } from 'react-icons/vsc'
 
 export default {
 	name: 'help.center.category',
-	title: 'Help Center Category',
+	title: 'Help center category',
 	type: 'document',
 	icon: VscTag,
 	fields: [
