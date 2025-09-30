@@ -10,13 +10,13 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: "Confirm start"
+        description: 'Confirm start'
         required: false
-        default: "yes"
+        default: 'yes'
 
   # 21:00 UTC daily (≈ 00:00 Arabia Standard Time GMT + 3).
   schedule:
-    - cron: "0 21 * * *"
+    - cron: '0 21 * * *'
 
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,7 +33,7 @@ jobs:
           ref: main
 
       - name: Create .env file
-        run: printf '%s' "${{ env.DOT_ENV }}" > ./next/.env
+        run: printf '%s' "${{ env.DOT_ENV }}" > .//.env
 
       - name: Docker Login
         uses: docker/login-action@v3.1.0
@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       - name: docker build
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/} ./next
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/} ./
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:${GITHUB_REF#refs/heads/}
   Deploy:
     runs-on: ubuntu-latest

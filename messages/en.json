@@ -1,0 +1,80 @@
+{
+	"Index": {
+		"The OS for your Business": "The Operating System for Your Business",
+		"All rights reserved": "Wazen Financial Company. All rights reserved.",
+		"Location": "Jeddah - Alhamra - Alfadel St. AlMouehi Center for Business - 2nd floor"
+	},
+	"Blog": {
+		"Read more": "Read More",
+		"View more": "View More",
+		"Contents": "On this page",
+		"Read time": "Read time",
+		"minutes": "minutes"
+	},
+	"App store": {
+		"Download": "Download"
+	},
+	"Pricing": {
+		"Monthly": "Monthly",
+		"Yearly": "Yearly",
+		"Yearly (two months free)": "Yearly (two months free)",
+		"Tap to add to estimated price": "Tap to add to estimated price",
+		"Estimated price": "Estimated price",
+		"SR": "SR"
+	},
+	"ContactUs": {
+		"First Name": "First Name",
+		"Last Name": "Last Name",
+		"Company Name": "Company Name",
+		"Business Field": "Business Field",
+		"Contact Number": "Contact Number",
+		"Email": "ُEmail",
+		"Write your message here": "Write your message here...",
+		"Send Message": "Send Message",
+		"I agree to the terms and conditions": "I agree to the terms and conditions"
+	},
+	"FeaturesInfiniteScroll": {
+		"Check in and check out": "Check in and check out",
+		"Employee info": "Employee info",
+		"Housing and accomodation": "Housing and accomodation",
+		"Insurance": "Insurance",
+		"Salaries": "Salaries",
+		"Leads": "Leads",
+		"Contracts": "Contracts",
+		"Subscriptions": "Subscriptions",
+		"Clients": "Clients",
+		"SMS and Whatsapp": "SMS and Whatsapp",
+		"Sales": "Sales",
+		"Purchases": "Purchases",
+		"Inventory": "Inventory",
+		"Financial lists": "Financial lists",
+		"Cost centers": "Cost centers",
+		"Replaces": "Replaces",
+		"Wafeq": "Wafeq",
+		"Edara": "Edara",
+		"Odoo": "Odoo",
+		"Qoyod": "Qoyod",
+		"Daftra": "Daftra"
+	},
+	"App": {
+		"You may also be interested in": "You may also be interested in",
+		"View all": "View all"
+	},
+	"Sitemap": {
+		"title": "Sitemap",
+		"description": "Explore all pages on the Wazen website and find what you need easily",
+		"searchPlaceholder": "Search pages...",
+		"mainPages": "Main Pages",
+		"blogPosts": "Blog Posts",
+		"helpCenter": "Help Center",
+		"integrations": "Apps & Integrations",
+		"blogCategories": "Blog Categories",
+		"cantFind": "Can't find what you're looking for?",
+		"contactHelp": "Contact us and we'll help you find what you need",
+		"contactUs": "Contact Us"
+	},
+	"Pagination": {
+		"previous": "Previous",
+		"next": "Next"
+	}
+}

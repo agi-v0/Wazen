@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+Crawl-delay: 10
+
+# Specific rules for major bots
+User-agent: Googlebot
+Crawl-delay: 5
+
+User-agent: Bingbot
+Crawl-delay: 5
+
+# Prevent media files from being crawled (if needed)
+User-agent: *
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+
+# Sitemaps
+Sitemap: https://wazen.sa/sitemap.xml

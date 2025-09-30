@@ -1,0 +1,9 @@
+.header {
+	grid-template:
+		'logo toggle' auto
+		'ctas ctas' auto / 1fr auto;
+
+	@screen lg {
+		grid-template: 'logo ctas' auto / 1fr auto;
+	}
+}

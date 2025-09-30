@@ -8,7 +8,7 @@ on:
     # Defines the input fields that will be presented when the workflow is run manually.
     inputs:
       commit_sha:
-        description: "The full commit SHA to deploy (e.g., 123abc456def)"
+        description: 'The full commit SHA to deploy (e.g., 123abc456def)'
         required: true # This input is mandatory.
         type: string
 
@@ -32,7 +32,7 @@ jobs:
 
       # Creates the .env file from a GitHub secret.
       - name: Create .env file
-        run: printf '%s' "${{ env.DOT_ENV }}" > ./next/.env
+        run: printf '%s' "${{ env.DOT_ENV }}" > ./.env
 
       # Logs into Docker Hub using credentials stored in secrets.
       - name: Docker Login
@@ -45,7 +45,7 @@ jobs:
       # This overwrites the previous 'main' tag in your Docker registry.
       - name: Build and Push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:main ./next
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/site:main ./
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/site:main
 
   # The 'Deploy' job is responsible for deploying the new image to the production server.
