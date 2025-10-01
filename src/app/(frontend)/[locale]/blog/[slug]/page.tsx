@@ -49,9 +49,16 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
             'headings': body[style in ['h2', 'h3']]{
                 style,
                 'text': pt::text(@)
-            },
-						'relatedPosts': *[ _type == ^._type && _id != ^._id && count((categories[]._ref)[@ in ^.categories[]._ref]) > 0 ][0...4]{..., categories[]->},
-						
+            },		
+						"relatedPosts": *[
+							_type == ^._type
+							&& _id != ^._id
+							&& count(categories) > 0
+							&& array::intersects(categories[]._ref, ^.categories[]._ref)
+						]|order(publishDate desc)[0...4]{
+							...,
+							categories[]->,
+						},						
             categories[]->,
 						callToAction->{
 							...,

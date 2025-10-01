@@ -12,7 +12,7 @@ export default function PostPreview({
 }: {
 	type?: string
 	post: Sanity.BlogPost
-	locale: string
+	locale?: 'en' | 'ar'
 	className?: string
 }) {
 	const pageType = type == 'categories-list' ? 'blog' : 'help-center'
