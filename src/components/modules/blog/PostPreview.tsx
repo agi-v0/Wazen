@@ -2,20 +2,28 @@ import { Link } from '@/i18n/routing'
 import Date from '@/components/Date'
 import { Icon } from '@iconify-icon/react'
 import { slugify } from '@/lib/slugify'
+import { cn } from '@/lib/utils'
 
 export default function PostPreview({
 	type,
 	post,
 	locale,
+	className,
 }: {
 	type?: string
 	post: Sanity.BlogPost
-	locale: any
+	locale: string
+	className?: string
 }) {
 	const pageType = type == 'categories-list' ? 'blog' : 'help-center'
 
 	return (
-		<div className="group flex w-full flex-col justify-between rounded-2xl bg-white p-6 group-hover:shadow-lg md:h-full">
+		<div
+			className={cn(
+				'group flex w-full flex-col justify-between rounded-2xl bg-white p-6 group-hover:shadow-lg md:h-full',
+				className,
+			)}
+		>
 			<div className="flex flex-col gap-(--text-large--font-size)">
 				{/* Categories */}
 				{post?.categories && post.categories.length > 0 && (

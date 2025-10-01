@@ -71,22 +71,14 @@ declare global {
 		}
 
 		type BlogPost = PageBase & {
-			readonly _type: 'blog.post'
+			readonly _type: 'blog.post' | 'blog.post.en'
 			body: any
 			readTime: number
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
 			publishDate: string
 			callToAction: any
-		}
-
-		type BlogPostEn = PageBase & {
-			readonly _type: 'blog.post.en'
-			body: any
-			readTime: number
-			headings?: { style: string; text: string }[]
-			categories: BlogCategory[]
-			publishDate: string
+			relatedPosts: BlogPost[]
 		}
 
 		type HelpCenterPost = PageBase & {

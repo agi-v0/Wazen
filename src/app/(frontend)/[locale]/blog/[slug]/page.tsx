@@ -50,6 +50,8 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
                 style,
                 'text': pt::text(@)
             },
+						'relatedPosts': *[ _type == ^._type && _id != ^._id && count((categories[]._ref)[@ in ^.categories[]._ref]) > 0 ][0...4]{..., categories[]->},
+						
             categories[]->,
 						callToAction->{
 							...,
@@ -68,7 +70,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 	// if locale is en, return the en post, otherwise return the ar post
 	if (locale === 'en') {
 		return (
-			data.find((post: Sanity.BlogPostEn) => post._type === 'blog.post.en') ||
+			data.find((post: Sanity.BlogPost) => post._type === 'blog.post.en') ||
 			data.find((post: Sanity.BlogPost) => post._type === 'blog.post') ||
 			null
 		)
@@ -76,7 +78,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 
 	return (
 		data.find((post: Sanity.BlogPost) => post._type === 'blog.post') ||
-		data.find((post: Sanity.BlogPostEn) => post._type === 'blog.post.en') ||
+		data.find((post: Sanity.BlogPost) => post._type === 'blog.post.en') ||
 		null
 	)
 }

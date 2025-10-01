@@ -26,7 +26,7 @@ export default function LinkList({
 						{links?.[0] && (
 							<li key={links?.[0].label} className="group row-span-3">
 								<Link
-									className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-cyan-800 to-cyan-950 p-4 text-start no-underline outline-none transition-all focus:shadow-md"
+									className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b from-cyan-800 to-cyan-950 p-4 text-start no-underline transition-all outline-none select-none focus:shadow-md"
 									locale={locale}
 									href={processUrl(links[0].internal as Sanity.PageBase, {
 										base: false,
@@ -42,11 +42,11 @@ export default function LinkList({
 										loading="eager"
 										width={540}
 									/>
-									<div className="mb-2 mt-4 flex flex-row items-center text-lg font-medium text-white group-hover:text-teal-500">
+									<div className="mt-4 mb-2 flex flex-row items-center text-base font-medium text-white group-hover:text-teal-500">
 										{links?.[0].label}
 										<Icon
 											icon="ph:caret-left-bold"
-											className="size-3 text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
+											className="size-[0.6lh] text-white/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
 										/>
 									</div>
 									<p className="text-sm leading-tight text-white/80 group-hover:text-white">
@@ -69,14 +69,14 @@ export default function LinkList({
 									key={link.label}
 									className="group relative flex w-full flex-col p-3 text-start transition-all hover:bg-teal-50"
 								>
-									<div className="flex flex-row items-center font-medium text-gray-950 group-hover:text-teal-600">
+									<div className="flex flex-row items-center text-sm font-medium text-gray-950 group-hover:text-teal-600">
 										{link.label}
 										<Icon
 											icon="ph:caret-left-bold"
 											className="size-3 text-teal-500/50 opacity-0 transition-transform group-hover:-translate-x-1 group-hover:opacity-100 ltr:rotate-180 ltr:group-hover:translate-x-1"
 										/>
 									</div>
-									<p className="text-gray-600 group-hover:text-cyan-950">
+									<p className="line-clamp-2 text-sm leading-tight text-gray-600 group-hover:text-cyan-950">
 										{link.description}
 									</p>
 								</ListItem>
@@ -99,15 +99,14 @@ const ListItem = React.forwardRef<
 				<a
 					ref={ref}
 					className={cn(
-						'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors',
+						'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none',
 						className,
 					)}
 					{...props}
 				>
-					<div className="text-sm font-medium leading-none">{title}</div>
-					<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-						{children}
-					</p>
+					<div className="text-sm leading-none font-medium">{title}</div>
+
+					{children}
 				</a>
 			</NavigationMenuLink>
 		</li>

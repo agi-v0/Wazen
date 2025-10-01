@@ -1,17 +1,15 @@
 import Date from '@/components/Date'
 import ReadTime from './ReadTime'
-import {
-	PortableText,
-	PortableTextTypeComponentProps,
-} from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import TableOfContents from '@/components/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/components/modules/RichtextModule/AnchoredHeading'
 import { Img } from '@/components/Img'
 import { Icon } from '@iconify-icon/react'
-import CTA from '../../CTA'
+
 import { Link } from '@/i18n/routing'
-import processUrl from '@/lib/processUrl'
+
 import CallToAction from '../CallToAction'
+import RelatedPosts from './RelatedPosts'
 
 export default function Post({
 	post,
@@ -29,6 +27,7 @@ export default function Post({
 		headings,
 		body,
 		callToAction,
+		relatedPosts,
 	} = post
 	return (
 		<article className="section mb-[25vh]">
@@ -59,10 +58,14 @@ export default function Post({
 					priority
 				/>
 			</header>
-
-			<div className="fluid-gap grid py-(--size--3rem) md:grid-cols-3">
-				<aside className="md:sticky-below-header mx-auto w-full self-start rounded-2xl bg-teal-100 p-6 [--offset:1rem] md:order-1">
+			<div className="fluid-gap grid py-(--size--3rem) md:grid-cols-3 md:items-start">
+				<aside className="w-full md:sticky md:top-[calc(var(--header-height)+1rem)]">
 					<TableOfContents headings={headings} />
+					<RelatedPosts
+						posts={relatedPosts}
+						locale={locale}
+						className="mt-(--size--3rem) max-lg:hidden"
+					/>
 				</aside>
 
 				<div className="mx-auto space-y-6 md:col-span-2">
@@ -122,6 +125,11 @@ export default function Post({
 						}}
 					/>
 					<CallToAction {...callToAction} className="px-0" />
+					<RelatedPosts
+						posts={relatedPosts}
+						locale={locale}
+						className="lg:hidden"
+					/>
 				</div>
 			</div>
 		</article>
