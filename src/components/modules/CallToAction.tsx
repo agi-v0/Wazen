@@ -17,7 +17,7 @@ export default function CallToAction({
 	image,
 	checkedList,
 	className,
-}: CallToActionDoc & { className?: string }) {
+}: Sanity.CallToActionDoc & { className?: string }) {
 	// Return null or placeholder if essential content is missing
 	if (!content && !ctas) {
 		return null
@@ -99,7 +99,7 @@ export default function CallToAction({
 					{content && <PortableText value={content} components={components} />}
 
 					{ctas && (
-						<CTAList ctas={ctas} className="w-full *:h-12 *:text-base" />
+						<CTAList ctas={ctas as any} className="w-full *:h-12 *:text-base" />
 					)}
 					{checkedList && (
 						<div className="flex flex-col gap-2">

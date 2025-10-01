@@ -1,7 +1,7 @@
 import { fetchSanity, fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 
-const navigationQuery = groq`
+const navigationProjection = /* groq */ `
 	title,
 	items[]{
 		...,
@@ -45,10 +45,10 @@ export async function getSite(locale: any) {
 						internal->{ _type, title, metadata }
 					}
 				},
-				headerMenu->{ ${navigationQuery} },
-				footerMenu->{ ${navigationQuery} },
-				social->{ ${navigationQuery} },
-				staticLinks->{ ${navigationQuery} },
+				headerMenu->{ ${navigationProjection} },
+				footerMenu->{ ${navigationProjection} },
+				social->{ ${navigationProjection} },
+				staticLinks->{ ${navigationProjection} },
 				'ogimage': ogimage.asset->url,
 				"contactInfo": *[_type == 'page' && metadata.slug.current == "contact-us" && language == $locale][0]{
 					"contactInfo": modules[0].contactInfo

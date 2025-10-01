@@ -32,8 +32,9 @@ export default async function Page({ params }: Props) {
 	if (!app) notFound()
 
 	// Fetch the default CTA document data within the Page component
-	const ctaDocData = await fetchSanityLive<Sanity.Module>({
+	const ctaDocData = await fetchSanityLive<Sanity.CallToActionDoc>({
 		query: groq`*[_type == 'call.to.action.doc' && language == $locale][0]{
+			...,
 			content,
 			ctas[]{
 				...,
@@ -60,10 +61,7 @@ export default async function Page({ params }: Props) {
 			{/* Pass the fetched ctaDocData to CallToAction */}
 			{ctaDocData && (
 				<CallToAction
-					content={ctaDocData.content}
-					ctas={ctaDocData.ctas}
-					checkedList={ctaDocData.checkedList}
-					image={ctaDocData.image}
+					{...ctaDocData}
 					// Pass other props if needed, e.g., textAlign
 				/>
 			)}

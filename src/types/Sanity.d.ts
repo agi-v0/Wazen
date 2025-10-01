@@ -1,5 +1,6 @@
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import type { SanityDocument } from 'next-sanity'
+import { CallToActionDoc } from 'sanity'
 
 declare global {
 	namespace Sanity {
@@ -38,6 +39,37 @@ declare global {
 			readonly _type: 'page'
 		}
 
+		type CallToActionDoc = {
+			_id: string
+			_type: 'call.to.action.doc'
+			_createdAt: string
+			_updatedAt: string
+			_rev: string
+			language?: string
+			content?: any
+			image?: {
+				asset?: {
+					_ref: string
+					_type: 'reference'
+					_weak?: boolean
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+				}
+				media?: unknown
+				hotspot?: SanityImageHotspot
+				crop?: SanityImageCrop
+				alt?: string
+				onRight?: boolean
+				loading?: 'lazy' | 'eager'
+				_type: 'image'
+			}
+			ctas?: Array<
+				{
+					_key: string
+				} & Cta
+			>
+			checkedList?: any
+		}
+
 		type BlogPost = PageBase & {
 			readonly _type: 'blog.post'
 			body: any
@@ -45,6 +77,7 @@ declare global {
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
 			publishDate: string
+			callToAction: any
 		}
 
 		type BlogPostEn = PageBase & {
