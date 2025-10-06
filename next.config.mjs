@@ -42,7 +42,7 @@ const nextConfig = {
 
 	async redirects() {
 		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
-		const resolvedRedirects = redirects?.map(
+		return (resolvedRedirects = redirects?.map(
 			({ source, destination, permanent }) => ({
 				source: source.startsWith('/')
 					? encodeURI(source)
@@ -50,15 +50,7 @@ const nextConfig = {
 				destination,
 				permanent,
 			}),
-		)
-		// if this redirect was done through the admin panel it resolves /ar through the [...slug] route, see middleware config
-		resolvedRedirects.push({
-			source: '/',
-			destination: '/ar',
-			permanent: true,
-		})
-
-		return resolvedRedirects
+		))
 	},
 
 	// logging: {

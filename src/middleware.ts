@@ -60,15 +60,7 @@ function normalizePath(path: string): string {
 
 export default async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl
-	// Skip middleware for static files and specific paths
-	if (
-		PUBLIC_FILE.test(pathname) ||
-		pathname.startsWith('/admin') ||
-		pathname.startsWith('/_next') ||
-		pathname.startsWith('/api')
-	) {
-		return NextResponse.next()
-	}
+	console.log('pathname', pathname)
 
 	// Check for redirects before running intl middleware
 	const redirects = await getRedirects()
@@ -84,6 +76,7 @@ export default async function middleware(request: NextRequest) {
 
 			// Check for exact match first (with trailing slash normalization)
 			if (normalizePath(pathname) === normalizePath(normalizedSource)) {
+				// redirect before localization runs
 				return NextResponse.redirect(
 					new URL(destination, request.url),
 					permanent ? 308 : 307,
@@ -92,52 +85,63 @@ export default async function middleware(request: NextRequest) {
 
 			// Check for locale-prefixed matches
 			// Extract potential locale from pathname (e.g., /ar/our-pricing -> ar, our-pricing)
-			const pathParts = pathname.split('/').filter(Boolean)
+			// Run redirects against locale-prefixed matches
+			// const pathParts = pathname.split('/').filter(Boolean)
 
-			if (pathParts.length > 0) {
-				const potentialLocale = pathParts[0]
-				const restOfPath = pathParts.slice(1).join('/')
+			// if (
+			// 	pathParts.length > 0 &&
+			// 	routing.locales.includes(pathParts[0] as any)
+			// ) {
+			// 	const locale = pathParts[0]
+			// 	const restOfPath = pathParts.slice(1).join('/')
 
-				// If first part is a valid locale, check if the rest matches the redirect source
-				if (routing.locales.includes(potentialLocale as any)) {
-					const pathWithoutLocale = '/' + restOfPath
-					const sourceWithoutLocale = normalizedSource
+			// 	// check if the rest matches the redirect source
+			// 	const pathWithoutLocale = '/' + restOfPath
 
-					// Check if the rest of the path matches the redirect source
-					if (
-						normalizePath(pathWithoutLocale) ===
-						normalizePath(sourceWithoutLocale)
-					) {
-						// Preserve locale in destination if destination doesn't already include it
-						let finalDestination = destination
-						if (
-							!destination.startsWith(`/${potentialLocale}/`) &&
-							!destination.startsWith('http')
-						) {
-							finalDestination = `/${potentialLocale}${destination.startsWith('/') ? '' : '/'}${destination}`
-						}
-						request.nextUrl.pathname = finalDestination
-					}
-				}
-			}
+			// 	// Check if the rest of the path matches the redirect source
+			// 	if (
+			// 		normalizePath(pathWithoutLocale) === normalizePath(normalizedSource)
+			// 	) {
+			// 		console.log('hello')
+
+			// 		// Preserve locale in destination if destination doesn't already include it
+			// 		let finalDestination = destination
+			// 		if (
+			// 			!destination.startsWith(`/${locale}/`) &&
+			// 			!destination.startsWith('http')
+			// 		) {
+			// 			finalDestination = `/${locale}${destination.startsWith('/') ? '' : '/'}${destination}`
+			// 		}
+			// 		request.nextUrl.pathname = finalDestination
+			// 	}
+			// }
 		}
 	}
 
-	// Run the next-intl middleware and return its response directly
-	return intlMiddleware(request)
+	const response = intlMiddleware(request)
+
+	const location = response.headers.get('Location')
+	if (location) {
+		const redirectResponse = NextResponse.redirect(
+			new URL(location, request.url),
+			308,
+		)
+		response.cookies.getAll().forEach((cookie) => {
+			redirectResponse.cookies.set(cookie)
+		})
+		response.headers.forEach((value, key) => {
+			const lowerKey = key.toLowerCase()
+			if (lowerKey === 'location' || lowerKey === 'set-cookie') {
+				return
+			}
+			redirectResponse.headers.set(key, value)
+		})
+		return redirectResponse
+	}
+
+	return response
 }
 
 export const config = {
-	matcher: [
-		// Enable a redirect to a matching locale at the root
-		'/',
-
-		// Set a cookie to remember the previous locale for
-		// all requests that have a locale prefix
-		'/(ar|en)/:path*',
-
-		// Enable redirects that add missing locales
-		// (e.g. `/pathnames` -> `/en/pathnames`)
-		'/((?!_next|_vercel|.*\\..*).*)',
-	],
+	matcher: ['/((?!api|admin|_next|_vercel|.*\\..*).*)'],
 }
