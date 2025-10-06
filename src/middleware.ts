@@ -78,8 +78,9 @@ export default async function middleware(request: NextRequest) {
 			let { source, destination, permanent } = redirect
 
 			// Normalize source to ensure it starts with /
-			const normalizedSource =
-				(source.startsWith('/') ? '' : '/') + encodeURI(source)
+			const normalizedSource = source.startsWith('/')
+				? encodeURI(source)
+				: '/' + encodeURI(source)
 
 			// Check for exact match first (with trailing slash normalization)
 			if (normalizePath(pathname) === normalizePath(normalizedSource)) {
