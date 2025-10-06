@@ -42,15 +42,13 @@ const nextConfig = {
 
 	async redirects() {
 		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
-		return (resolvedRedirects = redirects?.map(
-			({ source, destination, permanent }) => ({
-				source: source.startsWith('/')
-					? encodeURI(source)
-					: '/' + encodeURI(source),
-				destination,
-				permanent,
-			}),
-		))
+		return redirects?.map(({ source, destination, permanent }) => ({
+			source: source.startsWith('/')
+				? encodeURI(source)
+				: '/' + encodeURI(source),
+			destination,
+			permanent,
+		}))
 	},
 
 	// logging: {
