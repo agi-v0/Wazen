@@ -6,7 +6,7 @@ import {
 	PortableTextComponents,
 	PortableTextTypeComponentProps,
 } from 'next-sanity'
-import EmblaCarousel from '@/components/EmblaCarousel/embla-carousel-testimonials'
+import EmblaCarouselTestimonials from '@/components/EmblaCarousel/embla-carousel-testimonials'
 import { EmblaOptionsType } from 'embla-carousel'
 import Pretitle from '../Pretitle'
 
@@ -57,14 +57,14 @@ export default async function TestimonialListTwo({
 		duration: allTestimonials.length * 10,
 	}
 	return (
-		<section className="section fluid-gap flex h-full w-full max-w-screen flex-col items-center justify-center overflow-hidden bg-white py-(--size--8rem)">
-			<div className="mx-auto text-center">
+		<section className="fluid-gap flex h-full w-full max-w-screen flex-col items-center justify-center overflow-hidden bg-white py-(--size--8rem)">
+			<div className="section mx-auto text-center">
 				<Pretitle className="text-large font-medium text-gray-400">
 					{pretitle}
 				</Pretitle>
 				{content && <PortableText value={content} components={components} />}
 			</div>
-			<EmblaCarousel
+			<EmblaCarouselTestimonials
 				slides={allTestimonials}
 				options={OPTIONS}
 				locale={locale}
