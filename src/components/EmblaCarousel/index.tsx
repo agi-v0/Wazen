@@ -11,8 +11,6 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import { cn } from '@/lib/utils'
-// import style from './embla.module.css'
 
 const TWEEN_FACTOR_BASE = 0.12
 

@@ -9,7 +9,6 @@ import {
 import EmblaCarouselClient from '.'
 import { Img } from '@/components/Img'
 import { clean, cn } from '@/lib/utils'
-import style from './embla.module.css'
 
 type EmblaCarouselProps = {
 	slides: Sanity.Testimonial[]
@@ -47,13 +46,8 @@ const EmblaCarouselTestimonials = ({
 				)
 
 				return (
-					<div className={cn(style.embla__slide, 'embla__slide')} key={index}>
-						<div
-							className={cn(
-								style.slide_item,
-								'slide-item flex h-full flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-(--padding-horizontal--main) py-(--size--4rem) text-center transition-all',
-							)}
-						>
+					<div className="embla__slide" key={index}>
+						<div className="slide-item flex h-full flex-col items-center justify-center gap-8 rounded-2xl border border-gray-100 bg-teal-100 px-(--padding-horizontal--main) py-(--size--4rem) text-center transition-all">
 							<PortableText value={content} components={components} />
 							<div className="flex flex-row gap-4">
 								<Img
