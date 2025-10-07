@@ -96,6 +96,7 @@ export default function HeroThree({
 						draggable={false}
 						priority
 						fetchPriority="high"
+						width={400}
 					/>
 				</m.div>
 				<m.div layout className="flex flex-col items-start gap-6">

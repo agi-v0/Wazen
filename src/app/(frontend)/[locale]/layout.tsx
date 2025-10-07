@@ -16,7 +16,6 @@ import { Suspense } from 'react'
 
 import { draftMode } from 'next/headers'
 import VisualEditingControls from '@/components/VisualEditingControls'
-import { createClient } from 'next-sanity'
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))

@@ -60,7 +60,6 @@ function normalizePath(path: string): string {
 
 export default async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl
-	console.log('pathname', pathname)
 
 	// Check for redirects before running intl middleware
 	const redirects = await getRedirects()

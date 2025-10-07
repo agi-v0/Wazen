@@ -8,7 +8,7 @@ import { Link } from '@/i18n/routing'
 import processUrl from '@/lib/processUrl'
 import { Icon } from '@iconify-icon/react'
 import { Img } from '@/components/Img'
-import { cn } from '@/lib/utils'
+
 import { AnimatedBackground } from '@/components/animated/animated-background'
 
 export default function ProductList({
@@ -86,8 +86,9 @@ export default function ProductList({
 											<Img
 												image={product.productImage}
 												alt={product.productTitle}
-												className={cn('h-auto w-full rounded-lg')}
+												className="h-auto w-full rounded-lg"
 												loading="lazy"
+												width={300}
 											/>
 										</div>
 										<div className="space-y-1 p-4 text-start transition-all duration-600">
