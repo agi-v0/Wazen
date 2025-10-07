@@ -35,11 +35,10 @@ export default function DesktopNav({
 				className="w-full max-w-full"
 			>
 				{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
-				<div className="flex w-full flex-row items-center justify-end gap-4 text-center">
+				<div className="animate-collapsible-down flex w-full flex-row items-center justify-end gap-2 text-center">
 					<LangSelect />
-					<div className="flex flex-row items-center gap-4 text-base">
-						{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
-					</div>
+
+					{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
 				</div>
 			</NavigationMenu>
 		</div>
