@@ -35,9 +35,8 @@ export default function DesktopNav({
 				className="w-full max-w-full"
 			>
 				{headerMenu && <Navigation headerMenu={headerMenu} locale={locale} />}
-				<div className="animate-collapsible-down flex w-full flex-row items-center justify-end gap-2 text-center">
+				<div className="flex w-full flex-row items-center justify-end gap-2 text-center">
 					<LangSelect />
-
 					{ctas?.map((cta, key) => <Button {...cta} key={key} />)}
 				</div>
 			</NavigationMenu>
