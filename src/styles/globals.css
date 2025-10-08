@@ -67,6 +67,7 @@
 		overscroll-behavior: none;
 		scroll-behavior: smooth;
 		color: var(--color-cyan-950);
+		font-family: 'Rubik';
 		@apply antialiased;
 	}
 
@@ -311,6 +312,7 @@
 }
 
 @theme inline {
+	--font-sans: 'Rubik, sans-serif';
 	--spacing-fold: calc(100svh - var(--header-height));
 	--animate-accordion-down: accordion-down 0.2s ease-out;
 	--animate-accordion-up: accordion-up 0.2s ease-out;
