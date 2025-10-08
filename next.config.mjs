@@ -34,6 +34,9 @@ const nextConfig = {
 			},
 		],
 	},
+	experimental: {
+		inlineCss: true,
+	},
 	// logging: {
 	// 	fetches: {
 	// 		fullUrl: true,
