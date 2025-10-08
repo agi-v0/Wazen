@@ -74,7 +74,7 @@ const MODULE_MAP = {
 	'testimonial-list-two': TestimonialListTwo,
 } as const
 
-export default function Modules({
+export default async function Modules({
 	modules,
 	locale,
 	page,
@@ -85,32 +85,36 @@ export default function Modules({
 	slug?: string
 	page?: Sanity.Page
 }) {
+	if (!modules?.length) return null
 	return (
 		<>
-			{modules?.map((module) => {
-				if (!module) return null
+			{await Promise.all(
+				modules.map(async (module) => {
+					if (!module) return null
 
-				const Component = MODULE_MAP[module._type as keyof typeof MODULE_MAP]
+					const Component = MODULE_MAP[module._type as keyof typeof MODULE_MAP]
 
-				if (!Component) return null
+					if (!Component) return null
 
-				return (
-					<Component
-						{...module}
-						locale={locale}
-						slug={slug}
-						data-sanity={
-							!!page?._id &&
-							createDataAttribute({
-								id: page._id,
-								type: page?._type,
-								path: `page[_key == "${module._key}"]`,
-							}).toString()
-						}
-						key={module._key}
-					/>
-				)
-			})}
+					const dataAttr =
+						!!page?._id &&
+						createDataAttribute({
+							id: page._id,
+							type: page?._type,
+							path: `page[_key == "${module._key}"]`,
+						}).toString()
+
+					return (
+						<Component
+							key={module._key}
+							{...module}
+							locale={locale}
+							slug={slug}
+							data-sanity={dataAttr}
+						/>
+					)
+				}),
+			)}
 		</>
 	)
 }
