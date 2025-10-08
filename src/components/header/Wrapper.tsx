@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import useScrollPosition from '@/hooks/useScrollPosition'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 import { cn } from '@/lib/utils'
 import dynamic from 'next/dynamic'
+import { useScroll } from 'motion/react'
 
 const ContactBar = dynamic(() => import('./Desktop/ContactBar'), { ssr: true })
 export default function Wrapper({
@@ -17,12 +17,12 @@ export default function Wrapper({
 	contactInfo: any
 	locale: 'en' | 'ar'
 } & React.HTMLAttributes<HTMLDivElement>) {
-	const ref = useRef<HTMLDivElement>(null)
-	const scrollPosition = useScrollPosition()
+	const { scrollY } = useScroll()
+	const [scrollPosition, setScrollPosition] = useState(0)
 	const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 	useEffect(() => {
-		const headerHeight = ref.current?.offsetHeight || 0
+		const headerHeight = 0
 		const contactBarHeight = isDesktop ? 36 : 0
 		const adjustedHeight =
 			scrollPosition > 1 ? headerHeight - contactBarHeight : headerHeight
@@ -32,9 +32,12 @@ export default function Wrapper({
 		)
 	}, [isDesktop, scrollPosition])
 
+	scrollY.on('change', (latest) => {
+		setScrollPosition(latest)
+	})
+
 	return (
 		<div
-			ref={ref}
 			className={cn(
 				className,
 				'transition-transform duration-200 ease-in-out',
