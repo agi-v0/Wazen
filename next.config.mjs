@@ -39,7 +39,20 @@ const nextConfig = {
 	// 		fullUrl: true,
 	// 	},
 	// },
-
+	async headers() {
+		return [
+			{
+				source: '/:path*',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+					{
+						key: 'X-Powered-By',
+						value: 'Studio Valence - High Performance Websites',
+					},
+				],
+			},
+		]
+	},
 	async redirects() {
 		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
 		return redirects?.map(({ source, destination, permanent }) => ({
