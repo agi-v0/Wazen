@@ -45,7 +45,7 @@ const MODULE_MAP = {
 	'hero.two': HeroTwo,
 	'logo-list': LogoList,
 	'how-it-works': HowItWorks,
-	'product-list': ProductList,
+	// 'product-list': ProductList,
 	'categories-list': Categories,
 	'blog-rollup': BlogRollup,
 	'creative-module': CreativeModule,
