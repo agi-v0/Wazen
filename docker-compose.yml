@@ -1,6 +1,6 @@
 services:
   site:
-    image: wazen/site:latest
+    image: wazen/site:main
     container_name: wazen-site
     restart: unless-stopped
     ports:
