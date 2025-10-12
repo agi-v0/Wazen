@@ -2,6 +2,7 @@
 import React, { useRef } from 'react'
 import { useScroll, useTransform, MotionValue } from 'motion/react'
 import * as m from 'motion/react-m'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 export const ContainerScroll = ({
 	children,
@@ -9,24 +10,14 @@ export const ContainerScroll = ({
 	children: React.ReactNode
 }) => {
 	const containerRef = useRef<any>(null)
-	const [isMobile, setIsMobile] = React.useState(false)
+	const isMobile = useMediaQuery('(max-width: 768px)')
+
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
 		offset: isMobile
 			? ['start end', 'start center']
 			: ['start end', 'start start'],
 	})
-
-	React.useEffect(() => {
-		const checkMobile = () => {
-			setIsMobile(window.innerWidth <= 768)
-		}
-		checkMobile()
-		window.addEventListener('resize', checkMobile)
-		return () => {
-			window.removeEventListener('resize', checkMobile)
-		}
-	}, [])
 
 	const scaleDimensions = () => {
 		return isMobile ? [0.9, 1] : [1.05, 1]
