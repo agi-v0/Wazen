@@ -74,11 +74,22 @@ export default function Hero({
 					<Img
 						image={image}
 						alt={image?.alt}
-						className="mx-auto h-auto w-full rounded-lg object-cover"
+						className="mx-auto hidden h-auto w-full rounded-lg object-cover lg:block"
 						draggable={false}
 						fetchPriority="high"
 						priority
 						loading="eager"
+						width={1000}
+					/>
+					<Img
+						image={image}
+						alt={image?.alt}
+						className="mx-auto block h-auto w-full rounded-lg object-cover lg:hidden"
+						draggable={false}
+						fetchPriority="high"
+						priority
+						loading="eager"
+						width={600}
 					/>
 				</ContainerScroll>
 			</div>
