@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { getSite } from '@/sanity/lib/queries'
-import { routing } from '@/i18n/routing'
+import { Link, routing } from '@/i18n/routing'
 import { rubik } from '@/styles/fonts'
 
 import Header from '@/components/header'
@@ -23,9 +23,11 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
 	children,
+	modal,
 	params,
 }: {
 	children: React.ReactNode
+	modal: React.ReactNode
 	params: { locale: any }
 }) {
 	const resolvedParams = await params
@@ -60,6 +62,7 @@ export default async function RootLayout({
 						locale={locale}
 					/>
 					<main id="main-content" tabIndex={-1}>
+						{modal}
 						{children}
 					</main>
 					<Suspense>

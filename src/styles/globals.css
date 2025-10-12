@@ -126,19 +126,6 @@
 		@apply leading-snug font-semibold ltr:tracking-tighter;
 	}
 
-	.text-larger {
-		font-size: var(--text-larger--font-size);
-	}
-	.text-large {
-		font-size: var(--text-large--font-size);
-	}
-	.text-main {
-		font-size: var(--text-main--font-size);
-	}
-	.text-small {
-		font-size: var(--text-small--font-size);
-	}
-
 	/* ctas, links */
 
 	.primary {
@@ -227,6 +214,18 @@
 }
 
 @layer utilities {
+	.text-larger {
+		font-size: var(--text-larger--font-size);
+	}
+	.text-large {
+		font-size: var(--text-large--font-size);
+	}
+	.text-main {
+		font-size: var(--text-main--font-size);
+	}
+	.text-small {
+		font-size: var(--text-small--font-size);
+	}
 	.sticky-below-header {
 		position: sticky;
 		top: calc(var(--header-height) + var(--offset, 0px));

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { sendEmail } from '@/action/sendEmail'
+import { sendEmail } from '@/actions/send-email'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { useToast } from '@/hooks/use-toast'
