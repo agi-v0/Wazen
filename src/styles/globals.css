@@ -96,36 +96,6 @@
 }
 
 @layer components {
-	/* typography */
-	.display {
-		font-size: var(--display--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h1 {
-		font-size: var(--h1--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h2 {
-		font-size: var(--h2--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h3 {
-		font-size: var(--h3--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h4 {
-		font-size: var(--h4--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h5 {
-		font-size: var(--h5--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-	.h6 {
-		font-size: var(--h6--font-size);
-		@apply leading-snug font-semibold ltr:tracking-tighter;
-	}
-
 	/* ctas, links */
 
 	.primary {
@@ -214,6 +184,35 @@
 }
 
 @layer utilities {
+	/* typography */
+	.display {
+		font-size: var(--display--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h1 {
+		font-size: var(--h1--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h2 {
+		font-size: var(--h2--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h3 {
+		font-size: var(--h3--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h4 {
+		font-size: var(--h4--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h5 {
+		font-size: var(--h5--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
+	.h6 {
+		font-size: var(--h6--font-size);
+		@apply leading-snug font-semibold ltr:tracking-tighter;
+	}
 	.text-larger {
 		font-size: var(--text-larger--font-size);
 	}

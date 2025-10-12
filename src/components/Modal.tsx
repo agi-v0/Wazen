@@ -31,19 +31,22 @@ export function Modal({ children }: { children: React.ReactNode }) {
 	useOnClickOutside(ref, handleClickOutside)
 
 	return (
-		<Dialog open={open}>
+		<Dialog open={open} onOpenChange={handleClickOutside}>
 			{/*<DialogTrigger asChild>
 				<Button variant="outline">Share</Button>
 			</DialogTrigger>*/}
-			<DialogContent ref={ref} className="bg-white">
-				<DialogHeader className="mb-6">
+			<DialogContent
+				ref={ref}
+				className="w-[calc(100vw-24px)] rounded-2xl bg-white"
+			>
+				{/*<DialogHeader className="mb-6">
 					<DialogTitle className="text-larger text-cyan-950">
 						{t('Contact Us')}
 					</DialogTitle>
 					<DialogDescription className="text-cyan-950/60">
 						{t('Please fill the form below to contact us')}
 					</DialogDescription>
-				</DialogHeader>
+				</DialogHeader>*/}
 				<div className="flex items-center gap-2">{children}</div>
 				{/*<DialogFooter className="sm:justify-start">
 					<DialogClose asChild>
