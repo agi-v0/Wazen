@@ -79,7 +79,6 @@ export default function Hero({
 						fetchPriority="high"
 						priority
 						loading="eager"
-						width={1000}
 					/>
 				</ContainerScroll>
 			</div>
