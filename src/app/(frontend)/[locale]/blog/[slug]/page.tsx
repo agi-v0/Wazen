@@ -49,7 +49,7 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
             'headings': body[style in ['h2', 'h3']]{
                 style,
                 'text': pt::text(@)
-            },		
+            },
 						"relatedPosts": *[
 							_type == ^._type
 							&& _id != ^._id
@@ -58,10 +58,17 @@ async function getPost(params: { slug?: string; locale: 'en' | 'ar' }) {
 						]|order(publishDate desc)[0...4]{
 							...,
 							categories[]->,
-						},						
+						},
             categories[]->,
 						callToAction->{
 							...,
+							ctas[]{
+								...,
+								link{
+									...,
+									internal->{ title, metadata }
+								}
+							},
 							callToActionDoc->
 						},
             metadata {

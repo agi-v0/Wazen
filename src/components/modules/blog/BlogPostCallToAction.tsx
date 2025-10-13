@@ -9,9 +9,10 @@ import { Icon } from '@iconify-icon/react'
 
 import { Img } from '@/components/Img'
 import { CallToActionDoc } from 'sanity'
+import { InfiniteSlider } from '@/components/ui/infinite-slider'
 
 // Component is now simpler, receives all data via props
-export default function CallToAction({
+export default function BlogPostCallToAction({
 	content,
 	ctas,
 	image,
@@ -22,6 +23,7 @@ export default function CallToAction({
 	if (!content && !ctas) {
 		return null
 	}
+	console.log('ctas', ctas)
 
 	const components: PortableTextComponents = {
 		types: {
@@ -57,7 +59,7 @@ export default function CallToAction({
 				if (!textContent.trim()) return null // Do not render if text content is empty or just whitespace
 
 				return (
-					<div className="flex items-center gap-2">
+					<div className="flex flex-shrink-0 items-center gap-2 rtl:flex-row-reverse">
 						<Icon
 							icon="ph:check-circle"
 							className="size-5 text-teal-500"
@@ -71,46 +73,32 @@ export default function CallToAction({
 	}
 
 	return (
-		<section className={cn(`section fluid-padding`, className)}>
-			<div
-				className={cn(
-					'fluid-gap fluid-padding -cyan-gradient-background-1 relative flex w-full flex-col items-center justify-evenly overflow-hidden rounded-2xl bg-cyan-50 lg:flex-row lg:justify-start',
-					image?.onRight ? '' : 'lg:flex-row-reverse lg:justify-between',
-				)}
-			>
-				{/* Only render image section if image data exists */}
-				{image?.asset && (
-					<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
-						<div
-							className={cn(
-								'absolute start-8 top-8 h-full w-full min-w-[800px]',
-							)}
-						>
-							<Img
-								image={image}
-								alt={image?.alt || ''} // Provide default alt text
-								className="mx-auto h-auto w-full rounded-lg object-cover object-top-left shadow-lg"
-								draggable={false}
-								loading="lazy"
-							/>
-						</div>
+		<section
+			className={cn(
+				`fluid-padding w-full max-w-full overflow-hidden`,
+				className,
+			)}
+		>
+			<div className="fluid-gap fluid-padding flex w-full flex-col items-center justify-evenly rounded-2xl bg-cyan-50">
+				<div className="flex w-full flex-col items-start gap-8">
+					<div className="flex flex-col gap-4">
+						{content && (
+							<PortableText value={content} components={components} />
+						)}
 					</div>
-				)}
-				<div className="flex max-w-2xl flex-col items-start gap-8">
-					{content && <PortableText value={content} components={components} />}
 
 					{ctas && (
 						<CTAList ctas={ctas as any} className="w-full *:h-12 *:text-base" />
 					)}
-					{checkedList && (
-						<div className="flex flex-col gap-2">
-							<PortableText
-								value={checkedList}
-								components={checkedListComponents}
-							/>
-						</div>
-					)}
 				</div>
+				{checkedList && (
+					<InfiniteSlider gap={24} className="flex" speedOnHover={20}>
+						<PortableText
+							value={checkedList}
+							components={checkedListComponents}
+						/>
+					</InfiniteSlider>
+				)}
 			</div>
 		</section>
 	)

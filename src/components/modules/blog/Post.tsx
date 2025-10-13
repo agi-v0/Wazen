@@ -8,7 +8,7 @@ import { Icon } from '@iconify-icon/react'
 
 import { Link } from '@/i18n/routing'
 
-import CallToAction from '../CallToAction'
+import CallToAction from '@/components/modules/blog/BlogPostCallToAction'
 import RelatedPosts from './RelatedPosts'
 
 export default function Post({
@@ -58,7 +58,7 @@ export default function Post({
 					priority
 				/>
 			</header>
-			<div className="fluid-gap grid py-(--size--3rem) md:grid-cols-3 md:items-start">
+			<div className="fluid-gap grid grid-cols-1 py-(--size--3rem) md:grid-cols-3 md:items-start">
 				<aside className="w-full md:sticky md:top-[calc(var(--header-height)+1rem)]">
 					<TableOfContents headings={headings} />
 					<RelatedPosts
@@ -68,7 +68,7 @@ export default function Post({
 					/>
 				</aside>
 
-				<div className="mx-auto space-y-6 md:col-span-2">
+				<div className="col-span-1 mx-auto w-full space-y-6 md:col-span-2">
 					<PortableText
 						value={body}
 						components={{
