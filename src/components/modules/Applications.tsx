@@ -42,14 +42,7 @@ export default function Applications({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div className="" dir={direction}>
-				<InfiniteMovingCards
-					direction={'right'}
-					speed={'slow'}
-					pauseOnHover={true}
-					items={cards}
-				/>
-			</div>
+			<InfiniteMovingCards items={cards} />
 		</section>
 	)
 }
