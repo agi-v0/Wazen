@@ -72,8 +72,8 @@ const MODULE_MAP = {
 	'faq-list': FAQList,
 	brief: Brief,
 	'solutions-benefits': Benefits,
-	// 'testimonial-list': TestimonialList,
-	// 'testimonial-list-two': TestimonialListTwo,
+	'testimonial-list': TestimonialList,
+	'testimonial-list-two': TestimonialListTwo,
 } as const
 
 export default async function Modules({
