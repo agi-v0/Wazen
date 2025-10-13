@@ -99,7 +99,7 @@ export function ContactUsTemplate() {
 						alt="envelope"
 						width="300"
 						height="300"
-						className="mb-6 h-[200px] w-auto object-cover object-center md:h-[300px]"
+						className="mb-6 h-[300px] w-auto object-cover object-center"
 						quality={100}
 					/>
 					<Button
