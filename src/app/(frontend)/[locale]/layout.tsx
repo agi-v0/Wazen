@@ -16,6 +16,7 @@ import { Suspense } from 'react'
 
 import { draftMode } from 'next/headers'
 import VisualEditingControls from '@/components/VisualEditingControls'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
@@ -89,6 +90,7 @@ export default async function RootLayout({
 					}}
 				/> */}
 				{/* <IntercomClientComponent /> */}
+				<WhatsAppButton />
 			</body>
 		</html>
 	)
