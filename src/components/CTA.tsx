@@ -13,11 +13,20 @@ export default function CTA({
 	...rest
 }: Sanity.CTA &
 	React.HTMLAttributes<HTMLAnchorElement> & { locale?: 'ar' | 'en' }) {
+	const domSafeRest = Object.fromEntries(
+		Object.entries(rest).filter(([key, value]) => {
+			// Drop Sanity meta fields or any prop starting with underscore
+			if (key.startsWith('_')) return false
+			// Drop undefined values to avoid hydration diffs
+			return value !== undefined
+		}),
+	) as React.AnchorHTMLAttributes<HTMLAnchorElement>
+
 	const props = {
 		className: cn(stegaClean(style), className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
-		...rest,
+		...domSafeRest,
 	}
 	const FADE_DOWN_ANIMATION_VARIANTS = {
 		hidden: { opacity: 0, y: -10 },
@@ -50,7 +59,7 @@ export default function CTA({
 				{...(props as any)}
 				variants={FADE_DOWN_ANIMATION_VARIANTS}
 			>
-				{link.label}
+				{props.children}
 			</m.a>
 		)
 
