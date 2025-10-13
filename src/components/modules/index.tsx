@@ -25,7 +25,9 @@ const PlansCalculator = dynamic(() => import('./PlansCalculator'))
 const BenefitsBanner = dynamic(() => import('./BenefitsBanner'))
 const CallToActionTwo = dynamic(() => import('./CallToActionTwo'))
 const AppStoreRollup = dynamic(() => import('./app-store/Rollup'))
-const FeaturesInfiniteScroll = dynamic(() => import('./FeaturesInfiniteScroll'))
+const ApplicationsInfiniteScroll = dynamic(
+	() => import('./ApplicationsInfiniteScroll'),
+)
 const CallToAction = dynamic(() => import('./CallToAction'))
 const RichtextModule = dynamic(() => import('./RichtextModule'))
 const StatList = dynamic(() => import('./StatList'))
@@ -45,7 +47,7 @@ const MODULE_MAP = {
 	'hero.two': HeroTwo,
 	'logo-list': LogoList,
 	'how-it-works': HowItWorks,
-	// 'product-list': ProductList,
+	'product-list': ProductList,
 	'categories-list': Categories,
 	'blog-rollup': BlogRollup,
 	'creative-module': CreativeModule,
@@ -66,12 +68,12 @@ const MODULE_MAP = {
 	'benefits-banner': BenefitsBanner,
 	'call.to.action.two': CallToActionTwo,
 	'app-store-rollup': AppStoreRollup,
-	applications: FeaturesInfiniteScroll,
+	applications: ApplicationsInfiniteScroll,
 	'faq-list': FAQList,
 	brief: Brief,
 	'solutions-benefits': Benefits,
-	'testimonial-list': TestimonialList,
-	'testimonial-list-two': TestimonialListTwo,
+	// 'testimonial-list': TestimonialList,
+	// 'testimonial-list-two': TestimonialListTwo,
 } as const
 
 export default async function Modules({

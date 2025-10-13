@@ -10,7 +10,7 @@ const InfiniteMovingCards = dynamic(
 	() => import('@/components/animated/infinite-moving-cards-apps'),
 )
 
-export default function FeaturesInfiniteScroll({
+export default function Applications({
 	pretitle,
 	content,
 	cards,
@@ -112,27 +112,11 @@ export default function FeaturesInfiniteScroll({
 				</Pretitle>
 				<PortableText value={content} components={set2} />
 			</div>
-			<div dir="ltr" className="w-full space-y-2">
-				<InfiniteMovingCards
-					direction="right"
-					speed="slow"
-					pauseOnHover={false}
-					items={features.slice(0, 5)}
-				/>
-				<InfiniteMovingCards
-					direction="left"
-					speed="slow"
-					pauseOnHover={false}
-					items={features.slice(5, 10)}
-				/>
-				<InfiniteMovingCards
-					direction="right"
-					speed="slow"
-					pauseOnHover={false}
-					items={features.slice(10, 15)}
-				/>
+			<div className="w-full space-y-2">
+				<InfiniteMovingCards items={features.slice(0, 5)} />
+				<InfiniteMovingCards reverse items={features.slice(5, 10)} />
+				<InfiniteMovingCards items={features.slice(10, 15)} />
 			</div>
-
 			<ComparisonTable {...altApps} />
 		</section>
 	)
