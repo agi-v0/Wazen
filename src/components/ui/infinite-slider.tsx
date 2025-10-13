@@ -30,12 +30,59 @@ export function InfiniteSlider({
 	const [isTransitioning, setIsTransitioning] = useState(false)
 	const [key, setKey] = useState(0)
 
+	const isBrowser = typeof document !== 'undefined'
+
+	const resolveDocumentDirection = () => {
+		const normalize = (value: string | null | undefined) =>
+			value?.toLowerCase().trim() || null
+
+		if (!isBrowser) {
+			return 'ltr'
+		}
+
+		const documentDirection =
+			normalize(document.dir) ||
+			normalize(document.documentElement?.getAttribute('dir')) ||
+			normalize(document.body?.getAttribute('dir'))
+
+		if (documentDirection) {
+			return documentDirection
+		}
+
+		try {
+			const computed = normalize(
+				window.getComputedStyle(document.documentElement).direction,
+			)
+			return computed || 'ltr'
+		} catch (error) {
+			return 'ltr'
+		}
+	}
+
+	const isRtlContext = resolveDocumentDirection() === 'rtl'
+	const isHorizontal = direction === 'horizontal'
+
+	const defaultLayoutReversed = isHorizontal ? isRtlContext : false
+	const isLayoutReversed = defaultLayoutReversed
+	const isMotionReversed = reverse ?? false
+
+	const flexDir = isHorizontal
+		? isLayoutReversed
+			? 'row-reverse'
+			: 'row'
+		: isLayoutReversed
+			? 'column-reverse'
+			: 'column'
+
 	useEffect(() => {
 		let controls
 		const size = direction === 'horizontal' ? width : height
 		const contentSize = size + gap
-		const from = reverse ? -contentSize / 2 : 0
-		const to = reverse ? 0 : -contentSize / 2
+		const distance = contentSize / 2
+		const baseFrom = isMotionReversed ? distance * -1 : 0
+		const baseTo = isMotionReversed ? 0 : distance * -1
+		const from = isLayoutReversed ? baseTo * -1 : baseFrom
+		const to = isLayoutReversed ? baseFrom * -1 : baseTo
 
 		const distanceToTravel = Math.abs(to - from)
 		const duration = distanceToTravel / currentSpeed
@@ -64,7 +111,6 @@ export function InfiniteSlider({
 				},
 			})
 		}
-
 		return controls?.stop
 	}, [
 		key,
@@ -76,6 +122,7 @@ export function InfiniteSlider({
 		isTransitioning,
 		direction,
 		reverse,
+		isMotionReversed,
 	])
 
 	const hoverProps = speedOnHover
@@ -94,17 +141,20 @@ export function InfiniteSlider({
 	return (
 		<div className={cn('overflow-hidden', className)}>
 			<m.div
+				dir="ltr"
 				className="flex w-max"
 				style={{
 					...(direction === 'horizontal'
 						? { x: translation }
 						: { y: translation }),
 					gap: `${gap}px`,
-					flexDirection: direction === 'horizontal' ? 'row' : 'column',
+					flexDirection: flexDir,
 				}}
 				ref={ref}
 				{...hoverProps}
 			>
+				{children}
+				{children}
 				{children}
 				{children}
 			</m.div>
