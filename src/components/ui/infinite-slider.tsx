@@ -12,6 +12,7 @@ export type InfiniteSliderProps = {
 	speedOnHover?: number
 	direction?: 'horizontal' | 'vertical'
 	reverse?: boolean
+	dir?: 'ltr' | 'rtl'
 	className?: string
 }
 
@@ -22,6 +23,7 @@ export function InfiniteSlider({
 	speedOnHover,
 	direction = 'horizontal',
 	reverse = false,
+	dir = 'ltr',
 	className,
 }: InfiniteSliderProps) {
 	const [currentSpeed, setCurrentSpeed] = useState(speed)
@@ -30,36 +32,7 @@ export function InfiniteSlider({
 	const [isTransitioning, setIsTransitioning] = useState(false)
 	const [key, setKey] = useState(0)
 
-	const isBrowser = typeof document !== 'undefined'
-
-	const resolveDocumentDirection = () => {
-		const normalize = (value: string | null | undefined) =>
-			value?.toLowerCase().trim() || null
-
-		if (!isBrowser) {
-			return 'ltr'
-		}
-
-		const documentDirection =
-			normalize(document.dir) ||
-			normalize(document.documentElement?.getAttribute('dir')) ||
-			normalize(document.body?.getAttribute('dir'))
-
-		if (documentDirection) {
-			return documentDirection
-		}
-
-		try {
-			const computed = normalize(
-				window.getComputedStyle(document.documentElement).direction,
-			)
-			return computed || 'ltr'
-		} catch (error) {
-			return 'ltr'
-		}
-	}
-
-	const isRtlContext = resolveDocumentDirection() === 'rtl'
+	const isRtlContext = dir === 'rtl'
 	const isHorizontal = direction === 'horizontal'
 
 	const defaultLayoutReversed = isHorizontal ? isRtlContext : false
@@ -141,7 +114,7 @@ export function InfiniteSlider({
 	return (
 		<div className={cn('overflow-hidden', className)}>
 			<m.div
-				dir="ltr"
+				dir={dir}
 				className="flex w-max"
 				style={{
 					...(direction === 'horizontal'
