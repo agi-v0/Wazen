@@ -90,6 +90,17 @@ export default function JobApplicationTabs({
 										className={`rounded-xl px-4 py-3 text-right font-semibold transition-all ${buttonClass}`}
 									>
 										<div className="flex flex-col">
+											{/* ✅ وازن المالية فوق العنوان (label) — وتظهر فقط في التابات غير الأولى */}
+											{!isFirst && (
+												<div className="mb-2 flex items-center gap-2">
+													<div className="h-6 w-6 rounded-full bg-[#2DD4BF]"></div>
+													<span className="font-['Rubik'] text-[14px]  text-[#8C8F8E]">
+														وازن المالية
+													</span>
+												</div>
+											)}
+
+											{/* 🔹 العنوان الأساسي */}
 											<div className="flex items-center justify-between">
 												<span className="text-right font-[Cairo] text-[24px] leading-[46px] font-bold text-[#170F49]">
 													{tab.label}
@@ -109,6 +120,7 @@ export default function JobApplicationTabs({
 												)}
 											</div>
 
+											{/* 🔹 السطر الفرعي إن وجد */}
 											{tab.sublabel && (
 												<span className="text-right font-[Cairo] text-[14px] leading-[23px] text-[#3F3F3F]">
 													{tab.sublabel}
@@ -131,13 +143,30 @@ export default function JobApplicationTabs({
 											: 'max-h-[700px] overflow-hidden'
 									}`}
 								>
-									{/* الأعلى */}
-									<div className="mb-8 flex items-center justify-between">
-										<span className="font-semibold text-[#2DD4BF]">
-											وازن المالية
-										</span>
+									<div className="mb-8 flex items-start justify-between">
+										{/* ✅ القسم الأيسر: شعار وازن + العنوان والنص */}
+										<div className="flex flex-col items-start gap-4">
+											<div className="flex items-center gap-2">
+												<div className="h-8 w-8 rounded-full bg-[#2DD4BF]"></div>
 
-										{/* الأزرار عموديًا */}
+												<span className="font-['Rubik'] text-[20px] font-semibold text-[#2DD4BF]">
+													وازن المالية
+												</span>
+											</div>
+
+											{/* 👇 النصوص أسفل وازن المالية */}
+											<div className="text-right">
+												<h2 className="mb-1 text-3xl font-bold text-[#170F49]">
+													فرص جديدة بانتظارك
+												</h2>
+												<p className="text-gray-600">
+													نسعى دوماً في وازن باستقطاب الطاقات التي تؤمن بالتطوير
+													المستمر وتمتلك شغف التغيير.
+												</p>
+											</div>
+										</div>
+
+										{/* ✅ الأزرار في الجهة اليمنى */}
 										<div className="flex flex-col items-end gap-3">
 											{/* 🔘 زر التكبير */}
 											<button
@@ -176,22 +205,25 @@ export default function JobApplicationTabs({
 											{/* ⚡ زر إرسال الطلب */}
 											<button
 												onClick={() => setShowModal(true)}
-												className="flex items-center gap-2 rounded-full bg-[#2DD4BF] px-6 py-2 font-bold text-white shadow-md transition hover:bg-[#14b8a6]"
+												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
 											>
-												  إرسال الطلب⚡
+												إرسال الطلب
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													strokeWidth={2}
+													stroke="currentColor"
+													className="h-5 w-5 text-[#000C06]"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														d="M13 10V3L4 14h7v7l9-11h-7z"
+													/>
+												</svg>
 											</button>
 										</div>
-									</div>
-
-									{/* محتوى النموذج */}
-									<div className="mb-10 text-right">
-										<h2 className="mb-2 text-3xl font-bold text-[#170F49]">
-											فرص جديدة بانتظارك
-										</h2>
-										<p className="text-lg text-gray-600">
-											نسعى دوماً في وازن باستقطاب الطاقات التي تؤمن بالتطوير
-											المستمر وتمتلك شغف التغيير.
-										</p>
 									</div>
 
 									<div className="mb-6 flex border-b border-gray-200">
@@ -362,6 +394,14 @@ export default function JobApplicationTabs({
 								<div className="space-y-8">
 									<div className="flex items-start justify-between">
 										<div className="text-right">
+											<div className="flex items-center gap-2">
+												<div className="h-8 w-8 rounded-full bg-[#2DD4BF]"></div>
+
+												<span className="font-['Rubik'] text-[20px] font-semibold text-[#2DD4BF]">
+													وازن المالية
+												</span>
+											</div>
+
 											{tabs[activeTab].mainTitle && (
 												<h3 className="text-2xl font-bold text-cyan-900">
 													{tabs[activeTab].mainTitle}
@@ -410,12 +450,26 @@ export default function JobApplicationTabs({
 												</svg>
 											</button>
 
-											{/* زر انضم إلينا */}
+											{/* زر انضم الان */}
 											<a
 												href="#"
-												className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-l from-[#02B6BE] to-[#5FC19C] px-6 py-2 font-[Cairo] text-[16px] font-bold text-white shadow-md transition hover:opacity-90"
+												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
 											>
-												انضم إلينا⚡ 
+												انضم الان
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													strokeWidth={2}
+													stroke="currentColor"
+													className="h-5 w-5 text-[#000C06]"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														d="M13 10V3L4 14h7v7l9-11h-7z"
+													/>
+												</svg>
 											</a>
 										</div>
 									</div>
