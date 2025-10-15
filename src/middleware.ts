@@ -143,4 +143,5 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
 	matcher: ['/((?!api|admin|_next|_vercel|.*\\..*).*)'],
+	runtime: 'edge',
 }
