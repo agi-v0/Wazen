@@ -31,6 +31,8 @@ export default function JobApplicationTabs({
 }) {
 	const [activeTab, setActiveTab] = useState(0)
 	const [expanded, setExpanded] = useState(false)
+	const [showModal, setShowModal] = useState(false)
+	const [step, setStep] = useState(1)
 
 	return (
 		<main id="main-content">
@@ -172,7 +174,10 @@ export default function JobApplicationTabs({
 											</button>
 
 											{/* ⚡ زر إرسال الطلب */}
-											<button className="flex items-center gap-2 rounded-full bg-[#2DD4BF] px-6 py-2 font-bold text-white shadow-md transition hover:bg-[#14b8a6]">
+											<button
+												onClick={() => setShowModal(true)}
+												className="flex items-center gap-2 rounded-full bg-[#2DD4BF] px-6 py-2 font-bold text-white shadow-md transition hover:bg-[#14b8a6]"
+											>
 												⚡ إرسال الطلب
 											</button>
 										</div>
@@ -512,6 +517,329 @@ export default function JobApplicationTabs({
 					))}
 				</div>
 			</section>
+
+			{showModal && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+					<div className="animate-fadeIn relative w-full max-w-4xl rounded-[40px] bg-transparent p-6 text-right">
+						{/* زر إغلاق */}
+						<button
+							onClick={() => setShowModal(false)}
+							className="absolute top-4 left-6 text-2xl text-gray-400 hover:text-gray-700"
+						>
+							✕
+						</button>
+
+						{/* ✅ شريط الخطوات */}
+						<div className="mb-6 flex items-center justify-center gap-3 text-sm font-semibold text-[#170F49]">
+							{[
+								'البيانات الأساسية',
+								'بيانات التواصل',
+								'المؤهلات والتخصص',
+								'رفع المرفقات',
+								'إرسال الطلب',
+							].map((label, i) => (
+								<button
+									key={i}
+									onClick={() => setStep(i + 1)}
+									className={`flex items-center gap-2 rounded-full border px-5 py-2 transition-all duration-300 ${
+										step === i + 1
+											? 'border-[#14B8A6] bg-[#14B8A6] text-white shadow-sm'
+											: 'border-gray-300 bg-white text-gray-600 hover:bg-gray-50'
+									}`}
+								>
+									<span className="w-4 text-center">{i + 1}</span>
+									<span>{label}</span>
+								</button>
+							))}
+						</div>
+
+						{/* ✅ جسم النموذج - form واحدة فقط */}
+						<form className="rounded-[32px] bg-white p-10 shadow-2xl">
+							{/* 🟢 الخطوة 1 */}
+							{step === 1 && (
+								<>
+									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+										المعلومات الأساسية
+									</h2>
+									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+										المعلومات الأساسية التي تساعدنا نتعرف عليك بشكل أفضل.
+										<br />
+										هذه البيانات تعتبر الخطوة الأولى لبناء ملفك الشخصي لدينا.
+									</p>
+
+									<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-3 md:divide-x md:divide-y-0">
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												الاسم بالكامل
+											</label>
+											<input
+												type="text"
+												name="fullName"
+												placeholder="أحمد محمد عبدالعزيز"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												النوع
+											</label>
+											<input
+												type="text"
+												name="gender"
+												placeholder="ذكر"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												البلد
+											</label>
+											<input
+												type="text"
+												name="country"
+												placeholder="السعودية"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												تاريخ الميلاد
+											</label>
+											<input
+												type="text"
+												name="birthdate"
+												placeholder="12/10/2026"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												المدينة
+											</label>
+											<input
+												type="text"
+												name="city"
+												placeholder="الرياض"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												الجنسية
+											</label>
+											<input
+												type="text"
+												name="nationality"
+												placeholder="سعودي"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+									</div>
+								</>
+							)}
+
+							{/* 🟢 الخطوة 2 */}
+							{step === 2 && (
+								<>
+									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+										بيانات التواصل
+									</h2>
+									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+										هنا نجمع بيانات الاتصال الخاصة بك حتى نقدر نتواصل معك
+										بسهولة.
+									</p>
+
+									<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0">
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												رقم الهاتف
+											</label>
+											<input
+												type="text"
+												name="phone"
+												placeholder="+966 876 4322 234"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												البريد الإلكتروني
+											</label>
+											<input
+												type="email"
+												name="email"
+												placeholder="Hossam@wazen.sa"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												نوع الهوية{' '}
+												<span className="text-xs text-gray-400">(اختياري)</span>
+											</label>
+											<input
+												type="text"
+												name="idType"
+												placeholder="بطاقة هوية / إقامة / جواز سفر"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+
+										<div className="p-4">
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												رقم الهوية{' '}
+												<span className="text-xs text-gray-400">(اختياري)</span>
+											</label>
+											<input
+												type="text"
+												name="idNumber"
+												placeholder="1234567890"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+									</div>
+								</>
+							)}
+
+							{/* 🟢 مثال لخطوات أخرى */}
+							{step === 3 && (
+								<>
+									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+										المؤهلات والتخصص
+									</h2>
+									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+										أخبرنا عن مؤهلاتك الدراسية وخبراتك السابقة.
+									</p>
+
+									<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+										<div>
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												المؤهل الدراسي
+											</label>
+											<input
+												type="text"
+												name="degree"
+												placeholder="بكالوريوس علوم الحاسب"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+										<div>
+											<label className="mb-1 block text-sm font-semibold text-gray-700">
+												التخصص
+											</label>
+											<input
+												type="text"
+												name="specialization"
+												placeholder="تحليل بيانات"
+												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+											/>
+										</div>
+									</div>
+								</>
+							)}
+							{/* 🟢 الخطوة 4 - رفع المرفقات */}
+							{step === 4 && (
+								<>
+									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+										رفع المرفقات
+									</h2>
+									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+										قم برفع سيرتك الذاتية (CV) والملفات المساندة إن وجدت.
+									</p>
+
+									<div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-[#F9FAFB] p-10 text-center transition hover:border-[#14B8A6]">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											strokeWidth={1.5}
+											stroke="#14B8A6"
+											className="mb-3 h-10 w-10"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M3 16.5V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18v-1.5m-9-12v12m0-12l-3.75 3.75M12 4.5l3.75 3.75"
+											/>
+										</svg>
+
+										<label
+											htmlFor="cvUpload"
+											className="cursor-pointer rounded-full bg-[#14B8A6] px-8 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
+										>
+											رفع CV
+										</label>
+
+										<input
+											id="cvUpload"
+											type="file"
+											name="cv"
+											accept=".pdf,.doc,.docx"
+											className="hidden"
+										/>
+
+										<p className="mt-3 text-sm text-gray-500">
+											الصيغ المدعومة: PDF, DOC, DOCX — الحجم الأقصى 5MB
+										</p>
+									</div>
+								</>
+							)}
+
+							{/* ✅ أزرار التنقل في الأسفل */}
+							<div className="relative mt-10 flex items-center justify-center">
+								{/* زر السابق في اليسار */}
+								{step > 1 && (
+									<button
+										type="button"
+										onClick={() => setStep(step - 1)}
+										className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8]"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											strokeWidth={2}
+											stroke="currentColor"
+											className="h-5 w-5"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M15 19l-7-7 7-7"
+											/>
+										</svg>
+									</button>
+								)}
+
+								{/* زر التالي أو إرسال الطلب في المنتصف */}
+								{step < 5 ? (
+									<button
+										type="button"
+										onClick={() => setStep(step + 1)}
+										className="rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
+									>
+										التالي
+									</button>
+								) : (
+									<button
+										type="submit"
+										className="rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
+									>
+										إرسال الطلب
+									</button>
+								)}
+							</div>
+						</form>
+					</div>
+				</div>
+			)}
 		</main>
 	)
 }
