@@ -94,7 +94,7 @@ export default function JobApplicationTabs({
 											{!isFirst && (
 												<div className="mb-2 flex items-center gap-2">
 													<div className="h-6 w-6 rounded-full bg-[#2DD4BF]"></div>
-													<span className="font-['Rubik'] text-[14px]  text-[#8C8F8E]">
+													<span className="font-['Rubik'] text-[14px] text-[#8C8F8E]">
 														وازن المالية
 													</span>
 												</div>
