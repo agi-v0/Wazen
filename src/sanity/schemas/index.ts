@@ -60,6 +60,7 @@ import benefitsBanner from './modules/benefits-banner'
 import testimonialListTwo from './modules/testimonial-list-two'
 import appStoreApp from './documents/app.store.app'
 import appStoreRollup from './modules/app-store-rollup'
+import jobApplicationTabs from './modules/jobApplicationTabs'
 
 export const schemaTypes = [
 	// documents
@@ -123,4 +124,5 @@ export const schemaTypes = [
 	featuresGrid2,
 	solutionsBenefits,
 	productList,
+	jobApplicationTabs
 ]
