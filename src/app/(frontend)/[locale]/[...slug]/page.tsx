@@ -11,6 +11,8 @@ type Props = {
 	params: Promise<{ slug: string[]; locale: 'en' | 'ar' }>
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page({ params }: Props) {
 	const resolvedParams = await params
 	setRequestLocale(resolvedParams.locale)

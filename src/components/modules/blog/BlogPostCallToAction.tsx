@@ -23,7 +23,6 @@ export default function BlogPostCallToAction({
 	if (!content && !ctas) {
 		return null
 	}
-	console.log('ctas', ctas)
 
 	const components: PortableTextComponents = {
 		types: {
