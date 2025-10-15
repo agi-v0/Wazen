@@ -178,7 +178,7 @@ export default function JobApplicationTabs({
 												onClick={() => setShowModal(true)}
 												className="flex items-center gap-2 rounded-full bg-[#2DD4BF] px-6 py-2 font-bold text-white shadow-md transition hover:bg-[#14b8a6]"
 											>
-												⚡ إرسال الطلب
+												  إرسال الطلب⚡
 											</button>
 										</div>
 									</div>
@@ -189,7 +189,7 @@ export default function JobApplicationTabs({
 											فرص جديدة بانتظارك
 										</h2>
 										<p className="text-lg text-gray-600">
-											نسعى دوماً في وازن باستقطابالطاقات التي تؤمن بالتطوير
+											نسعى دوماً في وازن باستقطاب الطاقات التي تؤمن بالتطوير
 											المستمر وتمتلك شغف التغيير.
 										</p>
 									</div>
@@ -415,7 +415,7 @@ export default function JobApplicationTabs({
 												href="#"
 												className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-l from-[#02B6BE] to-[#5FC19C] px-6 py-2 font-[Cairo] text-[16px] font-bold text-white shadow-md transition hover:opacity-90"
 											>
-												⚡ انضم إلينا
+												انضم إلينا⚡ 
 											</a>
 										</div>
 									</div>
