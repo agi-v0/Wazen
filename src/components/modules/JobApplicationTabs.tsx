@@ -80,6 +80,22 @@ export default function JobApplicationTabs({
 										'border-2 border-[#2DD4BF] bg-white shadow-md text-[#170F49]'
 								}
 
+								const getTimeAgo = (dateString: string) => {
+									if (!dateString) return ''
+									const now = new Date()
+									const added = new Date(dateString)
+									const diffDays = Math.floor(
+										(now.getTime() - added.getTime()) / (1000 * 60 * 60 * 24),
+									)
+									if (diffDays === 0) return 'اليوم'
+									if (diffDays === 1) return 'منذ يوم'
+									if (diffDays === 2) return 'منذ يومين'
+									if (diffDays < 7) return `منذ ${diffDays} أيام`
+									const diffWeeks = Math.floor(diffDays / 7)
+									if (diffWeeks === 1) return 'منذ أسبوع'
+									return `منذ ${diffWeeks} أسابيع`
+								}
+
 								return (
 									<button
 										key={idx}
@@ -90,41 +106,93 @@ export default function JobApplicationTabs({
 										className={`rounded-xl px-4 py-3 text-right font-semibold transition-all ${buttonClass}`}
 									>
 										<div className="flex flex-col">
-											{/* ✅ وازن المالية فوق العنوان (label) — وتظهر فقط في التابات غير الأولى */}
+											{/* ✅ السطر العلوي: وازن المالية يمين - عدد المقاعد يسار */}
 											{!isFirst && (
-												<div className="mb-2 flex items-center gap-2">
-													<div className="h-6 w-6 rounded-full bg-[#2DD4BF]"></div>
-													<span className="font-['Rubik'] text-[14px] text-[#8C8F8E]">
-														وازن المالية
-													</span>
+												<div className="mb-2 flex items-center justify-between">
+													{/* وازن المالية */}
+													<div className="flex items-center gap-2">
+														<div className="h-6 w-6 rounded-full bg-[#2DD4BF]"></div>
+														<span className="font-['Rubik'] text-[14px] text-[#8C8F8E]">
+															وازن المالية
+														</span>
+													</div>
+
+													{/* عدد المقاعد في الجهة المقابلة */}
+													{tab.seats && (
+														<span className="font-[Rubik] text-[12px] text-[#363938]">
+															<span className="">
+																{tab.seats}{' '}
+																{tab.seats === 1
+																	? 'وظيفة'
+																	: tab.seats <= 10
+																		? 'وظائف'
+																		: 'وظيفة'}
+															</span>
+														</span>
+													)}
 												</div>
 											)}
 
-											{/* 🔹 العنوان الأساسي */}
-											<div className="flex items-center justify-between">
+											{/* 🔹 العنوان الرئيسي */}
+											<div
+												className={`flex items-center justify-between ${
+													!isFirst ? 'mb-2' : ''
+												}`}
+											>
 												<span className="text-right font-[Cairo] text-[24px] leading-[46px] font-bold text-[#170F49]">
 													{tab.label}
 												</span>
 
-												{tab.button?.text && (
+												{/* 🟢 الزر في التاب الأول فقط */}
+												{isFirst && tab.button?.text && (
 													<a
-														href={tab.button.link || '#'}
-														className={`inline-flex items-center justify-center gap-1 rounded-full border px-4 py-1.5 font-[Cairo] text-[14px] font-bold transition ${
-															isFirst
-																? 'border-white text-white hover:bg-white hover:text-[#155E75]'
-																: 'border-[#2DD4BF] text-[#2DD4BF] hover:bg-[#2DD4BF] hover:text-white'
-														}`}
+														// href={tab.button.link || '#'}
+														href={'#'}
+														className="inline-flex items-center justify-center gap-1 rounded-full border border-white px-4 py-1.5 font-[Cairo] text-[14px] font-bold text-white transition hover:bg-white hover:text-[#155E75]"
 													>
 														{tab.button.text}
 													</a>
 												)}
 											</div>
 
-											{/* 🔹 السطر الفرعي إن وجد */}
+											{/* 🔹 السطر الفرعي */}
 											{tab.sublabel && (
 												<span className="text-right font-[Cairo] text-[14px] leading-[23px] text-[#3F3F3F]">
 													{tab.sublabel}
 												</span>
+											)}
+
+											{/* 🟢 الزر + التاريخ في نفس السطر في كل التابات ما عدا الأولى */}
+											{!isFirst && tab.button?.text && (
+												<div className="mt-3 flex items-center justify-between">
+													<a
+														// href={tab.button.link || '#'}
+														href={'#'}
+														className="inline-flex items-center justify-center gap-1 rounded-full border border-[#2DD4BF] px-4 py-1.5 font-[Cairo] text-[14px] font-bold text-[#2DD4BF] transition hover:bg-[#2DD4BF] hover:text-white"
+													>
+														{tab.button.text}
+													</a>
+
+													{tab.addedDate && (
+														<span className="flex items-center gap-1 font-[Rubik] text-[13px] text-[#6B7280]">
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 24 24"
+																strokeWidth={1.8}
+																stroke="currentColor"
+																className="h-4 w-4 text-[#2DD4BF]"
+															>
+																<path
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
+																	d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+																/>
+															</svg>
+															{getTimeAgo(tab.addedDate)}
+														</span>
+													)}
+												</div>
 											)}
 										</div>
 									</button>
@@ -149,7 +217,7 @@ export default function JobApplicationTabs({
 											<div className="flex items-center gap-2">
 												<div className="h-8 w-8 rounded-full bg-[#2DD4BF]"></div>
 
-												<span className="font-['Rubik'] text-[20px] font-semibold text-[#2DD4BF]">
+												<span className="font-['Rubik'] text-[20px] font-[14px] text-[#2DD4BF]">
 													وازن المالية
 												</span>
 											</div>
@@ -203,10 +271,7 @@ export default function JobApplicationTabs({
 											</button>
 
 											{/* ⚡ زر إرسال الطلب */}
-											<button
-												onClick={() => setShowModal(true)}
-												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
-											>
+											<button className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90">
 												إرسال الطلب
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -397,7 +462,7 @@ export default function JobApplicationTabs({
 											<div className="flex items-center gap-2">
 												<div className="h-8 w-8 rounded-full bg-[#2DD4BF]"></div>
 
-												<span className="font-['Rubik'] text-[20px] font-semibold text-[#2DD4BF]">
+												<span className="font-['Rubik'] text-[20px] font-[12px] text-[#2DD4BF]">
 													وازن المالية
 												</span>
 											</div>
@@ -453,6 +518,7 @@ export default function JobApplicationTabs({
 											{/* زر انضم الان */}
 											<a
 												href="#"
+												onClick={() => setShowModal(true)}
 												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
 											>
 												انضم الان
@@ -847,13 +913,15 @@ export default function JobApplicationTabs({
 							)}
 
 							{/* ✅ أزرار التنقل في الأسفل */}
+						
 							<div className="relative mt-10 flex items-center justify-center">
-								{/* زر السابق في اليسار */}
+								{/* 🔙 زر السابق (يسار) */}
 								{step > 1 && (
 									<button
 										type="button"
 										onClick={() => setStep(step - 1)}
 										className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8]"
+										title="الخطوة السابقة"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -872,7 +940,32 @@ export default function JobApplicationTabs({
 									</button>
 								)}
 
-								{/* زر التالي أو إرسال الطلب في المنتصف */}
+								{/* 🔜 زر القادم (يمين) */}
+								{step < 5 && (
+									<button
+										type="button"
+										onClick={() => setStep(step + 1)}
+										className="absolute right-0 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8]"
+										title="الخطوة التالية"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											strokeWidth={2}
+											stroke="currentColor"
+											className="h-5 w-5"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M9 5l7 7-7 7"
+											/>
+										</svg>
+									</button>
+								)}
+
+								{/* 🔘 زر المنتصف (التالي أو إرسال الطلب) */}
 								{step < 5 ? (
 									<button
 										type="button"

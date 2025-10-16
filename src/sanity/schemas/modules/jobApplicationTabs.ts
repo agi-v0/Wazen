@@ -90,24 +90,36 @@ export default {
 							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 
-						// ✅ الزر الجديد داخل التاب
+						// ✅ الزر داخل التاب
 						{
 							name: 'button',
 							title: 'زر داخل التاب',
 							type: 'object',
-
 							fields: [
-								{
-									name: 'text',
-									title: 'نص الزر',
-									type: 'string',
-								},
-								{
-									name: 'link',
-									title: 'رابط الزر',
-									type: 'url',
-								},
+								{ name: 'text', title: 'نص الزر', type: 'string' },
+								{ name: 'link', title: 'رابط الزر', type: 'url' },
 							],
+						},
+
+						// 🟢 عدد المقاعد
+						{
+							name: 'seats',
+							title: 'عدد المقاعد',
+							type: 'number',
+							description: 'عدد المقاعد المتاحة لهذا التاب (اختياري)',
+							validation: (Rule) => Rule.min(0),
+						},
+
+						// 🕓 تاريخ الإضافة
+						{
+							name: 'addedDate',
+							title: 'تاريخ الإضافة',
+							type: 'datetime',
+							description: 'تاريخ إضافة هذا التاب إلى النظام',
+							options: {
+								dateFormat: 'YYYY-MM-DD',
+								timeFormat: 'HH:mm',
+							},
 						},
 					],
 				},
@@ -135,4 +147,4 @@ export default {
 			validation: (Rule) => Rule.max(5).error('يمكن رفع 5 صور كحد أقصى فقط'),
 		},
 	],
-}
+};
