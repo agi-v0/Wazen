@@ -1663,6 +1663,12 @@ export type BlogPostEn = {
 		_key: string
 		[internalGroqTypeReferenceTo]?: 'blog.category'
 	}>
+	callToAction?: {
+		_ref: string
+		_type: 'reference'
+		_weak?: boolean
+		[internalGroqTypeReferenceTo]?: 'call.to.action.doc'
+	}
 	publishDate?: string
 	metadata?: Metadata
 }
@@ -2112,6 +2118,13 @@ export type Page = {
 				_key: string
 		  } & ProductList)
 	>
+	callToActionDoc?: Array<{
+		_ref: string
+		_type: 'reference'
+		_weak?: boolean
+		_key: string
+		[internalGroqTypeReferenceTo]?: 'call.to.action.doc'
+	}>
 	metadata?: Metadata
 }
 
@@ -2196,6 +2209,13 @@ export type Site = {
 		}
 		_type: 'logo'
 	}
+	callToActionDoc?: Array<{
+		_ref: string
+		_type: 'reference'
+		_weak?: boolean
+		_key: string
+		[internalGroqTypeReferenceTo]?: 'call.to.action.doc'
+	}>
 	ctas?: Array<
 		{
 			_key: string
@@ -2237,7 +2257,6 @@ export type Site = {
 		crop?: SanityImageCrop
 		_type: 'image'
 	}
-	ga4?: string
 	gtmId?: string
 }
 

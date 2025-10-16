@@ -66,6 +66,12 @@ export default {
 			} as ExtendedArrayOptions<unknown>,
 		},
 		{
+			name: 'callToActionDoc',
+			title: 'Call To Action Popup',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'call.to.action.doc' }] }],
+		},
+		{
 			name: 'metadata',
 			type: 'metadata',
 		},

@@ -9,6 +9,7 @@ declare global {
 		type Site = SanityDocument<{
 			title: string
 			logo: Logo
+			callToActionDoc?: CallToActionDoc[]
 			ctas?: CTA[]
 			headerMenu?: Navigation
 			footerMenu?: Navigation
@@ -33,6 +34,7 @@ declare global {
 		type Page = PageBase & {
 			readonly _type: 'page'
 			modules?: Module[]
+			callToActionDoc?: CallToActionDoc[]
 		}
 
 		type AppPage = PageBase & {

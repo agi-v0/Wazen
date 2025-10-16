@@ -6,6 +6,9 @@ import { rubik } from '@/styles/fonts'
 
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import SiteCallToActionModal, {
+	SiteCallToActionProvider,
+} from '@/components/SiteCallToActionModal'
 
 import { setRequestLocale } from 'next-intl/server'
 
@@ -44,8 +47,16 @@ export default async function RootLayout({
 	if (!site) {
 		return
 	}
-	const { headerMenu, ctas, footerMenu, staticLinks, ga4, gtmId, contactInfo } =
-		site
+	const {
+		headerMenu,
+		ctas,
+		footerMenu,
+		staticLinks,
+		ga4,
+		gtmId,
+		contactInfo,
+		callToActionDoc,
+	} = site
 
 	return (
 		<html
@@ -55,7 +66,9 @@ export default async function RootLayout({
 		>
 			{gtmId && <GoogleTagManager gtmId={gtmId} />}
 			<body className="w-full">
-				<Providers>
+				<Providers
+					siteCallToAction={{ documents: callToActionDoc, locale: locale }}
+				>
 					<Header
 						headerMenu={headerMenu}
 						contactInfo={contactInfo}
@@ -80,6 +93,7 @@ export default async function RootLayout({
 							{/* <DisableDraftMode /> */}
 						</>
 					)}
+					<SiteCallToActionModal />
 				</Providers>
 
 				{/* <Script

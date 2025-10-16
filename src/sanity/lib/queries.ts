@@ -38,6 +38,7 @@ export async function getSite(locale: any) {
 		query: groq`
 			*[_type == 'site' && language == $locale  ][0]{
 				...,
+				callToActionDoc[]->,
 				ctas[]{
 					...,
 					link{

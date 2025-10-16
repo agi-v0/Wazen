@@ -29,6 +29,12 @@ export default {
 			group: 'general',
 		},
 		{
+			name: 'callToActionDoc',
+			title: 'Default Call to Action Popup',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'call.to.action.doc' }] }],
+		},
+		{
 			name: 'ctas',
 			title: 'Main call-to-action(s)',
 			type: 'array',
@@ -66,13 +72,13 @@ export default {
 			type: 'image',
 			group: 'general',
 		},
-		{
-			name: 'ga4',
-			title: 'Google Analytics 4 Tag',
-			description: 'Your measurement ID. Usually starts with G-.',
-			type: 'string',
-			group: 'general',
-		},
+		// {
+		// 	name: 'ga4',
+		// 	title: 'Google Analytics 4 Tag',
+		// 	description: 'Your measurement ID. Usually starts with G-.',
+		// 	type: 'string',
+		// 	group: 'general',
+		// },
 		{
 			name: 'gtmId',
 			title: 'Google Tag Manager Container ID',

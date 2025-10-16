@@ -3,6 +3,7 @@ import { groq } from 'next-sanity'
 import { creativeModuleQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/components/modules'
+import { PageCallToActionOverride } from '@/components/SiteCallToActionModal'
 import processMetadata from '@/lib/processMetadata'
 import { setRequestLocale } from 'next-intl/server'
 import { client } from '@/sanity/lib/client'
@@ -18,7 +19,12 @@ export default async function Page({ params }: Props) {
 	setRequestLocale(resolvedParams.locale)
 	const page = await getPage(resolvedParams)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} locale={resolvedParams.locale} />
+	return (
+		<>
+			<PageCallToActionOverride documents={page.callToActionDoc} />
+			<Modules modules={page.modules} locale={resolvedParams.locale} />
+		</>
+	)
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -87,6 +93,7 @@ async function getPage(params: { slug: string[]; locale: 'en' | 'ar' }) {
 				),
 				${creativeModuleQuery}
 			},
+			callToActionDoc[]->,
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
