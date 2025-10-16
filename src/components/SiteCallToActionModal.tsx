@@ -48,6 +48,16 @@ const SiteCallToActionContext = createContext<
 	SiteCallToActionContextValue | undefined
 >(undefined)
 
+function useSiteCallToAction() {
+	const context = useContext(SiteCallToActionContext)
+	if (!context) {
+		throw new Error(
+			'SiteCallToActionModal must be used within a SiteCallToActionProvider',
+		)
+	}
+	return context
+}
+
 export function SiteCallToActionProvider({
 	children,
 	documents,
@@ -87,16 +97,6 @@ export function SiteCallToActionProvider({
 			{children}
 		</SiteCallToActionContext.Provider>
 	)
-}
-
-function useSiteCallToAction() {
-	const context = useContext(SiteCallToActionContext)
-	if (!context) {
-		throw new Error(
-			'SiteCallToActionModal must be used within a SiteCallToActionProvider',
-		)
-	}
-	return context
 }
 
 export function PageCallToActionOverride({
@@ -208,9 +208,9 @@ export default function SiteCallToActionModal() {
 
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
-			<DialogContent className="max-w-xl gap-6 bg-white p-6">
+			<DialogContent className="h-fit max-h-[calc(100svh-32px)] w-[calc(100vw-24px)] max-w-xl gap-6 overflow-scroll rounded-2xl bg-white p-4">
 				{image?.asset && (
-					<div className="overflow-hidden rounded-xl bg-teal-50">
+					<div className="mt-8 overflow-hidden rounded-lg bg-teal-50">
 						<Img
 							image={image}
 							alt={image?.alt || ''}
