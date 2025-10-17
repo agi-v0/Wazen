@@ -3,32 +3,70 @@
 import { useState } from 'react'
 
 export default function FileUpload() {
-  const [fileName, setFileName] = useState<string | null>(null)
+	const [fileName, setFileName] = useState<string | null>(null)
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) setFileName(file.name)
-  }
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0]
+		if (file) setFileName(file.name)
+	}
 
-  return (
-    <div className="space-y-4 rounded-lg border-2 border-dashed border-cyan-300 bg-[#F9FDFD] p-6 text-center">
-      <div className="text-3xl text-cyan-400">📁</div>
-      <p className="font-semibold text-cyan-950">اختر ملفاً أو اسحبه وأفلته هنا</p>
-      <p className="text-sm text-gray-500">تسميات .Doc ,Sheet ,XML حتى 50 ميجا بايت</p>
+	return (
+		<div className="flex flex-col items-center justify-center space-y-5 rounded-lg border-2 border-dashed border-cyan-300 bg-[#F9FDFD] p-8 text-center">
+			{/* 🟢 الأيقونة في المنتصف */}
+			<div className="flex items-center justify-center text-cyan-400">
+				<svg
+					width="46"
+					height="46"
+					viewBox="0 0 46 46"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M14.2991 37.0683H10.619C4.984 36.6658 2.4541 32.3342 2.4541 28.4817C2.4541 24.6292 4.98403 20.2784 10.5232 19.895C11.309 19.8184 11.999 20.4317 12.0565 21.2367C12.114 22.0225 11.5199 22.7125 10.7149 22.77C6.9966 23.0384 5.3291 25.8367 5.3291 28.5008C5.3291 31.165 6.9966 33.9634 10.7149 34.2317H14.2991C15.0849 34.2317 15.7366 34.8834 15.7366 35.6692C15.7366 36.455 15.0849 37.0683 14.2991 37.0683Z"
+						fill="#292D32"
+					/>
+					<path
+						d="M31.9507 37.0683C31.9124 37.0683 31.8932 37.0683 31.8549 37.0683C31.0691 37.0683 30.3408 36.4166 30.3408 35.6308C30.3408 34.8066 30.9541 34.1933 31.7591 34.1933C34.1166 34.1933 36.2249 33.3691 37.8733 31.8933C40.8633 29.2866 41.0549 25.53 40.2499 22.885C39.4449 20.2592 37.2024 17.25 33.2924 16.7708C32.6599 16.6941 32.1615 16.215 32.0465 15.5825C31.2799 10.9825 28.8074 7.80082 25.0508 6.65082C21.1791 5.44332 16.6557 6.63165 13.8382 9.58332C11.0974 12.4391 10.4649 16.445 12.0557 20.8533C12.324 21.6008 11.9408 22.425 11.1933 22.6933C10.4458 22.9616 9.62159 22.5783 9.35326 21.8308C7.41743 16.4258 8.29911 11.2508 11.7683 7.60915C15.3141 3.89082 21.0066 2.41497 25.8941 3.90997C30.3791 5.28997 33.5415 8.98914 34.6915 14.1258C38.6015 15.0075 41.7449 17.9783 42.9907 22.08C44.3516 26.5458 43.1249 31.1458 39.7707 34.0592C37.6432 35.9758 34.864 37.0683 31.9507 37.0683Z"
+						fill="#292D32"
+					/>
+					<path
+						d="M22.9998 42.7034C19.1473 42.7034 15.544 40.6526 13.5699 37.3367C13.359 37.0109 13.1482 36.6276 12.9757 36.2059C12.324 34.8451 11.979 33.2926 11.979 31.6826C11.979 25.6067 16.924 20.6617 22.9998 20.6617C29.0757 20.6617 34.0207 25.6067 34.0207 31.6826C34.0207 33.3117 33.6757 34.8451 32.9857 36.2634C32.8324 36.6276 32.6216 37.0109 32.3916 37.3751C30.4557 40.6526 26.8523 42.7034 22.9998 42.7034ZM22.9998 23.5367C18.5148 23.5367 14.854 27.1976 14.854 31.6826C14.854 32.8709 15.1032 33.9826 15.5823 34.9984C15.7357 35.3242 15.8698 35.5926 16.0231 35.8417C17.4798 38.3142 20.144 39.8284 22.9807 39.8284C25.8173 39.8284 28.4815 38.3142 29.919 35.8801C30.0915 35.5926 30.2449 35.3242 30.3599 35.0559C30.8774 34.0017 31.1265 32.8901 31.1265 31.7017C31.1457 27.1976 27.4848 23.5367 22.9998 23.5367Z"
+						fill="#292D32"
+					/>
+					<path
+						d="M21.9074 35.0174C21.5432 35.0174 21.1791 34.8832 20.8916 34.5957L18.994 32.6982C18.4382 32.1424 18.4382 31.2224 18.994 30.6666C19.5499 30.1107 20.4699 30.1107 21.0257 30.6666L21.9458 31.5866L25.0124 28.7499C25.6066 28.2132 26.5074 28.2516 27.044 28.8266C27.5807 29.4016 27.5424 30.3216 26.9674 30.8582L22.8849 34.6341C22.5974 34.8832 22.2524 35.0174 21.9074 35.0174Z"
+						fill="#292D32"
+					/>
+				</svg>
+			</div>
 
-      <label className="inline-block cursor-pointer rounded bg-cyan-500 px-4 py-2 text-white transition hover:bg-cyan-600">
-        اختر ملفاً
-        <input
-          type="file"
-          className="hidden"
-          accept=".doc,.docx,.pdf,.png,.jpg,.jpeg,.xml,.xls,.xlsx"
-          onChange={handleFileChange}
-        />
-      </label>
+			{/* 🟢 النص الرئيسي */}
+			<p className="text-center font-[Cairo] text-[22px] leading-[100%] font-medium text-[#292D32]">
+				اختر ملفًا أو اسحبه وأفلِته هنا
+			</p>
 
-      {fileName && (
-        <p className="text-sm text-cyan-700">تم اختيار: {fileName}</p>
-      )}
-    </div>
-  )
+			{/* 🟣 النص الفرعي */}
+			<p className="text-center font-[Cairo] text-[18px] leading-[100%] font-medium text-[#A9ACB4]">
+				تسميات .Doc ,Sheet ,XML حتى 50 ميجا بايت
+			</p>
+
+			{/* 🟢 زر اختيار الملف */}
+			<label className="inline-block cursor-pointer rounded bg-cyan-500 px-6 py-2.5 font-[Cairo] font-semibold text-white transition hover:bg-cyan-600">
+				اختر ملفاً
+				<input
+					type="file"
+					className="hidden"
+					accept=".doc,.docx,.pdf,.png,.jpg,.jpeg,.xml,.xls,.xlsx"
+					onChange={handleFileChange}
+				/>
+			</label>
+
+			{/* 🟢 عرض اسم الملف عند الاختيار */}
+			{fileName && (
+				<p className="font-[Cairo] text-sm text-cyan-700">
+					تم اختيار: {fileName}
+				</p>
+			)}
+		</div>
+	)
 }

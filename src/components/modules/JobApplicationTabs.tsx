@@ -35,27 +35,26 @@ export default function JobApplicationTabs({
 	const [step, setStep] = useState(1)
 
 	return (
-		<main id="main-content">
+		<main id="main-content" className="font-[Cairo]">
 			<section
-				className="pt-16 lg:pt-28"
+				className="pt-12 md:pt-16 lg:pt-28"
 				style={{
 					backgroundImage: `
-            linear-gradient(transparent, white),
-            radial-gradient(at center top, rgb(21, 94, 117) 0%, rgb(45, 212, 191) 60%, rgb(255, 255, 255) 100%)
-          `,
+        linear-gradient(transparent, white),
+        radial-gradient(at center top, rgb(21, 94, 117) 0%, rgb(45, 212, 191) 60%, rgb(255, 255, 255) 100%)
+      `,
 				}}
 			>
-				<div className="container mx-auto max-w-6xl px-4">
-					{/* العنوان الرئيسي والفرعي */}
+				<div className="container mx-auto max-w-6xl px-3 sm:px-4 md:px-6">
 					{(title || subtitle) && (
-						<div className="mb-10 text-center">
+						<div className="mb-8 text-center md:mb-10">
 							{title && (
-								<h1 className="h1 mx-auto max-w-3xl text-center text-balance text-white ltr:leading-tight rtl:leading-snug">
+								<h1 className="h1 mx-auto max-w-3xl text-2xl text-balance text-white sm:text-3xl md:text-4xl lg:text-5xl ltr:leading-tight rtl:leading-snug">
 									{title}
 								</h1>
 							)}
 							{subtitle && (
-								<p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-800">
+								<p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-800 sm:text-base md:text-lg">
 									{subtitle}
 								</p>
 							)}
@@ -63,7 +62,7 @@ export default function JobApplicationTabs({
 					)}
 
 					{/* الشبكة الرئيسية */}
-					<div className="grid grid-cols-1 gap-6 rounded-2xl bg-white p-6 shadow-lg md:grid-cols-[1.2fr_2.5fr]">
+					<div className="grid grid-cols-1 gap-6 rounded-2xl bg-white p-4 shadow-lg sm:p-6 md:grid-cols-[1fr_2.5fr]">
 						{/* التابات الجانبية */}
 						<aside className="flex flex-col gap-3">
 							{tabs.map((tab, idx) => {
@@ -103,31 +102,26 @@ export default function JobApplicationTabs({
 											setActiveTab(idx)
 											setExpanded(false)
 										}}
-										className={`rounded-xl px-4 py-3 text-right font-semibold transition-all ${buttonClass}`}
+										className={`rounded-xl px-3 py-3 text-right text-sm font-semibold transition-all sm:px-4 sm:text-base ${buttonClass}`}
 									>
 										<div className="flex flex-col">
-											{/* ✅ السطر العلوي: وازن المالية يمين - عدد المقاعد يسار */}
 											{!isFirst && (
 												<div className="mb-2 flex items-center justify-between">
-													{/* وازن المالية */}
 													<div className="flex items-center gap-2">
-														<div className="h-6 w-6 rounded-full bg-[#2DD4BF]"></div>
-														<span className="font-['Rubik'] text-[14px] text-[#8C8F8E]">
+														<div className="h-5 w-5 rounded-full bg-[#2DD4BF] sm:h-6 sm:w-6"></div>
+														<span className="font-['Rubik'] text-xs text-[#8C8F8E] sm:text-sm">
 															وازن المالية
 														</span>
 													</div>
 
-													{/* عدد المقاعد في الجهة المقابلة */}
 													{tab.seats && (
-														<span className="font-[Rubik] text-[12px] text-[#363938]">
-															<span className="">
-																{tab.seats}{' '}
-																{tab.seats === 1
-																	? 'وظيفة'
-																	: tab.seats <= 10
-																		? 'وظائف'
-																		: 'وظيفة'}
-															</span>
+														<span className="font-[Rubik] text-xs text-[#363938]">
+															{tab.seats}{' '}
+															{tab.seats === 1
+																? 'وظيفة'
+																: tab.seats <= 10
+																	? 'وظائف'
+																	: 'وظيفة'}
 														</span>
 													)}
 												</div>
@@ -146,35 +140,31 @@ export default function JobApplicationTabs({
 												{/* 🟢 الزر في التاب الأول فقط */}
 												{isFirst && tab.button?.text && (
 													<a
-														// href={tab.button.link || '#'}
-														href={'#'}
-														className="inline-flex items-center justify-center gap-1 rounded-full border border-white px-4 py-1.5 font-[Cairo] text-[14px] font-bold text-white transition hover:bg-white hover:text-[#155E75]"
+														href="#"
+														className="inline-flex items-center justify-center gap-1 rounded-full border border-white px-4 py-1.5 font-[Cairo] text-[10px] font-bold text-white transition hover:bg-white hover:text-[#155E75]"
 													>
 														{tab.button.text}
 													</a>
 												)}
 											</div>
 
-											{/* 🔹 السطر الفرعي */}
 											{tab.sublabel && (
-												<span className="text-right font-[Cairo] text-[14px] leading-[23px] text-[#3F3F3F]">
+												<span className="text-right text-xs text-[#3F3F3F] sm:text-sm">
 													{tab.sublabel}
 												</span>
 											)}
 
-											{/* 🟢 الزر + التاريخ في نفس السطر في كل التابات ما عدا الأولى */}
 											{!isFirst && tab.button?.text && (
 												<div className="mt-3 flex items-center justify-between">
 													<a
-														// href={tab.button.link || '#'}
-														href={'#'}
-														className="inline-flex items-center justify-center gap-1 rounded-full border border-[#2DD4BF] px-4 py-1.5 font-[Cairo] text-[14px] font-bold text-[#2DD4BF] transition hover:bg-[#2DD4BF] hover:text-white"
+														href="#"
+														className="inline-flex items-center justify-center gap-1 rounded-full border border-[#2DD4BF] px-3 py-1.5 text-xs font-bold text-[#2DD4BF] transition hover:bg-[#2DD4BF] hover:text-white sm:px-4 sm:text-sm"
 													>
 														{tab.button.text}
 													</a>
 
 													{tab.addedDate && (
-														<span className="flex items-center gap-1 font-[Rubik] text-[13px] text-[#6B7280]">
+														<span className="hidden items-center gap-1 text-xs text-[#6B7280] sm:flex">
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
 																fill="none"
@@ -201,11 +191,11 @@ export default function JobApplicationTabs({
 						</aside>
 
 						{/* المحتوى */}
-						<div className="rounded-xl border border-gray-100 bg-white p-6 text-right shadow-inner transition-all">
+						<div className="rounded-xl border border-gray-100 bg-white p-4 text-right shadow-inner transition-all sm:p-6">
 							{/* === نموذج التقديم === */}
 							{tabs[activeTab].type === 'form' ? (
 								<section
-									className={`mx-auto max-w-5xl rounded-2xl bg-white font-[Cairo] transition-all duration-500 ${
+									className={`mx-auto max-w-5xl transition-all duration-500 ${
 										expanded
 											? 'max-h-[4000px]'
 											: 'max-h-[700px] overflow-hidden'
@@ -300,7 +290,8 @@ export default function JobApplicationTabs({
 										</button>
 									</div>
 
-									<form className="grid grid-cols-1 gap-6 text-right md:grid-cols-3">
+									<form className="grid grid-cols-1 gap-6 p-4 text-right sm:grid-cols-2 sm:p-6 md:p-8 lg:grid-cols-3">
+										{/* الاسم بالكامل */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
 												الاسم بالكامل
@@ -308,9 +299,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="حسام محمد"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* تاريخ الميلاد */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -319,18 +311,21 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="5-8-1996"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* النوع */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
 												النوع
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
-												<option>ذكر</option> <option>أنثى</option>
+											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+												<option>ذكر</option>
+												<option>أنثى</option>
 											</select>
 										</div>
+
 										{/* البلد */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -339,9 +334,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="السعودية"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* المدينة */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -350,9 +346,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="الرياض"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* العمر */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -361,9 +358,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="30 عاماً"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* رقم الهاتف */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -372,9 +370,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="+966 465 2990 243"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* التخصص */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -383,9 +382,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="محلل بيانات"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* الجنسية */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -394,9 +394,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="سعودي"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* نوع الهوية */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -405,9 +406,10 @@ export default function JobApplicationTabs({
 											<input
 												type="text"
 												placeholder="البطاقة الوطنية"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* رقم الهوية */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -415,10 +417,11 @@ export default function JobApplicationTabs({
 											</label>
 											<input
 												type="text"
-												placeholder="5-8-19996"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												placeholder="1234567890"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* البريد الإلكتروني */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -427,61 +430,65 @@ export default function JobApplicationTabs({
 											<input
 												type="email"
 												placeholder="Hossam@example.com"
-												className="w-full rounded-lg border border-gray-200 p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
+
 										{/* ✅ قسم رفع الملفات */}
-										<div className="col-span-3 mt-12 w-full">
+										<div className="col-span-1 mt-12 w-full sm:col-span-2 lg:col-span-3">
 											<h3 className="mb-4 text-right text-2xl font-bold text-[#170F49]">
 												إرفاق المستندات
 											</h3>
-											<p className="mb-6 text-right text-gray-500">
-												يرجى إرفاق نسخة من السيرة الذاتية بصيغة PDF أو ملف
-												مشابه. <br /> يسمح بتحميل ملفات حتى حجم 50 ميجا بايت.
+											<p className="mb-6 text-right leading-relaxed text-gray-500">
+												يرجى إرفاق سيرتك الذاتية المحدثة بدقة، إلى جانب صورة
+												شخصية واضحة،
+												<br className="hidden sm:block" />
+												وشهادات الخبرة أو شهادات الدورات التدريبية ذات الصلة.
 											</p>
+
 											{/* منطقة رفع الملفات */}
 											<label
 												htmlFor="file"
-												className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#2DD4BF] bg-[#F9FAFB] p-10 text-center transition hover:bg-[#F0FDFA]"
+												className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#2DD4BF] bg-[#F9FAFB] p-8 text-center transition hover:bg-[#F0FDFA] sm:p-10"
 											>
 												<FileUpload />
 											</label>
+
+											{/* الرسالة الإضافية */}
 											<textarea
 												placeholder="رسالة أو ملاحظات إضافية"
-												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-2 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
-												rows={12}
+												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
+												rows={10}
 											></textarea>
 										</div>
 									</form>
 								</section>
 							) : (
 								// === قسم النصوص ===
-								<div className="space-y-8">
-									<div className="flex items-start justify-between">
+								<div className="space-y-6 sm:space-y-8">
+									{/* رأس القسم */}
+									<div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
 										<div className="text-right">
 											<div className="flex items-center gap-2">
-												<div className="h-8 w-8 rounded-full bg-[#2DD4BF]"></div>
-
-												<span className="font-['Rubik'] text-[20px] font-[12px] text-[#2DD4BF]">
+												<div className="h-6 w-6 rounded-full bg-[#2DD4BF] sm:h-8 sm:w-8"></div>
+												<span className="text-sm text-[#2DD4BF] sm:text-base">
 													وازن المالية
 												</span>
 											</div>
 
 											{tabs[activeTab].mainTitle && (
-												<h3 className="text-2xl font-bold text-cyan-900">
+												<h3 className="text-xl font-bold text-cyan-900 sm:text-2xl">
 													{tabs[activeTab].mainTitle}
 												</h3>
 											)}
 											{tabs[activeTab].subtitle && (
-												<p className="font-medium text-gray-600">
+												<p className="text-sm text-gray-600 sm:text-base">
 													{tabs[activeTab].subtitle}
 												</p>
 											)}
 										</div>
 
-										{/* الزرين فوق بعض */}
-										<div className="flex flex-col items-end gap-3">
-											{/* زر التكبير */}
+										<div className="flex flex-row items-center gap-3 sm:flex-col sm:items-end">
 											<button
 												onClick={() => setExpanded(!expanded)}
 												className={`rounded-md p-2 shadow-md transition ${
@@ -489,7 +496,6 @@ export default function JobApplicationTabs({
 														? 'bg-[#2DD4BF] text-white hover:bg-[#14b8a6]'
 														: 'bg-white text-gray-700 hover:bg-gray-100'
 												}`}
-												title={expanded ? 'تصغير' : 'تكبير'}
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -515,27 +521,12 @@ export default function JobApplicationTabs({
 												</svg>
 											</button>
 
-											{/* زر انضم الان */}
 											<a
 												href="#"
 												onClick={() => setShowModal(true)}
-												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
+												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-5 py-2 text-sm font-bold text-[#000C06] shadow-sm transition hover:opacity-90 sm:px-8 sm:py-3 sm:text-base"
 											>
-												انضم الان
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													strokeWidth={2}
-													stroke="currentColor"
-													className="h-5 w-5 text-[#000C06]"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="M13 10V3L4 14h7v7l9-11h-7z"
-													/>
-												</svg>
+												انضم الآن
 											</a>
 										</div>
 									</div>
@@ -589,16 +580,16 @@ export default function JobApplicationTabs({
 			</section>
 
 			{/* قسم الخطوات السفلية */}
-			<section className="w-full bg-white px-4 py-16 text-center">
-				<p className="mb-2 text-sm font-medium text-gray-400">
+			<section className="w-full bg-white px-3 py-12 text-center sm:px-6 sm:py-16">
+				<p className="mb-2 text-xs font-medium text-gray-400 sm:text-sm">
 					مراحل دورة التوظيف الكاملة
 				</p>
-				<h2 className="mb-12 text-2xl font-bold text-cyan-950 md:text-3xl">
-					تعرف على الخطوات الأساسية <br /> في دورة التوظيف
+				<h2 className="mb-10 text-xl font-bold text-cyan-950 sm:mb-12 sm:text-2xl md:text-3xl">
+					تعرف على الخطوات الأساسية <br className="hidden sm:block" /> في دورة
+					التوظيف
 				</h2>
 
-				{/* شبكة الخطوات */}
-				<div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5">
+				<div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-5">
 					{[
 						{
 							title: 'التحضير',
@@ -628,29 +619,28 @@ export default function JobApplicationTabs({
 							<img
 								src={step.img}
 								alt={step.title}
-								className="h-32 w-32 object-contain md:h-36 md:w-36"
+								className="h-20 w-20 object-contain sm:h-24 sm:w-24 md:h-32 md:w-32"
 							/>
-							<p className="font-[29LT Bukra] text-center text-[35.8px] leading-[61px] font-semibold text-[#14B8A6]">
+							<p className="text-lg font-semibold text-[#14B8A6] sm:text-xl md:text-2xl">
 								{step.title}
 							</p>
 						</div>
 					))}
 				</div>
 			</section>
-
 			{showModal && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-					<div className="animate-fadeIn relative w-full max-w-4xl rounded-[40px] bg-transparent p-6 text-right">
-						{/* زر إغلاق */}
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-3 backdrop-blur-sm sm:px-6">
+					<div className="animate-fadeIn relative w-full max-w-4xl rounded-[30px] bg-transparent p-3 text-right sm:p-6 md:p-8">
+						{/* زر الإغلاق */}
 						<button
 							onClick={() => setShowModal(false)}
-							className="absolute top-4 left-6 text-2xl text-gray-400 hover:text-gray-700"
+							className="absolute top-3 left-4 text-xl text-gray-400 hover:text-gray-700 sm:top-4 sm:left-6 sm:text-2xl"
 						>
 							✕
 						</button>
 
 						{/* ✅ شريط الخطوات */}
-						<div className="mb-6 flex items-center justify-center gap-3 text-sm font-semibold text-[#170F49]">
+						<div className="mb-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-[#170F49] sm:gap-3 sm:text-sm">
 							{[
 								'البيانات الأساسية',
 								'بيانات التواصل',
@@ -661,7 +651,7 @@ export default function JobApplicationTabs({
 								<button
 									key={i}
 									onClick={() => setStep(i + 1)}
-									className={`flex items-center gap-2 rounded-full border px-5 py-2 transition-all duration-300 ${
+									className={`flex items-center gap-1 rounded-full border px-3 py-1.5 transition-all duration-300 sm:gap-2 sm:px-5 sm:py-2 ${
 										step === i + 1
 											? 'border-[#14B8A6] bg-[#14B8A6] text-white shadow-sm'
 											: 'border-gray-300 bg-white text-gray-600 hover:bg-gray-50'
@@ -673,317 +663,320 @@ export default function JobApplicationTabs({
 							))}
 						</div>
 
-						{/* ✅ جسم النموذج - form واحدة فقط */}
-						<form className="rounded-[32px] bg-white p-10 shadow-2xl">
-							{/* 🟢 الخطوة 1 */}
-							{step === 1 && (
-								<>
-									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
-										المعلومات الأساسية
-									</h2>
-									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
-										المعلومات الأساسية التي تساعدنا نتعرف عليك بشكل أفضل.
-										<br />
-										هذه البيانات تعتبر الخطوة الأولى لبناء ملفك الشخصي لدينا.
-									</p>
-
-									<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-3 md:divide-x md:divide-y-0">
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												الاسم بالكامل
-											</label>
-											<input
-												type="text"
-												name="fullName"
-												placeholder="أحمد محمد عبدالعزيز"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												النوع
-											</label>
-											<input
-												type="text"
-												name="gender"
-												placeholder="ذكر"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												البلد
-											</label>
-											<input
-												type="text"
-												name="country"
-												placeholder="السعودية"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												تاريخ الميلاد
-											</label>
-											<input
-												type="text"
-												name="birthdate"
-												placeholder="12/10/2026"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												المدينة
-											</label>
-											<input
-												type="text"
-												name="city"
-												placeholder="الرياض"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												الجنسية
-											</label>
-											<input
-												type="text"
-												name="nationality"
-												placeholder="سعودي"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-									</div>
-								</>
-							)}
-
-							{/* 🟢 الخطوة 2 */}
-							{step === 2 && (
-								<>
-									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
-										بيانات التواصل
-									</h2>
-									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
-										هنا نجمع بيانات الاتصال الخاصة بك حتى نقدر نتواصل معك
-										بسهولة.
-									</p>
-
-									<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0">
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												رقم الهاتف
-											</label>
-											<input
-												type="text"
-												name="phone"
-												placeholder="+966 876 4322 234"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												البريد الإلكتروني
-											</label>
-											<input
-												type="email"
-												name="email"
-												placeholder="Hossam@wazen.sa"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												نوع الهوية{' '}
-												<span className="text-xs text-gray-400">(اختياري)</span>
-											</label>
-											<input
-												type="text"
-												name="idType"
-												placeholder="بطاقة هوية / إقامة / جواز سفر"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-
-										<div className="p-4">
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												رقم الهوية{' '}
-												<span className="text-xs text-gray-400">(اختياري)</span>
-											</label>
-											<input
-												type="text"
-												name="idNumber"
-												placeholder="1234567890"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-									</div>
-								</>
-							)}
-
-							{/* 🟢 مثال لخطوات أخرى */}
-							{step === 3 && (
-								<>
-									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
-										المؤهلات والتخصص
-									</h2>
-									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
-										أخبرنا عن مؤهلاتك الدراسية وخبراتك السابقة.
-									</p>
-
-									<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-										<div>
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												المؤهل الدراسي
-											</label>
-											<input
-												type="text"
-												name="degree"
-												placeholder="بكالوريوس علوم الحاسب"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-										<div>
-											<label className="mb-1 block text-sm font-semibold text-gray-700">
-												التخصص
-											</label>
-											<input
-												type="text"
-												name="specialization"
-												placeholder="تحليل بيانات"
-												className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-											/>
-										</div>
-									</div>
-								</>
-							)}
-							{/* 🟢 الخطوة 4 - رفع المرفقات */}
-							{step === 4 && (
-								<>
-									<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
-										رفع المرفقات
-									</h2>
-									<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
-										قم برفع سيرتك الذاتية (CV) والملفات المساندة إن وجدت.
-									</p>
-
-									<div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-[#F9FAFB] p-10 text-center transition hover:border-[#14B8A6]">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={1.5}
-											stroke="#14B8A6"
-											className="mb-3 h-10 w-10"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M3 16.5V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18v-1.5m-9-12v12m0-12l-3.75 3.75M12 4.5l3.75 3.75"
-											/>
-										</svg>
-
-										<label
-											htmlFor="cvUpload"
-											className="cursor-pointer rounded-full bg-[#14B8A6] px-8 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
-										>
-											رفع CV
-										</label>
-
-										<input
-											id="cvUpload"
-											type="file"
-											name="cv"
-											accept=".pdf,.doc,.docx"
-											className="hidden"
-										/>
-
-										<p className="mt-3 text-sm text-gray-500">
-											الصيغ المدعومة: PDF, DOC, DOCX — الحجم الأقصى 5MB
+						{/* ✅ جسم النموذج مع Scroll داخلي */}
+						<div className="scrollbar-thin scrollbar-thumb-[#14B8A6]/60 scrollbar-track-gray-100 max-h-[80vh] overflow-y-auto rounded-[24px] bg-white p-5 shadow-2xl sm:p-8 md:p-10">
+							<form className="space-y-6">
+								{/* 🟢 الخطوة 1 */}
+								{step === 1 && (
+									<>
+										<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+											المعلومات الأساسية
+										</h2>
+										<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+											المعلومات الأساسية التي تساعدنا نتعرف عليك بشكل أفضل.
+											<br />
+											هذه البيانات تعتبر الخطوة الأولى لبناء ملفك الشخصي لدينا.
 										</p>
-									</div>
-								</>
-							)}
 
-							{/* ✅ أزرار التنقل في الأسفل */}
-						
-							<div className="relative mt-10 flex items-center justify-center">
-								{/* 🔙 زر السابق (يسار) */}
-								{step > 1 && (
-									<button
-										type="button"
-										onClick={() => setStep(step - 1)}
-										className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8]"
-										title="الخطوة السابقة"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={2}
-											stroke="currentColor"
-											className="h-5 w-5"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M15 19l-7-7 7-7"
+										<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-3 md:divide-x md:divide-y-0">
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													الاسم بالكامل
+												</label>
+												<input
+													type="text"
+													name="fullName"
+													placeholder="أحمد محمد عبدالعزيز"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													النوع
+												</label>
+												<input
+													type="text"
+													name="gender"
+													placeholder="ذكر"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													البلد
+												</label>
+												<input
+													type="text"
+													name="country"
+													placeholder="السعودية"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													تاريخ الميلاد
+												</label>
+												<input
+													type="text"
+													name="birthdate"
+													placeholder="12/10/2026"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													المدينة
+												</label>
+												<input
+													type="text"
+													name="city"
+													placeholder="الرياض"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													الجنسية
+												</label>
+												<input
+													type="text"
+													name="nationality"
+													placeholder="سعودي"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+										</div>
+									</>
+								)}
+
+								{/* 🟢 الخطوة 2 */}
+								{step === 2 && (
+									<>
+										<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+											بيانات التواصل
+										</h2>
+										<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+											هنا نجمع بيانات الاتصال الخاصة بك حتى نقدر نتواصل معك
+											بسهولة.
+										</p>
+
+										<div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0">
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													رقم الهاتف
+												</label>
+												<input
+													type="text"
+													name="phone"
+													placeholder="+966 876 4322 234"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													البريد الإلكتروني
+												</label>
+												<input
+													type="email"
+													name="email"
+													placeholder="Hossam@wazen.sa"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													نوع الهوية{' '}
+													<span className="text-xs text-gray-400">
+														(اختياري)
+													</span>
+												</label>
+												<input
+													type="text"
+													name="idType"
+													placeholder="بطاقة هوية / إقامة / جواز سفر"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+
+											<div className="p-4">
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													رقم الهوية{' '}
+													<span className="text-xs text-gray-400">
+														(اختياري)
+													</span>
+												</label>
+												<input
+													type="text"
+													name="idNumber"
+													placeholder="1234567890"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+										</div>
+									</>
+								)}
+
+								{/* 🟢 الخطوة 3 */}
+								{step === 3 && (
+									<>
+										<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+											المؤهلات والتخصص
+										</h2>
+										<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+											أخبرنا عن مؤهلاتك الدراسية وخبراتك السابقة.
+										</p>
+
+										<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+											<div>
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													المؤهل الدراسي
+												</label>
+												<input
+													type="text"
+													name="degree"
+													placeholder="بكالوريوس علوم الحاسب"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+											<div>
+												<label className="mb-1 block text-sm font-semibold text-gray-700">
+													التخصص
+												</label>
+												<input
+													type="text"
+													name="specialization"
+													placeholder="تحليل بيانات"
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												/>
+											</div>
+										</div>
+									</>
+								)}
+
+								{/* 🟢 الخطوة 4 */}
+								{step === 4 && (
+									<>
+										<h2 className="mb-3 text-center text-3xl font-bold text-[#170F49]">
+											رفع المرفقات
+										</h2>
+										<p className="mx-auto mb-8 max-w-2xl text-center leading-relaxed text-gray-500">
+											قم برفع سيرتك الذاتية (CV) والملفات المساندة إن وجدت.
+										</p>
+
+										<div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-[#F9FAFB] p-10 text-center transition hover:border-[#14B8A6]">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												strokeWidth={1.5}
+												stroke="#14B8A6"
+												className="mb-3 h-10 w-10"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													d="M3 16.5V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18v-1.5m-9-12v12m0-12l-3.75 3.75M12 4.5l3.75 3.75"
+												/>
+											</svg>
+
+											<label
+												htmlFor="cvUpload"
+												className="cursor-pointer rounded-full bg-[#14B8A6] px-8 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
+											>
+												رفع CV
+											</label>
+
+											<input
+												id="cvUpload"
+												type="file"
+												name="cv"
+												accept=".pdf,.doc,.docx"
+												className="hidden"
 											/>
-										</svg>
-									</button>
+
+											<p className="mt-3 text-sm text-gray-500">
+												الصيغ المدعومة: PDF, DOC, DOCX — الحجم الأقصى 5MB
+											</p>
+										</div>
+									</>
 								)}
 
-								{/* 🔜 زر القادم (يمين) */}
-								{step < 5 && (
-									<button
-										type="button"
-										onClick={() => setStep(step + 1)}
-										className="absolute right-0 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8]"
-										title="الخطوة التالية"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={2}
-											stroke="currentColor"
-											className="h-5 w-5"
+								{/* ✅ أزرار التنقل */}
+								<div className="mt-10 flex flex-col items-center justify-center gap-3 sm:relative sm:flex-row sm:justify-center sm:gap-0">
+									{step > 1 && (
+										<button
+											type="button"
+											onClick={() => setStep(step - 1)}
+											className="order-2 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8] sm:absolute sm:left-0 sm:order-1"
+											title="الخطوة السابقة"
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M9 5l7 7-7 7"
-											/>
-										</svg>
-									</button>
-								)}
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												strokeWidth={2}
+												stroke="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													d="M15 19l-7-7 7-7"
+												/>
+											</svg>
+										</button>
+									)}
 
-								{/* 🔘 زر المنتصف (التالي أو إرسال الطلب) */}
-								{step < 5 ? (
-									<button
-										type="button"
-										onClick={() => setStep(step + 1)}
-										className="rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
-									>
-										التالي
-									</button>
-								) : (
-									<button
-										type="submit"
-										className="rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
-									>
-										إرسال الطلب
-									</button>
-								)}
-							</div>
-						</form>
+									{step < 5 ? (
+										<button
+											type="button"
+											onClick={() => setStep(step + 1)}
+											className="order-1 w-full rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488] sm:order-2 sm:w-auto"
+										>
+											التالي
+										</button>
+									) : (
+										<button
+											type="submit"
+											className="order-1 w-full rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488] sm:order-2 sm:w-auto"
+										>
+											إرسال الطلب
+										</button>
+									)}
+
+									{step < 5 && (
+										<button
+											type="button"
+											onClick={() => setStep(step + 1)}
+											className="order-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F3F1] text-[#14B8A6] shadow-sm transition hover:bg-[#d1ece8] sm:absolute sm:right-0 sm:order-3"
+											title="الخطوة التالية"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												strokeWidth={2}
+												stroke="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													d="M9 5l7 7-7 7"
+												/>
+											</svg>
+										</button>
+									)}
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			)}
