@@ -695,12 +695,11 @@ export default function JobApplicationTabs({
 												<label className="mb-1 block text-sm font-semibold text-gray-700">
 													النوع
 												</label>
-												<input
-													type="text"
-													name="gender"
-													placeholder="ذكر"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-												/>
+
+												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]">
+													<option value={1}>ذكر</option>
+													<option value={0}>أنثى</option>
+												</select>
 											</div>
 
 											<div className="p-4">
