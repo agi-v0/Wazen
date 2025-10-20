@@ -103,7 +103,7 @@ export default function JobApplicationTabs({
 		const fetchData = async () => {
 			try {
 				const response = await fetch(
-					'http://erp.wazen.test/api/v1/emp/init-data',
+					'https://erp.wazen.sa/api/v1/emp/init-data',
 					{
 						method: 'POST',
 						headers: {
@@ -143,7 +143,7 @@ export default function JobApplicationTabs({
 			if (file) form.append('file', file)
 
 			const response = await fetch(
-				'http://erp.wazen.test/api/v1/emp/set-new-seeker',
+				'https://erp.wazen.sa/api/v1/emp/set-new-seeker',
 				{
 					method: 'POST',
 					body: form,
