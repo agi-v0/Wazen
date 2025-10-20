@@ -657,6 +657,7 @@ export default function JobApplicationTabs({
 											<textarea
 												name="notes"
 												value={formData.notes}
+												onChange={handleChange}
 												placeholder="رسالة أو ملاحظات إضافية"
 												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
 												rows={10}
