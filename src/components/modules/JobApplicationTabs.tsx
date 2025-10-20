@@ -95,6 +95,8 @@ export default function JobApplicationTabs({
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
 			setFile(e.target.files[0])
+			// Clear file error when a new file is selected
+			setApiErrors((prev) => ({ ...prev, file: '' }))
 		}
 	}
 	useEffect(() => {
@@ -157,6 +159,26 @@ export default function JobApplicationTabs({
 					setSuccessMessage(data.message)
 					setApiErrors({})
 					setMainError('')
+					// Reset form data
+					setFormData({
+						Cmp_No: '5556',
+						Seeker_NmAr: '',
+						Birth_Dt: '',
+						id_type: '',
+						Gender: '',
+						Nation_No: '',
+						country_of_residence: '',
+						Age: '',
+						Phone1: '',
+						Specialization_Name: '',
+						National_ID: '',
+						Email: '',
+						educational_qualification: '',
+						City_No: '',
+						notes: '',
+					})
+					// Reset file input
+					setFile(null)
 					// Clear success message after 5 seconds
 					setTimeout(() => {
 						setSuccessMessage('')
@@ -182,8 +204,7 @@ export default function JobApplicationTabs({
 						fieldErrors.Nation_No = data.message
 					if (data.message.includes('السيرة الذاتية'))
 						fieldErrors.file = data.message
-					if (data.message.includes('رقم الشركة'))
-						fieldErrors.Cmp_No = data.message
+
 					if (data.message.includes('الجنس')) fieldErrors.Gender = data.message
 					if (data.message.includes('تاريخ الميلاد'))
 						fieldErrors.Birth_Dt = data.message
@@ -458,11 +479,11 @@ export default function JobApplicationTabs({
 											المرفقات
 										</button>
 									</div>
-							{successMessage && (
-				<div className="fixed top-0 right-0 left-0 z-50 mx-auto max-w-2xl rounded-b-lg border border-green-300 bg-green-100 px-4 py-3 text-center font-bold text-green-800 shadow-lg">
-					{successMessage}
-				</div>
-			)}
+									{successMessage && (
+										<div className="fixed top-0 right-0 left-0 z-50 mx-auto max-w-2xl rounded-b-lg border border-green-300 bg-green-100 px-4 py-3 text-center font-bold text-green-800 shadow-lg">
+											{successMessage}
+										</div>
+									)}
 									<form
 										id="jobApplyForm"
 										onSubmit={handleSubmit}
@@ -744,15 +765,20 @@ export default function JobApplicationTabs({
 											{/* منطقة رفع الملفات */}
 											<label
 												htmlFor="file"
-												className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#2DD4BF] bg-[#F9FAFB] p-8 text-center transition hover:bg-[#F0FDFA] sm:p-10"
+												className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed ${
+													apiErrors?.file
+														? 'border-red-400'
+														: 'border-[#2DD4BF]'
+												} bg-[#F9FAFB] p-8 text-center transition hover:bg-[#F0FDFA] sm:p-10`}
 											>
 												<FileUpload
 													formData={formData}
 													onFileChange={handleFileChange}
+													hasError={!!apiErrors?.file}
 												/>
 											</label>
 											{apiErrors?.file && (
-												<div className="mt-1 text-sm text-red-600">
+												<div className="mt-3 text-center text-sm text-red-600">
 													{apiErrors.file}
 												</div>
 											)}
@@ -976,6 +1002,11 @@ export default function JobApplicationTabs({
 
 						{/* ✅ جسم النموذج مع Scroll داخلي */}
 						<div className="scrollbar-thin scrollbar-thumb-[#14B8A6]/60 scrollbar-track-gray-100 max-h-[80vh] overflow-y-auto rounded-[24px] bg-white p-5 shadow-2xl sm:p-8 md:p-10">
+							{successMessage && (
+								<div className="mb-6 rounded-lg border border-green-300 bg-green-100 px-4 py-3 text-center font-bold text-green-800">
+									{successMessage}
+								</div>
+							)}
 							<form
 								className="space-y-6"
 								onSubmit={handleSubmit}
@@ -1004,8 +1035,14 @@ export default function JobApplicationTabs({
 													value={formData.Seeker_NmAr}
 													onChange={handleChange}
 													placeholder="أحمد محمد عبدالعزيز"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Seeker_NmAr ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Seeker_NmAr}
 												/>
+												{apiErrors?.Seeker_NmAr && (
+													<div className="mt-1 text-sm text-red-600">
+														{apiErrors.Seeker_NmAr}
+													</div>
+												)}
 											</div>
 
 											<div className="p-4">
@@ -1017,7 +1054,8 @@ export default function JobApplicationTabs({
 													name="Gender"
 													value={formData.Gender}
 													onChange={handleChange}
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Gender ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Gender}
 												>
 													<option value="">اختر النوع</option>
 													{gender.map((item) => (
@@ -1060,8 +1098,14 @@ export default function JobApplicationTabs({
 													name="Birth_Dt"
 													value={formData.Birth_Dt}
 													onChange={handleChange}
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Birth_Dt ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Birth_Dt}
 												/>
+												{apiErrors?.Birth_Dt && (
+													<div className="mt-1 text-sm text-red-600">
+														{apiErrors.Birth_Dt}
+													</div>
+												)}
 											</div>
 
 											<div className="p-4">
@@ -1132,8 +1176,14 @@ export default function JobApplicationTabs({
 													value={formData.Phone1}
 													onChange={handleChange}
 													placeholder="+966 876 4322 234"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Phone1 ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Phone1}
 												/>
+												{apiErrors?.Phone1 && (
+													<div className="mt-1 text-sm text-red-600">
+														{apiErrors.Phone1}
+													</div>
+												)}
 											</div>
 
 											<div className="p-4">
@@ -1146,8 +1196,14 @@ export default function JobApplicationTabs({
 													value={formData.Email}
 													onChange={handleChange}
 													placeholder="Hossam@wazen.sa"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Email ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Email}
 												/>
+												{apiErrors?.Email && (
+													<div className="mt-1 text-sm text-red-600">
+														{apiErrors.Email}
+													</div>
+												)}
 											</div>
 
 											<div className="p-4">
@@ -1227,8 +1283,14 @@ export default function JobApplicationTabs({
 													value={formData.Specialization_Name}
 													onChange={handleChange}
 													placeholder="تحليل بيانات"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													className={`w-full rounded-xl border bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6] ${apiErrors?.Specialization_Name ? 'border-red-400' : 'border-gray-200'}`}
+													aria-invalid={!!apiErrors?.Specialization_Name}
 												/>
+												{apiErrors?.Specialization_Name && (
+													<div className="mt-1 text-sm text-red-600">
+														{apiErrors.Specialization_Name}
+													</div>
+												)}
 											</div>
 										</div>
 									</>
@@ -1244,13 +1306,15 @@ export default function JobApplicationTabs({
 											قم برفع سيرتك الذاتية (CV) والملفات المساندة إن وجدت.
 										</p>
 
-										<div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-[#F9FAFB] p-10 text-center transition hover:border-[#14B8A6]">
+										<div
+											className={`flex flex-col items-center justify-center rounded-2xl border-2 border-dashed ${apiErrors?.file ? 'border-red-400' : 'border-gray-300'} bg-[#F9FAFB] p-10 text-center transition hover:border-[#14B8A6]`}
+										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
 												viewBox="0 0 24 24"
 												strokeWidth={1.5}
-												stroke="#14B8A6"
+												stroke={apiErrors?.file ? '#EF4444' : '#14B8A6'}
 												className="mb-3 h-10 w-10"
 											>
 												<path
@@ -1262,7 +1326,7 @@ export default function JobApplicationTabs({
 
 											<label
 												htmlFor="cvUpload"
-												className="cursor-pointer rounded-full bg-[#14B8A6] px-8 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488]"
+												className={`cursor-pointer rounded-full ${apiErrors?.file ? 'bg-red-500' : 'bg-[#14B8A6]'} px-8 py-3 font-bold text-white shadow-md transition hover:opacity-90`}
 											>
 												رفع CV
 											</label>
@@ -1274,11 +1338,17 @@ export default function JobApplicationTabs({
 												accept=".pdf,.doc,.docx"
 												className="hidden"
 												onChange={handleFileChange}
+												aria-invalid={!!apiErrors?.file}
 											/>
 
 											<p className="mt-3 text-sm text-gray-500">
 												الصيغ المدعومة: PDF, DOC, DOCX — الحجم الأقصى 5MB
 											</p>
+											{apiErrors?.file && (
+												<div className="mt-2 text-sm text-red-600">
+													{apiErrors.file}
+												</div>
+											)}
 										</div>
 									</>
 								)}
