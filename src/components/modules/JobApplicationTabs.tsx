@@ -4,7 +4,6 @@ import { useState } from 'react'
 import FileUpload from '@/components/FileUpload'
 import { PortableText } from '@portabletext/react'
 import { useEffect } from 'react'
-import { log } from 'console'
 
 type JobTab = {
 	label: string
@@ -37,7 +36,7 @@ export default function JobApplicationTabs({
 	const [expanded, setExpanded] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const [step, setStep] = useState(1)
-
+	const [successMessage, setSuccessMessage] = useState<string>('')
 	interface SelectOption {
 		id: string | number
 		name: string
@@ -74,14 +73,22 @@ export default function JobApplicationTabs({
 		City_No: '',
 		notes: '',
 	})
-	const [file, setFile] = useState(null)
+	const [apiErrors, setApiErrors] = useState<{ [key: string]: string }>({})
+	const [mainError, setMainError] = useState<string>('')
+	const [file, setFile] = useState<File | null>(null)
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		>,
 	) => {
 		setFormData({
 			...formData,
 			[e.target.name]: e.target.value,
 		})
+		setApiErrors((prev) => ({ ...prev, [e.target.name]: '' }))
+		setMainError('')
+		// Keep success message visible until new form submission
+		// setSuccessMessage('')
 	}
 
 	// عند اختيار ملف
@@ -145,6 +152,45 @@ export default function JobApplicationTabs({
 
 			if (response.ok) {
 				console.log('Response Data:', data)
+				if (data.status === 200 && data.message) {
+					console.log('Setting success message:', data.message)
+					setSuccessMessage(data.message)
+					setApiErrors({})
+					setMainError('')
+					// Clear success message after 5 seconds
+					setTimeout(() => {
+						setSuccessMessage('')
+					}, 5000)
+				} else if (data.status === 400) {
+					// Handle known validation messages
+					const fieldErrors: { [key: string]: string } = {}
+					if (data.message.includes('الاسم الثلاثي'))
+						fieldErrors.Seeker_NmAr = data.message
+					if (data.message.includes('رقم الهوية'))
+						fieldErrors.National_ID = data.message
+					if (data.message.includes('التخصص'))
+						fieldErrors.Specialization_Name = data.message
+					if (
+						data.message.includes('رقم الجوال') ||
+						data.message.includes('رقما')
+					) {
+						fieldErrors.Phone1 = data.message
+					}
+					if (data.message.includes('البريد الإلكتروني'))
+						fieldErrors.Email = data.message
+					if (data.message.includes('الجنسية'))
+						fieldErrors.Nation_No = data.message
+					if (data.message.includes('السيرة الذاتية'))
+						fieldErrors.file = data.message
+					if (data.message.includes('رقم الشركة'))
+						fieldErrors.Cmp_No = data.message
+					if (data.message.includes('الجنس')) fieldErrors.Gender = data.message
+					if (data.message.includes('تاريخ الميلاد'))
+						fieldErrors.Birth_Dt = data.message
+					setApiErrors(fieldErrors)
+					setMainError('')
+					setSuccessMessage('')
+				}
 			} else {
 				console.error('Error Response Data:', data)
 			}
@@ -412,7 +458,11 @@ export default function JobApplicationTabs({
 											المرفقات
 										</button>
 									</div>
-
+							{successMessage && (
+				<div className="fixed top-0 right-0 left-0 z-50 mx-auto max-w-2xl rounded-b-lg border border-green-300 bg-green-100 px-4 py-3 text-center font-bold text-green-800 shadow-lg">
+					{successMessage}
+				</div>
+			)}
 									<form
 										id="jobApplyForm"
 										onSubmit={handleSubmit}
@@ -429,8 +479,14 @@ export default function JobApplicationTabs({
 												value={formData.Seeker_NmAr}
 												onChange={handleChange}
 												placeholder="حسام محمد"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Seeker_NmAr ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Seeker_NmAr}
 											/>
+											{apiErrors?.Seeker_NmAr && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Seeker_NmAr}
+												</div>
+											)}
 										</div>
 
 										{/* تاريخ الميلاد */}
@@ -444,8 +500,14 @@ export default function JobApplicationTabs({
 												value={formData.Birth_Dt}
 												onChange={handleChange}
 												placeholder="5-8-1996"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Birth_Dt ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Birth_Dt}
 											/>
+											{apiErrors?.Birth_Dt && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Birth_Dt}
+												</div>
+											)}
 										</div>
 
 										{/* النوع */}
@@ -457,17 +519,24 @@ export default function JobApplicationTabs({
 												name="Gender"
 												value={formData.Gender}
 												onChange={handleChange}
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Gender ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Gender}
 											>
+												<option value="">اختر النوع</option>
 												{gender.map((item) => (
 													<option key={item.id} value={item.id}>
 														{item.name}
 													</option>
 												))}
 											</select>
-										</div>
 
-										{/* البلد */}
+											{apiErrors?.Gender && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Gender}
+												</div>
+											)}
+										</div>
+										{/* بلد الاقامة */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
 												بلد الاقامة{' '}
@@ -521,8 +590,14 @@ export default function JobApplicationTabs({
 												onChange={handleChange}
 												type="text"
 												placeholder="30 عاماً"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Age ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Age}
 											/>
+											{apiErrors?.Age && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Age}
+												</div>
+											)}
 										</div>
 
 										{/* رقم الهاتف */}
@@ -535,12 +610,18 @@ export default function JobApplicationTabs({
 												name="Phone1"
 												value={formData.Phone1}
 												onChange={handleChange}
-												placeholder="+966 465 2990 243"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												placeholder="51236789"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Phone1 ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Phone1}
 											/>
+											{apiErrors?.Phone1 && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Phone1}
+												</div>
+											)}
 										</div>
 
-										{/* التخصص */}
+										{/* 6التخصص */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
 												التخصص
@@ -551,8 +632,14 @@ export default function JobApplicationTabs({
 												onChange={handleChange}
 												type="text"
 												placeholder="محلل بيانات"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Specialization_Name ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Specialization_Name}
 											/>
+											{apiErrors?.Specialization_Name && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Specialization_Name}
+												</div>
+											)}
 										</div>
 
 										{/* الجنسية */}
@@ -611,8 +698,14 @@ export default function JobApplicationTabs({
 												value={formData.National_ID}
 												onChange={handleChange}
 												placeholder="1234567890"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.National_ID ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.National_ID}
 											/>
+											{apiErrors?.National_ID && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.National_ID}
+												</div>
+											)}
 										</div>
 
 										{/* البريد الإلكتروني */}
@@ -626,8 +719,14 @@ export default function JobApplicationTabs({
 												value={formData.Email}
 												onChange={handleChange}
 												placeholder="Hossam@example.com"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`w-full rounded-lg border bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.Email ? 'border-red-400' : 'border-gray-200'}`}
+												aria-invalid={!!apiErrors?.Email}
 											/>
+											{apiErrors?.Email && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.Email}
+												</div>
+											)}
 										</div>
 
 										{/* ✅ قسم رفع الملفات */}
@@ -652,6 +751,11 @@ export default function JobApplicationTabs({
 													onFileChange={handleFileChange}
 												/>
 											</label>
+											{apiErrors?.file && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.file}
+												</div>
+											)}
 
 											{/* الرسالة الإضافية */}
 											<textarea
@@ -659,9 +763,14 @@ export default function JobApplicationTabs({
 												value={formData.notes}
 												onChange={handleChange}
 												placeholder="رسالة أو ملاحظات إضافية"
-												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
+												className={`mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF] ${apiErrors?.notes ? 'border-red-400' : ''}`}
 												rows={10}
 											></textarea>
+											{apiErrors?.notes && (
+												<div className="mt-1 text-sm text-red-600">
+													{apiErrors.notes}
+												</div>
+											)}
 										</div>
 									</form>
 								</section>
@@ -910,6 +1019,7 @@ export default function JobApplicationTabs({
 													onChange={handleChange}
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												>
+													<option value="">اختر النوع</option>
 													{gender.map((item) => (
 														<option key={item.id} value={item.id}>
 															{item.name}
