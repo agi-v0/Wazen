@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import FileUpload from '@/components/FileUpload'
 import { PortableText } from '@portabletext/react'
+import { useEffect } from 'react'
 
 type JobTab = {
 	label: string
@@ -34,6 +35,100 @@ export default function JobApplicationTabs({
 	const [showModal, setShowModal] = useState(false)
 	const [step, setStep] = useState(1)
 
+	const [gender, setGender] = useState([])
+	const [idType, setIdType] = useState([])
+	const [astCountry, setAstCountry] = useState([])
+	const [astCity, setAstCity] = useState([])
+	const [formData, setFormData] = useState({
+		Cmp_No: '2110',
+		Seeker_NmAr: '',
+		Birth_Dt: '',
+		id_type: '',
+		Gender: '',
+		Nation_No: '',
+		country_of_residence: '',
+		Age: '',
+		Phone1: '',
+		Specialization_Name: '',
+		National_ID: '',
+		Email: '',
+		educational_qualification: '',
+	})
+	const [file, setFile] = useState(null)
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		})
+	}
+
+	// عند اختيار ملف
+	const handleFileChange = (e) => {
+		setFile(e.target.files[0])
+	}
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					'http://erp.wazen.test/api/v1/emp/init-data',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ Cmp_No: 5556 }),
+					},
+				)
+
+				if (!response.ok) {
+					throw new Error('حدث خطأ أثناء جلب البيانات من السيرفر')
+				}
+
+				const data = await response.json()
+				setGender(data.gender || [])
+				setIdType(data.idType || [])
+				setAstCountry(data.astCountry || [])
+				setAstCity(data.astCity || [])
+			} catch (err) {
+				console.error('Error fetching data:', err);
+			} finally {
+				console.log('Data fetch attempt finished.');
+			}
+		}
+
+		fetchData()
+	}, [])
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+
+		try {
+			const form = new FormData()
+			Object.entries(formData).forEach(([key, value]) => {
+				form.append(key, value)
+			})
+			if (file) form.append('file', file)
+
+			const response = await fetch(
+				'http://erp.wazen.test/api/v1/emp/set-new-seeker',
+				{
+					method: 'POST',
+					body: form,
+				},
+			)
+
+			const data = await response.json()
+
+			if (response.ok) {
+				console.log('Response Data:', data);
+			} else {
+				console.error('Error Response Data:', data);
+			}
+		} catch (error) {
+			console.error('Submission Error:', error);
+		} finally {
+			console.log('Form submission attempt finished.');
+		}
+	}
 	return (
 		<main id="main-content" className="font-[Cairo]">
 			<section
@@ -259,9 +354,11 @@ export default function JobApplicationTabs({
 													)}
 												</svg>
 											</button>
-
-											{/* ⚡ زر إرسال الطلب */}
-											<button className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90">
+											<button
+												type="submit"
+												form="jobApplyForm"
+												className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#02B6BE] to-[#5FC19C] px-8 py-3 font-['Rubik'] text-[16px] leading-[120%] font-[600] tracking-[0%] text-[#000C06] shadow-sm transition hover:opacity-90"
+											>
 												إرسال الطلب
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -278,6 +375,7 @@ export default function JobApplicationTabs({
 													/>
 												</svg>
 											</button>
+											{/* ⚡ زر إرسال الطلب */}
 										</div>
 									</div>
 
@@ -290,7 +388,11 @@ export default function JobApplicationTabs({
 										</button>
 									</div>
 
-									<form className="grid grid-cols-1 gap-6 p-4 text-right sm:grid-cols-2 sm:p-6 md:p-8 lg:grid-cols-3">
+									<form
+										id="jobApplyForm"
+										onSubmit={handleSubmit}
+										className="grid grid-cols-1 gap-6 p-4 text-right sm:grid-cols-2 sm:p-6 md:p-8 lg:grid-cols-3"
+									>
 										{/* الاسم بالكامل */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
@@ -329,13 +431,15 @@ export default function JobApplicationTabs({
 										{/* البلد */}
 										<div>
 											<label className="mb-1 block font-semibold text-gray-700">
-												البلد
+												بلد الاقامة{' '}
 											</label>
-											<input
-												type="text"
-												placeholder="السعودية"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-											/>
+											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+												<option value="">اختر الدولة</option>
+												<option value="sa">السعودية</option>
+												<option value="eg">مصر</option>
+												<option value="ae">الإمارات</option>
+												<option value="kw">الكويت</option>
+											</select>
 										</div>
 
 										{/* المدينة */}
@@ -343,11 +447,14 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												المدينة
 											</label>
-											<input
-												type="text"
-												placeholder="الرياض"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-											/>
+											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+												<option value="">اختر المدينة</option>
+												<option value="riyadh">الرياض</option>
+												<option value="jeddah">جدة</option>
+												<option value="dammam">الدمام</option>
+												<option value="makkah">مكة</option>
+												<option value="madinah">المدينة المنورة</option>
+											</select>
 										</div>
 
 										{/* العمر */}
@@ -391,11 +498,13 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												الجنسية
 											</label>
-											<input
-												type="text"
-												placeholder="سعودي"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-											/>
+											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+												<option value="">اختر الدولة</option>
+												<option value="sa">السعودية</option>
+												<option value="eg">مصر</option>
+												<option value="ae">الإمارات</option>
+												<option value="kw">الكويت</option>
+											</select>
 										</div>
 
 										{/* نوع الهوية */}
@@ -403,11 +512,13 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												نوع الهوية (اختياري)
 											</label>
-											<input
-												type="text"
-												placeholder="البطاقة الوطنية"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-											/>
+											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+												<option value="">اختر نوع الهوية</option>
+												<option value="national_id">البطاقة الوطنية</option>
+												<option value="passport">جواز السفر</option>
+												<option value="residence">الإقامة</option>
+												<option value="driver_license">رخصة القيادة</option>
+											</select>
 										</div>
 
 										{/* رقم الهوية */}
@@ -430,6 +541,15 @@ export default function JobApplicationTabs({
 											<input
 												type="email"
 												placeholder="Hossam@example.com"
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											/>
+										</div>
+
+										{/* رقم الشركة */}
+										<div>
+											<input
+												type="hidden"
+												value={5556}
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
@@ -460,6 +580,7 @@ export default function JobApplicationTabs({
 												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
 												rows={10}
 											></textarea>
+									
 										</div>
 									</form>
 								</section>
@@ -704,14 +825,16 @@ export default function JobApplicationTabs({
 
 											<div className="p-4">
 												<label className="mb-1 block text-sm font-semibold text-gray-700">
-													البلد
+													بلد الإقامة
 												</label>
-												<input
-													type="text"
-													name="country"
-													placeholder="السعودية"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-												/>
+
+												<select className="focus:ring-[#14B8A6 w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2">
+													<option value="">اختر الدولة</option>
+													<option value="sa">السعودية</option>
+													<option value="eg">مصر</option>
+													<option value="ae">الإمارات</option>
+													<option value="kw">الكويت</option>
+												</select>
 											</div>
 
 											<div className="p-4">
@@ -730,23 +853,42 @@ export default function JobApplicationTabs({
 												<label className="mb-1 block text-sm font-semibold text-gray-700">
 													المدينة
 												</label>
-												<input
-													type="text"
+
+												<select
 													name="city"
-													placeholder="الرياض"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-												/>
+												>
+													<option value="">اختر المدينة</option>
+													<option value="riyadh">الرياض</option>
+													<option value="jeddah">جدة</option>
+													<option value="dammam">الدمام</option>
+													<option value="makkah">مكة المكرمة</option>
+													<option value="madinah">المدينة المنورة</option>
+													<option value="khobar">الخبر</option>
+													<option value="abha">أبها</option>
+													<option value="tabuk">تبوك</option>
+													<option value="qassim">القصيم</option>
+												</select>
 											</div>
 
 											<div className="p-4">
 												<label className="mb-1 block text-sm font-semibold text-gray-700">
 													الجنسية
 												</label>
+
+												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]">
+													<option value="">اختر الدولة</option>
+													<option value="sa">السعودية</option>
+													<option value="eg">مصر</option>
+													<option value="ae">الإمارات</option>
+													<option value="kw">الكويت</option>
+												</select>
+											</div>
+											<div>
 												<input
-													type="text"
-													name="nationality"
-													placeholder="سعودي"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+													type="hidden"
+													value={5556}
+													className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 												/>
 											</div>
 										</div>
@@ -796,12 +938,14 @@ export default function JobApplicationTabs({
 														(اختياري)
 													</span>
 												</label>
-												<input
-													type="text"
-													name="idType"
-													placeholder="بطاقة هوية / إقامة / جواز سفر"
-													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
-												/>
+
+												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]">
+													<option value="">اختر نوع الهوية</option>
+													<option value="national_id">البطاقة الوطنية</option>
+													<option value="passport">جواز السفر</option>
+													<option value="residence">الإقامة</option>
+													<option value="driver_license">رخصة القيادة</option>
+												</select>
 											</div>
 
 											<div className="p-4">
