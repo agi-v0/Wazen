@@ -2,12 +2,23 @@
 
 import { useState } from 'react'
 
-export default function FileUpload() {
+interface FileUploadProps {
+	formData: any // Replace 'any' with your actual FormData type
+	onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export default function FileUpload({
+	formData,
+	onFileChange,
+}: FileUploadProps) {
 	const [fileName, setFileName] = useState<string | null>(null)
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0]
-		if (file) setFileName(file.name)
+		if (file) {
+			setFileName(file.name)
+			onFileChange(e)
+		}
 	}
 
 	return (

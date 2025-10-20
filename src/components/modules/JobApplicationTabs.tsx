@@ -4,6 +4,7 @@ import { useState } from 'react'
 import FileUpload from '@/components/FileUpload'
 import { PortableText } from '@portabletext/react'
 import { useEffect } from 'react'
+import { log } from 'console'
 
 type JobTab = {
 	label: string
@@ -19,6 +20,8 @@ type JobTab = {
 		text?: string
 		link?: string
 	}
+	seats?: number
+	addedDate?: string
 }
 
 export default function JobApplicationTabs({
@@ -35,12 +38,27 @@ export default function JobApplicationTabs({
 	const [showModal, setShowModal] = useState(false)
 	const [step, setStep] = useState(1)
 
-	const [gender, setGender] = useState([])
-	const [idType, setIdType] = useState([])
-	const [astCountry, setAstCountry] = useState([])
-	const [astCity, setAstCity] = useState([])
+	interface SelectOption {
+		id: string | number
+		name: string
+	}
+
+	interface CountryOption {
+		Cntry_No: string | number
+		Cntry_NmAr: string
+	}
+
+	interface CityOption {
+		id: string | number
+		City_NmAr: string
+	}
+
+	const [gender, setGender] = useState<SelectOption[]>([])
+	const [idType, setIdType] = useState<SelectOption[]>([])
+	const [astCountry, setAstCountry] = useState<CountryOption[]>([])
+	const [astCity, setAstCity] = useState<CityOption[]>([])
 	const [formData, setFormData] = useState({
-		Cmp_No: '2110',
+		Cmp_No: '5556',
 		Seeker_NmAr: '',
 		Birth_Dt: '',
 		id_type: '',
@@ -53,9 +71,13 @@ export default function JobApplicationTabs({
 		National_ID: '',
 		Email: '',
 		educational_qualification: '',
+		City_No: '',
+		notes: '',
 	})
 	const [file, setFile] = useState(null)
-	const handleChange = (e) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+	) => {
 		setFormData({
 			...formData,
 			[e.target.name]: e.target.value,
@@ -63,8 +85,10 @@ export default function JobApplicationTabs({
 	}
 
 	// عند اختيار ملف
-	const handleFileChange = (e) => {
-		setFile(e.target.files[0])
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setFile(e.target.files[0])
+		}
 	}
 	useEffect(() => {
 		const fetchData = async () => {
@@ -85,20 +109,21 @@ export default function JobApplicationTabs({
 				}
 
 				const data = await response.json()
+				console.log('Fetched Data:', data)
 				setGender(data.gender || [])
 				setIdType(data.idType || [])
 				setAstCountry(data.astCountry || [])
 				setAstCity(data.astCity || [])
 			} catch (err) {
-				console.error('Error fetching data:', err);
+				console.error('Error fetching data:', err)
 			} finally {
-				console.log('Data fetch attempt finished.');
+				console.log('Data fetch attempt finished.')
 			}
 		}
 
 		fetchData()
 	}, [])
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
 		try {
@@ -119,14 +144,14 @@ export default function JobApplicationTabs({
 			const data = await response.json()
 
 			if (response.ok) {
-				console.log('Response Data:', data);
+				console.log('Response Data:', data)
 			} else {
-				console.error('Error Response Data:', data);
+				console.error('Error Response Data:', data)
 			}
 		} catch (error) {
-			console.error('Submission Error:', error);
+			console.error('Submission Error:', error)
 		} finally {
-			console.log('Form submission attempt finished.');
+			console.log('Form submission attempt finished.')
 		}
 	}
 	return (
@@ -400,6 +425,9 @@ export default function JobApplicationTabs({
 											</label>
 											<input
 												type="text"
+												name="Seeker_NmAr"
+												value={formData.Seeker_NmAr}
+												onChange={handleChange}
 												placeholder="حسام محمد"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
@@ -411,7 +439,10 @@ export default function JobApplicationTabs({
 												تاريخ الميلاد
 											</label>
 											<input
-												type="text"
+												type="date"
+												name="Birth_Dt"
+												value={formData.Birth_Dt}
+												onChange={handleChange}
 												placeholder="5-8-1996"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
@@ -422,9 +453,17 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												النوع
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
-												<option>ذكر</option>
-												<option>أنثى</option>
+											<select
+												name="Gender"
+												value={formData.Gender}
+												onChange={handleChange}
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											>
+												{gender.map((item) => (
+													<option key={item.id} value={item.id}>
+														{item.name}
+													</option>
+												))}
 											</select>
 										</div>
 
@@ -433,12 +472,21 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												بلد الاقامة{' '}
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+											<select
+												name="country_of_residence"
+												value={formData.country_of_residence}
+												onChange={handleChange}
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											>
 												<option value="">اختر الدولة</option>
-												<option value="sa">السعودية</option>
-												<option value="eg">مصر</option>
-												<option value="ae">الإمارات</option>
-												<option value="kw">الكويت</option>
+												{astCountry.map((country) => (
+													<option
+														key={country.Cntry_No}
+														value={country.Cntry_No}
+													>
+														{country.Cntry_NmAr}
+													</option>
+												))}
 											</select>
 										</div>
 
@@ -447,13 +495,18 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												المدينة
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+											<select
+												name="City_No"
+												value={formData.City_No}
+												onChange={handleChange}
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											>
 												<option value="">اختر المدينة</option>
-												<option value="riyadh">الرياض</option>
-												<option value="jeddah">جدة</option>
-												<option value="dammam">الدمام</option>
-												<option value="makkah">مكة</option>
-												<option value="madinah">المدينة المنورة</option>
+												{astCity.map((city) => (
+													<option key={city.id} value={city.id}>
+														{city.City_NmAr}
+													</option>
+												))}
 											</select>
 										</div>
 
@@ -463,6 +516,9 @@ export default function JobApplicationTabs({
 												العمر
 											</label>
 											<input
+												name="Age"
+												value={formData.Age}
+												onChange={handleChange}
 												type="text"
 												placeholder="30 عاماً"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
@@ -476,6 +532,9 @@ export default function JobApplicationTabs({
 											</label>
 											<input
 												type="text"
+												name="Phone1"
+												value={formData.Phone1}
+												onChange={handleChange}
 												placeholder="+966 465 2990 243"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
@@ -487,6 +546,9 @@ export default function JobApplicationTabs({
 												التخصص
 											</label>
 											<input
+												name="Specialization_Name"
+												value={formData.Specialization_Name}
+												onChange={handleChange}
 												type="text"
 												placeholder="محلل بيانات"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
@@ -498,12 +560,21 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												الجنسية
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+											<select
+												name="Nation_No"
+												onChange={handleChange}
+												value={formData.Nation_No}
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											>
 												<option value="">اختر الدولة</option>
-												<option value="sa">السعودية</option>
-												<option value="eg">مصر</option>
-												<option value="ae">الإمارات</option>
-												<option value="kw">الكويت</option>
+												{astCountry.map((country) => (
+													<option
+														key={country.Cntry_No}
+														value={country.Cntry_No}
+													>
+														{country.Cntry_NmAr}
+													</option>
+												))}
 											</select>
 										</div>
 
@@ -512,12 +583,20 @@ export default function JobApplicationTabs({
 											<label className="mb-1 block font-semibold text-gray-700">
 												نوع الهوية (اختياري)
 											</label>
-											<select className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]">
+											<select
+												name="id_type"
+												onChange={handleChange}
+												value={formData.id_type}
+												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
+											>
 												<option value="">اختر نوع الهوية</option>
-												<option value="national_id">البطاقة الوطنية</option>
-												<option value="passport">جواز السفر</option>
-												<option value="residence">الإقامة</option>
-												<option value="driver_license">رخصة القيادة</option>
+
+												{/* ✅ عرض البيانات القادمة من السيرفر */}
+												{idType.map((type) => (
+													<option key={type.id} value={type.id}>
+														{type.name}
+													</option>
+												))}
 											</select>
 										</div>
 
@@ -528,6 +607,9 @@ export default function JobApplicationTabs({
 											</label>
 											<input
 												type="text"
+												name="National_ID"
+												value={formData.National_ID}
+												onChange={handleChange}
 												placeholder="1234567890"
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
@@ -540,16 +622,10 @@ export default function JobApplicationTabs({
 											</label>
 											<input
 												type="email"
+												name="Email"
+												value={formData.Email}
+												onChange={handleChange}
 												placeholder="Hossam@example.com"
-												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-											/>
-										</div>
-
-										{/* رقم الشركة */}
-										<div>
-											<input
-												type="hidden"
-												value={5556}
 												className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
 											/>
 										</div>
@@ -571,16 +647,20 @@ export default function JobApplicationTabs({
 												htmlFor="file"
 												className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#2DD4BF] bg-[#F9FAFB] p-8 text-center transition hover:bg-[#F0FDFA] sm:p-10"
 											>
-												<FileUpload />
+												<FileUpload
+													formData={formData}
+													onFileChange={handleFileChange}
+												/>
 											</label>
 
 											{/* الرسالة الإضافية */}
 											<textarea
+												name="notes"
+												value={formData.notes}
 												placeholder="رسالة أو ملاحظات إضافية"
 												className="mt-6 w-full rounded-md border border-cyan-300 bg-[#14B8A617] px-4 py-3 text-gray-800 outline-none placeholder:text-gray-400 focus:border-[#2DD4BF] focus:ring-2 focus:ring-[#2DD4BF]"
 												rows={10}
 											></textarea>
-									
 										</div>
 									</form>
 								</section>
@@ -786,7 +866,11 @@ export default function JobApplicationTabs({
 
 						{/* ✅ جسم النموذج مع Scroll داخلي */}
 						<div className="scrollbar-thin scrollbar-thumb-[#14B8A6]/60 scrollbar-track-gray-100 max-h-[80vh] overflow-y-auto rounded-[24px] bg-white p-5 shadow-2xl sm:p-8 md:p-10">
-							<form className="space-y-6">
+							<form
+								className="space-y-6"
+								onSubmit={handleSubmit}
+								id="jobApplyFormpopup"
+							>
 								{/* 🟢 الخطوة 1 */}
 								{step === 1 && (
 									<>
@@ -806,7 +890,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="text"
-													name="fullName"
+													name="Seeker_NmAr"
+													value={formData.Seeker_NmAr}
+													onChange={handleChange}
 													placeholder="أحمد محمد عبدالعزيز"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -817,9 +903,17 @@ export default function JobApplicationTabs({
 													النوع
 												</label>
 
-												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]">
-													<option value={1}>ذكر</option>
-													<option value={0}>أنثى</option>
+												<select
+													name="Gender"
+													value={formData.Gender}
+													onChange={handleChange}
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												>
+													{gender.map((item) => (
+														<option key={item.id} value={item.id}>
+															{item.name}
+														</option>
+													))}
 												</select>
 											</div>
 
@@ -828,12 +922,21 @@ export default function JobApplicationTabs({
 													بلد الإقامة
 												</label>
 
-												<select className="focus:ring-[#14B8A6 w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2">
+												<select
+													name="country_of_residence"
+													value={formData.country_of_residence}
+													onChange={handleChange}
+													className="focus:ring-[#14B8A6 w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2"
+												>
 													<option value="">اختر الدولة</option>
-													<option value="sa">السعودية</option>
-													<option value="eg">مصر</option>
-													<option value="ae">الإمارات</option>
-													<option value="kw">الكويت</option>
+													{astCountry.map((country) => (
+														<option
+															key={country.Cntry_No}
+															value={country.Cntry_No}
+														>
+															{country.Cntry_NmAr}
+														</option>
+													))}
 												</select>
 											</div>
 
@@ -842,9 +945,10 @@ export default function JobApplicationTabs({
 													تاريخ الميلاد
 												</label>
 												<input
-													type="text"
-													name="birthdate"
-													placeholder="12/10/2026"
+													type="date"
+													name="Birth_Dt"
+													value={formData.Birth_Dt}
+													onChange={handleChange}
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
 											</div>
@@ -855,19 +959,17 @@ export default function JobApplicationTabs({
 												</label>
 
 												<select
-													name="city"
+													name="City_No"
+													value={formData.City_No}
+													onChange={handleChange}
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												>
 													<option value="">اختر المدينة</option>
-													<option value="riyadh">الرياض</option>
-													<option value="jeddah">جدة</option>
-													<option value="dammam">الدمام</option>
-													<option value="makkah">مكة المكرمة</option>
-													<option value="madinah">المدينة المنورة</option>
-													<option value="khobar">الخبر</option>
-													<option value="abha">أبها</option>
-													<option value="tabuk">تبوك</option>
-													<option value="qassim">القصيم</option>
+													{astCity.map((city) => (
+														<option key={city.id} value={city.id}>
+															{city.City_NmAr}
+														</option>
+													))}
 												</select>
 											</div>
 
@@ -876,20 +978,22 @@ export default function JobApplicationTabs({
 													الجنسية
 												</label>
 
-												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]">
+												<select
+													name="Nation_No"
+													onChange={handleChange}
+													value={formData.Nation_No}
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 text-gray-800 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												>
 													<option value="">اختر الدولة</option>
-													<option value="sa">السعودية</option>
-													<option value="eg">مصر</option>
-													<option value="ae">الإمارات</option>
-													<option value="kw">الكويت</option>
+													{astCountry.map((country) => (
+														<option
+															key={country.Cntry_No}
+															value={country.Cntry_No}
+														>
+															{country.Cntry_NmAr}
+														</option>
+													))}
 												</select>
-											</div>
-											<div>
-												<input
-													type="hidden"
-													value={5556}
-													className="w-full rounded-lg border border-gray-200 bg-white p-3 outline-none focus:ring-2 focus:ring-[#2DD4BF]"
-												/>
 											</div>
 										</div>
 									</>
@@ -913,7 +1017,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="text"
-													name="phone"
+													name="Phone1"
+													value={formData.Phone1}
+													onChange={handleChange}
 													placeholder="+966 876 4322 234"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -925,7 +1031,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="email"
-													name="email"
+													name="Email"
+													value={formData.Email}
+													onChange={handleChange}
 													placeholder="Hossam@wazen.sa"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -939,12 +1047,18 @@ export default function JobApplicationTabs({
 													</span>
 												</label>
 
-												<select className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]">
+												<select
+													name="id_type"
+													onChange={handleChange}
+													value={formData.id_type}
+													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
+												>
 													<option value="">اختر نوع الهوية</option>
-													<option value="national_id">البطاقة الوطنية</option>
-													<option value="passport">جواز السفر</option>
-													<option value="residence">الإقامة</option>
-													<option value="driver_license">رخصة القيادة</option>
+													{idType.map((type) => (
+														<option key={type.id} value={type.id}>
+															{type.name}
+														</option>
+													))}
 												</select>
 											</div>
 
@@ -957,7 +1071,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="text"
-													name="idNumber"
+													name="National_ID"
+													value={formData.National_ID}
+													onChange={handleChange}
 													placeholder="1234567890"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -983,7 +1099,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="text"
-													name="degree"
+													name="educational_qualification"
+													value={formData.educational_qualification}
+													onChange={handleChange}
 													placeholder="بكالوريوس علوم الحاسب"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -994,7 +1112,9 @@ export default function JobApplicationTabs({
 												</label>
 												<input
 													type="text"
-													name="specialization"
+													name="Specialization_Name"
+													value={formData.Specialization_Name}
+													onChange={handleChange}
 													placeholder="تحليل بيانات"
 													className="w-full rounded-xl border border-gray-200 bg-[#F1FAF9] p-3 outline-none focus:ring-2 focus:ring-[#14B8A6]"
 												/>
@@ -1042,6 +1162,7 @@ export default function JobApplicationTabs({
 												name="cv"
 												accept=".pdf,.doc,.docx"
 												className="hidden"
+												onChange={handleFileChange}
 											/>
 
 											<p className="mt-3 text-sm text-gray-500">
@@ -1088,6 +1209,7 @@ export default function JobApplicationTabs({
 									) : (
 										<button
 											type="submit"
+											form="jobApplyFormpopup"
 											className="order-1 w-full rounded-full bg-[#14B8A6] px-10 py-3 font-bold text-white shadow-md transition hover:bg-[#0d9488] sm:order-2 sm:w-auto"
 										>
 											إرسال الطلب
