@@ -774,7 +774,6 @@ export default function JobApplicationTabs({
 												<FileUpload
 													formData={formData}
 													onFileChange={handleFileChange}
-													hasError={!!apiErrors?.file}
 												/>
 											</label>
 											{apiErrors?.file && (

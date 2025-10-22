@@ -28,7 +28,6 @@ export default {
 							name: 'label',
 							title: 'اسم التاب (العنوان الرئيسي على الزر)',
 							type: 'string',
-							validation: (Rule) => Rule.required(),
 						},
 						{
 							name: 'sublabel',
@@ -47,47 +46,40 @@ export default {
 								],
 								layout: 'radio',
 							},
-							validation: (Rule) => Rule.required(),
 						},
 						{
 							name: 'mainTitle',
 							title: 'العنوان الرئيسي داخل التاب',
 							type: 'string',
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 						{
 							name: 'subtitle',
 							title: 'العنوان الفرعي داخل التاب',
 							type: 'string',
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 						{
 							name: 'introText',
 							title: 'النص التعريفي',
 							type: 'array',
 							of: [{ type: 'block' }],
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 						{
 							name: 'description',
 							title: 'الوصف',
 							type: 'array',
 							of: [{ type: 'block' }],
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 						{
 							name: 'requirements',
 							title: 'المتطلبات',
 							type: 'array',
 							of: [{ type: 'block' }],
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 						{
 							name: 'benefits',
 							title: 'المميزات',
 							type: 'array',
 							of: [{ type: 'block' }],
-							hidden: ({ parent }) => parent?.type !== 'text',
 						},
 
 						// ✅ الزر داخل التاب
@@ -107,7 +99,6 @@ export default {
 							title: 'عدد المقاعد',
 							type: 'number',
 							description: 'عدد المقاعد المتاحة لهذا التاب (اختياري)',
-							validation: (Rule) => Rule.min(0),
 						},
 
 						// 🕓 تاريخ الإضافة
@@ -144,7 +135,6 @@ export default {
 					],
 				},
 			],
-			validation: (Rule) => Rule.max(5).error('يمكن رفع 5 صور كحد أقصى فقط'),
 		},
 	],
-};
+}
