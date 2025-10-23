@@ -87,7 +87,7 @@ export default function CallToAction({
 					<div className="relative aspect-square w-full overflow-hidden rounded-2xl border-8 border-white bg-teal-500 lg:max-w-[400px]">
 						<div
 							className={cn(
-								'absolute start-8 top-8 h-full w-full min-w-[800px] border border-red-500',
+								'absolute start-8 top-8 h-full w-full min-w-[800px]',
 							)}
 						>
 							<Img
