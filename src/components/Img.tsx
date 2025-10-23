@@ -53,12 +53,13 @@ export const Img = ({
 				<Image
 					src={urlFor(image).url()}
 					alt={altText}
-					width={getImageDimensions(image).width}
-					height={getImageDimensions(image).height}
+					width={width ?? getImageDimensions(image).width}
+					height={height ?? getImageDimensions(image).height}
 					placeholder="blur"
 					blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
 					sizes={
-						sizes ?? '(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw'
+						sizes
+						// ?? '(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw'
 					}
 					className={className}
 					loading={loading}
