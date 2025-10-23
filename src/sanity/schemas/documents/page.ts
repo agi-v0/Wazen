@@ -58,6 +58,7 @@ export default {
 				{ type: 'features-grid-2' },
 				{ type: 'solutions-benefits' },
 				{ type: 'product-list' },
+				{ type: 'jobApplicationTabs' },
 			],
 			options: {
 				advanced: {
