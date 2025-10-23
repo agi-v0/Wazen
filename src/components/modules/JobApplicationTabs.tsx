@@ -381,13 +381,7 @@ export default function JobApplicationTabs({
 						<div className="rounded-xl border border-gray-100 bg-white p-4 text-right shadow-inner transition-all sm:p-6">
 							{/* === نموذج التقديم === */}
 							{tabs[activeTab].type === 'form' ? (
-								<section
-									className={`mx-auto max-w-5xl transition-all duration-500 ${
-										expanded
-											? 'max-h-[4000px]'
-											: 'max-h-[700px] overflow-hidden'
-									}`}
-								>
+							<section className="mx-auto max-w-5xl transition-all duration-500">
 									<div className="mb-8 flex items-start justify-between">
 										{/* ✅ القسم الأيسر: شعار وازن + العنوان والنص */}
 										<div className="flex flex-col items-start gap-4">
@@ -479,6 +473,14 @@ export default function JobApplicationTabs({
 											المرفقات
 										</button>
 									</div>
+								{/* ✅ المحتوى القابل للتمدد فقط */}
+								<div
+									className={`transition-all duration-700 ease-in-out ${
+										expanded
+											? 'max-h-[4000px] opacity-100'
+											: 'max-h-[600px] overflow-hidden opacity-100'
+									}`}
+								>
 									{successMessage && (
 										<div className="fixed top-0 right-0 left-0 z-50 mx-auto max-w-2xl rounded-b-lg border border-green-300 bg-green-100 px-4 py-3 text-center font-bold text-green-800 shadow-lg">
 											{successMessage}
@@ -798,6 +800,25 @@ export default function JobApplicationTabs({
 											)}
 										</div>
 									</form>
+								</div>
+								{/* ✅ أزرار عرض المزيد/أقل خارج الحاوية المقتصّة */}
+								<div className="mt-4 flex justify-center">
+									{!expanded ? (
+										<button
+											onClick={() => setExpanded(true)}
+											className="rounded-full bg-gradient-to-l from-[#02B6BE] to-[#5FC19C] px-6 py-2 text-sm font-bold text-white shadow-md transition hover:opacity-90"
+										>
+											👁 عرض المزيد
+										</button>
+									) : (
+										<button
+											onClick={() => setExpanded(false)}
+											className="rounded-full bg-gray-100 px-6 py-2 text-sm font-bold text-gray-700 shadow-md transition hover:bg-gray-200"
+										>
+											إخفاء
+										</button>
+									)}
+								</div>
 								</section>
 							) : (
 								// === قسم النصوص ===
@@ -908,6 +929,16 @@ export default function JobApplicationTabs({
 											</div>
 										)}
 									</div>
+									{!expanded && (
+										<div className="flex justify-center">
+											<button
+												onClick={() => setExpanded(true)}
+												className="rounded-full bg-gradient-to-l from-[#02B6BE] to-[#5FC19C] px-6 py-2 text-sm font-bold text-white shadow-md transition hover:opacity-90"
+											>
+												👁 عرض المزيد
+											</button>
+										</div>
+									)}
 								</div>
 							)}
 						</div>
