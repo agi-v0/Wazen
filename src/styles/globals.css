@@ -8,6 +8,11 @@
 
 	/* fluid sizes */
 	:root {
+		--header-height: 64px;
+		@media (min-width: 768px) {
+			--header-height: 72px;
+		}
+
 		--padding-horizontal--main: clamp(1rem, 0.1927rem + 3.51vw, 3rem);
 		--size--2rem: clamp(1.75rem, 1.6488rem + 0.44vw, 2rem);
 		--size--2-5rem: clamp(2rem, 1.7976rem + 0.88vw, 2.5rem);
