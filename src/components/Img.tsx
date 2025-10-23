@@ -53,8 +53,8 @@ export const Img = ({
 				<Image
 					src={urlFor(image).url()}
 					alt={altText}
-					width={width ?? getImageDimensions(image).width}
-					height={height ?? getImageDimensions(image).height}
+					width={getImageDimensions(image).width}
+					height={getImageDimensions(image).height}
 					placeholder="blur"
 					blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
 					sizes={
