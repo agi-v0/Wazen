@@ -9,9 +9,6 @@
 	/* fluid sizes */
 	:root {
 		--header-height: 64px;
-		@media (min-width: 768px) {
-			--header-height: 72px;
-		}
 
 		--padding-horizontal--main: clamp(1rem, 0.1927rem + 3.51vw, 3rem);
 		--size--2rem: clamp(1.75rem, 1.6488rem + 0.44vw, 2rem);
@@ -43,6 +40,12 @@
 		--text-large--font-size: clamp(1.14rem, 1.0917rem + 0.21vw, 1.26rem);
 		--text-main--font-size: clamp(1rem, 0.9793rem + 0.09vw, 1.05rem);
 		--text-small--font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+	}
+
+	@media (min-width: 768px) {
+		::root {
+			--header-height: 72px;
+		}
 	}
 
 	[hidden] {
